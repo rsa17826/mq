@@ -1,0 +1,17 @@
+
+a:link     { color: blue; text-decoration: none; }
+a:visited  { color: blue; text-decoration: none; }
+a:active   { color: blue; text-decoration: none; }
+a:hover	   { color: blue; text-decoration: underline; }
+
+.yellowtxt { color:#FF0; FONT: 20px Arial, Helvetica, sans-serif; font-weight: bold; }
+.yellowTxt { color:#FF0; FONT: 20px Arial, Helvetica, sans-serif; font-weight: bold; }
+.whitetxt { color:#FFF; FONT: 20px Arial, Helvetica, sans-serif; font-weight: bold; }
+.whiteTxt { color:#FFF; FONT: 20px Arial, Helvetica, sans-serif; font-weight: bold; }
+.blacktxt { color:#000; FONT: 20px Arial, Helvetica, sans-serif; font-weight: bold; }
+.blackTxt { color:#000; FONT: 20px Arial, Helvetica, sans-serif; font-weight: bold; }
+.bluetxt { color:#0026FF; FONT: 20px Arial, Helvetica, sans-serif; font-weight: bold; }
+.blueTxt { color:#0026FF; FONT: 20px Arial, Helvetica, sans-serif; font-weight: bold; }
+.darkBlueTxt { color:#001487; FONT: 20px Arial, Helvetica, sans-serif; font-weight: bold; }
+.darkGreenTxt { color:#006600; FONT: 20px Arial, Helvetica, sans-serif; font-weight: bold; }
+.darkPurpleTxt { color:#471F65; FONT: 20px Arial, Helvetica, sans-serif; font-weight: bold; }

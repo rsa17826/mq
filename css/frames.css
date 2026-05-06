@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.topColor {
+    padding-top: 0px;
+    position: fixed;
+    top: 0;
+  background-color: #2B4493;
+  color: #FFFFFF;
+  
+}
+.main { 
+    padding-top: 0px;
+    background-color: #AADBFF;
+    color: #00137F; 
+}            
+
+.rightColor {
+   position:relative;
+  right:0;
+  top: 0;
+  background-color: #2B4493;
+  color: #FFFFFF;
+}
+
+.leftColor {
+   position:relative;
+  left:0;
+  top: 50px;
+  background-color: #2B4493;
+  color: #000000;
+}
+
+.fixed {
+    right: 0;
+    position: fixed;
+}
+
+

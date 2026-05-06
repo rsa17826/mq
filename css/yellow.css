@@ -1,0 +1,185 @@
+/* All of this will work for the new layout pages  */
+BODY	{
+    margin: 0px;
+    padding: 0px;
+    background-color:#D3C900;  /* 2B4493 */ 
+}
+
+a:link     { color: blue; text-decoration: none; }
+a:visited  { color: blue; text-decoration: none; }
+a:active   { color: blue; text-decoration: none; }
+a:hover	   { color: blue; text-decoration: underline; }
+
+.yellowtxt { color:#FF0; FONT: 18px "times new roman", georgina, arial, sans-serif; font-weight: bold; }
+
+.whitetxt { color:#FFF; FONT: 18px "times new roman", georgina, arial, sans-serif; font-weight: bold; }
+
+.blacktxt { color:#000; FONT: 18px "times new roman", georgina, arial, sans-serif; font-weight: bold; }
+
+.blueTxt { color:#0026FF; FONT: 18px "times new roman", georgina, arial, sans-serif; font-weight: bold; }
+
+.fullPage  {
+    position:relative;
+    width:100%;
+    min-width:1125px;
+    height:100%;
+    background-color: #D3C900;
+}
+
+.contentColor  {
+    background-color: #FFEDDB; /* AADBFF */
+}
+
+#content  {
+    text-align: center;
+    color: #000097;
+    font: 16px, Comic Sans Ms;
+}
+
+.rightMenuArea {
+    top:0px; right:0px;
+    width: 320px;
+    background-color:#D3C900;
+}
+
+.header  {
+    position: fixed;
+    top:0px; left:0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    width:100%;
+    min-width:805px;
+    height:40px;
+    background-color:#D3C900;
+}
+
+#ad_728-A {
+    position: fixed;
+    top:50px; left:0px;
+    min-width:805px;
+    height:97px;
+    background-color:#D3C900;
+    padding-right: 100%;
+    padding-left: 10px;
+}
+
+#topSocial    { display: inline-block; margin: 5px 0px; }
+
+table.section {
+    font-family: Comic Sans Ms;
+}
+
+p.bold    { FONT: 18px Comic Sans Ms; color: #000097; }
+
+.content {
+    font-family: "Comic Sans Ms";
+    font-size: 16px;
+}
+
+h1.title {
+    display: block;
+    margin: auto;
+    font-size: 36px;
+    font-weight: bold;
+    font-family: "Comic Sans Ms";
+    text-align: center;
+    color: black;
+}
+
+h1.dvr {
+    font: 24px, Comic Sans Ms;
+    font-weight: bold;
+    text-align: center;
+    line-height: 10%;
+    color: blue;
+}
+
+h2   { color:#008; FONT: 30px Comic Sans Ms; font-weight: bold; margin: 0px; }
+
+h3.dvr {
+    font: 16px, Comic Sans Ms;
+    font-weight: bold;
+    text-align: center;
+    line-height: 10%;
+    color: black;
+}
+
+.page-splits	{
+  border: #000000 2px solid;
+  background-color: #F1AB74;
+  color: #fdfdfd; height: 7px;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.stickyAdDiv {
+    margin: 0px;
+}
+
+#stickyContainer  { margin: 0px; width:320px; }
+
+#stickyMover  { margin: 0px; width:320px; }
+
+@media (max-width: 1010px) {
+#topSocial  { display:none; }
+}
+
+@media (max-width: 480px) {
+#ad_728-B,#ad_300  { display:none; }
+}
+
+/*   This div id's are unique to this home page only   */
+/*   This div id's are called in the homescroll.js script  */
+/*   Don't change the these names are it will break the homescroll.js script  */
+/*   The background-color is set here in the #contentHomePage background-color setting */
+
+#contentHomePage {
+    border-radius: 50px 50px 0px 0px;
+    min-width:805px;
+    margin-right: 320px;
+    margin-top: 50px;
+    height:100%;
+    background-color:#FFEDDB;  /* MAIN AREA BACKGROUND COLOR */
+    z-index: -1;
+}
+
+#rightMenuHomePage {
+    position:absolute;
+    top:0px; right:0px;
+    width:320px;
+    margin-top: -50px;
+    height:100%;
+    background-color:#D3C900;
+}
+
+/*   This div id's are unique to the other topic pages but NOT the home Page   */
+/*   This div id's are called in the nav-scroll.js script  */
+/*   Don't change the these names are it will break the nav-scroll.js script  */
+/*   The background-color is NOT set here in the #contentPage css it is missing so */
+/*   the background-color can be changed for each page outside of the css file  */
+
+#contentPage   {
+    border-radius: 50px 50px 0px 0px;
+    min-width:805px;
+    margin-right: 320px;
+    margin-top: 147px;
+    height:100%;
+    z-index: -1;
+}
+
+#rightMenuPage {
+    position:absolute;
+    top:0px; right:0px;
+    width:320px;
+    margin-top: -148px;
+    height:100%;
+    background-color:#D3C900;
+}
+
+@media (max-width: 1110px) {
+    #ad_728-A { display:none; }
+    #contentPage    { margin-top: 51px;  }
+    #rightMenuPage  { margin-top: -51px; }
+}
