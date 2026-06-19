@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 while true; do
-  grep -oP "(?<![\w_-])_+(\w[\w+])(?=[^\w_-])" ./MathQuest/MathQuest.js | uniq | sort >a
+  grep -oP "(?<![\w_-])_+(\w[\w]+)(?=[^\w_-])" ./MathQuest/MathQuest.js | sort | uniq >a
   # Read user input into the variable 'v'
   read -p "Enter identifier: " v
 
