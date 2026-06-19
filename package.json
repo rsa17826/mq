@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/rsa17826/mq#readme",
   "dependencies": {
-    "acorn": "^8.17.0"
+    "acorn": "^8.17.0",
+    "jimp": "^1.6.1",
+    "puppeteer": "^25.1.0"
   }
 }
