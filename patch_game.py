@@ -1,10 +1,10 @@
 """
 Patch MathQuest.js to use the shuffled connections table.
 
-Injects, right before the first real assignment to result.north/east
+Injects, right before the first real assignment to manager.north/east
 (the "new game" initializer), a self-contained block that:
 
-  1. Converts result.north and result.east from plain data properties
+  1. Converts manager.north and manager.east from plain data properties
     into accessor properties (get/set). The setter's only job is to
     remember the room the player was in *before* the current batch of
     writes started (origin-before-transition) -- it does NOT try to
@@ -16,7 +16,7 @@ Injects, right before the first real assignment to result.north/east
     verified across all 16 trigger mechanisms) to do the actual
     redirect: once both axes have settled to their vanilla-computed
     destination, look up (origin, vanillaDest) in the shuffled
-    connections table and, if found, overwrite result.north/east and
+    connections table and, if found, overwrite manager.north/east and
     the player's x/y before the original loca() runs and draws the room.
 
 This means none of the ~15 scattered transition call sites (newScreen's
@@ -26,11 +26,11 @@ they all funnel through __createObject.loca() before the room is drawn.
 """
 
 import json
-import re
+import os
 
-OUT_DIR = "/home/claude"
-SRC_PATH = "/mnt/user-data/uploads/MathQuest.js"
-OUT_PATH = "/mnt/user-data/outputs/MathQuest.js"
+OUT_DIR = os.path.dirname(os.path.abspath(__file__))
+SRC_PATH = os.path.join(OUT_DIR, "MathQuest/MathQuest.base.js")
+OUT_PATH = os.path.join(OUT_DIR, "MathQuest/MathQuest.js")
 
 with open(SRC_PATH, encoding="utf-8") as f:
   src = f.read()
@@ -66,7 +66,7 @@ for c in connections:
     )
   )
 table_js = ",".join(rows)
-
+# @noregex
 PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
   ;(function () {{
     var ER_TABLE = [{table_js}]
@@ -81,20 +81,20 @@ PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
       }})
     }}
 
-    var erNorth = result.north === undefined ? null : result.north
-    var erEast = result.east === undefined ? null : result.east
-    var erInTransition = False
+    var erNorth = manager.north === undefined ? null : manager.north
+    var erEast = manager.east === undefined ? null : manager.east
+    var erInTransition = false
     var erOrigin = {{ north: null, east: null }}
 
     function erBeginWriteIfNeeded() {{
       if (!erInTransition) {{
         erOrigin.north = erNorth
         erOrigin.east = erEast
-        erInTransition = True
+        erInTransition = true
       }}
     }}
 
-    Object.defineProperty(result, "north", {{
+    Object.defineProperty(manager, "north", {{
       get: function () {{
         return erNorth
       }},
@@ -102,10 +102,10 @@ PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
         erBeginWriteIfNeeded()
         erNorth = v
       }},
-      enumerable: True,
-      configurable: True,
+      enumerable: true,
+      configurable: true,
     }})
-    Object.defineProperty(result, "east", {{
+    Object.defineProperty(manager, "east", {{
       get: function () {{
         return erEast
       }},
@@ -113,8 +113,8 @@ PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
         erBeginWriteIfNeeded()
         erEast = v
       }},
-      enumerable: True,
-      configurable: True,
+      enumerable: true,
+      configurable: true,
     }})
 
     var erOriginalLoca = __createObject.loca
@@ -124,14 +124,14 @@ PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
           erOrigin.north + "_" + erOrigin.east + "_" + erNorth + "_" + erEast
         var conn = ER_MAP.get(key)
         if (conn) {{
-          result.north = conn.newNorth
-          result.east = conn.newEast
-          if (result.char && result.char[0]) {{
-            result.char[0].set_x(conn.newX)
-            result.char[0].set_y(conn.newY)
+          manager.north = conn.newNorth
+          manager.east = conn.newEast
+          if (manager.char && manager.char[0]) {{
+            manager.char[0].set_x(conn.newX)
+            manager.char[0].set_y(conn.newY)
           }}
         }}
-        erInTransition = False
+        erInTransition = false
       }}
       return erOriginalLoca.apply(this, arguments)
     }}
@@ -139,7 +139,7 @@ PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
   // === ENTRANCE RANDOMIZER PATCH END ===
 """
 
-ANCHOR = "      result.north = 20\n      result.east = 20\n"
+ANCHOR = "      manager.north = 20\n      manager.east = 20\n"
 assert (
   src.count(ANCHOR) == 1
 ), f"expected exactly one occurrence of anchor, found {src.count(ANCHOR)}"
