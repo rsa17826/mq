@@ -215,6 +215,11 @@
         ]
       ],
       "receive": ["???"]
+    },
+    {
+      "room": { "north": 13, "east": 14 },
+      "requires": [["armor:alpha armor", "???"]],
+      "receive": ["armour:alpha armout.+inf"]
     }
   ],
   "gates": [
