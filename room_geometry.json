@@ -549,7 +549,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 5,
@@ -743,7 +743,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 6,
@@ -999,7 +999,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 7,
@@ -1144,7 +1144,7 @@
       ],
       "north": []
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 7,
@@ -1401,7 +1401,7 @@
       ],
       "north": []
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 8,
@@ -1427,7 +1427,7 @@
       ],
       "north": []
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 8,
@@ -1593,7 +1593,7 @@
       ],
       "north": []
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 8,
@@ -1928,7 +1928,8 @@
       "south": [],
       "east": [],
       "north": []
-    }
+    },
+    "complete": true
   },
   {
     "north": 9,
@@ -2177,7 +2178,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 10,
@@ -2422,7 +2423,7 @@
       "east": [],
       "north": []
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 11,
@@ -2607,7 +2608,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 11,
@@ -2763,7 +2764,8 @@
       "south": [],
       "east": [],
       "north": []
-    }
+    },
+    "complete": true
   },
   {
     "north": 11,
@@ -2973,7 +2975,7 @@
       "east": [],
       "north": []
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 12,
@@ -4146,7 +4148,7 @@
       ],
       "north": []
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 16,
@@ -4467,7 +4469,7 @@
       ],
       "north": []
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 17,
@@ -4781,7 +4783,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 18,
@@ -6126,7 +6128,7 @@
       "east": [],
       "north": []
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 200,
@@ -6168,7 +6170,7 @@
       "east": [],
       "north": []
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 500,
@@ -6791,7 +6793,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 3,

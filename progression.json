@@ -354,6 +354,18 @@
         ["item:minotour horn", "entrance.east0"]
       ],
       "receive": ["item:broken aplha axe#1"]
+    },
+    {
+      "room": { "north": 6, "east": 13 },
+      "requires": [["item:key#1"]],
+      "receive": ["food:grapes#5", "food:strawberry#1"]
+    },
+    {
+      "room": { "north": 8, "east": 14 },
+      "requires": [
+        ["item:shark tooth#30", "item:gold#800", "skill:tough"]
+      ],
+      "receive": ["skill:tough.+1"]
     }
   ],
   "gates": [
