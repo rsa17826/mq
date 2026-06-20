@@ -1,6 +1,2526 @@
 {
   "edges": [
     {
+      "id": "edge:south:6.0_18.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 6,
+        "east": 18
+      },
+      "dest": {
+        "north": 5,
+        "east": 18
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:7.0_18.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 7,
+        "east": 18
+      },
+      "dest": {
+        "north": 7,
+        "east": 17
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:7.0_17.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 7,
+        "east": 17
+      },
+      "dest": {
+        "north": 7,
+        "east": 16
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:7.0_17.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 7,
+        "east": 17
+      },
+      "dest": {
+        "north": 6,
+        "east": 17
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:6.0_16.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 6,
+        "east": 16
+      },
+      "dest": {
+        "north": 6,
+        "east": 15
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:6.0_16.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 6,
+        "east": 16
+      },
+      "dest": {
+        "north": 5,
+        "east": 16
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:5.0_15.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 5,
+        "east": 15
+      },
+      "dest": {
+        "north": 5,
+        "east": 14
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:5.0_15.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 5,
+        "east": 15
+      },
+      "dest": {
+        "north": 6,
+        "east": 15
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:4.0_15.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 4,
+        "east": 15
+      },
+      "dest": {
+        "north": 3,
+        "east": 15
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:3.0_13.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 3,
+        "east": 13
+      },
+      "dest": {
+        "north": 4,
+        "east": 13
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:4.0_14.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 4,
+        "east": 14
+      },
+      "dest": {
+        "north": 5,
+        "east": 14
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:4.0_13.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 4,
+        "east": 13
+      },
+      "dest": {
+        "north": 5,
+        "east": 13
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:6.0_13.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 6,
+        "east": 13
+      },
+      "dest": {
+        "north": 5,
+        "east": 13
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:7.0_15.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 7,
+        "east": 15
+      },
+      "dest": {
+        "north": 6,
+        "east": 15
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:7.0_19.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 7,
+        "east": 19
+      },
+      "dest": {
+        "north": 7,
+        "east": 18
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:7.0_19.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 7,
+        "east": 19
+      },
+      "dest": {
+        "north": 6,
+        "east": 19
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:9.0_17.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 9,
+        "east": 17
+      },
+      "dest": {
+        "north": 10,
+        "east": 17
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:east:9.0_17.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 9,
+        "east": 17
+      },
+      "dest": {
+        "north": 9,
+        "east": 18
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:12.0_15.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 12,
+        "east": 15
+      },
+      "dest": {
+        "north": 13,
+        "east": 15
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:12.0_15.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 12,
+        "east": 15
+      },
+      "dest": {
+        "north": 11,
+        "east": 15
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:9.0_12.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 9,
+        "east": 12
+      },
+      "dest": {
+        "north": 10,
+        "east": 12
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:9.0_12.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 9,
+        "east": 12
+      },
+      "dest": {
+        "north": 9,
+        "east": 11
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:12.0_13.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 12,
+        "east": 13
+      },
+      "dest": {
+        "north": 11,
+        "east": 13
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:10.0_10.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 10,
+        "east": 10
+      },
+      "dest": {
+        "north": 11,
+        "east": 10
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:10.0_10.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 10,
+        "east": 10
+      },
+      "dest": {
+        "north": 10,
+        "east": 9
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:11.0_10.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 11,
+        "east": 10
+      },
+      "dest": {
+        "north": 12,
+        "east": 10
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:12.0_10.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 12,
+        "east": 10
+      },
+      "dest": {
+        "north": 12,
+        "east": 9
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:12.0_10.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 12,
+        "east": 10
+      },
+      "dest": {
+        "north": 11,
+        "east": 10
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:19.0_14.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 19,
+        "east": 14
+      },
+      "dest": {
+        "north": 19,
+        "east": 13
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:17.0_11.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 17,
+        "east": 11
+      },
+      "dest": {
+        "north": 18,
+        "east": 11
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:21.0_10.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 21,
+        "east": 10
+      },
+      "dest": {
+        "north": 22,
+        "east": 10
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:21.0_22.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 21,
+        "east": 22
+      },
+      "dest": {
+        "north": 21,
+        "east": 21
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:21.0_22.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 21,
+        "east": 22
+      },
+      "dest": {
+        "north": 20,
+        "east": 22
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:east:21.0_21.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 21,
+        "east": 21
+      },
+      "dest": {
+        "north": 21,
+        "east": 22
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:north:20.0_22.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 20,
+        "east": 22
+      },
+      "dest": {
+        "north": 21,
+        "east": 22
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:west:21.0_23.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 21,
+        "east": 23
+      },
+      "dest": {
+        "north": 21,
+        "east": 22
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:east:21.0_22.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 21,
+        "east": 22
+      },
+      "dest": {
+        "north": 21,
+        "east": 23
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:south:22.0_10.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 22,
+        "east": 10
+      },
+      "dest": {
+        "north": 21,
+        "east": 10
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:west:21.0_11.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 21,
+        "east": 11
+      },
+      "dest": {
+        "north": 21,
+        "east": 10
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:east:21.0_10.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 21,
+        "east": 10
+      },
+      "dest": {
+        "north": 21,
+        "east": 11
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:west:17.0_11.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 17,
+        "east": 11
+      },
+      "dest": {
+        "north": 17,
+        "east": 10
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:south:19.0_14.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 19,
+        "east": 14
+      },
+      "dest": {
+        "north": 18,
+        "east": 14
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:east:12.0_9.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 12,
+        "east": 9
+      },
+      "dest": {
+        "north": 12,
+        "east": 10
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:west:12.0_11.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 12,
+        "east": 11
+      },
+      "dest": {
+        "north": 12,
+        "east": 10
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:east:12.0_10.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 12,
+        "east": 10
+      },
+      "dest": {
+        "north": 12,
+        "east": 11
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:south:11.0_10.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 11,
+        "east": 10
+      },
+      "dest": {
+        "north": 10,
+        "east": 10
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:south:10.0_10.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 10,
+        "east": 10
+      },
+      "dest": {
+        "north": 9,
+        "east": 10
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:north:9.0_10.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 9,
+        "east": 10
+      },
+      "dest": {
+        "north": 10,
+        "east": 10
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:east:9.0_11.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 9,
+        "east": 11
+      },
+      "dest": {
+        "north": 9,
+        "east": 12
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:north:8.0_12.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 8,
+        "east": 12
+      },
+      "dest": {
+        "north": 9,
+        "east": 12
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:south:10.0_12.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 10,
+        "east": 12
+      },
+      "dest": {
+        "north": 9,
+        "east": 12
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:north:11.0_13.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 11,
+        "east": 13
+      },
+      "dest": {
+        "north": 12,
+        "east": 13
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:north:12.0_13.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 12,
+        "east": 13
+      },
+      "dest": {
+        "north": 13,
+        "east": 13
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:south:13.0_13.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 13,
+        "east": 13
+      },
+      "dest": {
+        "north": 12,
+        "east": 13
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:south:9.0_12.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 9,
+        "east": 12
+      },
+      "dest": {
+        "north": 8,
+        "east": 12
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:south:13.0_15.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 13,
+        "east": 15
+      },
+      "dest": {
+        "north": 12,
+        "east": 15
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:north:11.0_15.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 11,
+        "east": 15
+      },
+      "dest": {
+        "north": 12,
+        "east": 15
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:east:12.0_15.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 12,
+        "east": 15
+      },
+      "dest": {
+        "north": 12,
+        "east": 16
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:west:12.0_16.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 12,
+        "east": 16
+      },
+      "dest": {
+        "north": 12,
+        "east": 15
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:south:10.0_17.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 10,
+        "east": 17
+      },
+      "dest": {
+        "north": 9,
+        "east": 17
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:west:9.0_18.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 9,
+        "east": 18
+      },
+      "dest": {
+        "north": 9,
+        "east": 17
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:south:9.0_17.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 9,
+        "east": 17
+      },
+      "dest": {
+        "north": 8,
+        "east": 17
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:north:8.0_17.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 8,
+        "east": 17
+      },
+      "dest": {
+        "north": 9,
+        "east": 17
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:east:7.0_19.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 7,
+        "east": 19
+      },
+      "dest": {
+        "north": 7,
+        "east": 20
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:east:7.0_16.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 7,
+        "east": 16
+      },
+      "dest": {
+        "north": 7,
+        "east": 17
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:west:7.0_15.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 7,
+        "east": 15
+      },
+      "dest": {
+        "north": 7,
+        "east": 14
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:south:8.0_14.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 8,
+        "east": 14
+      },
+      "dest": {
+        "north": 7,
+        "east": 14
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:east:7.0_13.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 7,
+        "east": 13
+      },
+      "dest": {
+        "north": 7,
+        "east": 14
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:east:6.0_13.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 6,
+        "east": 13
+      },
+      "dest": {
+        "north": 6,
+        "east": 14
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:south:4.0_13.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 4,
+        "east": 13
+      },
+      "dest": {
+        "north": 3,
+        "east": 13
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:south:4.0_14.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 4,
+        "east": 14
+      },
+      "dest": {
+        "north": 3,
+        "east": 14
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:east:3.0_13.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 3,
+        "east": 13
+      },
+      "dest": {
+        "north": 3,
+        "east": 14
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:east:4.0_15.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 4,
+        "east": 15
+      },
+      "dest": {
+        "north": 4,
+        "east": 16
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:east:5.0_15.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 5,
+        "east": 15
+      },
+      "dest": {
+        "north": 5,
+        "east": 16
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:east:6.0_16.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 6,
+        "east": 16
+      },
+      "dest": {
+        "north": 6,
+        "east": 17
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:east:7.0_17.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 7,
+        "east": 17
+      },
+      "dest": {
+        "north": 7,
+        "east": 18
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:east:7.0_18.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 7,
+        "east": 18
+      },
+      "dest": {
+        "north": 7,
+        "east": 19
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    }
+    ,{
+      "id": "edge:west:6.0_18.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 6,
+        "east": 18
+      },
+      "dest": {
+        "north": 6,
+        "east": 17
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:6.0_17.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 6,
+        "east": 17
+      },
+      "dest": {
+        "north": 7,
+        "east": 17
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:6.0_17.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 6,
+        "east": 17
+      },
+      "dest": {
+        "north": 6,
+        "east": 16
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:6.0_17.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 6,
+        "east": 17
+      },
+      "dest": {
+        "north": 5,
+        "east": 17
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:east:6.0_17.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 6,
+        "east": 17
+      },
+      "dest": {
+        "north": 6,
+        "east": 18
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:4.0_18.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 4,
+        "east": 18
+      },
+      "dest": {
+        "north": 5,
+        "east": 18
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:4.0_18.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 4,
+        "east": 18
+      },
+      "dest": {
+        "north": 4,
+        "east": 17
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:4.0_18.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 4,
+        "east": 18
+      },
+      "dest": {
+        "north": 3,
+        "east": 18
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:east:4.0_18.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 4,
+        "east": 18
+      },
+      "dest": {
+        "north": 4,
+        "east": 19
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:5.0_18.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 5,
+        "east": 18
+      },
+      "dest": {
+        "north": 6,
+        "east": 18
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:5.0_18.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 5,
+        "east": 18
+      },
+      "dest": {
+        "north": 5,
+        "east": 17
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:5.0_18.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 5,
+        "east": 18
+      },
+      "dest": {
+        "north": 4,
+        "east": 18
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:east:5.0_18.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 5,
+        "east": 18
+      },
+      "dest": {
+        "north": 5,
+        "east": 19
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:4.0_17.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 4,
+        "east": 17
+      },
+      "dest": {
+        "north": 5,
+        "east": 17
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:4.0_17.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 4,
+        "east": 17
+      },
+      "dest": {
+        "north": 4,
+        "east": 16
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:4.0_17.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 4,
+        "east": 17
+      },
+      "dest": {
+        "north": 3,
+        "east": 17
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:east:4.0_17.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 4,
+        "east": 17
+      },
+      "dest": {
+        "north": 4,
+        "east": 18
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:5.0_17.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 5,
+        "east": 17
+      },
+      "dest": {
+        "north": 6,
+        "east": 17
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:5.0_17.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 5,
+        "east": 17
+      },
+      "dest": {
+        "north": 5,
+        "east": 16
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:5.0_17.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 5,
+        "east": 17
+      },
+      "dest": {
+        "north": 4,
+        "east": 17
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:east:5.0_17.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 5,
+        "east": 17
+      },
+      "dest": {
+        "north": 5,
+        "east": 18
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:4.0_16.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 4,
+        "east": 16
+      },
+      "dest": {
+        "north": 5,
+        "east": 16
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:4.0_16.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 4,
+        "east": 16
+      },
+      "dest": {
+        "north": 4,
+        "east": 15
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:4.0_16.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 4,
+        "east": 16
+      },
+      "dest": {
+        "north": 3,
+        "east": 16
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:east:4.0_16.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 4,
+        "east": 16
+      },
+      "dest": {
+        "north": 4,
+        "east": 17
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:5.0_16.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 5,
+        "east": 16
+      },
+      "dest": {
+        "north": 6,
+        "east": 16
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:5.0_16.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 5,
+        "east": 16
+      },
+      "dest": {
+        "north": 5,
+        "east": 15
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:5.0_16.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 5,
+        "east": 16
+      },
+      "dest": {
+        "north": 4,
+        "east": 16
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:east:5.0_16.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 5,
+        "east": 16
+      },
+      "dest": {
+        "north": 5,
+        "east": 17
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:6.0_15.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 6,
+        "east": 15
+      },
+      "dest": {
+        "north": 7,
+        "east": 15
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:6.0_15.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 6,
+        "east": 15
+      },
+      "dest": {
+        "north": 6,
+        "east": 14
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:6.0_15.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 6,
+        "east": 15
+      },
+      "dest": {
+        "north": 5,
+        "east": 15
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:east:6.0_15.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 6,
+        "east": 15
+      },
+      "dest": {
+        "north": 6,
+        "east": 16
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:5.0_13.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 5,
+        "east": 13
+      },
+      "dest": {
+        "north": 6,
+        "east": 13
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:5.0_13.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 5,
+        "east": 13
+      },
+      "dest": {
+        "north": 5,
+        "east": 12
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:5.0_13.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 5,
+        "east": 13
+      },
+      "dest": {
+        "north": 4,
+        "east": 13
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:east:5.0_13.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 5,
+        "east": 13
+      },
+      "dest": {
+        "north": 5,
+        "east": 14
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:5.0_14.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 5,
+        "east": 14
+      },
+      "dest": {
+        "north": 6,
+        "east": 14
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:5.0_14.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 5,
+        "east": 14
+      },
+      "dest": {
+        "north": 5,
+        "east": 13
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:5.0_14.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 5,
+        "east": 14
+      },
+      "dest": {
+        "north": 4,
+        "east": 14
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:east:5.0_14.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 5,
+        "east": 14
+      },
+      "dest": {
+        "north": 5,
+        "east": 15
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:6.0_14.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 6,
+        "east": 14
+      },
+      "dest": {
+        "north": 7,
+        "east": 14
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:6.0_14.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 6,
+        "east": 14
+      },
+      "dest": {
+        "north": 6,
+        "east": 13
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:6.0_14.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 6,
+        "east": 14
+      },
+      "dest": {
+        "north": 5,
+        "east": 14
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:east:6.0_14.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 6,
+        "east": 14
+      },
+      "dest": {
+        "north": 6,
+        "east": 15
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:7.0_14.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 7,
+        "east": 14
+      },
+      "dest": {
+        "north": 8,
+        "east": 14
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:7.0_14.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 7,
+        "east": 14
+      },
+      "dest": {
+        "north": 7,
+        "east": 13
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:7.0_14.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 7,
+        "east": 14
+      },
+      "dest": {
+        "north": 6,
+        "east": 14
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:east:7.0_14.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 7,
+        "east": 14
+      },
+      "dest": {
+        "north": 7,
+        "east": 15
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
       "id": "edge:south:3.0_16.0",
       "mechanism": "edge",
       "direction": "south",
@@ -21,6 +2541,307 @@
       "notes": null,
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
+
+    {
+      "id": "edge:north:3.0_14.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 3,
+        "east": 14
+      },
+      "dest": {
+        "north": 4,
+        "east": 14
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:3.0_14.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 3,
+        "east": 14
+      },
+      "dest": {
+        "north": 3,
+        "east": 13
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:east:3.0_14.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 3,
+        "east": 14
+      },
+      "dest": {
+        "north": 3,
+        "east": 15
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:3.0_15.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 3,
+        "east": 15
+      },
+      "dest": {
+        "north": 4,
+        "east": 15
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:3.0_15.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 3,
+        "east": 15
+      },
+      "dest": {
+        "north": 3,
+        "east": 14
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:east:3.0_15.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 3,
+        "east": 15
+      },
+      "dest": {
+        "north": 3,
+        "east": 16
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:3.0_16.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 3,
+        "east": 16
+      },
+      "dest": {
+        "north": 4,
+        "east": 16
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:3.0_16.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 3,
+        "east": 16
+      },
+      "dest": {
+        "north": 3,
+        "east": 15
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:east:3.0_16.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 3,
+        "east": 16
+      },
+      "dest": {
+        "north": 3,
+        "east": 17
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:3.0_17.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 3,
+        "east": 17
+      },
+      "dest": {
+        "north": 4,
+        "east": 17
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:3.0_17.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 3,
+        "east": 17
+      },
+      "dest": {
+        "north": 3,
+        "east": 16
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:east:3.0_17.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 3,
+        "east": 17
+      },
+      "dest": {
+        "north": 3,
+        "east": 18
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:3.0_18.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 3,
+        "east": 18
+      },
+      "dest": {
+        "north": 4,
+        "east": 18
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:3.0_18.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 3,
+        "east": 18
+      },
+      "dest": {
+        "north": 3,
+        "east": 17
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:east:3.0_18.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 3,
+        "east": 18
+      },
+      "dest": {
+        "north": 3,
+        "east": 19
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
     {
       "id": "edge:south:3.0_19.0",
       "mechanism": "edge",
@@ -40,21 +2861,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:3.0_20.0",
@@ -75,21 +2882,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:3.0_23.0",
@@ -110,17 +2903,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:3.0_24.0",
@@ -141,18 +2924,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "review": true
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:3.0_25.0",
@@ -173,22 +2945,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "review": true
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:3.0_26.0",
@@ -209,18 +2966,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "review": true
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:4.0_13.0",
@@ -241,21 +2987,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:4.0_14.0",
@@ -276,25 +3008,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:4.0_15.0",
@@ -315,25 +3029,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:4.0_17.0",
@@ -354,25 +3050,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:4.0_19.0",
@@ -392,25 +3070,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:4.0_23.0",
@@ -430,21 +3090,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:4.0_24.0",
@@ -464,25 +3110,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:4.0_25.0",
@@ -502,21 +3130,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:4.0_26.0",
@@ -536,18 +3150,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:5.0_9.0",
@@ -568,18 +3171,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:5.0_10.0",
@@ -600,18 +3192,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "review": true
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:5.0_11.0",
@@ -632,18 +3213,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "review": true
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:5.0_15.0",
@@ -663,25 +3233,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:5.0_20.0",
@@ -702,25 +3254,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:5.0_23.0",
@@ -740,17 +3274,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:5.0_24.0",
@@ -770,13 +3294,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:6.0_9.0",
@@ -796,21 +3314,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:6.0_10.0",
@@ -830,13 +3334,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:6.0_11.0",
@@ -856,17 +3354,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:6.0_12.0",
@@ -887,13 +3375,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:6.0_13.0",
@@ -935,25 +3417,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:6.0_18.0",
@@ -974,25 +3438,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:6.0_19.0",
@@ -1013,25 +3459,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:6.0_21.0",
@@ -1052,21 +3480,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:6.0_23.0",
@@ -1086,17 +3500,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:6.0_24.0",
@@ -1116,17 +3520,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:7.0_9.0",
@@ -1146,13 +3540,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:7.0_10.0",
@@ -1172,13 +3560,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:7.0_11.0",
@@ -1198,17 +3580,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": "origin-keyed fixup applied",
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": "origin-keyed fixup applied"
     },
     {
       "id": "edge:south:7.0_12.0",
@@ -1228,13 +3600,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:7.0_13.0",
@@ -1254,21 +3620,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:7.0_15.0",
@@ -1289,25 +3641,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:7.0_16.0",
@@ -1327,25 +3661,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:7.0_18.0",
@@ -1365,21 +3681,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:7.0_20.0",
@@ -1400,25 +3702,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:7.0_21.0",
@@ -1438,21 +3722,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:7.0_22.0",
@@ -1473,21 +3743,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:7.0_23.0",
@@ -1507,25 +3763,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:7.0_24.0",
@@ -1545,25 +3783,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:7.0_25.0",
@@ -1584,13 +3804,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:8.0_9.0",
@@ -1610,17 +3824,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:8.0_10.0",
@@ -1640,22 +3844,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:8.0_11.0",
@@ -1675,26 +3864,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:8.0_12.0",
@@ -1714,21 +3884,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:8.0_13.0",
@@ -1748,21 +3904,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:8.0_14.0",
@@ -1783,21 +3925,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:8.0_15.0",
@@ -1817,25 +3945,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:8.0_16.0",
@@ -1855,17 +3965,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:8.0_17.0",
@@ -1886,18 +3986,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "review": true
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:8.0_18.0",
@@ -1917,22 +4006,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:8.0_19.0",
@@ -1953,17 +4027,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:8.0_20.0",
@@ -1983,18 +4047,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:8.0_21.0",
@@ -2014,13 +4067,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:8.0_22.0",
@@ -2040,25 +4087,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:8.0_23.0",
@@ -2078,25 +4107,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:8.0_25.0",
@@ -2116,21 +4127,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:9.0_9.0",
@@ -2150,21 +4147,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:9.0_10.0",
@@ -2184,26 +4167,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:9.0_11.0",
@@ -2223,22 +4187,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:9.0_13.0",
@@ -2258,10 +4207,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:9.0_15.0",
@@ -2281,21 +4227,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:9.0_16.0",
@@ -2315,17 +4247,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:9.0_18.0",
@@ -2345,22 +4267,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:9.0_19.0",
@@ -2380,17 +4287,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:9.0_20.0",
@@ -2410,17 +4307,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": "origin-keyed fixup applied",
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": "origin-keyed fixup applied"
     },
     {
       "id": "edge:south:9.0_21.0",
@@ -2460,18 +4347,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:9.0_23.0",
@@ -2512,25 +4388,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:9.0_25.0",
@@ -2550,21 +4408,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:9.0_26.0",
@@ -2585,17 +4429,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:10.0_9.0",
@@ -2615,22 +4449,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:10.0_11.0",
@@ -2650,22 +4469,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:10.0_12.0",
@@ -2686,21 +4490,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:10.0_13.0",
@@ -2741,13 +4531,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:10.0_15.0",
@@ -2767,21 +4551,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:10.0_16.0",
@@ -2801,17 +4571,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:10.0_17.0",
@@ -2832,17 +4592,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:10.0_18.0",
@@ -2862,17 +4612,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:10.0_19.0",
@@ -2892,13 +4632,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": "origin-keyed fixup applied",
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": "origin-keyed fixup applied"
     },
     {
       "id": "edge:south:10.0_20.0",
@@ -2918,22 +4652,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:10.0_22.0",
@@ -2953,14 +4672,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:10.0_23.0",
@@ -2980,13 +4692,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:10.0_24.0",
@@ -3006,17 +4712,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:10.0_25.0",
@@ -3036,13 +4732,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:10.0_26.0",
@@ -3062,17 +4752,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": "origin-keyed fixup applied",
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": "origin-keyed fixup applied"
     },
     {
       "id": "edge:south:10.1_21.0",
@@ -3113,22 +4793,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:11.0_10.0",
@@ -3149,26 +4814,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:11.0_11.0",
@@ -3188,26 +4834,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:11.0_12.0",
@@ -3227,25 +4854,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:11.0_13.0",
@@ -3265,17 +4874,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:11.0_14.0",
@@ -3295,17 +4894,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:11.0_15.0",
@@ -3325,17 +4914,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:11.0_16.0",
@@ -3355,17 +4934,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": "origin-keyed fixup applied",
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": "origin-keyed fixup applied"
     },
     {
       "id": "edge:south:11.0_17.0",
@@ -3385,21 +4954,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:11.0_18.0",
@@ -3419,17 +4974,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:11.0_19.0",
@@ -3449,14 +4994,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:11.0_20.0",
@@ -3476,18 +5014,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:11.0_21.0",
@@ -3528,13 +5055,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:11.0_23.0",
@@ -3554,21 +5075,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:11.0_24.0",
@@ -3588,21 +5095,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:11.0_25.0",
@@ -3622,17 +5115,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:11.0_26.0",
@@ -3652,17 +5135,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:12.0_9.0",
@@ -3682,17 +5155,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:12.0_11.0",
@@ -3712,22 +5175,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:12.0_12.0",
@@ -3747,18 +5195,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:12.0_14.0",
@@ -3778,13 +5215,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:12.0_16.0",
@@ -3804,22 +5235,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:12.0_17.0",
@@ -3839,18 +5255,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:12.0_18.0",
@@ -3870,22 +5275,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:12.0_19.0",
@@ -3905,17 +5295,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:12.0_20.0",
@@ -3935,22 +5315,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:12.0_21.0",
@@ -3970,18 +5335,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:12.0_22.0",
@@ -4001,13 +5355,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:12.0_23.0",
@@ -4027,21 +5375,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:12.0_24.0",
@@ -4061,17 +5395,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:12.0_25.0",
@@ -4091,17 +5415,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:12.0_26.0",
@@ -4121,17 +5435,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:13.0_13.0",
@@ -4152,17 +5456,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:13.0_14.0",
@@ -4182,17 +5476,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:13.0_15.0",
@@ -4213,21 +5497,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:13.0_16.0",
@@ -4247,17 +5517,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:13.0_17.0",
@@ -4277,17 +5537,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:13.0_18.0",
@@ -4307,21 +5557,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:13.0_19.0",
@@ -4341,17 +5577,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:13.0_20.0",
@@ -4371,21 +5597,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": "origin-keyed fixup applied",
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": "origin-keyed fixup applied"
     },
     {
       "id": "edge:south:13.0_21.0",
@@ -4405,17 +5617,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": "origin-keyed fixup applied",
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": "origin-keyed fixup applied"
     },
     {
       "id": "edge:south:13.0_22.0",
@@ -4435,13 +5637,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:13.0_23.0",
@@ -4461,17 +5657,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:13.0_24.0",
@@ -4491,17 +5677,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:13.0_25.0",
@@ -4521,25 +5697,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:13.0_26.0",
@@ -4559,13 +5717,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:14.0_14.0",
@@ -4585,25 +5737,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:14.0_15.0",
@@ -4623,21 +5757,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:14.0_16.0",
@@ -4657,17 +5777,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:14.0_17.0",
@@ -4687,17 +5797,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:14.0_18.0",
@@ -4717,17 +5817,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:14.0_19.0",
@@ -4747,17 +5837,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:14.0_20.0",
@@ -4777,17 +5857,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:14.0_21.0",
@@ -4807,17 +5877,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:14.0_22.0",
@@ -4837,13 +5897,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:14.0_23.0",
@@ -4863,22 +5917,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:14.0_24.0",
@@ -4898,18 +5937,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:14.0_25.0",
@@ -4929,14 +5957,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:15.0_14.0",
@@ -4956,22 +5977,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:15.0_15.0",
@@ -4991,21 +5997,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:15.0_16.0",
@@ -5025,21 +6017,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:15.0_17.0",
@@ -5059,13 +6037,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:15.0_18.0",
@@ -5085,13 +6057,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": "origin-keyed fixup applied",
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": "origin-keyed fixup applied"
     },
     {
       "id": "edge:south:15.0_19.0",
@@ -5111,17 +6077,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:15.0_20.0",
@@ -5141,21 +6097,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:15.0_21.0",
@@ -5175,17 +6117,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:15.0_22.0",
@@ -5205,18 +6137,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:15.0_23.0",
@@ -5236,26 +6157,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:15.0_24.0",
@@ -5275,18 +6177,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:15.0_25.0",
@@ -5306,14 +6197,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:16.0_10.0",
@@ -5334,13 +6218,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:16.0_11.0",
@@ -5361,17 +6239,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:16.0_14.0",
@@ -5391,17 +6259,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:16.0_15.0",
@@ -5421,17 +6279,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:16.0_16.0",
@@ -5451,17 +6299,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:16.0_17.0",
@@ -5481,17 +6319,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:16.0_18.0",
@@ -5511,17 +6339,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:16.0_19.0",
@@ -5541,21 +6359,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:16.0_20.0",
@@ -5575,21 +6379,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:16.0_21.0",
@@ -5609,17 +6399,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:16.0_22.0",
@@ -5639,21 +6419,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": "origin-keyed fixup applied",
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": "origin-keyed fixup applied"
     },
     {
       "id": "edge:south:16.0_23.0",
@@ -5673,17 +6439,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:16.0_24.0",
@@ -5703,22 +6459,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:16.0_25.0",
@@ -5738,22 +6479,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:17.0_10.0",
@@ -5773,13 +6499,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:17.0_11.0",
@@ -5799,25 +6519,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": "origin-keyed fixup applied",
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": "origin-keyed fixup applied"
     },
     {
       "id": "edge:south:17.0_14.0",
@@ -5837,13 +6539,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": "origin-keyed fixup applied",
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": "origin-keyed fixup applied"
     },
     {
       "id": "edge:south:17.0_15.0",
@@ -5863,18 +6559,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:17.0_16.0",
@@ -5894,17 +6579,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:17.0_17.0",
@@ -5924,17 +6599,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:17.0_18.0",
@@ -5954,13 +6619,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:17.0_19.0",
@@ -5980,13 +6639,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:17.0_20.0",
@@ -6006,17 +6659,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:17.0_21.0",
@@ -6036,13 +6679,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:17.0_22.0",
@@ -6062,17 +6699,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:17.0_23.0",
@@ -6092,17 +6719,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:17.0_24.0",
@@ -6122,18 +6739,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:17.0_25.0",
@@ -6153,22 +6759,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:17.1_19.0",
@@ -6209,17 +6800,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:18.0_11.0",
@@ -6239,17 +6820,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:18.0_14.0",
@@ -6269,13 +6840,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:18.0_15.0",
@@ -6295,14 +6860,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:18.0_16.0",
@@ -6322,13 +6880,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:18.0_17.0",
@@ -6348,22 +6900,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": "origin-keyed fixup applied",
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": "origin-keyed fixup applied"
     },
     {
       "id": "edge:south:18.0_18.0",
@@ -6383,18 +6920,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:18.0_19.0",
@@ -6414,13 +6940,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:18.0_20.0",
@@ -6440,25 +6960,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:18.0_21.0",
@@ -6478,22 +6980,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:18.0_22.0",
@@ -6513,17 +7000,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:18.0_23.0",
@@ -6543,25 +7020,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:18.0_24.0",
@@ -6581,13 +7040,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:18.0_25.0",
@@ -6607,13 +7060,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:19.0_10.0",
@@ -6633,17 +7080,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:19.0_11.0",
@@ -6663,13 +7100,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:19.0_12.0",
@@ -6689,17 +7120,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:19.0_13.0",
@@ -6719,17 +7140,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:19.0_15.0",
@@ -6749,13 +7160,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:19.0_16.0",
@@ -6775,18 +7180,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": "origin-keyed fixup applied",
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": "origin-keyed fixup applied"
     },
     {
       "id": "edge:south:19.0_17.0",
@@ -6806,22 +7200,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:19.0_18.0",
@@ -6841,22 +7220,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:19.0_20.0",
@@ -6876,17 +7240,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:19.0_21.0",
@@ -6906,14 +7260,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:19.0_22.0",
@@ -6953,21 +7300,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:19.0_24.0",
@@ -6987,13 +7320,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:20.0_12.0",
@@ -7013,13 +7340,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:20.0_15.0",
@@ -7039,13 +7360,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:20.0_16.0",
@@ -7085,13 +7400,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:20.0_18.0",
@@ -7111,18 +7420,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:20.0_20.0",
@@ -7142,18 +7440,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:20.0_21.0",
@@ -7193,17 +7480,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:20.0_23.0",
@@ -7223,21 +7500,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:21.0_9.0",
@@ -7258,13 +7521,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:21.0_11.0",
@@ -7285,21 +7542,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:21.0_12.0",
@@ -7319,21 +7562,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": "origin-keyed fixup applied",
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": "origin-keyed fixup applied"
     },
     {
       "id": "edge:south:21.0_13.0",
@@ -7354,18 +7583,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "review": true
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:21.0_14.0",
@@ -7386,18 +7604,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "review": true
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:21.0_17.0",
@@ -7417,13 +7624,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:21.0_18.0",
@@ -7443,18 +7644,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:21.0_20.0",
@@ -7474,18 +7664,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "review": true
-      }
+      "notes": null
     },
     {
       "id": "edge:south:21.0_21.0",
@@ -7505,17 +7684,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:21.0_23.0",
@@ -7535,17 +7704,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:22.0_9.0",
@@ -7565,17 +7724,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:22.0_10.0",
@@ -7596,13 +7745,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:22.0_11.0",
@@ -7622,17 +7765,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:22.0_12.0",
@@ -7652,13 +7785,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:22.0_13.0",
@@ -7678,17 +7805,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:22.0_14.0",
@@ -7708,17 +7825,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:23.0_9.0",
@@ -7738,17 +7845,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:23.0_10.0",
@@ -7788,21 +7885,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:23.0_12.0",
@@ -7822,21 +7905,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:23.0_13.0",
@@ -7856,17 +7925,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:23.0_14.0",
@@ -7886,13 +7945,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:24.0_9.0",
@@ -7912,13 +7965,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:24.0_10.0",
@@ -7938,13 +7985,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:24.0_11.0",
@@ -7964,17 +8005,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:24.0_12.0",
@@ -7994,17 +8025,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:24.0_13.0",
@@ -8024,17 +8045,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        },
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:24.0_14.0",
@@ -8054,13 +8065,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:100.0_100.0",
@@ -8080,13 +8085,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": "destination-keyed override/sentinel-jump applied",
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": "destination-keyed override/sentinel-jump applied"
     },
     {
       "id": "edge:south:200.0_200.0",
@@ -8107,13 +8106,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:201.0_200.0",
@@ -8153,13 +8146,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": "destination-keyed override/sentinel-jump applied",
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "notes": "destination-keyed override/sentinel-jump applied"
     },
     {
       "id": "edge:south:500.0_500.0",
@@ -8180,13 +8167,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:500.0_501.0",
@@ -8207,13 +8188,7 @@
       "one_way": false,
       "dest_room_exists_in_census": false,
       "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
+      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
     },
     {
       "id": "edge:south:501.0_500.0",
@@ -8233,17 +8208,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "east": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:south:501.0_501.0",
@@ -8263,17 +8228,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": true,
-      "notes": null,
-      "exits": {
-        "south": {
-          "left": 0.5,
-          "right": 0.5
-        },
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "notes": null
     },
     {
       "id": "edge:north:3.0_16.0",
@@ -9544,6 +9499,927 @@
       },
       "dest_x": null,
       "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+
+    {
+      "id": "edge:north:8.0_24.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 8,
+        "east": 24
+      },
+      "dest": {
+        "north": 9,
+        "east": 24
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:8.0_24.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 8,
+        "east": 24
+      },
+      "dest": {
+        "north": 7,
+        "east": 24
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:east:8.0_24.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 8,
+        "east": 24
+      },
+      "dest": {
+        "north": 8,
+        "east": 25
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:8.0_24.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 8,
+        "east": 24
+      },
+      "dest": {
+        "north": 8,
+        "east": 23
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:6.0_21.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 6,
+        "east": 21
+      },
+      "dest": {
+        "north": 6,
+        "east": 20
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:5.0_21.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 5,
+        "east": 21
+      },
+      "dest": {
+        "north": 6,
+        "east": 21
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:5.0_21.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 5,
+        "east": 21
+      },
+      "dest": {
+        "north": 5,
+        "east": 20
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:4.0_21.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 4,
+        "east": 21
+      },
+      "dest": {
+        "north": 5,
+        "east": 21
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:4.0_21.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 4,
+        "east": 21
+      },
+      "dest": {
+        "north": 4,
+        "east": 20
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:3.0_21.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 3,
+        "east": 21
+      },
+      "dest": {
+        "north": 4,
+        "east": 21
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:3.0_20.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 3,
+        "east": 20
+      },
+      "dest": {
+        "north": 4,
+        "east": 20
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:4.0_20.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 4,
+        "east": 20
+      },
+      "dest": {
+        "north": 5,
+        "east": 20
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:4.0_20.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 4,
+        "east": 20
+      },
+      "dest": {
+        "north": 4,
+        "east": 19
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:4.0_20.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 4,
+        "east": 20
+      },
+      "dest": {
+        "north": 3,
+        "east": 20
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:5.0_20.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 5,
+        "east": 20
+      },
+      "dest": {
+        "north": 6,
+        "east": 20
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:5.0_20.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 5,
+        "east": 20
+      },
+      "dest": {
+        "north": 5,
+        "east": 19
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:5.0_20.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 5,
+        "east": 20
+      },
+      "dest": {
+        "north": 4,
+        "east": 20
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:6.0_20.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 6,
+        "east": 20
+      },
+      "dest": {
+        "north": 7,
+        "east": 20
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:6.0_20.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 6,
+        "east": 20
+      },
+      "dest": {
+        "north": 6,
+        "east": 19
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:6.0_20.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 6,
+        "east": 20
+      },
+      "dest": {
+        "north": 5,
+        "east": 20
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:7.0_20.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 7,
+        "east": 20
+      },
+      "dest": {
+        "north": 7,
+        "east": 19
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:5.0_19.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 5,
+        "east": 19
+      },
+      "dest": {
+        "north": 6,
+        "east": 19
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:5.0_19.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 5,
+        "east": 19
+      },
+      "dest": {
+        "north": 5,
+        "east": 18
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:4.0_19.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 4,
+        "east": 19
+      },
+      "dest": {
+        "north": 5,
+        "east": 19
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:4.0_19.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 4,
+        "east": 19
+      },
+      "dest": {
+        "north": 4,
+        "east": 18
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:6.0_19.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 6,
+        "east": 19
+      },
+      "dest": {
+        "north": 7,
+        "east": 19
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:east:6.0_19.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 6,
+        "east": 19
+      },
+      "dest": {
+        "north": 6,
+        "east": 20
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:3.0_19.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 3,
+        "east": 19
+      },
+      "dest": {
+        "north": 3,
+        "east": 18
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:5.0_19.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 5,
+        "east": 19
+      },
+      "dest": {
+        "north": 4,
+        "east": 19
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:6.0_19.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 6,
+        "east": 19
+      },
+      "dest": {
+        "north": 5,
+        "east": 19
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:east:4.0_19.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 4,
+        "east": 19
+      },
+      "dest": {
+        "north": 4,
+        "east": 20
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:5.0_20.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 5,
+        "east": 20
+      },
+      "dest": {
+        "north": 4,
+        "east": 20
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:east:5.0_19.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 5,
+        "east": 19
+      },
+      "dest": {
+        "north": 5,
+        "east": 20
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:7.0_20.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 7,
+        "east": 20
+      },
+      "dest": {
+        "north": 6,
+        "east": 20
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:east:6.0_20.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 6,
+        "east": 20
+      },
+      "dest": {
+        "north": 6,
+        "east": 21
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:east:5.0_20.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 5,
+        "east": 20
+      },
+      "dest": {
+        "north": 5,
+        "east": 21
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:east:4.0_20.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 4,
+        "east": 20
+      },
+      "dest": {
+        "north": 4,
+        "east": 21
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:east:3.0_20.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 3,
+        "east": 20
+      },
+      "dest": {
+        "north": 3,
+        "east": 21
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:3.0_21.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 3,
+        "east": 21
+      },
+      "dest": {
+        "north": 3,
+        "east": 20
+      },
+      "dest_x": 624,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:4.0_21.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 4,
+        "east": 21
+      },
+      "dest": {
+        "north": 3,
+        "east": 21
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:5.0_21.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 5,
+        "east": 21
+      },
+      "dest": {
+        "north": 4,
+        "east": 21
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:6.0_21.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 6,
+        "east": 21
+      },
+      "dest": {
+        "north": 5,
+        "east": 21
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:north:7.0_24.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 7,
+        "east": 24
+      },
+      "dest": {
+        "north": 8,
+        "east": 24
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:south:9.0_24.0",
+      "mechanism": "edge",
+      "direction": "south",
+      "origin": {
+        "north": 9,
+        "east": 24
+      },
+      "dest": {
+        "north": 8,
+        "east": 24
+      },
+      "dest_x": null,
+      "dest_y": 0,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:east:8.0_23.0",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 8,
+        "east": 23
+      },
+      "dest": {
+        "north": 8,
+        "east": 24
+      },
+      "dest_x": 0,
+      "dest_y": null,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
+      "id": "edge:west:8.0_25.0",
+      "mechanism": "edge",
+      "direction": "west",
+      "origin": {
+        "north": 8,
+        "east": 25
+      },
+      "dest": {
+        "north": 8,
+        "east": 24
+      },
+      "dest_x": 624,
+      "dest_y": null,
       "gated": false,
       "gate": null,
       "one_way": false,
@@ -24547,27 +25423,6 @@
       "notes": null
     },
     {
-      "id": "edge:east:501.0_501.0",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 501,
-        "east": 501
-      },
-      "dest": {
-        "north": 501,
-        "east": 502
-      },
-      "dest_x": 50,
-      "dest_y": null,
-      "gated": false,
-      "gate": null,
-      "one_way": false,
-      "dest_room_exists_in_census": false,
-      "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
-    },
-    {
       "id": "edge:manual:10_21",
       "mechanism": "edge",
       "direction": "unknown",
@@ -24575,13 +25430,7 @@
         "north": 10,
         "east": 21
       },
-      "dest": null,
-      "exits": {
-        "west": {
-          "top": 0.5,
-          "bottom": 0.5
-        }
-      }
+      "dest": null
     }
   ],
   "doors": [

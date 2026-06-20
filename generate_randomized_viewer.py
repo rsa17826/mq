@@ -16,7 +16,7 @@ BLOCKS_Y = 11
 
 BLOCK_WIDTH_PCT = 100 / BLOCKS_X
 BLOCK_HEIGHT_PCT = 100 / BLOCKS_Y
-GAP_SIZE = 15 # Sizing gap between tiles
+GAP_SIZE = 0 # Sizing gap between tiles
 
 html_start = """<!DOCTYPE html>
 <html lang="en">
@@ -343,7 +343,7 @@ def main():
 
 
         overlay_content = "\n".join(squares_html)
-        wrapper_tag = f"""        <div class="tile-wrapper" data-room="{room_key}" style="left: {pixel_left:.1f}px; top: {pixel_top:.1f}px;" title="Position: {east},{north}">
+        wrapper_tag = f"""        <div class="tile-wrapper" data-room="{room_key}" style="left: {pixel_left:.1f}px; top: {pixel_top:.1f}px;" title="Position: {north},{east}">
             <img src="{img_path}" class="grid-item" alt="Tile {east},{north}">
             <div class="overlay-layer">
 {overlay_content}
