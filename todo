@@ -27,3 +27,5 @@ MathQuest.js:108992 [ER DEBUG] Transition initiated. From room: 21,13 at positio
 MathQuest.js:109025 [ER DEBUG] Checking redirection for vanilla move path key: 21_13_22_11
 MathQuest.js:109068 [ER DEBUG] No randomizer override entry for key [21_13_22_11]. Retaining game defaults.
 MathQuest.js:30615 0 0 0 0
+
+exiting on corner that has 2 zones down takes priority over left, should be the player facing or moving direction or last pressed direction
