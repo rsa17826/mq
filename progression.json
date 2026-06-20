@@ -156,23 +156,23 @@
       "room": { "north": 14, "east": 21 },
       "requires": [
         ["item:key#1", "entrance.north0"],
-        ["permit:bomb use", "item:key#1", "entrance.south0"]
+        ["permit:bomb", "item:key#1", "entrance.south0"]
       ],
       "receive": ["item:gold#100", "item:bomb#12", "food:apple#30"]
     },
     {
       "room": { "north": 13, "east": 21 },
-      "requires": [["quest:bomb use.3"]],
-      "receive": ["permit:bomb use"]
+      "requires": [["quest:bomb.3"]],
+      "receive": ["permit:bomb"]
     },
     {
       "room": { "north": 13, "east": 21 },
-      "requires": [["quest:bomb use.1", "entrance.south0"]],
-      "receive": ["quest:bomb use.2"]
+      "requires": [["quest:bomb.1", "entrance.south0"]],
+      "receive": ["quest:bomb.2"]
     },
     {
       "room": { "north": 12, "east": 21 },
-      "requires": [["item:emerald#1", "permit:bomb use"]],
+      "requires": [["item:emerald#1", "permit:bomb"]],
       "receive": ["item:diamond#1", "food:banana#20"]
     },
     {
@@ -200,19 +200,14 @@
     },
     {
       "room": { "north": 15, "east": 16 },
-      "requires": [["permit:bomb use", "???"]],
+      "requires": [["permit:bomb", "???"]],
       "receive": ["magic:ice"]
     },
     {
       "room": { "north": 13, "east": 14 },
       "requires": [
         ["magic:fire.3?", "quest.?", "entrance.east0"],
-        [
-          "magic:fire.3?",
-          "quest.?",
-          "entrance.north0",
-          "permit:bomb use"
-        ]
+        ["magic:fire.3?", "quest.?", "entrance.north0", "permit:bomb"]
       ],
       "receive": ["???"]
     },
@@ -325,12 +320,12 @@
     },
     {
       "room": { "north": 10, "east": 9 },
-      "requires": [["permit:bomb use.2", "item:key#1"]],
+      "requires": [["permit:bomb.2", "item:key#1"]],
       "receive": ["food:steak#30"]
     },
     {
       "room": { "north": 9, "east": 10 },
-      "requires": [["permit:bomb use", "item:key#1"]],
+      "requires": [["permit:bomb", "item:key#1"]],
       "receive": ["item:gold#750"]
     },
     {
@@ -346,6 +341,11 @@
       "room": { "north": 6, "east": 12 },
       "requires": [["item:key#1"]],
       "receive": ["item:quartz geode#2"]
+    },
+    {
+      "room": { "north": 6, "east": 10 },
+      "requires": [["item:key#1", "permit:bomb.1"]],
+      "receive": ["food:chocolate#3"]
     }
   ],
   "gates": [
