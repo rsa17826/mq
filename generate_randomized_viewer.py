@@ -135,7 +135,7 @@ def djb2_color_hash(id_a, id_b):
     for char in combined_str:
         hash_val = ((hash_val << 5) + hash_val) + ord(char)
         hash_val &= 0xFFFFFFFF
-    return f"hsl({hash_val % 360}, 90%, 50%)"
+    return f"hsla({hash_val % 360}, 90%, 50%, 60%)"
 
 def load_connections():
     if not os.path.exists(CONNECTIONS_JSON_PATH):
