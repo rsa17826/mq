@@ -456,7 +456,7 @@
       "receive": ["food:peppers"]
     },
     {
-      "room": { "north": 9, "east": 22 },
+      "room": { "north": 10, "east": 22 },
       "requires": [
         [
           "entrance.south0",
