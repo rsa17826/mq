@@ -2083,7 +2083,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 10,
@@ -2125,7 +2125,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 10,
@@ -7097,7 +7097,7 @@
       "east": [],
       "north": []
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 10,
@@ -7127,7 +7127,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 21,
