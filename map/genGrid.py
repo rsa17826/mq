@@ -145,7 +145,6 @@ def load_geometry_map():
                     n = int(float(room["north"]))
                     e = int(float(room["east"]))
                     key = f"{n}_{e}"
-                    # Keep track of exits object and completion flag status
                     geom_db[key] = {
                         "exits": room.get("exits", {}),
                         "complete": room.get("complete", False)
@@ -185,51 +184,57 @@ def generate_html():
         tile_exits = room_data["exits"]
         is_complete = room_data["complete"]
 
-        # Append additional "incomplete" CSS class modifier if complete: True isn't explicitly set
         class_modifier = "" if is_complete else " incomplete"
-
         squares_html = []
 
         if tile_exits and isinstance(tile_exits, dict):
-            for side, bounds in tile_exits.items():
-                if not bounds:
+            for side, bounds_list in tile_exits.items():
+                if not bounds_list:
                     continue
 
-                # West & East bounds (Vertical placements)
-                if side in ["west", "east"]:
-                    if bounds.get("top") is None or bounds.get("bottom") is None:
+                # Standardize so we always iterate a list structure
+                if not isinstance(bounds_list, list):
+                    bounds_list = [bounds_list]
+
+                for bounds in bounds_list:
+                    if not bounds or not isinstance(bounds, dict):
                         continue
 
-                    start_val = int(float(bounds["top"]))
-                    end_val = int(float(bounds["bottom"]))
+                    # West & East bounds (Vertical placements)
+                    if side in ["west", "east"]:
+                        if bounds.get("top") is None or bounds.get("bottom") is None:
+                            continue
 
-                    x_pos = 0 if side == "west" else 100 - BLOCK_WIDTH_PCT
-                    y_pos = start_val * BLOCK_HEIGHT_PCT
+                        start_val = int(float(bounds["top"]))
+                        end_val = int(float(bounds["bottom"]))
 
-                    w_size = BLOCK_WIDTH_PCT
-                    h_size = ((end_val - start_val) + 1) * BLOCK_HEIGHT_PCT
+                        x_pos = 0 if side == "west" else 100 - BLOCK_WIDTH_PCT
+                        y_pos = start_val * BLOCK_HEIGHT_PCT
 
-                    squares_html.append(
-                        f'<div class="exit-square{class_modifier}" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%;"></div>'
-                    )
+                        w_size = BLOCK_WIDTH_PCT
+                        h_size = ((end_val - start_val) + 1) * BLOCK_HEIGHT_PCT
 
-                # North & South bounds (Horizontal placements)
-                elif side in ["north", "south"]:
-                    if bounds.get("left") is None or bounds.get("right") is None:
-                        continue
+                        squares_html.append(
+                            f'<div class="exit-square{class_modifier}" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%;"></div>'
+                        )
 
-                    start_val = int(float(bounds["left"]))
-                    end_val = int(float(bounds["right"]))
+                    # North & South bounds (Horizontal placements)
+                    elif side in ["north", "south"]:
+                        if bounds.get("left") is None or bounds.get("right") is None:
+                            continue
 
-                    x_pos = start_val * BLOCK_WIDTH_PCT
-                    y_pos = 0 if side == "north" else 100 - BLOCK_HEIGHT_PCT
+                        start_val = int(float(bounds["left"]))
+                        end_val = int(float(bounds["right"]))
 
-                    w_size = ((end_val - start_val) + 1) * BLOCK_WIDTH_PCT
-                    h_size = BLOCK_HEIGHT_PCT
+                        x_pos = start_val * BLOCK_WIDTH_PCT
+                        y_pos = 0 if side == "north" else 100 - BLOCK_HEIGHT_PCT
 
-                    squares_html.append(
-                        f'<div class="exit-square{class_modifier}" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%;"></div>'
-                    )
+                        w_size = ((end_val - start_val) + 1) * BLOCK_WIDTH_PCT
+                        h_size = BLOCK_HEIGHT_PCT
+
+                        squares_html.append(
+                            f'<div class="exit-square{class_modifier}" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%;"></div>'
+                        )
 
         overlay_content = "\n".join(squares_html)
 
@@ -246,7 +251,7 @@ def generate_html():
         f.write("\n".join(html_elements))
         f.write("\n" + html_end)
 
-    print(f"Success! Generated flipped {OUTPUT_FILE} with {len(html_elements)} overlaid image tiles using room geometry data.")
+    print(f"Success! Generated flipped {OUTPUT_FILE} with {len(html_elements)} overlaid image tiles using updated array geometry data.")
 
 if __name__ == "__main__":
     generate_html()
