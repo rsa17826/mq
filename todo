@@ -29,3 +29,20 @@ MathQuest.js:109068 [ER DEBUG] No randomizer override entry for key [21_13_22_11
 MathQuest.js:30615 0 0 0 0
 
 exiting on corner that has 2 zones down takes priority over left, should be the player facing or moving direction or last pressed direction
+
+[ER DEBUG] Transition initiated. From room: 22,13 at position X/Y: 314.92859999999996,232.5455
+MathQuest.js:109025 [ER DEBUG] Checking redirection for vanilla move path key: 22_13_22_10
+MathQuest.js:109068 [ER DEBUG] No randomizer override entry for key [22_13_22_10]. Retaining game defaults.
+MathQuest.js:30615 0 0 0 0
+MathQuest.js:24498 160 186
+MathQuest.js:108992 [ER DEBUG] Transition initiated. From room: 22,10 at position X/Y: 94,175
+MathQuest.js:109025 [ER DEBUG] Checking redirection for vanilla move path key: 22_10_22_13
+MathQuest.js:109068 [ER DEBUG] No randomizer override entry for key [22_10_22_13]. Retaining game defaults.
+MathQuest.js:30615 0 0 0 0
+
+
+[ER DEBUG] Transition initiated. From room: 6,19 at position X/Y: 620,254.5455
+MathQuest.js:109025 [ER DEBUG] Checking redirection for vanilla move path key: 6_19_6_18
+MathQuest.js:109048 [ER DEBUG] Success! Redirecting room target to: 13,15 Placing character at: 633.9286,101.8182
+MathQuest.js:30615 0 0 0 0
+from top right entrance spawn in wall move down 1 tile
