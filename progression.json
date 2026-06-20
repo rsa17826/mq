@@ -396,7 +396,7 @@
       "receive": ["green secret code"]
     },
     {
-      "room": { "north": 8, "east": 17 },
+      "room": { "north": 8, "east": 18 },
       "requires": [["item:emerald#1", "entrance.north1"]],
       "receive": ["food:steak#?", "item:bomb#25"]
     }
