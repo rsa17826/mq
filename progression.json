@@ -44,9 +44,8 @@
       "gives": ["item:gold#inf"]
     },
     {
-      "room": { "north": 15, "east": 21 },
-      "gives": ["food:banana#1"],
-      "entrances":["west0"]
+      "room": { "north": 15, "east": 21, "entrance.west0" },
+      "gives": ["food:banana#1"]
     },
     {
       "room": { "north": 20, "east": 20 },
@@ -139,33 +138,26 @@
     },
     {
       "room": { "north": 14, "east": 19 },
-      "requires": [["item:troll wristband#1"]],
-      "receive": ["item:broken alpha club#1"],
-      "entrances": ["north0"]
+      "requires": [["item:troll wristband#1", "entrance.north0"]],
+      "receive": ["item:broken alpha club#1"]
     },
     {
       "room": { "north": 14, "east": 19 },
-      "requires": [["item:key#1"]],
-      "receive": ["armour:regen armor"],
-      "entrances": ["south0"]
+      "requires": [["item:key#1", "entrance.south0"]],
+      "receive": ["armour:regen armor"]
     },
     {
       "room": { "north": 15, "east": 21 },
-      "requires": [["item:key#1"]],
-      "receive": ["item:gold#65", "item:bomb#5"],
-      "entrances": ["south0"]
+      "requires": [["item:key#1", "entrance.south0"]],
+      "receive": ["item:gold#65", "item:bomb#5"]
     },
     {
       "room": { "north": 14, "east": 21 },
-      "requires": [["item:key#1"]],
-      "receive": ["item:gold#100", "item:bomb#12", "food:apple#30"],
-      "entrances": ["south0"]
-    },
-    {
-      "room": { "north": 14, "east": 21 },
-      "requires": [["permit:bomb use"]],
-      "receive": ["item:gold#100", "item:bomb#12", "food:apple#30"],
-      "entrances": ["south0"]
+      "requires": [
+        ["item:key#1", "entrance.north0"],
+        ["permit:bomb use", "item:key#1", "entrance.south0"]
+      ],
+      "receive": ["item:gold#100", "item:bomb#12", "food:apple#30"]
     }
   ],
   "gates": [
