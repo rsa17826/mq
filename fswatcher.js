@@ -35,7 +35,7 @@ function markRoomAsComplete(east, north) {
         "utf8",
       )
       console.log(
-        `[+] Marked room (${east}, ${north}) as complete in ${GEOMETRY_FILE}`,
+        `[+] Marked room (${north}, ${east}) as complete in ${GEOMETRY_FILE}`,
       )
       console.log("[*] Running python map/genGrid.py...")
 
@@ -105,7 +105,7 @@ async function startTracking() {
           currentCoords.north !== lastCoords.north
         ) {
           console.log(
-            `[*] Position change detected: (${currentCoords.east}, ${currentCoords.north})`,
+            `[*] Position change detected: (${currentCoords.north}, ${currentCoords.east})`,
           )
           lastCoords = currentCoords
 

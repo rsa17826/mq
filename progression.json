@@ -45,6 +45,12 @@
       "room": { "north": 19, "east": 21 },
       "gives": ["item:gold#inf"],
       "method": "pickup"
+    },
+    {
+      "room": { "north": 15, "east": 21 },
+      "gives": ["food:banana#1"],
+      "method": "pickup",
+      "entrances":["west0"]
     }
   ],
   "trades": [
