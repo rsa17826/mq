@@ -1,7 +1,7 @@
 {
   "items": [
-    { "id": "bomb" },
-    { "id": "key" },
+    { "id": "item:bomb" },
+    { "id": "item:key" },
 
     { "id": "weapon:club" },
     { "id": "weapon:dagger" },
@@ -15,6 +15,7 @@
     { "id": "food:honey" },
     { "id": "food:grapes" },
     { "id": "food:strawberry" },
+    { "id": "food:banana" },
 
     { "id": "spawnpoint" },
     { "id": "necklass warp point" },
@@ -130,6 +131,23 @@
       "room": { "north": 16, "east": 21 },
       "give": [["item:ring.health"]],
       "receive": ["skill:dig"]
+    },
+    {
+      "room": { "north": 15, "east": 19 },
+      "give": [["item:ring.health"]],
+      "receive": ["item:gold#300", "item:bomb#10", "food:banana#5"]
+    },
+    {
+      "room": { "north": 14, "east": 19 },
+      "give": [["item:troll wristband#1"]],
+      "receive": ["item:broken alpha club#1"],
+      "entrances": ["north0"]
+    },
+    {
+      "room": { "north": 14, "east": 19 },
+      "give": [["item:key#1"]],
+      "receive": ["armour:regen armor"],
+      "entrances": ["south0"]
     }
   ],
   "gates": [

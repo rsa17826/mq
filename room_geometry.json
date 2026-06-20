@@ -3386,7 +3386,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 13,
@@ -3680,7 +3680,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 14,
@@ -3977,7 +3977,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 15,
@@ -4003,7 +4003,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 15,
@@ -4267,7 +4267,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 16,
