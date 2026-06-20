@@ -36,7 +36,6 @@ html_start = """<!DOCTYPE html>
         html::-webkit-scrollbar, body::-webkit-scrollbar {
             display: none;
         }
-        /* FIXED: Switched to relative box container instead of standard CSS Grid track lines */
         .grid-container {
             position: relative;
             padding: 20px;
@@ -185,7 +184,6 @@ def main():
         print("[-] No valid tiles found in image folder.")
         return
 
-    # FIXED: Map large sparse gaps into sequential track lists to clear empty row blocks
     unique_norths = sorted(list(set(t[1] for t in parsed_tiles)), reverse=True)
     unique_easts = sorted(list(set(t[0] for t in parsed_tiles)))
 
@@ -199,7 +197,6 @@ def main():
     tile_step_w = TILE_WIDTH + GAP_SIZE
     tile_step_h = TILE_HEIGHT + GAP_SIZE
 
-    # 1. Compute arrows tracking compact positional mapping layout offsets
     for conn in connections:
         o_n, o_e = int(conn["originNorth"]), int(conn["originEast"])
         room_key = f"{o_n}_{o_e}"
@@ -220,7 +217,6 @@ def main():
 
         src_coord_scaled = float(src_coord) * 0.1
 
-        # Calculate using track sequences
         track_col = east_to_track[o_e]
         track_row = north_to_track[o_n]
         base_x = 20 + track_col * tile_step_w
@@ -237,7 +233,6 @@ def main():
 
         dest_o_n, dest_o_e = int(conn["newDestNorth"]), int(conn["newDestEast"])
 
-        # Fallback to current space if values don't exist in the parsed collection map bounds
         dest_track_col = east_to_track.get(dest_o_e, track_col)
         dest_track_row = north_to_track.get(dest_o_n, track_row)
 
@@ -266,13 +261,11 @@ def main():
                 "color": color
             })
 
-    # 2. Render absolute positions directly to strip the blank spaces
     html_elements = []
     for east, north, filename in parsed_tiles:
         track_col = east_to_track[east]
         track_row = north_to_track[north]
 
-        # Explicit absolute translation metrics style assignment
         pixel_left = 20 + track_col * tile_step_w
         pixel_top = 20 + track_row * tile_step_h
         room_key = f"{north}_{east}"
@@ -294,15 +287,29 @@ def main():
                 if not isinstance(bounds_list, list):
                     bounds_list = [bounds_list]
 
-                for bounds in bounds_list:
+                # Filter connections belonging to this side and sort them by coordinate position
+                side_connections = [
+                    c for c in active_connections
+                    if c.get("direction") == side and c.get("srcCoord") is not None
+                ]
+                # Sort connections: Left-to-Right for North/South, Top-to-Bottom for West/East
+                side_connections.sort(key=lambda c: float(c["srcCoord"]))
+
+                # Sort geometry exit blocks so they align perfectly with the sorted connections
+                if side in ["west", "east"]:
+                    sorted_bounds = sorted(bounds_list, key=lambda b: int(float(b.get("top", 0))))
+                else:
+                    sorted_bounds = sorted(bounds_list, key=lambda b: int(float(b.get("left", 0))))
+
+                for idx, bounds in enumerate(sorted_bounds):
                     if not bounds or not isinstance(bounds, dict):
                         continue
 
+                    # Match by index position sequence rather than doing flaky pixel block math
                     matched_color = "rgba(255,255,255,0.5)"
-                    for conn in active_connections:
-                        if conn.get("direction") == side:
-                            matched_color = djb2_color_hash(conn["fromExitId"], conn["toExitId"])
-                            break
+                    if idx < len(side_connections):
+                        conn = side_connections[idx]
+                        matched_color = djb2_color_hash(conn["fromExitId"], conn["toExitId"])
 
                     if side in ["west", "east"]:
                         if bounds.get("top") is None or bounds.get("bottom") is None:
@@ -334,6 +341,7 @@ def main():
                             f'<div class="exit-square" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%; background-color:{matched_color};"></div>'
                         )
 
+
         overlay_content = "\n".join(squares_html)
         wrapper_tag = f"""        <div class="tile-wrapper" data-room="{room_key}" style="left: {pixel_left:.1f}px; top: {pixel_top:.1f}px;" title="Position: {east},{north}">
             <img src="{img_path}" class="grid-item" alt="Tile {east},{north}">
@@ -346,7 +354,6 @@ def main():
     total_svg_width = 40 + (cols * tile_step_w)
     total_svg_height = 40 + (rows * tile_step_h)
 
-    # Set container limits to allow natural absolute layout box matching sizing properties
     container_style = f'id="grid" style="width: {total_svg_width}px; height: {total_svg_height}px;"'
     dynamic_html_start = html_start.replace('id="grid"', container_style)
 
@@ -366,7 +373,7 @@ def main():
         f.write(f"\n    <script>const ROUTES_DATA = {json.dumps(js_routes_db, indent=2)};</script>")
         f.write("\n" + html_end)
 
-    print(f"[+] Success! Cleanly compressed absolute positioning mapping completed inside {OUTPUT_FILE}")
+    print(f"[+] Success! Cleanly hashed layout positions completed inside {OUTPUT_FILE}")
 
 if __name__ == "__main__":
     main()
