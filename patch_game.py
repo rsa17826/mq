@@ -52,6 +52,7 @@ PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
   ;(function () {{
     var ER_TABLE = [{table_js}]
     var ER_MAP = new Map()
+    window.ER_MAP=ER_MAP
     for (var i = 0; i < ER_TABLE.length; i++) {{
       var r = ER_TABLE[i]
       var key = r[0] + "_" + r[1] + "_" + r[2] + "_" + r[3]
