@@ -169,6 +169,30 @@
       "room": { "north": 13, "east": 21 },
       "requires": [["quest:bomb use.1", "entrance.south0"]],
       "receive": ["quest:bomb use.2"]
+    },
+    {
+      "room": { "north": 12, "east": 21 },
+      "requires": [["item:emerald#1", "permit:bomb use"]],
+      "receive": ["item:diamond#1", "food:banana#20"]
+    },
+    {
+      "room": { "north": 12, "east": 19 },
+      "info": "warp skill warp point"
+    },
+    {
+      "room": { "north": 13, "east": 16 },
+      "requires": [["???", "entrance.south0"]],
+      "receive": ["???"]
+    },
+    {
+      "room": { "north": 13, "east": 16 },
+      "requires": [["item:key#1", "entrance.west0"]],
+      "receive": ["weapon:survival knife"]
+    },
+    {
+      "room": { "north": 14, "east": 15 },
+      "requires": [["item:key#1"]],
+      "receive": ["food:orange#12"]
     }
   ],
   "gates": [
