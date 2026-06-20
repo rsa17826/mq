@@ -36,19 +36,16 @@ html_start = """<!DOCTYPE html>
         html::-webkit-scrollbar, body::-webkit-scrollbar {
             display: none;
         }
-        /* FIXED: Explicitly defined rows/cols prevent empty spaces from collapsing to 0px */
+        /* FIXED: Switched to relative box container instead of standard CSS Grid track lines */
         .grid-container {
-            display: grid;
-            grid-template-columns: repeat(var(--cols), 62.4px);
-            grid-template-rows: repeat(var(--rows), 49.3px);
-            gap: 15px;
-            padding: 20px;
             position: relative;
+            padding: 20px;
+            margin: 0;
         }
         .tile-wrapper {
-            position: relative;
-            width: 100%;
-            height: 100%;
+            position: absolute;
+            width: 62.4px;
+            height: 49.3px;
             background-color: #222;
             border: 1px solid #444;
             box-sizing: border-box;
@@ -86,7 +83,7 @@ html_start = """<!DOCTYPE html>
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 10;
+            z-index: 100;
         }
         .route-arrow {
             fill: none;
@@ -148,54 +145,71 @@ def load_connections():
     with open(CONNECTIONS_JSON_PATH, "r", encoding="utf-8") as f:
         return json.load(f).get("connections", [])
 
+def load_geometry_map():
+    geom_db = {}
+    if not os.path.exists(GEOMETRY_JSON_PATH):
+        print(f"[-] Warn: {GEOMETRY_JSON_PATH} not found.")
+        return geom_db
+    try:
+        with open(GEOMETRY_JSON_PATH, "r", encoding="utf-8") as f:
+            rooms_list = json.load(f)
+            for room in rooms_list:
+                if "north" in room and "east" in room:
+                    n = int(float(room["north"]))
+                    e = int(float(room["east"]))
+                    key = f"{n}_{e}"
+                    geom_db[key] = room.get("exits", {})
+    except Exception as err:
+        print(f"[-] Failed to read room geometry config details: {err}")
+    return geom_db
+
 def main():
     if not os.path.exists(IMAGE_FOLDER):
         print(f"[-] Error: '{IMAGE_FOLDER}' folder not found.")
         return
 
     connections = load_connections()
+    geom_index = load_geometry_map()
 
-    # 1. Map every Origin Room to its New Destination grid slot
-    grid_positions = {}
-    for conn in connections:
-        o = (int(conn["originNorth"]), int(conn["originEast"]))
-        d = (int(conn["newDestNorth"]), int(conn["newDestEast"]))
-        # Assign the room to its first discovered destination slot
-        if o not in grid_positions:
-            grid_positions[o] = d
+    files = os.listdir(IMAGE_FOLDER)
+    parsed_tiles = []
 
-    if not grid_positions:
+    for filename in files:
+        match = re.match(r"^(\d+)[,\-](\d+)", filename)
+        if match:
+            east = int(match.group(1))
+            north = int(match.group(2))
+            parsed_tiles.append((east, north, filename))
+
+    if not parsed_tiles:
+        print("[-] No valid tiles found in image folder.")
         return
 
-    # Calculate unified bounds based on where the rooms are ACTUALLY placed now
-    min_g_n = min(pos[0] for pos in grid_positions.values())
-    max_g_n = max(pos[0] for pos in grid_positions.values())
-    min_g_e = min(pos[1] for pos in grid_positions.values())
-    max_g_e = max(pos[1] for pos in grid_positions.values())
+    # FIXED: Map large sparse gaps into sequential track lists to clear empty row blocks
+    unique_norths = sorted(list(set(t[1] for t in parsed_tiles)), reverse=True)
+    unique_easts = sorted(list(set(t[0] for t in parsed_tiles)))
 
-    cols = max_g_e - min_g_e + 1
-    rows = max_g_n - min_g_n + 1
+    north_to_track = {n: idx for idx, n in enumerate(unique_norths)}
+    east_to_track = {e: idx for idx, e in enumerate(unique_easts)}
 
-    filename_map = {}
-    for fname in os.listdir(IMAGE_FOLDER):
-        match = re.match(r"^(\d+)[,\-](\d+)", fname)
-        if match:
-            e, n = int(match.group(1)), int(match.group(2))
-            filename_map[(n, e)] = fname
+    cols = len(unique_easts)
+    rows = len(unique_norths)
 
-    js_routes_db = {f"{r[0]}_{r[1]}": [] for r in grid_positions.keys()}
+    js_routes_db = {f"{t[1]}_{t[0]}": [] for t in parsed_tiles}
     tile_step_w = TILE_WIDTH + GAP_SIZE
     tile_step_h = TILE_HEIGHT + GAP_SIZE
 
-    # 2. Build JavaScript memory database tracking coordinates across the NEW grid mapping
+    # 1. Compute arrows tracking compact positional mapping layout offsets
     for conn in connections:
         o_n, o_e = int(conn["originNorth"]), int(conn["originEast"])
         room_key = f"{o_n}_{o_e}"
 
+        if o_n not in north_to_track or o_e not in east_to_track:
+            continue
+
         direction = conn.get("direction")
         src_coord = conn.get("srcCoord")
 
-        # Fallback if direction missing
         if not direction or src_coord is None:
             v_n, v_e = int(conn["vanillaDestNorth"]), int(conn["vanillaDestEast"])
             if v_n > o_n: direction = "north"
@@ -206,10 +220,11 @@ def main():
 
         src_coord_scaled = float(src_coord) * 0.1
 
-        # Calculate Arrow Source relative to the room's NEW mapped grid position
-        src_g_n, src_g_e = grid_positions[(o_n, o_e)]
-        base_x = 20 + (src_g_e - min_g_e) * tile_step_w
-        base_y = 20 + (max_g_n - src_g_n) * tile_step_h
+        # Calculate using track sequences
+        track_col = east_to_track[o_e]
+        track_row = north_to_track[o_n]
+        base_x = 20 + track_col * tile_step_w
+        base_y = 20 + track_row * tile_step_h
 
         if direction == "west":
             arrow_src_x, arrow_src_y = base_x, base_y + src_coord_scaled
@@ -220,14 +235,15 @@ def main():
         elif direction == "south":
             arrow_src_x, arrow_src_y = base_x + src_coord_scaled, base_y + TILE_HEIGHT
 
-        # Calculate Arrow Destination finding where the target room was placed
-        dest_o = (int(conn["newDestNorth"]), int(conn["newDestEast"]))
-        dest_g_n, dest_g_e = grid_positions.get(dest_o, dest_o) # default to standard coords if missing
+        dest_o_n, dest_o_e = int(conn["newDestNorth"]), int(conn["newDestEast"])
 
-        dest_base_x = 20 + (dest_g_e - min_g_e) * tile_step_w
-        dest_base_y = 20 + (max_g_n - dest_g_n) * tile_step_h
+        # Fallback to current space if values don't exist in the parsed collection map bounds
+        dest_track_col = east_to_track.get(dest_o_e, track_col)
+        dest_track_row = north_to_track.get(dest_o_n, track_row)
 
-        # Safe Float conversion for NoneTypes
+        dest_base_x = 20 + dest_track_col * tile_step_w
+        dest_base_y = 20 + dest_track_row * tile_step_h
+
         new_x, new_y = conn.get("newX"), conn.get("newY")
         float_new_x = float(new_x) if new_x is not None else 624 / 2
         float_new_y = float(new_y) if new_y is not None else 493 / 2
@@ -244,58 +260,97 @@ def main():
         path_d = f"M {arrow_src_x:.1f} {arrow_src_y:.1f} Q {ctrl_x:.1f} {ctrl_y:.1f} {arrow_dest_x:.1f} {arrow_dest_y:.1f}"
         color = djb2_color_hash(conn["fromExitId"], conn["toExitId"])
 
-        js_routes_db[room_key].append({
-            "d": path_d,
-            "color": color
-        })
+        if room_key in js_routes_db:
+            js_routes_db[room_key].append({
+                "d": path_d,
+                "color": color
+            })
 
-    # 3. Output HTML layout mapping origin images to destination positions
+    # 2. Render absolute positions directly to strip the blank spaces
     html_elements = []
-    for (r_north, r_east), (g_n, g_e) in grid_positions.items():
-        grid_col = (g_e - min_g_e) + 1
-        grid_row = (max_g_n - g_n) + 1
-        room_key = f"{r_north}_{r_east}"
+    for east, north, filename in parsed_tiles:
+        track_col = east_to_track[east]
+        track_row = north_to_track[north]
 
-        # Origin image filename mapped to New Destination grid space
-        img_filename = filename_map.get((r_north, r_east), "")
-        img_tag = f'<img src="{IMAGE_FOLDER}/{img_filename}" class="grid-item" alt="Tile {r_east},{r_north}">' if img_filename else ''
+        # Explicit absolute translation metrics style assignment
+        pixel_left = 20 + track_col * tile_step_w
+        pixel_top = 20 + track_row * tile_step_h
+        room_key = f"{north}_{east}"
 
+        img_path = f"{IMAGE_FOLDER}/{filename}"
+        tile_exits = geom_index.get(room_key, {})
         squares_html = []
-        for conn in connections:
-            if int(conn["originNorth"]) == r_north and int(conn["originEast"]) == r_east:
-                color = djb2_color_hash(conn["fromExitId"], conn["toExitId"])
-                direction = conn.get("direction")
-                src_coord = conn.get("srcCoord")
 
-                if not direction or src_coord is None:
-                    v_n, v_e = int(conn["vanillaDestNorth"]), int(conn["vanillaDestEast"])
-                    if v_n > r_north: direction = "north"
-                    elif v_n < r_north: direction = "south"
-                    elif v_e > r_east: direction = "east"
-                    else: direction = "west"
-                    src_coord = 624 / 2 if direction in ["north", "south"] else 493 / 2
+        active_connections = [
+            c for c in connections
+            if int(c["originNorth"]) == north and int(c["originEast"]) == east
+        ]
 
-                if direction in ["west", "east"]:
-                    pct_y = (float(src_coord) / 493) * 100
-                    x_pos = 0 if direction == "west" else 100 - BLOCK_WIDTH_PCT
-                    y_pos = pct_y - (BLOCK_HEIGHT_PCT / 2)
-                    squares_html.append(f'<div class="exit-square" style="left:{x_pos}%; top:{y_pos}%; width:{BLOCK_WIDTH_PCT}%; height:{BLOCK_HEIGHT_PCT}%; background-color:{color};"></div>')
-                elif direction in ["north", "south"]:
-                    pct_x = (float(src_coord) / 624) * 100
-                    x_pos = pct_x - (BLOCK_WIDTH_PCT / 2)
-                    y_pos = 0 if direction == "north" else 100 - BLOCK_HEIGHT_PCT
-                    squares_html.append(f'<div class="exit-square" style="left:{x_pos}%; top:{y_pos}%; width:{BLOCK_WIDTH_PCT}%; height:{BLOCK_HEIGHT_PCT}%; background-color:{color};"></div>')
+        if tile_exits and isinstance(tile_exits, dict):
+            for side, bounds_list in tile_exits.items():
+                if not bounds_list:
+                    continue
+
+                if not isinstance(bounds_list, list):
+                    bounds_list = [bounds_list]
+
+                for bounds in bounds_list:
+                    if not bounds or not isinstance(bounds, dict):
+                        continue
+
+                    matched_color = "rgba(255,255,255,0.5)"
+                    for conn in active_connections:
+                        if conn.get("direction") == side:
+                            matched_color = djb2_color_hash(conn["fromExitId"], conn["toExitId"])
+                            break
+
+                    if side in ["west", "east"]:
+                        if bounds.get("top") is None or bounds.get("bottom") is None:
+                            continue
+                        start_val = int(float(bounds["top"]))
+                        end_val = int(float(bounds["bottom"]))
+
+                        x_pos = 0 if side == "west" else 100 - BLOCK_WIDTH_PCT
+                        y_pos = start_val * BLOCK_HEIGHT_PCT
+                        w_size = BLOCK_WIDTH_PCT
+                        h_size = ((end_val - start_val) + 1) * BLOCK_HEIGHT_PCT
+
+                        squares_html.append(
+                            f'<div class="exit-square" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%; background-color:{matched_color};"></div>'
+                        )
+
+                    elif side in ["north", "south"]:
+                        if bounds.get("left") is None or bounds.get("right") is None:
+                            continue
+                        start_val = int(float(bounds["left"]))
+                        end_val = int(float(bounds["right"]))
+
+                        x_pos = start_val * BLOCK_WIDTH_PCT
+                        y_pos = 0 if side == "north" else 100 - BLOCK_HEIGHT_PCT
+                        w_size = ((end_val - start_val) + 1) * BLOCK_WIDTH_PCT
+                        h_size = BLOCK_HEIGHT_PCT
+
+                        squares_html.append(
+                            f'<div class="exit-square" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%; background-color:{matched_color};"></div>'
+                        )
 
         overlay_content = "\n".join(squares_html)
-        wrapper_tag = f"""        <div class="tile-wrapper" data-room="{room_key}" style="grid-column: {grid_col}; grid-row: {grid_row};" title="Origin: {r_east},{r_north} -> Placed At: {g_e},{g_n}">
-            {img_tag}
+        wrapper_tag = f"""        <div class="tile-wrapper" data-room="{room_key}" style="left: {pixel_left:.1f}px; top: {pixel_top:.1f}px;" title="Position: {east},{north}">
+            <img src="{img_path}" class="grid-item" alt="Tile {east},{north}">
             <div class="overlay-layer">
 {overlay_content}
             </div>
         </div>"""
         html_elements.append(wrapper_tag)
 
-    svg_layer = """    <svg class="global-svg-layer">
+    total_svg_width = 40 + (cols * tile_step_w)
+    total_svg_height = 40 + (rows * tile_step_h)
+
+    # Set container limits to allow natural absolute layout box matching sizing properties
+    container_style = f'id="grid" style="width: {total_svg_width}px; height: {total_svg_height}px;"'
+    dynamic_html_start = html_start.replace('id="grid"', container_style)
+
+    svg_layer = f"""    <svg class="global-svg-layer" style="width: {total_svg_width}px; height: {total_svg_height}px;">
         <defs>
             <marker id="arrowhead" markerWidth="3" markerHeight="3" refX="2" refY="1.5" orient="auto">
                 <polygon points="0 0, 3 1.5, 0 3" fill="#fff" />
@@ -304,9 +359,6 @@ def main():
         <g id="arrow-canvas"></g>
     </svg>"""
 
-    # Inject dynamic grid rows and columns bounds directly into the HTML
-    dynamic_html_start = html_start.replace('id="grid"', f'id="grid" style="--cols: {cols}; --rows: {rows};"')
-
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write(dynamic_html_start)
         f.write("\n".join(html_elements))
@@ -314,7 +366,7 @@ def main():
         f.write(f"\n    <script>const ROUTES_DATA = {json.dumps(js_routes_db, indent=2)};</script>")
         f.write("\n" + html_end)
 
-    print(f"[+] Success! Layout calculations aligned perfectly inside {OUTPUT_FILE}")
+    print(f"[+] Success! Cleanly compressed absolute positioning mapping completed inside {OUTPUT_FILE}")
 
 if __name__ == "__main__":
     main()
