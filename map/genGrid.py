@@ -10,6 +10,7 @@ html_start = """<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dynamic Image Grid Map</title>
+  <script src="./live.js"></script>
   <style>
     body {
       margin: 0;
@@ -21,6 +22,7 @@ html_start = """<!DOCTYPE html>
       grid-auto-rows: max-content;
       gap: 0px;
       padding: 20px;
+      scale:0.2;
     }
     .grid-item {
       display: block;

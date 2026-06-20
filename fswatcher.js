@@ -1,26 +1,12 @@
 const fs = require("fs")
 const path = require("path")
 const puppeteer = require("puppeteer")
-const { Jimp } = require("jimp") // Make sure to use modern jimp syntax
+const { Jimp } = require("jimp")
 
 const TARGET_URL = "http://127.0.0.1:8000/MathQuest/play.html"
-const WATCH_FILE = "./MQ2Files/loadChar.php"
 const DEST_DIR = "./map"
 
-// Target background colors in Hex (Jimp reads them as 0xRRGGBBAA)
-const TARGET_COLORS = [
-  0x212a33ff, // #212A33
-  0x111619ff, // #111619
-]
-
-// Helper to check if a pixel color matches our target colors (ignoring alpha channel differences)
-function isTargetColor(pixelColor) {
-  // Mask out alpha channel to compare RGB
-  const rgb = pixelColor & 0xffffff00
-  return TARGET_COLORS.some((target) => (target & 0xffffff00) === rgb)
-}
-
-async function processMapScreenshot() {
+async function runAutomation() {
   let browser
   try {
     // 1. Connect to Chrome
@@ -37,100 +23,106 @@ async function processMapScreenshot() {
       return
     }
 
-    // 2. Fetch coordinates
-    const coords = await page.evaluate(() => {
-      if (typeof player !== "undefined") {
-        return { east: player.east, north: player.north }
+    // 2. Expose the save function to the browser context
+    // This allows player loop to say "Hey Node, process the current screen and tell me when you're done!"
+    await page.exposeFunction("nodeProcessAndSaveScreenshot", async () => {
+      try {
+        const coords = await page.evaluate(() => {
+          if (typeof player !== "undefined") {
+            return { east: player.east, north: player.north }
+          }
+          return null
+        })
+
+        if (!coords || coords.east === undefined || coords.north === undefined) {
+          console.log("[-] Valid player coordinates not found.")
+          return false // Tell browser save failed
+        }
+
+        const destFileName = `${coords.east},${coords.north}.jpg`
+        const destPath = path.join(DEST_DIR, destFileName)
+
+        if (fs.existsSync(destPath)) {
+          console.log(`[-] File already exists at ${destPath}. Skipping processing.`)
+          return true // Skip but return true so it advances to the next tile
+        }
+
+        const canvas = await page.$("canvas")
+        if (!canvas) {
+          console.error("[-] Canvas element not found on page.")
+          return false
+        }
+
+        const screenshotBuffer = await canvas.screenshot({ type: "png" })
+        const image = await Jimp.read(screenshotBuffer)
+        const width = image.bitmap.width
+        const height = image.bitmap.height
+
+        let topTrim = 40
+        let rightTrim = width - 180
+        const leftTrim = 1
+
+        const finalWidth = rightTrim - leftTrim
+        const finalHeight = height - topTrim
+
+        if (finalWidth <= 0 || finalHeight <= 0) {
+          console.error("[-] Calculated trim dimensions are invalid.")
+          return false
+        }
+
+        image.crop({ x: leftTrim, y: topTrim, w: finalWidth, h: finalHeight })
+
+        if (!fs.existsSync(DEST_DIR)) {
+          fs.mkdirSync(DEST_DIR, { recursive: true })
+        }
+
+        await image.write(destPath)
+        console.log(`[+] Saved: ${destFileName}`)
+        return true // Success! Tell browser to continue loop
+      } catch (err) {
+        console.error("[-] Error handling screenshot execution:", err.message)
+        return false
       }
-      return null
     })
 
-    if (
-      !coords ||
-      coords.east === undefined ||
-      coords.north === undefined
-    ) {
-      console.log("[-] Valid player coordinates not found.")
-      return
-    }
+    console.log("[*] Injecting grid scraping loop into the browser...")
 
-    const destFileName = `${coords.east},${coords.north}.jpg`
-    const destPath = path.join(DEST_DIR, destFileName)
+    // 3. Inject the loop directly into the page execution context
+    await page.evaluate(async () => {
+      // Replace this array placeholder with your actual generation logic/coordinates variable if needed
+      // Assuming 'positions' is already defined on your game window, or we define it here:
+      if (typeof positions === 'undefined') {
+        console.error("Positions array not defined on page window context.");
+        return;
+      }
 
-    // Check if destination file already exists
-    if (fs.existsSync(destPath)) {
-      console.log(`[-] File already exists at ${destPath}. Skipping.`)
-      return
-    }
+      for (var [north, east] of positions) {
+        player.east = east
+        player.north = north
 
-    // 3. Find canvas and capture screenshot buffer
-    const canvas = await page.$("canvas")
-    if (!canvas) {
-      console.error("[-] Canvas element not found on page.")
-      return
-    }
-    const screenshotBuffer = await canvas.screenshot({ type: "png" })
+        // Let the engine process game state movement
+        if (typeof test !== 'undefined' && test.newScreen) test.newScreen();
 
-    // 4. Process image trimming with Jimp
-    const image = await Jimp.read(screenshotBuffer)
-    const width = image.bitmap.width
-    const height = image.bitmap.height
+        // Force engine mechanics to trigger save conditions or updates
+        if (typeof saver !== 'undefined' && saver.save) saver.save();
 
-    // Determine top trim boundary (scan down from top-middle until target color hit)
-    let topTrim = 40
+        // Give the game engine a brief moment (e.g., 50ms) to finish re-rendering the graphical tiles
+        await new Promise((resolve) => setTimeout(resolve, 50));
 
-    // Determine right trim boundary (scan left from right-middle until target color hit)
-    let rightTrim = width - 180
+        // Wait completely until Node.js finishes writing the cropped tile file
+        const success = await window.nodeProcessAndSaveScreenshot();
 
-    // Apply strict 1px trim from left side
-    const leftTrim = 1
-
-    // Calculate final dimensions for cropping
-    const finalWidth = rightTrim - leftTrim
-    const finalHeight = height - topTrim
-
-    if (finalWidth <= 0 || finalHeight <= 0) {
-      console.error("[-] Calculated trim dimensions are invalid.")
-      return
-    }
-
-    // Crop the image
-    image.crop({
-      x: leftTrim,
-      y: topTrim,
-      w: finalWidth,
-      h: finalHeight,
+        if (!success) {
+          console.warn(`Stopped loop at coordinate iteration: ${east}, ${north} due to an error.`);
+          break;
+        }
+      }
+      console.log("Custom grid automated scanning operations complete!");
     })
 
-    // Ensure directory exists and save
-    if (!fs.existsSync(DEST_DIR)) {
-      fs.mkdirSync(DEST_DIR, { recursive: true })
-    }
-
-    await image.write(destPath)
-    console.log(`[+] Trimmed canvas screenshot saved to: ${destPath}`)
   } catch (error) {
-    console.error("[-] Error running automation:", error.message)
-  } finally {
-    if (browser) await browser.disconnect()
+    console.error("[-] Runner Exception:", error.message)
   }
 }
 
-// Watch mechanism with debounce logic
-let watchTimeout
-console.log(`[*] Watching for changes to ${WATCH_FILE}...`)
-
-if (!fs.existsSync(path.dirname(WATCH_FILE))) {
-  fs.mkdirSync(path.dirname(WATCH_FILE), { recursive: true })
-}
-// Create file if it doesn't exist so fs.watch has something to track
-if (!fs.existsSync(WATCH_FILE)) {
-  fs.writeFileSync(WATCH_FILE, "")
-}
-
-fs.watch(WATCH_FILE, (eventType) => {
-  if (eventType === "change") {
-    clearTimeout(watchTimeout)
-    watchTimeout = setTimeout(processMapScreenshot, 150)
-  }
-})
+runAutomation()
