@@ -341,6 +341,11 @@
         ["item:emerald#1", "entrance.east2"]
       ],
       "receive": ["item:gold#750"]
+    },
+    {
+      "room": { "north": 6, "east": 12 },
+      "requires": [["item:key#1"]],
+      "receive": ["item:quartz geode#2"]
     }
   ],
   "gates": [
