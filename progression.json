@@ -193,6 +193,15 @@
       "room": { "north": 14, "east": 15 },
       "requires": [["item:key#1"]],
       "receive": ["food:orange#12"]
+    },
+    {
+      "room": { "north": 14, "east": 16 },
+      "info": "warp skill warp point"
+    },
+    {
+      "room": { "north": 15, "east": 16 },
+      "requires": [["permit:bomb use", "???"]],
+      "receive": ["magic:ice"]
     }
   ],
   "gates": [
