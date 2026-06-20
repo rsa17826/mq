@@ -366,6 +366,39 @@
         ["item:shark tooth#30", "item:gold#800", "skill:tough"]
       ],
       "receive": ["skill:tough.+1"]
+    },
+    {
+      "room": { "north": 5, "east": 15 },
+      "requires": [["skill:reveal"]],
+      "receive": ["red chest"]
+    },
+    {
+      "room": { "north": 9, "east": 15 },
+      "requires": [["item:key#1"]],
+      "receive": ["armor:phantom coat"]
+    },
+    {
+      "room": { "north": 10, "east": 16 },
+      "info": "warp skill warp point"
+    },
+    {
+      "room": { "north": 9, "east": 16 },
+      "requires": [["item:gator skin#1"]],
+      "receive": ["item:gold#23"]
+    },
+    {
+      "room": { "north": 4, "east": 17 },
+      "requires": [["weapon:random axe", "???"]],
+      "receive": ["weapon:random axe.+1"]
+    },
+    {
+      "room": { "north": 8, "east": 17 },
+      "receive": ["green secret code"]
+    },
+    {
+      "room": { "north": 8, "east": 17 },
+      "requires": [["item:emerald#1", "entrance.north1"]],
+      "receive": ["food:steak#?", "item:bomb#25"]
     }
   ],
   "gates": [
