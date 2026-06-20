@@ -44,7 +44,8 @@
       "gives": ["item:gold#inf"]
     },
     {
-      "room": { "north": 15, "east": 21, "entrance.west0" },
+      "room": { "north": 15, "east": 21 },
+      "requires": [["entrance.west0"]],
       "gives": ["food:banana#1"]
     },
     {
@@ -158,6 +159,16 @@
         ["permit:bomb use", "item:key#1", "entrance.south0"]
       ],
       "receive": ["item:gold#100", "item:bomb#12", "food:apple#30"]
+    },
+    {
+      "room": { "north": 13, "east": 21 },
+      "requires": [["quest:bomb use.3"]],
+      "receive": ["permit:bomb use"]
+    },
+    {
+      "room": { "north": 13, "east": 21 },
+      "requires": [["quest:bomb use.1", "entrance.south0"]],
+      "receive": ["quest:bomb use.2"]
     }
   ],
   "gates": [
