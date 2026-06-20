@@ -220,6 +220,21 @@
       "room": { "north": 13, "east": 14 },
       "requires": [["armor:alpha armor", "???"]],
       "receive": ["armour:alpha armout.+inf"]
+    },
+    {
+      "room": { "north": 13, "east": 11 },
+      "requires": [["item:mage staf#1"]],
+      "receive": ["food:blueberry#1"]
+    },
+    {
+      "room": { "north": 11, "east": 12 },
+      "requires": [["item:gold#100"]],
+      "receive": ["food:sunflower seed#1"]
+    },
+    {
+      "room": { "north": 12, "east": 12 },
+      "requires": [["quest.headstone", "entrance.west0"]],
+      "receive": ["quest.headstone.+1"]
     }
   ],
   "gates": [
