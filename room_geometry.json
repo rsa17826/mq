@@ -6123,7 +6123,8 @@
       ],
       "east": [],
       "north": []
-    }
+    },
+    "complete": true
   },
   {
     "north": 200,
@@ -6138,7 +6139,8 @@
           "right": 9
         }
       ]
-    }
+    },
+    "complete": true
   },
   {
     "north": 201,
@@ -6163,7 +6165,8 @@
       ],
       "east": [],
       "north": []
-    }
+    },
+    "complete": true
   },
   {
     "north": 500,
@@ -6178,7 +6181,8 @@
           "right": 10
         }
       ]
-    }
+    },
+    "complete": true
   },
   {
     "north": 500,
@@ -6193,7 +6197,8 @@
           "right": 6
         }
       ]
-    }
+    },
+    "complete": true
   },
   {
     "north": 501,
@@ -6213,7 +6218,8 @@
         }
       ],
       "north": []
-    }
+    },
+    "complete": true
   },
   {
     "north": 501,
@@ -6233,6 +6239,7 @@
       ],
       "east": [],
       "north": []
-    }
+    },
+    "complete": true
   }
 ]
