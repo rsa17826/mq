@@ -181,8 +181,8 @@
     },
     {
       "room": { "north": 13, "east": 16 },
-      "requires": [["???", "entrance.south0"]],
-      "receive": ["???"]
+      "requires": [["quest:rings.1", "entrance.south0"]],
+      "receive": ["ring.evasion", "quest:rings.2"]
     },
     {
       "room": { "north": 13, "east": 16 },
@@ -473,6 +473,25 @@
         ]
       ],
       "receive": ["craft.elixir"]
+    },
+    {
+      "room": { "north": 10, "east": 25 },
+      "requires": [["quest:headstone"]],
+      "receive": ["quest:headstone.+1"]
+    },
+    {
+      "room": { "north": 11, "east": 25 },
+      "requires": [["quest.pam>14"]],
+      "receive": ["food:beef jerkey#20"]
+    },
+    {
+      "room": { "north": 11, "east": 24 },
+      "info": "warp skill warp point"
+    },
+    {
+      "room": { "north": 14, "east": 22 },
+      "requires": [["skill:dig"]],
+      "receive": ["ring.gold", "quest:rings.1"]
     }
   ],
   "gates": [
