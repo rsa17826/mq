@@ -5,3 +5,25 @@ entering room 15,14 from left entrance leads to wrong location
 make the drain warp only have random exit not start location
 
 23,10 add warp point
+23,14 add warp point
+24,10 add warp point
+
+
+[ER DEBUG] Transition initiated. From room: 23,14 at position X/Y: 278,381
+MathQuest.js:109025 [ER DEBUG] Checking redirection for vanilla move path key: 23_14_24_10
+MathQuest.js:109068 [ER DEBUG] No randomizer override entry for key [23_14_24_10]. Retaining game defaults.
+MathQuest.js:30615 0 0 0 0
+MathQuest.js:24498 160 486
+MathQuest.js:108992 [ER DEBUG] Transition initiated. From room: 24,10 at position X/Y: 94,475
+MathQuest.js:109025 [ER DEBUG] Checking redirection for vanilla move path key: 24_10_23_14
+MathQuest.js:109068 [ER DEBUG] No randomizer override entry for key [24_10_23_14]. Retaining game defaults.
+MathQuest.js:30615 0 0 0 0
+
+[ER DEBUG] Transition initiated. From room: 22,11 at position X/Y: 355,275
+MathQuest.js:109025 [ER DEBUG] Checking redirection for vanilla move path key: 22_11_21_13
+MathQuest.js:109068 [ER DEBUG] No randomizer override entry for key [22_11_21_13]. Retaining game defaults.
+MathQuest.js:30615 0 0 0 0
+MathQuest.js:108992 [ER DEBUG] Transition initiated. From room: 21,13 at position X/Y: 105,125
+MathQuest.js:109025 [ER DEBUG] Checking redirection for vanilla move path key: 21_13_22_11
+MathQuest.js:109068 [ER DEBUG] No randomizer override entry for key [21_13_22_11]. Retaining game defaults.
+MathQuest.js:30615 0 0 0 0
