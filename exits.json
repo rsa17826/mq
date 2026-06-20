@@ -44,15 +44,15 @@
       "exits": {
         "east": {
           "top": 0.5,
-          "bottom": 9.5
+          "bottom": 0.5
         },
         "north": {
           "left": 0.5,
-          "right": 13.5
+          "right": 0.5
         },
         "west": {
           "top": 0.5,
-          "bottom": 9.5
+          "bottom": 0.5
         }
       }
     },
@@ -79,15 +79,15 @@
       "exits": {
         "west": {
           "top": 0.5,
-          "bottom": 9.5
+          "bottom": 0.5
         },
         "north": {
           "left": 0.5,
-          "right": 13.5
+          "right": 0.5
         },
         "east": {
           "top": 0.5,
-          "bottom": 9.5
+          "bottom": 0.5
         }
       }
     },
@@ -113,12 +113,12 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "north": {
-          "left": 6.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 9.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -144,12 +144,12 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "east": {
-          "top": 5.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "west": {
-          "top": 9.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "review": true
       }
@@ -176,16 +176,16 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "west": {
-          "top": 5.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "north": {
-          "left": 11.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 9.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "review": true
       }
@@ -212,12 +212,12 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "north": {
-          "left": 4.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 8.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "review": true
       }
@@ -245,15 +245,15 @@
       "exits": {
         "north": {
           "left": 0.5,
-          "right": 13.5
+          "right": 0.5
         },
         "south": {
           "left": 0.5,
-          "right": 13.5
+          "right": 0.5
         },
         "east": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         }
       }
     },
@@ -280,19 +280,19 @@
       "exits": {
         "south": {
           "left": 0.5,
-          "right": 13.5
+          "right": 0.5
         },
         "east": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         },
         "north": {
           "left": 0.5,
-          "right": 13.5
+          "right": 0.5
         },
         "west": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         }
       }
     },
@@ -319,19 +319,19 @@
       "exits": {
         "south": {
           "left": 0.5,
-          "right": 13.5
+          "right": 0.5
         },
         "east": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         },
         "north": {
           "left": 0.5,
-          "right": 13.5
+          "right": 0.5
         },
         "west": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         }
       }
     },
@@ -358,19 +358,19 @@
       "exits": {
         "south": {
           "left": 0.5,
-          "right": 13.5
+          "right": 0.5
         },
         "east": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         },
         "north": {
           "left": 0.5,
-          "right": 13.5
+          "right": 0.5
         },
         "west": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         }
       }
     },
@@ -396,19 +396,19 @@
       "exits": {
         "south": {
           "left": 0.5,
-          "right": 13.5
+          "right": 0.5
         },
         "east": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         },
         "north": {
           "left": 0.5,
-          "right": 13.5
+          "right": 0.5
         },
         "west": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         }
       }
     },
@@ -433,16 +433,16 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 5.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 6.5,
-          "right": 8.5
+          "left": 0.5,
+          "right": 0.5
         },
         "north": {
-          "left": 6.5,
-          "right": 8.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -467,20 +467,20 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 5.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "west": {
-          "top": 5.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 7.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         },
         "north": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -505,16 +505,16 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 8.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 12.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 5.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -539,12 +539,12 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 5.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 8.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "review": true
       }
@@ -571,12 +571,12 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "east": {
-          "top": 7.5,
-          "bottom": 8.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "north": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         },
         "review": true
       }
@@ -603,12 +603,12 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "east": {
-          "top": 1.5,
-          "bottom": 8.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "west": {
-          "top": 1.5,
-          "bottom": 8.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "review": true
       }
@@ -635,12 +635,12 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "north": {
-          "left": 9.5,
-          "right": 11.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 7.5,
-          "bottom": 8.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "review": true
       }
@@ -667,19 +667,19 @@
       "exits": {
         "south": {
           "left": 0.5,
-          "right": 13.5
+          "right": 0.5
         },
         "east": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         },
         "north": {
           "left": 0.5,
-          "right": 13.5
+          "right": 0.5
         },
         "west": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         }
       }
     },
@@ -706,19 +706,19 @@
       "exits": {
         "south": {
           "left": 0.5,
-          "right": 13.5
+          "right": 0.5
         },
         "east": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         },
         "north": {
           "left": 0.5,
-          "right": 13.5
+          "right": 0.5
         },
         "west": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         }
       }
     },
@@ -743,12 +743,12 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 2.5,
-          "bottom": 4.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 6.5,
-          "right": 8.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -773,8 +773,8 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 10.5,
-          "right": 11.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -799,16 +799,16 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 5.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "north": {
-          "left": 5.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 5.5,
-          "right": 8.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -833,8 +833,8 @@
       "notes": null,
       "exits": {
         "west": {
-          "top": 5.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -859,12 +859,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 10.5,
-          "right": 11.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -890,8 +890,8 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "north": {
-          "left": 5.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -939,19 +939,19 @@
       "exits": {
         "south": {
           "left": 0.5,
-          "right": 13.5
+          "right": 0.5
         },
         "east": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         },
         "north": {
           "left": 0.5,
-          "right": 13.5
+          "right": 0.5
         },
         "west": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         }
       }
     },
@@ -978,19 +978,19 @@
       "exits": {
         "south": {
           "left": 0.5,
-          "right": 13.5
+          "right": 0.5
         },
         "east": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         },
         "north": {
           "left": 0.5,
-          "right": 13.5
+          "right": 0.5
         },
         "west": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         }
       }
     },
@@ -1017,19 +1017,19 @@
       "exits": {
         "south": {
           "left": 0.5,
-          "right": 13.5
+          "right": 0.5
         },
         "east": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         },
         "north": {
           "left": 0.5,
-          "right": 13.5
+          "right": 0.5
         },
         "west": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         }
       }
     },
@@ -1056,15 +1056,15 @@
       "exits": {
         "north": {
           "left": 0.5,
-          "right": 12.5
+          "right": 0.5
         },
         "south": {
           "left": 0.5,
-          "right": 12.5
+          "right": 0.5
         },
         "west": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         }
       }
     },
@@ -1089,12 +1089,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 8.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
           "top": 0.5,
-          "bottom": 9.5
+          "bottom": 0.5
         }
       }
     },
@@ -1120,11 +1120,11 @@
       "exits": {
         "north": {
           "left": 0.5,
-          "right": 8.5
+          "right": 0.5
         },
         "west": {
           "top": 0.5,
-          "bottom": 9.5
+          "bottom": 0.5
         }
       }
     },
@@ -1149,8 +1149,8 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -1175,8 +1175,8 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 5.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -1201,12 +1201,12 @@
       "notes": "origin-keyed fixup applied",
       "exits": {
         "south": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 5.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -1231,8 +1231,8 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 5.5,
-          "right": 6.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -1258,15 +1258,15 @@
       "exits": {
         "south": {
           "left": 0.5,
-          "right": 13.5
+          "right": 0.5
         },
         "east": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         },
         "north": {
-          "left": 13.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -1293,19 +1293,19 @@
       "exits": {
         "south": {
           "left": 0.5,
-          "right": 13.5
+          "right": 0.5
         },
         "east": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         },
         "north": {
           "left": 0.5,
-          "right": 13.5
+          "right": 0.5
         },
         "west": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         }
       }
     },
@@ -1330,12 +1330,12 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 1.5,
-          "bottom": 10.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 13.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
           "top": 0.5,
@@ -1343,7 +1343,7 @@
         },
         "north": {
           "left": 0.5,
-          "right": 12.5
+          "right": 0.5
         }
       }
     },
@@ -1368,16 +1368,16 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 1.5,
-          "bottom": 10.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 13.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 10.5,
-          "bottom": 10.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -1403,20 +1403,20 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "north": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 1.5,
-          "bottom": 10.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 13.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 10.5,
-          "bottom": 10.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -1441,16 +1441,16 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 1.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 12.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 10.5,
-          "bottom": 10.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -1476,16 +1476,16 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "west": {
-          "top": 1.5,
-          "bottom": 1.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "north": {
-          "left": 3.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
           "top": 0.5,
-          "bottom": 9.5
+          "bottom": 0.5
         }
       }
     },
@@ -1511,15 +1511,15 @@
       "exits": {
         "east": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         },
         "south": {
-          "left": 13.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
           "top": 0.5,
-          "bottom": 9.5
+          "bottom": 0.5
         },
         "north": {
           "left": 0.5,
@@ -1549,15 +1549,15 @@
       "exits": {
         "east": {
           "top": 0.5,
-          "bottom": 4.5
+          "bottom": 0.5
         },
         "north": {
           "left": 0.5,
-          "right": 8.5
+          "right": 0.5
         },
         "west": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         },
         "south": {
           "left": 0.5,
@@ -1587,8 +1587,8 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "west": {
-          "top": 4.5,
-          "bottom": 5.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -1613,12 +1613,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 1.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
           "top": 0.5,
-          "bottom": 9.5
+          "bottom": 0.5
         }
       }
     },
@@ -1644,15 +1644,15 @@
       "exits": {
         "north": {
           "left": 0.5,
-          "right": 9.5
+          "right": 0.5
         },
         "west": {
           "top": 0.5,
-          "bottom": 9.5
+          "bottom": 0.5
         },
         "east": {
-          "top": 7.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "review": true
       }
@@ -1679,19 +1679,19 @@
       "exits": {
         "east": {
           "top": 0.5,
-          "bottom": 9.5
+          "bottom": 0.5
         },
         "south": {
-          "left": 13.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         },
         "north": {
-          "left": 7.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 7.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "review": true
       }
@@ -1717,16 +1717,16 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 3.5,
-          "bottom": 5.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "north": {
           "left": 0.5,
-          "right": 12.5
+          "right": 0.5
         },
         "west": {
           "top": 0.5,
-          "bottom": 9.5
+          "bottom": 0.5
         }
       }
     },
@@ -1751,16 +1751,16 @@
       "notes": null,
       "exits": {
         "west": {
-          "top": 3.5,
-          "bottom": 5.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "east": {
-          "top": 1.5,
-          "bottom": 10.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 13.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -1786,16 +1786,16 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "east": {
-          "top": 4.5,
-          "bottom": 10.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 13.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 10.5,
-          "bottom": 10.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -1820,20 +1820,20 @@
       "notes": null,
       "exits": {
         "west": {
-          "top": 10.5,
-          "bottom": 10.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "north": {
           "left": 0.5,
-          "right": 4.5
+          "right": 0.5
         },
         "east": {
-          "top": 1.5,
-          "bottom": 10.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 13.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -1858,12 +1858,12 @@
       "notes": null,
       "exits": {
         "west": {
-          "top": 10.5,
-          "bottom": 10.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
           "left": 0.5,
-          "right": 12.5
+          "right": 0.5
         }
       }
     },
@@ -1889,12 +1889,12 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "north": {
-          "left": 11.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 8.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "review": true
       }
@@ -1920,16 +1920,16 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 10.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 8.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "west": {
-          "top": 8.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "review": true
       }
@@ -1956,12 +1956,12 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "north": {
-          "left": 12.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 8.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -1987,11 +1987,11 @@
       "exits": {
         "south": {
           "left": 0.5,
-          "right": 7.5
+          "right": 0.5
         },
         "north": {
-          "left": 7.5,
-          "right": 9.5
+          "left": 0.5,
+          "right": 0.5
         },
         "review": true
       }
@@ -2017,8 +2017,8 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 6.5,
-          "bottom": 7.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -2043,20 +2043,20 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 7.5,
-          "right": 9.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 6.5,
-          "bottom": 7.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "east": {
-          "top": 3.5,
-          "bottom": 10.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 13.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -2081,20 +2081,20 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 1.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 3.5,
-          "bottom": 10.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
           "left": 0.5,
           "right": 0.5
         },
         "east": {
-          "top": 10.5,
-          "bottom": 10.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -2124,11 +2124,11 @@
         },
         "north": {
           "left": 0.5,
-          "right": 12.5
+          "right": 0.5
         },
         "west": {
           "top": 0.5,
-          "bottom": 9.5
+          "bottom": 0.5
         }
       }
     },
@@ -2154,15 +2154,15 @@
       "exits": {
         "north": {
           "left": 0.5,
-          "right": 1.5
+          "right": 0.5
         },
         "east": {
-          "top": 10.5,
-          "bottom": 10.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 1.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -2188,19 +2188,19 @@
       "exits": {
         "north": {
           "left": 0.5,
-          "right": 12.5
+          "right": 0.5
         },
         "west": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         },
         "south": {
           "left": 0.5,
           "right": 0.5
         },
         "east": {
-          "top": 7.5,
-          "bottom": 10.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "review": true
       }
@@ -2227,15 +2227,15 @@
       "exits": {
         "east": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         },
         "south": {
-          "left": 13.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         },
         "north": {
-          "left": 7.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         },
         "review": true
       }
@@ -2285,15 +2285,15 @@
       "exits": {
         "north": {
           "left": 0.5,
-          "right": 13.5
+          "right": 0.5
         },
         "east": {
           "top": 0.5,
-          "bottom": 9.5
+          "bottom": 0.5
         },
         "south": {
           "left": 0.5,
-          "right": 4.5
+          "right": 0.5
         }
       }
     },
@@ -2319,11 +2319,11 @@
       "exits": {
         "north": {
           "left": 0.5,
-          "right": 12.5
+          "right": 0.5
         },
         "west": {
           "top": 0.5,
-          "bottom": 9.5
+          "bottom": 0.5
         }
       }
     },
@@ -2348,16 +2348,16 @@
       "notes": null,
       "exits": {
         "west": {
-          "top": 4.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 6.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         },
         "north": {
-          "left": 10.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         },
         "review": true
       }
@@ -2383,12 +2383,12 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 12.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         },
         "north": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -2413,12 +2413,12 @@
       "notes": "origin-keyed fixup applied",
       "exits": {
         "south": {
-          "left": 6.5,
-          "right": 9.5
+          "left": 0.5,
+          "right": 0.5
         },
         "north": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -2463,12 +2463,12 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 7.5,
-          "right": 9.5
+          "left": 0.5,
+          "right": 0.5
         },
         "north": {
-          "left": 1.5,
-          "right": 9.5
+          "left": 0.5,
+          "right": 0.5
         },
         "review": true
       }
@@ -2516,19 +2516,19 @@
       "exits": {
         "south": {
           "left": 0.5,
-          "right": 13.5
+          "right": 0.5
         },
         "west": {
-          "top": 2.5,
-          "bottom": 10.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "north": {
-          "left": 1.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 2.5,
-          "bottom": 10.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -2553,16 +2553,16 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 4.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
           "left": 0.5,
-          "right": 12.5
+          "right": 0.5
         },
         "west": {
-          "top": 2.5,
-          "bottom": 10.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -2588,12 +2588,12 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "west": {
-          "top": 4.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "north": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -2618,16 +2618,16 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 1.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         },
         "south": {
-          "left": 13.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         },
         "review": true
       }
@@ -2654,15 +2654,15 @@
       "exits": {
         "east": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         },
         "south": {
-          "left": 13.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         },
         "north": {
-          "left": 7.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         },
         "review": true
       }
@@ -2690,11 +2690,11 @@
       "exits": {
         "north": {
           "left": 0.5,
-          "right": 12.5
+          "right": 0.5
         },
         "west": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         },
         "south": {
           "left": 0.5,
@@ -2744,8 +2744,8 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "north": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -2770,16 +2770,16 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 4.5,
-          "right": 5.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 4.5,
-          "bottom": 10.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 13.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -2805,11 +2805,11 @@
       "exits": {
         "south": {
           "left": 0.5,
-          "right": 12.5
+          "right": 0.5
         },
         "west": {
-          "top": 10.5,
-          "bottom": 10.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -2835,12 +2835,12 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "north": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -2865,12 +2865,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 10.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 10.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -2895,8 +2895,8 @@
       "notes": "origin-keyed fixup applied",
       "exits": {
         "south": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -2921,16 +2921,16 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 11.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 8.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         },
         "review": true
       }
@@ -2956,8 +2956,8 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 1.5,
-          "right": 9.5
+          "left": 0.5,
+          "right": 0.5
         },
         "review": true
       }
@@ -2983,8 +2983,8 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 7.5,
-          "right": 11.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -3009,12 +3009,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 3.5,
-          "right": 4.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 1.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -3039,8 +3039,8 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 1.5,
-          "right": 2.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -3065,12 +3065,12 @@
       "notes": "origin-keyed fixup applied",
       "exits": {
         "north": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -3116,16 +3116,16 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 1.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         },
         "south": {
-          "left": 13.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         },
         "review": true
       }
@@ -3153,19 +3153,19 @@
       "exits": {
         "north": {
           "left": 0.5,
-          "right": 13.5
+          "right": 0.5
         },
         "east": {
-          "top": 10.5,
-          "bottom": 10.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "west": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         },
         "south": {
           "left": 0.5,
-          "right": 12.5
+          "right": 0.5
         },
         "review": true
       }
@@ -3192,15 +3192,15 @@
       "exits": {
         "east": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         },
         "south": {
-          "left": 13.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
           "top": 0.5,
-          "bottom": 3.5
+          "bottom": 0.5
         },
         "north": {
           "left": 0.5,
@@ -3230,16 +3230,16 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 9.5,
-          "bottom": 10.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
           "left": 0.5,
-          "right": 12.5
+          "right": 0.5
         },
         "west": {
           "top": 0.5,
-          "bottom": 10.5
+          "bottom": 0.5
         },
         "north": {
           "left": 0.5,
@@ -3268,12 +3268,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 1.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
           "top": 0.5,
-          "bottom": 8.5
+          "bottom": 0.5
         }
       }
     },
@@ -3298,12 +3298,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 8.5,
-          "right": 9.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -3328,12 +3328,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 4.5,
-          "right": 5.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 4.5,
-          "right": 5.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -3358,12 +3358,12 @@
       "notes": "origin-keyed fixup applied",
       "exits": {
         "south": {
-          "left": 5.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 5.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -3388,16 +3388,16 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 4.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 5.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 5.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -3422,12 +3422,12 @@
       "notes": null,
       "exits": {
         "west": {
-          "top": 4.5,
-          "bottom": 7.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 10.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -3452,8 +3452,8 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 2.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "review": true
       }
@@ -3479,12 +3479,12 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 3.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 2.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "review": true
       }
@@ -3531,8 +3531,8 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 4.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -3557,16 +3557,16 @@
       "notes": null,
       "exits": {
         "west": {
-          "top": 3.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "north": {
-          "left": 1.5,
-          "right": 4.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 7.5,
-          "right": 11.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -3591,16 +3591,16 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 6.5,
-          "bottom": 7.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 3.5,
-          "right": 4.5
+          "left": 0.5,
+          "right": 0.5
         },
         "north": {
-          "left": 3.5,
-          "right": 4.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -3625,12 +3625,12 @@
       "notes": null,
       "exits": {
         "west": {
-          "top": 6.5,
-          "bottom": 7.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 1.5,
-          "right": 2.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -3655,12 +3655,12 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         },
         "north": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -3685,12 +3685,12 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 1.5,
-          "bottom": 10.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 13.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -3715,16 +3715,16 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 1.5,
-          "bottom": 10.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 13.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 10.5,
-          "bottom": 10.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "review": true
       }
@@ -3750,12 +3750,12 @@
       "notes": null,
       "exits": {
         "west": {
-          "top": 10.5,
-          "bottom": 10.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
           "left": 0.5,
-          "right": 12.5
+          "right": 0.5
         },
         "review": true
       }
@@ -3781,8 +3781,8 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 8.5,
-          "right": 9.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -3808,15 +3808,15 @@
       "exits": {
         "east": {
           "top": 0.5,
-          "bottom": 9.5
+          "bottom": 0.5
         },
         "north": {
-          "left": 11.5,
-          "right": 11.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 1.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "review": true
       }
@@ -3842,12 +3842,12 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 8.5,
-          "bottom": 8.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "west": {
-          "top": 1.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "review": true
       }
@@ -3873,16 +3873,16 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 5.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 8.5,
-          "bottom": 8.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "west": {
-          "top": 8.5,
-          "bottom": 8.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "review": true
       }
@@ -3908,12 +3908,12 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 8.5,
-          "bottom": 8.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "west": {
-          "top": 8.5,
-          "bottom": 8.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -3938,16 +3938,16 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 2.5,
-          "bottom": 3.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "north": {
-          "left": 10.5,
-          "right": 10.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 8.5,
-          "bottom": 8.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "review": true
       }
@@ -3973,12 +3973,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 10.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 2.5,
-          "bottom": 3.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "review": true
       }
@@ -4004,8 +4004,8 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 5.5,
-          "right": 6.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -4030,16 +4030,16 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 10.5,
-          "right": 11.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 5.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 1.5,
-          "right": 4.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -4064,12 +4064,12 @@
       "notes": null,
       "exits": {
         "west": {
-          "top": 5.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 3.5,
-          "right": 4.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -4094,12 +4094,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 4.5,
-          "right": 8.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 2.5,
-          "bottom": 3.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -4124,12 +4124,12 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 2.5,
-          "bottom": 3.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -4155,12 +4155,12 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "east": {
-          "top": 5.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 3.5,
-          "right": 6.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -4185,12 +4185,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 9.5,
-          "right": 10.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 5.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -4216,16 +4216,16 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "north": {
-          "left": 2.5,
-          "right": 2.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 2.5,
-          "bottom": 3.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 5.5,
-          "right": 5.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -4250,12 +4250,12 @@
       "notes": null,
       "exits": {
         "west": {
-          "top": 2.5,
-          "bottom": 3.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 11.5,
-          "right": 11.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -4280,12 +4280,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 5.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 6.5,
-          "bottom": 7.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -4310,16 +4310,16 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 6.5,
-          "bottom": 7.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 5.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -4344,12 +4344,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 4.5,
-          "right": 5.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 5.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -4374,16 +4374,16 @@
       "notes": "origin-keyed fixup applied",
       "exits": {
         "south": {
-          "left": 4.5,
-          "right": 5.5
+          "left": 0.5,
+          "right": 0.5
         },
         "north": {
-          "left": 4.5,
-          "right": 5.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 5.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -4408,12 +4408,12 @@
       "notes": "origin-keyed fixup applied",
       "exits": {
         "north": {
-          "left": 9.5,
-          "right": 10.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 11.5,
-          "right": 11.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -4438,8 +4438,8 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 5.5,
-          "right": 6.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -4464,12 +4464,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 9.5,
-          "right": 11.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 10.5,
-          "right": 11.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -4494,12 +4494,12 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 4.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "north": {
-          "left": 1.5,
-          "right": 9.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -4524,20 +4524,20 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 5.5,
-          "right": 8.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 4.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 5.5,
-          "right": 8.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 4.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -4562,8 +4562,8 @@
       "notes": null,
       "exits": {
         "west": {
-          "top": 4.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -4588,20 +4588,20 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 2.5,
-          "bottom": 2.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "north": {
-          "left": 4.5,
-          "right": 5.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 9.5,
-          "right": 10.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 2.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -4626,16 +4626,16 @@
       "notes": null,
       "exits": {
         "west": {
-          "top": 2.5,
-          "bottom": 2.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 1.5,
-          "right": 2.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 7.5,
-          "bottom": 8.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -4660,12 +4660,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 5.5,
-          "right": 5.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 7.5,
-          "bottom": 7.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -4690,12 +4690,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 4.5,
-          "right": 10.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 4.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -4720,12 +4720,12 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 5.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         },
         "north": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -4750,12 +4750,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 9.5,
-          "right": 10.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 4.5,
-          "right": 5.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -4780,12 +4780,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 4.5,
-          "right": 5.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 4.5,
-          "right": 5.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -4810,12 +4810,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 12.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 10.5,
-          "right": 10.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -4840,8 +4840,8 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 7.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -4866,16 +4866,16 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 4.5,
-          "right": 10.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 7.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
           "left": 0.5,
-          "right": 10.5
+          "right": 0.5
         },
         "review": true
       }
@@ -4901,12 +4901,12 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 1.5,
-          "bottom": 10.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 9.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         },
         "review": true
       }
@@ -4933,7 +4933,7 @@
       "exits": {
         "south": {
           "left": 0.5,
-          "right": 4.5
+          "right": 0.5
         },
         "review": true
       }
@@ -4960,15 +4960,15 @@
       "exits": {
         "north": {
           "left": 0.5,
-          "right": 2.5
+          "right": 0.5
         },
         "east": {
-          "top": 3.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 5.5,
-          "right": 5.5
+          "left": 0.5,
+          "right": 0.5
         },
         "review": true
       }
@@ -4994,16 +4994,16 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 4.5,
-          "right": 4.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 4.5,
-          "bottom": 5.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "west": {
-          "top": 3.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -5028,16 +5028,16 @@
       "notes": null,
       "exits": {
         "west": {
-          "top": 4.5,
-          "bottom": 4.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "north": {
-          "left": 11.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 4.5,
-          "right": 6.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -5062,8 +5062,8 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 3.5,
-          "right": 9.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -5088,8 +5088,8 @@
       "notes": "origin-keyed fixup applied",
       "exits": {
         "south": {
-          "left": 8.5,
-          "right": 8.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -5114,12 +5114,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 2.5,
-          "right": 2.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 10.5,
-          "right": 10.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -5144,16 +5144,16 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 3.5,
-          "right": 5.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 8.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 5.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -5178,12 +5178,12 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 4.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 8.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -5208,12 +5208,12 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 4.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "north": {
-          "left": 1.5,
-          "right": 3.5
+          "left": 0.5,
+          "right": 0.5
         },
         "review": true
       }
@@ -5239,20 +5239,20 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 1.5,
-          "right": 1.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 1.5,
-          "bottom": 2.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 4.5,
-          "right": 10.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 4.5,
-          "bottom": 5.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "review": true
       }
@@ -5278,12 +5278,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 9.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 1.5,
-          "bottom": 2.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "review": true
       }
@@ -5309,8 +5309,8 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 5.5,
-          "right": 9.5
+          "left": 0.5,
+          "right": 0.5
         },
         "review": true
       }
@@ -5337,8 +5337,8 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "east": {
-          "top": 6.5,
-          "bottom": 8.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -5364,12 +5364,12 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "north": {
-          "left": 3.5,
-          "right": 4.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 6.5,
-          "bottom": 8.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -5394,12 +5394,12 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 2.5,
-          "right": 2.5
+          "left": 0.5,
+          "right": 0.5
         },
         "north": {
-          "left": 3.5,
-          "right": 4.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -5424,12 +5424,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 7.5,
-          "right": 8.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 3.5,
-          "right": 4.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -5454,12 +5454,12 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 5.5,
-          "bottom": 7.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 12.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -5484,12 +5484,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 9.5,
-          "right": 10.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 5.5,
-          "bottom": 7.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -5514,12 +5514,12 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 1.5,
-          "bottom": 1.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "north": {
-          "left": 1.5,
-          "right": 1.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -5544,16 +5544,16 @@
       "notes": null,
       "exits": {
         "west": {
-          "top": 1.5,
-          "bottom": 1.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 1.5,
-          "right": 2.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 8.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -5578,16 +5578,16 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 8.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 5.5,
-          "right": 13.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 8.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -5612,12 +5612,12 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 2.5,
-          "bottom": 3.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "west": {
-          "top": 8.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -5642,16 +5642,16 @@
       "notes": "origin-keyed fixup applied",
       "exits": {
         "north": {
-          "left": 10.5,
-          "right": 11.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 2.5,
-          "bottom": 3.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -5676,12 +5676,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 1.5,
-          "right": 1.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 1.5,
-          "right": 1.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -5706,16 +5706,16 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 4.5,
-          "right": 6.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 3.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
           "left": 0.5,
-          "right": 1.5
+          "right": 0.5
         },
         "review": true
       }
@@ -5741,16 +5741,16 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 8.5,
-          "right": 9.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 5.5,
-          "right": 9.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 3.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "review": true
       }
@@ -5776,8 +5776,8 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 4.5,
-          "bottom": 4.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -5802,20 +5802,20 @@
       "notes": "origin-keyed fixup applied",
       "exits": {
         "north": {
-          "left": 3.5,
-          "right": 4.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 4.5,
-          "bottom": 4.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "east": {
-          "top": 4.5,
-          "bottom": 4.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 3.5,
-          "right": 4.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -5840,8 +5840,8 @@
       "notes": "origin-keyed fixup applied",
       "exits": {
         "south": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -5866,12 +5866,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 2.5,
-          "right": 11.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 7.5,
-          "right": 8.5
+          "left": 0.5,
+          "right": 0.5
         },
         "review": true
       }
@@ -5897,12 +5897,12 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 1.5,
-          "bottom": 2.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "north": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -5927,12 +5927,12 @@
       "notes": null,
       "exits": {
         "west": {
-          "top": 1.5,
-          "bottom": 2.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 9.5,
-          "right": 10.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -5957,8 +5957,8 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 1.5,
-          "right": 1.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -5983,8 +5983,8 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 3.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -6009,12 +6009,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 5.5,
-          "right": 6.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 3.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -6039,8 +6039,8 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 5.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -6065,12 +6065,12 @@
       "notes": null,
       "exits": {
         "west": {
-          "top": 5.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 10.5,
-          "right": 11.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -6095,12 +6095,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 9.5,
-          "right": 10.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 1.5,
-          "right": 1.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -6125,12 +6125,12 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 1.5,
-          "bottom": 2.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 4.5,
-          "right": 6.5
+          "left": 0.5,
+          "right": 0.5
         },
         "review": true
       }
@@ -6156,16 +6156,16 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 11.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 1.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 8.5,
-          "right": 9.5
+          "left": 0.5,
+          "right": 0.5
         },
         "review": true
       }
@@ -6213,11 +6213,11 @@
       "exits": {
         "north": {
           "left": 0.5,
-          "right": 2.5
+          "right": 0.5
         },
         "east": {
-          "top": 8.5,
-          "bottom": 8.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -6242,12 +6242,12 @@
       "notes": null,
       "exits": {
         "west": {
-          "top": 8.5,
-          "bottom": 8.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 2.5,
-          "right": 4.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -6273,8 +6273,8 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "north": {
-          "left": 8.5,
-          "right": 8.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -6300,8 +6300,8 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "north": {
-          "left": 6.5,
-          "right": 6.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -6326,8 +6326,8 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 5.5,
-          "right": 6.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -6352,8 +6352,8 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 3.5,
-          "right": 11.5
+          "left": 0.5,
+          "right": 0.5
         },
         "review": true
       }
@@ -6379,8 +6379,8 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -6405,16 +6405,16 @@
       "notes": "origin-keyed fixup applied",
       "exits": {
         "north": {
-          "left": 4.5,
-          "right": 8.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 3.5,
-          "bottom": 4.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         },
         "review": true
       }
@@ -6440,12 +6440,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 11.5,
-          "right": 11.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 4.5,
-          "bottom": 4.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "review": true
       }
@@ -6471,8 +6471,8 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 8.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -6497,20 +6497,20 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 1.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 8.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
           "left": 0.5,
-          "right": 5.5
+          "right": 0.5
         },
         "east": {
-          "top": 9.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -6535,16 +6535,16 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 4.5,
-          "bottom": 4.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "north": {
-          "left": 8.5,
-          "right": 8.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 9.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "review": true
       }
@@ -6570,12 +6570,12 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 1.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "west": {
-          "top": 4.5,
-          "bottom": 4.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -6600,20 +6600,20 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 5.5,
-          "right": 6.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 7.5,
-          "bottom": 8.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 9.5,
-          "right": 10.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 1.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -6638,8 +6638,8 @@
       "notes": null,
       "exits": {
         "west": {
-          "top": 7.5,
-          "bottom": 8.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -6664,8 +6664,8 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 11.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -6690,12 +6690,12 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 2.5,
-          "bottom": 3.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 1.5,
-          "right": 2.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -6720,8 +6720,8 @@
       "notes": null,
       "exits": {
         "west": {
-          "top": 2.5,
-          "bottom": 3.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -6746,12 +6746,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 2.5,
-          "right": 9.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 3.5,
-          "bottom": 7.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -6776,12 +6776,12 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 6.5,
-          "right": 6.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 3.5,
-          "bottom": 7.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -6806,8 +6806,8 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 5.5,
-          "right": 6.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -6832,12 +6832,12 @@
       "notes": "origin-keyed fixup applied",
       "exits": {
         "north": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         },
         "review": true
       }
@@ -6863,16 +6863,16 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 1.5,
-          "right": 8.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 3.5,
-          "bottom": 3.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 7.5,
-          "right": 8.5
+          "left": 0.5,
+          "right": 0.5
         },
         "review": true
       }
@@ -6898,16 +6898,16 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 8.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 3.5,
-          "bottom": 4.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 1.5,
-          "right": 1.5
+          "left": 0.5,
+          "right": 0.5
         },
         "review": true
       }
@@ -6933,12 +6933,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 1.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -6963,8 +6963,8 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 8.5,
-          "right": 8.5
+          "left": 0.5,
+          "right": 0.5
         },
         "review": true
       }
@@ -7010,16 +7010,16 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 4.5,
-          "bottom": 5.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 5.5,
-          "right": 6.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -7044,8 +7044,8 @@
       "notes": null,
       "exits": {
         "west": {
-          "top": 4.5,
-          "bottom": 5.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -7070,8 +7070,8 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 3.5,
-          "right": 9.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -7096,8 +7096,8 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 5.5,
-          "right": 6.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -7142,8 +7142,8 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 1.5,
-          "right": 8.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -7168,12 +7168,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 6.5,
-          "right": 10.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 8.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         },
         "review": true
       }
@@ -7199,12 +7199,12 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         },
         "north": {
           "left": 0.5,
-          "right": 13.5
+          "right": 0.5
         },
         "review": true
       }
@@ -7250,12 +7250,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 8.5,
-          "right": 9.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 2.5,
-          "bottom": 3.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -7280,16 +7280,16 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 10.5,
-          "right": 11.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 2.5,
-          "bottom": 3.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -7315,8 +7315,8 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "north": {
-          "left": 5.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -7342,16 +7342,16 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "north": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 4.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "west": {
-          "top": 4.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -7376,16 +7376,16 @@
       "notes": "origin-keyed fixup applied",
       "exits": {
         "west": {
-          "top": 4.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "east": {
-          "top": 4.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -7411,12 +7411,12 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "west": {
-          "top": 4.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "east": {
-          "top": 7.5,
-          "bottom": 8.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "review": true
       }
@@ -7443,12 +7443,12 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "north": {
-          "left": 11.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 2.5,
-          "bottom": 5.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "review": true
       }
@@ -7474,8 +7474,8 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 1.5,
-          "bottom": 1.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -7500,12 +7500,12 @@
       "notes": null,
       "exits": {
         "west": {
-          "top": 1.5,
-          "bottom": 1.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 6.5,
-          "right": 6.5
+          "left": 0.5,
+          "right": 0.5
         },
         "review": true
       }
@@ -7531,12 +7531,12 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 9.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
           "left": 0.5,
-          "right": 13.5
+          "right": 0.5
         },
         "review": true
       }
@@ -7562,12 +7562,12 @@
       "notes": null,
       "exits": {
         "west": {
-          "top": 9.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "east": {
-          "top": 1.5,
-          "bottom": 2.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -7592,12 +7592,12 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 10.5,
-          "right": 11.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 4.5,
-          "bottom": 5.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -7622,12 +7622,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 5.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 5.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -7653,8 +7653,8 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "south": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -7679,12 +7679,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 6.5,
-          "right": 6.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 6.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -7709,8 +7709,8 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 6.5,
-          "right": 6.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -7735,12 +7735,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 6.5,
-          "right": 6.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 4.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -7765,12 +7765,12 @@
       "notes": null,
       "exits": {
         "west": {
-          "top": 4.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 11.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -7795,12 +7795,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 5.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 5.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -7845,16 +7845,16 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 5.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 6.5,
-          "right": 6.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 4.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -7879,16 +7879,16 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 5.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 4.5,
-          "bottom": 6.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 6.5,
-          "right": 6.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -7913,12 +7913,12 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 6.5,
-          "right": 6.5
+          "left": 0.5,
+          "right": 0.5
         },
         "south": {
-          "left": 6.5,
-          "right": 6.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -7943,8 +7943,8 @@
       "notes": null,
       "exits": {
         "north": {
-          "left": 6.5,
-          "right": 6.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -7969,8 +7969,8 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 5.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -7995,8 +7995,8 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 1.5,
-          "bottom": 2.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -8021,12 +8021,12 @@
       "notes": null,
       "exits": {
         "west": {
-          "top": 1.5,
-          "bottom": 2.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 5.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -8051,12 +8051,12 @@
       "notes": null,
       "exits": {
         "east": {
-          "top": 2.5,
-          "bottom": 4.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 5.5,
-          "right": 7.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -8081,12 +8081,12 @@
       "notes": null,
       "exits": {
         "west": {
-          "top": 2.5,
-          "bottom": 4.5
+          "top": 0.5,
+          "bottom": 0.5
         },
         "south": {
-          "left": 6.5,
-          "right": 6.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -8111,8 +8111,8 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 6.5,
-          "right": 6.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -8137,8 +8137,8 @@
       "notes": "destination-keyed override/sentinel-jump applied",
       "exits": {
         "south": {
-          "left": 1.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -8164,8 +8164,8 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "north": {
-          "left": 4.5,
-          "right": 9.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -8210,8 +8210,8 @@
       "notes": "destination-keyed override/sentinel-jump applied",
       "exits": {
         "south": {
-          "left": 1.5,
-          "right": 12.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -8237,8 +8237,8 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "north": {
-          "left": 8.5,
-          "right": 10.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -8264,8 +8264,8 @@
       "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
       "exits": {
         "north": {
-          "left": 5.5,
-          "right": 6.5
+          "left": 0.5,
+          "right": 0.5
         }
       }
     },
@@ -8290,12 +8290,12 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 8.5,
-          "right": 10.5
+          "left": 0.5,
+          "right": 0.5
         },
         "east": {
-          "top": 1.5,
-          "bottom": 4.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -8320,12 +8320,12 @@
       "notes": null,
       "exits": {
         "south": {
-          "left": 5.5,
-          "right": 6.5
+          "left": 0.5,
+          "right": 0.5
         },
         "west": {
-          "top": 1.5,
-          "bottom": 4.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     },
@@ -24717,8 +24717,8 @@
       "dest": null,
       "exits": {
         "west": {
-          "top": 8.5,
-          "bottom": 9.5
+          "top": 0.5,
+          "bottom": 0.5
         }
       }
     }
