@@ -14,6 +14,18 @@
       },
       "dest_x": null,
       "dest_y": 25,
+      "exits": {
+        "west": null,
+        "south": null,
+        "east": {
+          "top": 20,
+          "bottom": 40
+        },
+        "north": {
+          "left": 20,
+          "right": 90
+        }
+      },
       "gated": false,
       "gate": null,
       "one_way": false,
