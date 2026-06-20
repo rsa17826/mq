@@ -334,8 +334,12 @@
       "receive": ["item:gold#750"]
     },
     {
-      "room": { "north": 9, "east": 10 },
-      "requires": [["item:emerald#1", "entrance."]],
+      "room": { "north": 8, "east": 10 },
+      "requires": [
+        ["item:emerald#1", "entrance.north1"],
+        ["item:emerald#1", "entrance.east1"],
+        ["item:emerald#1", "entrance.east2"]
+      ],
       "receive": ["item:gold#750"]
     }
   ],
