@@ -235,6 +235,93 @@
       "room": { "north": 12, "east": 12 },
       "requires": [["quest.headstone", "entrance.west0"]],
       "receive": ["quest.headstone.+1"]
+    },
+    {
+      "room": { "north": 10, "east": 12 },
+      "info": "warp skill warp point"
+    },
+    {
+      "room": { "north": 12, "east": 9 },
+      "receive": ["spawnpoint"]
+    },
+    {
+      "room": { "north": 12, "east": 9 },
+      "requires": [["item:gold"]],
+      "receive": ["food:carrot"]
+    },
+    {
+      "room": { "north": 12, "east": 9 },
+      "requires": [["item:gold"]],
+      "receive": ["food:beef jerkey"]
+    },
+    {
+      "room": { "north": 12, "east": 9 },
+      "requires": [["item:gold"]],
+      "receive": ["food:cherry"]
+    },
+    {
+      "room": { "north": 12, "east": 9 },
+      "requires": [["item:gold"]],
+      "receive": ["weapon:survival knife"]
+    },
+    {
+      "room": { "north": 12, "east": 9 },
+      "requires": [["item:gold"]],
+      "receive": ["weapon:warlock staf"]
+    },
+    {
+      "room": { "north": 12, "east": 9 },
+      "requires": [["item:gold"]],
+      "receive": ["weapon:sun sword"]
+    },
+    {
+      "room": { "north": 12, "east": 9 },
+      "requires": [["item:gold"]],
+      "receive": ["armor:sun armour"]
+    },
+    {
+      "room": { "north": 12, "east": 9 },
+      "requires": [["item:gold"]],
+      "receive": ["armor:speed vest"]
+    },
+    {
+      "room": { "north": 12, "east": 9 },
+      "requires": [["item:venom"]],
+      "receive": ["food:orange"]
+    },
+    {
+      "room": { "north": 11, "east": 9 },
+      "requires": [["quest:headstone.4"]],
+      "receive": ["skill:warp"]
+    },
+    {
+      "room": { "north": 11, "east": 9 },
+      "receive": ["quest:headstone"]
+    },
+    {
+      "room": { "north": 11, "east": 9 },
+      "requires": [["item:gold"]],
+      "receive": ["magic:weak"]
+    },
+    {
+      "room": { "north": 11, "east": 9 },
+      "requires": [["item:gold"]],
+      "receive": ["magic:refresh"]
+    },
+    {
+      "room": { "north": 11, "east": 9 },
+      "requires": [["item:gold"]],
+      "receive": ["magic:lightning"]
+    },
+    {
+      "room": { "north": 11, "east": 9 },
+      "requires": [["item:wolf pelt"]],
+      "receive": ["item:gold#22"]
+    },
+    {
+      "room": { "north": 11, "east": 11 },
+      "requires": [["???"]],
+      "receive": ["quest.???"]
     }
   ],
   "gates": [

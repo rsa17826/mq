@@ -2452,7 +2452,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 11,
@@ -2487,7 +2487,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 11,
@@ -2534,7 +2534,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 11,
@@ -2894,7 +2894,7 @@
       ],
       "north": []
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 12,
@@ -2932,7 +2932,7 @@
       ],
       "north": []
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 12,
@@ -7086,7 +7086,7 @@
       ],
       "north": []
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 10,
