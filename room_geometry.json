@@ -1269,11 +1269,11 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 8,
-    "complete": false,
+    "complete": true,
     "east": 10,
     "exits": {
       "west": [
@@ -1702,7 +1702,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 9,
@@ -1737,7 +1737,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 9,
@@ -1784,7 +1784,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 9,
@@ -2151,7 +2151,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 10,
@@ -7060,7 +7060,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 12,

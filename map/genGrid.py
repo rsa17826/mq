@@ -319,8 +319,8 @@ def generate_html():
 
         overlay_content = "\n".join(squares_html)
 
-        tag = f"""        <div class="tile-wrapper" style="grid-column: {grid_col}; grid-row: {grid_row};" title="Position: {east},{north}" data-pos="{east},{north}">
-            <img src="{img_path}" class="grid-item" alt="Tile {east},{north}">
+        tag = f"""        <div class="tile-wrapper" style="grid-column: {grid_col}; grid-row: {grid_row};" title="Position: {north},{east}" data-pos="{north},{east}">
+            <img src="{img_path}" class="grid-item" alt="Tile {north},{east}">
             <div class="overlay-layer">
 {overlay_content}
             </div>

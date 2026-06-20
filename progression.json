@@ -325,8 +325,18 @@
     },
     {
       "room": { "north": 10, "east": 9 },
-      "requires": [["permit:bomb use.2"]],
+      "requires": [["permit:bomb use.2", "item:key#1"]],
       "receive": ["food:steak#30"]
+    },
+    {
+      "room": { "north": 9, "east": 10 },
+      "requires": [["permit:bomb use", "item:key#1"]],
+      "receive": ["item:gold#750"]
+    },
+    {
+      "room": { "north": 9, "east": 10 },
+      "requires": [["item:emerald#1", "entrance."]],
+      "receive": ["item:gold#750"]
     }
   ],
   "gates": [
