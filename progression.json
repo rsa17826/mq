@@ -25,7 +25,9 @@
     { "id": "item:venom" },
     { "id": "item:gold" },
     { "id": "item:emerald" },
-    { "id": "quest.pam", "type": "int" }
+    { "id": "quest.pam", "type": "int" },
+
+    { "id": "item:ring.health" }
   ],
   "locations": [
     {
@@ -118,6 +120,16 @@
       "room": { "north": 19, "east": 21 },
       "give": [["item:diamond#20"]],
       "receive": ["quest.pam>14"]
+    },
+    {
+      "room": { "north": 16, "east": 22 },
+      "give": [["item:gold#400"]],
+      "receive": ["item:key#1"]
+    },
+    {
+      "room": { "north": 16, "east": 21 },
+      "give": [["item:ring.health"]],
+      "receive": ["skill:dig"]
     }
   ],
   "gates": [
@@ -127,6 +139,20 @@
       "to": "north0",
       "bidirectional": true,
       "requires": [["bomb"], ["key", "asword"]]
+    },
+    {
+      "room": { "north": 16, "east": 19 },
+      "from": "west0",
+      "to": "south0",
+      "bidirectional": true,
+      "requires": [["bomb2"]]
+    },
+    {
+      "room": { "north": 16, "east": 19 },
+      "from": "west0",
+      "to": "east0",
+      "bidirectional": true,
+      "requires": [["bomb2"]]
     }
   ]
 }
