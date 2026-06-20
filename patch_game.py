@@ -1,5 +1,7 @@
+# @noregex
 """
 Patch MathQuest.js with spatial disambiguation logic for multiple screen exits.
+Includes detailed telemetry debug logs and setter recursion-lock fixes.
 """
 
 import json
@@ -45,7 +47,6 @@ for c in connections:
           str(d_code),
       )
   )
-# @noregex
 table_js = ",".join(rows)
 
 PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
@@ -72,9 +73,11 @@ PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
     var erNorth = manager.north === undefined ? null : manager.north
     var erEast = manager.east === undefined ? null : manager.east
     var erInTransition = false
+    var erUpdatingInternal = false // Safety flag to prevent infinite loops from our own writes
     var erOrigin = {{ north: null, east: null, x: null, y: null }}
 
     function erBeginWriteIfNeeded() {{
+      if (erUpdatingInternal) return; // Ignore updates performed inside loca()
       if (!erInTransition) {{
         erOrigin.north = erNorth
         erOrigin.east = erEast
@@ -86,6 +89,7 @@ PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
           erOrigin.y = null
         }}
         erInTransition = true
+        console.log("[ER DEBUG] Transition initiated. From room:", erOrigin.north + "," + erOrigin.east, "at position X/Y:", erOrigin.x + "," + erOrigin.y);
       }}
     }}
 
@@ -106,17 +110,21 @@ PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
     __createObject.loca = function () {{
       if (erInTransition) {{
         var key = erOrigin.north + "_" + erOrigin.east + "_" + erNorth + "_" + erEast
+        console.log("[ER DEBUG] Checking redirection for vanilla move path key:", key);
+        
         var conns = ER_MAP.get(key)
         if (conns && conns.length > 0) {{
           var conn = conns[0]
-          // If multiple warps share a room boundary edge, find the closest match based on player exit location
+          
           if (conns.length > 1 && erOrigin.x !== null && erOrigin.y !== null) {{
+            console.log("[ER DEBUG] Multi-gap overlap discovered! Choices count:", conns.length);
             var minDiff = Infinity
             for (var j = 0; j < conns.length; j++) {{
               var c = conns[j]
               if (c.dirCode > 0 && c.srcCoord !== -1) {{
                 var pCoord = (c.dirCode === 1 || c.dirCode === 2) ? erOrigin.x : erOrigin.y
                 var diff = Math.abs(pCoord - c.srcCoord)
+                console.log(" -> Match Check candidate [" + j + "]: dir=" + c.dirCode + " expectedCoord=" + c.srcCoord + " distance=" + diff);
                 if (diff < minDiff) {{
                   minDiff = diff
                   conn = c
@@ -124,17 +132,28 @@ PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
               }}
             }}
           }}
-          manager.north = conn.newNorth
-          manager.east = conn.newEast
-          if (manager.char && manager.char[0]) {{
-            if (typeof manager.char[0].set_x === 'function') {{
-              manager.char[0].set_x(conn.newX)
-              manager.char[0].set_y(conn.newY)
-            }} else {{
-              manager.char[0].x = conn.newX
-              manager.char[0].y = conn.newY
+          
+          console.log("[ER DEBUG] Success! Redirecting room target to:", conn.newNorth + "," + conn.newEast, "Placing character at:", conn.newX + "," + conn.newY);
+          
+          // Set safety lock flag to prevent our proxy properties from creating bad transition tracking chains
+          erUpdatingInternal = true
+          try {{
+            manager.north = conn.newNorth
+            manager.east = conn.newEast
+            if (manager.char && manager.char[0]) {{
+              if (typeof manager.char[0].set_x === 'function') {{
+                manager.char[0].set_x(conn.newX)
+                manager.char[0].set_y(conn.newY)
+              }} else {{
+                manager.char[0].x = conn.newX
+                manager.char[0].y = conn.newY
+              }}
             }}
+          }} finally {{
+            erUpdatingInternal = false
           }}
+        }} else {{
+          console.log("[ER DEBUG] No randomizer override entry for key [" + key + "]. Retaining game defaults.");
         }}
         erInTransition = false
       }}
