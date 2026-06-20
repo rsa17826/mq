@@ -33,75 +33,69 @@
   "locations": [
     {
       "room": { "north": 20, "east": 20 },
-      "gives": ["spawnpoint"],
-      "method": "pickup"
+      "gives": ["spawnpoint"]
     },
     {
       "room": { "north": 20, "east": 20 },
-      "gives": ["spawnpoint"],
-      "method": "pickup"
+      "gives": ["spawnpoint"]
     },
     {
       "room": { "north": 19, "east": 21 },
-      "gives": ["item:gold#inf"],
-      "method": "pickup"
+      "gives": ["item:gold#inf"]
     },
     {
       "room": { "north": 15, "east": 21 },
       "gives": ["food:banana#1"],
-      "method": "pickup",
       "entrances":["west0"]
-    }
-  ],
-  "trades": [
+    },
     {
       "room": { "north": 20, "east": 20 },
-      "give": [["drop:venom", "skill:cure"]],
+      "requires": [["drop:venom", "skill:cure"]],
       "receive": ["orange"]
     },
     {
       "room": { "north": 20, "east": 20 },
-      "give": [["item:gold"]],
+      "requires": [["item:gold"]],
       "receive": ["weapon:club"]
     },
     {
       "room": { "north": 20, "east": 20 },
-      "give": [["item:gold"]],
+      "requires": [["item:gold"]],
       "receive": ["weapon:dagger"]
     },
     {
       "room": { "north": 20, "east": 20 },
-      "give": [["item:gold"]],
+      "requires": [["item:gold"]],
       "receive": ["weapon:sword"]
     },
     {
       "room": { "north": 20, "east": 20 },
-      "give": [["item:gold"]],
+      "requires": [["item:gold"]],
       "receive": ["armor:vest"]
     },
     {
       "room": { "north": 20, "east": 20 },
-      "give": [["item:gold"]],
+      "requires": [["item:gold"]],
       "receive": ["armor:magic robe"]
     },
     {
       "room": { "north": 20, "east": 20 },
-      "give": [["item:gold"]],
+      "requires": [["item:gold"]],
       "receive": ["armor:iron armour"]
     },
     {
       "room": { "north": 20, "east": 20 },
-      "give": [["item:gold"]],
+      "requires": [["item:gold"]],
       "receive": ["food:apple"]
     },
     {
       "room": { "north": 20, "east": 20 },
-      "give": [["item:gold"]],
+      "requires": [["item:gold"]],
       "receive": ["food:honey"]
     },
     {
       "room": { "north": 20, "east": 20 },
-      "give": [["item:gold"]],
+      "requires": [["item:gold"]],
       "receive": ["food:grapes"]
     },
     {
@@ -110,49 +104,67 @@
     },
     {
       "room": { "north": 18, "east": 20 },
-      "give": [["item:gold#30"]],
+      "requires": [["item:gold#30"]],
       "receive": ["item:key"]
     },
     {
       "room": { "north": 18, "east": 19 },
-      "give": [["item:emerald#1"]],
+      "requires": [["item:emerald#1"]],
       "receive": ["item:gold#?", "food:strawberry#1"]
     },
     {
       "room": { "north": 19, "east": 21 },
-      "give": [["skill:dig"]],
+      "requires": [["skill:dig"]],
       "receive": ["item:gold#25"]
     },
     {
       "room": { "north": 19, "east": 21 },
-      "give": [["item:diamond#20"]],
+      "requires": [["item:diamond#20"]],
       "receive": ["quest.pam>14"]
     },
     {
       "room": { "north": 16, "east": 22 },
-      "give": [["item:gold#400"]],
+      "requires": [["item:gold#400"]],
       "receive": ["item:key#1"]
     },
     {
       "room": { "north": 16, "east": 21 },
-      "give": [["item:ring.health"]],
+      "requires": [["item:ring.health"]],
       "receive": ["skill:dig"]
     },
     {
       "room": { "north": 15, "east": 19 },
-      "give": [["item:ring.health"]],
+      "requires": [["item:ring.health"]],
       "receive": ["item:gold#300", "item:bomb#10", "food:banana#5"]
     },
     {
       "room": { "north": 14, "east": 19 },
-      "give": [["item:troll wristband#1"]],
+      "requires": [["item:troll wristband#1"]],
       "receive": ["item:broken alpha club#1"],
       "entrances": ["north0"]
     },
     {
       "room": { "north": 14, "east": 19 },
-      "give": [["item:key#1"]],
+      "requires": [["item:key#1"]],
       "receive": ["armour:regen armor"],
+      "entrances": ["south0"]
+    },
+    {
+      "room": { "north": 15, "east": 21 },
+      "requires": [["item:key#1"]],
+      "receive": ["item:gold#65", "item:bomb#5"],
+      "entrances": ["south0"]
+    },
+    {
+      "room": { "north": 14, "east": 21 },
+      "requires": [["item:key#1"]],
+      "receive": ["item:gold#100", "item:bomb#12", "food:apple#30"],
+      "entrances": ["south0"]
+    },
+    {
+      "room": { "north": 14, "east": 21 },
+      "requires": [["permit:bomb use"]],
+      "receive": ["item:gold#100", "item:bomb#12", "food:apple#30"],
       "entrances": ["south0"]
     }
   ],
