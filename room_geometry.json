@@ -492,10 +492,20 @@
     "east": 13,
     "exits": {
       "west": null,
-      "south": null,
-      "east": null,
-      "north": null
-    }
+      "south": {
+        "left": 1.5,
+        "right": 13.5
+      },
+      "east": {
+        "top": 1.5,
+        "bottom": 10.5
+      },
+      "north": {
+        "left": 1.5,
+        "right": 13.5
+      }
+    },
+    "complete": true
   },
   {
     "north": 6,
@@ -681,18 +691,19 @@
     "exits": {
       "west": null,
       "south": {
-        "left": 0.5,
+        "left": 1.5,
         "right": 13.5
       },
       "east": {
-        "top": 0.5,
+        "top": 1.5,
         "bottom": 10.5
       },
       "north": {
-        "left": 13.5,
+        "left": 1.5,
         "right": 13.5
       }
-    }
+    },
+    "complete": true
   },
   {
     "north": 7,
@@ -723,10 +734,10 @@
     "exits": {
       "west": {
         "top": 0.5,
-        "bottom": 0.5
+        "bottom": 10.5
       },
       "south": {
-        "left": 13.5,
+        "left": 0.5,
         "right": 13.5
       },
       "east": {
@@ -737,18 +748,19 @@
         "left": 0.5,
         "right": 12.5
       }
-    }
+    },
+    "complete": true
   },
   {
     "north": 7,
     "east": 18,
     "exits": {
       "west": {
-        "top": 10.5,
+        "top": 1.5,
         "bottom": 10.5
       },
       "south": {
-        "left": 13.5,
+        "left": 0.5,
         "right": 13.5
       },
       "east": {
@@ -756,18 +768,19 @@
         "bottom": 10.5
       },
       "north": null
-    }
+    },
+    "complete": true
   },
   {
     "north": 7,
     "east": 20,
     "exits": {
       "west": {
-        "top": 10.5,
+        "top": 1.5,
         "bottom": 10.5
       },
       "south": {
-        "left": 13.5,
+        "left": 0.5,
         "right": 13.5
       },
       "east": {
@@ -778,26 +791,28 @@
         "left": 6.5,
         "right": 7.5
       }
-    }
+    },
+    "complete": true
   },
   {
     "north": 7,
     "east": 21,
     "exits": {
       "west": {
-        "top": 10.5,
+        "top": 1.5,
         "bottom": 10.5
       },
       "south": {
-        "left": 12.5,
-        "right": 13.5
+        "left": 0.5,
+        "right": 12.5
       },
       "east": {
         "top": 1.5,
         "bottom": 9.5
       },
       "north": null
-    }
+    },
+    "complete": true
   },
   {
     "north": 7,
@@ -805,7 +820,7 @@
     "exits": {
       "west": {
         "top": 1.5,
-        "bottom": 1.5
+        "bottom": 9.5
       },
       "south": null,
       "east": {
@@ -816,7 +831,8 @@
         "left": 3.5,
         "right": 13.5
       }
-    }
+    },
+    "complete": true
   },
   {
     "north": 7,
@@ -827,7 +843,7 @@
         "bottom": 9.5
       },
       "south": {
-        "left": 13.5,
+        "left": 8.5,
         "right": 13.5
       },
       "east": {
@@ -836,9 +852,10 @@
       },
       "north": {
         "left": 0.5,
-        "right": 0.5
+        "right": 13.5
       }
-    }
+    },
+    "complete": true
   },
   {
     "north": 7,
@@ -850,17 +867,18 @@
       },
       "south": {
         "left": 0.5,
-        "right": 0.5
+        "right": 8.5
       },
       "east": {
-        "top": 0.5,
-        "bottom": 4.5
+        "top": 4.5,
+        "bottom": 5.5
       },
       "north": {
         "left": 0.5,
         "right": 8.5
       }
-    }
+    },
+    "complete": true
   },
   {
     "north": 7,
@@ -963,7 +981,7 @@
         "bottom": 5.5
       },
       "south": {
-        "left": 13.5,
+        "left": 1.5,
         "right": 13.5
       },
       "east": {
@@ -971,18 +989,19 @@
         "bottom": 10.5
       },
       "north": null
-    }
+    },
+    "complete": true
   },
   {
     "north": 8,
     "east": 14,
     "exits": {
       "west": {
-        "top": 10.5,
+        "top": 1.5,
         "bottom": 10.5
       },
       "south": {
-        "left": 13.5,
+        "left": 1.5,
         "right": 13.5
       },
       "east": {
@@ -990,18 +1009,19 @@
         "bottom": 10.5
       },
       "north": null
-    }
+    },
+    "complete": true
   },
   {
     "north": 8,
     "east": 15,
     "exits": {
       "west": {
-        "top": 10.5,
+        "top": 4.5,
         "bottom": 10.5
       },
       "south": {
-        "left": 13.5,
+        "left": 0.5,
         "right": 13.5
       },
       "east": {
@@ -1009,17 +1029,18 @@
         "bottom": 10.5
       },
       "north": {
-        "left": 0.5,
+        "left": 1.5,
         "right": 4.5
       }
-    }
+    },
+    "complete": true
   },
   {
     "north": 8,
     "east": 16,
     "exits": {
       "west": {
-        "top": 10.5,
+        "top": 1.5,
         "bottom": 10.5
       },
       "south": {
@@ -1028,7 +1049,8 @@
       },
       "east": null,
       "north": null
-    }
+    },
+    "complete": true
   },
   {
     "north": 8,
@@ -1121,7 +1143,7 @@
         "bottom": 7.5
       },
       "south": {
-        "left": 13.5,
+        "left": 3.5,
         "right": 13.5
       },
       "east": {
@@ -1132,7 +1154,8 @@
         "left": 7.5,
         "right": 9.5
       }
-    }
+    },
+    "complete": true
   },
   {
     "north": 8,
@@ -1144,17 +1167,18 @@
       },
       "south": {
         "left": 0.5,
-        "right": 0.5
+        "right": 13.5
       },
       "east": {
-        "top": 10.5,
+        "top": 0.5,
         "bottom": 10.5
       },
       "north": {
         "left": 1.5,
         "right": 13.5
       }
-    }
+    },
+    "complete": true
   },
   {
     "north": 8,
@@ -1165,15 +1189,13 @@
         "bottom": 9.5
       },
       "south": null,
-      "east": {
-        "top": 0.5,
-        "bottom": 0.5
-      },
+      "east": null,
       "north": {
         "left": 0.5,
         "right": 12.5
       }
-    }
+    },
+    "complete": true
   },
   {
     "north": 9,
@@ -1243,7 +1265,8 @@
       "south": null,
       "east": null,
       "north": null
-    }
+    },
+    "complete": true
   },
   {
     "north": 9,
@@ -1251,7 +1274,7 @@
     "exits": {
       "west": null,
       "south": {
-        "left": 0.5,
+        "left": 1.5,
         "right": 4.5
       },
       "east": {
@@ -1259,7 +1282,7 @@
         "bottom": 9.5
       },
       "north": {
-        "left": 0.5,
+        "left": 1.5,
         "right": 13.5
       }
     },
@@ -1515,7 +1538,7 @@
     "exits": {
       "west": null,
       "south": {
-        "left": 13.5,
+        "left": 1.5,
         "right": 13.5
       },
       "east": {
@@ -1526,14 +1549,15 @@
         "left": 4.5,
         "right": 5.5
       }
-    }
+    },
+    "complete": true
   },
   {
     "north": 10,
     "east": 16,
     "exits": {
       "west": {
-        "top": 10.5,
+        "top": 4.5,
         "bottom": 10.5
       },
       "south": {
@@ -1542,7 +1566,8 @@
       },
       "east": null,
       "north": null
-    }
+    },
+    "complete": true
   },
   {
     "north": 10,
@@ -1635,7 +1660,8 @@
         "left": 7.5,
         "right": 11.5
       }
-    }
+    },
+    "complete": true
   },
   {
     "north": 10,
@@ -1651,7 +1677,8 @@
         "left": 3.5,
         "right": 4.5
       }
-    }
+    },
+    "complete": true
   },
   {
     "north": 10,
@@ -1664,7 +1691,8 @@
         "left": 1.5,
         "right": 2.5
       }
-    }
+    },
+    "complete": true
   },
   {
     "north": 10,
@@ -1829,7 +1857,8 @@
         "left": 4.5,
         "right": 5.5
       }
-    }
+    },
+    "complete": true
   },
   {
     "north": 11,
@@ -1837,7 +1866,7 @@
     "exits": {
       "west": null,
       "south": {
-        "left": 5.5,
+        "left": 6.5,
         "right": 7.5
       },
       "east": {
@@ -1845,7 +1874,8 @@
         "bottom": 6.5
       },
       "north": null
-    }
+    },
+    "complete": true
   },
   {
     "north": 11,
@@ -1856,7 +1886,7 @@
         "bottom": 6.5
       },
       "south": {
-        "left": 5.5,
+        "left": 6.5,
         "right": 7.5
       },
       "east": {
@@ -1864,7 +1894,8 @@
         "bottom": 6.5
       },
       "north": null
-    }
+    },
+    "complete": true
   },
   {
     "north": 11,
@@ -1872,7 +1903,7 @@
     "exits": {
       "west": {
         "top": 4.5,
-        "bottom": 7.5
+        "bottom": 6.5
       },
       "south": {
         "left": 10.5,
@@ -1880,7 +1911,8 @@
       },
       "east": null,
       "north": null
-    }
+    },
+    "complete": true
   },
   {
     "north": 11,
@@ -1932,14 +1964,15 @@
         "bottom": 6.5
       },
       "north": null
-    }
+    },
+    "complete": true
   },
   {
     "north": 11,
     "east": 23,
     "exits": {
       "west": {
-        "top": 3.5,
+        "top": 4.5,
         "bottom": 6.5
       },
       "south": {
@@ -1951,7 +1984,8 @@
         "left": 1.5,
         "right": 4.5
       }
-    }
+    },
+    "complete": true
   },
   {
     "north": 11,
@@ -2209,7 +2243,8 @@
         "left": 10.5,
         "right": 11.5
       }
-    }
+    },
+    "complete": true
   },
   {
     "north": 12,

@@ -5,7 +5,39 @@ import time
 import subprocess
 
 GEOMETRY_JSON_PATH = "./room_geometry.json"
-GEN_GRID_SCRIPT = "map/genGrid.py" # Adjusted to point to the current directory matching your setup
+GEN_GRID_SCRIPT = "map/genGrid.py"
+
+def find_line_number_in_file(east, north):
+    """Scans the geometry file sequentially to find the line number of the specific block matching both coordinates."""
+    if not os.path.exists(GEOMETRY_JSON_PATH):
+        return None
+
+    pattern_n = f'"north": {north}'
+    pattern_e = f'"east": {east}'
+
+    current_block_start_line = None
+    has_north = False
+    has_east = False
+
+    with open(GEOMETRY_JSON_PATH, "r", encoding="utf-8") as f:
+        for line_num, line in enumerate(f, start=1):
+            # Track when a new JSON object entry block begins
+            if "{" in line:
+                current_block_start_line = line_num
+                has_north = False
+                has_east = False
+
+            # Check for coordinates within the active block
+            if pattern_n in line:
+                has_north = True
+            if pattern_e in line:
+                has_east = True
+
+            # Once BOTH conditions match within the same object wrapper, return the line number
+            if has_north and has_east:
+                return current_block_start_line
+
+    return None
 
 def mark_room_complete(east, north):
     if not os.path.exists(GEOMETRY_JSON_PATH):
@@ -18,9 +50,7 @@ def mark_room_complete(east, north):
 
         modified = False
         for room in rooms_list:
-            # Safely match coordinates regardless of string or numeric types
             if int(float(room.get("north", -1))) == north and int(float(room.get("east", -1))) == east:
-                # Only update and trigger regeneration if it wasn't already marked complete
                 if not room.get("complete"):
                     room["complete"] = True
                     modified = True
@@ -28,7 +58,6 @@ def mark_room_complete(east, north):
                 break
 
         if modified:
-            # Write back the modified array structured clearly with indents
             with open(GEOMETRY_JSON_PATH, "w", encoding="utf-8") as f:
                 json.dump(rooms_list, f, indent=2, ensure_ascii=False)
             return True
@@ -38,29 +67,36 @@ def mark_room_complete(east, north):
 
     return False
 
+def open_in_codium(line_number):
+    """Spawns VSCodium focused exactly on the target line entry."""
+    if line_number is None:
+        return
+    try:
+        target = f"{GEOMETRY_JSON_PATH}:{line_number}"
+        print(f"[*] Opening Codium at line {line_number}...")
+        subprocess.run(["codium", "--goto", target], check=True)
+    except Exception as err:
+        print(f"[-] Failed to open VSCodium: {err}. Make sure 'codium' is in your PATH.")
+
 def run_grid_generator():
     print("[*] Running grid generator...")
     try:
-        # Executes the script in its folder context
         result = subprocess.run(["python", GEN_GRID_SCRIPT], capture_output=True, text=True)
         if result.returncode == 0:
             print("[+] Grid successfully regenerated!")
         else:
-            print(f"[-] genGrid.py failed: {result.stderr}")
+            print(f"[-] {GEN_GRID_SCRIPT} failed: {result.stderr}")
     except Exception as err:
         print(f"[-] Failed to run {GEN_GRID_SCRIPT}: {err}")
 
 def start_clipboard_monitor():
-    # Attempt to import pyperclip dynamically
     try:
         import pyperclip
     except ImportError:
         print("[-] Missing dependency: Please run 'pip install pyperclip' to support clipboard tracking.")
         return
 
-    print("[*] Clipboard background listener active. Click tiles to mark them complete...")
-
-    # Store initial state to avoid treating existing clipboard data as a new click
+    print("[*] Clipboard background listener active with block-precise Codium line lookup...")
     last_paste = pyperclip.paste()
 
     while True:
@@ -69,20 +105,31 @@ def start_clipboard_monitor():
             if current_paste != last_paste:
                 last_paste = current_paste
 
-                # Regex patterns to parse standard "X,Y" or "Copied: X,Y" formats
                 match = re.search(r"(\d+)[,\-](\d+)", current_paste)
                 if match:
                     east = int(match.group(1))
                     north = int(match.group(2))
 
-                    # Attempt to update the file registry
-                    if mark_room_complete(east, north):
+                    # 1. Update complete: True field inside room_geometry.json
+                    file_was_modified = mark_room_complete(east, north)
+
+                    # 2. Extract block-validated target line position
+                    line_no = find_line_number_in_file(east, north)
+
+                    # 3. Focus Codium context
+                    if line_no:
+                        open_in_codium(line_no)
+                    else:
+                        print(f"[-] Coordinate set {east},{north} not found in structured layout.")
+
+                    # 4. Regenerate grid
+                    if file_was_modified:
                         run_grid_generator()
 
         except Exception as e:
             print(f"[-] Loop monitoring error: {e}")
 
-        time.sleep(0.5) # Interval poll checking to prevent high CPU utilization
+        time.sleep(0.5)
 
 if __name__ == "__main__":
-    start_clipboard_monitor()
+    運転 = start_clipboard_monitor()
