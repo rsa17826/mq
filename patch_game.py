@@ -1,28 +1,5 @@
 """
-Patch MathQuest.js to use the shuffled connections table.
-
-Injects, right before the first real assignment to manager.north/east
-(the "new game" initializer), a self-contained block that:
-
-  1. Converts manager.north and manager.east from plain data properties
-    into accessor properties (get/set). The setter's only job is to
-    remember the room the player was in *before* the current batch of
-    writes started (origin-before-transition) -- it does NOT try to
-    redirect anything itself, since a single transition can write north
-    and/or east one or more times before the room is actually drawn.
-
-  2. Wraps __createObject.loca (confirmed to run exactly once at the end
-    of every transition -- edge-walk or door/object teleport alike,
-    verified across all 16 trigger mechanisms) to do the actual
-    redirect: once both axes have settled to their vanilla-computed
-    destination, look up (origin, vanillaDest) in the shuffled
-    connections table and, if found, overwrite manager.north/east and
-    the player's x/y before the original loca() runs and draws the room.
-
-This means none of the ~15 scattered transition call sites (newScreen's
-four edge branches + all door/object triggers) need to be touched
-individually -- this single hook point sees every one of them, because
-they all funnel through __createObject.loca() before the room is drawn.
+Patch MathQuest.js with spatial disambiguation logic for multiple screen exits.
 """
 
 import json
@@ -41,78 +18,85 @@ seed = conn_data["seed"]
 
 
 def fmt_num(n):
-  # JSON gives us floats like 17.0 -- emit as JS-friendly numbers,
-  # preserving real decimals like 10.1/17.1.
+  if n is None:
+    return "-1"
   if n == int(n):
     return str(int(n))
-  return str(n)
+  return f"{n:.4f}"
 
 
-# compact array-of-arrays to keep the inlined table small:
-# [originNorth, originEast, vanillaDestNorth, vanillaDestEast, newDestNorth, newDestEast, newX, newY]
+DIR_CODES = {"north": 1, "south": 2, "west": 3, "east": 4}
+
 rows = []
 for c in connections:
+  d_code = DIR_CODES.get(c.get("direction"), 0)
   rows.append(
-    "[%s,%s,%s,%s,%s,%s,%s,%s]"
-    % (
-      fmt_num(c["originNorth"]),
-      fmt_num(c["originEast"]),
-      fmt_num(c["vanillaDestNorth"]),
-      fmt_num(c["vanillaDestEast"]),
-      fmt_num(c["newDestNorth"]),
-      fmt_num(c["newDestEast"]),
-      c["newX"],
-      c["newY"],
-    )
+      "[%s,%s,%s,%s,%s,%s,%s,%s,%s,%s]"
+      % (
+          fmt_num(c["originNorth"]),
+          fmt_num(c["originEast"]),
+          fmt_num(c["vanillaDestNorth"]),
+          fmt_num(c["vanillaDestEast"]),
+          fmt_num(c["newDestNorth"]),
+          fmt_num(c["newDestEast"]),
+          fmt_num(c["newX"]),
+          fmt_num(c["newY"]),
+          fmt_num(c.get("srcCoord")),
+          str(d_code),
+      )
   )
-table_js = ",".join(rows)
 # @noregex
+table_js = ",".join(rows)
+
 PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
   ;(function () {{
     var ER_TABLE = [{table_js}]
     var ER_MAP = new Map()
     for (var i = 0; i < ER_TABLE.length; i++) {{
       var r = ER_TABLE[i]
-      ER_MAP.set(r[0] + "_" + r[1] + "_" + r[2] + "_" + r[3], {{
+      var key = r[0] + "_" + r[1] + "_" + r[2] + "_" + r[3]
+      if (!ER_MAP.has(key)) {{
+        ER_MAP.set(key, [])
+      }}
+      ER_MAP.get(key).push({{
         newNorth: r[4],
         newEast: r[5],
         newX: r[6],
         newY: r[7],
+        srcCoord: r[8],
+        dirCode: r[9]
       }})
     }}
 
     var erNorth = manager.north === undefined ? null : manager.north
     var erEast = manager.east === undefined ? null : manager.east
     var erInTransition = false
-    var erOrigin = {{ north: null, east: null }}
+    var erOrigin = {{ north: null, east: null, x: null, y: null }}
 
     function erBeginWriteIfNeeded() {{
       if (!erInTransition) {{
         erOrigin.north = erNorth
         erOrigin.east = erEast
+        if (manager.char && manager.char[0]) {{
+          erOrigin.x = typeof manager.char[0].get_x === 'function' ? manager.char[0].get_x() : manager.char[0].x
+          erOrigin.y = typeof manager.char[0].get_y === 'function' ? manager.char[0].get_y() : manager.char[0].y
+        }} else {{
+          erOrigin.x = null
+          erOrigin.y = null
+        }}
         erInTransition = true
       }}
     }}
 
     Object.defineProperty(manager, "north", {{
-      get: function () {{
-        return erNorth
-      }},
-      set: function (v) {{
-        erBeginWriteIfNeeded()
-        erNorth = v
-      }},
+      get: function () {{ return erNorth }},
+      set: function (v) {{ erBeginWriteIfNeeded(); erNorth = v }},
       enumerable: true,
       configurable: true,
     }})
     Object.defineProperty(manager, "east", {{
-      get: function () {{
-        return erEast
-      }},
-      set: function (v) {{
-        erBeginWriteIfNeeded()
-        erEast = v
-      }},
+      get: function () {{ return erEast }},
+      set: function (v) {{ erBeginWriteIfNeeded(); erEast = v }},
       enumerable: true,
       configurable: true,
     }})
@@ -120,15 +104,35 @@ PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
     var erOriginalLoca = __createObject.loca
     __createObject.loca = function () {{
       if (erInTransition) {{
-        var key =
-          erOrigin.north + "_" + erOrigin.east + "_" + erNorth + "_" + erEast
-        var conn = ER_MAP.get(key)
-        if (conn) {{
+        var key = erOrigin.north + "_" + erOrigin.east + "_" + erNorth + "_" + erEast
+        var conns = ER_MAP.get(key)
+        if (conns && conns.length > 0) {{
+          var conn = conns[0]
+          // If multiple warps share a room boundary edge, find the closest match based on player exit location
+          if (conns.length > 1 && erOrigin.x !== null && erOrigin.y !== null) {{
+            var minDiff = Infinity
+            for (var j = 0; j < conns.length; j++) {{
+              var c = conns[j]
+              if (c.dirCode > 0 && c.srcCoord !== -1) {{
+                var pCoord = (c.dirCode === 1 || c.dirCode === 2) ? erOrigin.x : erOrigin.y
+                var diff = Math.abs(pCoord - c.srcCoord)
+                if (diff < minDiff) {{
+                  minDiff = diff
+                  conn = c
+                }}
+              }}
+            }}
+          }}
           manager.north = conn.newNorth
           manager.east = conn.newEast
           if (manager.char && manager.char[0]) {{
-            manager.char[0].set_x(conn.newX)
-            manager.char[0].set_y(conn.newY)
+            if (typeof manager.char[0].set_x === 'function') {{
+              manager.char[0].set_x(conn.newX)
+              manager.char[0].set_y(conn.newY)
+            }} else {{
+              manager.char[0].x = conn.newX
+              manager.char[0].y = conn.newY
+            }}
           }}
         }}
         erInTransition = false
@@ -141,7 +145,7 @@ PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
 
 ANCHOR = "      manager.north = 20\n      manager.east = 20\n"
 assert (
-  src.count(ANCHOR) == 1
+    src.count(ANCHOR) == 1
 ), f"expected exactly one occurrence of anchor, found {src.count(ANCHOR)}"
 
 patched = src.replace(ANCHOR, PATCH + ANCHOR)
@@ -149,6 +153,4 @@ patched = src.replace(ANCHOR, PATCH + ANCHOR)
 with open(OUT_PATH, "w", encoding="utf-8") as f:
   f.write(patched)
 
-print(f"Patched file written to {OUT_PATH}")
-print(f"Original size: {len(src)} chars, patched size: {len(patched)} chars")
-print(f"Connections table: {len(connections)} entries inlined")
+print(f"Patched file successfully written to {OUT_PATH}")
