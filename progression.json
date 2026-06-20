@@ -399,6 +399,80 @@
       "room": { "north": 8, "east": 18 },
       "requires": [["item:emerald#1", "entrance.north1"]],
       "receive": ["food:steak#?", "item:bomb#25"]
+    },
+    {
+      "room": { "north": 11, "east": 18 },
+      "requires": [["item:key#1"]],
+      "receive": ["item:gold#6000"]
+    },
+    {
+      "room": { "north": 11, "east": 17 },
+      "requires": [["item:key#1", "permit:bomb.1"]],
+      "receive": ["item:bomb#8", "item:gold#200"]
+    },
+    {
+      "room": { "north": 7, "east": 10 },
+      "requires": [["permit:bomb.1", "???"]],
+      "receive": ["item:orb of ???"]
+    },
+    {
+      "room": { "north": 10, "east": 19 },
+      "requires": [["???"]],
+      "receive": ["item:orb of ???"]
+    },
+    {
+      "room": { "north": 7, "east": 18 },
+      "requires": [["item:slamstone#1", "skill:reveal"]],
+      "receive": ["skill:reveal.+1"]
+    },
+    {
+      "room": { "north": 7, "east": 25 },
+      "requires": [["magic:fire.2?"]],
+      "receive": ["state:lit torch.+1"]
+    },
+    {
+      "room": { "north": 8, "east": 21 },
+      "requires": [["magic:fire.2?"]],
+      "receive": ["state:lit torch.+1"]
+    },
+    {
+      "room": { "north": 9, "east": 22 },
+      "requires": [["item:key#1", "entrance.north1"]],
+      "receive": ["magic:double down"]
+    },
+    {
+      "room": { "north": 9, "east": 22 },
+      "requires": [["entrance.south0", "item:gold"]],
+      "receive": ["food:chocolate"]
+    },
+    {
+      "room": { "north": 9, "east": 22 },
+      "requires": [["entrance.south0", "item:gold"]],
+      "receive": ["food:steak"]
+    },
+    {
+      "room": { "north": 9, "east": 22 },
+      "requires": [["entrance.south0", "item:gold"]],
+      "receive": ["food:peppers"]
+    },
+    {
+      "room": { "north": 9, "east": 22 },
+      "requires": [
+        [
+          "entrance.south0",
+          "item:alpha scepter#1",
+          "item:dragon scale#5",
+          "skill:craft"
+        ],
+        [
+          "entrance.south1",
+          "item:alpha scepter#1",
+          "item:dragon scale#5",
+          "skill:craft",
+          "permit:bomb.2"
+        ]
+      ],
+      "receive": ["craft.elixir"]
     }
   ],
   "gates": [
