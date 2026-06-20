@@ -1938,7 +1938,8 @@
           "right": 13.5
         }
       ]
-    }
+    },
+    "complete": true
   },
   {
     "north": 10,
@@ -2294,7 +2295,15 @@
       ],
       "south": [
         {
-          "left": 13.5,
+          "left": 1.5,
+          "right": 2.5
+        },
+        {
+          "left": 4.5,
+          "right": 5.5
+        },
+        {
+          "left": 7.5,
           "right": 13.5
         }
       ],
@@ -2307,10 +2316,19 @@
       "north": [
         {
           "left": 0.5,
-          "right": 0.5
+          "right": 5.5
+        },
+        {
+          "left": 7.5,
+          "right": 8.5
+        },
+        {
+          "left": 10.5,
+          "right": 13.5
         }
       ]
-    }
+    },
+    "complete": true
   },
   {
     "north": 11,
@@ -2656,13 +2674,21 @@
     "exits": {
       "west": [
         {
-          "top": 10.5,
+          "top": 1.5,
           "bottom": 10.5
         }
       ],
       "south": [
         {
-          "left": 13.5,
+          "left": 0.5,
+          "right": 5.5
+        },
+        {
+          "left": 7.5,
+          "right": 8.5
+        },
+        {
+          "left": 10.5,
           "right": 13.5
         }
       ],
