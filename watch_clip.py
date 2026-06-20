@@ -12,8 +12,8 @@ def find_line_number_in_file(east, north):
     if not os.path.exists(GEOMETRY_JSON_PATH):
         return None
 
-    pattern_n = f'"north": {north}'
-    pattern_e = f'"east": {east}'
+    pattern_n = f'"north": {north},'
+    pattern_e = f'"east": {east},'
 
     current_block_start_line = None
     has_north = False
@@ -39,23 +39,45 @@ def find_line_number_in_file(east, north):
 
     return None
 
-def mark_room_complete(east, north):
+def mark_room_complete_or_create(east, north):
+    """Marks room as complete. If room does not exist, appends a new room template block."""
     if not os.path.exists(GEOMETRY_JSON_PATH):
-        print(f"[-] Error: '{GEOMETRY_JSON_PATH}' not found.")
-        return False
+        # Create an empty list file if it doesn't exist at all
+        with open(GEOMETRY_JSON_PATH, "w", encoding="utf-8") as f:
+            json.dump([], f)
 
     try:
         with open(GEOMETRY_JSON_PATH, "r", encoding="utf-8") as f:
             rooms_list = json.load(f)
 
+        found = False
         modified = False
+
         for room in rooms_list:
             if int(float(room.get("north", -1))) == north and int(float(room.get("east", -1))) == east:
+                found = True
                 if not room.get("complete"):
                     room["complete"] = True
                     modified = True
-                    print(f"[+] Marking Room (East: {east}, North: {north}) as complete.")
+                    print(f"[+] Marking existing Room (East: {east}, North: {north}) as complete.")
                 break
+
+        # If it doesn't exist, generate a brand new template entry with arrays
+        if not found:
+            new_room = {
+                "north": north,
+                "east": east,
+                "exits": {
+                    "west": [],
+                    "south": [],
+                    "east": [],
+                    "north": []
+                },
+                "complete": True
+            }
+            rooms_list.append(new_room)
+            modified = True
+            print(f"[+] Room {east},{north} not found. Appending brand new room configuration template block.")
 
         if modified:
             with open(GEOMETRY_JSON_PATH, "w", encoding="utf-8") as f:
@@ -63,7 +85,7 @@ def mark_room_complete(east, north):
             return True
 
     except Exception as err:
-        print(f"[-] Failed to edit geometry file: {err}")
+        print(f"[-] Failed to read or edit geometry file: {err}")
 
     return False
 
@@ -96,7 +118,7 @@ def start_clipboard_monitor():
         print("[-] Missing dependency: Please run 'pip install pyperclip' to support clipboard tracking.")
         return
 
-    print("[*] Clipboard background listener active with block-precise Codium line lookup...")
+    print("[*] Clipboard background listener active. Missing coordinates will be dynamically auto-created...")
     last_paste = pyperclip.paste()
 
     while True:
@@ -110,17 +132,17 @@ def start_clipboard_monitor():
                     east = int(match.group(1))
                     north = int(match.group(2))
 
-                    # 1. Update complete: True field inside room_geometry.json
-                    file_was_modified = mark_room_complete(east, north)
+                    # 1. Update or auto-insert new entry inside room_geometry.json
+                    file_was_modified = mark_room_complete_or_create(east, north)
 
-                    # 2. Extract block-validated target line position
+                    # 2. Extract block-validated line numbers
                     line_no = find_line_number_in_file(east, north)
 
-                    # 3. Focus Codium context
+                    # 3. Focus Codium context directly on the newly created or existing template block
                     if line_no:
                         open_in_codium(line_no)
                     else:
-                        print(f"[-] Coordinate set {east},{north} not found in structured layout.")
+                        print(f"[-] Coordinate set {east},{north} could not be referenced lineally.")
 
                     # 4. Regenerate grid
                     if file_was_modified:
@@ -132,4 +154,4 @@ def start_clipboard_monitor():
         time.sleep(0.5)
 
 if __name__ == "__main__":
-    運転 = start_clipboard_monitor()
+    start_clipboard_monitor()
