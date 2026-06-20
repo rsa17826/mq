@@ -1,29 +1,69 @@
 const fs = require("fs")
-const path = require("path")
 const puppeteer = require("puppeteer")
-const { Jimp } = require("jimp") // Make sure to use modern jimp syntax
-
+const { exec } = require("child_process") // Added to execute system commands
 const TARGET_URL = "http://127.0.0.1:8000/MathQuest/play.html"
-const WATCH_FILE = "./MQ2Files/loadChar.php"
-const DEST_DIR = "./map"
+const GEOMETRY_FILE = "./room_geometry.json"
 
-// Target background colors in Hex (Jimp reads them as 0xRRGGBBAA)
-const TARGET_COLORS = [
-  0x212a33ff, // #212A33
-  0x111619ff, // #111619
-]
+// Function to update room completion status in JSON file
+function markRoomAsComplete(east, north) {
+  if (!fs.existsSync(GEOMETRY_FILE)) {
+    console.error(
+      `[-] ${GEOMETRY_FILE} does not exist. Cannot mark complete.`,
+    )
+    return
+  }
 
-// Helper to check if a pixel color matches our target colors (ignoring alpha channel differences)
-function isTargetColor(pixelColor) {
-  // Mask out alpha channel to compare RGB
-  const rgb = pixelColor & 0xffffff00
-  return TARGET_COLORS.some((target) => (target & 0xffffff00) === rgb)
+  try {
+    const fileData = fs.readFileSync(GEOMETRY_FILE, "utf8")
+    let rooms = JSON.parse(fileData)
+
+    let updated = false
+    rooms = rooms.map((room) => {
+      if (room.east === east && room.north === north) {
+        if (!room.complete) {
+          room.complete = true
+          updated = true
+        }
+      }
+      return room
+    })
+
+    if (updated) {
+      fs.writeFileSync(
+        GEOMETRY_FILE,
+        JSON.stringify(rooms, null, 2),
+        "utf8",
+      )
+      console.log(
+        `[+] Marked room (${east}, ${north}) as complete in ${GEOMETRY_FILE}`,
+      )
+      console.log("[*] Running python map/genGrid.py...")
+
+      exec("python map/genGrid.py", (error, stdout, stderr) => {
+        if (error) {
+          console.error(
+            `[-] Python execution error: ${error.message}`,
+          )
+          return
+        }
+        if (stderr) {
+          console.error(`[-] Python stderr: ${stderr}`)
+          return
+        }
+        console.log(`[+] Python stdout:\n${stdout.trim()}`)
+      })
+    }
+  } catch (error) {
+    console.error(
+      "[-] Error updating room geometry JSON:",
+      error.message,
+    )
+  }
 }
 
-async function processMapScreenshot() {
+async function startTracking() {
   let browser
   try {
-    // 1. Connect to Chrome
     browser = await puppeteer.connect({
       browserURL: "http://127.0.0.1:9222",
       defaultViewport: null,
@@ -34,103 +74,52 @@ async function processMapScreenshot() {
 
     if (!page) {
       console.error(`[-] Could not find tab: ${TARGET_URL}`)
+      if (browser) await browser.disconnect()
       return
     }
 
-    // 2. Fetch coordinates
-    const coords = await page.evaluate(() => {
-      if (typeof player !== "undefined") {
-        return { east: player.east, north: player.north }
+    console.log(
+      `[*] Successfully attached to game tab. Watching player coordinates...`,
+    )
+
+    // Initialize tracking variables
+    let lastCoords = { east: null, north: null }
+
+    // Loop to continuously monitor player movement in the browser context
+    while (true) {
+      const currentCoords = await page.evaluate(() => {
+        if (
+          typeof player !== "undefined" &&
+          player.east !== undefined &&
+          player.north !== undefined
+        ) {
+          return { east: player.east, north: player.north }
+        }
+        return null
+      })
+
+      if (currentCoords) {
+        // If the coordinates changed from the last iteration, execute automation logic
+        if (
+          currentCoords.east !== lastCoords.east ||
+          currentCoords.north !== lastCoords.north
+        ) {
+          console.log(
+            `[*] Position change detected: (${currentCoords.east}, ${currentCoords.north})`,
+          )
+          lastCoords = currentCoords
+
+          markRoomAsComplete(currentCoords.east, currentCoords.north)
+        }
       }
-      return null
-    })
 
-    if (
-      !coords ||
-      coords.east === undefined ||
-      coords.north === undefined
-    ) {
-      console.log("[-] Valid player coordinates not found.")
-      return
+      // Poll every 200ms to preserve performance
+      await new Promise((resolve) => setTimeout(resolve, 200))
     }
-
-    const destFileName = `${coords.east},${coords.north}.jpg`
-    const destPath = path.join(DEST_DIR, destFileName)
-
-    // Check if destination file already exists
-    if (fs.existsSync(destPath)) {
-      console.log(`[-] File already exists at ${destPath}. Skipping.`)
-      return
-    }
-
-    // 3. Find canvas and capture screenshot buffer
-    const canvas = await page.$("canvas")
-    if (!canvas) {
-      console.error("[-] Canvas element not found on page.")
-      return
-    }
-    const screenshotBuffer = await canvas.screenshot({ type: "png" })
-
-    // 4. Process image trimming with Jimp
-    const image = await Jimp.read(screenshotBuffer)
-    const width = image.bitmap.width
-    const height = image.bitmap.height
-
-    // Determine top trim boundary (scan down from top-middle until target color hit)
-    let topTrim = 40
-
-    // Determine right trim boundary (scan left from right-middle until target color hit)
-    let rightTrim = width - 180
-
-    // Apply strict 1px trim from left side
-    const leftTrim = 1
-
-    // Calculate final dimensions for cropping
-    const finalWidth = rightTrim - leftTrim
-    const finalHeight = height - topTrim
-
-    if (finalWidth <= 0 || finalHeight <= 0) {
-      console.error("[-] Calculated trim dimensions are invalid.")
-      return
-    }
-
-    // Crop the image
-    image.crop({
-      x: leftTrim,
-      y: topTrim,
-      w: finalWidth,
-      h: finalHeight,
-    })
-
-    // Ensure directory exists and save
-    if (!fs.existsSync(DEST_DIR)) {
-      fs.mkdirSync(DEST_DIR, { recursive: true })
-    }
-
-    await image.write(destPath)
-    console.log(`[+] Trimmed canvas screenshot saved to: ${destPath}`)
   } catch (error) {
-    console.error("[-] Error running automation:", error.message)
-  } finally {
+    console.error("[-] Connection or runtime error:", error.message)
     if (browser) await browser.disconnect()
   }
 }
 
-// Watch mechanism with debounce logic
-let watchTimeout
-console.log(`[*] Watching for changes to ${WATCH_FILE}...`)
-
-if (!fs.existsSync(path.dirname(WATCH_FILE))) {
-  fs.mkdirSync(path.dirname(WATCH_FILE), { recursive: true })
-}
-// Create file if it doesn't exist so fs.watch has something to track
-if (!fs.existsSync(WATCH_FILE)) {
-  fs.writeFileSync(WATCH_FILE, "")
-}
-
-fs.watch(WATCH_FILE, (eventType) => {
-  if (eventType === "change") {
-    clearTimeout(watchTimeout)
-    watchTimeout = setTimeout(processMapScreenshot, 150)
-  }
-})
+startTracking()

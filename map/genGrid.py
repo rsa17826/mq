@@ -2,7 +2,7 @@ import os
 import re
 import json
 
-IMAGE_FOLDER = "map"
+IMAGE_FOLDER = "mapSmall"
 OUTPUT_FILE = "index.html"
 GEOMETRY_JSON_PATH = "./room_geometry.json"
 
@@ -54,8 +54,8 @@ html_start = """<!DOCTYPE html>
         }
         .tile-wrapper {
             position: relative;
-            width: 624px;
-            height: 493px;
+            width: 124px;
+            height: 98px;
             cursor: pointer;
         }
         .grid-item {

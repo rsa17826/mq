@@ -1,0 +1,116 @@
+{
+  "items": [
+    { "id": "bomb" },
+    { "id": "key" },
+
+    { "id": "weapon:club" },
+    { "id": "weapon:dagger" },
+    { "id": "weapon:sword" },
+
+    { "id": "armor:vest" },
+    { "id": "armor:magic robe" },
+    { "id": "armor:iron armour" },
+
+    { "id": "food:apple" },
+    { "id": "food:honey" },
+    { "id": "food:grapes" },
+    { "id": "food:strawberry" },
+
+    { "id": "spawnpoint" },
+    { "id": "necklass warp point" },
+    { "id": "oranges" },
+
+    { "id": "skill:cure" },
+
+    { "id": "item:venom" },
+    { "id": "item:gold" },
+    { "id": "item:emerald" }
+  ],
+  "locations": [
+    {
+      "room": { "north": 20, "east": 20 },
+      "gives": ["spawnpoint"],
+      "method": "pickup"
+    },
+    {
+      "room": { "north": 20, "east": 20 },
+      "gives": ["spawnpoint"],
+      "method": "pickup"
+    }
+  ],
+  "trades": [
+    {
+      "room": { "north": 20, "east": 20 },
+      "give": [["drop:venom", "skill:cure"]],
+      "receive": ["orange"]
+    },
+    {
+      "room": { "north": 20, "east": 20 },
+      "give": [["item:gold"]],
+      "receive": ["weapon:club"]
+    },
+    {
+      "room": { "north": 20, "east": 20 },
+      "give": [["item:gold"]],
+      "receive": ["weapon:dagger"]
+    },
+    {
+      "room": { "north": 20, "east": 20 },
+      "give": [["item:gold"]],
+      "receive": ["weapon:sword"]
+    },
+    {
+      "room": { "north": 20, "east": 20 },
+      "give": [["item:gold"]],
+      "receive": ["armor:vest"]
+    },
+    {
+      "room": { "north": 20, "east": 20 },
+      "give": [["item:gold"]],
+      "receive": ["armor:magic robe"]
+    },
+    {
+      "room": { "north": 20, "east": 20 },
+      "give": [["item:gold"]],
+      "receive": ["armor:iron armour"]
+    },
+    {
+      "room": { "north": 20, "east": 20 },
+      "give": [["item:gold"]],
+      "receive": ["food:apple"]
+    },
+    {
+      "room": { "north": 20, "east": 20 },
+      "give": [["item:gold"]],
+      "receive": ["food:honey"]
+    },
+    {
+      "room": { "north": 20, "east": 20 },
+      "give": [["item:gold"]],
+      "receive": ["food:grapes"]
+    },
+    {
+      "room": { "north": 18, "east": 20 },
+      "info":"warp skill warp point"
+    },
+    {
+      "room": { "north": 18, "east": 20 },
+      "give": [["item:gold#30"]],
+      "receive": ["item:key"]
+    },
+    {
+      "room": { "north": 18, "east": 19 },
+      "give": [["item:emerald#1"]],
+      "receive": ["item:gold#?","food:strawberry#1"]
+    }
+  ],
+  "gates": [
+    {
+      "room": { "north": 11, "east": 15 },
+      "from": "south0",
+      "to": "north0",
+      "bidirectional": true,
+      "requires": [["bomb"], ["key", "asword"]]
+    }
+  ]
+}

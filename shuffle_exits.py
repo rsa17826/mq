@@ -1,6 +1,7 @@
 """
 Coupled entrance-rando shuffle over exits.json with multi-gap support.
 Includes dead-end protection and safer inner-screen padding offsets.
+With progression logic validation to prevent softlocks.
 """
 
 import json
@@ -242,19 +243,6 @@ def door_partner_finder(a, candidates):
   return candidates
 
 
-edge_pairs, edge_unpaired, edge_reached = build_spanning_tree(
-    edge_exits, edge_partner_finder, "edges"
-)
-door_pairs, door_unpaired, door_reached = build_spanning_tree(
-    door_exits, door_partner_finder, "doors", seed_reached=edge_reached
-)
-
-all_pairs = edge_pairs + door_pairs
-all_unpaired = edge_unpaired + door_unpaired
-
-connections = []
-
-
 def vanilla_dest_key(e):
   d = e["dest"]
   return (d["north"], d["east"])
@@ -279,12 +267,226 @@ def make_connection(from_exit, to_exit):
   }
 
 
-for a, b in all_pairs:
-  connections.append(make_connection(a, b))
-  connections.append(make_connection(b, a))
+def validate_logic(connections_list, progression_data, shufflable_exits):
+  # Build group aliases/item mapping
+  item_groups = {}
+  for item in progression_data.get("items", []):
+    if "contains" in item:
+      item_groups[item["id"]] = item["contains"]
 
-for a in all_unpaired:
-  connections.append(make_connection(a, a))
+  # Group progression components by room coordinates
+  locations_by_room = {}
+  for loc in progression_data.get("locations", []):
+    if "room" in loc:
+      r = (int(loc["room"]["north"]), int(loc["room"]["east"]))
+      locations_by_room.setdefault(r, []).append(loc)
+
+  trades_by_room = {}
+  for trade in progression_data.get("trades", []):
+    if "room" in trade:
+      r = (int(trade["room"]["north"]), int(trade["room"]["east"]))
+      trades_by_room.setdefault(r, []).append(trade)
+
+  gates_by_room = {}
+  for gate in progression_data.get("gates", []):
+    if "room" in gate:
+      r = (int(gate["room"]["north"]), int(gate["room"]["east"]))
+      gates_by_room.setdefault(r, []).append(gate)
+
+  # Build dictionary mapping an exit ID to its landing properties
+  conn_map = {}
+  for c in connections_list:
+    conn_map[c["fromExitId"]] = (int(c["newDestNorth"]), int(c["newDestEast"]), c["toExitId"])
+
+  # Group all shufflable exits by their room coordinates
+  exits_by_room = {}
+  for e in shufflable_exits:
+    r = (int(e["origin"]["north"]), int(e["origin"]["east"]))
+    exits_by_room.setdefault(r, []).append(e)
+
+  def sub_item_list(val):
+    if isinstance(val, list):
+      return val
+    return [val]
+
+  # Check if DNF formula for item requirements is met
+  def check_requires(requires, inventory):
+    if not requires:
+      return True
+    for req_list in requires:
+      all_satisfied = True
+      for item_id in req_list:
+        if item_id in inventory:
+          continue
+        if item_id in item_groups and any(g_item in inventory for g_item in item_groups[item_id]):
+          continue
+        all_satisfied = False
+        break
+      if all_satisfied:
+        return True
+    return False
+
+  def exit_matches_gate_string(exit_obj, gate_str):
+    if exit_obj["id"] == gate_str:
+      return True
+    if exit_obj["id"].startswith(gate_str + "_gap_"):
+      return True
+    if exit_obj.get("direction") == gate_str:
+      return True
+    if gate_str in exit_obj["id"]:
+      return True
+    return False
+
+  # Establish default starting point from game initialization anchor
+  start_room = (20, 20)
+  if start_room not in exits_by_room:
+    if exits_by_room:
+      start_room = list(exits_by_room.keys())[0]
+    else:
+      return True
+
+  reachable_exits = set()
+  collected_items = set()
+  used_trades = set()
+
+  # Seed simulation with all entrances available from the starting room
+  for e in exits_by_room.get(start_room, []):
+    reachable_exits.add((start_room, e["id"]))
+
+  # Fixed-point graph propagation loop
+  changed = True
+  while changed:
+    changed = False
+    reached_rooms = {room for (room, eid) in reachable_exits}
+
+    # 1. Harvest items from reached locations and trades
+    for r in reached_rooms:
+      if r in locations_by_room:
+        for loc in locations_by_room[r]:
+          for item in loc.get("gives", []):
+            if item not in collected_items:
+              collected_items.add(item)
+              changed = True
+
+      if r in trades_by_room:
+        for idx, trade in enumerate(trades_by_room[r]):
+          trade_key = (r, idx)
+          if trade_key not in used_trades:
+            if all(item in collected_items for item in trade.get("give", [])):
+              for item_entry in trade.get("receive", []):
+                for sub in sub_item_list(item_entry):
+                  if sub not in collected_items:
+                    collected_items.add(sub)
+                    changed = True
+              used_trades.add(trade_key)
+              changed = True
+
+    # 2. Traverse randomized outer room boundaries/connections
+    for (room, eid) in list(reachable_exits):
+      if eid in conn_map:
+        dest_n, dest_e, dest_eid = conn_map[eid]
+        dest_room = (dest_n, dest_e)
+        if (dest_room, dest_eid) not in reachable_exits:
+          reachable_exits.add((dest_room, dest_eid))
+          changed = True
+
+    # 3. Propagate internally within each reached room through logic gates
+    for room in reached_rooms:
+      room_exits = exits_by_room.get(room, [])
+      cur_reachable_in_room = [e for e in room_exits if (room, e["id"]) in reachable_exits]
+
+      for src_exit in cur_reachable_in_room:
+        for dest_exit in room_exits:
+          if (room, dest_exit["id"]) in reachable_exits:
+            continue
+
+          blocked = False
+          if room in gates_by_room:
+            for gate in gates_by_room[room]:
+              applies = False
+              if exit_matches_gate_string(src_exit, gate["from"]) and exit_matches_gate_string(dest_exit, gate["to"]):
+                applies = True
+              elif gate.get("bidirectional", False) and exit_matches_gate_string(src_exit, gate["to"]) and exit_matches_gate_string(dest_exit, gate["from"]):
+                applies = True
+
+              if applies:
+                if not check_requires(gate.get("requires", []), collected_items):
+                  blocked = True
+                  break
+
+          if not blocked:
+            reachable_exits.add((room, dest_exit["id"]))
+            changed = True
+
+  # Guarantee all locations can be completely reached/harvested
+  for loc in progression_data.get("locations", []):
+    for item in loc.get("gives", []):
+      if item not in collected_items:
+        return False
+    if "room" in loc:
+      r = (int(loc["room"]["north"]), int(loc["room"]["east"]))
+      if r in exits_by_room:
+        for e in exits_by_room[r]:
+          if (r, e["id"]) not in reachable_exits:
+            return False
+
+  # Guarantee all trades can be completely completed and their rooms cleared
+  for trade in progression_data.get("trades", []):
+    for item_entry in trade.get("receive", []):
+      for sub in sub_item_list(item_entry):
+        if sub not in collected_items:
+          return False
+    if "room" in trade:
+      r = (int(trade["room"]["north"]), int(trade["room"]["east"]))
+      if r in exits_by_room:
+        for e in exits_by_room[r]:
+          if (r, e["id"]) not in reachable_exits:
+            return False
+
+  return True
+
+
+# Load progression data for logic simulation validation
+progression_path = os.path.join(OUT_DIR, "progression.json")
+if os.path.exists(progression_path):
+  with open(progression_path, "r") as f:
+    progression_data = json.load(f)
+  print("[+] Loaded progression.json for logic validation.")
+else:
+  progression_data = None
+  print("NOTE: no progression.json found -- skipping verification.")
+
+MAX_ATTEMPTS = 5000
+connections = []
+
+# Loop until a valid layout that avoids softlocks is discovered
+for attempt in range(MAX_ATTEMPTS):
+  edge_pairs, edge_unpaired, edge_reached = build_spanning_tree(
+      edge_exits, edge_partner_finder, "edges"
+  )
+  door_pairs, door_unpaired, door_reached = build_spanning_tree(
+      door_exits, door_partner_finder, "doors", seed_reached=edge_reached
+  )
+
+  all_pairs = edge_pairs + door_pairs
+  all_unpaired = edge_unpaired + door_unpaired
+
+  test_connections = []
+  for a, b in all_pairs:
+    test_connections.append(make_connection(a, b))
+    test_connections.append(make_connection(b, a))
+
+  for a in all_unpaired:
+    test_connections.append(make_connection(a, a))
+
+  if not progression_data or validate_logic(test_connections, progression_data, all_exits):
+    connections = test_connections
+    if progression_data:
+      print(f"[+] Found valid non-softlocking layout on attempt {attempt + 1}!")
+    break
+else:
+  print(f"[-] Warning: Could not find a valid layout after {MAX_ATTEMPTS} attempts. Proceeding with last shuffle.")
+  connections = test_connections
 
 out = {
     "seed": SEED,
