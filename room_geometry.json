@@ -449,11 +449,20 @@
       "east": [
         {
           "top": 1.5,
+          "bottom": 2.5
+        },
+        {
+          "top": 4,
+          "bottom": 5
+        },
+        {
+          "top": 7.5,
           "bottom": 8.5
         }
       ],
       "north": []
-    }
+    },
+    "complete": true
   },
   {
     "north": 5,
@@ -463,17 +472,26 @@
         {
           "top": 7.5,
           "bottom": 8.5
+        },
+        {
+          "top": 1.5,
+          "bottom": 2.5
+        },
+        {
+          "top": 4.5,
+          "bottom": 5.5
         }
       ],
       "south": [],
       "east": [],
       "north": [
         {
-          "left": 9.5,
+          "left": 10.5,
           "right": 11.5
         }
       ]
-    }
+    },
+    "complete": true
   },
   {
     "north": 5,
@@ -623,13 +641,9 @@
         }
       ],
       "east": [],
-      "north": [
-        {
-          "left": 6.5,
-          "right": 7.5
-        }
-      ]
-    }
+      "north": []
+    },
+    "complete": true
   },
   {
     "north": 6,
@@ -1201,6 +1215,7 @@
   },
   {
     "north": 8,
+    "complete": true,
     "east": 10,
     "exits": {
       "west": [
@@ -1214,12 +1229,24 @@
         {
           "top": 7.5,
           "bottom": 9.5
+        },
+        {
+          "top": 0.5,
+          "bottom": 3.5
+        },
+        {
+          "top": 5.5,
+          "bottom": 5.5
         }
       ],
       "north": [
         {
           "left": 0.5,
           "right": 9.5
+        },
+        {
+          "left": 11.5,
+          "right": 13.5
         }
       ]
     }
@@ -1232,6 +1259,14 @@
         {
           "top": 7.5,
           "bottom": 9.5
+        },
+        {
+          "top": 0.5,
+          "bottom": 3.5
+        },
+        {
+          "top": 5.5,
+          "bottom": 5.5
         }
       ],
       "south": [
@@ -1250,9 +1285,18 @@
         {
           "left": 7.5,
           "right": 13.5
+        },
+        {
+          "left": 0.5,
+          "right": 2.5
+        },
+        {
+          "left": 4,
+          "right": 5.5
         }
       ]
-    }
+    },
+    "complete": true
   },
   {
     "north": 8,
@@ -1607,8 +1651,12 @@
       ],
       "south": [
         {
+          "left": 11,
+          "right": 13
+        },
+        {
           "left": 0.5,
-          "right": 0.5
+          "right": 9.5
         }
       ],
       "east": [
@@ -1623,7 +1671,8 @@
           "right": 12.5
         }
       ]
-    }
+    },
+    "complete": true
   },
   {
     "north": 9,
@@ -1919,14 +1968,18 @@
       "west": [],
       "south": [
         {
-          "left": 13.5,
-          "right": 13.5
+          "left": 1.5,
+          "right": 13
         }
       ],
       "east": [
         {
-          "top": 0.5,
+          "top": 7.5,
           "bottom": 10.5
+        },
+        {
+          "top": 0.5,
+          "bottom": 5.5
         }
       ],
       "north": [
@@ -1935,7 +1988,8 @@
           "right": 13.5
         }
       ]
-    }
+    },
+    "complete": true
   },
   {
     "north": 10,
@@ -2273,14 +2327,18 @@
       "west": [],
       "south": [
         {
-          "left": 13.5,
+          "left": 1.5,
           "right": 13.5
         }
       ],
       "east": [
         {
-          "top": 0.5,
+          "top": 5.5,
           "bottom": 10.5
+        },
+        {
+          "top": 0.5,
+          "bottom": 3.5
         }
       ],
       "north": [
@@ -2289,7 +2347,8 @@
           "right": 13.5
         }
       ]
-    }
+    },
+    "complete": true
   },
   {
     "north": 11,
@@ -2297,7 +2356,11 @@
     "exits": {
       "west": [
         {
-          "top": 0.5,
+          "top": 0,
+          "bottom": 3.5
+        },
+        {
+          "top": 5.5,
           "bottom": 10.5
         }
       ],
@@ -2309,8 +2372,8 @@
       ],
       "east": [
         {
-          "top": 10.5,
-          "bottom": 10.5
+          "top": 0.5,
+          "bottom": 3.5
         }
       ],
       "north": [
@@ -2319,7 +2382,8 @@
           "right": 13.5
         }
       ]
-    }
+    },
+    "complete": true
   },
   {
     "north": 11,

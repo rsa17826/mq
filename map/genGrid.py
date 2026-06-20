@@ -116,14 +116,98 @@ html_end = """    </div>
             setTimeout(() => { el.style.opacity = "0"; }, 1500);
         }
 
-        // Setup global event listener delegation for tracking map grid interaction
+        // Left Click Handler to Copy Position
         document.querySelectorAll('.tile-wrapper').forEach(tile => {
-            tile.addEventListener('click', function() {
+            tile.addEventListener('click', function(e) {
+                if (e.button === 2) return;
+
                 const posStr = this.getAttribute('data-pos');
                 navigator.clipboard.writeText(posStr).then(() => {
                     showToast("Copied: " + posStr);
                 }).catch(err => {
                     console.error("[-] Clipboard write exception error:", err);
+                });
+            });
+        });
+
+        // Right Click Configuration for Block Selection Metrics
+        const BLOCKS_X = 14;
+        const BLOCKS_Y = 11;
+        const TILE_WIDTH = 624;
+        const TILE_HEIGHT = 493;
+        const EDGE_THRESHOLD = 60;
+
+        let currentTileKey = null;
+        let clickBuffer = { west: [], east: [], north: [], south: [] };
+
+        document.querySelectorAll('.tile-wrapper').forEach(tile => {
+            tile.addEventListener('contextmenu', function(event) {
+                event.preventDefault();
+
+                const posStr = this.getAttribute('data-pos');
+                const rect = this.getBoundingClientRect();
+
+                // Compute exact cursor offset points inside the selected 624x493 tile
+                const rawX = Math.round((event.clientX - rect.left) * (TILE_WIDTH / rect.width));
+                const rawY = Math.round((event.clientY - rect.top) * (TILE_HEIGHT / rect.height));
+
+                // Translate pixels into float block grid segments
+                const gridX = Math.round((rawX / TILE_WIDTH) * BLOCKS_X * 2) / 2;
+                const gridY = Math.round((rawY / TILE_HEIGHT) * BLOCKS_Y * 2) / 2;
+
+                if (currentTileKey !== posStr) {
+                    currentTileKey = posStr;
+                    clickBuffer = { west: [], east: [], north: [], south: [] };
+                }
+
+                const isNearLeft = rawX <= EDGE_THRESHOLD;
+                const isNearRight = rawX >= TILE_WIDTH - EDGE_THRESHOLD;
+                const isNearTop = rawY <= EDGE_THRESHOLD;
+                const isNearBottom = rawY >= TILE_HEIGHT - EDGE_THRESHOLD;
+
+                let matchedEdges = [];
+                if (isNearLeft) matchedEdges.push({ edge: "west", value: gridY });
+                if (isNearRight) matchedEdges.push({ edge: "east", value: gridY });
+                if (isNearTop) matchedEdges.push({ edge: "north", value: gridX });
+                if (isNearBottom) matchedEdges.push({ edge: "south", value: gridX });
+
+                if (matchedEdges.length === 0) {
+                    console.warn(`[-] Right-click out of edge boundary limits.`);
+                    return;
+                }
+
+                const targetedNames = matchedEdges.map(m => m.edge);
+                Object.keys(clickBuffer).forEach(edgeName => {
+                    if (!targetedNames.includes(edgeName)) clickBuffer[edgeName] = [];
+                });
+
+                matchedEdges.forEach(({ edge, value }) => {
+                    clickBuffer[edge].push(value);
+                    console.log(`[+] [${edge.toUpperCase()}] Point ${clickBuffer[edge].length} captured on tile ${posStr}: ${value}`);
+
+                    if (clickBuffer[edge].length === 2) {
+                        const [p1, p2] = clickBuffer[edge].sort((a, b) => a - b);
+
+                        // FIX: Formatted to output just the inner raw bounds object container
+                        let boundsPayload = {};
+                        if (edge === "west" || edge === "east") {
+                            boundsPayload["top"] = p1;
+                            boundsPayload["bottom"] = p2;
+                        } else {
+                            boundsPayload["left"] = p1;
+                            boundsPayload["right"] = p2;
+                        }
+
+                        const jsonOutput = JSON.stringify(boundsPayload, null, 2);
+                        console.log(`%c[+] Pair Completed for ${edge.toUpperCase()} on tile ${posStr}!`, "color: green; font-weight: bold;");
+                        console.log(jsonOutput);
+
+                        navigator.clipboard.writeText(jsonOutput).then(() => {
+                            showToast(`Copied ${edge.toUpperCase()} bounds!`);
+                        });
+
+                        clickBuffer[edge] = [];
+                    }
                 });
             });
         });
@@ -192,7 +276,6 @@ def generate_html():
                 if not bounds_list:
                     continue
 
-                # Standardize so we always iterate a list structure
                 if not isinstance(bounds_list, list):
                     bounds_list = [bounds_list]
 
@@ -200,7 +283,6 @@ def generate_html():
                     if not bounds or not isinstance(bounds, dict):
                         continue
 
-                    # West & East bounds (Vertical placements)
                     if side in ["west", "east"]:
                         if bounds.get("top") is None or bounds.get("bottom") is None:
                             continue
@@ -218,7 +300,6 @@ def generate_html():
                             f'<div class="exit-square{class_modifier}" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%;"></div>'
                         )
 
-                    # North & South bounds (Horizontal placements)
                     elif side in ["north", "south"]:
                         if bounds.get("left") is None or bounds.get("right") is None:
                             continue
@@ -251,7 +332,7 @@ def generate_html():
         f.write("\n".join(html_elements))
         f.write("\n" + html_end)
 
-    print(f"Success! Generated flipped {OUTPUT_FILE} with {len(html_elements)} overlaid image tiles using updated array geometry data.")
+    print(f"Success! Generated flipped {OUTPUT_FILE} with {len(html_elements)} overlaid image tiles.")
 
 if __name__ == "__main__":
     generate_html()
