@@ -24,7 +24,8 @@
 
     { "id": "item:venom" },
     { "id": "item:gold" },
-    { "id": "item:emerald" }
+    { "id": "item:emerald" },
+    { "id": "quest.pam", "type": "int" }
   ],
   "locations": [
     {
@@ -35,6 +36,11 @@
     {
       "room": { "north": 20, "east": 20 },
       "gives": ["spawnpoint"],
+      "method": "pickup"
+    },
+    {
+      "room": { "north": 19, "east": 21 },
+      "gives": ["item:gold#inf"],
       "method": "pickup"
     }
   ],
@@ -91,7 +97,7 @@
     },
     {
       "room": { "north": 18, "east": 20 },
-      "info":"warp skill warp point"
+      "info": "warp skill warp point"
     },
     {
       "room": { "north": 18, "east": 20 },
@@ -101,7 +107,17 @@
     {
       "room": { "north": 18, "east": 19 },
       "give": [["item:emerald#1"]],
-      "receive": ["item:gold#?","food:strawberry#1"]
+      "receive": ["item:gold#?", "food:strawberry#1"]
+    },
+    {
+      "room": { "north": 19, "east": 21 },
+      "give": [["skill:dig"]],
+      "receive": ["item:gold#25"]
+    },
+    {
+      "room": { "north": 19, "east": 21 },
+      "give": [["item:diamond#20"]],
+      "receive": ["quest.pam>14"]
     }
   ],
   "gates": [
