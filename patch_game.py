@@ -105,6 +105,18 @@ PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
       enumerable: true,
       configurable: true,
     }})
+    Object.defineProperty(manager, "realnorth", {{
+      get: function () {{ return erNorth }},
+      set: function (v) {{ erNorth = v }},
+      enumerable: true,
+      configurable: true,
+    }})
+    Object.defineProperty(manager, "realeast", {{
+      get: function () {{ return erEast }},
+      set: function (v) {{ erEast = v }},
+      enumerable: true,
+      configurable: true,
+    }})
 
     var erOriginalLoca = __createObject.loca
     __createObject.loca = function () {{

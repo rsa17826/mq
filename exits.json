@@ -6252,60 +6252,6 @@
       }
     },
     {
-      "id": "edge:south:18.0_12.0",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 18,
-        "east": 12
-      },
-      "dest": {
-        "north": 17,
-        "east": 12
-      },
-      "dest_x": null,
-      "dest_y": 25,
-      "gated": false,
-      "gate": null,
-      "one_way": false,
-      "dest_room_exists_in_census": false,
-      "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
-    },
-    {
-      "id": "edge:south:18.0_13.0",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 18,
-        "east": 13
-      },
-      "dest": {
-        "north": 17,
-        "east": 13
-      },
-      "dest_x": null,
-      "dest_y": 25,
-      "gated": false,
-      "gate": null,
-      "one_way": false,
-      "dest_room_exists_in_census": false,
-      "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)",
-      "exits": {
-        "north": {
-          "left": 0.5,
-          "right": 0.5
-        }
-      }
-    },
-    {
       "id": "edge:south:18.0_14.0",
       "mechanism": "edge",
       "direction": "south",
@@ -12370,8 +12316,7 @@
       "gate": null,
       "one_way": false,
       "dest_room_exists_in_census": false,
-      "notes": null,
-      "needs_review": "destination room not found in census - likely map boundary/wall (no real exit here)"
+      "notes": null
     },
     {
       "id": "edge:north:18.0_15.0",
