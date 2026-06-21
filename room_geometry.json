@@ -6192,7 +6192,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 500,
@@ -6208,7 +6208,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 501,
@@ -6229,7 +6229,7 @@
       ],
       "north": []
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 501,
@@ -6250,7 +6250,7 @@
       "east": [],
       "north": []
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 5,

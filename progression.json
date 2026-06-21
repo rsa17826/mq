@@ -970,6 +970,11 @@
       "requires": [["quest:pam.15"]],
       "receive": ["food:holy water#1"],
       "info": "right 11"
+    },
+    {
+      "room": { "north": 500, "east": 501 },
+      "requires": [["weapon:bane blade", "skill:reveal"]],
+      "receive": ["quest:alpha blade.1"]
     }
   ],
   "gates": [
