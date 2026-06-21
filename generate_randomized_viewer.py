@@ -7,10 +7,14 @@ IMAGE_FOLDER = "mapSmall"
 OUTPUT_FILE = "randomized_index.html"
 GEOMETRY_JSON_PATH = "./room_geometry.json"
 CONNECTIONS_JSON_PATH = "./connections.json"
+PROGRESSION_JSON_PATH = "./progression.json"
+
+# Path to the icon image representing progression events (adjust filename as needed)
+PROGRESSION_ICON_PATH = "./mapimgs/"
 
 # Constants scaled down to 10% to match the downsized image sizes perfectly
-TILE_WIDTH = 62.4
-TILE_HEIGHT = 49.3
+TILE_WIDTH = 149.76
+TILE_HEIGHT = 118.32
 BLOCKS_X = 14
 BLOCKS_Y = 11
 
@@ -18,50 +22,60 @@ BLOCK_WIDTH_PCT = 100 / BLOCKS_X
 BLOCK_HEIGHT_PCT = 100 / BLOCKS_Y
 GAP_SIZE = 0 # Sizing gap between tiles
 
-html_start = """<!DOCTYPE html>
+html_start = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>High-Performance Interactive Map Viewer</title>
     <style>
-        html, body {
+        html, body {{
             margin: 0;
             background-color: #111;
             color: #fff;
             font-family: sans-serif;
             scrollbar-width: none;
             -ms-overflow-style: none;
-        }
-        html::-webkit-scrollbar, body::-webkit-scrollbar {
+        }}
+        html::-webkit-scrollbar, body::-webkit-scrollbar {{
             display: none;
-        }
-        .grid-container {
+        }}
+        .fr {{
+            display:flex;
+            flex-direction:row;
+            gap:4px;
+            position: absolute;
+            bottom: calc(3px + {BLOCK_WIDTH_PCT}%);
+            right: calc(3px + {BLOCK_WIDTH_PCT}%);
+            pointer-events: none;
+            z-index:9999999999;
+        }}
+        .grid-container {{
             position: relative;
             padding: 20px;
             margin: 0;
-        }
-        .tile-wrapper {
+        }}
+        .tile-wrapper {{
             position: absolute;
-            width: 62.4px;
-            height: 49.3px;
+            width: {TILE_WIDTH}px;
+            height: {TILE_HEIGHT}px;
             background-color: #222;
             border: 1px solid #444;
             box-sizing: border-box;
             z-index: 5;
             transition: border-color 0.1s ease-in-out;
-        }
-        .tile-wrapper:hover {
+        }}
+        .tile-wrapper:hover {{
             border-color: #fff;
             z-index: 15;
-        }
-        .grid-item {
+        }}
+        .grid-item {{
             display: block;
             width: 100%;
             height: 100%;
             opacity: 0.85;
-        }
-        .overlay-layer {
+        }}
+        .overlay-layer {{
             position: absolute;
             top: 0;
             left: 0;
@@ -69,13 +83,19 @@ html_start = """<!DOCTYPE html>
             height: 100%;
             pointer-events: none;
             z-index: 6;
-        }
-        .exit-square {
+        }}
+        .exit-square {{
             position: absolute;
             box-sizing: border-box;
             border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        .global-svg-layer {
+        }}
+        .progression-icon {{
+            width: 14px;
+            height: 14px;
+            z-index: 12;
+            filter: drop-shadow(0px 1px 2px rgba(0,0,0,0.8));
+        }}
+        .global-svg-layer {{
             position: absolute;
             top: 0;
             left: 0;
@@ -83,19 +103,19 @@ html_start = """<!DOCTYPE html>
             height: 100%;
             pointer-events: none;
             z-index: 100;
-        }
-        .route-arrow {
+        }}
+        .route-arrow {{
             fill: none;
             stroke-width: 1.8;
             stroke-linecap: round;
             stroke-dasharray: 4, 3;
             animation: dash 20s linear infinite;
-        }
-        @keyframes dash {
-            to {
+        }}
+        @keyframes dash {{
+            to {{
                 stroke-dashoffset: -1000;
-            }
-        }
+            }}
+        }}
     </style>
 </head>
 <body>
@@ -162,6 +182,53 @@ def load_geometry_map():
         print(f"[-] Failed to read room geometry config details: {err}")
     return geom_db
 
+def load_progression_map():
+    prog_db = {}
+    if not os.path.exists(PROGRESSION_JSON_PATH):
+        print(f"[-] Warn: {PROGRESSION_JSON_PATH} not found.")
+        return prog_db
+    try:
+        with open(PROGRESSION_JSON_PATH, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            for loc in data.get("locations", []):
+                room_coord = loc.get("room")
+                if room_coord and "north" in room_coord and "east" in room_coord:
+                    n = int(room_coord["north"])
+                    e = int(room_coord["east"])
+                    key = f"{n}_{e}"
+                    if key not in prog_db:
+                        prog_db[key] = []
+                    prog_db[key].append(loc)
+    except Exception as err:
+        print(f"[-] Failed to read progression config details: {err}")
+    return prog_db
+
+def build_tooltip_text(north, east, prog_entries):
+    title_lines = [f"Position: {north},{east}"]
+
+    if not prog_entries:
+        return "\n".join(title_lines)
+
+    for idx, entry in enumerate(prog_entries):
+        if len(prog_entries) > 1:
+            title_lines.append(f"--- Event #{idx + 1} ---")
+
+        if "info" in entry:
+            title_lines.append(f"Info: {entry['info']}")
+
+        if "requires" in entry:
+            req_groups = []
+            for group in entry["requires"]:
+                req_groups.append(" AND ".join(group))
+            req_str = " OR ".join(f"({r})" for r in req_groups) if len(req_groups) > 1 else req_groups[0]
+            title_lines.append(f"Requires: {req_str}")
+
+        if "receive" in entry:
+            rec_str = ", ".join(entry["receive"])
+            title_lines.append(f"Receive: {rec_str}")
+
+    return "\n".join(title_lines)
+
 def main():
     if not os.path.exists(IMAGE_FOLDER):
         print(f"[-] Error: '{IMAGE_FOLDER}' folder not found.")
@@ -169,6 +236,7 @@ def main():
 
     connections = load_connections()
     geom_index = load_geometry_map()
+    prog_index = load_progression_map()
 
     files = os.listdir(IMAGE_FOLDER)
     parsed_tiles = []
@@ -287,15 +355,12 @@ def main():
                 if not isinstance(bounds_list, list):
                     bounds_list = [bounds_list]
 
-                # Filter connections belonging to this side and sort them by coordinate position
                 side_connections = [
                     c for c in active_connections
                     if c.get("direction") == side and c.get("srcCoord") is not None
                 ]
-                # Sort connections: Left-to-Right for North/South, Top-to-Bottom for West/East
                 side_connections.sort(key=lambda c: float(c["srcCoord"]))
 
-                # Sort geometry exit blocks so they align perfectly with the sorted connections
                 if side in ["west", "east"]:
                     sorted_bounds = sorted(bounds_list, key=lambda b: int(float(b.get("top", 0))))
                 else:
@@ -305,7 +370,6 @@ def main():
                     if not bounds or not isinstance(bounds, dict):
                         continue
 
-                    # Match by index position sequence rather than doing flaky pixel block math
                     matched_color = "rgba(255,255,255,0.5)"
                     if idx < len(side_connections):
                         conn = side_connections[idx]
@@ -341,10 +405,40 @@ def main():
                             f'<div class="exit-square" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%; background-color:{matched_color};"></div>'
                         )
 
+        # Pull progression events for this specific room
+        room_prog_data = prog_index.get(room_key, [])
+        tooltip_str = build_tooltip_text(north, east, room_prog_data)
+
+        # Generate an icon tag if the room demands actions (has requires or receive entries)
+        icon_html = "<span class=fr>"
+
+        # Pull progression events for this specific room
+        room_prog_data = prog_index.get(room_key, [])
+        tooltip_str = build_tooltip_text(north, east, room_prog_data)
+
+        # Replicating JavaScript .map(e => e?.receive).unique() dynamically in Python
+        unique_receives = set()
+        for entry in room_prog_data:
+            receive_list = entry.get("receive")
+            if receive_list and isinstance(receive_list, list):
+                for item in receive_list:
+                    if item: # Ensure item is not null/empty
+                        unique_receives.add(item)
+
+        # Generate individual icon tags for each unique item type found
+        icon_html = "<span class=fr>"
+        for item in sorted(unique_receives): # Sorting ensures stable element ordering
+            # Sanitize colons, hash symbols, or question marks into underscores
+            sanitized_name = re.sub(r"[:#?]", "_", re.sub(r"[#?].+$", "", item))
+            icon_filename = f"{sanitized_name}.png"
+            icon_src = os.path.join(PROGRESSION_ICON_PATH, icon_filename).replace("\\", "/")
+
+            icon_html += f'\n            <img src="{icon_src}" class="progression-icon" alt="{item}" title="{item}">'
+        icon_html += "</span>"
 
         overlay_content = "\n".join(squares_html)
-        wrapper_tag = f"""        <div class="tile-wrapper" data-room="{room_key}" style="left: {pixel_left:.1f}px; top: {pixel_top:.1f}px;" title="Position: {north},{east}">
-            <img src="{img_path}" class="grid-item" alt="Tile {east},{north}">
+        wrapper_tag = f"""        <div class="tile-wrapper" data-room="{room_key}" style="left: {pixel_left:.1f}px; top: {pixel_top:.1f}px;" title="{tooltip_str}">
+            <img src="{img_path}" class="grid-item" alt="Tile {north},{east}">{icon_html}
             <div class="overlay-layer">
 {overlay_content}
             </div>
@@ -373,7 +467,7 @@ def main():
         f.write(f"\n    <script>const ROUTES_DATA = {json.dumps(js_routes_db, indent=2)};</script>")
         f.write("\n" + html_end)
 
-    print(f"[+] Success! Cleanly hashed layout positions completed inside {OUTPUT_FILE}")
+    print(f"[+] Success! Cleanly integrated progression tooltips and icons into {OUTPUT_FILE}")
 
 if __name__ == "__main__":
     main()

@@ -5,10 +5,6 @@
       "receive": ["spawnpoint"]
     },
     {
-      "room": { "north": 20, "east": 20 },
-      "receive": ["spawnpoint"]
-    },
-    {
       "room": { "north": 19, "east": 21 },
       "receive": ["item:gold#inf"]
     },
@@ -87,7 +83,7 @@
       "receive": ["item:gold#25"]
     },
     {
-      "room": { "north": 19, "east": 21 },
+      "room": { "north": 19, "east": 20 },
       "requires": [["item:diamond#20"]],
       "receive": ["quest:pam.15"]
     },
@@ -451,7 +447,7 @@
       "receive": ["quest:headstone.+1"]
     },
     {
-      "room": { "north": 11, "east": 25 },
+      "room": { "north": 11, "east": 20 },
       "requires": [["quest:pam.16"]],
       "receive": ["food:beef jerkey#20"]
     },
@@ -529,7 +525,7 @@
       "receive": ["item:gold#93"]
     },
     {
-      "room": { "north": 16, "east": 25 },
+      "room": { "north": 16, "east": 20 },
       "requires": [["quest:pam.16"]],
       "receive": ["item:diamond#5", "food:steak#12"]
     },
@@ -580,7 +576,7 @@
       "receive": ["quest:headstone.+1"]
     },
     {
-      "room": { "north": 16, "east": 24 },
+      "room": { "north": 16, "east": 20 },
       "requires": [["quest:pam.16", "entrance.north1"]],
       "receive": ["food:gummy bear#13", "item:gold#1001"]
     },
@@ -627,81 +623,81 @@
       "receive": ["item:gold#18"]
     },
     {
-      "room": { "north": 19, "east": 21 },
+      "room": { "north": 19, "east": 20 },
       "receive": ["quest:pam"]
     },
     {
-      "room": { "north": 19, "east": 21 },
+      "room": { "north": 19, "east": 20 },
       "requires": [["quest:pam.2", "misc:blue flower 1"]],
       "receive": ["quest:pam.3"]
     },
     {
-      "room": { "north": 19, "east": 21 },
+      "room": { "north": 19, "east": 20 },
       "requires": [["quest:pam.3", "misc:blue flower 2"]],
       "receive": ["quest:pam.4"]
     },
     {
-      "room": { "north": 19, "east": 21 },
+      "room": { "north": 19, "east": 20 },
       "requires": [["quest:pam.4", "misc:blue flower 3"]],
       "receive": ["quest:pam.5"]
     },
     {
-      "room": { "north": 19, "east": 21 },
+      "room": { "north": 19, "east": 20 },
       "requires": [["quest:pam.5", "misc:blue flower 4"]],
       "receive": ["quest:pam.6"]
     },
     {
-      "room": { "north": 19, "east": 21 },
+      "room": { "north": 19, "east": 20 },
       "requires": [["quest:pam.6", "misc:blue flower 5"]],
       "receive": ["quest:pam.7"]
     },
     {
-      "room": { "north": 19, "east": 21 },
+      "room": { "north": 19, "east": 20 },
       "requires": [["quest:pam.7", "misc:blue flower 6"]],
       "receive": ["quest:pam.8"]
     },
     {
-      "room": { "north": 19, "east": 21 },
+      "room": { "north": 19, "east": 20 },
       "requires": [["quest:pam.8", "misc:blue flower 7"]],
       "receive": ["quest:pam.9"]
     },
     {
-      "room": { "north": 19, "east": 21 },
+      "room": { "north": 19, "east": 20 },
       "requires": [["quest:pam.9", "misc:blue flower 8"]],
       "receive": ["quest:pam.10"]
     },
     {
-      "room": { "north": 19, "east": 21 },
+      "room": { "north": 19, "east": 20 },
       "requires": [["quest:pam.10", "misc:blue flower 9"]],
       "receive": ["quest:pam.11"]
     },
     {
-      "room": { "north": 19, "east": 21 },
+      "room": { "north": 19, "east": 20 },
       "requires": [["quest:pam.11", "misc:blue flower 10"]],
       "receive": ["quest:pam.12"]
     },
     {
-      "room": { "north": 19, "east": 21 },
+      "room": { "north": 19, "east": 20 },
       "requires": [["quest:pam.12", "misc:blue flower 11"]],
       "receive": ["quest:pam.13"]
     },
     {
-      "room": { "north": 19, "east": 21 },
+      "room": { "north": 19, "east": 20 },
       "requires": [["quest:pam.13", "misc:blue flower 12"]],
       "receive": ["quest:pam.14"]
     },
     {
-      "room": { "north": 19, "east": 21 },
+      "room": { "north": 19, "east": 20 },
       "requires": [["quest:pam.14", "misc:blue flower 13"]],
       "receive": ["quest:pam.15"]
     },
     {
-      "room": { "north": 19, "east": 21 },
+      "room": { "north": 19, "east": 20 },
       "requires": [["quest:pam.15", "misc:blue flower 14"]],
       "receive": ["quest:pam.16"]
     },
     {
-      "room": { "north": 19, "east": 21 },
+      "room": { "north": 19, "east": 20 },
       "requires": [["quest:pam.16", "???"]],
       "receive": ["???"]
     },
@@ -771,7 +767,7 @@
       "receive": ["item:ruby#1"]
     },
     {
-      "room": { "north": 19, "east": 18 },
+      "room": { "north": 19, "east": 10 },
       "requires": [["quest:pam.16", "entrance.south0"]],
       "receive": ["item:ruby#4"]
     },
@@ -895,7 +891,7 @@
       "receive": ["skill:shield"]
     },
     {
-      "room": { "north": 18, "east": 15 },
+      "room": { "north": 18, "east": 10 },
       "requires": [["quest:pam.16"]],
       "receive": ["food:newton apple#15"],
       "info": "fill refresh too"
@@ -911,7 +907,7 @@
       "receive": ["quest:headstone.+1"]
     },
     {
-      "room": { "north": 16, "east": 15 },
+      "room": { "north": 16, "east": 10 },
       "requires": [["quest:pam.16"]],
       "receive": ["armor:diamond armour"]
     },
@@ -966,7 +962,7 @@
       "receive": ["food:gummy bear#5"]
     },
     {
-      "room": { "north": 17, "east": 11 },
+      "room": { "north": 17, "east": 10 },
       "requires": [["quest:pam.15"]],
       "receive": ["food:holy water#1"],
       "info": "right 11"
@@ -991,7 +987,7 @@
       "receive": ["???"]
     },
     {
-      "room": { "north": 3, "east": 26 },
+      "room": { "north": 3, "east": 20 },
       "requires": [["quest:pam.15"]],
       "receive": ["food:exixir"]
     },
@@ -1027,7 +1023,7 @@
       "receive": ["item:bomb#10"]
     },
     {
-      "room": { "north": 15, "east": 18 },
+      "room": { "north": 15, "east": 10 },
       "requires": [["quest:pam.15", "permit:bomb.2"]],
       "receive": ["item:bomb#50", "food:chocolate#?"]
     },
