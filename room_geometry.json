@@ -4600,7 +4600,7 @@
       "east": [],
       "north": []
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 17,
@@ -4616,7 +4616,7 @@
       ],
       "north": []
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 17,
@@ -4637,7 +4637,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 17,
@@ -5493,7 +5493,8 @@
       "south": [],
       "east": [],
       "north": []
-    }
+    },
+    "complete": true
   },
   {
     "north": 20,
@@ -5708,7 +5709,7 @@
   {
     "north": 21,
     "east": 20,
-    "complete": false,
+    "complete": true,
     "exits": {
       "west": [],
       "south": [
@@ -5729,7 +5730,7 @@
   {
     "north": 21,
     "east": 21,
-    "complete": false,
+    "complete": true,
     "exits": {
       "west": [
         {

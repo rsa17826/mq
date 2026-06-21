@@ -49,9 +49,9 @@
       "gives": ["food:banana#1"]
     },
     {
-      "room": { "north": 20, "east": 20 },
-      "requires": [["drop:venom", "skill:cure"]],
-      "receive": ["orange"]
+      "room": { "north": 21, "east": 20 },
+      "requires": [["drop:venom#1", "???"]],
+      "receive": ["food:orange#1"]
     },
     {
       "room": { "north": 20, "east": 20 },
@@ -730,6 +730,51 @@
       "room": { "north": 19, "east": 21 },
       "requires": [["quest.pam.14", "blue flower 14"]],
       "receive": ["quest.pam.15"]
+    },
+    {
+      "room": { "north": 19, "east": 21 },
+      "requires": [["quest.pam.15", "???"]],
+      "receive": ["???"]
+    },
+    {
+      "room": { "north": 17, "east": 20 },
+      "requires": [["permit:bomb", "item:key#1"]],
+      "receive": ["food:beef jerkey#5", "item:gold#200"]
+    },
+    {
+      "room": { "north": 17, "east": 19 },
+      "requires": [["???"]],
+      "receive": ["quest:pendant.1"]
+    },
+    {
+      "room": { "north": 21, "east": 21 },
+      "requires": [["entrance.west", "???"]],
+      "receive": ["skill:craft"]
+    },
+    {
+      "room": { "north": 21, "east": 20 },
+      "requires": [["item:gold"]],
+      "receive": ["magic:slow"]
+    },
+    {
+      "room": { "north": 21, "east": 20 },
+      "requires": [["item:gold"]],
+      "receive": ["magic:heal"]
+    },
+    {
+      "room": { "north": 21, "east": 20 },
+      "requires": [["item:gold"]],
+      "receive": ["magic:blast"]
+    },
+    {
+      "room": { "north": 21, "east": 20 },
+      "requires": [["food:honey#20"]],
+      "receive": ["magic:crush"]
+    },
+    {
+      "room": { "north": 21, "east": 20 },
+      "requires": [["item:boar tusk#1"]],
+      "receive": ["item:gold#20"]
     }
   ],
   "gates": [
