@@ -6,7 +6,7 @@ reg = re.compile("&stat\\d+=(-?\\d+(?:\\.\\d+)?)")
 
 try:
   with open(
-    os.path.join(os.path.dirname(__file__), "../MQ2Files/loadChar.php"), "w"
+    os.path.join(os.path.dirname(__file__), "../MQFiles/loadChar.php"), "w"
   ) as file:
     newstr = re.findall(reg, os.environ.get("QUERY_STRING", ""))
     file.write(" ".join(newstr))
