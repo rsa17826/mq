@@ -930,6 +930,26 @@
       "requires": [["quest.pam.15"]],
       "receive": ["item:newton apple#15"],
       "info": "fill refresh too"
+    },
+    {
+      "room": { "north": 17, "east": 16 },
+      "requires": [["item:key#1"]],
+      "receive": ["item:diamond#5"]
+    },
+    {
+      "room": { "north": 16, "east": 16 },
+      "requires": [["quest:headstone"]],
+      "receive": ["quest:headstone.+1"]
+    },
+    {
+      "room": { "north": 16, "east": 15 },
+      "requires": [["quest.pam.15"]],
+      "receive": ["armor:diamond armour"]
+    },
+    {
+      "room": { "north": 17, "east": 15 },
+      "requires": [["item:emerald#1"]],
+      "receive": ["item:gold#100", "food:coolie#50"]
     }
   ],
   "gates": [
