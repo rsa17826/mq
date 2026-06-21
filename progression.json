@@ -604,6 +604,132 @@
         ]
       ],
       "receive": ["skill:medic.6"]
+    },
+    {
+      "room": { "north": 18, "east": 24 },
+      "requires": [["quest:headstone"]],
+      "receive": ["quest:headstone.+1"]
+    },
+    {
+      "room": { "north": 16, "east": 24 },
+      "requires": [["quest.pam.15", "entrance.north1"]],
+      "receive": ["food:gummy bear#12", "item:gold#1000"]
+    },
+    {
+      "room": { "north": 18, "east": 23 },
+      "requires": [["permit:bomb", "item:key#1"]],
+      "receive": ["weapon:warlock staf"]
+    },
+    {
+      "room": { "north": 21, "east": 23 },
+      "requires": [["item:key#1"]],
+      "receive": ["item:diamond#2", "item:gold#300"]
+    },
+    {
+      "room": { "north": 21, "east": 23 },
+      "requires": [["skill:dig"]],
+      "receive": ["item:diamond#1"]
+    },
+    {
+      "room": { "north": 21, "east": 22 },
+      "requires": [
+        ["ring.gold", "item:troll wristband#5", "item:gator skin#2"]
+      ],
+      "receive": ["craft.ring of gold"]
+    },
+    {
+      "room": { "north": 20, "east": 22 },
+      "requires": [["item:gold#500"]],
+      "receive": ["item:ruby#1"]
+    },
+    {
+      "room": { "north": 20, "east": 23 },
+      "requires": [["skill:reveal", "entrance.east0"]],
+      "receive": ["red chest"]
+    },
+    {
+      "room": { "north": 19, "east": 22 },
+      "requires": [["???"]],
+      "receive": ["skill:reveal"]
+    },
+    {
+      "room": { "north": 19, "east": 21 },
+      "requires": [["???", "item:bear tooth#1"]],
+      "receive": ["item:gold#18"]
+    },
+    {
+      "room": { "north": 19, "east": 21 },
+      "receive": ["quest.pam"]
+    },
+    {
+      "room": { "north": 19, "east": 21 },
+      "requires": [["quest.pam.1", "blue flower 1"]],
+      "receive": ["quest.pam.2"]
+    },
+    {
+      "room": { "north": 19, "east": 21 },
+      "requires": [["quest.pam.2", "blue flower 2"]],
+      "receive": ["quest.pam.3"]
+    },
+    {
+      "room": { "north": 19, "east": 21 },
+      "requires": [["quest.pam.3", "blue flower 3"]],
+      "receive": ["quest.pam.4"]
+    },
+    {
+      "room": { "north": 19, "east": 21 },
+      "requires": [["quest.pam.4", "blue flower 1"]],
+      "receive": ["quest.pam.5"]
+    },
+    {
+      "room": { "north": 19, "east": 21 },
+      "requires": [["quest.pam.5", "blue flower 5"]],
+      "receive": ["quest.pam.6"]
+    },
+    {
+      "room": { "north": 19, "east": 21 },
+      "requires": [["quest.pam.6", "blue flower 6"]],
+      "receive": ["quest.pam.7"]
+    },
+    {
+      "room": { "north": 19, "east": 21 },
+      "requires": [["quest.pam.7", "blue flower 7"]],
+      "receive": ["quest.pam.8"]
+    },
+    {
+      "room": { "north": 19, "east": 21 },
+      "requires": [["quest.pam.8", "blue flower 8"]],
+      "receive": ["quest.pam.9"]
+    },
+    {
+      "room": { "north": 19, "east": 21 },
+      "requires": [["quest.pam.9", "blue flower 9"]],
+      "receive": ["quest.pam.10"]
+    },
+    {
+      "room": { "north": 19, "east": 21 },
+      "requires": [["quest.pam.10", "blue flower 10"]],
+      "receive": ["quest.pam.11"]
+    },
+    {
+      "room": { "north": 19, "east": 21 },
+      "requires": [["quest.pam.11", "blue flower 11"]],
+      "receive": ["quest.pam.12"]
+    },
+    {
+      "room": { "north": 19, "east": 21 },
+      "requires": [["quest.pam.12", "blue flower 12"]],
+      "receive": ["quest.pam.13"]
+    },
+    {
+      "room": { "north": 19, "east": 21 },
+      "requires": [["quest.pam.13", "blue flower 13"]],
+      "receive": ["quest.pam.14"]
+    },
+    {
+      "room": { "north": 19, "east": 21 },
+      "requires": [["quest.pam.14", "blue flower 14"]],
+      "receive": ["quest.pam.15"]
     }
   ],
   "gates": [

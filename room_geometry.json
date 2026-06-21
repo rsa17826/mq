@@ -4423,7 +4423,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 16,
@@ -4695,7 +4695,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 17,
@@ -4728,7 +4728,7 @@
       ],
       "north": []
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 17,
@@ -5072,7 +5072,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 18,
@@ -5088,7 +5088,7 @@
       "east": [],
       "north": []
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 18,
@@ -5332,7 +5332,8 @@
       "south": [],
       "east": [],
       "north": []
-    }
+    },
+    "complete": true
   },
   {
     "north": 19,
@@ -5358,7 +5359,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 19,
@@ -5374,7 +5375,7 @@
       "east": [],
       "north": []
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 20,
@@ -5513,7 +5514,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 20,
@@ -5539,7 +5540,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 21,
@@ -5765,7 +5766,7 @@
       "east": [],
       "north": []
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 22,
@@ -7014,7 +7015,7 @@
       ],
       "north": []
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 19,
