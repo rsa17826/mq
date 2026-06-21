@@ -494,6 +494,21 @@
       "room": { "north": 14, "east": 22 },
       "requires": [["skill:dig"]],
       "receive": ["ring.gold", "quest:rings.1"]
+    },
+    {
+      "room": { "north": 11, "east": 21 },
+      "requires": [["item:key#1"]],
+      "receive": ["item:bomb#15"]
+    },
+    {
+      "room": { "north": 11, "east": 19 },
+      "requires": [["item:key#1", "entrance.east0"]],
+      "receive": ["food:sunflower seed#?", "food:strawberry#1"]
+    },
+    {
+      "room": { "north": 11, "east": 21 },
+      "requires": [["item:shark tooth#10", "skill:craft"]],
+      "receive": ["craft.emerald"]
     }
   ],
   "gates": [
