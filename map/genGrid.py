@@ -2,7 +2,7 @@ import os
 import re
 import json
 
-IMAGE_FOLDER = "mapSmall"
+IMAGE_FOLDER = "map"
 OUTPUT_FILE = "index.html"
 GEOMETRY_JSON_PATH = "./room_geometry.json"
 
