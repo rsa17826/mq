@@ -130,6 +130,61 @@ PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
           
           if (conns.length > 1 && erOrigin.x !== null && erOrigin.y !== null) {{
             console.log("[ER DEBUG] Multi-gap overlap discovered! Choices count:", conns.length);
+            var warptype = "unknown"
+            if (manager.char[0].get_y() > 550 ||
+            manager.char[0].get_y() < 0 ||
+            manager.char[0].get_x() < 0 ||
+            manager.char[0].get_x() > 660) {{
+              warptype = "edge"
+              console.log(manager.char[0].get_y(), manager.char[0].get_x())
+            }}
+            else if (manager.charBottom[0].hitTestObject(
+                  manager.stairsDown,
+                ) &&
+                manager.stairsDown.get_visible() == 1) {{
+              warptype = "stairsDown"
+            }}
+            else if (manager.charBottom[0].hitTestObject(
+                  manager.stairsUp2,
+                ) &&
+                manager.stairsUp2.get_visible() == 1) {{
+              warptype = "stairsUp2"
+            }}
+            else if (manager.charBottom[0].hitTestObject(
+                  manager.stairsUp,
+                ) &&
+                manager.stairsUp.get_visible() == 1) {{
+              warptype = "stairsUp"
+            }}
+            else if (manager.charBottom[0].hitTestObject(
+                  manager.grimsbane,
+                ) &&
+                manager.grimsbane.get_visible() == 1) {{
+              warptype = "grimsbane"
+            }}
+            else if (manager.charBottom[0].hitTestObject(
+                  manager.castleDoors,
+                ) &&
+                manager.castleDoors.get_visible() == 1) {{
+              warptype = "castleDoors"
+            }}
+            else if (manager.charBottom[0].hitTestObject(manager.isle1) &&
+                manager.isle1.get_visible() == 1) {{
+              warptype = "isle1"
+            }}
+            else if (manager.charBottom[0].hitTestObject(manager.isle2) &&
+                manager.isle2.get_visible() == 1) {{
+              warptype = "isle2"
+            }}
+            else if (manager.charBottom[0].hitTestObject(manager.isle3) &&
+                manager.isle3.get_visible() == 1) {{
+              warptype = "isle3"
+            }}
+            else if (manager.charBottom[0].hitTestObject(manager.temple) &&
+                manager.temple.get_visible() == 1) {{
+              warptype = "temple"
+            }}
+            console.log("warptype", warptype)
             var minDiff = Infinity
             for (var j = 0; j < conns.length; j++) {{
               var c = conns[j]

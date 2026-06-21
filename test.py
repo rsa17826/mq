@@ -60,7 +60,6 @@ def generate_edge_data(input_string):
             "gated": False,
             "gate": None,
             "one_way": False,
-            "dest_room_exists_in_census": True,
             "notes": None,
         }
 
