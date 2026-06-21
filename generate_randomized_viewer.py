@@ -193,7 +193,7 @@ def main():
     cols = len(unique_easts)
     rows = len(unique_norths)
 
-    js_routes_db = {f"{t[1]}_{t[0]}": [] for t in parsed_tiles}
+    js_routes_db = {f"{north}_{east}": [] for north, east, _ in parsed_tiles}
     tile_step_w = TILE_WIDTH + GAP_SIZE
     tile_step_h = TILE_HEIGHT + GAP_SIZE
 
