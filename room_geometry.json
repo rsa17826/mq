@@ -102,30 +102,60 @@
     "north": 3,
     "east": 24,
     "areas": [
-      [
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "east",
-          "idx": 1
-        }
-      ],
-      [
-        {
-          "side": "east",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "north",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [["permit:bomb"]],
+        "areas": [
+          [
+            {
+              "side": "east",
+              "idx": 0
+            },
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "east",
+              "idx": 1
+            },
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ]
+        ]
+      },
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "east",
+              "idx": 1
+            }
+          ],
+          [
+            {
+              "side": "east",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -158,28 +188,58 @@
     "north": 3,
     "east": 25,
     "areas": [
-      [
-        {
-          "side": "west",
-          "idx": 1
-        },
-        {
-          "side": "east",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "north",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [["permit:bomb"]],
+        "areas": [
+          [
+            {
+              "side": "west",
+              "idx": 1
+            },
+            {
+              "side": "east",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "west",
+              "idx": 0
+            },
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ]
+        ]
+      },
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "west",
+              "idx": 1
+            },
+            {
+              "side": "east",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -399,22 +459,27 @@
     "north": 4,
     "east": 23,
     "areas": [
-      [
-        {
-          "side": "south",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "east",
-          "idx": 0
-        },
-        {
-          "side": "north",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "east",
+              "idx": 0
+            },
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [],
@@ -443,30 +508,62 @@
     "north": 4,
     "east": 24,
     "areas": [
-      [
-        {
-          "side": "east",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "south",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "north",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [["permit:bomb"]],
+        "areas": [
+          [
+            {
+              "side": "south",
+              "idx": 0
+            },
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "east",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ]
+        ]
+      },
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "east",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -526,40 +623,80 @@
     "north": 4,
     "east": 26,
     "areas": [
-      [
-        {
-          "side": "south",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "south",
-          "idx": 1
-        }
-      ],
-      [
-        {
-          "side": "south",
-          "idx": 4
-        }
-      ],
-      [
-        {
-          "side": "south",
-          "idx": 2
-        },
-        {
-          "side": "south",
-          "idx": 3
-        }
-      ],
-      [
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [["permit:bomb"]],
+        "areas": [
+          [
+            {
+              "side": "south",
+              "idx": 3
+            },
+            {
+              "side": "south",
+              "idx": 1
+            },
+            {
+              "side": "south",
+              "idx": 2
+            }
+          ],
+          [
+            {
+              "side": "south",
+              "idx": 4
+            }
+          ],
+          [
+            {
+              "side": "west",
+              "idx": 0
+            },
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ]
+        ]
+      },
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "south",
+              "idx": 1
+            }
+          ],
+          [
+            {
+              "side": "south",
+              "idx": 4
+            }
+          ],
+          [
+            {
+              "side": "south",
+              "idx": 2
+            },
+            {
+              "side": "south",
+              "idx": 3
+            }
+          ],
+          [
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -599,26 +736,31 @@
     "north": 5,
     "east": 9,
     "areas": [
-      [
-        {
-          "side": "east",
-          "idx": 0
-        },
-        {
-          "side": "north",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "east",
-          "idx": 2
-        },
-        {
-          "side": "east",
-          "idx": 1
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "east",
+              "idx": 0
+            },
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "east",
+              "idx": 2
+            },
+            {
+              "side": "east",
+              "idx": 1
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [],
@@ -650,38 +792,78 @@
     "north": 5,
     "east": 10,
     "areas": [
-      [
-        {
-          "side": "west",
-          "idx": 2
-        },
-        {
-          "side": "east",
-          "idx": 2
-        }
-      ],
-      [
-        {
-          "side": "east",
-          "idx": 1
-        },
-        {
-          "side": "west",
-          "idx": 1
-        }
-      ],
-      [
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "east",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [["permit:bomb"]],
+        "areas": [
+          [
+            {
+              "side": "west",
+              "idx": 0
+            },
+            {
+              "side": "east",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "east",
+              "idx": 1
+            },
+            {
+              "side": "west",
+              "idx": 1
+            }
+          ],
+          [
+            {
+              "side": "west",
+              "idx": 2
+            },
+            {
+              "side": "east",
+              "idx": 2
+            }
+          ]
+        ]
+      },
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "west",
+              "idx": 2
+            },
+            {
+              "side": "east",
+              "idx": 2
+            }
+          ],
+          [
+            {
+              "side": "east",
+              "idx": 1
+            },
+            {
+              "side": "west",
+              "idx": 1
+            }
+          ],
+          [
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "east",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -721,28 +903,58 @@
     "north": 5,
     "east": 11,
     "areas": [
-      [
-        {
-          "side": "west",
-          "idx": 1
-        }
-      ],
-      [
-        {
-          "side": "west",
-          "idx": 2
-        },
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "north",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [["permit:bomb"]],
+        "areas": [
+          [
+            {
+              "side": "west",
+              "idx": 2
+            },
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "west",
+              "idx": 1
+            },
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ]
+        ]
+      },
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "west",
+              "idx": 1
+            }
+          ],
+          [
+            {
+              "side": "west",
+              "idx": 2
+            },
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -1495,34 +1707,39 @@
     "complete": false,
     "east": 10,
     "areas": [
-      [
-        {
-          "side": "east",
-          "idx": 2
-        },
-        {
-          "side": "east",
-          "idx": 1
-        },
-        {
-          "side": "north",
-          "idx": 1
-        }
-      ],
-      [
-        {
-          "side": "east",
-          "idx": 0
-        },
-        {
-          "side": "north",
-          "idx": 0
-        },
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "east",
+              "idx": 2
+            },
+            {
+              "side": "east",
+              "idx": 1
+            },
+            {
+              "side": "north",
+              "idx": 1
+            }
+          ],
+          [
+            {
+              "side": "east",
+              "idx": 0
+            },
+            {
+              "side": "north",
+              "idx": 0
+            },
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -1562,40 +1779,45 @@
     "north": 8,
     "east": 11,
     "areas": [
-      [
-        {
-          "side": "north",
-          "idx": 0
-        },
-        {
-          "side": "east",
-          "idx": 0
-        },
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "west",
-          "idx": 2
-        },
-        {
-          "side": "north",
-          "idx": 2
-        }
-      ],
-      [
-        {
-          "side": "north",
-          "idx": 1
-        },
-        {
-          "side": "west",
-          "idx": 1
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "north",
+              "idx": 0
+            },
+            {
+              "side": "east",
+              "idx": 0
+            },
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "west",
+              "idx": 2
+            },
+            {
+              "side": "north",
+              "idx": 2
+            }
+          ],
+          [
+            {
+              "side": "north",
+              "idx": 1
+            },
+            {
+              "side": "west",
+              "idx": 1
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -1770,22 +1992,27 @@
     "north": 8,
     "east": 17,
     "areas": [
-      [
-        {
-          "side": "east",
-          "idx": 0
-        },
-        {
-          "side": "north",
-          "idx": 1
-        }
-      ],
-      [
-        {
-          "side": "north",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "east",
+              "idx": 0
+            },
+            {
+              "side": "north",
+              "idx": 1
+            }
+          ],
+          [
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [],
@@ -1813,28 +2040,58 @@
     "north": 8,
     "east": 18,
     "areas": [
-      [
-        {
-          "side": "north",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "north",
-          "idx": 1
-        }
-      ],
-      [
-        {
-          "side": "east",
-          "idx": 0
-        },
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [["permit:bomb"]],
+        "areas": [
+          [
+            {
+              "side": "east",
+              "idx": 0
+            },
+            {
+              "side": "north",
+              "idx": 0
+            },
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "north",
+              "idx": 1
+            }
+          ]
+        ]
+      },
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "north",
+              "idx": 1
+            }
+          ],
+          [
+            {
+              "side": "east",
+              "idx": 0
+            },
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -2070,46 +2327,51 @@
     "north": 9,
     "east": 11,
     "areas": [
-      [
-        {
-          "side": "west",
-          "idx": 0
-        },
-        {
-          "side": "south",
-          "idx": 0
-        },
-        {
-          "side": "north",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "north",
-          "idx": 1
-        }
-      ],
-      [
-        {
-          "side": "south",
-          "idx": 1
-        }
-      ],
-      [
-        {
-          "side": "north",
-          "idx": 2
-        },
-        {
-          "side": "east",
-          "idx": 0
-        },
-        {
-          "side": "south",
-          "idx": 2
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "west",
+              "idx": 0
+            },
+            {
+              "side": "south",
+              "idx": 0
+            },
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "north",
+              "idx": 1
+            }
+          ],
+          [
+            {
+              "side": "south",
+              "idx": 1
+            }
+          ],
+          [
+            {
+              "side": "north",
+              "idx": 2
+            },
+            {
+              "side": "east",
+              "idx": 0
+            },
+            {
+              "side": "south",
+              "idx": 2
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -2217,22 +2479,27 @@
     "north": 9,
     "east": 18,
     "areas": [
-      [
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "west",
-          "idx": 1
-        },
-        {
-          "side": "south",
-          "idx": 1
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "west",
+              "idx": 1
+            },
+            {
+              "side": "south",
+              "idx": 1
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -2322,24 +2589,29 @@
     "north": 9,
     "east": 22,
     "areas": [
-      [
-        {
-          "side": "north",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "north",
-          "idx": 1
-        }
-      ],
-      [
-        {
-          "side": "south",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "north",
+              "idx": 1
+            }
+          ],
+          [
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [],
@@ -2419,22 +2691,27 @@
     "north": 9,
     "east": 25,
     "areas": [
-      [
-        {
-          "side": "south",
-          "idx": 0
-        },
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "east",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "south",
+              "idx": 0
+            },
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "east",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -2515,38 +2792,43 @@
     "north": 10,
     "east": 11,
     "areas": [
-      [
-        {
-          "side": "east",
-          "idx": 0
-        },
-        {
-          "side": "south",
-          "idx": 2
-        },
-        {
-          "side": "north",
-          "idx": 2
-        },
-        {
-          "side": "north",
-          "idx": 1
-        },
-        {
-          "side": "south",
-          "idx": 1
-        }
-      ],
-      [
-        {
-          "side": "north",
-          "idx": 0
-        },
-        {
-          "side": "south",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "east",
+              "idx": 0
+            },
+            {
+              "side": "south",
+              "idx": 2
+            },
+            {
+              "side": "north",
+              "idx": 2
+            },
+            {
+              "side": "north",
+              "idx": 1
+            },
+            {
+              "side": "south",
+              "idx": 1
+            }
+          ],
+          [
+            {
+              "side": "north",
+              "idx": 0
+            },
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [],
@@ -2749,26 +3031,54 @@
     "north": 10,
     "east": 20,
     "areas": [
-      [
-        {
-          "side": "east",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "north",
-          "idx": 0
-        },
-        {
-          "side": "south",
-          "idx": 0
-        },
-        {
-          "side": "north",
-          "idx": 1
-        }
-      ]
+      {
+        "reqs": [["permit:bomb"]],
+        "areas": [
+          [
+            {
+              "side": "south",
+              "idx": 0
+            },
+            {
+              "side": "north",
+              "idx": 1
+            },
+            {
+              "side": "north",
+              "idx": 0
+            },
+            {
+              "side": "east",
+              "idx": 0
+            }
+          ]
+        ]
+      },
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "east",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "north",
+              "idx": 0
+            },
+            {
+              "side": "south",
+              "idx": 0
+            },
+            {
+              "side": "north",
+              "idx": 1
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [],
@@ -2801,18 +3111,38 @@
     "north": 10,
     "east": 22,
     "areas": [
-      [
-        {
-          "side": "south",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "south",
-          "idx": 1
-        }
-      ]
+      {
+        "reqs": [["permit:bomb"]],
+        "areas": [
+          [
+            {
+              "side": "south",
+              "idx": 1
+            },
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ]
+        ]
+      },
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "south",
+              "idx": 1
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [],
@@ -2925,26 +3255,31 @@
     "north": 11,
     "east": 9,
     "areas": [
-      [
-        {
-          "side": "north",
-          "idx": 0
-        },
-        {
-          "side": "east",
-          "idx": 1
-        }
-      ],
-      [
-        {
-          "side": "east",
-          "idx": 0
-        },
-        {
-          "side": "south",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "north",
+              "idx": 0
+            },
+            {
+              "side": "east",
+              "idx": 1
+            }
+          ],
+          [
+            {
+              "side": "east",
+              "idx": 0
+            },
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [],
@@ -2977,30 +3312,62 @@
     "north": 11,
     "east": 10,
     "areas": [
-      [
-        {
-          "side": "west",
-          "idx": 1
-        },
-        {
-          "side": "south",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "west",
-          "idx": 0
-        },
-        {
-          "side": "north",
-          "idx": 0
-        },
-        {
-          "side": "east",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [["permit:bomb"]],
+        "areas": [
+          [
+            {
+              "side": "south",
+              "idx": 0
+            },
+            {
+              "side": "west",
+              "idx": 1
+            },
+            {
+              "side": "west",
+              "idx": 0
+            },
+            {
+              "side": "north",
+              "idx": 0
+            },
+            {
+              "side": "east",
+              "idx": 0
+            }
+          ]
+        ]
+      },
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "west",
+              "idx": 1
+            },
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "west",
+              "idx": 0
+            },
+            {
+              "side": "north",
+              "idx": 0
+            },
+            {
+              "side": "east",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -3038,46 +3405,51 @@
     "north": 11,
     "east": 11,
     "areas": [
-      [
-        {
-          "side": "north",
-          "idx": 0
-        },
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "north",
-          "idx": 1
-        },
-        {
-          "side": "south",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "south",
-          "idx": 1
-        }
-      ],
-      [
-        {
-          "side": "south",
-          "idx": 2
-        },
-        {
-          "side": "east",
-          "idx": 0
-        },
-        {
-          "side": "north",
-          "idx": 2
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "north",
+              "idx": 0
+            },
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "north",
+              "idx": 1
+            },
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "south",
+              "idx": 1
+            }
+          ],
+          [
+            {
+              "side": "south",
+              "idx": 2
+            },
+            {
+              "side": "east",
+              "idx": 0
+            },
+            {
+              "side": "north",
+              "idx": 2
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -3179,18 +3551,38 @@
     "north": 11,
     "east": 14,
     "areas": [
-      [
-        {
-          "side": "south",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "north",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [["permit:bomb"]],
+        "areas": [
+          [
+            {
+              "side": "south",
+              "idx": 0
+            },
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ]
+        ]
+      },
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [],
@@ -3214,18 +3606,38 @@
     "north": 11,
     "east": 15,
     "areas": [
-      [
-        {
-          "side": "south",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "north",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [["permit:bomb"]],
+        "areas": [
+          [
+            {
+              "side": "south",
+              "idx": 0
+            },
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ]
+        ]
+      },
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [],
@@ -3270,22 +3682,46 @@
     "north": 11,
     "east": 17,
     "areas": [
-      [
-        {
-          "side": "south",
-          "idx": 0
-        },
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "east",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [["permit:bomb"]],
+        "areas": [
+          [
+            {
+              "side": "south",
+              "idx": 0
+            },
+            {
+              "side": "east",
+              "idx": 0
+            },
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ]
+        ]
+      },
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "south",
+              "idx": 0
+            },
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "east",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -3314,18 +3750,23 @@
     "north": 11,
     "east": 18,
     "areas": [
-      [
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "south",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -3349,24 +3790,50 @@
     "north": 11,
     "east": 19,
     "areas": [
-      [
-        {
-          "side": "east",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "east",
-          "idx": 1
-        }
-      ],
-      [
-        {
-          "side": "east",
-          "idx": 2
-        }
-      ]
+      {
+        "reqs": [["permit:bomb"]],
+        "areas": [
+          [
+            {
+              "side": "east",
+              "idx": 1
+            },
+            {
+              "side": "east",
+              "idx": 2
+            }
+          ],
+          [
+            {
+              "side": "east",
+              "idx": 0
+            }
+          ]
+        ]
+      },
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "east",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "east",
+              "idx": 1
+            }
+          ],
+          [
+            {
+              "side": "east",
+              "idx": 2
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [],
@@ -3393,30 +3860,35 @@
     "north": 11,
     "east": 20,
     "areas": [
-      [
-        {
-          "side": "west",
-          "idx": 2
-        },
-        {
-          "side": "south",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "west",
-          "idx": 1
-        },
-        {
-          "side": "west",
-          "idx": 0
-        },
-        {
-          "side": "south",
-          "idx": 1
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "west",
+              "idx": 2
+            },
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "west",
+              "idx": 1
+            },
+            {
+              "side": "west",
+              "idx": 0
+            },
+            {
+              "side": "south",
+              "idx": 1
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -3505,22 +3977,27 @@
     "north": 11,
     "east": 24,
     "areas": [
-      [
-        {
-          "side": "north",
-          "idx": 0
-        },
-        {
-          "side": "east",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "south",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "north",
+              "idx": 0
+            },
+            {
+              "side": "east",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [],
@@ -3612,36 +4089,41 @@
     "north": 12,
     "east": 11,
     "areas": [
-      [
-        {
-          "side": "south",
-          "idx": 2
-        },
-        {
-          "side": "east",
-          "idx": 1
-        }
-      ],
-      [
-        {
-          "side": "east",
-          "idx": 0
-        },
-        {
-          "side": "south",
-          "idx": 1
-        }
-      ],
-      [
-        {
-          "side": "south",
-          "idx": 0
-        },
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "south",
+              "idx": 2
+            },
+            {
+              "side": "east",
+              "idx": 1
+            }
+          ],
+          [
+            {
+              "side": "east",
+              "idx": 0
+            },
+            {
+              "side": "south",
+              "idx": 1
+            }
+          ],
+          [
+            {
+              "side": "south",
+              "idx": 0
+            },
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -3682,22 +4164,27 @@
     "north": 12,
     "east": 12,
     "areas": [
-      [
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "west",
-          "idx": 1
-        },
-        {
-          "side": "south",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "west",
+              "idx": 1
+            },
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -3741,26 +4228,31 @@
     "north": 12,
     "east": 16,
     "areas": [
-      [
-        {
-          "side": "east",
-          "idx": 0
-        },
-        {
-          "side": "north",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "east",
-          "idx": 1
-        },
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "east",
+              "idx": 0
+            },
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "east",
+              "idx": 1
+            },
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -3998,18 +4490,23 @@
     "north": 12,
     "east": 26,
     "areas": [
-      [
-        {
-          "side": "south",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -4054,18 +4551,38 @@
     "north": 13,
     "east": 14,
     "areas": [
-      [
-        {
-          "side": "north",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [["permit:bomb"]],
+        "areas": [
+          [
+            {
+              "side": "north",
+              "idx": 0
+            },
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ]
+        ]
+      },
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -4115,18 +4632,23 @@
     "north": 13,
     "east": 16,
     "areas": [
-      [
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "south",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -4245,18 +4767,38 @@
     "north": 13,
     "east": 21,
     "areas": [
-      [
-        {
-          "side": "south",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "north",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [["permit:bomb"]],
+        "areas": [
+          [
+            {
+              "side": "north",
+              "idx": 0
+            },
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ]
+        ]
+      },
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [],
@@ -4484,18 +5026,23 @@
     "north": 14,
     "east": 18,
     "areas": [
-      [
-        {
-          "side": "south",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "north",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [],
@@ -4519,18 +5066,23 @@
     "north": 14,
     "east": 19,
     "areas": [
-      [
-        {
-          "side": "north",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "south",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [],
@@ -4575,18 +5127,38 @@
     "north": 14,
     "east": 21,
     "areas": [
-      [
-        {
-          "side": "south",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "north",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [["permit:bomb"]],
+        "areas": [
+          [
+            {
+              "side": "south",
+              "idx": 0
+            },
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ]
+        ]
+      },
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [],
@@ -4660,16 +5232,21 @@
     "north": 14,
     "east": 24,
     "areas": [
-      [
-        {
-          "side": "west",
-          "idx": 0
-        },
-        {
-          "side": "north",
-          "idx": 1
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "west",
+              "idx": 0
+            },
+            {
+              "side": "north",
+              "idx": 1
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [],
@@ -4709,36 +5286,41 @@
     "north": 14,
     "east": 25,
     "areas": [
-      [
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "west",
-          "idx": 1
-        },
-        {
-          "side": "west",
-          "idx": 2
-        },
-        {
-          "side": "west",
-          "idx": 3
-        },
-        {
-          "side": "south",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "west",
-          "idx": 4
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "west",
+              "idx": 1
+            },
+            {
+              "side": "west",
+              "idx": 2
+            },
+            {
+              "side": "west",
+              "idx": 3
+            },
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "west",
+              "idx": 4
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -4778,22 +5360,46 @@
     "north": 15,
     "east": 14,
     "areas": [
-      [
-        {
-          "side": "east",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "south",
-          "idx": 0
-        },
-        {
-          "side": "north",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [["permit:bomb"]],
+        "areas": [
+          [
+            {
+              "side": "east",
+              "idx": 0
+            },
+            {
+              "side": "south",
+              "idx": 0
+            },
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ]
+        ]
+      },
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "east",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "south",
+              "idx": 0
+            },
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [],
@@ -4848,22 +5454,46 @@
     "north": 15,
     "east": 16,
     "areas": [
-      [
-        {
-          "side": "south",
-          "idx": 0
-        },
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "north",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [["permit:bomb"]],
+        "areas": [
+          [
+            {
+              "side": "west",
+              "idx": 0
+            },
+            {
+              "side": "south",
+              "idx": 0
+            },
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ]
+        ]
+      },
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "south",
+              "idx": 0
+            },
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -4971,18 +5601,23 @@
     "north": 15,
     "east": 21,
     "areas": [
-      [
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "south",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -5249,22 +5884,46 @@
     "north": 16,
     "east": 19,
     "areas": [
-      [
-        {
-          "side": "east",
-          "idx": 0
-        },
-        {
-          "side": "south",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "east",
+              "idx": 0
+            },
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ]
+        ]
+      },
+      {
+        "reqs": [["permit:bomb.2"]],
+        "areas": [
+          [
+            {
+              "side": "south",
+              "idx": 0
+            },
+            {
+              "side": "west",
+              "idx": 0
+            },
+            {
+              "side": "east",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -5387,32 +6046,37 @@
     "north": 16,
     "east": 24,
     "areas": [
-      [
-        {
-          "side": "east",
-          "idx": 0
-        },
-        {
-          "side": "south",
-          "idx": 1
-        }
-      ],
-      [
-        {
-          "side": "north",
-          "idx": 0
-        },
-        {
-          "side": "south",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "north",
-          "idx": 1
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "east",
+              "idx": 0
+            },
+            {
+              "side": "south",
+              "idx": 1
+            }
+          ],
+          [
+            {
+              "side": "north",
+              "idx": 0
+            },
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "north",
+              "idx": 1
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [],
@@ -5449,26 +6113,31 @@
     "north": 16,
     "east": 25,
     "areas": [
-      [
-        {
-          "side": "south",
-          "idx": 0
-        },
-        {
-          "side": "north",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "south",
-          "idx": 1
-        },
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "south",
+              "idx": 0
+            },
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "south",
+              "idx": 1
+            },
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -5776,30 +6445,35 @@
     "north": 17,
     "east": 25,
     "areas": [
-      [
-        {
-          "side": "west",
-          "idx": 2
-        }
-      ],
-      [
-        {
-          "side": "west",
-          "idx": 1
-        },
-        {
-          "side": "south",
-          "idx": 0
-        },
-        {
-          "side": "north",
-          "idx": 0
-        },
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "west",
+              "idx": 2
+            }
+          ],
+          [
+            {
+              "side": "west",
+              "idx": 1
+            },
+            {
+              "side": "south",
+              "idx": 0
+            },
+            {
+              "side": "north",
+              "idx": 0
+            },
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -5962,26 +6636,31 @@
     "north": 18,
     "east": 17,
     "areas": [
-      [
-        {
-          "side": "north",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "north",
-          "idx": 1
-        },
-        {
-          "side": "south",
-          "idx": 0
-        },
-        {
-          "side": "east",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "north",
+              "idx": 1
+            },
+            {
+              "side": "south",
+              "idx": 0
+            },
+            {
+              "side": "east",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [],
@@ -6317,26 +6996,31 @@
     "north": 19,
     "east": 17,
     "areas": [
-      [
-        {
-          "side": "south",
-          "idx": 1
-        },
-        {
-          "side": "north",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "south",
-          "idx": 0
-        },
-        {
-          "side": "east",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "south",
+              "idx": 1
+            },
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "south",
+              "idx": 0
+            },
+            {
+              "side": "east",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [],
@@ -6369,22 +7053,27 @@
     "north": 19,
     "east": 18,
     "areas": [
-      [
-        {
-          "side": "south",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "south",
-          "idx": 1
-        },
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "south",
+              "idx": 1
+            },
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -6631,18 +7320,38 @@
     "north": 20,
     "east": 22,
     "areas": [
-      [
-        {
-          "side": "east",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "north",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [["permit:bomb.2"]],
+        "areas": [
+          [
+            {
+              "side": "east",
+              "idx": 0
+            },
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ]
+        ]
+      },
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "east",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [],
@@ -6666,24 +7375,50 @@
     "north": 20,
     "east": 23,
     "areas": [
-      [
-        {
-          "side": "north",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "south",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [["permit:bomb"]],
+        "areas": [
+          [
+            {
+              "side": "south",
+              "idx": 0
+            },
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ]
+        ]
+      },
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -6728,20 +7463,25 @@
     "north": 21,
     "east": 11,
     "areas": [
-      [
-        {
-          "side": "north",
-          "idx": 0
-        },
-        {
-          "side": "west",
-          "idx": 0
-        },
-        {
-          "side": "east",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "north",
+              "idx": 0
+            },
+            {
+              "side": "west",
+              "idx": 0
+            },
+            {
+              "side": "east",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -6796,22 +7536,27 @@
     "north": 21,
     "east": 13,
     "areas": [
-      [
-        {
-          "side": "east",
-          "idx": 1
-        }
-      ],
-      [
-        {
-          "side": "east",
-          "idx": 0
-        },
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "east",
+              "idx": 1
+            }
+          ],
+          [
+            {
+              "side": "east",
+              "idx": 0
+            },
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -6930,18 +7675,23 @@
     "north": 21,
     "east": 21,
     "areas": [
-      [
-        {
-          "side": "east",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "east",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "complete": false,
     "exits": {
@@ -7255,18 +8005,38 @@
     "north": 24,
     "east": 11,
     "areas": [
-      [
-        {
-          "side": "south",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [["permit:bomb"]],
+        "areas": [
+          [
+            {
+              "side": "west",
+              "idx": 0
+            },
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ]
+        ]
+      },
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [
@@ -8325,26 +9095,31 @@
     "north": 10,
     "east": 10,
     "areas": [
-      [
-        {
-          "side": "north",
-          "idx": 0
-        },
-        {
-          "side": "west",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "west",
-          "idx": 1
-        },
-        {
-          "side": "south",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "north",
+              "idx": 0
+            },
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "west",
+              "idx": 1
+            },
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [],
@@ -8409,18 +9184,38 @@
     "north": 12,
     "east": 13,
     "areas": [
-      [
-        {
-          "side": "south",
-          "idx": 0
-        }
-      ],
-      [
-        {
-          "side": "north",
-          "idx": 0
-        }
-      ]
+      {
+        "reqs": [["permit:bomb"]],
+        "areas": [
+          [
+            {
+              "side": "north",
+              "idx": 0
+            },
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ]
+        ]
+      },
+      {
+        "reqs": [[]],
+        "areas": [
+          [
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ]
+        ]
+      }
     ],
     "exits": {
       "west": [],
