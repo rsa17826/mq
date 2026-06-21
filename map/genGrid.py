@@ -21,7 +21,7 @@ html_start = """<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dynamic Image Grid Map with Overlays</title>
-    <script src="./live.js"></script>
+    <script src="./live.js#html"></script>
     <style>
         /* Hide scrollbars globally across the entire page while maintaining scroll functionality */
         html, body {
