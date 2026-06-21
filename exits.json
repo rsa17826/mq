@@ -5661,21 +5661,6 @@
       "dest_y": 510
     },
     {
-      "id": "edge:north:5_10_6_10",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 5,
-        "east": 10
-      },
-      "dest": {
-        "north": 6,
-        "east": 10
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
       "id": "edge:north:5_11_6_11",
       "mechanism": "edge",
       "direction": "north",
@@ -5731,21 +5716,6 @@
       "dest": {
         "north": 7,
         "east": 9
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:6_10_7_10",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 6,
-        "east": 10
-      },
-      "dest": {
-        "north": 7,
-        "east": 10
       },
       "dest_x": null,
       "dest_y": 510
@@ -15277,21 +15247,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:east:20_17_20_18",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 20,
-        "east": 17
-      },
-      "dest": {
-        "north": 20,
-        "east": 18
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
       "id": "edge:east:20_20_20_21",
       "mechanism": "edge",
       "direction": "east",
@@ -15412,36 +15367,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:east:22_9_22_10",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 22,
-        "east": 9
-      },
-      "dest": {
-        "north": 22,
-        "east": 10
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:22_10_22_11",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 22,
-        "east": 10
-      },
-      "dest": {
-        "north": 22,
-        "east": 11
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
       "id": "edge:east:22_11_22_12",
       "mechanism": "edge",
       "direction": "east",
@@ -15452,21 +15377,6 @@
       "dest": {
         "north": 22,
         "east": 12
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:22_12_22_13",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 22,
-        "east": 12
-      },
-      "dest": {
-        "north": 22,
-        "east": 13
       },
       "dest_x": 50,
       "dest_y": null
@@ -15532,21 +15442,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:east:23_12_23_13",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 23,
-        "east": 12
-      },
-      "dest": {
-        "north": 23,
-        "east": 13
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
       "id": "edge:east:23_13_23_14",
       "mechanism": "edge",
       "direction": "east",
@@ -15557,21 +15452,6 @@
       "dest": {
         "north": 23,
         "east": 14
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:24_9_24_10",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 24,
-        "east": 9
-      },
-      "dest": {
-        "north": 24,
-        "east": 10
       },
       "dest_x": 50,
       "dest_y": null
@@ -15592,21 +15472,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:east:24_11_24_12",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 24,
-        "east": 11
-      },
-      "dest": {
-        "north": 24,
-        "east": 12
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
       "id": "edge:east:24_12_24_13",
       "mechanism": "edge",
       "direction": "east",
@@ -15617,36 +15482,6 @@
       "dest": {
         "north": 24,
         "east": 13
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:24_13_24_14",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 24,
-        "east": 13
-      },
-      "dest": {
-        "north": 24,
-        "east": 14
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:500_500_500_501",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 500,
-        "east": 500
-      },
-      "dest": {
-        "north": 500,
-        "east": 501
       },
       "dest_x": 50,
       "dest_y": null
@@ -15818,8 +15653,8 @@
         "north": 20,
         "east": 21
       },
-      "dest_x": 500,
-      "dest_y": null,
+      "dest_x": 488,
+      "dest_y": 387,
       "notes": "destination-keyed override, origin un-applied from delta (line 21846)"
     },
     {
@@ -15834,9 +15669,8 @@
         "north": 20,
         "east": 21
       },
-      "dest_x": 500,
-      "dest_y": 510,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21846)"
+      "dest_x": 527,
+      "dest_y": 412
     },
     {
       "id": "door:stairsDown:20_21_19_22",
@@ -16347,22 +16181,6 @@
         "east": 20
       },
       "dest_x": 230,
-      "dest_y": 500,
-      "notes": "destination-keyed override, origin un-applied from delta (line 23134)"
-    },
-    {
-      "id": "door:caveEntrance:12_21_13_21",
-      "mechanism": "object",
-      "trigger_object": "caveEntrance",
-      "origin": {
-        "north": 12,
-        "east": 21
-      },
-      "dest": {
-        "north": 13,
-        "east": 21
-      },
-      "dest_x": 560,
       "dest_y": 500,
       "notes": "destination-keyed override, origin un-applied from delta (line 23134)"
     },

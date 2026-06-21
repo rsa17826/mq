@@ -223,6 +223,7 @@ for (org, direction), edge_list in edges_by_room_dir.items():
       gaps = [gaps]
 
     if not gaps:
+      print([*map(lambda x:x['id'],edge_list)])
       geometry_dropped += len(edge_list)
       continue
 
