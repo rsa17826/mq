@@ -1,35 +1,4 @@
 {
-  "items": [
-    { "id": "item:bomb" },
-    { "id": "item:key" },
-
-    { "id": "weapon:club" },
-    { "id": "weapon:dagger" },
-    { "id": "weapon:sword" },
-
-    { "id": "armor:vest" },
-    { "id": "armor:magic robe" },
-    { "id": "armor:iron armour" },
-
-    { "id": "food:apple" },
-    { "id": "food:honey" },
-    { "id": "food:grapes" },
-    { "id": "food:strawberry" },
-    { "id": "food:banana" },
-
-    { "id": "spawnpoint" },
-    { "id": "necklass warp point" },
-    { "id": "oranges" },
-
-    { "id": "skill:cure" },
-
-    { "id": "item:venom" },
-    { "id": "item:gold" },
-    { "id": "item:emerald" },
-    { "id": "quest.pam", "type": "int" },
-
-    { "id": "item:ring.health" }
-  ],
   "locations": [
     {
       "room": { "north": 20, "east": 20 },
@@ -120,7 +89,7 @@
     {
       "room": { "north": 19, "east": 21 },
       "requires": [["item:diamond#20"]],
-      "receive": ["quest.pam.15"]
+      "receive": ["quest:pam.15"]
     },
     {
       "room": { "north": 16, "east": 22 },
@@ -129,12 +98,12 @@
     },
     {
       "room": { "north": 16, "east": 21 },
-      "requires": [["item:ring.health"]],
+      "requires": [["item:ring health"]],
       "receive": ["skill:dig"]
     },
     {
       "room": { "north": 15, "east": 19 },
-      "requires": [["item:ring.health"]],
+      "requires": [["item:ring health"]],
       "receive": ["item:gold#300", "item:bomb#10", "food:banana#5"]
     },
     {
@@ -208,8 +177,8 @@
     {
       "room": { "north": 13, "east": 14 },
       "requires": [
-        ["magic:fire.3?", "quest.?", "entrance.east0"],
-        ["magic:fire.3?", "quest.?", "entrance.north0", "permit:bomb"]
+        ["magic:fire.3?", "quest:?", "entrance.east0"],
+        ["magic:fire.3?", "quest:?", "entrance.north0", "permit:bomb"]
       ],
       "receive": ["???"]
     },
@@ -230,8 +199,8 @@
     },
     {
       "room": { "north": 12, "east": 12 },
-      "requires": [["quest.headstone", "entrance.west0"]],
-      "receive": ["quest.headstone.+1"]
+      "requires": [["quest:headstone", "entrance.west0"]],
+      "receive": ["quest:headstone.+1"]
     },
     {
       "room": { "north": 10, "east": 12 },
@@ -318,7 +287,7 @@
     {
       "room": { "north": 11, "east": 11 },
       "requires": [["???"]],
-      "receive": ["quest.???"]
+      "receive": ["quest:???"]
     },
     {
       "room": { "north": 10, "east": 9 },
@@ -483,7 +452,7 @@
     },
     {
       "room": { "north": 11, "east": 25 },
-      "requires": [["quest.pam.15"]],
+      "requires": [["quest:pam.16"]],
       "receive": ["food:beef jerkey#20"]
     },
     {
@@ -493,7 +462,7 @@
     {
       "room": { "north": 14, "east": 22 },
       "requires": [["skill:dig"]],
-      "receive": ["ring.gold", "quest:rings.1"]
+      "receive": ["ring:gold", "quest:rings.1"]
     },
     {
       "room": { "north": 11, "east": 21 },
@@ -524,30 +493,30 @@
     },
     {
       "room": { "north": 12, "east": 25 },
-      "receive": ["three code part part 1"]
+      "receive": ["misc:three part code part 1"]
     },
     {
       "room": { "north": 14, "east": 24 },
-      "receive": ["three code part part 2"]
+      "receive": ["misc:three part code part 2"]
     },
     {
       "room": { "north": 13, "east": 24 },
-      "receive": ["three code part part 3"]
+      "receive": ["misc:three part code part 3"]
     },
     {
       "room": { "north": 13, "east": 26 },
       "requires": [
         [
-          "three code part part 1",
-          "three code part part 2",
-          "three code part part 3"
+          "misc:three part code part 1",
+          "misc:three part code part 2",
+          "misc:three part code part 3"
         ]
       ],
       "receive": ["???"]
     },
     {
       "room": { "north": 11, "east": 26 },
-      "receive": ["stomp code"]
+      "receive": ["misc:stomp code"]
     },
     {
       "room": { "north": 9, "east": 26 },
@@ -561,7 +530,7 @@
     },
     {
       "room": { "north": 16, "east": 25 },
-      "requires": [["quest.pam.15"]],
+      "requires": [["quest:pam.16"]],
       "receive": ["item:diamond#5", "food:steak#12"]
     },
     {
@@ -612,8 +581,8 @@
     },
     {
       "room": { "north": 16, "east": 24 },
-      "requires": [["quest.pam.15", "entrance.north1"]],
-      "receive": ["food:gummy bear#12", "item:gold#1000"]
+      "requires": [["quest:pam.16", "entrance.north1"]],
+      "receive": ["food:gummy bear#13", "item:gold#1001"]
     },
     {
       "room": { "north": 18, "east": 23 },
@@ -633,7 +602,7 @@
     {
       "room": { "north": 21, "east": 22 },
       "requires": [
-        ["ring.gold", "item:troll wristband#5", "item:gator skin#2"]
+        ["ring:gold", "item:troll wristband#5", "item:gator skin#2"]
       ],
       "receive": ["craft.ring of gold"]
     },
@@ -659,81 +628,81 @@
     },
     {
       "room": { "north": 19, "east": 21 },
-      "receive": ["quest.pam"]
+      "receive": ["quest:pam"]
     },
     {
       "room": { "north": 19, "east": 21 },
-      "requires": [["quest.pam.1", "blue flower 1"]],
-      "receive": ["quest.pam.2"]
+      "requires": [["quest:pam.2", "misc:blue flower 1"]],
+      "receive": ["quest:pam.3"]
     },
     {
       "room": { "north": 19, "east": 21 },
-      "requires": [["quest.pam.2", "blue flower 2"]],
-      "receive": ["quest.pam.3"]
+      "requires": [["quest:pam.3", "misc:blue flower 2"]],
+      "receive": ["quest:pam.4"]
     },
     {
       "room": { "north": 19, "east": 21 },
-      "requires": [["quest.pam.3", "blue flower 3"]],
-      "receive": ["quest.pam.4"]
+      "requires": [["quest:pam.4", "misc:blue flower 3"]],
+      "receive": ["quest:pam.5"]
     },
     {
       "room": { "north": 19, "east": 21 },
-      "requires": [["quest.pam.4", "blue flower 1"]],
-      "receive": ["quest.pam.5"]
+      "requires": [["quest:pam.5", "misc:blue flower 4"]],
+      "receive": ["quest:pam.6"]
     },
     {
       "room": { "north": 19, "east": 21 },
-      "requires": [["quest.pam.5", "blue flower 5"]],
-      "receive": ["quest.pam.6"]
+      "requires": [["quest:pam.6", "misc:blue flower 5"]],
+      "receive": ["quest:pam.7"]
     },
     {
       "room": { "north": 19, "east": 21 },
-      "requires": [["quest.pam.6", "blue flower 6"]],
-      "receive": ["quest.pam.7"]
+      "requires": [["quest:pam.7", "misc:blue flower 6"]],
+      "receive": ["quest:pam.8"]
     },
     {
       "room": { "north": 19, "east": 21 },
-      "requires": [["quest.pam.7", "blue flower 7"]],
-      "receive": ["quest.pam.8"]
+      "requires": [["quest:pam.8", "misc:blue flower 7"]],
+      "receive": ["quest:pam.9"]
     },
     {
       "room": { "north": 19, "east": 21 },
-      "requires": [["quest.pam.8", "blue flower 8"]],
-      "receive": ["quest.pam.9"]
+      "requires": [["quest:pam.9", "misc:blue flower 8"]],
+      "receive": ["quest:pam.10"]
     },
     {
       "room": { "north": 19, "east": 21 },
-      "requires": [["quest.pam.9", "blue flower 9"]],
-      "receive": ["quest.pam.10"]
+      "requires": [["quest:pam.10", "misc:blue flower 9"]],
+      "receive": ["quest:pam.11"]
     },
     {
       "room": { "north": 19, "east": 21 },
-      "requires": [["quest.pam.10", "blue flower 10"]],
-      "receive": ["quest.pam.11"]
+      "requires": [["quest:pam.11", "misc:blue flower 10"]],
+      "receive": ["quest:pam.12"]
     },
     {
       "room": { "north": 19, "east": 21 },
-      "requires": [["quest.pam.11", "blue flower 11"]],
-      "receive": ["quest.pam.12"]
+      "requires": [["quest:pam.12", "misc:blue flower 11"]],
+      "receive": ["quest:pam.13"]
     },
     {
       "room": { "north": 19, "east": 21 },
-      "requires": [["quest.pam.12", "blue flower 12"]],
-      "receive": ["quest.pam.13"]
+      "requires": [["quest:pam.13", "misc:blue flower 12"]],
+      "receive": ["quest:pam.14"]
     },
     {
       "room": { "north": 19, "east": 21 },
-      "requires": [["quest.pam.13", "blue flower 13"]],
-      "receive": ["quest.pam.14"]
+      "requires": [["quest:pam.14", "misc:blue flower 13"]],
+      "receive": ["quest:pam.15"]
     },
     {
       "room": { "north": 19, "east": 21 },
-      "requires": [["quest.pam.14", "blue flower 14"]],
-      "receive": ["quest.pam.15"]
+      "requires": [["quest:pam.15", "misc:blue flower 14"]],
+      "receive": ["quest:pam.16"]
     },
     {
       "room": { "north": 19, "east": 21 },
-      "requires": [["quest.pam.15", "???"]],
+      "requires": [["quest:pam.16", "???"]],
       "receive": ["???"]
     },
     {
@@ -778,7 +747,7 @@
     },
     {
       "room": { "north": 20, "east": 18 },
-      "requires": [["???", "npc debugger 1"]],
+      "requires": [["???", "misc:npc debugger 1"]],
       "receive": ["???"]
     },
     {
@@ -788,7 +757,7 @@
         ["???", "entrance.south1"],
         ["???", "entrance.east0"]
       ],
-      "receive": ["npc debugger 1"],
+      "receive": ["misc:npc debugger 1"],
       "info": "npc has to move out the way before other npc works"
     },
     {
@@ -803,8 +772,8 @@
     },
     {
       "room": { "north": 19, "east": 18 },
-      "requires": [["quest.pam.15", "entrance.south0"]],
-      "receive": ["item:ruby#3"]
+      "requires": [["quest:pam.16", "entrance.south0"]],
+      "receive": ["item:ruby#4"]
     },
     {
       "room": { "north": 20, "east": 15 },
@@ -927,7 +896,7 @@
     },
     {
       "room": { "north": 18, "east": 15 },
-      "requires": [["quest.pam.15"]],
+      "requires": [["quest:pam.16"]],
       "receive": ["item:newton apple#15"],
       "info": "fill refresh too"
     },
@@ -943,7 +912,7 @@
     },
     {
       "room": { "north": 16, "east": 15 },
-      "requires": [["quest.pam.15"]],
+      "requires": [["quest:pam.16"]],
       "receive": ["armor:diamond armour"]
     },
     {
@@ -958,28 +927,14 @@
       "from": "south0",
       "to": "east0",
       "bidirectional": true,
-      "requires": [["skill:stomp", "stomp code"]]
+      "requires": [["skill:stomp", "misc:stomp code"]]
     },
     {
       "room": { "north": 11, "east": 15 },
       "from": "south0",
       "to": "north0",
       "bidirectional": true,
-      "requires": [["bomb"], ["key", "asword"]]
-    },
-    {
-      "room": { "north": 16, "east": 19 },
-      "from": "west0",
-      "to": "south0",
-      "bidirectional": true,
-      "requires": [["bomb2"]]
-    },
-    {
-      "room": { "north": 16, "east": 19 },
-      "from": "west0",
-      "to": "east0",
-      "bidirectional": true,
-      "requires": [["bomb2"]]
+      "requires": [["permit:bomb"]]
     }
   ]
 }
