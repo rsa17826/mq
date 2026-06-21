@@ -1,0 +1,36 @@
+(index):9709 [+] Exit added to selection group buffer. Total items: 1
+(index):9709 [+] Exit added to selection group buffer. Total items: 2
+(index):9742 [🎉] Connected Area Linked successfully for room 18,22!
+(index):9744 {
+  "north": 18,
+  "east": 22,
+  "exits": {
+    "west": [
+      {
+        "top": 4,
+        "bottom": 4
+      }
+    ],
+    "south": [],
+    "east": [
+      {
+        "top": 1,
+        "bottom": 9
+      }
+    ],
+    "north": []
+  },
+  "complete": false,
+  "areas": [
+    [
+      {
+        "side": "west",
+        "idx": 0
+      },
+      {
+        "side": "east",
+        "idx": 0
+      }
+    ]
+  ]
+}
