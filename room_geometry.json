@@ -4888,7 +4888,7 @@
       "east": [],
       "north": []
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 18,
@@ -4918,7 +4918,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 18,
@@ -4943,7 +4943,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 18,
@@ -5251,7 +5251,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 19,
@@ -5281,7 +5281,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 19,
@@ -5433,7 +5433,7 @@
       "east": [],
       "north": []
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 20,
@@ -5462,7 +5462,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 20,
@@ -5675,7 +5675,7 @@
       ],
       "north": []
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 21,
@@ -5704,7 +5704,7 @@
       "east": [],
       "north": []
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 21,

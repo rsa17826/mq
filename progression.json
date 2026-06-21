@@ -775,6 +775,36 @@
       "room": { "north": 21, "east": 20 },
       "requires": [["item:boar tusk#1"]],
       "receive": ["item:gold#20"]
+    },
+    {
+      "room": { "north": 20, "east": 18 },
+      "requires": [["???", "npc debugger 1"]],
+      "receive": ["???"]
+    },
+    {
+      "room": { "north": 19, "east": 18 },
+      "requires": [
+        ["???", "entrance.north0"],
+        ["???", "entrance.south1"],
+        ["???", "entrance.east0"]
+      ],
+      "receive": ["npc debugger 1"],
+      "info": "npc has to move out the way before other npc works"
+    },
+    {
+      "room": { "north": 21, "east": 18 },
+      "requires": [["item:emerald#1"]],
+      "receive": ["item:diamond#2", "food:peppers#20"]
+    },
+    {
+      "room": { "north": 21, "east": 17 },
+      "requires": [["item:aurastone#1", "item:gold#500"]],
+      "receive": ["item:ruby#1"]
+    },
+    {
+      "room": { "north": 19, "east": 18 },
+      "requires": [["quest.pam.15", "entrance.south0"]],
+      "receive": ["item:ruby#3"]
     }
   ],
   "gates": [
