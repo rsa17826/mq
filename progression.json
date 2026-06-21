@@ -987,10 +987,39 @@
     },
     {
       "room": { "north": 4, "east": 25 },
-      "requires": [
-        ["??? sign debugger"]
-      ],
+      "requires": [["??? sign debugger"]],
       "receive": ["???"]
+    },
+    {
+      "room": { "north": 3, "east": 26 },
+      "requires": [["quest:pam.15"]],
+      "receive": ["food:exixir"]
+    },
+    {
+      "room": { "north": 4, "east": 13 },
+      "requires": [["item:gold"]],
+      "receive": ["food:orange"]
+    },
+    {
+      "room": { "north": 4, "east": 13 },
+      "requires": [["item:gold"]],
+      "receive": ["food:gingerbread"]
+    },
+    {
+      "room": { "north": 4, "east": 13 },
+      "requires": [["item:gold"]],
+      "receive": ["food:strawberry"]
+    },
+    {
+      "room": { "north": 4, "east": 13 },
+      "requires": [
+        [
+          "item:shark tooth#5",
+          "item:viking horn#5",
+          "item:tentacle#5"
+        ]
+      ],
+      "receive": ["craft.newton apple"]
     }
   ],
   "gates": [
