@@ -107,3 +107,13 @@ MathQuest.js:108993 [ER DEBUG] Transition initiated. From room: 9,14 at position
 MathQuest.js:109026 [ER DEBUG] Checking redirection for vanilla move path key: 9_14_10_14
 MathQuest.js:109069 [ER DEBUG] No randomizer override entry for key [9_14_10_14]. Retaining game defaults.
 MathQuest.js:30616 0 0 0 0
+
+
+[ER DEBUG] Transition initiated. From room: 6,21 at position X/Y: 386,132
+MathQuest.js:109376 [ER DEBUG] Checking redirection for vanilla move path key: 6_21_300_300
+MathQuest.js:109489 [ER DEBUG] No randomizer override entry for key [6_21_300_300]. Retaining game defaults.
+MathQuest.js:30744 0 0 0 0
+MathQuest.js:109340 [ER DEBUG] Transition initiated. From room: 300,300 at position X/Y: 379,25
+MathQuest.js:109376 [ER DEBUG] Checking redirection for vanilla move path key: 300_300_6_21
+MathQuest.js:109455 [ER DEBUG] Success! Redirecting room target to: 14,16 Placing character at: 253.5714,76.3636
+REMEMBER towns should not have their exits changed to a warp
