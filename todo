@@ -93,3 +93,17 @@ dont change this one, its one way only
 MathQuest.js:109026 [ER DEBUG] Checking redirection for vanilla move path key: 4_13_100_100
 MathQuest.js:109069 [ER DEBUG] No randomizer override entry for key [4_13_100_100]. Retaining game defaults.
 MathQuest.js:30616 0 0 0 0
+
+[ER DEBUG] Transition initiated. From room: 10,14 at position X/Y: 609,399
+MathQuest.js:109026 [ER DEBUG] Checking redirection for vanilla move path key: 10_14_9_14
+MathQuest.js:109069 [ER DEBUG] No randomizer override entry for key [10_14_9_14]. Retaining game defaults.
+MathQuest.js:30616 0 0 0 0
+MathQuest.js:41169 remove magic screen
+MathQuest.js:41363 add listeners
+MathQuest.js:33781 magic screen
+MathQuest.js:41315 remove listeners
+MathQuest.js:33781 magic screen
+MathQuest.js:108993 [ER DEBUG] Transition initiated. From room: 9,14 at position X/Y: 565,130
+MathQuest.js:109026 [ER DEBUG] Checking redirection for vanilla move path key: 9_14_10_14
+MathQuest.js:109069 [ER DEBUG] No randomizer override entry for key [9_14_10_14]. Retaining game defaults.
+MathQuest.js:30616 0 0 0 0

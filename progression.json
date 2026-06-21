@@ -1020,6 +1020,11 @@
         ]
       ],
       "receive": ["craft.newton apple"]
+    },
+    {
+      "room": { "north": 9, "east": 13 },
+      "requires": [["item:key#1"]],
+      "receive": ["item:bomb#10"]
     }
   ],
   "gates": [
@@ -1036,6 +1041,13 @@
       "to": "north0",
       "bidirectional": true,
       "requires": [["permit:bomb"]]
+    },
+    {
+      "room": { "north": 9, "east": 14 },
+      "from": null,
+      "to": { "north": 9, "east": 13 },
+      "bidirectional": true,
+      "requires": [["magic:fire.3?", "magic:drain.1?"]]
     }
   ]
 }
