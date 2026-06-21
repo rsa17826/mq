@@ -964,6 +964,12 @@
       "room": { "north": 17, "east": 10 },
       "requires": [["item:void ash#6"]],
       "receive": ["food:gummy bear#5"]
+    },
+    {
+      "room": { "north": 17, "east": 11 },
+      "requires": [["quest:pam.15"]],
+      "receive": ["food:holy water#1"],
+      "info": "right 11"
     }
   ],
   "gates": [

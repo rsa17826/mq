@@ -81,3 +81,9 @@ MathQuest.js:109026 [ER DEBUG] Checking redirection for vanilla move path key: 2
 MathQuest.js:109069 [ER DEBUG] No randomizer override entry for key [22_12_21_9]. Retaining game defaults.
 MathQuest.js:30616 0 0 0 0
 dont change this one, its one way only
+
+[ER DEBUG] Transition initiated. From room: 16,11 at position X/Y: 54.642900000000054,132.63639999999998
+MathQuest.js:109026 [ER DEBUG] Checking redirection for vanilla move path key: 16_11_17_10
+MathQuest.js:109069 [ER DEBUG] No randomizer override entry for key [16_11_17_10]. Retaining game defaults.
+MathQuest.js:30616 0 0 0 0
+dont change this one, its one way only
