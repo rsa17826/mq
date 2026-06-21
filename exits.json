@@ -10745,6 +10745,82 @@
       },
       "dest_x": 561,
       "dest_y": 125
+    },
+    {
+      "id": "door:stairsDown:10.1_21_10_21",
+      "mechanism": "object",
+      "trigger_object": "stairsDown",
+      "origin": {
+        "north": 10.1,
+        "east": 21
+      },
+      "dest": {
+        "north": 10,
+        "east": 21
+      },
+      "dest_x": 556,
+      "dest_y": 117
+    },
+    {
+      "id": "door:stairsDown:10_21_10.1_21",
+      "mechanism": "object",
+      "trigger_object": "stairsDown",
+      "origin": {
+        "north": 10,
+        "east": 21
+      },
+      "dest": {
+        "north": 10.1,
+        "east": 21
+      },
+      "dest_x": 550,
+      "dest_y": 222
+    },
+    {
+      "id": "door:stairsDown:10.1_21_9_20",
+      "mechanism": "object",
+      "trigger_object": "stairsDown",
+      "origin": {
+        "north": 10,
+        "east": 21
+      },
+      "dest": {
+        "north": 9,
+        "east": 20
+      },
+      "dest_x": 522,
+      "dest_y": 401
+    },
+    {
+      "id": "door:stairsDown:9_20_10.1_21",
+      "mechanism": "object",
+      "trigger_object": "stairsDown",
+      "origin": {
+        "north": 9,
+        "east": 20
+      },
+      "dest": {
+        "north": 10.1,
+        "east": 21
+      },
+      "dest_x": 593,
+      "dest_y": 425
+    },
+    {
+      "id": "door:stairsDown:9_22_10.1_21",
+      "mechanism": "object",
+      "trigger_object": "stairsDown",
+      "origin": {
+        "north": 9,
+        "east": 22
+      },
+      "dest": {
+        "north": 10.1,
+        "east": 21
+      },
+      "dest_x": 454,
+      "dest_y": 64,
+      "one_way": true
     }
   ],
   "known_gaps": [
