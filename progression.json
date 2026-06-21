@@ -179,7 +179,7 @@
       "receive": ["???"]
     },
     {
-      "room": { "north": 13, "east": 14 },
+      "room": { "north": 13, "east": 13 },
       "requires": [["armor:alpha armor", "???"]],
       "receive": ["armour:alpha armour.+inf"]
     },

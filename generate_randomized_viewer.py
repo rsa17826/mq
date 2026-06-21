@@ -8,11 +8,12 @@ OUTPUT_FILE = "randomized_index.html"
 GEOMETRY_JSON_PATH = "./room_geometry.json"
 CONNECTIONS_JSON_PATH = "./connections.json"
 PROGRESSION_JSON_PATH = "./progression.json"
+EXITS_JSON_PATH = "./exits.json"
 
-# Path to the icon image representing progression events (adjust filename as needed)
+# Path to the icon image representing progression events
 PROGRESSION_ICON_PATH = "./mapimgs/"
 
-# Constants scaled down to 10% to match the downsized image sizes perfectly
+# Constants scaled down to match the layout sizes perfectly
 TILE_WIDTH = 149.76
 TILE_HEIGHT = 118.32
 BLOCKS_X = 14
@@ -21,6 +22,13 @@ BLOCKS_Y = 11
 BLOCK_WIDTH_PCT = 100 / BLOCKS_X
 BLOCK_HEIGHT_PCT = 100 / BLOCKS_Y
 GAP_SIZE = 0 # Sizing gap between tiles
+
+# Local coordinate dimensions from game engine data structures
+CONN_INTERNAL_WIDTH = 624.0
+CONN_INTERNAL_HEIGHT = 493.0
+
+ROOM_INTERNAL_WIDTH = 710.0
+ROOM_INTERNAL_HEIGHT = 560.0
 
 html_start = f"""<!DOCTYPE html>
 <html lang="en">
@@ -88,6 +96,13 @@ html_start = f"""<!DOCTYPE html>
             position: absolute;
             box-sizing: border-box;
             border: 1px solid rgba(255, 255, 255, 0.3);
+        }}
+        .warp-square {{
+            position: absolute;
+            box-sizing: border-box;
+            border: 1.5px dashed #00ffff;
+            background-color: rgba(0, 255, 255, 0.2);
+            border-radius: 4px;
         }}
         .progression-icon {{
             width: 14px;
@@ -164,6 +179,13 @@ def load_connections():
     with open(CONNECTIONS_JSON_PATH, "r", encoding="utf-8") as f:
         return json.load(f).get("connections", [])
 
+def load_doors():
+    if not os.path.exists(EXITS_JSON_PATH):
+        print(f"[-] Warn: {EXITS_JSON_PATH} not found.")
+        return []
+    with open(EXITS_JSON_PATH, "r", encoding="utf-8") as f:
+        return json.load(f).get("doors", [])
+
 def load_geometry_map():
     geom_db = {}
     if not os.path.exists(GEOMETRY_JSON_PATH):
@@ -235,6 +257,7 @@ def main():
         return
 
     connections = load_connections()
+    doors = load_doors()
     geom_index = load_geometry_map()
     prog_index = load_progression_map()
 
@@ -265,6 +288,10 @@ def main():
     tile_step_w = TILE_WIDTH + GAP_SIZE
     tile_step_h = TILE_HEIGHT + GAP_SIZE
 
+    # Step 1: Process side directional exit arrows (connections.json based on 624x493 workspace)
+    scale_x_conn = TILE_WIDTH / CONN_INTERNAL_WIDTH
+    scale_y_conn = TILE_HEIGHT / CONN_INTERNAL_HEIGHT
+
     for conn in connections:
         o_n, o_e = int(conn["originNorth"]), int(conn["originEast"])
         room_key = f"{o_n}_{o_e}"
@@ -281,9 +308,10 @@ def main():
             elif v_n < o_n: direction = "south"
             elif v_e > o_e: direction = "east"
             else: direction = "west"
-            src_coord = 624 / 2 if direction in ["north", "south"] else 493 / 2
+            src_coord = CONN_INTERNAL_WIDTH / 2 if direction in ["north", "south"] else CONN_INTERNAL_HEIGHT / 2
 
-        src_coord_scaled = float(src_coord) * 0.1
+        # Convert exit boundary point using 624x493 aspect scale rules
+        src_coord_scaled = float(src_coord) * (scale_x_conn if direction in ["north", "south"] else scale_y_conn)
 
         track_col = east_to_track[o_e]
         track_row = north_to_track[o_n]
@@ -300,7 +328,6 @@ def main():
             arrow_src_x, arrow_src_y = base_x + src_coord_scaled, base_y + TILE_HEIGHT
 
         dest_o_n, dest_o_e = int(conn["newDestNorth"]), int(conn["newDestEast"])
-
         dest_track_col = east_to_track.get(dest_o_e, track_col)
         dest_track_row = north_to_track.get(dest_o_n, track_row)
 
@@ -308,26 +335,71 @@ def main():
         dest_base_y = 20 + dest_track_row * tile_step_h
 
         new_x, new_y = conn.get("newX"), conn.get("newY")
-        float_new_x = float(new_x) if new_x is not None else 624 / 2
-        float_new_y = float(new_y) if new_y is not None else 493 / 2
+        float_new_x = float(new_x) if new_x is not None else CONN_INTERNAL_WIDTH / 2
+        float_new_y = float(new_y) if new_y is not None else CONN_INTERNAL_HEIGHT / 2
 
-        arrow_dest_x = dest_base_x + (float_new_x * 0.1)
-        arrow_dest_y = dest_base_y + (float_new_y * 0.1)
+        arrow_dest_x = dest_base_x + (float_new_x * scale_x_conn)
+        arrow_dest_y = dest_base_y + (float_new_y * scale_y_conn)
 
         mid_x, mid_y = (arrow_src_x + arrow_dest_x) / 2, (arrow_src_y + arrow_dest_y) / 2
         if direction in ["west", "east"]:
-            ctrl_x, ctrl_y = (mid_x + (12 if direction == "east" else -12), mid_y)
+            ctrl_x, ctrl_y = (mid_x + (25 if direction == "east" else -25), mid_y)
         else:
-            ctrl_x, ctrl_y = (mid_x, mid_y + (12 if direction == "south" else -12))
+            ctrl_x, ctrl_y = (mid_x, mid_y + (25 if direction == "south" else -25))
 
         path_d = f"M {arrow_src_x:.1f} {arrow_src_y:.1f} Q {ctrl_x:.1f} {ctrl_y:.1f} {arrow_dest_x:.1f} {arrow_dest_y:.1f}"
         color = djb2_color_hash(conn["fromExitId"], conn["toExitId"])
 
         if room_key in js_routes_db:
-            js_routes_db[room_key].append({
-                "d": path_d,
-                "color": color
-            })
+            js_routes_db[room_key].append({"d": path_d, "color": color})
+
+    # Step 2: Handle precise warp doors from exits.json (built on 710x560 workspace)
+    room_doors_index = {}
+    for d in doors:
+        o_n, o_e = int(d["origin"]["north"]), int(d["origin"]["east"])
+        d_n, d_e = int(d["dest"]["north"]), int(d["dest"]["east"])
+        room_doors_index[f"{o_n}_{o_e}->{d_n}_{d_e}"] = d
+
+    scale_x_room = TILE_WIDTH / ROOM_INTERNAL_WIDTH
+    scale_y_room = TILE_HEIGHT / ROOM_INTERNAL_HEIGHT
+
+    for d in doors:
+        o_n, o_e = int(d["origin"]["north"]), int(d["origin"]["east"])
+        d_n, d_e = int(d["dest"]["north"]), int(d["dest"]["east"])
+        room_key = f"{o_n}_{o_e}"
+
+        if o_n not in north_to_track or o_e not in east_to_track: continue
+        if d_n not in north_to_track or d_e not in east_to_track: continue
+
+        # Reverse link lookup gives us starting tile local positioning coordinates
+        reverse_door = room_doors_index.get(f"{d_n}_{d_e}->{o_n}_{o_e}")
+        if reverse_door:
+            src_x_local = float(reverse_door["dest_x"])
+            src_y_local = float(reverse_door["dest_y"])
+        else:
+            src_x_local = ROOM_INTERNAL_WIDTH / 2
+            src_y_local = ROOM_INTERNAL_HEIGHT / 2
+
+        dest_x_local = float(d["dest_x"])
+        dest_y_local = float(d["dest_y"])
+
+        orig_col, orig_row = east_to_track[o_e], north_to_track[o_n]
+        dest_col, dest_row = east_to_track[d_e], north_to_track[d_n]
+
+        arrow_src_x = 20 + orig_col * tile_step_w + (src_x_local * scale_x_room)
+        arrow_src_y = 20 + orig_row * tile_step_h + (src_y_local * scale_y_room)
+
+        arrow_dest_x = 20 + dest_col * tile_step_w + (dest_x_local * scale_x_room)
+        arrow_dest_y = 20 + dest_row * tile_step_h + (dest_y_local * scale_y_room)
+
+        m_x, m_y = (arrow_src_x + arrow_dest_x) / 2, (arrow_src_y + arrow_dest_y) / 2
+        ctrl_x, ctrl_y = m_x, m_y - 45
+
+        path_d = f"M {arrow_src_x:.1f} {arrow_src_y:.1f} Q {ctrl_x:.1f} {ctrl_y:.1f} {arrow_dest_x:.1f} {arrow_dest_y:.1f}"
+        color = djb2_color_hash(d["id"], "warp_gate")
+
+        if room_key in js_routes_db:
+            js_routes_db[room_key].append({"d": path_d, "color": color})
 
     html_elements = []
     for north, east, filename in parsed_tiles:
@@ -342,6 +414,7 @@ def main():
         tile_exits = geom_index.get(room_key, {})
         squares_html = []
 
+        # Render standard exit bounding boxes
         active_connections = [
             c for c in connections
             if int(c["originNorth"]) == north and int(c["originEast"]) == east
@@ -349,11 +422,8 @@ def main():
 
         if tile_exits and isinstance(tile_exits, dict):
             for side, bounds_list in tile_exits.items():
-                if not bounds_list:
-                    continue
-
-                if not isinstance(bounds_list, list):
-                    bounds_list = [bounds_list]
+                if not bounds_list: continue
+                if not isinstance(bounds_list, list): bounds_list = [bounds_list]
 
                 side_connections = [
                     c for c in active_connections
@@ -367,8 +437,7 @@ def main():
                     sorted_bounds = sorted(bounds_list, key=lambda b: int(float(b.get("left", 0))))
 
                 for idx, bounds in enumerate(sorted_bounds):
-                    if not bounds or not isinstance(bounds, dict):
-                        continue
+                    if not bounds or not isinstance(bounds, dict): continue
 
                     matched_color = "rgba(255,255,255,0.5)"
                     if idx < len(side_connections):
@@ -376,8 +445,7 @@ def main():
                         matched_color = djb2_color_hash(conn["fromExitId"], conn["toExitId"])
 
                     if side in ["west", "east"]:
-                        if bounds.get("top") is None or bounds.get("bottom") is None:
-                            continue
+                        if bounds.get("top") is None or bounds.get("bottom") is None: continue
                         start_val = int(float(bounds["top"]))
                         end_val = int(float(bounds["bottom"]))
 
@@ -391,8 +459,7 @@ def main():
                         )
 
                     elif side in ["north", "south"]:
-                        if bounds.get("left") is None or bounds.get("right") is None:
-                            continue
+                        if bounds.get("left") is None or bounds.get("right") is None: continue
                         start_val = int(float(bounds["left"]))
                         end_val = int(float(bounds["right"]))
 
@@ -405,30 +472,41 @@ def main():
                             f'<div class="exit-square" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%; background-color:{matched_color};"></div>'
                         )
 
-        # Pull progression events for this specific room
+        # Render rounded local block tiles for warp points inside room grid coordinates
+        for d in doors:
+            d_n, d_e = int(d["dest"]["north"]), int(d["dest"]["east"])
+            if d_n == north and d_e == east:
+                dest_x_local = float(d["dest_x"])
+                dest_y_local = float(d["dest_y"])
+
+                # Calculate closest index matrix slot (0-13, 0-10)
+                tile_idx_x = int(dest_x_local / (ROOM_INTERNAL_WIDTH / BLOCKS_X))
+                tile_idx_y = int(dest_y_local / (ROOM_INTERNAL_HEIGHT / BLOCKS_Y))
+
+                tile_idx_x = max(0, min(BLOCKS_X - 1, tile_idx_x))
+                tile_idx_y = max(0, min(BLOCKS_Y - 1, tile_idx_y))
+
+                x_pos_pct = tile_idx_x * BLOCK_WIDTH_PCT
+                y_pos_pct = tile_idx_y * BLOCK_HEIGHT_PCT
+
+                squares_html.append(
+                    f'<div class="warp-square" style="left:{x_pos_pct:.2f}%; top:{y_pos_pct:.2f}%; width:{BLOCK_WIDTH_PCT:.2f}%; height:{BLOCK_HEIGHT_PCT:.2f}%;"></div>'
+                )
+
+        # Pull progression event data
         room_prog_data = prog_index.get(room_key, [])
         tooltip_str = build_tooltip_text(north, east, room_prog_data)
 
-        # Generate an icon tag if the room demands actions (has requires or receive entries)
-        icon_html = "<span class=fr>"
-
-        # Pull progression events for this specific room
-        room_prog_data = prog_index.get(room_key, [])
-        tooltip_str = build_tooltip_text(north, east, room_prog_data)
-
-        # Replicating JavaScript .map(e => e?.receive).unique() dynamically in Python
         unique_receives = set()
         for entry in room_prog_data:
             receive_list = entry.get("receive")
             if receive_list and isinstance(receive_list, list):
                 for item in receive_list:
-                    if item: # Ensure item is not null/empty
+                    if item:
                         unique_receives.add(item)
 
-        # Generate individual icon tags for each unique item type found
         icon_html = "<span class=fr>"
-        for item in sorted(unique_receives): # Sorting ensures stable element ordering
-            # Sanitize colons, hash symbols, or question marks into underscores
+        for item in sorted(unique_receives):
             sanitized_name = re.sub(r"[:#?]", "_", re.sub(r"[#?].+$", "", item))
             icon_filename = f"{sanitized_name}.png"
             icon_src = os.path.join(PROGRESSION_ICON_PATH, icon_filename).replace("\\", "/")
@@ -467,7 +545,7 @@ def main():
         f.write(f"\n    <script>const ROUTES_DATA = {json.dumps(js_routes_db, indent=2)};</script>")
         f.write("\n" + html_end)
 
-    print(f"[+] Success! Cleanly integrated progression tooltips and icons into {OUTPUT_FILE}")
+    print(f"[+] Success! Fully normalized and fixed scale spacing positions for all arrow vectors.")
 
 if __name__ == "__main__":
     main()
