@@ -805,6 +805,131 @@
       "room": { "north": 19, "east": 18 },
       "requires": [["quest.pam.15", "entrance.south0"]],
       "receive": ["item:ruby#3"]
+    },
+    {
+      "room": { "north": 20, "east": 15 },
+      "requires": [
+        [
+          "skill:firewall.1",
+          "item:dragon scale#5",
+          "item:medallion#3"
+        ]
+      ],
+      "receive": ["skill.firewall.2"]
+    },
+    {
+      "room": { "north": 20, "east": 15 },
+      "requires": [
+        [
+          "skill:firewall.2",
+          "item:dragon scale#10",
+          "item:medallion#6"
+        ]
+      ],
+      "receive": ["skill.firewall.3"]
+    },
+    {
+      "room": { "north": 20, "east": 15 },
+      "requires": [
+        [
+          "skill:firewall.3",
+          "item:dragon scale#15",
+          "item:medallion#9"
+        ]
+      ],
+      "receive": ["skill.firewall.4"]
+    },
+    {
+      "room": { "north": 20, "east": 15 },
+      "requires": [
+        [
+          "skill:firewall.4",
+          "item:dragon scale#20",
+          "item:medallion#12"
+        ]
+      ],
+      "receive": ["skill.firewall.5"]
+    },
+    {
+      "room": { "north": 20, "east": 15 },
+      "requires": [
+        [
+          "skill:firewall.5",
+          "item:dragon scale#25",
+          "item:medallion#15"
+        ]
+      ],
+      "receive": ["skill.firewall.6"]
+    },
+    {
+      "room": { "north": 20, "east": 15 },
+      "requires": [
+        [
+          "skill:firewall.6",
+          "item:dragon scale#30",
+          "item:medallion#18"
+        ]
+      ],
+      "receive": ["skill.firewall.7"]
+    },
+    {
+      "room": { "north": 20, "east": 15 },
+      "requires": [
+        [
+          "skill:firewall.7",
+          "item:dragon scale#35",
+          "item:medallion#21"
+        ]
+      ],
+      "receive": ["skill.firewall.8"]
+    },
+    {
+      "room": { "north": 20, "east": 15 },
+      "requires": [
+        [
+          "skill:firewall.8",
+          "item:dragon scale#40",
+          "item:medallion#24"
+        ]
+      ],
+      "receive": ["skill.firewall.9"]
+    },
+    {
+      "room": { "north": 20, "east": 15 },
+      "requires": [
+        [
+          "skill:firewall.9",
+          "item:dragon scale#45",
+          "item:medallion#27"
+        ]
+      ],
+      "receive": ["skill.firewall.10"]
+    },
+    {
+      "room": { "north": 19, "east": 15 },
+      "requires": [["item:medallion#20"]],
+      "receive": ["item:ruby#1"]
+    },
+    {
+      "room": { "north": 19, "east": 15 },
+      "requires": [["item:medallion#3"]],
+      "receive": ["skill:hint"]
+    },
+    {
+      "room": { "north": 19, "east": 15 },
+      "requires": [["item:medallion#30"]],
+      "receive": ["skill:fear"]
+    },
+    {
+      "room": { "north": 19, "east": 15 },
+      "requires": [["item:medallion#200"]],
+      "receive": ["skill:shield"]
+    },
+    {
+      "room": { "north": 18, "east": 15 },
+      "requires": [["quest.pam.15"]],
+      "receive": ["item:newton apple#15"],
+      "info": "fill refresh too"
     }
   ],
   "gates": [
