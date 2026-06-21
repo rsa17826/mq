@@ -6589,7 +6589,7 @@
         "east": 22
       },
       "dest_x": null,
-      "dest_y": 510
+      "dest_y": 450
     },
     {
       "id": "edge:north:15_23_16_23",
@@ -10625,6 +10625,126 @@
       },
       "dest_x": 117,
       "dest_y": 166
+    },
+    {
+      "id": "door:drain:18_25_500_500",
+      "mechanism": "object",
+      "trigger_object": "drain",
+      "origin": {
+        "north": 18,
+        "east": 25
+      },
+      "dest": {
+        "north": 500,
+        "east": 500
+      },
+      "dest_x": 475,
+      "dest_y": 239
+    },
+    {
+      "id": "door:drain:500_500_18_25",
+      "mechanism": "object",
+      "trigger_object": "drain",
+      "origin": {
+        "north": 500,
+        "east": 500
+      },
+      "dest": {
+        "north": 18,
+        "east": 25
+      },
+      "dest_x": 143,
+      "dest_y": 413
+    },
+    {
+      "id": "door:stairsDown:12_22_12_23",
+      "mechanism": "object",
+      "trigger_object": "stairsDown",
+      "origin": {
+        "north": 12,
+        "east": 22
+      },
+      "dest": {
+        "north": 12,
+        "east": 23
+      },
+      "dest_x": 54,
+      "dest_y": 120
+    },
+    {
+      "id": "door:stairsDown:12_23_12_22",
+      "mechanism": "object",
+      "trigger_object": "stairsDown",
+      "origin": {
+        "north": 12,
+        "east": 23
+      },
+      "dest": {
+        "north": 12,
+        "east": 22
+      },
+      "dest_x": 110,
+      "dest_y": 160
+    },
+    {
+      "id": "door:stairsDown:6_23_5_23",
+      "mechanism": "object",
+      "trigger_object": "stairsDown",
+      "origin": {
+        "north": 6,
+        "east": 23
+      },
+      "dest": {
+        "north": 5,
+        "east": 23
+      },
+      "dest_x": 180,
+      "dest_y": 388
+    },
+    {
+      "id": "door:stairsDown:5_23_6_23",
+      "mechanism": "object",
+      "trigger_object": "stairsDown",
+      "origin": {
+        "north": 5,
+        "east": 23
+      },
+      "dest": {
+        "north": 6,
+        "east": 23
+      },
+      "dest_x": 297,
+      "dest_y": 198
+    },
+    {
+      "id": "door:warpRing:9_21_12_14",
+      "mechanism": "object",
+      "trigger_object": "warpRing",
+      "origin": {
+        "north": 9,
+        "east": 21
+      },
+      "dest": {
+        "north": 12,
+        "east": 14
+      },
+      "dest_x": 150,
+      "dest_y": 124
+    },
+    {
+      "id": "door:warpRing:12_14_9_21",
+      "mechanism": "object",
+      "trigger_object": "warpRing",
+      "origin": {
+        "north": 12,
+        "east": 14
+      },
+      "dest": {
+        "north": 9,
+        "east": 21
+      },
+      "dest_x": 561,
+      "dest_y": 125
     }
   ],
   "known_gaps": [
