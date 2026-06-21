@@ -2375,21 +2375,6 @@
       "dest_y": 25
     },
     {
-      "id": "edge:south:6_10_5_10",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 6,
-        "east": 10
-      },
-      "dest": {
-        "north": 5,
-        "east": 10
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
       "id": "edge:south:6_11_5_11",
       "mechanism": "edge",
       "direction": "south",
@@ -2405,36 +2390,6 @@
       "dest_y": 25
     },
     {
-      "id": "edge:south:6_23_5_23",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 6,
-        "east": 23
-      },
-      "dest": {
-        "north": 5,
-        "east": 23
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:6_24_5_24",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 6,
-        "east": 24
-      },
-      "dest": {
-        "north": 5,
-        "east": 24
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
       "id": "edge:south:7_9_6_9",
       "mechanism": "edge",
       "direction": "south",
@@ -2445,21 +2400,6 @@
       "dest": {
         "north": 6,
         "east": 9
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:7_10_6_10",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 7,
-        "east": 10
-      },
-      "dest": {
-        "north": 6,
-        "east": 10
       },
       "dest_x": null,
       "dest_y": 25
@@ -2586,66 +2526,6 @@
       "dest_y": 25
     },
     {
-      "id": "edge:south:8_9_7_9",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 8,
-        "east": 9
-      },
-      "dest": {
-        "north": 7,
-        "east": 9
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:8_10_7_10",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 8,
-        "east": 10
-      },
-      "dest": {
-        "north": 7,
-        "east": 10
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:8_11_7_11",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 8,
-        "east": 11
-      },
-      "dest": {
-        "north": 7,
-        "east": 11
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:8_12_7_12",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 8,
-        "east": 12
-      },
-      "dest": {
-        "north": 7,
-        "east": 12
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
       "id": "edge:south:8_13_7_13",
       "mechanism": "edge",
       "direction": "south",
@@ -2691,21 +2571,6 @@
       "dest_y": 25
     },
     {
-      "id": "edge:south:8_18_7_18",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 8,
-        "east": 18
-      },
-      "dest": {
-        "north": 7,
-        "east": 18
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
       "id": "edge:south:8_20_7_20",
       "mechanism": "edge",
       "direction": "south",
@@ -2716,21 +2581,6 @@
       "dest": {
         "north": 7,
         "east": 20
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:8_21_7_21",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 8,
-        "east": 21
-      },
-      "dest": {
-        "north": 7,
-        "east": 21
       },
       "dest_x": null,
       "dest_y": 25
@@ -2761,21 +2611,6 @@
       "dest": {
         "north": 7,
         "east": 23
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:8_25_7_25",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 8,
-        "east": 25
-      },
-      "dest": {
-        "north": 7,
-        "east": 25
       },
       "dest_x": null,
       "dest_y": 25
@@ -2826,21 +2661,6 @@
       "dest_y": 25
     },
     {
-      "id": "edge:south:9_13_8_13",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 9,
-        "east": 13
-      },
-      "dest": {
-        "north": 8,
-        "east": 13
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
       "id": "edge:south:9_15_8_15",
       "mechanism": "edge",
       "direction": "south",
@@ -2851,21 +2671,6 @@
       "dest": {
         "north": 8,
         "east": 15
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:9_16_8_16",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 9,
-        "east": 16
-      },
-      "dest": {
-        "north": 8,
-        "east": 16
       },
       "dest_x": null,
       "dest_y": 25
@@ -2915,21 +2720,6 @@
       "dest_x": null,
       "dest_y": 160,
       "notes": "origin-keyed fixup applied"
-    },
-    {
-      "id": "edge:south:9_21_8_21",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 9,
-        "east": 21
-      },
-      "dest": {
-        "north": 8,
-        "east": 21
-      },
-      "dest_x": null,
-      "dest_y": 25
     },
     {
       "id": "edge:south:9_22_8_22",
@@ -3002,21 +2792,6 @@
       "dest": {
         "north": 9,
         "east": 11
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:10_13_9_13",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 10,
-        "east": 13
-      },
-      "dest": {
-        "north": 9,
-        "east": 13
       },
       "dest_x": null,
       "dest_y": 25
@@ -3113,21 +2888,6 @@
       "dest_y": 25
     },
     {
-      "id": "edge:south:10_23_9_23",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 10,
-        "east": 23
-      },
-      "dest": {
-        "north": 9,
-        "east": 23
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
       "id": "edge:south:10_24_9_24",
       "mechanism": "edge",
       "direction": "south",
@@ -3138,21 +2898,6 @@
       "dest": {
         "north": 9,
         "east": 24
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:10_25_9_25",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 10,
-        "east": 25
-      },
-      "dest": {
-        "north": 9,
-        "east": 25
       },
       "dest_x": null,
       "dest_y": 25
@@ -3214,21 +2959,6 @@
       "dest": {
         "north": 10,
         "east": 12
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:11_13_10_13",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 11,
-        "east": 13
-      },
-      "dest": {
-        "north": 10,
-        "east": 13
       },
       "dest_x": null,
       "dest_y": 25
@@ -3310,21 +3040,6 @@
       "dest_y": 25
     },
     {
-      "id": "edge:south:11_19_10_19",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 11,
-        "east": 19
-      },
-      "dest": {
-        "north": 10,
-        "east": 19
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
       "id": "edge:south:11_20_10_20",
       "mechanism": "edge",
       "direction": "south",
@@ -3335,21 +3050,6 @@
       "dest": {
         "north": 10,
         "east": 20
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:11_22_10_22",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 11,
-        "east": 22
-      },
-      "dest": {
-        "north": 10,
-        "east": 22
       },
       "dest_x": null,
       "dest_y": 25
@@ -3475,111 +3175,6 @@
       "dest_y": 25
     },
     {
-      "id": "edge:south:12_16_11_16",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 12,
-        "east": 16
-      },
-      "dest": {
-        "north": 11,
-        "east": 16
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:12_17_11_17",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 12,
-        "east": 17
-      },
-      "dest": {
-        "north": 11,
-        "east": 17
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:12_18_11_18",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 12,
-        "east": 18
-      },
-      "dest": {
-        "north": 11,
-        "east": 18
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:12_19_11_19",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 12,
-        "east": 19
-      },
-      "dest": {
-        "north": 11,
-        "east": 19
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:12_20_11_20",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 12,
-        "east": 20
-      },
-      "dest": {
-        "north": 11,
-        "east": 20
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:12_21_11_21",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 12,
-        "east": 21
-      },
-      "dest": {
-        "north": 11,
-        "east": 21
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:12_22_11_22",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 12,
-        "east": 22
-      },
-      "dest": {
-        "north": 11,
-        "east": 22
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
       "id": "edge:south:12_23_11_23",
       "mechanism": "edge",
       "direction": "south",
@@ -3610,21 +3205,6 @@
       "dest_y": 25
     },
     {
-      "id": "edge:south:12_25_11_25",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 12,
-        "east": 25
-      },
-      "dest": {
-        "north": 11,
-        "east": 25
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
       "id": "edge:south:12_26_11_26",
       "mechanism": "edge",
       "direction": "south",
@@ -3635,21 +3215,6 @@
       "dest": {
         "north": 11,
         "east": 26
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:13_14_12_14",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 13,
-        "east": 14
-      },
-      "dest": {
-        "north": 12,
-        "east": 14
       },
       "dest_x": null,
       "dest_y": 25
@@ -3670,21 +3235,6 @@
       "dest_y": 25
     },
     {
-      "id": "edge:south:13_17_12_17",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 13,
-        "east": 17
-      },
-      "dest": {
-        "north": 12,
-        "east": 17
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
       "id": "edge:south:13_18_12_18",
       "mechanism": "edge",
       "direction": "south",
@@ -3695,21 +3245,6 @@
       "dest": {
         "north": 12,
         "east": 18
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:13_19_12_19",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 13,
-        "east": 19
-      },
-      "dest": {
-        "north": 12,
-        "east": 19
       },
       "dest_x": null,
       "dest_y": 25
@@ -3777,21 +3312,6 @@
       "dest_y": 25
     },
     {
-      "id": "edge:south:13_24_12_24",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 13,
-        "east": 24
-      },
-      "dest": {
-        "north": 12,
-        "east": 24
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
       "id": "edge:south:13_25_12_25",
       "mechanism": "edge",
       "direction": "south",
@@ -3802,21 +3322,6 @@
       "dest": {
         "north": 12,
         "east": 25
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:13_26_12_26",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 13,
-        "east": 26
-      },
-      "dest": {
-        "north": 12,
-        "east": 26
       },
       "dest_x": null,
       "dest_y": 25
@@ -3847,21 +3352,6 @@
       "dest": {
         "north": 13,
         "east": 15
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:14_16_13_16",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 14,
-        "east": 16
-      },
-      "dest": {
-        "north": 13,
-        "east": 16
       },
       "dest_x": null,
       "dest_y": 25
@@ -3942,21 +3432,6 @@
       "dest_y": 25
     },
     {
-      "id": "edge:south:14_22_13_22",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 14,
-        "east": 22
-      },
-      "dest": {
-        "north": 13,
-        "east": 22
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
       "id": "edge:south:14_23_13_23",
       "mechanism": "edge",
       "direction": "south",
@@ -4012,21 +3487,6 @@
       "dest": {
         "north": 14,
         "east": 14
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:15_15_14_15",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 15,
-        "east": 15
-      },
-      "dest": {
-        "north": 14,
-        "east": 15
       },
       "dest_x": null,
       "dest_y": 25
@@ -4123,21 +3583,6 @@
       "dest_y": 25
     },
     {
-      "id": "edge:south:15_22_14_22",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 15,
-        "east": 22
-      },
-      "dest": {
-        "north": 14,
-        "east": 22
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
       "id": "edge:south:15_23_14_23",
       "mechanism": "edge",
       "direction": "south",
@@ -4148,36 +3593,6 @@
       "dest": {
         "north": 14,
         "east": 23
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:15_24_14_24",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 15,
-        "east": 24
-      },
-      "dest": {
-        "north": 14,
-        "east": 24
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:15_25_14_25",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 15,
-        "east": 25
-      },
-      "dest": {
-        "north": 14,
-        "east": 25
       },
       "dest_x": null,
       "dest_y": 25
@@ -4228,36 +3643,6 @@
       "dest_y": 25
     },
     {
-      "id": "edge:south:16_17_15_17",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 16,
-        "east": 17
-      },
-      "dest": {
-        "north": 15,
-        "east": 17
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:16_18_15_18",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 16,
-        "east": 18
-      },
-      "dest": {
-        "north": 15,
-        "east": 18
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
       "id": "edge:south:16_19_15_19",
       "mechanism": "edge",
       "direction": "south",
@@ -4283,21 +3668,6 @@
       "dest": {
         "north": 15,
         "east": 20
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:16_21_15_21",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 16,
-        "east": 21
-      },
-      "dest": {
-        "north": 15,
-        "east": 21
       },
       "dest_x": null,
       "dest_y": 25
@@ -4364,21 +3734,6 @@
       "dest_y": 25
     },
     {
-      "id": "edge:south:17_10_16_10",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 17,
-        "east": 10
-      },
-      "dest": {
-        "north": 16,
-        "east": 10
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
       "id": "edge:south:17_11_18_11",
       "mechanism": "edge",
       "direction": "south",
@@ -4426,21 +3781,6 @@
       "dest_y": 25
     },
     {
-      "id": "edge:south:17_16_16_16",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 17,
-        "east": 16
-      },
-      "dest": {
-        "north": 16,
-        "east": 16
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
       "id": "edge:south:17_17_16_17",
       "mechanism": "edge",
       "direction": "south",
@@ -4466,51 +3806,6 @@
       "dest": {
         "north": 16,
         "east": 18
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:17_19_16_19",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 17,
-        "east": 19
-      },
-      "dest": {
-        "north": 16,
-        "east": 19
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:17_20_16_20",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 17,
-        "east": 20
-      },
-      "dest": {
-        "north": 16,
-        "east": 20
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:17_21_16_21",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 17,
-        "east": 21
-      },
-      "dest": {
-        "north": 16,
-        "east": 21
       },
       "dest_x": null,
       "dest_y": 25
@@ -4576,21 +3871,6 @@
       "dest_y": 25
     },
     {
-      "id": "edge:south:18_10_17_10",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 18,
-        "east": 10
-      },
-      "dest": {
-        "north": 17,
-        "east": 10
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
       "id": "edge:south:18_11_17_11",
       "mechanism": "edge",
       "direction": "south",
@@ -4601,21 +3881,6 @@
       "dest": {
         "north": 17,
         "east": 11
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:18_14_17_14",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 18,
-        "east": 14
-      },
-      "dest": {
-        "north": 17,
-        "east": 14
       },
       "dest_x": null,
       "dest_y": 25
@@ -4667,36 +3932,6 @@
       "notes": "origin-keyed fixup applied"
     },
     {
-      "id": "edge:south:18_18_17_18",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 18,
-        "east": 18
-      },
-      "dest": {
-        "north": 17,
-        "east": 18
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:18_19_17_19",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 18,
-        "east": 19
-      },
-      "dest": {
-        "north": 17,
-        "east": 19
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
       "id": "edge:south:18_20_17_20",
       "mechanism": "edge",
       "direction": "south",
@@ -4712,36 +3947,6 @@
       "dest_y": 25
     },
     {
-      "id": "edge:south:18_21_17_21",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 18,
-        "east": 21
-      },
-      "dest": {
-        "north": 17,
-        "east": 21
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:18_22_17_22",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 18,
-        "east": 22
-      },
-      "dest": {
-        "north": 17,
-        "east": 22
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
       "id": "edge:south:18_23_17_23",
       "mechanism": "edge",
       "direction": "south",
@@ -4752,21 +3957,6 @@
       "dest": {
         "north": 17,
         "east": 23
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:18_24_17_24",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 18,
-        "east": 24
-      },
-      "dest": {
-        "north": 17,
-        "east": 24
       },
       "dest_x": null,
       "dest_y": 25
@@ -4802,21 +3992,6 @@
       "dest_y": 25
     },
     {
-      "id": "edge:south:19_11_18_11",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 19,
-        "east": 11
-      },
-      "dest": {
-        "north": 18,
-        "east": 11
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
       "id": "edge:south:19_12_18_12",
       "mechanism": "edge",
       "direction": "south",
@@ -4842,21 +4017,6 @@
       "dest": {
         "north": 18,
         "east": 13
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:19_15_18_15",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 19,
-        "east": 15
-      },
-      "dest": {
-        "north": 18,
-        "east": 15
       },
       "dest_x": null,
       "dest_y": 25
@@ -4938,21 +4098,6 @@
       "dest_y": 25
     },
     {
-      "id": "edge:south:19_22_18_22",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 19,
-        "east": 22
-      },
-      "dest": {
-        "north": 18,
-        "east": 22
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
       "id": "edge:south:19_23_18_23",
       "mechanism": "edge",
       "direction": "south",
@@ -4963,21 +4108,6 @@
       "dest": {
         "north": 18,
         "east": 23
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:19_24_18_24",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 19,
-        "east": 24
-      },
-      "dest": {
-        "north": 18,
-        "east": 24
       },
       "dest_x": null,
       "dest_y": 25
@@ -5008,21 +4138,6 @@
       "dest": {
         "north": 19,
         "east": 15
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:20_16_19_16",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 20,
-        "east": 16
-      },
-      "dest": {
-        "north": 19,
-        "east": 16
       },
       "dest_x": null,
       "dest_y": 25
@@ -5073,36 +4188,6 @@
       "dest_y": 25
     },
     {
-      "id": "edge:south:20_21_19_21",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 20,
-        "east": 21
-      },
-      "dest": {
-        "north": 19,
-        "east": 21
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:20_22_19_22",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 20,
-        "east": 22
-      },
-      "dest": {
-        "north": 19,
-        "east": 22
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
       "id": "edge:south:20_23_19_23",
       "mechanism": "edge",
       "direction": "south",
@@ -5132,21 +4217,6 @@
       "dest_x": 300,
       "dest_y": 200,
       "notes": "origin-keyed fixup applied"
-    },
-    {
-      "id": "edge:south:21_17_20_17",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 21,
-        "east": 17
-      },
-      "dest": {
-        "north": 20,
-        "east": 17
-      },
-      "dest_x": null,
-      "dest_y": 25
     },
     {
       "id": "edge:south:21_18_20_18",
@@ -5224,36 +4294,6 @@
       "dest_y": 25
     },
     {
-      "id": "edge:south:22_12_21_12",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 22,
-        "east": 12
-      },
-      "dest": {
-        "north": 21,
-        "east": 12
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:22_13_21_13",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 22,
-        "east": 13
-      },
-      "dest": {
-        "north": 21,
-        "east": 13
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
       "id": "edge:south:22_14_21_14",
       "mechanism": "edge",
       "direction": "south",
@@ -5279,21 +4319,6 @@
       "dest": {
         "north": 22,
         "east": 9
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:23_10_22_10",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 23,
-        "east": 10
-      },
-      "dest": {
-        "north": 22,
-        "east": 10
       },
       "dest_x": null,
       "dest_y": 25
@@ -5344,21 +4369,6 @@
       "dest_y": 25
     },
     {
-      "id": "edge:south:23_14_22_14",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 23,
-        "east": 14
-      },
-      "dest": {
-        "north": 22,
-        "east": 14
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
       "id": "edge:south:24_9_23_9",
       "mechanism": "edge",
       "direction": "south",
@@ -5369,21 +4379,6 @@
       "dest": {
         "north": 23,
         "east": 9
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
-      "id": "edge:south:24_10_23_10",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 24,
-        "east": 10
-      },
-      "dest": {
-        "north": 23,
-        "east": 10
       },
       "dest_x": null,
       "dest_y": 25
@@ -5463,21 +4458,6 @@
       "dest_x": 100,
       "dest_y": 400,
       "notes": "destination-keyed override/sentinel-jump applied"
-    },
-    {
-      "id": "edge:south:201_200_200_200",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 201,
-        "east": 200
-      },
-      "dest": {
-        "north": 200,
-        "east": 200
-      },
-      "dest_x": null,
-      "dest_y": 25
     },
     {
       "id": "edge:south:300_300_6_21",
@@ -5676,36 +4656,6 @@
       "dest_y": 510
     },
     {
-      "id": "edge:north:5_23_6_23",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 5,
-        "east": 23
-      },
-      "dest": {
-        "north": 6,
-        "east": 23
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:5_24_6_24",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 5,
-        "east": 24
-      },
-      "dest": {
-        "north": 6,
-        "east": 24
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
       "id": "edge:north:6_9_7_9",
       "mechanism": "edge",
       "direction": "north",
@@ -5716,21 +4666,6 @@
       "dest": {
         "north": 7,
         "east": 9
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:6_11_7_11",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 6,
-        "east": 11
-      },
-      "dest": {
-        "north": 7,
-        "east": 11
       },
       "dest_x": null,
       "dest_y": 510
@@ -5841,66 +4776,6 @@
       "dest_y": 510
     },
     {
-      "id": "edge:north:7_9_8_9",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 7,
-        "east": 9
-      },
-      "dest": {
-        "north": 8,
-        "east": 9
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:7_10_8_10",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 7,
-        "east": 10
-      },
-      "dest": {
-        "north": 8,
-        "east": 10
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:7_11_8_11",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 7,
-        "east": 11
-      },
-      "dest": {
-        "north": 8,
-        "east": 11
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:7_12_8_12",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 7,
-        "east": 12
-      },
-      "dest": {
-        "north": 8,
-        "east": 12
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
       "id": "edge:north:7_13_8_13",
       "mechanism": "edge",
       "direction": "north",
@@ -5946,21 +4821,6 @@
       "dest_y": 510
     },
     {
-      "id": "edge:north:7_18_8_18",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 7,
-        "east": 18
-      },
-      "dest": {
-        "north": 8,
-        "east": 18
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
       "id": "edge:north:7_20_8_20",
       "mechanism": "edge",
       "direction": "north",
@@ -5971,21 +4831,6 @@
       "dest": {
         "north": 8,
         "east": 20
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:7_21_8_21",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 7,
-        "east": 21
-      },
-      "dest": {
-        "north": 8,
-        "east": 21
       },
       "dest_x": null,
       "dest_y": 510
@@ -6016,21 +4861,6 @@
       "dest": {
         "north": 8,
         "east": 23
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:7_25_8_25",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 7,
-        "east": 25
-      },
-      "dest": {
-        "north": 8,
-        "east": 25
       },
       "dest_x": null,
       "dest_y": 510
@@ -6081,21 +4911,6 @@
       "dest_y": 510
     },
     {
-      "id": "edge:north:8_13_9_13",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 8,
-        "east": 13
-      },
-      "dest": {
-        "north": 9,
-        "east": 13
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
       "id": "edge:north:8_15_9_15",
       "mechanism": "edge",
       "direction": "north",
@@ -6106,21 +4921,6 @@
       "dest": {
         "north": 9,
         "east": 15
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:8_16_9_16",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 8,
-        "east": 16
-      },
-      "dest": {
-        "north": 9,
-        "east": 16
       },
       "dest_x": null,
       "dest_y": 510
@@ -6166,21 +4966,6 @@
       "dest": {
         "north": 9,
         "east": 20
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:8_21_9_21",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 8,
-        "east": 21
-      },
-      "dest": {
-        "north": 9,
-        "east": 21
       },
       "dest_x": null,
       "dest_y": 510
@@ -6952,21 +5737,6 @@
       "dest_y": 510
     },
     {
-      "id": "edge:north:9_13_10_13",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 9,
-        "east": 13
-      },
-      "dest": {
-        "north": 10,
-        "east": 13
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
       "id": "edge:north:9_15_10_15",
       "mechanism": "edge",
       "direction": "north",
@@ -7057,21 +5827,6 @@
       "dest_y": 510
     },
     {
-      "id": "edge:north:9_23_10_23",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 9,
-        "east": 23
-      },
-      "dest": {
-        "north": 10,
-        "east": 23
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
       "id": "edge:north:9_24_10_24",
       "mechanism": "edge",
       "direction": "north",
@@ -7082,21 +5837,6 @@
       "dest": {
         "north": 10,
         "east": 24
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:9_25_10_25",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 9,
-        "east": 25
-      },
-      "dest": {
-        "north": 10,
-        "east": 25
       },
       "dest_x": null,
       "dest_y": 510
@@ -7162,21 +5902,6 @@
       "dest_y": 510
     },
     {
-      "id": "edge:north:10_13_11_13",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 10,
-        "east": 13
-      },
-      "dest": {
-        "north": 11,
-        "east": 13
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
       "id": "edge:north:10_14_11_14",
       "mechanism": "edge",
       "direction": "north",
@@ -7202,21 +5927,6 @@
       "dest": {
         "north": 11,
         "east": 15
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:10_16_11_16",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 10,
-        "east": 16
-      },
-      "dest": {
-        "north": 11,
-        "east": 16
       },
       "dest_x": null,
       "dest_y": 510
@@ -7252,21 +5962,6 @@
       "dest_y": 510
     },
     {
-      "id": "edge:north:10_19_11_19",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 10,
-        "east": 19
-      },
-      "dest": {
-        "north": 11,
-        "east": 19
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
       "id": "edge:north:10_20_11_20",
       "mechanism": "edge",
       "direction": "north",
@@ -7277,21 +5972,6 @@
       "dest": {
         "north": 11,
         "east": 20
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:10_22_11_22",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 10,
-        "east": 22
-      },
-      "dest": {
-        "north": 11,
-        "east": 22
       },
       "dest_x": null,
       "dest_y": 510
@@ -7417,111 +6097,6 @@
       "dest_y": 510
     },
     {
-      "id": "edge:north:11_16_12_16",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 11,
-        "east": 16
-      },
-      "dest": {
-        "north": 12,
-        "east": 16
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:11_17_12_17",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 11,
-        "east": 17
-      },
-      "dest": {
-        "north": 12,
-        "east": 17
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:11_18_12_18",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 11,
-        "east": 18
-      },
-      "dest": {
-        "north": 12,
-        "east": 18
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:11_19_12_19",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 11,
-        "east": 19
-      },
-      "dest": {
-        "north": 12,
-        "east": 19
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:11_20_12_20",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 11,
-        "east": 20
-      },
-      "dest": {
-        "north": 12,
-        "east": 20
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:11_21_12_21",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 11,
-        "east": 21
-      },
-      "dest": {
-        "north": 12,
-        "east": 21
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:11_22_12_22",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 11,
-        "east": 22
-      },
-      "dest": {
-        "north": 12,
-        "east": 22
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
       "id": "edge:north:11_23_12_23",
       "mechanism": "edge",
       "direction": "north",
@@ -7552,21 +6127,6 @@
       "dest_y": 510
     },
     {
-      "id": "edge:north:11_25_12_25",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 11,
-        "east": 25
-      },
-      "dest": {
-        "north": 12,
-        "east": 25
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
       "id": "edge:north:11_26_12_26",
       "mechanism": "edge",
       "direction": "north",
@@ -7577,21 +6137,6 @@
       "dest": {
         "north": 12,
         "east": 26
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:12_14_13_14",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 12,
-        "east": 14
-      },
-      "dest": {
-        "north": 13,
-        "east": 14
       },
       "dest_x": null,
       "dest_y": 510
@@ -7612,21 +6157,6 @@
       "dest_y": 510
     },
     {
-      "id": "edge:north:12_17_13_17",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 12,
-        "east": 17
-      },
-      "dest": {
-        "north": 13,
-        "east": 17
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
       "id": "edge:north:12_18_13_18",
       "mechanism": "edge",
       "direction": "north",
@@ -7637,21 +6167,6 @@
       "dest": {
         "north": 13,
         "east": 18
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:12_19_13_19",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 12,
-        "east": 19
-      },
-      "dest": {
-        "north": 13,
-        "east": 19
       },
       "dest_x": null,
       "dest_y": 510
@@ -7702,21 +6217,6 @@
       "dest_y": 510
     },
     {
-      "id": "edge:north:12_24_13_24",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 12,
-        "east": 24
-      },
-      "dest": {
-        "north": 13,
-        "east": 24
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
       "id": "edge:north:12_25_13_25",
       "mechanism": "edge",
       "direction": "north",
@@ -7727,21 +6227,6 @@
       "dest": {
         "north": 13,
         "east": 25
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:12_26_13_26",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 12,
-        "east": 26
-      },
-      "dest": {
-        "north": 13,
-        "east": 26
       },
       "dest_x": null,
       "dest_y": 510
@@ -7772,21 +6257,6 @@
       "dest": {
         "north": 14,
         "east": 15
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:13_16_14_16",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 13,
-        "east": 16
-      },
-      "dest": {
-        "north": 14,
-        "east": 16
       },
       "dest_x": null,
       "dest_y": 510
@@ -7867,21 +6337,6 @@
       "dest_y": 510
     },
     {
-      "id": "edge:north:13_22_14_22",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 13,
-        "east": 22
-      },
-      "dest": {
-        "north": 14,
-        "east": 22
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
       "id": "edge:north:13_23_14_23",
       "mechanism": "edge",
       "direction": "north",
@@ -7937,21 +6392,6 @@
       "dest": {
         "north": 15,
         "east": 14
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:14_15_15_15",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 14,
-        "east": 15
-      },
-      "dest": {
-        "north": 15,
-        "east": 15
       },
       "dest_x": null,
       "dest_y": 510
@@ -8047,21 +6487,6 @@
       "dest_y": 510
     },
     {
-      "id": "edge:north:14_22_15_22",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 14,
-        "east": 22
-      },
-      "dest": {
-        "north": 15,
-        "east": 22
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
       "id": "edge:north:14_23_15_23",
       "mechanism": "edge",
       "direction": "north",
@@ -8072,36 +6497,6 @@
       "dest": {
         "north": 15,
         "east": 23
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:14_24_15_24",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 14,
-        "east": 24
-      },
-      "dest": {
-        "north": 15,
-        "east": 24
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:14_25_15_25",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 14,
-        "east": 25
-      },
-      "dest": {
-        "north": 15,
-        "east": 25
       },
       "dest_x": null,
       "dest_y": 510
@@ -8152,36 +6547,6 @@
       "dest_y": 510
     },
     {
-      "id": "edge:north:15_17_16_17",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 15,
-        "east": 17
-      },
-      "dest": {
-        "north": 16,
-        "east": 17
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:15_18_16_18",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 15,
-        "east": 18
-      },
-      "dest": {
-        "north": 16,
-        "east": 18
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
       "id": "edge:north:15_19_16_19",
       "mechanism": "edge",
       "direction": "north",
@@ -8207,21 +6572,6 @@
       "dest": {
         "north": 16,
         "east": 20
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:15_21_16_21",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 15,
-        "east": 21
-      },
-      "dest": {
-        "north": 16,
-        "east": 21
       },
       "dest_x": null,
       "dest_y": 510
@@ -8287,21 +6637,6 @@
       "dest_y": 510
     },
     {
-      "id": "edge:north:16_10_17_10",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 16,
-        "east": 10
-      },
-      "dest": {
-        "north": 17,
-        "east": 10
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
       "id": "edge:north:16_11_17_11",
       "mechanism": "edge",
       "direction": "north",
@@ -8317,21 +6652,6 @@
       "dest_y": 510
     },
     {
-      "id": "edge:north:16_14_17_14",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 16,
-        "east": 14
-      },
-      "dest": {
-        "north": 17,
-        "east": 14
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
       "id": "edge:north:16_15_17_15",
       "mechanism": "edge",
       "direction": "north",
@@ -8342,21 +6662,6 @@
       "dest": {
         "north": 17,
         "east": 15
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:16_16_17_16",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 16,
-        "east": 16
-      },
-      "dest": {
-        "north": 17,
-        "east": 16
       },
       "dest_x": null,
       "dest_y": 510
@@ -8387,51 +6692,6 @@
       "dest": {
         "north": 17,
         "east": 18
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:16_19_17_19",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 16,
-        "east": 19
-      },
-      "dest": {
-        "north": 17,
-        "east": 19
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:16_20_17_20",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 16,
-        "east": 20
-      },
-      "dest": {
-        "north": 17,
-        "east": 20
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:16_21_17_21",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 16,
-        "east": 21
-      },
-      "dest": {
-        "north": 17,
-        "east": 21
       },
       "dest_x": null,
       "dest_y": 510
@@ -8497,21 +6757,6 @@
       "dest_y": 510
     },
     {
-      "id": "edge:north:17_10_18_10",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 17,
-        "east": 10
-      },
-      "dest": {
-        "north": 18,
-        "east": 10
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
       "id": "edge:north:17_11_17_14",
       "mechanism": "edge",
       "direction": "north",
@@ -8522,21 +6767,6 @@
       "dest": null,
       "dest_x": null,
       "dest_y": null
-    },
-    {
-      "id": "edge:north:17_14_18_14",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 17,
-        "east": 14
-      },
-      "dest": {
-        "north": 18,
-        "east": 14
-      },
-      "dest_x": null,
-      "dest_y": 510
     },
     {
       "id": "edge:north:17_15_18_15",
@@ -8569,51 +6799,6 @@
       "dest_y": 510
     },
     {
-      "id": "edge:north:17_17_18_17",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 17,
-        "east": 17
-      },
-      "dest": {
-        "north": 18,
-        "east": 17
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:17_18_18_18",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 17,
-        "east": 18
-      },
-      "dest": {
-        "north": 18,
-        "east": 18
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:17_19_18_19",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 17,
-        "east": 19
-      },
-      "dest": {
-        "north": 18,
-        "east": 19
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
       "id": "edge:north:17_20_18_20",
       "mechanism": "edge",
       "direction": "north",
@@ -8629,36 +6814,6 @@
       "dest_y": 510
     },
     {
-      "id": "edge:north:17_21_18_21",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 17,
-        "east": 21
-      },
-      "dest": {
-        "north": 18,
-        "east": 21
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:17_22_18_22",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 17,
-        "east": 22
-      },
-      "dest": {
-        "north": 18,
-        "east": 22
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
       "id": "edge:north:17_23_18_23",
       "mechanism": "edge",
       "direction": "north",
@@ -8669,21 +6824,6 @@
       "dest": {
         "north": 18,
         "east": 23
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:17_24_18_24",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 17,
-        "east": 24
-      },
-      "dest": {
-        "north": 18,
-        "east": 24
       },
       "dest_x": null,
       "dest_y": 510
@@ -8734,21 +6874,6 @@
       "dest_y": 510
     },
     {
-      "id": "edge:north:18_11_19_11",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 18,
-        "east": 11
-      },
-      "dest": {
-        "north": 19,
-        "east": 11
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
       "id": "edge:north:18_12_19_12",
       "mechanism": "edge",
       "direction": "north",
@@ -8774,36 +6899,6 @@
       "dest": {
         "north": 19,
         "east": 13
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:18_15_19_15",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 18,
-        "east": 15
-      },
-      "dest": {
-        "north": 19,
-        "east": 15
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:18_16_19_16",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 18,
-        "east": 16
-      },
-      "dest": {
-        "north": 19,
-        "east": 16
       },
       "dest_x": null,
       "dest_y": 510
@@ -8869,21 +6964,6 @@
       "dest_y": 510
     },
     {
-      "id": "edge:north:18_22_19_22",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 18,
-        "east": 22
-      },
-      "dest": {
-        "north": 19,
-        "east": 22
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
       "id": "edge:north:18_23_19_23",
       "mechanism": "edge",
       "direction": "north",
@@ -8894,21 +6974,6 @@
       "dest": {
         "north": 19,
         "east": 23
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:18_24_19_24",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 18,
-        "east": 24
-      },
-      "dest": {
-        "north": 19,
-        "east": 24
       },
       "dest_x": null,
       "dest_y": 510
@@ -8944,20 +7009,23 @@
       "dest_y": 510
     },
     {
-      "id": "edge:north:19_16_20_16",
+      "id": "edge:north:12.0_21.0",
       "mechanism": "edge",
       "direction": "north",
       "origin": {
-        "north": 19,
-        "east": 16
+        "north": 12,
+        "east": 21
       },
       "dest": {
-        "north": 20,
-        "east": 16
+        "north": 13,
+        "east": 21
       },
       "dest_x": null,
-      "dest_y": 480,
-      "notes": "destination-keyed override/sentinel-jump applied"
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "notes": null
     },
     {
       "id": "edge:north:19_17_20_17",
@@ -9005,36 +7073,6 @@
       "dest_y": 510
     },
     {
-      "id": "edge:north:19_21_20_21",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 19,
-        "east": 21
-      },
-      "dest": {
-        "north": 20,
-        "east": 21
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:19_22_20_22",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 19,
-        "east": 22
-      },
-      "dest": {
-        "north": 20,
-        "east": 22
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
       "id": "edge:north:19_23_20_23",
       "mechanism": "edge",
       "direction": "north",
@@ -9045,36 +7083,6 @@
       "dest": {
         "north": 20,
         "east": 23
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:20_12_21_12",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 20,
-        "east": 12
-      },
-      "dest": {
-        "north": 21,
-        "east": 12
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:20_17_21_17",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 20,
-        "east": 17
-      },
-      "dest": {
-        "north": 21,
-        "east": 17
       },
       "dest_x": null,
       "dest_y": 510
@@ -9105,21 +7113,6 @@
       "dest": {
         "north": 21,
         "east": 20
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:20_21_21_21",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 20,
-        "east": 21
-      },
-      "dest": {
-        "north": 21,
-        "east": 21
       },
       "dest_x": null,
       "dest_y": 510
@@ -9185,36 +7178,6 @@
       "dest_y": 510
     },
     {
-      "id": "edge:north:21_12_22_12",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 21,
-        "east": 12
-      },
-      "dest": {
-        "north": 22,
-        "east": 12
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:21_13_22_13",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 21,
-        "east": 13
-      },
-      "dest": {
-        "north": 22,
-        "east": 13
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
       "id": "edge:north:21_14_22_14",
       "mechanism": "edge",
       "direction": "north",
@@ -9240,21 +7203,6 @@
       "dest": {
         "north": 23,
         "east": 9
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:22_10_23_10",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 22,
-        "east": 10
-      },
-      "dest": {
-        "north": 23,
-        "east": 10
       },
       "dest_x": null,
       "dest_y": 510
@@ -9305,21 +7253,6 @@
       "dest_y": 510
     },
     {
-      "id": "edge:north:22_14_23_14",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 22,
-        "east": 14
-      },
-      "dest": {
-        "north": 23,
-        "east": 14
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
       "id": "edge:north:23_9_24_9",
       "mechanism": "edge",
       "direction": "north",
@@ -9330,21 +7263,6 @@
       "dest": {
         "north": 24,
         "east": 9
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:23_10_24_10",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 23,
-        "east": 10
-      },
-      "dest": {
-        "north": 24,
-        "east": 10
       },
       "dest_x": null,
       "dest_y": 510
@@ -9621,21 +7539,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:west:5_24_5_23",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 5,
-        "east": 24
-      },
-      "dest": {
-        "north": 5,
-        "east": 23
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
       "id": "edge:west:6_10_6_9",
       "mechanism": "edge",
       "direction": "west",
@@ -9646,51 +7549,6 @@
       "dest": {
         "north": 6,
         "east": 9
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:6_11_6_10",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 6,
-        "east": 11
-      },
-      "dest": {
-        "north": 6,
-        "east": 10
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:6_12_6_11",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 6,
-        "east": 12
-      },
-      "dest": {
-        "north": 6,
-        "east": 11
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:6_13_6_12",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 6,
-        "east": 13
-      },
-      "dest": {
-        "north": 6,
-        "east": 12
       },
       "dest_x": 620,
       "dest_y": null
@@ -9726,21 +7584,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:west:7_10_7_9",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 7,
-        "east": 10
-      },
-      "dest": {
-        "north": 7,
-        "east": 9
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
       "id": "edge:west:7_11_7_10",
       "mechanism": "edge",
       "direction": "west",
@@ -9751,36 +7594,6 @@
       "dest": {
         "north": 7,
         "east": 10
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:7_12_7_11",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 7,
-        "east": 12
-      },
-      "dest": {
-        "north": 7,
-        "east": 11
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:7_13_7_12",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 7,
-        "east": 13
-      },
-      "dest": {
-        "north": 7,
-        "east": 12
       },
       "dest_x": 620,
       "dest_y": null
@@ -9981,21 +7794,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:west:8_17_8_16",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 8,
-        "east": 17
-      },
-      "dest": {
-        "north": 8,
-        "east": 16
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
       "id": "edge:west:8_18_8_17",
       "mechanism": "edge",
       "direction": "west",
@@ -10021,36 +7819,6 @@
       "dest": {
         "north": 8,
         "east": 18
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:8_20_8_19",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 8,
-        "east": 20
-      },
-      "dest": {
-        "north": 8,
-        "east": 19
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:8_21_8_20",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 8,
-        "east": 21
-      },
-      "dest": {
-        "north": 8,
-        "east": 20
       },
       "dest_x": 620,
       "dest_y": null
@@ -10131,81 +7899,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:west:9_19_9_18",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 9,
-        "east": 19
-      },
-      "dest": {
-        "north": 9,
-        "east": 18
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:9_20_9_19",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 9,
-        "east": 20
-      },
-      "dest": {
-        "north": 9,
-        "east": 19
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:9_21_9_20",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 9,
-        "east": 21
-      },
-      "dest": {
-        "north": 9,
-        "east": 20
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:9_22_9_21",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 9,
-        "east": 22
-      },
-      "dest": {
-        "north": 9,
-        "east": 21
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:9_23_9_22",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 9,
-        "east": 23
-      },
-      "dest": {
-        "north": 9,
-        "east": 22
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
       "id": "edge:west:9_24_9_23",
       "mechanism": "edge",
       "direction": "west",
@@ -10266,51 +7959,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:west:10_13_10_12",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 10,
-        "east": 13
-      },
-      "dest": {
-        "north": 10,
-        "east": 12
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:10_14_10_13",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 10,
-        "east": 14
-      },
-      "dest": {
-        "north": 10,
-        "east": 13
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:10_15_10_14",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 10,
-        "east": 15
-      },
-      "dest": {
-        "north": 10,
-        "east": 14
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
       "id": "edge:west:10_16_10_15",
       "mechanism": "edge",
       "direction": "west",
@@ -10321,126 +7969,6 @@
       "dest": {
         "north": 10,
         "east": 15
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:10_17_10_16",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 10,
-        "east": 17
-      },
-      "dest": {
-        "north": 10,
-        "east": 16
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:10_18_10_17",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 10,
-        "east": 18
-      },
-      "dest": {
-        "north": 10,
-        "east": 17
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:10_19_10_18",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 10,
-        "east": 19
-      },
-      "dest": {
-        "north": 10,
-        "east": 18
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:10_20_10_19",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 10,
-        "east": 20
-      },
-      "dest": {
-        "north": 10,
-        "east": 19
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:10_23_10_22",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 10,
-        "east": 23
-      },
-      "dest": {
-        "north": 10,
-        "east": 22
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:10_24_10_23",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 10,
-        "east": 24
-      },
-      "dest": {
-        "north": 10,
-        "east": 23
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:10_25_10_24",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 10,
-        "east": 25
-      },
-      "dest": {
-        "north": 10,
-        "east": 24
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:10_26_10_25",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 10,
-        "east": 26
-      },
-      "dest": {
-        "north": 10,
-        "east": 25
       },
       "dest_x": 620,
       "dest_y": null
@@ -10506,51 +8034,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:west:11_14_11_13",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 11,
-        "east": 14
-      },
-      "dest": {
-        "north": 11,
-        "east": 13
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:11_15_11_14",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 11,
-        "east": 15
-      },
-      "dest": {
-        "north": 11,
-        "east": 14
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:11_16_11_15",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 11,
-        "east": 16
-      },
-      "dest": {
-        "north": 11,
-        "east": 15
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
       "id": "edge:west:11_17_11_16",
       "mechanism": "edge",
       "direction": "west",
@@ -10581,21 +8064,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:west:11_19_11_18",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 11,
-        "east": 19
-      },
-      "dest": {
-        "north": 11,
-        "east": 18
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
       "id": "edge:west:11_20_11_19",
       "mechanism": "edge",
       "direction": "west",
@@ -10606,36 +8074,6 @@
       "dest": {
         "north": 11,
         "east": 19
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:11_21_11_20",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 11,
-        "east": 21
-      },
-      "dest": {
-        "north": 11,
-        "east": 20
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:11_22_11_21",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 11,
-        "east": 22
-      },
-      "dest": {
-        "north": 11,
-        "east": 21
       },
       "dest_x": 620,
       "dest_y": null
@@ -10656,21 +8094,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:west:11_24_11_23",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 11,
-        "east": 24
-      },
-      "dest": {
-        "north": 11,
-        "east": 23
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
       "id": "edge:west:11_25_11_24",
       "mechanism": "edge",
       "direction": "west",
@@ -10681,21 +8104,6 @@
       "dest": {
         "north": 11,
         "east": 24
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:11_26_11_25",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 11,
-        "east": 26
-      },
-      "dest": {
-        "north": 11,
-        "east": 25
       },
       "dest_x": 620,
       "dest_y": null
@@ -10791,36 +8199,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:west:12_22_12_21",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 12,
-        "east": 22
-      },
-      "dest": {
-        "north": 12,
-        "east": 21
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:12_23_12_22",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 12,
-        "east": 23
-      },
-      "dest": {
-        "north": 12,
-        "east": 22
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
       "id": "edge:west:12_24_12_23",
       "mechanism": "edge",
       "direction": "west",
@@ -10831,21 +8209,6 @@
       "dest": {
         "north": 12,
         "east": 23
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:12_25_12_24",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 12,
-        "east": 25
-      },
-      "dest": {
-        "north": 12,
-        "east": 24
       },
       "dest_x": 620,
       "dest_y": null
@@ -10881,21 +8244,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:west:13_15_13_14",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 13,
-        "east": 15
-      },
-      "dest": {
-        "north": 13,
-        "east": 14
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
       "id": "edge:west:13_16_13_15",
       "mechanism": "edge",
       "direction": "west",
@@ -10906,21 +8254,6 @@
       "dest": {
         "north": 13,
         "east": 15
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:13_17_13_16",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 13,
-        "east": 17
-      },
-      "dest": {
-        "north": 13,
-        "east": 16
       },
       "dest_x": 620,
       "dest_y": null
@@ -10941,21 +8274,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:west:13_19_13_18",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 13,
-        "east": 19
-      },
-      "dest": {
-        "north": 13,
-        "east": 18
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
       "id": "edge:west:13_20_13_19",
       "mechanism": "edge",
       "direction": "west",
@@ -10966,66 +8284,6 @@
       "dest": {
         "north": 13,
         "east": 19
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:13_21_13_20",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 13,
-        "east": 21
-      },
-      "dest": {
-        "north": 13,
-        "east": 20
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:13_22_13_21",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 13,
-        "east": 22
-      },
-      "dest": {
-        "north": 13,
-        "east": 21
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:13_23_13_22",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 13,
-        "east": 23
-      },
-      "dest": {
-        "north": 13,
-        "east": 22
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:13_24_13_23",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 13,
-        "east": 24
-      },
-      "dest": {
-        "north": 13,
-        "east": 23
       },
       "dest_x": 620,
       "dest_y": null
@@ -11091,96 +8349,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:west:14_17_14_16",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 14,
-        "east": 17
-      },
-      "dest": {
-        "north": 14,
-        "east": 16
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:14_18_14_17",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 14,
-        "east": 18
-      },
-      "dest": {
-        "north": 14,
-        "east": 17
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:14_19_14_18",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 14,
-        "east": 19
-      },
-      "dest": {
-        "north": 14,
-        "east": 18
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:14_20_14_19",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 14,
-        "east": 20
-      },
-      "dest": {
-        "north": 14,
-        "east": 19
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:14_21_14_20",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 14,
-        "east": 21
-      },
-      "dest": {
-        "north": 14,
-        "east": 20
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:14_22_14_21",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 14,
-        "east": 22
-      },
-      "dest": {
-        "north": 14,
-        "east": 21
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
       "id": "edge:west:14_23_14_22",
       "mechanism": "edge",
       "direction": "west",
@@ -11191,21 +8359,6 @@
       "dest": {
         "north": 14,
         "east": 22
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:14_24_14_23",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 14,
-        "east": 24
-      },
-      "dest": {
-        "north": 14,
-        "east": 23
       },
       "dest_x": 620,
       "dest_y": null
@@ -11256,66 +8409,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:west:15_17_15_16",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 15,
-        "east": 17
-      },
-      "dest": {
-        "north": 15,
-        "east": 16
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:15_18_15_17",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 15,
-        "east": 18
-      },
-      "dest": {
-        "north": 15,
-        "east": 17
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:15_19_15_18",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 15,
-        "east": 19
-      },
-      "dest": {
-        "north": 15,
-        "east": 18
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:15_20_15_19",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 15,
-        "east": 20
-      },
-      "dest": {
-        "north": 15,
-        "east": 19
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
       "id": "edge:west:15_21_15_20",
       "mechanism": "edge",
       "direction": "west",
@@ -11326,21 +8419,6 @@
       "dest": {
         "north": 15,
         "east": 20
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:15_22_15_21",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 15,
-        "east": 22
-      },
-      "dest": {
-        "north": 15,
-        "east": 21
       },
       "dest_x": 620,
       "dest_y": null
@@ -11376,21 +8454,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:west:15_25_15_24",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 15,
-        "east": 25
-      },
-      "dest": {
-        "north": 15,
-        "east": 24
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
       "id": "edge:west:16_11_16_10",
       "mechanism": "edge",
       "direction": "west",
@@ -11406,36 +8469,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:west:16_15_16_14",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 16,
-        "east": 15
-      },
-      "dest": {
-        "north": 16,
-        "east": 14
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:16_16_16_15",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 16,
-        "east": 16
-      },
-      "dest": {
-        "north": 16,
-        "east": 15
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
       "id": "edge:west:16_17_16_16",
       "mechanism": "edge",
       "direction": "west",
@@ -11446,21 +8479,6 @@
       "dest": {
         "north": 16,
         "east": 16
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:16_18_16_17",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 16,
-        "east": 18
-      },
-      "dest": {
-        "north": 16,
-        "east": 17
       },
       "dest_x": 620,
       "dest_y": null
@@ -11526,36 +8544,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:west:16_23_16_22",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 16,
-        "east": 23
-      },
-      "dest": {
-        "north": 16,
-        "east": 22
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:16_24_16_23",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 16,
-        "east": 24
-      },
-      "dest": {
-        "north": 16,
-        "east": 23
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
       "id": "edge:west:16_25_16_24",
       "mechanism": "edge",
       "direction": "west",
@@ -11566,36 +8554,6 @@
       "dest": {
         "north": 16,
         "east": 24
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:17_15_17_14",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 17,
-        "east": 15
-      },
-      "dest": {
-        "north": 17,
-        "east": 14
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:17_16_17_15",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 17,
-        "east": 16
-      },
-      "dest": {
-        "north": 17,
-        "east": 15
       },
       "dest_x": 620,
       "dest_y": null
@@ -11616,36 +8574,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:west:17_18_17_17",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 17,
-        "east": 18
-      },
-      "dest": {
-        "north": 17,
-        "east": 17
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:17_19_17_18",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 17,
-        "east": 19
-      },
-      "dest": {
-        "north": 17,
-        "east": 18
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
       "id": "edge:west:17_20_17_19",
       "mechanism": "edge",
       "direction": "west",
@@ -11661,21 +8589,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:west:17_21_17_20",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 17,
-        "east": 21
-      },
-      "dest": {
-        "north": 17,
-        "east": 20
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
       "id": "edge:west:17_22_17_21",
       "mechanism": "edge",
       "direction": "west",
@@ -11686,36 +8599,6 @@
       "dest": {
         "north": 17,
         "east": 21
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:17_23_17_22",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 17,
-        "east": 23
-      },
-      "dest": {
-        "north": 17,
-        "east": 22
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:17_24_17_23",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 17,
-        "east": 24
-      },
-      "dest": {
-        "north": 17,
-        "east": 23
       },
       "dest_x": 620,
       "dest_y": null
@@ -11751,96 +8634,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:west:18_12_18_11",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 18,
-        "east": 12
-      },
-      "dest": {
-        "north": 18,
-        "east": 11
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:18_13_18_12",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 18,
-        "east": 13
-      },
-      "dest": {
-        "north": 18,
-        "east": 12
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:18_14_18_13",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 18,
-        "east": 14
-      },
-      "dest": {
-        "north": 18,
-        "east": 13
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:18_15_18_14",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 18,
-        "east": 15
-      },
-      "dest": {
-        "north": 18,
-        "east": 14
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:18_16_18_15",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 18,
-        "east": 16
-      },
-      "dest": {
-        "north": 18,
-        "east": 15
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:18_17_18_16",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 18,
-        "east": 17
-      },
-      "dest": {
-        "north": 18,
-        "east": 16
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
       "id": "edge:west:18_18_18_17",
       "mechanism": "edge",
       "direction": "west",
@@ -11851,21 +8644,6 @@
       "dest": {
         "north": 18,
         "east": 17
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:18_19_18_18",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 18,
-        "east": 19
-      },
-      "dest": {
-        "north": 18,
-        "east": 18
       },
       "dest_x": 620,
       "dest_y": null
@@ -11946,21 +8724,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:west:18_25_18_24",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 18,
-        "east": 25
-      },
-      "dest": {
-        "north": 18,
-        "east": 24
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
       "id": "edge:west:19_11_19_10",
       "mechanism": "edge",
       "direction": "west",
@@ -11971,21 +8734,6 @@
       "dest": {
         "north": 19,
         "east": 10
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:19_12_19_11",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 19,
-        "east": 12
-      },
-      "dest": {
-        "north": 19,
-        "east": 11
       },
       "dest_x": 620,
       "dest_y": null
@@ -12006,36 +8754,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:west:19_16_19_15",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 19,
-        "east": 16
-      },
-      "dest": {
-        "north": 19,
-        "east": 15
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:19_17_19_16",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 19,
-        "east": 17
-      },
-      "dest": {
-        "north": 19,
-        "east": 16
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
       "id": "edge:west:19_18_19_17",
       "mechanism": "edge",
       "direction": "west",
@@ -12051,51 +8769,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:west:19_21_19_20",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 19,
-        "east": 21
-      },
-      "dest": {
-        "north": 19,
-        "east": 20
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:19_22_19_21",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 19,
-        "east": 22
-      },
-      "dest": {
-        "north": 19,
-        "east": 21
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:19_23_19_22",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 19,
-        "east": 23
-      },
-      "dest": {
-        "north": 19,
-        "east": 22
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
       "id": "edge:west:19_24_19_23",
       "mechanism": "edge",
       "direction": "west",
@@ -12106,81 +8779,6 @@
       "dest": {
         "north": 19,
         "east": 23
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:20_16_20_15",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 20,
-        "east": 16
-      },
-      "dest": {
-        "north": 20,
-        "east": 15
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:20_17_20_16",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 20,
-        "east": 17
-      },
-      "dest": {
-        "north": 20,
-        "east": 16
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:20_18_20_17",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 20,
-        "east": 18
-      },
-      "dest": {
-        "north": 20,
-        "east": 17
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:20_21_20_20",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 20,
-        "east": 21
-      },
-      "dest": {
-        "north": 20,
-        "east": 20
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:20_22_20_21",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 20,
-        "east": 22
-      },
-      "dest": {
-        "north": 20,
-        "east": 21
       },
       "dest_x": 620,
       "dest_y": null
@@ -12276,66 +8874,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:west:22_10_22_9",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 22,
-        "east": 10
-      },
-      "dest": {
-        "north": 22,
-        "east": 9
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:22_11_22_10",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 22,
-        "east": 11
-      },
-      "dest": {
-        "north": 22,
-        "east": 10
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:22_12_22_11",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 22,
-        "east": 12
-      },
-      "dest": {
-        "north": 22,
-        "east": 11
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:22_13_22_12",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 22,
-        "east": 13
-      },
-      "dest": {
-        "north": 22,
-        "east": 12
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
       "id": "edge:west:22_14_22_13",
       "mechanism": "edge",
       "direction": "west",
@@ -12346,36 +8884,6 @@
       "dest": {
         "north": 22,
         "east": 13
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:23_10_23_9",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 23,
-        "east": 10
-      },
-      "dest": {
-        "north": 23,
-        "east": 9
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:23_11_23_10",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 23,
-        "east": 11
-      },
-      "dest": {
-        "north": 23,
-        "east": 10
       },
       "dest_x": 620,
       "dest_y": null
@@ -12396,51 +8904,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:west:23_13_23_12",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 23,
-        "east": 13
-      },
-      "dest": {
-        "north": 23,
-        "east": 12
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:23_14_23_13",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 23,
-        "east": 14
-      },
-      "dest": {
-        "north": 23,
-        "east": 13
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:24_10_24_9",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 24,
-        "east": 10
-      },
-      "dest": {
-        "north": 24,
-        "east": 9
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
       "id": "edge:west:24_11_24_10",
       "mechanism": "edge",
       "direction": "west",
@@ -12456,21 +8919,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:west:24_12_24_11",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 24,
-        "east": 12
-      },
-      "dest": {
-        "north": 24,
-        "east": 11
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
       "id": "edge:west:24_13_24_12",
       "mechanism": "edge",
       "direction": "west",
@@ -12481,36 +8929,6 @@
       "dest": {
         "north": 24,
         "east": 12
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:24_14_24_13",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 24,
-        "east": 14
-      },
-      "dest": {
-        "north": 24,
-        "east": 13
-      },
-      "dest_x": 620,
-      "dest_y": null
-    },
-    {
-      "id": "edge:west:500_501_500_500",
-      "mechanism": "edge",
-      "direction": "west",
-      "origin": {
-        "north": 500,
-        "east": 501
-      },
-      "dest": {
-        "north": 500,
-        "east": 500
       },
       "dest_x": 620,
       "dest_y": null
@@ -12696,21 +9114,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:east:5_23_5_24",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 5,
-        "east": 23
-      },
-      "dest": {
-        "north": 5,
-        "east": 24
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
       "id": "edge:east:6_9_6_10",
       "mechanism": "edge",
       "direction": "east",
@@ -12721,51 +9124,6 @@
       "dest": {
         "north": 6,
         "east": 10
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:6_10_6_11",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 6,
-        "east": 10
-      },
-      "dest": {
-        "north": 6,
-        "east": 11
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:6_11_6_12",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 6,
-        "east": 11
-      },
-      "dest": {
-        "north": 6,
-        "east": 12
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:6_12_6_13",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 6,
-        "east": 12
-      },
-      "dest": {
-        "north": 6,
-        "east": 13
       },
       "dest_x": 50,
       "dest_y": null
@@ -12801,21 +9159,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:east:7_9_7_10",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 7,
-        "east": 9
-      },
-      "dest": {
-        "north": 7,
-        "east": 10
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
       "id": "edge:east:7_10_7_11",
       "mechanism": "edge",
       "direction": "east",
@@ -12826,36 +9169,6 @@
       "dest": {
         "north": 7,
         "east": 11
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:7_11_7_12",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 7,
-        "east": 11
-      },
-      "dest": {
-        "north": 7,
-        "east": 12
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:7_12_7_13",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 7,
-        "east": 12
-      },
-      "dest": {
-        "north": 7,
-        "east": 13
       },
       "dest_x": 50,
       "dest_y": null
@@ -13056,21 +9369,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:east:8_16_8_17",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 8,
-        "east": 16
-      },
-      "dest": {
-        "north": 8,
-        "east": 17
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
       "id": "edge:east:8_17_8_18",
       "mechanism": "edge",
       "direction": "east",
@@ -13096,36 +9394,6 @@
       "dest": {
         "north": 8,
         "east": 19
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:8_19_8_20",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 8,
-        "east": 19
-      },
-      "dest": {
-        "north": 8,
-        "east": 20
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:8_20_8_21",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 8,
-        "east": 20
-      },
-      "dest": {
-        "north": 8,
-        "east": 21
       },
       "dest_x": 50,
       "dest_y": null
@@ -13206,81 +9474,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:east:9_18_9_19",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 9,
-        "east": 18
-      },
-      "dest": {
-        "north": 9,
-        "east": 19
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:9_19_9_20",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 9,
-        "east": 19
-      },
-      "dest": {
-        "north": 9,
-        "east": 20
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:9_20_9_21",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 9,
-        "east": 20
-      },
-      "dest": {
-        "north": 9,
-        "east": 21
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:9_21_9_22",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 9,
-        "east": 21
-      },
-      "dest": {
-        "north": 9,
-        "east": 22
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:9_22_9_23",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 9,
-        "east": 22
-      },
-      "dest": {
-        "north": 9,
-        "east": 23
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
       "id": "edge:east:9_23_9_24",
       "mechanism": "edge",
       "direction": "east",
@@ -13341,51 +9534,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:east:10_12_10_13",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 10,
-        "east": 12
-      },
-      "dest": {
-        "north": 10,
-        "east": 13
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:10_13_10_14",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 10,
-        "east": 13
-      },
-      "dest": {
-        "north": 10,
-        "east": 14
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:10_14_10_15",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 10,
-        "east": 14
-      },
-      "dest": {
-        "north": 10,
-        "east": 15
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
       "id": "edge:east:10_15_10_16",
       "mechanism": "edge",
       "direction": "east",
@@ -13396,126 +9544,6 @@
       "dest": {
         "north": 10,
         "east": 16
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:10_16_10_17",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 10,
-        "east": 16
-      },
-      "dest": {
-        "north": 10,
-        "east": 17
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:10_17_10_18",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 10,
-        "east": 17
-      },
-      "dest": {
-        "north": 10,
-        "east": 18
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:10_18_10_19",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 10,
-        "east": 18
-      },
-      "dest": {
-        "north": 10,
-        "east": 19
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:10_19_10_20",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 10,
-        "east": 19
-      },
-      "dest": {
-        "north": 10,
-        "east": 20
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:10_22_10_23",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 10,
-        "east": 22
-      },
-      "dest": {
-        "north": 10,
-        "east": 23
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:10_23_10_24",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 10,
-        "east": 23
-      },
-      "dest": {
-        "north": 10,
-        "east": 24
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:10_24_10_25",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 10,
-        "east": 24
-      },
-      "dest": {
-        "north": 10,
-        "east": 25
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:10_25_10_26",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 10,
-        "east": 25
-      },
-      "dest": {
-        "north": 10,
-        "east": 26
       },
       "dest_x": 50,
       "dest_y": null
@@ -13581,51 +9609,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:east:11_13_11_14",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 11,
-        "east": 13
-      },
-      "dest": {
-        "north": 11,
-        "east": 14
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:11_14_11_15",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 11,
-        "east": 14
-      },
-      "dest": {
-        "north": 11,
-        "east": 15
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:11_15_11_16",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 11,
-        "east": 15
-      },
-      "dest": {
-        "north": 11,
-        "east": 16
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
       "id": "edge:east:11_16_11_17",
       "mechanism": "edge",
       "direction": "east",
@@ -13656,21 +9639,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:east:11_18_11_19",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 11,
-        "east": 18
-      },
-      "dest": {
-        "north": 11,
-        "east": 19
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
       "id": "edge:east:11_19_11_20",
       "mechanism": "edge",
       "direction": "east",
@@ -13681,36 +9649,6 @@
       "dest": {
         "north": 11,
         "east": 20
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:11_20_11_21",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 11,
-        "east": 20
-      },
-      "dest": {
-        "north": 11,
-        "east": 21
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:11_21_11_22",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 11,
-        "east": 21
-      },
-      "dest": {
-        "north": 11,
-        "east": 22
       },
       "dest_x": 50,
       "dest_y": null
@@ -13731,21 +9669,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:east:11_23_11_24",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 11,
-        "east": 23
-      },
-      "dest": {
-        "north": 11,
-        "east": 24
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
       "id": "edge:east:11_24_11_25",
       "mechanism": "edge",
       "direction": "east",
@@ -13756,21 +9679,6 @@
       "dest": {
         "north": 11,
         "east": 25
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:11_25_11_26",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 11,
-        "east": 25
-      },
-      "dest": {
-        "north": 11,
-        "east": 26
       },
       "dest_x": 50,
       "dest_y": null
@@ -13866,36 +9774,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:east:12_21_12_22",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 12,
-        "east": 21
-      },
-      "dest": {
-        "north": 12,
-        "east": 22
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:12_22_12_23",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 12,
-        "east": 22
-      },
-      "dest": {
-        "north": 12,
-        "east": 23
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
       "id": "edge:east:12_23_12_24",
       "mechanism": "edge",
       "direction": "east",
@@ -13906,21 +9784,6 @@
       "dest": {
         "north": 12,
         "east": 24
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:12_24_12_25",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 12,
-        "east": 24
-      },
-      "dest": {
-        "north": 12,
-        "east": 25
       },
       "dest_x": 50,
       "dest_y": null
@@ -13956,21 +9819,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:east:13_14_13_15",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 13,
-        "east": 14
-      },
-      "dest": {
-        "north": 13,
-        "east": 15
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
       "id": "edge:east:13_15_13_16",
       "mechanism": "edge",
       "direction": "east",
@@ -13981,21 +9829,6 @@
       "dest": {
         "north": 13,
         "east": 16
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:13_16_13_17",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 13,
-        "east": 16
-      },
-      "dest": {
-        "north": 13,
-        "east": 17
       },
       "dest_x": 50,
       "dest_y": null
@@ -14016,21 +9849,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:east:13_18_13_19",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 13,
-        "east": 18
-      },
-      "dest": {
-        "north": 13,
-        "east": 19
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
       "id": "edge:east:13_19_13_20",
       "mechanism": "edge",
       "direction": "east",
@@ -14041,66 +9859,6 @@
       "dest": {
         "north": 13,
         "east": 20
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:13_20_13_21",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 13,
-        "east": 20
-      },
-      "dest": {
-        "north": 13,
-        "east": 21
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:13_21_13_22",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 13,
-        "east": 21
-      },
-      "dest": {
-        "north": 13,
-        "east": 22
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:13_22_13_23",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 13,
-        "east": 22
-      },
-      "dest": {
-        "north": 13,
-        "east": 23
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:13_23_13_24",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 13,
-        "east": 23
-      },
-      "dest": {
-        "north": 13,
-        "east": 24
       },
       "dest_x": 50,
       "dest_y": null
@@ -14166,96 +9924,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:east:14_16_14_17",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 14,
-        "east": 16
-      },
-      "dest": {
-        "north": 14,
-        "east": 17
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:14_17_14_18",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 14,
-        "east": 17
-      },
-      "dest": {
-        "north": 14,
-        "east": 18
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:14_18_14_19",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 14,
-        "east": 18
-      },
-      "dest": {
-        "north": 14,
-        "east": 19
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:14_19_14_20",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 14,
-        "east": 19
-      },
-      "dest": {
-        "north": 14,
-        "east": 20
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:14_20_14_21",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 14,
-        "east": 20
-      },
-      "dest": {
-        "north": 14,
-        "east": 21
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:14_21_14_22",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 14,
-        "east": 21
-      },
-      "dest": {
-        "north": 14,
-        "east": 22
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
       "id": "edge:east:14_22_14_23",
       "mechanism": "edge",
       "direction": "east",
@@ -14266,21 +9934,6 @@
       "dest": {
         "north": 14,
         "east": 23
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:14_23_14_24",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 14,
-        "east": 23
-      },
-      "dest": {
-        "north": 14,
-        "east": 24
       },
       "dest_x": 50,
       "dest_y": null
@@ -14331,66 +9984,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:east:15_16_15_17",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 15,
-        "east": 16
-      },
-      "dest": {
-        "north": 15,
-        "east": 17
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:15_17_15_18",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 15,
-        "east": 17
-      },
-      "dest": {
-        "north": 15,
-        "east": 18
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:15_18_15_19",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 15,
-        "east": 18
-      },
-      "dest": {
-        "north": 15,
-        "east": 19
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:15_19_15_20",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 15,
-        "east": 19
-      },
-      "dest": {
-        "north": 15,
-        "east": 20
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
       "id": "edge:east:15_20_15_21",
       "mechanism": "edge",
       "direction": "east",
@@ -14401,21 +9994,6 @@
       "dest": {
         "north": 15,
         "east": 21
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:15_21_15_22",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 15,
-        "east": 21
-      },
-      "dest": {
-        "north": 15,
-        "east": 22
       },
       "dest_x": 50,
       "dest_y": null
@@ -14451,21 +10029,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:east:15_24_15_25",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 15,
-        "east": 24
-      },
-      "dest": {
-        "north": 15,
-        "east": 25
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
       "id": "edge:east:16_10_16_11",
       "mechanism": "edge",
       "direction": "east",
@@ -14481,36 +10044,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:east:16_14_16_15",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 16,
-        "east": 14
-      },
-      "dest": {
-        "north": 16,
-        "east": 15
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:16_15_16_16",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 16,
-        "east": 15
-      },
-      "dest": {
-        "north": 16,
-        "east": 16
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
       "id": "edge:east:16_16_16_17",
       "mechanism": "edge",
       "direction": "east",
@@ -14521,21 +10054,6 @@
       "dest": {
         "north": 16,
         "east": 17
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:16_17_16_18",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 16,
-        "east": 17
-      },
-      "dest": {
-        "north": 16,
-        "east": 18
       },
       "dest_x": 50,
       "dest_y": null
@@ -14601,36 +10119,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:east:16_22_16_23",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 16,
-        "east": 22
-      },
-      "dest": {
-        "north": 16,
-        "east": 23
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:16_23_16_24",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 16,
-        "east": 23
-      },
-      "dest": {
-        "north": 16,
-        "east": 24
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
       "id": "edge:east:16_24_16_25",
       "mechanism": "edge",
       "direction": "east",
@@ -14677,36 +10165,6 @@
       "notes": "origin-keyed fixup applied"
     },
     {
-      "id": "edge:east:17_14_17_15",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 17,
-        "east": 14
-      },
-      "dest": {
-        "north": 17,
-        "east": 15
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:17_15_17_16",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 17,
-        "east": 15
-      },
-      "dest": {
-        "north": 17,
-        "east": 16
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
       "id": "edge:east:17_16_17_17",
       "mechanism": "edge",
       "direction": "east",
@@ -14717,36 +10175,6 @@
       "dest": {
         "north": 17,
         "east": 17
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:17_17_17_18",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 17,
-        "east": 17
-      },
-      "dest": {
-        "north": 17,
-        "east": 18
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:17_18_17_19",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 17,
-        "east": 18
-      },
-      "dest": {
-        "north": 17,
-        "east": 19
       },
       "dest_x": 50,
       "dest_y": null
@@ -14767,21 +10195,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:east:17_20_17_21",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 17,
-        "east": 20
-      },
-      "dest": {
-        "north": 17,
-        "east": 21
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
       "id": "edge:east:17_21_17_22",
       "mechanism": "edge",
       "direction": "east",
@@ -14792,36 +10205,6 @@
       "dest": {
         "north": 17,
         "east": 22
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:17_22_17_23",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 17,
-        "east": 22
-      },
-      "dest": {
-        "north": 17,
-        "east": 23
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:17_23_17_24",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 17,
-        "east": 23
-      },
-      "dest": {
-        "north": 17,
-        "east": 24
       },
       "dest_x": 50,
       "dest_y": null
@@ -14857,96 +10240,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:east:18_11_18_12",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 18,
-        "east": 11
-      },
-      "dest": {
-        "north": 18,
-        "east": 12
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:18_12_18_13",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 18,
-        "east": 12
-      },
-      "dest": {
-        "north": 18,
-        "east": 13
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:18_13_18_14",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 18,
-        "east": 13
-      },
-      "dest": {
-        "north": 18,
-        "east": 14
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:18_14_18_15",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 18,
-        "east": 14
-      },
-      "dest": {
-        "north": 18,
-        "east": 15
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:18_15_18_16",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 18,
-        "east": 15
-      },
-      "dest": {
-        "north": 18,
-        "east": 16
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:18_16_18_17",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 18,
-        "east": 16
-      },
-      "dest": {
-        "north": 18,
-        "east": 17
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
       "id": "edge:east:18_17_18_18",
       "mechanism": "edge",
       "direction": "east",
@@ -14957,21 +10250,6 @@
       "dest": {
         "north": 18,
         "east": 18
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:18_18_18_19",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 18,
-        "east": 18
-      },
-      "dest": {
-        "north": 18,
-        "east": 19
       },
       "dest_x": 50,
       "dest_y": null
@@ -15052,21 +10330,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:east:18_24_18_25",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 18,
-        "east": 24
-      },
-      "dest": {
-        "north": 18,
-        "east": 25
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
       "id": "edge:east:19_10_19_11",
       "mechanism": "edge",
       "direction": "east",
@@ -15077,21 +10340,6 @@
       "dest": {
         "north": 19,
         "east": 11
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:19_11_19_12",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 19,
-        "east": 11
-      },
-      "dest": {
-        "north": 19,
-        "east": 12
       },
       "dest_x": 50,
       "dest_y": null
@@ -15112,36 +10360,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:east:19_15_19_16",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 19,
-        "east": 15
-      },
-      "dest": {
-        "north": 19,
-        "east": 16
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:19_16_19_17",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 19,
-        "east": 16
-      },
-      "dest": {
-        "north": 19,
-        "east": 17
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
       "id": "edge:east:19_17_19_18",
       "mechanism": "edge",
       "direction": "east",
@@ -15157,51 +10375,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:east:19_20_19_21",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 19,
-        "east": 20
-      },
-      "dest": {
-        "north": 19,
-        "east": 21
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:19_21_19_22",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 19,
-        "east": 21
-      },
-      "dest": {
-        "north": 19,
-        "east": 22
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:19_22_19_23",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 19,
-        "east": 22
-      },
-      "dest": {
-        "north": 19,
-        "east": 23
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
       "id": "edge:east:19_23_19_24",
       "mechanism": "edge",
       "direction": "east",
@@ -15212,66 +10385,6 @@
       "dest": {
         "north": 19,
         "east": 24
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:20_15_20_16",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 20,
-        "east": 15
-      },
-      "dest": {
-        "north": 20,
-        "east": 16
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:20_16_20_17",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 20,
-        "east": 16
-      },
-      "dest": {
-        "north": 20,
-        "east": 17
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:20_20_20_21",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 20,
-        "east": 20
-      },
-      "dest": {
-        "north": 20,
-        "east": 21
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:20_21_20_22",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 20,
-        "east": 21
-      },
-      "dest": {
-        "north": 20,
-        "east": 22
       },
       "dest_x": 50,
       "dest_y": null
@@ -15367,21 +10480,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:east:22_11_22_12",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 22,
-        "east": 11
-      },
-      "dest": {
-        "north": 22,
-        "east": 12
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
       "id": "edge:east:22_13_22_14",
       "mechanism": "edge",
       "direction": "east",
@@ -15397,36 +10495,6 @@
       "dest_y": null
     },
     {
-      "id": "edge:east:23_9_23_10",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 23,
-        "east": 9
-      },
-      "dest": {
-        "north": 23,
-        "east": 10
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:23_10_23_11",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 23,
-        "east": 10
-      },
-      "dest": {
-        "north": 23,
-        "east": 11
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
       "id": "edge:east:23_11_23_12",
       "mechanism": "edge",
       "direction": "east",
@@ -15437,21 +10505,6 @@
       "dest": {
         "north": 23,
         "east": 12
-      },
-      "dest_x": 50,
-      "dest_y": null
-    },
-    {
-      "id": "edge:east:23_13_23_14",
-      "mechanism": "edge",
-      "direction": "east",
-      "origin": {
-        "north": 23,
-        "east": 13
-      },
-      "dest": {
-        "north": 23,
-        "east": 14
       },
       "dest_x": 50,
       "dest_y": null
@@ -15514,134 +10567,6 @@
   ],
   "doors": [
     {
-      "id": "door:volcano:17_17_18_17",
-      "mechanism": "object",
-      "trigger_object": "volcano",
-      "origin": {
-        "north": 17,
-        "east": 17
-      },
-      "dest": {
-        "north": 18,
-        "east": 17
-      },
-      "dest_x": 320,
-      "dest_y": 490,
-      "notes": "generic-delta only, origin inferred from object census (line 21657)"
-    },
-    {
-      "id": "door:stairsDown:10_12_7_12",
-      "mechanism": "object",
-      "trigger_object": "stairsDown",
-      "origin": {
-        "north": 10,
-        "east": 12
-      },
-      "dest": {
-        "north": 7,
-        "east": 12
-      },
-      "dest_x": null,
-      "dest_y": null,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21846)"
-    },
-    {
-      "id": "door:stairsDown:11_13_11_14",
-      "mechanism": "object",
-      "trigger_object": "stairsDown",
-      "origin": {
-        "north": 11,
-        "east": 13
-      },
-      "dest": {
-        "north": 11,
-        "east": 14
-      },
-      "dest_x": null,
-      "dest_y": null,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21846)"
-    },
-    {
-      "id": "door:stairsDown:19_15_19_16",
-      "mechanism": "object",
-      "trigger_object": "stairsDown",
-      "origin": {
-        "north": 19,
-        "east": 15
-      },
-      "dest": {
-        "north": 19,
-        "east": 16
-      },
-      "dest_x": 550,
-      "dest_y": 350,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21846)"
-    },
-    {
-      "id": "door:stairsDown:12_14_11_14",
-      "mechanism": "object",
-      "trigger_object": "stairsDown",
-      "origin": {
-        "north": 12,
-        "east": 14
-      },
-      "dest": {
-        "north": 11,
-        "east": 14
-      },
-      "dest_x": 90,
-      "dest_y": 470,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21846)"
-    },
-    {
-      "id": "door:stairsDown:9_22_9_21",
-      "mechanism": "object",
-      "trigger_object": "stairsDown",
-      "origin": {
-        "north": 9,
-        "east": 22
-      },
-      "dest": {
-        "north": 9,
-        "east": 21
-      },
-      "dest_x": 430,
-      "dest_y": 130,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21846)"
-    },
-    {
-      "id": "door:stairsDown:12_23_12_22",
-      "mechanism": "object",
-      "trigger_object": "stairsDown",
-      "origin": {
-        "north": 12,
-        "east": 23
-      },
-      "dest": {
-        "north": 12,
-        "east": 22
-      },
-      "dest_x": 110,
-      "dest_y": null,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21846)"
-    },
-    {
-      "id": "door:stairsDown:18_12_18_11",
-      "mechanism": "object",
-      "trigger_object": "stairsDown",
-      "origin": {
-        "north": 18,
-        "east": 12
-      },
-      "dest": {
-        "north": 18,
-        "east": 11
-      },
-      "dest_x": 330,
-      "dest_y": 250,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21846)"
-    },
-    {
       "id": "door:stairsDown:21_21_20_21",
       "mechanism": "object",
       "trigger_object": "stairsDown",
@@ -15653,24 +10578,23 @@
         "north": 20,
         "east": 21
       },
-      "dest_x": 488,
-      "dest_y": 387,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21846)"
+      "dest_x": 550,
+      "dest_y": 422
     },
     {
-      "id": "door:stairsDown:21_21_22_21",
+      "id": "door:stairsDown:20_21_21_21",
       "mechanism": "object",
       "trigger_object": "stairsDown",
       "origin": {
-        "north": 21,
-        "east": 21
-      },
-      "dest": {
         "north": 20,
         "east": 21
       },
-      "dest_x": 527,
-      "dest_y": 412
+      "dest": {
+        "north": 21,
+        "east": 21
+      },
+      "dest_x": 556,
+      "dest_y": 124
     },
     {
       "id": "door:stairsDown:20_21_19_22",
@@ -15684,318 +10608,13 @@
         "north": 19,
         "east": 22
       },
-      "dest_x": 150,
-      "dest_y": 100,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21846)"
+      "dest_x": 571,
+      "dest_y": 421
     },
     {
-      "id": "door:stairsDown:201_200_200_200",
+      "id": "door:stairsDown:19_22_20_21",
       "mechanism": "object",
       "trigger_object": "stairsDown",
-      "origin": {
-        "north": 201,
-        "east": 200
-      },
-      "dest": {
-        "north": 200,
-        "east": 200
-      },
-      "dest_x": 340,
-      "dest_y": 350,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21846)"
-    },
-    {
-      "id": "door:stairsDown:10_21_9_20",
-      "mechanism": "object",
-      "trigger_object": "stairsDown",
-      "origin": {
-        "north": 10,
-        "east": 21
-      },
-      "dest": {
-        "north": 10.1,
-        "east": 21
-      },
-      "dest_x": 600,
-      "dest_y": 150,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21846)"
-    },
-    {
-      "id": "door:stairsDown:9_20_17_19",
-      "mechanism": "object",
-      "trigger_object": "stairsDown",
-      "origin": {
-        "north": 9,
-        "east": 20
-      },
-      "dest": {
-        "north": 10.1,
-        "east": 21
-      },
-      "dest_x": 500,
-      "dest_y": 400,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21846)"
-    },
-    {
-      "id": "door:stairsDown:17_19_15_17",
-      "mechanism": "object",
-      "trigger_object": "stairsDown",
-      "origin": {
-        "north": 17,
-        "east": 19
-      },
-      "dest": {
-        "north": 17.1,
-        "east": 19
-      },
-      "dest_x": 500,
-      "dest_y": 80,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21846)"
-    },
-    {
-      "id": "door:stairsDown:15_17_9_13",
-      "mechanism": "object",
-      "trigger_object": "stairsDown",
-      "origin": {
-        "north": 15,
-        "east": 17
-      },
-      "dest": {
-        "north": 17.1,
-        "east": 19
-      },
-      "dest_x": 175,
-      "dest_y": 400,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21846)"
-    },
-    {
-      "id": "door:stairsDown:9_13_10_13",
-      "mechanism": "object",
-      "trigger_object": "stairsDown",
-      "origin": {
-        "north": 9,
-        "east": 13
-      },
-      "dest": {
-        "north": 10,
-        "east": 13
-      },
-      "dest_x": 150,
-      "dest_y": 465,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21846)"
-    },
-    {
-      "id": "door:stairsDown:17_14_16_14",
-      "mechanism": "object",
-      "trigger_object": "stairsDown",
-      "origin": {
-        "north": 17,
-        "east": 14
-      },
-      "dest": {
-        "north": 16,
-        "east": 14
-      },
-      "dest_x": null,
-      "dest_y": null,
-      "notes": "generic-delta only (no per-room override needed), line 21846"
-    },
-    {
-      "id": "door:stairsDown:6_23_5_23",
-      "mechanism": "object",
-      "trigger_object": "stairsDown",
-      "origin": {
-        "north": 6,
-        "east": 23
-      },
-      "dest": {
-        "north": 5,
-        "east": 23
-      },
-      "dest_x": null,
-      "dest_y": null,
-      "notes": "generic-delta only (no per-room override needed), line 21846"
-    },
-    {
-      "id": "door:stairsDown:12_21_11_21",
-      "mechanism": "object",
-      "trigger_object": "stairsDown",
-      "origin": {
-        "north": 12,
-        "east": 21
-      },
-      "dest": {
-        "north": 11,
-        "east": 21
-      },
-      "dest_x": null,
-      "dest_y": null,
-      "notes": "generic-delta only (no per-room override needed), line 21846"
-    },
-    {
-      "id": "door:stairsUp2:10.1_21",
-      "mechanism": "object",
-      "trigger_object": "stairsUp2",
-      "origin": {
-        "north": 10.1,
-        "east": 21
-      },
-      "dest": {
-        "north": 9,
-        "east": 20
-      },
-      "dest_x": 560,
-      "dest_y": 425,
-      "notes": "origin-keyed override (line 21967)"
-    },
-    {
-      "id": "door:stairsUp2:17.1_19",
-      "mechanism": "object",
-      "trigger_object": "stairsUp2",
-      "origin": {
-        "north": 17.1,
-        "east": 19
-      },
-      "dest": {
-        "north": 15,
-        "east": 17
-      },
-      "dest_x": 590,
-      "dest_y": 190,
-      "notes": "origin-keyed override (line 21967)"
-    },
-    {
-      "id": "door:stairsUp:7_12_10_12",
-      "mechanism": "object",
-      "trigger_object": "stairsUp",
-      "origin": {
-        "north": 7,
-        "east": 12
-      },
-      "dest": {
-        "north": 10,
-        "east": 12
-      },
-      "dest_x": null,
-      "dest_y": null,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21989)"
-    },
-    {
-      "id": "door:stairsUp:11_14_11_13",
-      "mechanism": "object",
-      "trigger_object": "stairsUp",
-      "origin": {
-        "north": 11,
-        "east": 14
-      },
-      "dest": {
-        "north": 11,
-        "east": 13
-      },
-      "dest_x": null,
-      "dest_y": null,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21989)"
-    },
-    {
-      "id": "door:stairsUp:19_16_19_15",
-      "mechanism": "object",
-      "trigger_object": "stairsUp",
-      "origin": {
-        "north": 19,
-        "east": 16
-      },
-      "dest": {
-        "north": 19,
-        "east": 15
-      },
-      "dest_x": 600,
-      "dest_y": 300,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21989)"
-    },
-    {
-      "id": "door:stairsUp:11_21_12_21",
-      "mechanism": "object",
-      "trigger_object": "stairsUp",
-      "origin": {
-        "north": 11,
-        "east": 21
-      },
-      "dest": {
-        "north": 12,
-        "east": 21
-      },
-      "dest_x": 500,
-      "dest_y": 380,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21989)"
-    },
-    {
-      "id": "door:stairsUp:9_21_9_22",
-      "mechanism": "object",
-      "trigger_object": "stairsUp",
-      "origin": {
-        "north": 9,
-        "east": 21
-      },
-      "dest": {
-        "north": 9,
-        "east": 22
-      },
-      "dest_x": 410,
-      "dest_y": 80,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21989)"
-    },
-    {
-      "id": "door:stairsUp:12_22_12_23",
-      "mechanism": "object",
-      "trigger_object": "stairsUp",
-      "origin": {
-        "north": 12,
-        "east": 22
-      },
-      "dest": {
-        "north": 12,
-        "east": 23
-      },
-      "dest_x": 110,
-      "dest_y": 160,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21989)"
-    },
-    {
-      "id": "door:stairsUp:18_11_18_12",
-      "mechanism": "object",
-      "trigger_object": "stairsUp",
-      "origin": {
-        "north": 18,
-        "east": 11
-      },
-      "dest": {
-        "north": 18,
-        "east": 12
-      },
-      "dest_x": 350,
-      "dest_y": 150,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21989)"
-    },
-    {
-      "id": "door:stairsUp:20_21_21_21",
-      "mechanism": "object",
-      "trigger_object": "stairsUp",
-      "origin": {
-        "north": 20,
-        "east": 21
-      },
-      "dest": {
-        "north": 21,
-        "east": 21
-      },
-      "dest_x": 550,
-      "dest_y": null,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21989)"
-    },
-    {
-      "id": "door:stairsUp:19_22_20_21",
-      "mechanism": "object",
-      "trigger_object": "stairsUp",
       "origin": {
         "north": 19,
         "east": 22
@@ -16004,343 +10623,8 @@
         "north": 20,
         "east": 21
       },
-      "dest_x": 500,
-      "dest_y": 450,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21989)"
-    },
-    {
-      "id": "door:stairsUp:200_200_201_200",
-      "mechanism": "object",
-      "trigger_object": "stairsUp",
-      "origin": {
-        "north": 200,
-        "east": 200
-      },
-      "dest": {
-        "north": 201,
-        "east": 200
-      },
-      "dest_x": 400,
-      "dest_y": 470,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21989)"
-    },
-    {
-      "id": "door:stairsUp:17.1_19",
-      "mechanism": "object",
-      "trigger_object": "stairsUp",
-      "origin": {
-        "north": 17.1,
-        "east": 19
-      },
-      "dest": {
-        "north": 17,
-        "east": 19
-      },
-      "dest_x": 150,
-      "dest_y": 480,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21989)"
-    },
-    {
-      "id": "door:stairsUp:10_13_9_13",
-      "mechanism": "object",
-      "trigger_object": "stairsUp",
-      "origin": {
-        "north": 10,
-        "east": 13
-      },
-      "dest": {
-        "north": 9,
-        "east": 13
-      },
-      "dest_x": 150,
-      "dest_y": 100,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21989)"
-    },
-    {
-      "id": "door:stairsUp:5_23_6_23",
-      "mechanism": "object",
-      "trigger_object": "stairsUp",
-      "origin": {
-        "north": 5,
-        "east": 23
-      },
-      "dest": {
-        "north": 6,
-        "east": 23
-      },
-      "dest_x": null,
-      "dest_y": null,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21989)"
-    },
-    {
-      "id": "door:stairsUp:17_12_18_12",
-      "mechanism": "object",
-      "trigger_object": "stairsUp",
-      "origin": {
-        "north": 17,
-        "east": 12
-      },
-      "dest": {
-        "north": 18,
-        "east": 12
-      },
-      "dest_x": null,
-      "dest_y": null,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21989)"
-    },
-    {
-      "id": "door:stairsUp:10_13_11_13",
-      "mechanism": "object",
-      "trigger_object": "stairsUp",
-      "origin": {
-        "north": 10,
-        "east": 13
-      },
-      "dest": {
-        "north": 11,
-        "east": 13
-      },
-      "dest_x": 310,
-      "dest_y": 70,
-      "notes": "destination-keyed override, origin un-applied from delta (line 21989)"
-    },
-    {
-      "id": "door:ruins:16_14_17_14",
-      "mechanism": "object",
-      "trigger_object": "ruins",
-      "origin": {
-        "north": 16,
-        "east": 14
-      },
-      "dest": {
-        "north": 17,
-        "east": 14
-      },
-      "dest_x": 320,
-      "dest_y": 500,
-      "notes": "generic-delta only, origin inferred from object census (line 22103)"
-    },
-    {
-      "id": "door:grimsbane:20_12_21_12",
-      "mechanism": "object",
-      "trigger_object": "grimsbane",
-      "origin": {
-        "north": 20,
-        "east": 12
-      },
-      "dest": {
-        "north": 21,
-        "east": 12
-      },
-      "dest_x": 335,
-      "dest_y": 500,
-      "notes": "generic-delta only, origin inferred from object census (line 22119)"
-    },
-    {
-      "id": "door:castleDoors:6_11_7_11",
-      "mechanism": "object",
-      "trigger_object": "castleDoors",
-      "origin": {
-        "north": 6,
-        "east": 11
-      },
-      "dest": {
-        "north": 7,
-        "east": 11
-      },
-      "dest_x": null,
-      "dest_y": 500,
-      "notes": "origin-keyed override (line 22538)"
-    },
-    {
-      "id": "door:caveEntrance:15_22_16_22",
-      "mechanism": "object",
-      "trigger_object": "caveEntrance",
-      "origin": {
-        "north": 15,
-        "east": 22
-      },
-      "dest": {
-        "north": 16,
-        "east": 22
-      },
-      "dest_x": 340,
-      "dest_y": 500,
-      "notes": "destination-keyed override, origin un-applied from delta (line 23134)"
-    },
-    {
-      "id": "door:caveEntrance:12_20_13_20",
-      "mechanism": "object",
-      "trigger_object": "caveEntrance",
-      "origin": {
-        "north": 12,
-        "east": 20
-      },
-      "dest": {
-        "north": 13,
-        "east": 20
-      },
-      "dest_x": 230,
-      "dest_y": 500,
-      "notes": "destination-keyed override, origin un-applied from delta (line 23134)"
-    },
-    {
-      "id": "door:caveEntrance:8_20_9_20",
-      "mechanism": "object",
-      "trigger_object": "caveEntrance",
-      "origin": {
-        "north": 8,
-        "east": 20
-      },
-      "dest": {
-        "north": 9,
-        "east": 20
-      },
-      "dest_x": null,
-      "dest_y": 500,
-      "notes": "generic-delta only (no per-room override needed), line 23134"
-    },
-    {
-      "id": "door:wallCrack:3_24_4_24",
-      "mechanism": "object",
-      "trigger_object": "wallCrack",
-      "origin": {
-        "north": 3,
-        "east": 24
-      },
-      "dest": {
-        "north": 4,
-        "east": 24
-      },
-      "dest_x": 360,
-      "dest_y": 500,
-      "notes": "destination-keyed override, origin un-applied from delta (line 23163)"
-    },
-    {
-      "id": "door:wallCrack:14_18_15_18",
-      "mechanism": "object",
-      "trigger_object": "wallCrack",
-      "origin": {
-        "north": 14,
-        "east": 18
-      },
-      "dest": {
-        "north": 15,
-        "east": 18
-      },
-      "dest_x": 410,
-      "dest_y": 500,
-      "notes": "destination-keyed override, origin un-applied from delta (line 23163)"
-    },
-    {
-      "id": "door:wallCrack:4_24_5_24",
-      "mechanism": "object",
-      "trigger_object": "wallCrack",
-      "origin": {
-        "north": 4,
-        "east": 24
-      },
-      "dest": {
-        "north": 5,
-        "east": 24
-      },
-      "dest_x": null,
-      "dest_y": 500,
-      "notes": "generic-delta only (no per-room override needed), line 23163"
-    },
-    {
-      "id": "door:arena:18_16_19_16",
-      "mechanism": "object",
-      "trigger_object": "arena",
-      "origin": {
-        "north": 18,
-        "east": 16
-      },
-      "dest": {
-        "north": 19,
-        "east": 16
-      },
-      "dest_x": 330,
-      "dest_y": 500,
-      "notes": "generic-delta only, origin inferred from object census (line 23184)"
-    },
-    {
-      "id": "door:temple:10_16_11_16",
-      "mechanism": "object",
-      "trigger_object": "temple",
-      "origin": {
-        "north": 10,
-        "east": 16
-      },
-      "dest": {
-        "north": 11,
-        "east": 16
-      },
-      "dest_x": 330,
-      "dest_y": 500,
-      "notes": "generic-delta only, origin inferred from object census (line 23230)"
-    },
-    {
-      "id": "door:drain_waterwarp:18_25_500_500",
-      "mechanism": "object",
-      "trigger_object": "drain",
-      "origin": {
-        "north": 18,
-        "east": 25
-      },
-      "dest": {
-        "north": 500,
-        "east": 500
-      },
-      "dest_x": 130,
-      "dest_y": 400,
-      "notes": "origin-keyed override (line 34681)"
-    },
-    {
-      "id": "door:drain_waterwarp:500_500_18_25",
-      "mechanism": "object",
-      "trigger_object": "drain",
-      "origin": {
-        "north": 500,
-        "east": 500
-      },
-      "dest": {
-        "north": 18,
-        "east": 25
-      },
-      "dest_x": 485,
-      "dest_y": 200,
-      "notes": "origin-keyed override (line 34681)"
-    },
-    {
-      "id": "door:stairsDown:18_14_17_14",
-      "mechanism": "object",
-      "trigger_object": "stairsDown",
-      "origin": {
-        "north": 18,
-        "east": 14
-      },
-      "dest": {
-        "north": 17,
-        "east": 14
-      },
-      "dest_x": 600,
-      "dest_y": 117
-    },
-    {
-      "id": "door:stairsDown:17_14_18_14",
-      "mechanism": "object",
-      "trigger_object": "stairsDown",
-      "origin": {
-        "north": 17,
-        "east": 14
-      },
-      "dest": {
-        "north": 18,
-        "east": 14
-      },
-      "dest_x": 600,
-      "dest_y": 398
+      "dest_x": 117,
+      "dest_y": 166
     }
   ],
   "known_gaps": [

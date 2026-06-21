@@ -220,6 +220,10 @@ PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
                 manager.char[0].y = conn.newY
               }}
             }}
+            setTimeout(()=>{{
+              // prevents duplicate stairs appearing from the orig room in the new random room
+              test.newScreen()
+            }})
           }} finally {{
             erUpdatingInternal = false
           }}
