@@ -5179,21 +5179,6 @@
       "dest_y": 25
     },
     {
-      "id": "edge:south:21_21_20_21",
-      "mechanism": "edge",
-      "direction": "south",
-      "origin": {
-        "north": 21,
-        "east": 21
-      },
-      "dest": {
-        "north": 20,
-        "east": 21
-      },
-      "dest_x": null,
-      "dest_y": 25
-    },
-    {
       "id": "edge:south:21_23_20_23",
       "mechanism": "edge",
       "direction": "south",
@@ -7712,21 +7697,6 @@
       "dest": {
         "north": 13,
         "east": 20
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
-      "id": "edge:north:12_21_13_21",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 12,
-        "east": 21
-      },
-      "dest": {
-        "north": 13,
-        "east": 21
       },
       "dest_x": null,
       "dest_y": 510
@@ -15853,6 +15823,22 @@
       "notes": "destination-keyed override, origin un-applied from delta (line 21846)"
     },
     {
+      "id": "door:stairsDown:21_21_22_21",
+      "mechanism": "object",
+      "trigger_object": "stairsDown",
+      "origin": {
+        "north": 21,
+        "east": 21
+      },
+      "dest": {
+        "north": 20,
+        "east": 21
+      },
+      "dest_x": 500,
+      "dest_y": 510,
+      "notes": "destination-keyed override, origin un-applied from delta (line 21846)"
+    },
+    {
       "id": "door:stairsDown:20_21_19_22",
       "mechanism": "object",
       "trigger_object": "stairsDown",
@@ -16329,22 +16315,6 @@
         "east": 11
       },
       "dest_x": null,
-      "dest_y": 500,
-      "notes": "origin-keyed override (line 22538)"
-    },
-    {
-      "id": "door:castleDoors:9_26_10_26",
-      "mechanism": "object",
-      "trigger_object": "castleDoors",
-      "origin": {
-        "north": 9,
-        "east": 26
-      },
-      "dest": {
-        "north": 10,
-        "east": 26
-      },
-      "dest_x": 350,
       "dest_y": 500,
       "notes": "origin-keyed override (line 22538)"
     },

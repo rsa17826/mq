@@ -122,6 +122,9 @@ PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
     __createObject.loca = function () {{
       if (erInTransition) {{
         var key = erOrigin.north + "_" + erOrigin.east + "_" + erNorth + "_" + erEast
+        if (erOrigin.north ==21&& erOrigin.east==21&&manager.char[0].get_x()==-1){{
+              manager.char[0].set_x(50)
+            }}
         console.log("[ER DEBUG] Checking redirection for vanilla move path key:", key);
         
         var conns = ER_MAP.get(key)
@@ -131,12 +134,13 @@ PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
           if (conns.length > 1 && erOrigin.x !== null && erOrigin.y !== null) {{
             console.log("[ER DEBUG] Multi-gap overlap discovered! Choices count:", conns.length);
             var warptype = "unknown"
+            
+              console.log(manager.char[0].get_y(), manager.char[0].get_x(), manager.north, manager.east)
             if (manager.char[0].get_y() > 550 ||
             manager.char[0].get_y() < 0 ||
             manager.char[0].get_x() < 0 ||
             manager.char[0].get_x() > 660) {{
               warptype = "edge"
-              console.log(manager.char[0].get_y(), manager.char[0].get_x())
             }}
             else if (manager.charBottom[0].hitTestObject(
                   manager.stairsDown,
@@ -184,7 +188,7 @@ PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
                 manager.temple.get_visible() == 1) {{
               warptype = "temple"
             }}
-            console.log("warptype", warptype)
+            console.log("warptype", warptype, conns)
             var minDiff = Infinity
             for (var j = 0; j < conns.length; j++) {{
               var c = conns[j]
