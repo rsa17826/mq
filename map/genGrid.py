@@ -69,19 +69,33 @@ html_start = """<!DOCTYPE html>
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
         }
-        /* Style for complete rooms */
+        /* Style for incomplete base rooms */
         .exit-square {
             position: absolute;
-            background-color: #00a9;
+            background-color: #a009;
             box-sizing: border-box;
+            border: 1px solid #ff000055;
+            pointer-events: auto; /* Enable clicking */
+            cursor: pointer;
+            z-index: 10;
+        }
+        /* Style for baseline complete rooms */
+        .exit-square.room-complete {
+            background-color: #00a9;
             border: 1px solid #00ffff55;
         }
-        /* New style for incomplete rooms */
-        .exit-square.incomplete {
-            background-color: #a009;
-            border: 1px solid #ff000055;
+        /* Highlight when clicked/selected in the active group buffer */
+        .exit-square.selected {
+            background-color: rgba(255, 215, 0, 0.75) !important;
+            border: 2px solid #ffd700 !important;
+            z-index: 20;
+        }
+        /* New style applied to squares that have successfully been mapped into an area */
+        .exit-square.completed {
+            background-color: rgba(0, 200, 0, 0.6) !important;
+            border: 2px solid #00ff00 !important;
+            z-index: 15;
         }
 
         /* Floating notification indicator style */
@@ -116,11 +130,10 @@ html_end = """    </div>
             setTimeout(() => { el.style.opacity = "0"; }, 1500);
         }
 
-        // Left Click Handler to Copy Position
+        // Left Click Handler on wrapper backgrounds to Copy Position
         document.querySelectorAll('.tile-wrapper').forEach(tile => {
             tile.addEventListener('click', function(e) {
-                if (e.button === 2) return;
-
+                if (e.target.classList.contains('exit-square')) return;
                 const posStr = this.getAttribute('data-pos');
                 navigator.clipboard.writeText(posStr).then(() => {
                     showToast("Copied: " + posStr);
@@ -130,85 +143,88 @@ html_end = """    </div>
             });
         });
 
-        // Right Click Configuration for Block Selection Metrics
-        const BLOCKS_X = 14;
-        const BLOCKS_Y = 11;
-        const TILE_WIDTH = 624;
-        const TILE_HEIGHT = 493;
-        const EDGE_THRESHOLD = 60;
-
+        // Interactive Area Linking Configuration
+        let selectedExits = [];
         let currentTileKey = null;
-        let clickBuffer = { west: [], east: [], north: [], south: [] };
 
+        // Register exit square selection listeners
+        document.querySelectorAll('.exit-square').forEach(square => {
+            square.addEventListener('click', function(e) {
+                e.stopPropagation(); // Avoid triggering base tile wrapper click
+
+                const parentTile = this.closest('.tile-wrapper');
+                const posStr = parentTile.getAttribute('data-pos');
+
+                // If switching rooms, clear out previous buffer tracking automatically
+                if (currentTileKey !== posStr) {
+                    document.querySelectorAll('.exit-square.selected').forEach(el => el.classList.remove('selected'));
+                    selectedExits = [];
+                    currentTileKey = posStr;
+                }
+
+                if (this.classList.contains('selected')) {
+                    this.classList.remove('selected');
+                    selectedExits = selectedExits.filter(item => item !== this);
+                } else {
+                    this.classList.add('selected');
+                    selectedExits.push(this);
+                }
+                console.log(`[+] Exit added to selection group buffer. Total items: ${selectedExits.length}`);
+            });
+        });
+
+        // Right Click Handler on Tile wrappers to build area lists
         document.querySelectorAll('.tile-wrapper').forEach(tile => {
             tile.addEventListener('contextmenu', function(event) {
                 event.preventDefault();
 
                 const posStr = this.getAttribute('data-pos');
-                const rect = this.getBoundingClientRect();
 
-                // Compute exact cursor offset points inside the selected 624x493 tile
-                const rawX = Math.round((event.clientX - rect.left) * (TILE_WIDTH / rect.width));
-                const rawY = Math.round((event.clientY - rect.top) * (TILE_HEIGHT / rect.height));
-
-                // Translate pixels into float block grid segments
-                const gridX = Math.round((rawX / TILE_WIDTH) * BLOCKS_X * 2) / 2;
-                const gridY = Math.round((rawY / TILE_HEIGHT) * BLOCKS_Y * 2) / 2;
-
-                if (currentTileKey !== posStr) {
-                    currentTileKey = posStr;
-                    clickBuffer = { west: [], east: [], north: [], south: [] };
-                }
-
-                const isNearLeft = rawX <= EDGE_THRESHOLD;
-                const isNearRight = rawX >= TILE_WIDTH - EDGE_THRESHOLD;
-                const isNearTop = rawY <= EDGE_THRESHOLD;
-                const isNearBottom = rawY >= TILE_HEIGHT - EDGE_THRESHOLD;
-
-                let matchedEdges = [];
-                if (isNearLeft) matchedEdges.push({ edge: "west", value: gridY });
-                if (isNearRight) matchedEdges.push({ edge: "east", value: gridY });
-                if (isNearTop) matchedEdges.push({ edge: "north", value: gridX });
-                if (isNearBottom) matchedEdges.push({ edge: "south", value: gridX });
-
-                if (matchedEdges.length === 0) {
-                    console.warn(`[-] Right-click out of edge boundary limits.`);
+                // Fetch full internal data geometry payload from injected script metadata index
+                const rawRoomData = GEOM_METADATA_INDEX[posStr];
+                if (!rawRoomData) {
+                    console.error("[-] Geometry metadata missing for room index:", posStr);
                     return;
                 }
 
-                const targetedNames = matchedEdges.map(m => m.edge);
-                Object.keys(clickBuffer).forEach(edgeName => {
-                    if (!targetedNames.includes(edgeName)) clickBuffer[edgeName] = [];
-                });
-
-                matchedEdges.forEach(({ edge, value }) => {
-                    clickBuffer[edge].push(value);
-                    console.log(`[+] [${edge.toUpperCase()}] Point ${clickBuffer[edge].length} captured on tile ${posStr}: ${value}`);
-
-                    if (clickBuffer[edge].length === 2) {
-                        const [p1, p2] = clickBuffer[edge].sort((a, b) => a - b);
-
-                        // FIX: Formatted to output just the inner raw bounds object container
-                        let boundsPayload = {};
-                        if (edge === "west" || edge === "east") {
-                            boundsPayload["top"] = p1;
-                            boundsPayload["bottom"] = p2;
-                        } else {
-                            boundsPayload["left"] = p1;
-                            boundsPayload["right"] = p2;
-                        }
-
-                        const jsonOutput = JSON.stringify(boundsPayload, null, 2);
-                        console.log(`%c[+] Pair Completed for ${edge.toUpperCase()} on tile ${posStr}!`, "color: green; font-weight: bold;");
-                        console.log(jsonOutput);
-
-                        navigator.clipboard.writeText(jsonOutput).then(() => {
-                            showToast(`Copied ${edge.toUpperCase()} bounds!`);
-                        });
-
-                        clickBuffer[edge] = [];
+                // If context menu is clicked with items selected, save them as a connected group area
+                if (selectedExits.length > 0 && currentTileKey === posStr) {
+                    if (!rawRoomData.areas) {
+                        rawRoomData.areas = [];
                     }
-                });
+
+                    const subAreaGroup = selectedExits.map(el => {
+                        return {
+                            side: el.getAttribute('data-side'),
+                            idx: parseInt(el.getAttribute('data-idx'), 10)
+                        };
+                    });
+
+                    rawRoomData.areas.push(subAreaGroup);
+
+                    console.log(`%c[🎉] Connected Area Linked successfully for room ${posStr}!`, "color: #00ffcc; font-weight: bold;");
+                    const stringifiedOut = JSON.stringify(rawRoomData, null, 2);
+                    console.log(stringifiedOut);
+
+                    navigator.clipboard.writeText(stringifiedOut).then(() => {
+                        showToast(`Saved Area Group for Room ${posStr}!`);
+                    });
+
+                    // Transition selected gold squares to the completed green class state
+                    selectedExits.forEach(el => {
+                        el.classList.remove('selected');
+                        el.classList.add('completed');
+                    });
+
+                    // Reset the buffer to start mapping the next independent zone inside this room
+                    selectedExits = [];
+                } else {
+                    // Right-clicked with empty selection buffer: reset tracking completely
+                    document.querySelectorAll('.exit-square.selected').forEach(el => el.classList.remove('selected'));
+                    selectedExits = [];
+                    currentTileKey = posStr;
+                    console.log(`[x] Reset linked selection tracking buffer context for tile room ${posStr}.`);
+                }
             });
         });
     </script>
@@ -229,10 +245,7 @@ def load_geometry_map():
                     n = int(float(room["north"]))
                     e = int(float(room["east"]))
                     key = f"{n}_{e}"
-                    geom_db[key] = {
-                        "exits": room.get("exits", {}),
-                        "complete": room.get("complete", False)
-                    }
+                    geom_db[key] = room
     except Exception as err:
         print(f"[-] Failed to read room geometry config details: {err}")
     return geom_db
@@ -248,7 +261,6 @@ def generate_html():
     max_row = 0
 
     for filename in files:
-        # Changed regex and assignments to reflect north, east format
         match = re.match(r"^(\d+)[,\-](\d+)", filename)
         if match:
             north = int(match.group(1))
@@ -258,6 +270,7 @@ def generate_html():
                 max_row = north
 
     html_elements = []
+    js_metadata_lookup = {}
 
     for north, east, filename in parsed_tiles:
         grid_col = east + 1
@@ -265,11 +278,15 @@ def generate_html():
         img_path = f"{IMAGE_FOLDER}/{filename}"
 
         lookup_key = f"{north}_{east}"
-        room_data = geom_index.get(lookup_key, {"exits": {}, "complete": False})
-        tile_exits = room_data["exits"]
-        is_complete = room_data["complete"]
+        room_data = geom_index.get(lookup_key, {"north": north, "east": east, "exits": {}, "complete": False})
+        tile_exits = room_data.get("exits", {})
+        is_complete = room_data.get("complete", False)
 
-        class_modifier = "" if is_complete else " incomplete"
+        # Retain original schema contents
+        js_metadata_lookup[f"{north},{east}"] = room_data
+
+        # Initial class states based on room level completion status
+        class_modifier = " room-complete" if is_complete else ""
         squares_html = []
 
         if tile_exits and isinstance(tile_exits, dict):
@@ -280,9 +297,17 @@ def generate_html():
                 if not isinstance(bounds_list, list):
                     bounds_list = [bounds_list]
 
-                for bounds in bounds_list:
+                for idx, bounds in enumerate(bounds_list):
                     if not bounds or not isinstance(bounds, dict):
                         continue
+
+                    # Check if this exit was already stored in an area segment to persist green state on build reload
+                    completed_modifier = ""
+                    if "areas" in room_data:
+                        for area in room_data["areas"]:
+                            if any(item.get("side") == side and item.get("idx") == idx for item in area):
+                                completed_modifier = " completed"
+                                break
 
                     if side in ["west", "east"]:
                         if bounds.get("top") is None or bounds.get("bottom") is None:
@@ -298,7 +323,7 @@ def generate_html():
                         h_size = ((end_val - start_val) + 1) * BLOCK_HEIGHT_PCT
 
                         squares_html.append(
-                            f'<div class="exit-square{class_modifier}" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%;"></div>'
+                            f'<div class="exit-square{class_modifier}{completed_modifier}" data-side="{side}" data-idx="{idx}" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%;"></div>'
                         )
 
                     elif side in ["north", "south"]:
@@ -315,7 +340,7 @@ def generate_html():
                         h_size = BLOCK_HEIGHT_PCT
 
                         squares_html.append(
-                            f'<div class="exit-square{class_modifier}" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%;"></div>'
+                            f'<div class="exit-square{class_modifier}{completed_modifier}" data-side="{side}" data-idx="{idx}" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%;"></div>'
                         )
 
         overlay_content = "\n".join(squares_html)
@@ -328,12 +353,16 @@ def generate_html():
         </div>"""
         html_elements.append(tag)
 
+    # Serialize complete database layout context inline into HTML head scope structures
+    injected_js_db = f"<script>const GEOM_METADATA_INDEX = {json.dumps(js_metadata_lookup, indent=2)};</script>"
+    final_html_start = html_start.replace('<div class="grid-container">', injected_js_db + '\n    <div class="grid-container">')
+
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        f.write(html_start)
+        f.write(final_html_start)
         f.write("\n".join(html_elements))
         f.write("\n" + html_end)
 
-    print(f"Success! Generated flipped {OUTPUT_FILE} with {len(html_elements)} overlaid image tiles.")
+    print(f"Success! Generated flipped {OUTPUT_FILE} with {len(html_elements)} interactive grouping map tiles.")
 
 if __name__ == "__main__":
     generate_html()

@@ -10553,16 +10553,6 @@
       },
       "dest_x": 50,
       "dest_y": null
-    },
-    {
-      "id": "edge:manual:10_21_17_17",
-      "mechanism": "edge",
-      "direction": "unknown",
-      "origin": {
-        "north": 10,
-        "east": 21
-      },
-      "dest": null
     }
   ],
   "doors": [
