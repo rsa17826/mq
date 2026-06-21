@@ -10578,8 +10578,8 @@
         "north": 20,
         "east": 21
       },
-      "dest_x": 550,
-      "dest_y": 422
+      "dest_x": 552,
+      "dest_y": 439
     },
     {
       "id": "door:stairsDown:20_21_21_21",

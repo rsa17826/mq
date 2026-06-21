@@ -33,19 +33,19 @@ rows = []
 for c in connections:
   d_code = DIR_CODES.get(c.get("direction"), 0)
   rows.append(
-      "[%s,%s,%s,%s,%s,%s,%s,%s,%s,%s]"
-      % (
-          fmt_num(c["originNorth"]),
-          fmt_num(c["originEast"]),
-          fmt_num(c["vanillaDestNorth"]),
-          fmt_num(c["vanillaDestEast"]),
-          fmt_num(c["newDestNorth"]),
-          fmt_num(c["newDestEast"]),
-          fmt_num(c["newX"]),
-          fmt_num(c["newY"]),
-          fmt_num(c.get("srcCoord")),
-          str(d_code),
-      )
+    "[%s,%s,%s,%s,%s,%s,%s,%s,%s,%s]"
+    % (
+      fmt_num(c["originNorth"]),
+      fmt_num(c["originEast"]),
+      fmt_num(c["vanillaDestNorth"]),
+      fmt_num(c["vanillaDestEast"]),
+      fmt_num(c["newDestNorth"]),
+      fmt_num(c["newDestEast"]),
+      fmt_num(c["newX"]),
+      fmt_num(c["newY"]),
+      fmt_num(c.get("srcCoord")),
+      str(d_code),
+    )
   )
 table_js = ",".join(rows)
 
@@ -123,8 +123,8 @@ PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
       if (erInTransition) {{
         var key = erOrigin.north + "_" + erOrigin.east + "_" + erNorth + "_" + erEast
         if (erOrigin.north ==21&& erOrigin.east==21&&manager.char[0].get_x()==-1){{
-              manager.char[0].set_x(50)
-            }}
+          manager.char[0].set_x(50)
+        }}
         console.log("[ER DEBUG] Checking redirection for vanilla move path key:", key);
         
         var conns = ER_MAP.get(key)
@@ -143,50 +143,50 @@ PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
               warptype = "edge"
             }}
             else if (manager.charBottom[0].hitTestObject(
-                  manager.stairsDown,
-                ) &&
-                manager.stairsDown.get_visible() == 1) {{
-              warptype = "stairsDown"
+              manager.stairsDown,
+            ) &&
+            manager.stairsDown.get_visible() == 1) {{
+          warptype = "stairsDown"
             }}
             else if (manager.charBottom[0].hitTestObject(
-                  manager.stairsUp2,
-                ) &&
-                manager.stairsUp2.get_visible() == 1) {{
-              warptype = "stairsUp2"
+              manager.stairsUp2,
+            ) &&
+            manager.stairsUp2.get_visible() == 1) {{
+          warptype = "stairsUp2"
             }}
             else if (manager.charBottom[0].hitTestObject(
-                  manager.stairsUp,
-                ) &&
-                manager.stairsUp.get_visible() == 1) {{
-              warptype = "stairsUp"
+              manager.stairsUp,
+            ) &&
+            manager.stairsUp.get_visible() == 1) {{
+          warptype = "stairsUp"
             }}
             else if (manager.charBottom[0].hitTestObject(
-                  manager.grimsbane,
-                ) &&
-                manager.grimsbane.get_visible() == 1) {{
-              warptype = "grimsbane"
+              manager.grimsbane,
+            ) &&
+            manager.grimsbane.get_visible() == 1) {{
+          warptype = "grimsbane"
             }}
             else if (manager.charBottom[0].hitTestObject(
-                  manager.castleDoors,
-                ) &&
-                manager.castleDoors.get_visible() == 1) {{
-              warptype = "castleDoors"
+              manager.castleDoors,
+            ) &&
+            manager.castleDoors.get_visible() == 1) {{
+          warptype = "castleDoors"
             }}
             else if (manager.charBottom[0].hitTestObject(manager.isle1) &&
-                manager.isle1.get_visible() == 1) {{
-              warptype = "isle1"
+              manager.isle1.get_visible() == 1) {{
+            warptype = "isle1"
             }}
             else if (manager.charBottom[0].hitTestObject(manager.isle2) &&
-                manager.isle2.get_visible() == 1) {{
-              warptype = "isle2"
+              manager.isle2.get_visible() == 1) {{
+            warptype = "isle2"
             }}
             else if (manager.charBottom[0].hitTestObject(manager.isle3) &&
-                manager.isle3.get_visible() == 1) {{
-              warptype = "isle3"
+              manager.isle3.get_visible() == 1) {{
+            warptype = "isle3"
             }}
             else if (manager.charBottom[0].hitTestObject(manager.temple) &&
-                manager.temple.get_visible() == 1) {{
-              warptype = "temple"
+              manager.temple.get_visible() == 1) {{
+            warptype = "temple"
             }}
             console.log("warptype", warptype, conns)
             var minDiff = Infinity
@@ -223,6 +223,16 @@ PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
             setTimeout(()=>{{
               // prevents duplicate stairs appearing from the orig room in the new random room
               test.newScreen()
+              // prevents warp rings from moving player to wrong position
+              if (manager.char && manager.char[0]) {{
+                if (typeof manager.char[0].set_x === 'function') {{
+                  manager.char[0].set_x(conn.newX)
+                  manager.char[0].set_y(conn.newY)
+                }} else {{
+                  manager.char[0].x = conn.newX
+                  manager.char[0].y = conn.newY
+                }}
+              }}
             }})
           }} finally {{
             erUpdatingInternal = false
@@ -240,7 +250,7 @@ PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
 
 ANCHOR = "      manager.north = 20\n      manager.east = 20\n"
 assert (
-    src.count(ANCHOR) == 1
+  src.count(ANCHOR) == 1
 ), f"expected exactly one occurrence of anchor, found {src.count(ANCHOR)}"
 
 patched = src.replace(ANCHOR, PATCH + ANCHOR)
