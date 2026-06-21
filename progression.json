@@ -120,7 +120,7 @@
     {
       "room": { "north": 19, "east": 21 },
       "requires": [["item:diamond#20"]],
-      "receive": ["quest.pam>14"]
+      "receive": ["quest.pam.15"]
     },
     {
       "room": { "north": 16, "east": 22 },
@@ -483,7 +483,7 @@
     },
     {
       "room": { "north": 11, "east": 25 },
-      "requires": [["quest.pam>14"]],
+      "requires": [["quest.pam.15"]],
       "receive": ["food:beef jerkey#20"]
     },
     {
@@ -553,6 +553,57 @@
       "room": { "north": 9, "east": 26 },
       "requires": [["item:key#1"]],
       "receive": ["food:blueberry#?"]
+    },
+    {
+      "room": { "north": 15, "east": 24 },
+      "requires": [["item:key#1"]],
+      "receive": ["item:gold#93"]
+    },
+    {
+      "room": { "north": 16, "east": 25 },
+      "requires": [["quest.pam.15"]],
+      "receive": ["item:diamond#5", "food:steak#12"]
+    },
+    {
+      "room": { "north": 18, "east": 25 },
+      "requires": [["skill:medic.1", "item:cobra fang#5"]],
+      "receive": ["skill:medic.2"]
+    },
+    {
+      "room": { "north": 18, "east": 25 },
+      "requires": [
+        ["skill:medic.2", "item:orc coin#20", "item:mage staf#10"]
+      ],
+      "receive": ["skill:medic.3"]
+    },
+    {
+      "room": { "north": 18, "east": 25 },
+      "requires": [
+        [
+          "skill:medic.3",
+          "item:dragon scale#10",
+          "item:gator skin#10"
+        ]
+      ],
+      "receive": ["skill:medic.4"]
+    },
+    {
+      "room": { "north": 18, "east": 25 },
+      "requires": [
+        ["skill:medic.4", "item:kings crest#10", "item:alpha axe#5"]
+      ],
+      "receive": ["skill:medic.5"]
+    },
+    {
+      "room": { "north": 18, "east": 25 },
+      "requires": [
+        [
+          "skill:medic.5",
+          "item:golden feather#3",
+          "item:alpha scepter#5"
+        ]
+      ],
+      "receive": ["skill:medic.6"]
     }
   ],
   "gates": [
