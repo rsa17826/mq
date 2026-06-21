@@ -116,7 +116,7 @@ def load_progression():
   path = os.path.join(OUT_DIR, "progression.json")
   if not os.path.exists(path):
     print(f"NOTE: no progression.json found at {path} -- no item/skill gating loaded.")
-    return {"locations": [], "gates": []}
+    return {"locations": [], "gates": [], "warps": []}
   raw = json.load(open(path))
 
   locations = []
@@ -143,6 +143,19 @@ def load_progression():
       }
     )
 
+  warps = []
+  for w in raw.get("warps", []):
+    rooms = [(r["north"], r["east"]) for r in w["rooms"]]
+    warps.append(
+      {
+        "id": w.get("id", f"warp:{rooms[0][0]}_{rooms[0][1]}:{rooms[1][0]}_{rooms[1][1]}"),
+        "rooms": rooms,
+        "bidirectional": w.get("bidirectional", True),
+        "requires": parse_requires(w.get("requires")),
+        "raw": w,
+      }
+    )
+
   # visibility report: flag anything that didn't parse cleanly, and any
   # bare/unprefixed tokens so they can be reviewed/cleaned up upstream.
   # Placeholders ("?"-suffixed or bare "???") are pending-data markers,
@@ -150,18 +163,18 @@ def load_progression():
   warnings = []
   flags_seen = set()
   placeholders_seen = set()
-  for entry in locations + gates:
+  for entry in locations + gates + warps:
     for group in entry["requires"]:
       for tok in group:
         if tok.get("placeholder"):
           placeholders_seen.add(tok["raw"])
           continue
         if "parse_warning" in tok:
-          warnings.append((entry["room"], tok["raw"], tok["parse_warning"]))
+          warnings.append((entry.get("room", entry.get("rooms")), tok["raw"], tok["parse_warning"]))
         if tok["type"] == "flag":
           flags_seen.add(tok["raw"])
 
-  print(f"Loaded progression.json: {len(locations)} locations, {len(gates)} gates")
+  print(f"Loaded progression.json: {len(locations)} locations, {len(gates)} gates, {len(warps)} warps")
   with_req = sum(1 for l in locations if l["requires"])
   print(f"  locations with requirements: {with_req} / {len(locations)}")
   if placeholders_seen:
@@ -180,7 +193,7 @@ def load_progression():
     if len(flags_seen) > 20:
       print(f"    ... and {len(flags_seen) - 20} more")
 
-  return {"locations": locations, "gates": gates}
+  return {"locations": locations, "gates": gates, "warps": warps}
 
 
 

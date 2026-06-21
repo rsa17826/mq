@@ -2,20 +2,20 @@
   "locations": [
     {
       "room": { "north": 20, "east": 20 },
-      "gives": ["spawnpoint"]
+      "receive": ["spawnpoint"]
     },
     {
       "room": { "north": 20, "east": 20 },
-      "gives": ["spawnpoint"]
+      "receive": ["spawnpoint"]
     },
     {
       "room": { "north": 19, "east": 21 },
-      "gives": ["item:gold#inf"]
+      "receive": ["item:gold#inf"]
     },
     {
       "room": { "north": 15, "east": 21 },
       "requires": [["entrance.west0"]],
-      "gives": ["food:banana#1"]
+      "receive": ["food:banana#1"]
     },
     {
       "room": { "north": 21, "east": 20 },
@@ -1025,6 +1025,18 @@
       "room": { "north": 9, "east": 13 },
       "requires": [["item:key#1"]],
       "receive": ["item:bomb#10"]
+    },
+    {
+      "room": { "north": 15, "east": 18 },
+      "requires": [["quest:pam.15", "permit:bomb.2"]],
+      "receive": ["item:bomb#50", "food:chocolate#?"]
+    },
+    {
+      "room": { "north": 11, "east": 15 },
+      "requires": [
+        ["skill:craft", "item:troll wristband#5", "item:wolf pelt#2"]
+      ],
+      "receive": ["craft.key"]
     }
   ],
   "gates": [
@@ -1041,11 +1053,21 @@
       "to": "north0",
       "bidirectional": true,
       "requires": [["permit:bomb"]]
-    },
+    }
+  ],
+  "warps": [
     {
-      "room": { "north": 9, "east": 14 },
-      "from": null,
-      "to": { "north": 9, "east": 13 },
+      "id": "waterwarp_9_14_9_13",
+      "rooms": [
+        {
+          "north": 9,
+          "east": 14
+        },
+        {
+          "north": 9,
+          "east": 13
+        }
+      ],
       "bidirectional": true,
       "requires": [["magic:fire.3?", "magic:drain.1?"]]
     }
