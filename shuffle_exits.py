@@ -48,11 +48,11 @@ def parse_requirement_token(tok):
     entrance.NAME            -- which exit was used to get here
     PREFIX:NAME#COUNT        -- need at least COUNT of an item-like thing
     PREFIX:NAME.TIER         -- need a tiered thing (skill/permit/quest/
-                                 magic) at >= TIER (having a higher tier
-                                 satisfies a lower-tier requirement)
+      magic) at >= TIER (having a higher tier
+      satisfies a lower-tier requirement)
     PREFIX:NAME              -- need the thing at all, count/tier unset
     NAME                     -- bare/unprefixed flag, taken as a literal
-                                 opaque requirement (no known convention)
+      opaque requirement (no known convention)
     ...with a trailing "?" on a tier/count, or a bare "???", meaning
     "real value not decided yet" -- parsed as a placeholder rather than
     a parse failure: the "?" is stripped and, if a number remains, it's
@@ -71,7 +71,7 @@ def parse_requirement_token(tok):
     prefix, rest = tok.split(":", 1)
     if prefix in REQUIREMENT_PREFIXES:
       result = {"raw": tok, "type": prefix}
-      placeholder = rest.endswith("?")
+      placeholder = "?" in rest
       if placeholder:
         rest = rest[:-1]
         result["placeholder"] = True
@@ -97,7 +97,8 @@ def parse_requirement_token(tok):
         result["name"] = rest
         result["count"] = 1
       return result
-
+  if "?" in tok:
+    return {"raw": tok, "type": "flag", "name": tok, "placeholder":True}
   # bare/unprefixed token -- opaque flag, no further structure assumed
   return {"raw": tok, "type": "flag", "name": tok}
 
@@ -165,15 +166,15 @@ def load_progression():
   print(f"  locations with requirements: {with_req} / {len(locations)}")
   if placeholders_seen:
     print(f"  NOTE: {len(placeholders_seen)} placeholder token(s) (pending real data, ignored): "
-          f"{sorted(placeholders_seen)}")
+      f"{sorted(placeholders_seen)}")
   if warnings:
     print(f"  WARNING: {len(warnings)} tokens failed to parse cleanly:")
     for room, raw, msg in warnings[:20]:
       print(f"    room {room}: {raw!r} -- {msg}")
   if flags_seen:
     print(f"  NOTE: {len(flags_seen)} bare/unprefixed tokens (no PREFIX: or "
-          f"entrance. convention), passed through as opaque flags -- "
-          f"review if these should use a real prefix:")
+      f"entrance. convention), passed through as opaque flags -- "
+      f"review if these should use a real prefix:")
     for f in sorted(flags_seen)[:20]:
       print(f"    {f!r}")
     if len(flags_seen) > 20:
@@ -309,10 +310,10 @@ def build_spanning_tree(pool, partner_finder, label, seed_reached=None):
     attempts += 1
     if not frontier:
       frontier = [
-          e
-          for room in reached
-          for e in by_room.get(room, [])
-          if e["id"] in unused
+        e
+        for room in reached
+        for e in by_room.get(room, [])
+        if e["id"] in unused
       ]
       rng.shuffle(frontier)
       if not frontier:
@@ -322,10 +323,10 @@ def build_spanning_tree(pool, partner_finder, label, seed_reached=None):
       continue
 
     candidates = [
-        e
-        for room in remaining
-        for e in by_room.get(room, [])
-        if e["id"] in unused and e["id"] != a["id"]
+      e
+      for room in remaining
+      for e in by_room.get(room, [])
+      if e["id"] in unused and e["id"] != a["id"]
     ]
     candidates = partner_finder(a, candidates)
     if not candidates:
@@ -351,10 +352,10 @@ def build_spanning_tree(pool, partner_finder, label, seed_reached=None):
         continue
       a = r_exits[0]
       candidates = [
-          e
-          for room in reached
-          for e in by_room.get(room, [])
-          if e["id"] in unused and e["id"] != a["id"]
+        e
+        for room in reached
+        for e in by_room.get(room, [])
+        if e["id"] in unused and e["id"] != a["id"]
       ]
       candidates = partner_finder(a, candidates)
       if candidates:
@@ -391,10 +392,10 @@ def door_partner_finder(a, candidates):
 
 
 edge_pairs, edge_unpaired, edge_reached = build_spanning_tree(
-    edge_exits, edge_partner_finder, "edges"
+  edge_exits, edge_partner_finder, "edges"
 )
 door_pairs, door_unpaired, door_reached = build_spanning_tree(
-    door_exits, door_partner_finder, "doors", seed_reached=edge_reached
+  door_exits, door_partner_finder, "doors", seed_reached=edge_reached
 )
 
 all_pairs = edge_pairs + door_pairs
@@ -412,18 +413,18 @@ def make_connection(from_exit, to_exit):
   origin = from_exit["origin"]
   vdest = vanilla_dest_key(from_exit)
   return {
-      "originNorth": origin["north"],
-      "originEast": origin["east"],
-      "vanillaDestNorth": vdest[0],
-      "vanillaDestEast": vdest[1],
-      "newDestNorth": to_exit["origin"]["north"],
-      "newDestEast": to_exit["origin"]["east"],
-      "newX": to_exit.get("dest_x", 330),
-      "newY": to_exit.get("dest_y", 255),
-      "srcCoord": from_exit.get("src_coord"),
-      "direction": from_exit.get("direction"),
-      "fromExitId": from_exit["id"],
-      "toExitId": to_exit["id"],
+    "originNorth": origin["north"],
+    "originEast": origin["east"],
+    "vanillaDestNorth": vdest[0],
+    "vanillaDestEast": vdest[1],
+    "newDestNorth": to_exit["origin"]["north"],
+    "newDestEast": to_exit["origin"]["east"],
+    "newX": to_exit.get("dest_x", 330),
+    "newY": to_exit.get("dest_y", 255),
+    "srcCoord": from_exit.get("src_coord"),
+    "direction": from_exit.get("direction"),
+    "fromExitId": from_exit["id"],
+    "toExitId": to_exit["id"],
   }
 
 
@@ -435,8 +436,8 @@ for a in all_unpaired:
   connections.append(make_connection(a, a))
 
 out = {
-    "seed": SEED,
-    "connections": connections,
+  "seed": SEED,
+  "connections": connections,
 }
 with open(f"{OUT_DIR}/connections.json", "w") as f:
   json.dump(out, f, indent=2)
