@@ -52,16 +52,18 @@ def parse_requirement_token(tok):
                                  satisfies a lower-tier requirement)
     PREFIX:NAME              -- need the thing at all, count/tier unset
     NAME                     -- bare/unprefixed flag, taken as a literal
-                                 opaque requirement (no known convention;
-                                 several of these in the current data look
-                                 like data-entry inconsistencies rather
-                                 than a real third token format -- passed
-                                 through as-is rather than guessed at)
-  Returns {"raw": tok, "type": ..., ...}. Never raises -- malformed counts/
-  tiers (e.g. a stray "magic:fire.2?") are kept as the original string in
-  a "parse_warning" field instead of crashing, since this data is still
-  being authored.
+                                 opaque requirement (no known convention)
+    ...with a trailing "?" on a tier/count, or a bare "???", meaning
+    "real value not decided yet" -- parsed as a placeholder rather than
+    a parse failure: the "?" is stripped and, if a number remains, it's
+    used as a provisional value; either way the token is marked
+    placeholder=True so callers can choose to ignore/flag it separately
+    from genuine malformed data.
+  Returns {"raw": tok, "type": ..., ...}. Never raises.
   """
+  if tok.strip("?") == "":
+    return {"raw": tok, "type": "flag", "name": tok, "placeholder": True}
+
   if tok.startswith("entrance."):
     return {"raw": tok, "type": "entrance", "value": tok[len("entrance."):]}
 
@@ -69,6 +71,10 @@ def parse_requirement_token(tok):
     prefix, rest = tok.split(":", 1)
     if prefix in REQUIREMENT_PREFIXES:
       result = {"raw": tok, "type": prefix}
+      placeholder = rest.endswith("?")
+      if placeholder:
+        rest = rest[:-1]
+        result["placeholder"] = True
       if "#" in rest:
         name, count_str = rest.rsplit("#", 1)
         result["name"] = name
@@ -76,7 +82,8 @@ def parse_requirement_token(tok):
           result["count"] = int(count_str)
         except ValueError:
           result["count"] = None
-          result["parse_warning"] = f"could not parse count from {tok!r}"
+          if not placeholder:
+            result["parse_warning"] = f"could not parse count from {tok!r}"
       elif "." in rest:
         name, tier_str = rest.rsplit(".", 1)
         result["name"] = name
@@ -84,7 +91,8 @@ def parse_requirement_token(tok):
           result["tier"] = int(tier_str)
         except ValueError:
           result["tier"] = None
-          result["parse_warning"] = f"could not parse tier from {tok!r}"
+          if not placeholder:
+            result["parse_warning"] = f"could not parse tier from {tok!r}"
       else:
         result["name"] = rest
         result["count"] = 1
@@ -135,12 +143,18 @@ def load_progression():
     )
 
   # visibility report: flag anything that didn't parse cleanly, and any
-  # bare/unprefixed tokens so they can be reviewed/cleaned up upstream
+  # bare/unprefixed tokens so they can be reviewed/cleaned up upstream.
+  # Placeholders ("?"-suffixed or bare "???") are pending-data markers,
+  # not genuine issues -- reported separately, once, quietly.
   warnings = []
   flags_seen = set()
+  placeholders_seen = set()
   for entry in locations + gates:
     for group in entry["requires"]:
       for tok in group:
+        if tok.get("placeholder"):
+          placeholders_seen.add(tok["raw"])
+          continue
         if "parse_warning" in tok:
           warnings.append((entry["room"], tok["raw"], tok["parse_warning"]))
         if tok["type"] == "flag":
@@ -149,6 +163,9 @@ def load_progression():
   print(f"Loaded progression.json: {len(locations)} locations, {len(gates)} gates")
   with_req = sum(1 for l in locations if l["requires"])
   print(f"  locations with requirements: {with_req} / {len(locations)}")
+  if placeholders_seen:
+    print(f"  NOTE: {len(placeholders_seen)} placeholder token(s) (pending real data, ignored): "
+          f"{sorted(placeholders_seen)}")
   if warnings:
     print(f"  WARNING: {len(warnings)} tokens failed to parse cleanly:")
     for room, raw, msg in warnings[:20]:

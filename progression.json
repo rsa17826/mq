@@ -185,7 +185,7 @@
     {
       "room": { "north": 13, "east": 14 },
       "requires": [["armor:alpha armor", "???"]],
-      "receive": ["armour:alpha armout.+inf"]
+      "receive": ["armour:alpha armour.+inf"]
     },
     {
       "room": { "north": 13, "east": 11 },
@@ -897,7 +897,7 @@
     {
       "room": { "north": 18, "east": 15 },
       "requires": [["quest:pam.16"]],
-      "receive": ["item:newton apple#15"],
+      "receive": ["food:newton apple#15"],
       "info": "fill refresh too"
     },
     {
@@ -919,6 +919,51 @@
       "room": { "north": 17, "east": 15 },
       "requires": [["item:emerald#1"]],
       "receive": ["item:gold#100", "food:coolie#50"]
+    },
+    {
+      "room": { "north": 18, "east": 13 },
+      "requires": [
+        ["item:cotton thread#10", "item:shadow crest#5", "???"]
+      ],
+      "receive": ["misc:max bombs.+50"]
+    },
+    {
+      "room": { "north": 19, "east": 12 },
+      "info": "warp skill warp point"
+    },
+    {
+      "room": { "north": 24, "east": 14 },
+      "requires": [["item:key#1"]],
+      "receive": ["armor:grim gear"]
+    },
+    {
+      "room": { "north": 23, "east": 10 },
+      "requires": [["item:emerald#1"]],
+      "receive": ["armour:alpha armour"]
+    },
+    {
+      "room": { "north": 23, "east": 10 },
+      "requires": [["item:key#1"]],
+      "receive": ["food:newton apple#3", "item:diamond#3"]
+    },
+    {
+      "room": { "north": 21, "east": 11 },
+      "requires": [["item:key#1", "entrance.north0"]],
+      "receive": ["food:gummy bear#?"]
+    },
+    {
+      "room": { "north": 24, "east": 11 },
+      "requires": [["item:key#1", "permit:bomb"]],
+      "receive": ["weapon:bane blade"]
+    },
+    {
+      "room": { "north": 24, "east": 9 },
+      "receive": ["misc:final boss"]
+    },
+    {
+      "room": { "north": 17, "east": 10 },
+      "requires": [["item:void ash#6"]],
+      "receive": ["food:gummy bear#5"]
     }
   ],
   "gates": [
