@@ -78,21 +78,29 @@ def parse_requirement_token(tok):
       if "#" in rest:
         name, count_str = rest.rsplit("#", 1)
         result["name"] = name
-        try:
-          result["count"] = int(count_str)
-        except ValueError:
-          result["count"] = None
-          if not placeholder:
-            result["parse_warning"] = f"could not parse count from {tok!r}"
+        if count_str.lower() in ("inf", "infinite"):
+          result["count"] = float("inf")
+          result["is_infinite"] = True
+        else:
+          try:
+            result["count"] = int(count_str)
+          except ValueError:
+            result["count"] = None
+            if not placeholder:
+              result["parse_warning"] = f"could not parse count from {tok!r}"
       elif "." in rest:
         name, tier_str = rest.rsplit(".", 1)
         result["name"] = name
-        try:
-          result["tier"] = int(tier_str)
-        except ValueError:
-          result["tier"] = None
-          if not placeholder:
-            result["parse_warning"] = f"could not parse tier from {tok!r}"
+        if tier_str.lower() in ("inf", "infinite"):
+          result["tier"] = float("inf")
+          result["is_infinite"] = True
+        else:
+          try:
+            result["tier"] = int(tier_str)
+          except ValueError:
+            result["tier"] = None
+            if not placeholder:
+              result["parse_warning"] = f"could not parse tier from {tok!r}"
       else:
         result["name"] = rest
         result["count"] = 1
@@ -124,7 +132,7 @@ def load_progression():
     locations.append(
       {
         "room": (loc["room"]["north"], loc["room"]["east"]),
-        "gives": loc.get("gives", []),
+        "receive": loc.get("receive", []),
         "requires": parse_requires(loc.get("requires")),
         "raw": loc,
       }
@@ -223,7 +231,6 @@ for (org, direction), edge_list in edges_by_room_dir.items():
       gaps = [gaps]
 
     if not gaps:
-      print([*map(lambda x:x['id'],edge_list)])
       geometry_dropped += len(edge_list)
       continue
 
@@ -231,6 +238,7 @@ for (org, direction), edge_list in edges_by_room_dir.items():
     for i, gap in enumerate(gaps):
       base_edge = edge_list[i] if i < len(edge_list) else edge_list[0]
       new_e = dict(base_edge)
+      new_e["gap_index"] = i
       if i >= len(edge_list):
         new_e["id"] = f"{base_edge['id']}_gap_{i}"
 
@@ -259,12 +267,43 @@ for (org, direction), edge_list in edges_by_room_dir.items():
       all_exits_raw.append(new_e)
   else:
     for e in edge_list:
+      e = dict(e)
+      e.setdefault("gap_index", 0)
       all_exits_raw.append(e)
 
 for d in exits_data["doors"]:
   if d.get("gated") or d.get("needs_review"):
     continue
   all_exits_raw.append(d)
+
+# Warps (e.g. the magic water-warp spell): unlike doors, these aren't
+# extracted from game source -- they come straight from progression.json's
+# "warps" list, since some of these links (notably the room-(9,14) x-split
+# case) were never fully recoverable from the vanilla code at all. Each
+# warp produces one exit per room endpoint; requires travels WITH the
+# exit's origin (it's a property of casting the spell from that room, not
+# of whatever the vanilla/shuffled destination happens to be).
+WARP_FALLBACK_X = 710 / 2
+WARP_FALLBACK_Y = 560 / 2
+
+for w in progression["warps"]:
+  rooms = w["rooms"]
+  sides = rooms if w["bidirectional"] else rooms[:1]
+  for i, room in enumerate(sides):
+    other = rooms[1] if room == rooms[0] else rooms[0]
+    all_exits_raw.append(
+      {
+        "id": f"{w['id']}:side{i}",
+        "mechanism": "warp",
+        "origin": {"north": room[0], "east": room[1]},
+        "dest": {"north": other[0], "east": other[1]},
+        "dest_x": WARP_FALLBACK_X,
+        "dest_y": WARP_FALLBACK_Y,
+        "requires": w["requires"],
+      }
+    )
+
+print(f"Warps: {len(progression['warps'])} defined -> {sum(len(w['rooms']) if w['bidirectional'] else 1 for w in progression['warps'])} exit endpoints")
 
 if geometry:
   print(f"Geometry filtering: dropped {geometry_dropped} missing openings.")
@@ -283,7 +322,184 @@ for e in all_exits:
 
 rng = random.Random(SEED)
 edge_exits = [e for e in all_exits if e["mechanism"] == "edge"]
-door_exits = [e for e in all_exits if e["mechanism"] != "edge"]
+warp_exits = [e for e in all_exits if e["mechanism"] == "warp"]
+door_exits = [e for e in all_exits if e["mechanism"] not in ("edge", "warp")]
+
+
+# ---------------------------------------------------------------------------
+# Progression-aware reachability: the GAME already enforces requirements
+# (a gated warp/door simply won't work without the right items) -- nothing
+# for the runtime patch to do. What the shuffler needs to avoid is treating
+# a gated connection as part of the GUARANTEED-reachable backbone before
+# its requirement is actually satisfiable, which would create a shuffle-
+# introduced softlock that doesn't exist in vanilla.
+#
+# playercouldhave is a dict tracking what's currently obtainable:
+#   - (type, name) -> highest count/tier seen, for item/skill/permit/etc.
+#   - "N.E.entrance.directionI" -> 1, once that specific room+gap has been
+#     wired into the shuffle graph (so "entrance.south1" in a requirement
+#     attached to that same room resolves correctly -- see entrance_key()).
+#
+# Locations can depend on OTHER locations transitively (room A's pickup
+# needs an item that only comes from room B's pickup, which might itself
+# be gated). Rather than re-scan everything on every change, unresolved
+# locations get registered in `pending`, keyed by whichever (type,name)
+# token(s) are currently missing; satisfying a token re-checks only the
+# locations registered under it, and any newly-granted receive can itself
+# unblock further pending locations (a worklist, not a single pass).
+# ---------------------------------------------------------------------------
+
+locations_by_room = {}
+for loc in progression["locations"]:
+  locations_by_room.setdefault(loc["room"], []).append(loc)
+
+
+def fmt_coord(n):
+  return str(int(n)) if n == int(n) else str(n)
+
+
+def entrance_key(room, entrance_value):
+  """room.entrance.directionN -- e.g. 19.17.entrance.south0. This is the
+  key playercouldhave uses once THIS room's specific gap has been wired
+  into the shuffle graph (paired with something, either direction)."""
+  return f"{fmt_coord(room[0])}.{fmt_coord(room[1])}.entrance.{entrance_value}"
+
+
+def token_satisfied(tok, have, room):
+  if tok.get("placeholder"):
+    return True # pending real data -- never block progress on these
+  if tok["type"] == "entrance":
+    # entrance.south1 in a requirement attached to `room` means "you
+    # entered THIS room via its south1 gap" -- qualify with room and
+    # check the same key mark_entrance_used() sets when that gap gets
+    # wired into the shuffle graph.
+    return have.get(entrance_key(room, tok["value"]), 0) >= 1
+  key = (tok["type"], tok.get("name"))
+  needed = tok.get("count") or tok.get("tier") or 1
+  return have.get(key, 0) >= needed
+
+
+def group_satisfied(group, have, room):
+  return all(token_satisfied(tok, have, room) for tok in group)
+
+
+def requires_satisfied(requires_groups, have, room):
+  if not requires_groups:
+    return True
+  return any(group_satisfied(g, have, room) for g in requires_groups)
+
+
+def token_key(tok):
+  return (tok["type"], tok.get("name"))
+
+
+def resolved_key(tok, room):
+  """The key this token actually lives under in `have`/`pending` --
+  entrance tokens use the room-qualified string key (entrance_key),
+  everything else uses the plain (type, name) tuple."""
+  if tok["type"] == "entrance":
+    return entrance_key(room, tok["value"])
+  return token_key(tok)
+
+
+def apply_gives(receive_raw, have):
+  """Folds receive tokens into `have`, returning the list of (type,name)
+  keys that actually changed (so callers can wake up anything pending on
+  them). Doesn't handle entrance keys -- those are plain strings set
+  directly by mark_entrance_used, never something a location "receives"."""
+  updated = []
+  for raw_tok in receive_raw:
+    tok = parse_requirement_token(raw_tok)
+    key = token_key(tok)
+    amount = tok.get("count") or tok.get("tier") or 1
+    if amount > have.get(key, 0):
+      have[key] = amount
+      updated.append(key)
+  return updated
+
+
+pending = {}              # token_key -> [location, ...] currently blocked on it
+location_pending_keys = {} # id(location) -> set of token_keys it's registered under
+
+
+def missing_token_keys(requires_groups, have, room):
+  """Union, across every OR-group, of the keys currently failing
+  token_satisfied -- registering under all of them means this location
+  gets re-checked no matter which one resolves first."""
+  missing = set()
+  for group in requires_groups:
+    for tok in group:
+      if not token_satisfied(tok, have, room):
+        missing.add(resolved_key(tok, room))
+  return missing
+
+
+def try_grant_location(loc, have):
+  """Attempt to grant loc's receive now. Returns the list of (type,name)
+  keys newly added to `have` if successful (possibly empty if it only
+  grants entrance-style things, which doesn't happen via receive), or
+  None if still blocked (and (re-)registers it in `pending`)."""
+  room = loc["room"]
+  if requires_satisfied(loc["requires"], have, room):
+    updated = apply_gives(loc.get("receive", []), have)
+    regs = location_pending_keys.pop(id(loc), None)
+    if regs:
+      for k in regs:
+        lst = pending.get(k)
+        if lst and loc in lst:
+          lst.remove(loc)
+          if not lst:
+            del pending[k]
+    return updated
+  else:
+    missing = missing_token_keys(loc["requires"], have, room)
+    location_pending_keys[id(loc)] = missing
+    for k in missing:
+      bucket = pending.setdefault(k, [])
+      if loc not in bucket:
+        bucket.append(loc)
+    return None
+
+
+def propagate(updated_keys, have):
+  """Worklist: a token just changed -> re-check whatever's pending on it
+  -> granting those may change MORE tokens -> keep going until quiet."""
+  worklist = list(updated_keys)
+  while worklist:
+    key = worklist.pop()
+    for loc in list(pending.get(key, [])):
+      result = try_grant_location(loc, have)
+      if result:
+        worklist.extend(result)
+
+
+def mark_reached(room, reached_set, have):
+  """Add room to reached_set and, on first visit, attempt every one of
+  its locations (granting + propagating, or registering as pending)."""
+  is_new = room not in reached_set
+  reached_set.add(room)
+  if is_new:
+    for loc in locations_by_room.get(room, []):
+      result = try_grant_location(loc, have)
+      if result:
+        propagate(result, have)
+
+
+def mark_entrance_used(exit_obj, have):
+  """Whenever an edge exit gets paired (either side -- pairing is always
+  bidirectional), that specific room+direction+gap becomes a real,
+  enterable entrance: anything waiting on "entrance.X" for that exact
+  room+gap can now potentially proceed."""
+  if exit_obj["mechanism"] != "edge":
+    return # only edge exits have a direction+gap_index to qualify
+  room = (exit_obj["origin"]["north"], exit_obj["origin"]["east"])
+  key = entrance_key(room, f"{exit_obj['direction']}{exit_obj.get('gap_index', 0)}")
+  if have.get(key, 0) < 1:
+    have[key] = 1
+    propagate([key], have)
+
+
+playercouldhave = {}
 
 
 def build_spanning_tree(pool, partner_finder, label, seed_reached=None):
@@ -306,12 +522,15 @@ def build_spanning_tree(pool, partner_finder, label, seed_reached=None):
 
   if pre_reached:
     reached = set(pre_reached)
+    for r in pre_reached:
+      mark_reached(r, reached, playercouldhave)
     frontier = [e for room in pre_reached for e in by_room.get(room, [])]
   else:
     rooms_list = list(hubs) if hubs else list(pool_rooms)
     rng.shuffle(rooms_list)
     start = rooms_list[0]
     reached = {start}
+    mark_reached(start, reached, playercouldhave)
     frontier = list(by_room.get(start, []))
   rng.shuffle(frontier)
 
@@ -335,6 +554,12 @@ def build_spanning_tree(pool, partner_finder, label, seed_reached=None):
     a = frontier.pop()
     if a["id"] not in unused:
       continue
+    a_room = (a["origin"]["north"], a["origin"]["east"])
+    if not requires_satisfied(a.get("requires"), playercouldhave, a_room):
+      # not usable yet -- left in `unused` so it's retried once a
+      # frontier refill picks it up again, by which point playercouldhave
+      # may have grown enough to satisfy it
+      continue
 
     candidates = [
       e
@@ -350,8 +575,10 @@ def build_spanning_tree(pool, partner_finder, label, seed_reached=None):
     del unused[a["id"]]
     del unused[b["id"]]
     spanning_pairs.append((a, b))
+    mark_entrance_used(a, playercouldhave)
+    mark_entrance_used(b, playercouldhave)
     b_room = (b["origin"]["north"], b["origin"]["east"])
-    reached.add(b_room)
+    mark_reached(b_room, reached, playercouldhave)
     remaining.discard(b_room)
     for e in by_room.get(b_room, []):
       if e["id"] in unused:
@@ -365,6 +592,8 @@ def build_spanning_tree(pool, partner_finder, label, seed_reached=None):
       if not r_exits:
         continue
       a = r_exits[0]
+      if not requires_satisfied(a.get("requires"), playercouldhave, r):
+        continue # this dead-end's only exit is gated and not yet unlocked
       candidates = [
         e
         for room in reached
@@ -377,7 +606,9 @@ def build_spanning_tree(pool, partner_finder, label, seed_reached=None):
         del unused[a["id"]]
         del unused[b["id"]]
         spanning_pairs.append((a, b))
-        reached.add(r)
+        mark_entrance_used(a, playercouldhave)
+        mark_entrance_used(b, playercouldhave)
+        mark_reached(r, reached, playercouldhave)
 
   leftover = list(unused.values())
   rng.shuffle(leftover)
@@ -392,6 +623,8 @@ def build_spanning_tree(pool, partner_finder, label, seed_reached=None):
     b = rng.choice(candidates)
     leftover.remove(b)
     extra_pairs.append((a, b))
+    mark_entrance_used(a, playercouldhave)
+    mark_entrance_used(b, playercouldhave)
 
   return spanning_pairs + extra_pairs, still_unpaired, reached
 
@@ -411,9 +644,25 @@ edge_pairs, edge_unpaired, edge_reached = build_spanning_tree(
 door_pairs, door_unpaired, door_reached = build_spanning_tree(
   door_exits, door_partner_finder, "doors", seed_reached=edge_reached
 )
+warp_pairs, warp_unpaired, warp_reached = build_spanning_tree(
+  warp_exits, door_partner_finder, "warps", seed_reached=edge_reached
+)
 
-all_pairs = edge_pairs + door_pairs
-all_unpaired = edge_unpaired + door_unpaired
+all_pairs = edge_pairs + door_pairs + warp_pairs
+all_unpaired = edge_unpaired + door_unpaired + warp_unpaired
+
+print(f"playercouldhave (final, accumulated across all pools): "
+      f"{len(playercouldhave)} distinct items/skills/permits tracked")
+
+all_reached = edge_reached | door_reached | warp_reached
+all_rooms = set(edge_exits and {(e['origin']['north'], e['origin']['east']) for e in edge_exits} or set())
+all_rooms |= {(e['origin']['north'], e['origin']['east']) for e in door_exits}
+all_rooms |= {(e['origin']['north'], e['origin']['east']) for e in warp_exits}
+unreached_rooms = all_rooms - all_reached
+if unreached_rooms:
+  print(f"  {len(unreached_rooms)} room(s) never reached (check above pool-specific "
+        f"warnings for cause -- could be gating, could be exhausted exits): "
+        f"{sorted(unreached_rooms)[:10]}")
 
 connections = []
 
@@ -426,6 +675,8 @@ def vanilla_dest_key(e):
 def make_connection(from_exit, to_exit):
   origin = from_exit["origin"]
   vdest = vanilla_dest_key(from_exit)
+  requires_groups = from_exit.get("requires") or []
+  requires_raw = [[tok["raw"] for tok in group] for group in requires_groups]
   return {
     "originNorth": origin["north"],
     "originEast": origin["east"],
@@ -437,6 +688,8 @@ def make_connection(from_exit, to_exit):
     "newY": to_exit.get("dest_y", 255),
     "srcCoord": from_exit.get("src_coord"),
     "direction": from_exit.get("direction"),
+    "mechanism": from_exit["mechanism"],
+    "requires": requires_raw,
     "fromExitId": from_exit["id"],
     "toExitId": to_exit["id"],
   }
