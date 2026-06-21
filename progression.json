@@ -506,9 +506,21 @@
       "receive": ["food:sunflower seed#?", "food:strawberry#1"]
     },
     {
-      "room": { "north": 11, "east": 21 },
+      "room": { "north": 11, "east": 22 },
       "requires": [["item:shark tooth#10", "skill:craft"]],
       "receive": ["craft.emerald"]
+    },
+    {
+      "room": { "north": 12, "east": 25 },
+      "requires": [["item:shark tooth#10", "skill:craft"]],
+      "receive": ["food:gummy bear#10", "item:diamond#50"]
+    },
+    {
+      "room": { "north": 13, "east": 25 },
+      "requires": [
+        ["item:mages hat#1", "misc:magic only resist bypass"]
+      ],
+      "receive": ["item:alpha scepter#1"]
     }
   ],
   "gates": [
