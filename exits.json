@@ -1,6 +1,26 @@
 {
   "edges": [
     {
+      "id": "edge:north:4.0_24.0",
+      "mechanism": "edge",
+      "direction": "north",
+      "origin": {
+        "north": 4,
+        "east": 24
+      },
+      "dest": {
+        "north": 5,
+        "east": 24
+      },
+      "dest_x": null,
+      "dest_y": 510,
+      "gated": false,
+      "gate": null,
+      "one_way": false,
+      "dest_room_exists_in_census": true,
+      "notes": null
+    },
+    {
       "id": "edge:east:14.0_13.0",
       "mechanism": "edge",
       "direction": "east",

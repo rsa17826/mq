@@ -152,7 +152,7 @@
         }
       ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 3,
@@ -389,9 +389,14 @@
           "bottom": 6
         }
       ],
-      "north": []
+      "north": [
+        {
+          "left": 11,
+          "right": 11
+        }
+      ]
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 4,
@@ -417,7 +422,7 @@
       ],
       "north": []
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 4,
@@ -454,7 +459,7 @@
       "east": [],
       "north": []
     },
-    "complete": false
+    "complete": true
   },
   {
     "north": 5,

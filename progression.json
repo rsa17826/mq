@@ -975,6 +975,22 @@
       "room": { "north": 500, "east": 501 },
       "requires": [["weapon:bane blade", "skill:reveal"]],
       "receive": ["quest:alpha blade.1"]
+    },
+    {
+      "room": { "north": 4, "east": 26 },
+      "requires": [
+        ["permit:bomb", "entrance.south3", "item:key#1"],
+        ["permit:bomb", "entrance.south2", "item:key#1"],
+        ["permit:bomb", "entrance.south1", "item:key#1"]
+      ],
+      "receive": ["weapon:shadow staff"]
+    },
+    {
+      "room": { "north": 4, "east": 25 },
+      "requires": [
+        ["??? sign debugger"]
+      ],
+      "receive": ["???"]
     }
   ],
   "gates": [
