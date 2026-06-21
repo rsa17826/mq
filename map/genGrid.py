@@ -248,17 +248,18 @@ def generate_html():
     max_row = 0
 
     for filename in files:
+        # Changed regex and assignments to reflect north, east format
         match = re.match(r"^(\d+)[,\-](\d+)", filename)
         if match:
-            east = int(match.group(1))
-            north = int(match.group(2))
-            parsed_tiles.append((east, north, filename))
+            north = int(match.group(1))
+            east = int(match.group(2))
+            parsed_tiles.append((north, east, filename))
             if north > max_row:
                 max_row = north
 
     html_elements = []
 
-    for east, north, filename in parsed_tiles:
+    for north, east, filename in parsed_tiles:
         grid_col = east + 1
         grid_row = (max_row - north) + 1
         img_path = f"{IMAGE_FOLDER}/{filename}"

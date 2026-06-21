@@ -176,16 +176,16 @@ def main():
     for filename in files:
         match = re.match(r"^(\d+)[,\-](\d+)", filename)
         if match:
-            east = int(match.group(1))
-            north = int(match.group(2))
-            parsed_tiles.append((east, north, filename))
+            north = int(match.group(1))
+            east = int(match.group(2))
+            parsed_tiles.append((north, east, filename))
 
     if not parsed_tiles:
         print("[-] No valid tiles found in image folder.")
         return
 
-    unique_norths = sorted(list(set(t[1] for t in parsed_tiles)), reverse=True)
-    unique_easts = sorted(list(set(t[0] for t in parsed_tiles)))
+    unique_norths = sorted(list(set(t[0] for t in parsed_tiles)), reverse=True)
+    unique_easts = sorted(list(set(t[1] for t in parsed_tiles)))
 
     north_to_track = {n: idx for idx, n in enumerate(unique_norths)}
     east_to_track = {e: idx for idx, e in enumerate(unique_easts)}
@@ -262,7 +262,7 @@ def main():
             })
 
     html_elements = []
-    for east, north, filename in parsed_tiles:
+    for north, east, filename in parsed_tiles:
         track_col = east_to_track[east]
         track_row = north_to_track[north]
 
