@@ -3,6 +3,9 @@ import os
 import re
 import json
 
+# make warp colors same color on each side!!!
+# make warps show correct dest not vinela dest!!!!!!!!!!!1
+
 # Target folder pointing to the downsized versions
 IMAGE_FOLDER = "mapSmall"
 FULL_IMAGE_FOLDER = "map"
@@ -121,7 +124,7 @@ html_start = f"""<!DOCTYPE html>
             border-radius: 50%;
         }}
         .progression-icon {{
-            width: 28px;
+            height: 28px;
             z-index: 12;
             filter: drop-shadow(0px 1px 2px rgba(0,0,0,0.8));
         }}
