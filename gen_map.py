@@ -538,8 +538,8 @@ def main():
         track_col = east_to_track[east]
         track_row = north_to_track[north]
 
-        pixel_left = 20 + track_col * tile_step_w
-        pixel_top = 20 + track_row * tile_step_h
+        pixel_left = track_col * tile_step_w
+        pixel_top = track_row * tile_step_h
         room_key = f"{north}_{east}"
 
         placeholder_img_path = f"{IMAGE_FOLDER}/{filename}"
