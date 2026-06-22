@@ -1,4 +1,4 @@
-stairs drop you off on the stairs and you get warped back isntantly
+ drop you off on the stairs and you get warped back isntantly
 
 entering room 15,14 from left entrance leads to wrong location
 
@@ -117,3 +117,26 @@ MathQuest.js:109340 [ER DEBUG] Transition initiated. From room: 300,300 at posit
 MathQuest.js:109376 [ER DEBUG] Checking redirection for vanilla move path key: 300_300_6_21
 MathQuest.js:109455 [ER DEBUG] Success! Redirecting room target to: 14,16 Placing character at: 253.5714,76.3636
 REMEMBER towns should not have their exits changed to a warp
+
+[ER DEBUG] Transition initiated. From room: 15,17 at position X/Y: 590,256
+MathQuest.js:21970 in shortcut
+MathQuest.js:109376 [ER DEBUG] Checking redirection for vanilla move path key: 15_17_17.1_19
+MathQuest.js:109489 [ER DEBUG] No randomizer override entry for key [15_17_17.1_19]. Retaining game defaults.
+MathQuest.js:30744 0 0 0 0
+MathQuest.js:109340 [ER DEBUG] Transition initiated. From room: 17.1,19 at position X/Y: 109,433
+MathQuest.js:109376 [ER DEBUG] Checking redirection for vanilla move path key: 17.1_19_15_17
+MathQuest.js:109489 [ER DEBUG] No randomizer override entry for key [17.1_19_15_17]. Retaining game defaults.
+MathQuest.js:30744 0 0 0 0
+MathQuest.js:109340 [ER DEBUG] Transition initiated. From room: 15,17 at position X/Y: 590,256
+MathQuest.js:21970 in shortcut
+MathQuest.js:109376 [ER DEBUG] Checking redirection for vanilla move path key: 15_17_17.1_19
+MathQuest.js:109489 [ER DEBUG] No randomizer override entry for key [15_17_17.1_19]. Retaining game defaults.
+MathQuest.js:30744 0 0 0 0
+MathQuest.js:109340 [ER DEBUG] Transition initiated. From room: 17.1,19 at position X/Y: 593,92
+MathQuest.js:109376 [ER DEBUG] Checking redirection for vanilla move path key: 17.1_19_17_19
+MathQuest.js:109489 [ER DEBUG] No randomizer override entry for key [17.1_19_17_19]. Retaining game defaults.
+MathQuest.js:30744 0 0 0 0
+MathQuest.js:109340 [ER DEBUG] Transition initiated. From room: 17,19 at position X/Y: 51,480
+MathQuest.js:109376 [ER DEBUG] Checking redirection for vanilla move path key: 17_19_17.1_19
+MathQuest.js:109489 [ER DEBUG] No randomizer override entry for key [17_19_17.1_19]. Retaining game defaults.
+MathQuest.js:30744 0 0 0 0

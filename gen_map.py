@@ -17,8 +17,8 @@ EXITS_JSON_PATH = "./exits.json"
 PROGRESSION_ICON_PATH = "./mapimgs/"
 
 # Constants scaled down to match the layout sizes perfectly
-TILE_WIDTH = 149.76
-TILE_HEIGHT = 118.32
+TILE_WIDTH = 710/2
+TILE_HEIGHT = 560/2
 BLOCKS_X = 14
 BLOCKS_Y = 11
 
