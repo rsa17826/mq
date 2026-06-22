@@ -39,6 +39,9 @@ html_start = f"""<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>High-Performance Interactive Map Viewer</title>
     <style>
+        img {{
+            pointer-events:none;
+        }}
         html, body {{
             margin: 0;
             background-color: #111;
@@ -323,7 +326,11 @@ viewport.addEventListener("wheel", (e) => {
     requestUpdate()
 }, { passive: false })
 
-viewport.addEventListener("contextmenu", (e) => e.preventDefault())
+viewport.addEventListener("contextmenu", (e) => {
+  e.preventDefault()
+  e.stopPropagation()
+  e.stopImmediatePropagation()
+}, true)
 
 function centerMap() {
   originX = (viewport.clientWidth - grid.offsetWidth * scale) / 2
@@ -534,14 +541,6 @@ def main():
         base_y = track_row * TILE_HEIGHT
         halfTileWidth = (TILE_WIDTH / BLOCKS_X)/2
         halfTileHeight = (TILE_HEIGHT / BLOCKS_Y)/2
-        if direction == "west":
-            arrow_src_x, arrow_src_y = base_x+halfTileWidth, base_y + src_coord_scaled
-        elif direction == "east":
-            arrow_src_x, arrow_src_y = base_x + TILE_WIDTH-halfTileWidth, base_y + src_coord_scaled
-        elif direction == "north":
-            arrow_src_x, arrow_src_y = base_x + src_coord_scaled, base_y+halfTileHeight
-        elif direction == "south":
-            arrow_src_x, arrow_src_y = base_x + src_coord_scaled, base_y + TILE_HEIGHT-halfTileHeight
 
         dest_o_n, dest_o_e = int(conn["newDestNorth"]), int(conn["newDestEast"])
         
@@ -556,14 +555,27 @@ def main():
         float_new_x = float(new_x) if new_x is not None else ROOM_INTERNAL_WIDTH / 2
         float_new_y = float(new_y) if new_y is not None else ROOM_INTERNAL_HEIGHT / 2
         
-        # newX/newY are already precise block-centered pixel positions
-        # (computed in shuffle_exits.py as idx*block_size + block_size/2) --
-        # just scale them into the rendered tile space directly, the same
-        # way arrow_src_x/y are computed above. No re-snapping needed.
-        
-        arrow_dest_x = dest_base_x + (float_new_x * scale_x_conn)
-        arrow_dest_y = dest_base_y + (float_new_y * scale_y_conn)
+        # Base scaled destination coordinates before directional offset adjustments
+        raw_dest_x = dest_base_x + (float_new_x * scale_x_conn)
+        raw_dest_y = dest_base_y + (float_new_y * scale_y_conn)
 
+        # Calculate both source and destination coordinates with matching grid offsets
+        if direction == "west":
+            arrow_src_x, arrow_src_y = base_x + halfTileWidth, base_y + src_coord_scaled
+            arrow_dest_x, arrow_dest_y = raw_dest_x + (halfTileWidth*2), raw_dest_y
+        elif direction == "east":
+            arrow_src_x, arrow_src_y = base_x + TILE_WIDTH - halfTileWidth, base_y + src_coord_scaled
+            arrow_dest_x, arrow_dest_y = raw_dest_x - (halfTileWidth*2), raw_dest_y
+        elif direction == "north":
+            arrow_src_x, arrow_src_y = base_x + src_coord_scaled, base_y + halfTileHeight
+            arrow_dest_x, arrow_dest_y = raw_dest_x, raw_dest_y + (halfTileHeight*2)
+        elif direction == "south":
+            arrow_src_x, arrow_src_y = base_x + src_coord_scaled, base_y + TILE_HEIGHT - halfTileHeight
+            arrow_dest_x, arrow_dest_y = raw_dest_x, raw_dest_y - (halfTileHeight*2)
+        if exitHeight%2:
+          arrow_src_y +=halfTileHeight
+        if exitSrcWidth%2:
+          arrow_src_x +=halfTileWidth
         mid_x, mid_y = (arrow_src_x + arrow_dest_x) / 2, (arrow_src_y + arrow_dest_y) / 2
         if direction in ["west", "east"]:
             ctrl_x, ctrl_y = (mid_x + (25 if direction == "east" else -25), mid_y)
@@ -573,7 +585,7 @@ def main():
 
         if room_key in js_routes_db:
             js_routes_db[room_key].append({"d": [arrow_src_x, arrow_src_y, ctrl_x, ctrl_y, arrow_dest_x, arrow_dest_y], "color": color})
-
+            
     # Step 2: Handle warp doors
     room_doors_index = {}
     for d in doors:
