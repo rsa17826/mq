@@ -18,22 +18,44 @@ BLOCK_H = 560 / 11 # 11 blocks vertically (0-10)
 
 
 def load_room_geometry():
+  """Returns (geo, room_areas):
+    geo[(north,east)] = {"west": [...], "south": [...], "east": [...], "north": [...]}
+      (the per-side gap arrays, as before)
+    room_areas[(north,east)] = [{"requires": parsed_reqs, "groups": [[(side,idx),...],...]}, ...]
+      (room-internal connectivity scenarios -- a room with no entry here
+      has no internal gating data, treated as a single open floor plan)
+  """
   path = os.path.join(OUT_DIR, "room_geometry.json")
   if not os.path.exists(path):
     print(f"NOTE: no room_geometry.json found at {path} -- using fallback behavior.")
-    return {}
+    return {}, {}
   raw = json.load(open(path))
   geo = {}
+  room_areas = {}
   if isinstance(raw, list):
     for rec in raw:
-      geo[(float(rec["north"]), float(rec["east"]))] = rec["exits"]
+      room = (float(rec["north"]), float(rec["east"]))
+      geo[room] = rec["exits"]
+      if rec.get("areas"):
+        scenarios = []
+        for sc in rec["areas"]:
+          groups = [[(g["side"], g["idx"]) for g in group] for group in sc["areas"]]
+          scenarios.append({"requires": parse_requires(sc.get("reqs")), "groups": groups})
+        room_areas[room] = scenarios
   elif isinstance(raw, dict):
     for k, v in raw.items():
       n_str, e_str = k.split("_")
-      geo[(float(n_str), float(e_str))] = v.get("exits", v)
+      room = (float(n_str), float(e_str))
+      geo[room] = v.get("exits", v)
+      if v.get("areas"):
+        scenarios = []
+        for sc in v["areas"]:
+          groups = [[(g["side"], g["idx"]) for g in group] for group in sc["areas"]]
+          scenarios.append({"requires": parse_requires(sc.get("reqs")), "groups": groups})
+        room_areas[room] = scenarios
   else:
     raise ValueError("room_geometry.json must be a list or dict")
-  return geo
+  return geo, room_areas
 
 
 REQUIREMENT_PREFIXES = {
@@ -206,7 +228,7 @@ def load_progression():
 
 
 exits_data = json.load(open(f"{OUT_DIR}/exits.json"))
-geometry = load_room_geometry()
+geometry, room_areas = load_room_geometry()
 progression = load_progression()
 
 # Group vanilla edges by room and direction
@@ -499,6 +521,82 @@ def mark_entrance_used(exit_obj, have):
     propagate([key], have)
 
 
+# ---------------------------------------------------------------------------
+# Room-internal connectivity (room_geometry.json's "areas" field): which of
+# a room's own exits are mutually walkable from each other isn't always a
+# given -- e.g. a bombable wall splits a room into two halves until you
+# have permit:bomb, at which point they merge into one. Each scenario lists
+# its own "reqs" (same OR-of-AND convention) and the resulting groups of
+# {side,idx} exits that are connected under it. A room's EFFECTIVE grouping
+# at any moment is the union of every CURRENTLY-satisfied scenario's groups
+# (scenarios don't replace each other, they layer on top -- the unconditional
+# scenario, reqs=[[]], is always active and acts as the baseline).
+#
+# Recomputed live (not cached) since which scenarios are active changes as
+# playercouldhave grows -- these are small per-room union-finds, cheap.
+# ---------------------------------------------------------------------------
+
+known_room_exits = {} # room -> set of (side, idx) pairs that exist per geometry
+for room, sides in geometry.items():
+  pairs = set()
+  for side in ("north", "south", "east", "west"):
+    for idx in range(len(sides.get(side, []))):
+      pairs.add((side, idx))
+  known_room_exits[room] = pairs
+
+
+def room_group_of(room, side, idx, have):
+  scenarios = room_areas.get(room)
+  target = (side, idx)
+  if not scenarios:
+    return room # no internal gating data at all -- one open group
+  parent = {p: p for p in known_room_exits.get(room, {target})}
+  parent.setdefault(target, target)
+
+  def find(p):
+    while parent[p] != p:
+      p = parent[p]
+    return p
+
+  def union(p, q):
+    rp, rq = find(p), find(q)
+    if rp != rq:
+      parent[rp] = rq
+
+  for sc in scenarios:
+    if not requires_satisfied(sc["requires"], have, room):
+      continue
+    for group in sc["groups"]:
+      for p in group:
+        parent.setdefault(p, p)
+      for p in group[1:]:
+        union(group[0], p)
+  return find(target)
+
+
+def room_reachable_internally(exit_obj, have):
+  """Is this exit usable right now FROM WITHIN its own room -- i.e. is it
+  in the same live-computed connectivity group as some exit in that room
+  that's already been entrance-marked? If NOTHING in the room has been
+  marked yet, this exit would BE the first entrance, which is always
+  allowed (nothing to be disconnected from yet) -- otherwise this check
+  would permanently block a room's very first use of itself."""
+  if exit_obj["mechanism"] != "edge":
+    return True # area grouping only applies to geometry-based edges
+  room = (exit_obj["origin"]["north"], exit_obj["origin"]["east"])
+  if room not in room_areas:
+    return True
+  side, idx = exit_obj["direction"], exit_obj.get("gap_index", 0)
+  marked = [
+    (s, i) for (s, i) in known_room_exits.get(room, set())
+    if have.get(entrance_key(room, f"{s}{i}"), 0) >= 1
+  ]
+  if not marked:
+    return True
+  my_group = room_group_of(room, side, idx, have)
+  return any(room_group_of(room, s, i, have) == my_group for (s, i) in marked)
+
+
 playercouldhave = {}
 
 
@@ -555,7 +653,7 @@ def build_spanning_tree(pool, partner_finder, label, seed_reached=None):
     if a["id"] not in unused:
       continue
     a_room = (a["origin"]["north"], a["origin"]["east"])
-    if not requires_satisfied(a.get("requires"), playercouldhave, a_room):
+    if not requires_satisfied(a.get("requires"), playercouldhave, a_room) or not room_reachable_internally(a, playercouldhave):
       # not usable yet -- left in `unused` so it's retried once a
       # frontier refill picks it up again, by which point playercouldhave
       # may have grown enough to satisfy it
@@ -592,7 +690,7 @@ def build_spanning_tree(pool, partner_finder, label, seed_reached=None):
       if not r_exits:
         continue
       a = r_exits[0]
-      if not requires_satisfied(a.get("requires"), playercouldhave, r):
+      if not requires_satisfied(a.get("requires"), playercouldhave, r) or not room_reachable_internally(a, playercouldhave):
         continue # this dead-end's only exit is gated and not yet unlocked
       candidates = [
         e

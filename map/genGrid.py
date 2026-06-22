@@ -2,7 +2,7 @@ import os
 import re
 import json
 
-IMAGE_FOLDER = "map"
+IMAGE_FOLDER = "mapSmall"
 OUTPUT_FILE = "index.html"
 GEOMETRY_JSON_PATH = "./room_geometry.json"
 
@@ -70,32 +70,26 @@ html_start = """<!DOCTYPE html>
             width: 100%;
             height: 100%;
         }
-        /* Style for incomplete base rooms */
+        /* Style for complete rooms */
         .exit-square {
             position: absolute;
-            background-color: #a009;
+            background-color: #00a9;
             box-sizing: border-box;
-            border: 1px solid #ff000055;
+            border: 1px solid #00ffff55;
             pointer-events: auto; /* Enable clicking */
             cursor: pointer;
             z-index: 10;
         }
-        /* Style for baseline complete rooms */
-        .exit-square.room-complete {
-            background-color: #00a9;
-            border: 1px solid #00ffff55;
-        }
-        /* Highlight when clicked/selected in the active group buffer */
+        /* Highlight when clicked/selected */
         .exit-square.selected {
             background-color: rgba(255, 215, 0, 0.75) !important;
             border: 2px solid #ffd700 !important;
             z-index: 20;
         }
-        /* New style applied to squares that have successfully been mapped into an area */
-        .exit-square.completed {
-            background-color: rgba(0, 200, 0, 0.6) !important;
-            border: 2px solid #00ff00 !important;
-            z-index: 15;
+        /* New style for incomplete rooms */
+        .exit-square.incomplete {
+            background-color: #a009;
+            border: 1px solid #ff000055;
         }
 
         /* Floating notification indicator style */
@@ -179,6 +173,7 @@ html_end = """    </div>
                 event.preventDefault();
 
                 const posStr = this.getAttribute('data-pos');
+                const [north, east] = posStr.split(',').map(Number);
 
                 // Fetch full internal data geometry payload from injected script metadata index
                 const rawRoomData = GEOM_METADATA_INDEX[posStr];
@@ -210,16 +205,11 @@ html_end = """    </div>
                         showToast(`Saved Area Group for Room ${posStr}!`);
                     });
 
-                    // Transition selected gold squares to the completed green class state
-                    selectedExits.forEach(el => {
-                        el.classList.remove('selected');
-                        el.classList.add('completed');
-                    });
-
-                    // Reset the buffer to start mapping the next independent zone inside this room
+                    // Clear highlighted selections to start mapping the next sub-zone
+                    document.querySelectorAll('.exit-square.selected').forEach(el => el.classList.remove('selected'));
                     selectedExits = [];
                 } else {
-                    // Right-clicked with empty selection buffer: reset tracking completely
+                    // Right-clicked with empty selection buffer, reset tracking node context completely
                     document.querySelectorAll('.exit-square.selected').forEach(el => el.classList.remove('selected'));
                     selectedExits = [];
                     currentTileKey = posStr;
@@ -282,11 +272,10 @@ def generate_html():
         tile_exits = room_data.get("exits", {})
         is_complete = room_data.get("complete", False)
 
-        # Retain original schema contents
+        # Retain original schema object contents so they can be extended cleanly via JavaScript tools
         js_metadata_lookup[f"{north},{east}"] = room_data
 
-        # Initial class states based on room level completion status
-        class_modifier = " room-complete" if is_complete else ""
+        class_modifier = "" if is_complete else " incomplete"
         squares_html = []
 
         if tile_exits and isinstance(tile_exits, dict):
@@ -300,14 +289,6 @@ def generate_html():
                 for idx, bounds in enumerate(bounds_list):
                     if not bounds or not isinstance(bounds, dict):
                         continue
-
-                    # Check if this exit was already stored in an area segment to persist green state on build reload
-                    completed_modifier = ""
-                    if "areas" in room_data:
-                        for area in room_data["areas"]:
-                            if any(item.get("side") == side and item.get("idx") == idx for item in area):
-                                completed_modifier = " completed"
-                                break
 
                     if side in ["west", "east"]:
                         if bounds.get("top") is None or bounds.get("bottom") is None:
@@ -323,7 +304,7 @@ def generate_html():
                         h_size = ((end_val - start_val) + 1) * BLOCK_HEIGHT_PCT
 
                         squares_html.append(
-                            f'<div class="exit-square{class_modifier}{completed_modifier}" data-side="{side}" data-idx="{idx}" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%;"></div>'
+                            f'<div class="exit-square{class_modifier}" data-side="{side}" data-idx="{idx}" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%;"></div>'
                         )
 
                     elif side in ["north", "south"]:
@@ -340,7 +321,7 @@ def generate_html():
                         h_size = BLOCK_HEIGHT_PCT
 
                         squares_html.append(
-                            f'<div class="exit-square{class_modifier}{completed_modifier}" data-side="{side}" data-idx="{idx}" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%;"></div>'
+                            f'<div class="exit-square{class_modifier}" data-side="{side}" data-idx="{idx}" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%;"></div>'
                         )
 
         overlay_content = "\n".join(squares_html)
