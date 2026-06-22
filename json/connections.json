@@ -12834,48 +12834,6 @@
       "toExitId": "door:stairsDown:9_22_10.1_21"
     },
     {
-      "originNorth": 9,
-      "originEast": 13,
-      "vanillaDestNorth": 9,
-      "vanillaDestEast": 14,
-      "newDestNorth": 9,
-      "newDestEast": 14,
-      "newX": 355.0,
-      "newY": 280.0,
-      "srcCoord": null,
-      "direction": null,
-      "mechanism": "warp",
-      "requires": [
-        [
-          "magic:fire.3?",
-          "magic:drain.1?"
-        ]
-      ],
-      "fromExitId": "waterwarp_9_14_9_13:side1",
-      "toExitId": "waterwarp_9_14_9_13:side0"
-    },
-    {
-      "originNorth": 9,
-      "originEast": 14,
-      "vanillaDestNorth": 9,
-      "vanillaDestEast": 13,
-      "newDestNorth": 9,
-      "newDestEast": 13,
-      "newX": 355.0,
-      "newY": 280.0,
-      "srcCoord": null,
-      "direction": null,
-      "mechanism": "warp",
-      "requires": [
-        [
-          "magic:fire.3?",
-          "magic:drain.1?"
-        ]
-      ],
-      "fromExitId": "waterwarp_9_14_9_13:side0",
-      "toExitId": "waterwarp_9_14_9_13:side1"
-    },
-    {
       "originNorth": 16,
       "originEast": 25,
       "vanillaDestNorth": 15,

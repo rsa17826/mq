@@ -1,0 +1,5252 @@
+[
+  {
+    "north": 4,
+    "east": 19,
+    "comparisons": [
+      {
+        "name": "isles",
+        "value": "3",
+        "line": 53528
+      }
+    ],
+    "assignments": [
+      {
+        "name": "isles",
+        "value": "4",
+        "line": 53532
+      }
+    ]
+  },
+  {
+    "north": 4,
+    "east": 26,
+    "comparisons": [
+      {
+        "name": "isles",
+        "value": "18",
+        "line": 48174
+      },
+      {
+        "name": "isles",
+        "value": "22",
+        "line": 48175
+      },
+      {
+        "name": "isles",
+        "value": "18",
+        "line": 57054
+      },
+      {
+        "name": "isles",
+        "value": "22",
+        "line": 57064
+      }
+    ],
+    "assignments": [
+      {
+        "name": "isles",
+        "value": "19",
+        "line": 57058
+      },
+      {
+        "name": "isles",
+        "value": "23",
+        "line": 57073
+      }
+    ]
+  },
+  {
+    "north": 5,
+    "east": 9,
+    "comparisons": [
+      {
+        "name": "rings",
+        "value": "5",
+        "line": 43760
+      },
+      {
+        "name": "access",
+        "value": "4",
+        "line": 60529
+      }
+    ],
+    "assignments": []
+  },
+  {
+    "north": 5,
+    "east": 20,
+    "comparisons": [
+      {
+        "name": "isles",
+        "value": "12",
+        "line": 23729
+      },
+      {
+        "name": "isles",
+        "value": "13",
+        "line": 23739
+      }
+    ],
+    "assignments": [
+      {
+        "name": "isles",
+        "value": "14",
+        "line": 53714
+      }
+    ]
+  },
+  {
+    "north": 6,
+    "east": 12,
+    "comparisons": [
+      {
+        "name": "geo",
+        "value": "5",
+        "line": 32435
+      },
+      {
+        "name": "rings",
+        "value": "12",
+        "line": 32436
+      },
+      {
+        "name": "geo",
+        "value": "5",
+        "line": 32447
+      },
+      {
+        "name": "rings",
+        "value": "12",
+        "line": 32448
+      },
+      {
+        "name": "geo",
+        "value": "0",
+        "line": 56195
+      },
+      {
+        "name": "geo",
+        "value": "0",
+        "line": 56202
+      },
+      {
+        "name": "geo",
+        "value": "1",
+        "line": 56211
+      },
+      {
+        "name": "geo",
+        "value": "1",
+        "line": 56219
+      },
+      {
+        "name": "geo",
+        "value": "2",
+        "line": 56226
+      },
+      {
+        "name": "oMan",
+        "value": "16",
+        "line": 56238
+      },
+      {
+        "name": "oMan",
+        "value": "17",
+        "line": 56243
+      },
+      {
+        "name": "oMan",
+        "value": "18",
+        "line": 56248
+      },
+      {
+        "name": "geo",
+        "value": "3",
+        "line": 56291
+      },
+      {
+        "name": "geo",
+        "value": "4",
+        "line": 56303
+      },
+      {
+        "name": "rings",
+        "value": "12",
+        "line": 56327
+      },
+      {
+        "name": "rings",
+        "value": "12",
+        "line": 56335
+      },
+      {
+        "name": "geo",
+        "value": "5",
+        "line": 56340
+      },
+      {
+        "name": "geo",
+        "value": "5",
+        "line": 60557
+      },
+      {
+        "name": "rings",
+        "value": "12",
+        "line": 60558
+      }
+    ],
+    "assignments": [
+      {
+        "name": "geo",
+        "value": "++",
+        "line": 32430
+      },
+      {
+        "name": "rings",
+        "value": "13",
+        "line": 32443
+      },
+      {
+        "name": "seeds",
+        "value": "1",
+        "line": 32461
+      },
+      {
+        "name": "geo",
+        "value": "1",
+        "line": 56208
+      },
+      {
+        "name": "geo",
+        "value": "3",
+        "line": 56236
+      },
+      {
+        "name": "oMan",
+        "value": "17",
+        "line": 56242
+      },
+      {
+        "name": "oMan",
+        "value": "19",
+        "line": 56288
+      },
+      {
+        "name": "geo",
+        "value": "5",
+        "line": 56322
+      }
+    ]
+  },
+  {
+    "north": 6,
+    "east": 24,
+    "comparisons": [
+      {
+        "name": "pam",
+        "value": "11",
+        "line": 48302
+      }
+    ],
+    "assignments": []
+  },
+  {
+    "north": 7,
+    "east": 10,
+    "comparisons": [
+      {
+        "name": "gTree",
+        "value": "16",
+        "line": 22560
+      },
+      {
+        "name": "gTree",
+        "value": "18",
+        "line": 22562
+      },
+      {
+        "name": "gTree",
+        "value": "19",
+        "line": 22563
+      },
+      {
+        "name": "gTree",
+        "value": "19",
+        "line": 56933
+      }
+    ],
+    "assignments": [
+      {
+        "name": "gTree",
+        "value": "17",
+        "line": 56929
+      },
+      {
+        "name": "gTree",
+        "value": "20",
+        "line": 56938
+      }
+    ]
+  },
+  {
+    "north": 7,
+    "east": 11,
+    "comparisons": [
+      {
+        "name": "dream",
+        "value": "2",
+        "line": 22857
+      }
+    ],
+    "assignments": [
+      {
+        "name": "gTree",
+        "value": "16",
+        "line": 42202
+      }
+    ]
+  },
+  {
+    "north": 7,
+    "east": 22,
+    "comparisons": [
+      {
+        "name": "gTree",
+        "value": "18",
+        "line": 48340
+      },
+      {
+        "name": "isles",
+        "value": "17",
+        "line": 57352
+      }
+    ],
+    "assignments": []
+  },
+  {
+    "north": 8,
+    "east": 9,
+    "comparisons": [
+      {
+        "name": "mChal",
+        "value": "0",
+        "line": 22396
+      },
+      {
+        "name": "seeds",
+        "value": "0",
+        "line": 22409
+      }
+    ],
+    "assignments": []
+  },
+  {
+    "north": 8,
+    "east": 12,
+    "comparisons": [
+      {
+        "name": "access",
+        "value": "2",
+        "line": 20976
+      },
+      {
+        "name": "bBomb",
+        "value": "4",
+        "line": 20983
+      },
+      {
+        "name": "isles",
+        "value": "8",
+        "line": 57368
+      },
+      {
+        "name": "isles",
+        "value": "9",
+        "line": 57374
+      },
+      {
+        "name": "isles",
+        "value": "10",
+        "line": 57379
+      },
+      {
+        "name": "isles",
+        "value": "11",
+        "line": 57393
+      },
+      {
+        "name": "isles",
+        "value": "11",
+        "line": 57407
+      },
+      {
+        "name": "isles",
+        "value": "12",
+        "line": 57420
+      }
+    ],
+    "assignments": [
+      {
+        "name": "isles",
+        "value": "9",
+        "line": 57372
+      },
+      {
+        "name": "isles",
+        "value": "11",
+        "line": 57390
+      },
+      {
+        "name": "isles",
+        "value": "12",
+        "line": 57418
+      }
+    ]
+  },
+  {
+    "north": 9,
+    "east": 11,
+    "comparisons": [
+      {
+        "name": "pam",
+        "value": "7",
+        "line": 49117
+      }
+    ],
+    "assignments": []
+  },
+  {
+    "north": 9,
+    "east": 14,
+    "comparisons": [
+      {
+        "name": "rings",
+        "value": "8",
+        "line": 35097
+      }
+    ],
+    "assignments": []
+  },
+  {
+    "north": 9,
+    "east": 18,
+    "comparisons": [
+      {
+        "name": "isles",
+        "value": "9",
+        "line": 57442
+      }
+    ],
+    "assignments": [
+      {
+        "name": "isles",
+        "value": "10",
+        "line": 57445
+      }
+    ]
+  },
+  {
+    "north": 9,
+    "east": 19,
+    "comparisons": [
+      {
+        "name": "gTree",
+        "value": "18",
+        "line": 31216
+      }
+    ],
+    "assignments": []
+  },
+  {
+    "north": 9,
+    "east": 20,
+    "comparisons": [
+      {
+        "name": "isles",
+        "value": "6",
+        "line": 50001
+      }
+    ],
+    "assignments": []
+  },
+  {
+    "north": 9,
+    "east": 21,
+    "comparisons": [
+      {
+        "name": "pam",
+        "value": "0",
+        "line": 21787
+      }
+    ],
+    "assignments": []
+  },
+  {
+    "north": 9,
+    "east": 25,
+    "comparisons": [
+      {
+        "name": "curse",
+        "value": "5",
+        "line": 48697
+      },
+      {
+        "name": "curse",
+        "value": "6",
+        "line": 48698
+      },
+      {
+        "name": "curse",
+        "value": "5",
+        "line": 58300
+      },
+      {
+        "name": "curse",
+        "value": "6",
+        "line": 58306
+      }
+    ],
+    "assignments": [
+      {
+        "name": "curse",
+        "value": "6",
+        "line": 21403
+      }
+    ]
+  },
+  {
+    "north": 9,
+    "east": 26,
+    "comparisons": [
+      {
+        "name": "curse",
+        "value": "6",
+        "line": 48666
+      }
+    ],
+    "assignments": [
+      {
+        "name": "curse",
+        "value": "7",
+        "line": 48667
+      }
+    ]
+  },
+  {
+    "north": 10,
+    "east": 10,
+    "comparisons": [
+      {
+        "name": "dream",
+        "value": "8",
+        "line": 56554
+      },
+      {
+        "name": "dream",
+        "value": "9",
+        "line": 56558
+      },
+      {
+        "name": "dream",
+        "value": "10",
+        "line": 56563
+      },
+      {
+        "name": "dream",
+        "value": "11",
+        "line": 56576
+      }
+    ],
+    "assignments": [
+      {
+        "name": "dream",
+        "value": "9",
+        "line": 56556
+      },
+      {
+        "name": "dream",
+        "value": "11",
+        "line": 56574
+      }
+    ]
+  },
+  {
+    "north": 10,
+    "east": 15,
+    "comparisons": [
+      {
+        "name": "oMan",
+        "value": "8",
+        "line": 59810
+      },
+      {
+        "name": "oMan",
+        "value": "9",
+        "line": 59822
+      },
+      {
+        "name": "oMan",
+        "value": "7",
+        "line": 59827
+      },
+      {
+        "name": "oMan",
+        "value": "6",
+        "line": 59832
+      },
+      {
+        "name": "oMan",
+        "value": "4",
+        "line": 59839
+      },
+      {
+        "name": "oMan",
+        "value": "5",
+        "line": 59840
+      }
+    ],
+    "assignments": [
+      {
+        "name": "oMan",
+        "value": "9",
+        "line": 59821
+      },
+      {
+        "name": "oMan",
+        "value": "7",
+        "line": 59837
+      },
+      {
+        "name": "oMan",
+        "value": "5",
+        "line": 59852
+      }
+    ]
+  },
+  {
+    "north": 10,
+    "east": 16,
+    "comparisons": [
+      {
+        "name": "rings",
+        "value": "8",
+        "line": 43389
+      }
+    ],
+    "assignments": []
+  },
+  {
+    "north": 10,
+    "east": 17,
+    "comparisons": [
+      {
+        "name": "pam",
+        "value": "5",
+        "line": 49312
+      }
+    ],
+    "assignments": []
+  },
+  {
+    "north": 10,
+    "east": 19,
+    "comparisons": [
+      {
+        "name": "gTree",
+        "value": "11",
+        "line": 22557
+      }
+    ],
+    "assignments": [
+      {
+        "name": "gTree",
+        "value": "12",
+        "line": 56923
+      }
+    ]
+  },
+  {
+    "north": 10,
+    "east": 20,
+    "comparisons": [
+      {
+        "name": "isles",
+        "value": "6",
+        "line": 57455
+      }
+    ],
+    "assignments": []
+  },
+  {
+    "north": 10,
+    "east": 23,
+    "comparisons": [
+      {
+        "name": "dream",
+        "value": "12",
+        "line": 27869
+      },
+      {
+        "name": "aSword",
+        "value": "64",
+        "line": 28250
+      },
+      {
+        "name": "aSword",
+        "value": "58",
+        "line": 28285
+      },
+      {
+        "name": "aSword",
+        "value": "52",
+        "line": 28299
+      },
+      {
+        "name": "aSword",
+        "value": "46",
+        "line": 28313
+      },
+      {
+        "name": "aSword",
+        "value": "44",
+        "line": 28327
+      },
+      {
+        "name": "aSword",
+        "value": "43",
+        "line": 28340
+      },
+      {
+        "name": "aSword",
+        "value": "42",
+        "line": 28353
+      },
+      {
+        "name": "aSword",
+        "value": "41",
+        "line": 28366
+      },
+      {
+        "name": "aSword",
+        "value": "40",
+        "line": 28379
+      },
+      {
+        "name": "aSword",
+        "value": "24",
+        "line": 28392
+      },
+      {
+        "name": "aSword",
+        "value": "13",
+        "line": 28406
+      },
+      {
+        "name": "aSword",
+        "value": "3",
+        "line": 28423
+      },
+      {
+        "name": "dream",
+        "value": "12",
+        "line": 28428
+      },
+      {
+        "name": "aSword",
+        "value": "5",
+        "line": 28435
+      },
+      {
+        "name": "oMan",
+        "value": "9",
+        "line": 51422
+      },
+      {
+        "name": "oMan",
+        "value": "9",
+        "line": 59781
+      },
+      {
+        "name": "oMan",
+        "value": "10",
+        "line": 59786
+      },
+      {
+        "name": "oMan",
+        "value": "11",
+        "line": 59799
+      }
+    ],
+    "assignments": [
+      {
+        "name": "aSword",
+        "value": "++",
+        "line": 28296
+      },
+      {
+        "name": "aSword",
+        "value": "++",
+        "line": 28310
+      },
+      {
+        "name": "aSword",
+        "value": "++",
+        "line": 28324
+      },
+      {
+        "name": "aSword",
+        "value": "++",
+        "line": 28337
+      },
+      {
+        "name": "aSword",
+        "value": "++",
+        "line": 28350
+      },
+      {
+        "name": "aSword",
+        "value": "++",
+        "line": 28363
+      },
+      {
+        "name": "aSword",
+        "value": "++",
+        "line": 28376
+      },
+      {
+        "name": "aSword",
+        "value": "++",
+        "line": 28389
+      },
+      {
+        "name": "aSword",
+        "value": "++",
+        "line": 28403
+      },
+      {
+        "name": "aSword",
+        "value": "++",
+        "line": 28417
+      },
+      {
+        "name": "aSword",
+        "value": "4",
+        "line": 28425
+      },
+      {
+        "name": "dream",
+        "value": "13",
+        "line": 28432
+      },
+      {
+        "name": "aSword",
+        "value": "6",
+        "line": 28439
+      },
+      {
+        "name": "oMan",
+        "value": "11",
+        "line": 59796
+      }
+    ]
+  },
+  {
+    "north": 11,
+    "east": 9,
+    "comparisons": [
+      {
+        "name": "warp",
+        "value": "0",
+        "line": 56752
+      }
+    ],
+    "assignments": [
+      {
+        "name": "warp",
+        "value": "2",
+        "line": 56742
+      },
+      {
+        "name": "warp",
+        "value": "1",
+        "line": 56753
+      }
+    ]
+  },
+  {
+    "north": 11,
+    "east": 11,
+    "comparisons": [
+      {
+        "name": "rings",
+        "value": "4",
+        "line": 58035
+      },
+      {
+        "name": "rings",
+        "value": "5",
+        "line": 58041
+      }
+    ],
+    "assignments": [
+      {
+        "name": "rings",
+        "value": "5",
+        "line": 58039
+      }
+    ]
+  },
+  {
+    "north": 11,
+    "east": 16,
+    "comparisons": [
+      {
+        "name": "dream",
+        "value": "5",
+        "line": 56584
+      },
+      {
+        "name": "dream",
+        "value": "6",
+        "line": 56589
+      },
+      {
+        "name": "dream",
+        "value": "7",
+        "line": 56594
+      },
+      {
+        "name": "dream",
+        "value": "8",
+        "line": 56599
+      }
+    ],
+    "assignments": [
+      {
+        "name": "dream",
+        "value": "6",
+        "line": 56587
+      },
+      {
+        "name": "dream",
+        "value": "8",
+        "line": 56597
+      }
+    ]
+  },
+  {
+    "north": 11,
+    "east": 17,
+    "comparisons": [
+      {
+        "name": "bBomb",
+        "value": "0",
+        "line": 32854
+      }
+    ],
+    "assignments": [
+      {
+        "name": "bBomb",
+        "value": "1",
+        "line": 32856
+      }
+    ]
+  },
+  {
+    "north": 11,
+    "east": 21,
+    "comparisons": [
+      {
+        "name": "oMan",
+        "value": "15",
+        "line": 59862
+      },
+      {
+        "name": "oMan",
+        "value": "16",
+        "line": 59868
+      },
+      {
+        "name": "oMan",
+        "value": "10",
+        "line": 59881
+      },
+      {
+        "name": "oMan",
+        "value": "11",
+        "line": 59882
+      },
+      {
+        "name": "oMan",
+        "value": "12",
+        "line": 59889
+      },
+      {
+        "name": "oMan",
+        "value": "3",
+        "line": 59895
+      },
+      {
+        "name": "oMan",
+        "value": "4",
+        "line": 59896
+      }
+    ],
+    "assignments": [
+      {
+        "name": "oMan",
+        "value": "16",
+        "line": 59867
+      },
+      {
+        "name": "oMan",
+        "value": "12",
+        "line": 59888
+      },
+      {
+        "name": "oMan",
+        "value": "4",
+        "line": 59912
+      }
+    ]
+  },
+  {
+    "north": 11,
+    "east": 23,
+    "comparisons": [
+      {
+        "name": "dream",
+        "value": "2",
+        "line": 32401
+      },
+      {
+        "name": "dream",
+        "value": "3",
+        "line": 35301
+      },
+      {
+        "name": "dream",
+        "value": "0",
+        "line": 56397
+      },
+      {
+        "name": "dream",
+        "value": "1",
+        "line": 56402
+      },
+      {
+        "name": "dream",
+        "value": "2",
+        "line": 56407
+      },
+      {
+        "name": "dream",
+        "value": "3",
+        "line": 56445
+      },
+      {
+        "name": "dream",
+        "value": "4",
+        "line": 56455
+      },
+      {
+        "name": "dream",
+        "value": "5",
+        "line": 56466
+      },
+      {
+        "name": "dream",
+        "value": "0",
+        "line": 60502
+      },
+      {
+        "name": "dream",
+        "value": "2",
+        "line": 60505
+      }
+    ],
+    "assignments": [
+      {
+        "name": "dream",
+        "value": "3",
+        "line": 32408
+      },
+      {
+        "name": "dream",
+        "value": "1",
+        "line": 32412
+      },
+      {
+        "name": "dream",
+        "value": "4",
+        "line": 35303
+      },
+      {
+        "name": "dream",
+        "value": "5",
+        "line": 56459
+      }
+    ]
+  },
+  {
+    "north": 11,
+    "east": 24,
+    "comparisons": [
+      {
+        "name": "gTree",
+        "value": "18",
+        "line": 56703
+      }
+    ],
+    "assignments": []
+  },
+  {
+    "north": 12,
+    "east": 9,
+    "comparisons": [
+      {
+        "name": "gTree",
+        "value": "13",
+        "line": 56868
+      },
+      {
+        "name": "gTree",
+        "value": "14",
+        "line": 56875
+      },
+      {
+        "name": "gTree",
+        "value": "14",
+        "line": 56890
+      },
+      {
+        "name": "gTree",
+        "value": "14",
+        "line": 56894
+      },
+      {
+        "name": "gTree",
+        "value": "13",
+        "line": 56905
+      },
+      {
+        "name": "gTree",
+        "value": "14",
+        "line": 56907
+      },
+      {
+        "name": "gTree",
+        "value": "13",
+        "line": 56909
+      }
+    ],
+    "assignments": [
+      {
+        "name": "gTree",
+        "value": "++",
+        "line": 56896
+      },
+      {
+        "name": "gTree",
+        "value": "14",
+        "line": 56910
+      }
+    ]
+  },
+  {
+    "north": 12,
+    "east": 11,
+    "comparisons": [
+      {
+        "name": "canteen",
+        "value": "0",
+        "line": 55502
+      },
+      {
+        "name": "canteen",
+        "value": "1",
+        "line": 55514
+      },
+      {
+        "name": "canteen",
+        "value": "2",
+        "line": 55519
+      }
+    ],
+    "assignments": [
+      {
+        "name": "canteen",
+        "value": "++",
+        "line": 55512
+      },
+      {
+        "name": "canteen",
+        "value": "3",
+        "line": 55526
+      }
+    ]
+  },
+  {
+    "north": 12,
+    "east": 14,
+    "comparisons": [
+      {
+        "name": "bBomb",
+        "value": "4",
+        "line": 58696
+      }
+    ],
+    "assignments": [
+      {
+        "name": "bBomb",
+        "value": "5",
+        "line": 58707
+      }
+    ]
+  },
+  {
+    "north": 12,
+    "east": 20,
+    "comparisons": [
+      {
+        "name": "pam",
+        "value": "3",
+        "line": 51018
+      }
+    ],
+    "assignments": []
+  },
+  {
+    "north": 12,
+    "east": 22,
+    "comparisons": [
+      {
+        "name": "curse",
+        "value": "0",
+        "line": 21619
+      },
+      {
+        "name": "dream",
+        "value": "0",
+        "line": 21647
+      },
+      {
+        "name": "geo",
+        "value": "1",
+        "line": 32423
+      },
+      {
+        "name": "curse",
+        "value": "4",
+        "line": 51406
+      },
+      {
+        "name": "curse",
+        "value": "0",
+        "line": 58314
+      },
+      {
+        "name": "curse",
+        "value": "1",
+        "line": 58336
+      },
+      {
+        "name": "curse",
+        "value": "2",
+        "line": 58348
+      },
+      {
+        "name": "curse",
+        "value": "3",
+        "line": 58363
+      },
+      {
+        "name": "curse",
+        "value": "4",
+        "line": 58368
+      },
+      {
+        "name": "curse",
+        "value": "5",
+        "line": 58374
+      }
+    ],
+    "assignments": [
+      {
+        "name": "curse",
+        "value": "1",
+        "line": 32419
+      },
+      {
+        "name": "curse",
+        "value": "3",
+        "line": 58360
+      },
+      {
+        "name": "curse",
+        "value": "5",
+        "line": 58372
+      }
+    ]
+  },
+  {
+    "north": 12,
+    "east": 26,
+    "comparisons": [
+      {
+        "name": "curse",
+        "value": "7",
+        "line": 35789
+      },
+      {
+        "name": "gTree",
+        "value": "4",
+        "line": 38602
+      },
+      {
+        "name": "bBomb",
+        "value": "3",
+        "line": 38610
+      },
+      {
+        "name": "dig",
+        "value": "2",
+        "line": 38626
+      },
+      {
+        "name": "mChal",
+        "value": "5",
+        "line": 38634
+      },
+      {
+        "name": "seeds",
+        "value": "3",
+        "line": 38642
+      },
+      {
+        "name": "canteen",
+        "value": "1",
+        "line": 38668
+      },
+      {
+        "name": "canteen",
+        "value": "3",
+        "line": 38669
+      },
+      {
+        "name": "canteen",
+        "value": "2",
+        "line": 38677
+      },
+      {
+        "name": "canteen",
+        "value": "4",
+        "line": 38678
+      },
+      {
+        "name": "geo",
+        "value": "3",
+        "line": 38693
+      },
+      {
+        "name": "rings",
+        "value": "13",
+        "line": 38694
+      },
+      {
+        "name": "bBomb",
+        "value": "6",
+        "line": 38702
+      },
+      {
+        "name": "bBomb",
+        "value": "7",
+        "line": 38703
+      },
+      {
+        "name": "bBomb",
+        "value": "8",
+        "line": 38711
+      },
+      {
+        "name": "curse",
+        "value": "2",
+        "line": 38727
+      },
+      {
+        "name": "dream",
+        "value": "10",
+        "line": 38735
+      },
+      {
+        "name": "oMan",
+        "value": "1",
+        "line": 38782
+      },
+      {
+        "name": "oMan",
+        "value": "6",
+        "line": 38789
+      },
+      {
+        "name": "oMan",
+        "value": "10",
+        "line": 38798
+      },
+      {
+        "name": "oMan",
+        "value": "20",
+        "line": 38799
+      },
+      {
+        "name": "oMan",
+        "value": "20",
+        "line": 38803
+      },
+      {
+        "name": "oMan",
+        "value": "18",
+        "line": 38812
+      },
+      {
+        "name": "isles",
+        "value": "4",
+        "line": 38820
+      },
+      {
+        "name": "isles",
+        "value": "5",
+        "line": 38828
+      },
+      {
+        "name": "isles",
+        "value": "9",
+        "line": 38836
+      },
+      {
+        "name": "isles",
+        "value": "10",
+        "line": 38844
+      },
+      {
+        "name": "isles",
+        "value": "11",
+        "line": 38854
+      },
+      {
+        "name": "isles",
+        "value": "7",
+        "line": 38983
+      },
+      {
+        "name": "isles",
+        "value": "14",
+        "line": 38984
+      },
+      {
+        "name": "oMan",
+        "value": "22",
+        "line": 38997
+      },
+      {
+        "name": "gTree",
+        "value": "0",
+        "line": 39198
+      },
+      {
+        "name": "gTree",
+        "value": "1",
+        "line": 39206
+      },
+      {
+        "name": "gTree",
+        "value": "2",
+        "line": 39214
+      },
+      {
+        "name": "gTree",
+        "value": "3",
+        "line": 39215
+      },
+      {
+        "name": "gTree",
+        "value": "4",
+        "line": 39223
+      },
+      {
+        "name": "gTree",
+        "value": "5",
+        "line": 39231
+      },
+      {
+        "name": "gTree",
+        "value": "6",
+        "line": 39239
+      },
+      {
+        "name": "gTree",
+        "value": "7",
+        "line": 39240
+      },
+      {
+        "name": "gTree",
+        "value": "8",
+        "line": 39248
+      },
+      {
+        "name": "gTree",
+        "value": "9",
+        "line": 39256
+      },
+      {
+        "name": "gTree",
+        "value": "10",
+        "line": 39264
+      },
+      {
+        "name": "gTree",
+        "value": "11",
+        "line": 39272
+      },
+      {
+        "name": "gTree",
+        "value": "12",
+        "line": 39280
+      },
+      {
+        "name": "gTree",
+        "value": "13",
+        "line": 39288
+      },
+      {
+        "name": "gTree",
+        "value": "14",
+        "line": 39296
+      },
+      {
+        "name": "gTree",
+        "value": "15",
+        "line": 39304
+      },
+      {
+        "name": "gTree",
+        "value": "16",
+        "line": 39312
+      },
+      {
+        "name": "gTree",
+        "value": "17",
+        "line": 39320
+      },
+      {
+        "name": "gTree",
+        "value": "18",
+        "line": 39328
+      },
+      {
+        "name": "gTree",
+        "value": "19",
+        "line": 39329
+      },
+      {
+        "name": "gTree",
+        "value": "20",
+        "line": 39337
+      },
+      {
+        "name": "gTree",
+        "value": "21",
+        "line": 39345
+      },
+      {
+        "name": "gTree",
+        "value": "22",
+        "line": 39353
+      },
+      {
+        "name": "gTree",
+        "value": "23",
+        "line": 39361
+      },
+      {
+        "name": "gTree",
+        "value": "24",
+        "line": 39369
+      },
+      {
+        "name": "bBomb",
+        "value": "0",
+        "line": 39385
+      },
+      {
+        "name": "bBomb",
+        "value": "1",
+        "line": 39393
+      },
+      {
+        "name": "bBomb",
+        "value": "2",
+        "line": 39401
+      },
+      {
+        "name": "bBomb",
+        "value": "3",
+        "line": 39409
+      },
+      {
+        "name": "bBomb",
+        "value": "4",
+        "line": 39417
+      },
+      {
+        "name": "bBomb",
+        "value": "5",
+        "line": 39425
+      },
+      {
+        "name": "bBomb",
+        "value": "6",
+        "line": 39433
+      },
+      {
+        "name": "bBomb",
+        "value": "7",
+        "line": 39434
+      },
+      {
+        "name": "bBomb",
+        "value": "8",
+        "line": 39442
+      },
+      {
+        "name": "warp",
+        "value": "0",
+        "line": 39458
+      },
+      {
+        "name": "warp",
+        "value": "1",
+        "line": 39466
+      },
+      {
+        "name": "dig",
+        "value": "0",
+        "line": 39482
+      },
+      {
+        "name": "dig",
+        "value": "1",
+        "line": 39490
+      },
+      {
+        "name": "dig",
+        "value": "2",
+        "line": 39498
+      },
+      {
+        "name": "mChal",
+        "value": "0",
+        "line": 39514
+      },
+      {
+        "name": "mChal",
+        "value": "1",
+        "line": 39522
+      },
+      {
+        "name": "mChal",
+        "value": "2",
+        "line": 39530
+      },
+      {
+        "name": "mChal",
+        "value": "3",
+        "line": 39538
+      },
+      {
+        "name": "mChal",
+        "value": "4",
+        "line": 39545
+      },
+      {
+        "name": "mChal",
+        "value": "5",
+        "line": 39553
+      },
+      {
+        "name": "seeds",
+        "value": "0",
+        "line": 39569
+      },
+      {
+        "name": "seeds",
+        "value": "1",
+        "line": 39577
+      },
+      {
+        "name": "seeds",
+        "value": "2",
+        "line": 39585
+      },
+      {
+        "name": "seeds",
+        "value": "3",
+        "line": 39593
+      },
+      {
+        "name": "seeds",
+        "value": "4",
+        "line": 39601
+      },
+      {
+        "name": "pam",
+        "value": "0",
+        "line": 39609
+      },
+      {
+        "name": "pam",
+        "value": "1",
+        "line": 39617
+      },
+      {
+        "name": "pam",
+        "value": "15",
+        "line": 39644
+      },
+      {
+        "name": "pam",
+        "value": "16",
+        "line": 39652
+      },
+      {
+        "name": "canteen",
+        "value": "0",
+        "line": 39660
+      },
+      {
+        "name": "canteen",
+        "value": "1",
+        "line": 39668
+      },
+      {
+        "name": "canteen",
+        "value": "2",
+        "line": 39676
+      },
+      {
+        "name": "geo",
+        "value": "0",
+        "line": 39692
+      },
+      {
+        "name": "geo",
+        "value": "1",
+        "line": 39700
+      },
+      {
+        "name": "geo",
+        "value": "1",
+        "line": 39709
+      },
+      {
+        "name": "geo",
+        "value": "3",
+        "line": 39718
+      },
+      {
+        "name": "geo",
+        "value": "4",
+        "line": 39726
+      },
+      {
+        "name": "curse",
+        "value": "0",
+        "line": 39742
+      },
+      {
+        "name": "curse",
+        "value": "1",
+        "line": 39750
+      },
+      {
+        "name": "curse",
+        "value": "2",
+        "line": 39758
+      },
+      {
+        "name": "curse",
+        "value": "3",
+        "line": 39766
+      },
+      {
+        "name": "curse",
+        "value": "4",
+        "line": 39767
+      },
+      {
+        "name": "curse",
+        "value": "5",
+        "line": 39775
+      },
+      {
+        "name": "curse",
+        "value": "6",
+        "line": 39776
+      },
+      {
+        "name": "curse",
+        "value": "7",
+        "line": 39784
+      },
+      {
+        "name": "curse",
+        "value": "8",
+        "line": 39785
+      },
+      {
+        "name": "curse",
+        "value": "9",
+        "line": 39793
+      },
+      {
+        "name": "curse",
+        "value": "10",
+        "line": 39801
+      },
+      {
+        "name": "dream",
+        "value": "0",
+        "line": 39809
+      },
+      {
+        "name": "dream",
+        "value": "1",
+        "line": 39817
+      },
+      {
+        "name": "dream",
+        "value": "2",
+        "line": 39825
+      },
+      {
+        "name": "dream",
+        "value": "3",
+        "line": 39833
+      },
+      {
+        "name": "dream",
+        "value": "4",
+        "line": 39841
+      },
+      {
+        "name": "dream",
+        "value": "5",
+        "line": 39849
+      },
+      {
+        "name": "dream",
+        "value": "6",
+        "line": 39857
+      },
+      {
+        "name": "dream",
+        "value": "7",
+        "line": 39865
+      },
+      {
+        "name": "dream",
+        "value": "8",
+        "line": 39873
+      },
+      {
+        "name": "dream",
+        "value": "9",
+        "line": 39881
+      },
+      {
+        "name": "dream",
+        "value": "10",
+        "line": 39889
+      },
+      {
+        "name": "dream",
+        "value": "11",
+        "line": 39897
+      },
+      {
+        "name": "dream",
+        "value": "12",
+        "line": 39905
+      },
+      {
+        "name": "dream",
+        "value": "13",
+        "line": 39913
+      },
+      {
+        "name": "dream",
+        "value": "15",
+        "line": 39921
+      },
+      {
+        "name": "bBomb",
+        "value": "10",
+        "line": 39937
+      },
+      {
+        "name": "bBomb",
+        "value": "11",
+        "line": 39945
+      },
+      {
+        "name": "bBomb",
+        "value": "12",
+        "line": 39953
+      },
+      {
+        "name": "bBomb",
+        "value": "24",
+        "line": 39972
+      },
+      {
+        "name": "bBomb",
+        "value": "25",
+        "line": 39980
+      },
+      {
+        "name": "access",
+        "value": "0",
+        "line": 39996
+      },
+      {
+        "name": "access",
+        "value": "1",
+        "line": 40004
+      },
+      {
+        "name": "access",
+        "value": "2",
+        "line": 40012
+      },
+      {
+        "name": "access",
+        "value": "3",
+        "line": 40020
+      },
+      {
+        "name": "access",
+        "value": "3",
+        "line": 40029
+      },
+      {
+        "name": "access",
+        "value": "4",
+        "line": 40038
+      },
+      {
+        "name": "access",
+        "value": "5",
+        "line": 40046
+      },
+      {
+        "name": "access",
+        "value": "5",
+        "line": 40055
+      },
+      {
+        "name": "access",
+        "value": "6",
+        "line": 40064
+      },
+      {
+        "name": "access",
+        "value": "7",
+        "line": 40072
+      },
+      {
+        "name": "access",
+        "value": "8",
+        "line": 40080
+      },
+      {
+        "name": "access",
+        "value": "8",
+        "line": 40089
+      },
+      {
+        "name": "access",
+        "value": "8",
+        "line": 40098
+      },
+      {
+        "name": "access",
+        "value": "9",
+        "line": 40107
+      },
+      {
+        "name": "rings",
+        "value": "0",
+        "line": 40115
+      },
+      {
+        "name": "rings",
+        "value": "1",
+        "line": 40123
+      },
+      {
+        "name": "rings",
+        "value": "1",
+        "line": 40131
+      },
+      {
+        "name": "rings",
+        "value": "2",
+        "line": 40140
+      },
+      {
+        "name": "rings",
+        "value": "2",
+        "line": 40148
+      },
+      {
+        "name": "rings",
+        "value": "3",
+        "line": 40157
+      },
+      {
+        "name": "rings",
+        "value": "3",
+        "line": 40165
+      },
+      {
+        "name": "rings",
+        "value": "4",
+        "line": 40174
+      },
+      {
+        "name": "rings",
+        "value": "5",
+        "line": 40182
+      },
+      {
+        "name": "rings",
+        "value": "6",
+        "line": 40190
+      },
+      {
+        "name": "rings",
+        "value": "7",
+        "line": 40198
+      },
+      {
+        "name": "rings",
+        "value": "8",
+        "line": 40206
+      },
+      {
+        "name": "rings",
+        "value": "9",
+        "line": 40214
+      },
+      {
+        "name": "rings",
+        "value": "10",
+        "line": 40222
+      },
+      {
+        "name": "rings",
+        "value": "11",
+        "line": 40223
+      },
+      {
+        "name": "rings",
+        "value": "12",
+        "line": 40231
+      },
+      {
+        "name": "rings",
+        "value": "13",
+        "line": 40239
+      },
+      {
+        "name": "rings",
+        "value": "14",
+        "line": 40247
+      },
+      {
+        "name": "rings",
+        "value": "15",
+        "line": 40255
+      },
+      {
+        "name": "rings",
+        "value": "16",
+        "line": 40263
+      },
+      {
+        "name": "rings",
+        "value": "17",
+        "line": 40271
+      },
+      {
+        "name": "hWater",
+        "value": "0",
+        "line": 40279
+      },
+      {
+        "name": "hWater",
+        "value": "1",
+        "line": 40287
+      },
+      {
+        "name": "hWater",
+        "value": "2",
+        "line": 40295
+      },
+      {
+        "name": "hWater",
+        "value": "3",
+        "line": 40303
+      },
+      {
+        "name": "hWater",
+        "value": "4",
+        "line": 40311
+      },
+      {
+        "name": "hWater",
+        "value": "5",
+        "line": 40319
+      },
+      {
+        "name": "hWater",
+        "value": "6",
+        "line": 40327
+      },
+      {
+        "name": "hWater",
+        "value": "7",
+        "line": 40335
+      },
+      {
+        "name": "oMan",
+        "value": "0",
+        "line": 40343
+      },
+      {
+        "name": "oMan",
+        "value": "1",
+        "line": 40351
+      },
+      {
+        "name": "oMan",
+        "value": "2",
+        "line": 40359
+      },
+      {
+        "name": "oMan",
+        "value": "3",
+        "line": 40367
+      },
+      {
+        "name": "oMan",
+        "value": "4",
+        "line": 40375
+      },
+      {
+        "name": "oMan",
+        "value": "5",
+        "line": 40383
+      },
+      {
+        "name": "oMan",
+        "value": "6",
+        "line": 40391
+      },
+      {
+        "name": "oMan",
+        "value": "7",
+        "line": 40399
+      },
+      {
+        "name": "oMan",
+        "value": "8",
+        "line": 40407
+      },
+      {
+        "name": "oMan",
+        "value": "9",
+        "line": 40415
+      },
+      {
+        "name": "oMan",
+        "value": "10",
+        "line": 40423
+      },
+      {
+        "name": "oMan",
+        "value": "11",
+        "line": 40431
+      },
+      {
+        "name": "oMan",
+        "value": "12",
+        "line": 40439
+      },
+      {
+        "name": "oMan",
+        "value": "13",
+        "line": 40447
+      },
+      {
+        "name": "oMan",
+        "value": "14",
+        "line": 40455
+      },
+      {
+        "name": "oMan",
+        "value": "15",
+        "line": 40463
+      },
+      {
+        "name": "oMan",
+        "value": "16",
+        "line": 40471
+      },
+      {
+        "name": "oMan",
+        "value": "17",
+        "line": 40479
+      },
+      {
+        "name": "oMan",
+        "value": "18",
+        "line": 40487
+      },
+      {
+        "name": "oMan",
+        "value": "19",
+        "line": 40495
+      },
+      {
+        "name": "oMan",
+        "value": "20",
+        "line": 40503
+      },
+      {
+        "name": "oMan",
+        "value": "21",
+        "line": 40511
+      },
+      {
+        "name": "oMan",
+        "value": "22",
+        "line": 40519
+      },
+      {
+        "name": "isles",
+        "value": "0",
+        "line": 40527
+      },
+      {
+        "name": "isles",
+        "value": "1",
+        "line": 40535
+      },
+      {
+        "name": "isles",
+        "value": "2",
+        "line": 40543
+      },
+      {
+        "name": "isles",
+        "value": "3",
+        "line": 40551
+      },
+      {
+        "name": "isles",
+        "value": "4",
+        "line": 40559
+      },
+      {
+        "name": "isles",
+        "value": "5",
+        "line": 40567
+      },
+      {
+        "name": "isles",
+        "value": "6",
+        "line": 40575
+      },
+      {
+        "name": "isles",
+        "value": "7",
+        "line": 40583
+      },
+      {
+        "name": "isles",
+        "value": "8",
+        "line": 40591
+      },
+      {
+        "name": "isles",
+        "value": "9",
+        "line": 40599
+      },
+      {
+        "name": "isles",
+        "value": "10",
+        "line": 40607
+      },
+      {
+        "name": "isles",
+        "value": "11",
+        "line": 40615
+      },
+      {
+        "name": "isles",
+        "value": "11",
+        "line": 40624
+      },
+      {
+        "name": "isles",
+        "value": "12",
+        "line": 40632
+      },
+      {
+        "name": "isles",
+        "value": "13",
+        "line": 40633
+      },
+      {
+        "name": "isles",
+        "value": "14",
+        "line": 40641
+      },
+      {
+        "name": "isles",
+        "value": "15",
+        "line": 40649
+      },
+      {
+        "name": "isles",
+        "value": "16",
+        "line": 40657
+      },
+      {
+        "name": "isles",
+        "value": "17",
+        "line": 40665
+      },
+      {
+        "name": "isles",
+        "value": "18",
+        "line": 40673
+      },
+      {
+        "name": "isles",
+        "value": "21",
+        "line": 40692
+      },
+      {
+        "name": "isles",
+        "value": "22",
+        "line": 40700
+      },
+      {
+        "name": "isles",
+        "value": "23",
+        "line": 40708
+      },
+      {
+        "name": "isles",
+        "value": "24",
+        "line": 40716
+      },
+      {
+        "name": "aSword",
+        "value": "0",
+        "line": 40724
+      },
+      {
+        "name": "aSword",
+        "value": "1",
+        "line": 40732
+      },
+      {
+        "name": "aSword",
+        "value": "2",
+        "line": 40740
+      },
+      {
+        "name": "aSword",
+        "value": "3",
+        "line": 40748
+      },
+      {
+        "name": "aSword",
+        "value": "4",
+        "line": 40756
+      },
+      {
+        "name": "aSword",
+        "value": "5",
+        "line": 40764
+      },
+      {
+        "name": "aSword",
+        "value": "6",
+        "line": 40772
+      },
+      {
+        "name": "aSword",
+        "value": "7",
+        "line": 40780
+      },
+      {
+        "name": "aSword",
+        "value": "11",
+        "line": 40790
+      },
+      {
+        "name": "aSword",
+        "value": "12",
+        "line": 40798
+      },
+      {
+        "name": "aSword",
+        "value": "13",
+        "line": 40806
+      },
+      {
+        "name": "aSword",
+        "value": "22",
+        "line": 40816
+      },
+      {
+        "name": "aSword",
+        "value": "23",
+        "line": 40824
+      },
+      {
+        "name": "aSword",
+        "value": "24",
+        "line": 40832
+      },
+      {
+        "name": "aSword",
+        "value": "38",
+        "line": 40842
+      },
+      {
+        "name": "aSword",
+        "value": "39",
+        "line": 40850
+      },
+      {
+        "name": "aSword",
+        "value": "40",
+        "line": 40858
+      },
+      {
+        "name": "aSword",
+        "value": "41",
+        "line": 40866
+      },
+      {
+        "name": "aSword",
+        "value": "42",
+        "line": 40874
+      },
+      {
+        "name": "aSword",
+        "value": "43",
+        "line": 40882
+      },
+      {
+        "name": "aSword",
+        "value": "44",
+        "line": 40890
+      },
+      {
+        "name": "aSword",
+        "value": "45",
+        "line": 40898
+      },
+      {
+        "name": "aSword",
+        "value": "46",
+        "line": 40906
+      },
+      {
+        "name": "aSword",
+        "value": "50",
+        "line": 40916
+      },
+      {
+        "name": "aSword",
+        "value": "51",
+        "line": 40924
+      },
+      {
+        "name": "aSword",
+        "value": "52",
+        "line": 40932
+      },
+      {
+        "name": "aSword",
+        "value": "56",
+        "line": 40942
+      },
+      {
+        "name": "aSword",
+        "value": "57",
+        "line": 40950
+      },
+      {
+        "name": "aSword",
+        "value": "58",
+        "line": 40958
+      },
+      {
+        "name": "aSword",
+        "value": "62",
+        "line": 40968
+      },
+      {
+        "name": "aSword",
+        "value": "63",
+        "line": 40976
+      },
+      {
+        "name": "aSword",
+        "value": "64",
+        "line": 40984
+      },
+      {
+        "name": "seeds",
+        "value": "4",
+        "line": 41014
+      },
+      {
+        "name": "pam",
+        "value": "16",
+        "line": 41016
+      },
+      {
+        "name": "dream",
+        "value": "15",
+        "line": 41024
+      },
+      {
+        "name": "hWater",
+        "value": "7",
+        "line": 41030
+      },
+      {
+        "name": "oMan",
+        "value": "22",
+        "line": 41032
+      },
+      {
+        "name": "isles",
+        "value": "24",
+        "line": 41034
+      },
+      {
+        "name": "aSword",
+        "value": "64",
+        "line": 41036
+      },
+      {
+        "name": "gTree",
+        "value": "6",
+        "line": 42192
+      },
+      {
+        "name": "gTree",
+        "value": "15",
+        "line": 42198
+      }
+    ],
+    "assignments": [
+      {
+        "name": "curse",
+        "value": "8",
+        "line": 35790
+      },
+      {
+        "name": "gTree",
+        "value": "7",
+        "line": 42194
+      }
+    ]
+  },
+  {
+    "north": 13,
+    "east": 14,
+    "comparisons": [
+      {
+        "name": "mChal",
+        "value": "1",
+        "line": 34611
+      },
+      {
+        "name": "mChal",
+        "value": "3",
+        "line": 56355
+      },
+      {
+        "name": "mChal",
+        "value": "3",
+        "line": 56362
+      },
+      {
+        "name": "mChal",
+        "value": "4",
+        "line": 56364
+      },
+      {
+        "name": "mChal",
+        "value": "3",
+        "line": 56367
+      },
+      {
+        "name": "mChal",
+        "value": "5",
+        "line": 56374
+      },
+      {
+        "name": "mChal",
+        "value": "6",
+        "line": 56383
+      }
+    ],
+    "assignments": [
+      {
+        "name": "mChal",
+        "value": "2",
+        "line": 34612
+      },
+      {
+        "name": "mChal",
+        "value": "4",
+        "line": 56368
+      },
+      {
+        "name": "mChal",
+        "value": "6",
+        "line": 56375
+      }
+    ]
+  },
+  {
+    "north": 13,
+    "east": 15,
+    "comparisons": [
+      {
+        "name": "dream",
+        "value": "12",
+        "line": 50757
+      },
+      {
+        "name": "dream",
+        "value": "12",
+        "line": 58722
+      },
+      {
+        "name": "dream",
+        "value": "13",
+        "line": 58726
+      }
+    ],
+    "assignments": []
+  },
+  {
+    "north": 13,
+    "east": 17,
+    "comparisons": [
+      {
+        "name": "dream",
+        "value": "11",
+        "line": 50931
+      },
+      {
+        "name": "dream",
+        "value": "1",
+        "line": 58971
+      },
+      {
+        "name": "dream",
+        "value": "2",
+        "line": 58978
+      },
+      {
+        "name": "dream",
+        "value": "11",
+        "line": 58988
+      },
+      {
+        "name": "dream",
+        "value": "12",
+        "line": 58998
+      },
+      {
+        "name": "dream",
+        "value": "13",
+        "line": 59005
+      },
+      {
+        "name": "dream",
+        "value": "14",
+        "line": 59010
+      },
+      {
+        "name": "dream",
+        "value": "15",
+        "line": 59025
+      },
+      {
+        "name": "dream",
+        "value": "11",
+        "line": 59030
+      },
+      {
+        "name": "dream",
+        "value": "12",
+        "line": 59031
+      }
+    ],
+    "assignments": [
+      {
+        "name": "dream",
+        "value": "2",
+        "line": 58976
+      },
+      {
+        "name": "dream",
+        "value": "12",
+        "line": 58994
+      },
+      {
+        "name": "dream",
+        "value": "14",
+        "line": 59008
+      },
+      {
+        "name": "dream",
+        "value": "15",
+        "line": 59023
+      }
+    ]
+  },
+  {
+    "north": 13,
+    "east": 21,
+    "comparisons": [
+      {
+        "name": "bBomb",
+        "value": "1",
+        "line": 32862
+      },
+      {
+        "name": "bBomb",
+        "value": "0",
+        "line": 58411
+      },
+      {
+        "name": "bBomb",
+        "value": "1",
+        "line": 58417
+      },
+      {
+        "name": "bBomb",
+        "value": "2",
+        "line": 58430
+      },
+      {
+        "name": "bBomb",
+        "value": "3",
+        "line": 58443
+      },
+      {
+        "name": "bBomb",
+        "value": "3",
+        "line": 58457
+      },
+      {
+        "name": "bBomb",
+        "value": "4",
+        "line": 58459
+      },
+      {
+        "name": "bBomb",
+        "value": "3",
+        "line": 58461
+      },
+      {
+        "name": "bBomb",
+        "value": "5",
+        "line": 58476
+      },
+      {
+        "name": "bBomb",
+        "value": "6",
+        "line": 58484
+      },
+      {
+        "name": "bBomb",
+        "value": "7",
+        "line": 58485
+      },
+      {
+        "name": "bBomb",
+        "value": "8",
+        "line": 58498
+      }
+    ],
+    "assignments": [
+      {
+        "name": "bBomb",
+        "value": "2",
+        "line": 32864
+      },
+      {
+        "name": "bBomb",
+        "value": "4",
+        "line": 58465
+      },
+      {
+        "name": "bBomb",
+        "value": "6",
+        "line": 58480
+      },
+      {
+        "name": "bBomb",
+        "value": "9",
+        "line": 58502
+      }
+    ]
+  },
+  {
+    "north": 13,
+    "east": 22,
+    "comparisons": [
+      {
+        "name": "curse",
+        "value": "4",
+        "line": 58397
+      }
+    ],
+    "assignments": []
+  },
+  {
+    "north": 13,
+    "east": 25,
+    "comparisons": [
+      {
+        "name": "dream",
+        "value": "12",
+        "line": 43472
+      },
+      {
+        "name": "dream",
+        "value": "12",
+        "line": 43480
+      },
+      {
+        "name": "dream",
+        "value": "12",
+        "line": 43489
+      },
+      {
+        "name": "aSword",
+        "value": "5",
+        "line": 43498
+      },
+      {
+        "name": "access",
+        "value": "8",
+        "line": 60536
+      }
+    ],
+    "assignments": []
+  },
+  {
+    "north": 13,
+    "east": 26,
+    "comparisons": [
+      {
+        "name": "isles",
+        "value": "9",
+        "line": 22357
+      },
+      {
+        "name": "curse",
+        "value": "8",
+        "line": 56104
+      },
+      {
+        "name": "curse",
+        "value": "9",
+        "line": 56108
+      },
+      {
+        "name": "curse",
+        "value": "10",
+        "line": 56113
+      }
+    ],
+    "assignments": [
+      {
+        "name": "curse",
+        "value": "10",
+        "line": 56089
+      },
+      {
+        "name": "curse",
+        "value": "9",
+        "line": 56107
+      }
+    ]
+  },
+  {
+    "north": 14,
+    "east": 13,
+    "comparisons": [],
+    "assignments": [
+      {
+        "name": "pam",
+        "value": "++",
+        "line": 53521
+      }
+    ]
+  },
+  {
+    "north": 14,
+    "east": 17,
+    "comparisons": [
+      {
+        "name": "mChal",
+        "value": "0",
+        "line": 55371
+      },
+      {
+        "name": "mChal",
+        "value": "1",
+        "line": 55376
+      },
+      {
+        "name": "mChal",
+        "value": "2",
+        "line": 55382
+      },
+      {
+        "name": "mChal",
+        "value": "2",
+        "line": 55394
+      },
+      {
+        "name": "mChal",
+        "value": "0",
+        "line": 60479
+      },
+      {
+        "name": "seeds",
+        "value": "0",
+        "line": 60486
+      }
+    ],
+    "assignments": [
+      {
+        "name": "mChal",
+        "value": "1",
+        "line": 33109
+      },
+      {
+        "name": "mChal",
+        "value": "3",
+        "line": 55396
+      }
+    ]
+  },
+  {
+    "north": 14,
+    "east": 18,
+    "comparisons": [
+      {
+        "name": "gTree",
+        "value": "8",
+        "line": 32975
+      },
+      {
+        "name": "bBomb",
+        "value": "10",
+        "line": 58742
+      },
+      {
+        "name": "bBomb",
+        "value": "11",
+        "line": 58749
+      },
+      {
+        "name": "bBomb",
+        "value": "11",
+        "line": 58757
+      },
+      {
+        "name": "bBomb",
+        "value": "12",
+        "line": 58771
+      },
+      {
+        "name": "bBomb",
+        "value": "25",
+        "line": 58776
+      },
+      {
+        "name": "gTree",
+        "value": "8",
+        "line": 58859
+      },
+      {
+        "name": "gTree",
+        "value": "9",
+        "line": 58868
+      },
+      {
+        "name": "gTree",
+        "value": "9",
+        "line": 58875
+      },
+      {
+        "name": "gTree",
+        "value": "9",
+        "line": 58882
+      },
+      {
+        "name": "gTree",
+        "value": "24",
+        "line": 58889
+      },
+      {
+        "name": "gTree",
+        "value": "24",
+        "line": 58899
+      },
+      {
+        "name": "aSword",
+        "value": "2",
+        "line": 58900
+      },
+      {
+        "name": "gTree",
+        "value": "25",
+        "line": 58934
+      }
+    ],
+    "assignments": [
+      {
+        "name": "gTree",
+        "value": "9",
+        "line": 32977
+      },
+      {
+        "name": "bBomb",
+        "value": "11",
+        "line": 58746
+      },
+      {
+        "name": "bBomb",
+        "value": "12",
+        "line": 58770
+      },
+      {
+        "name": "bBomb",
+        "value": "26",
+        "line": 58781
+      },
+      {
+        "name": "gTree",
+        "value": "8",
+        "line": 58855
+      },
+      {
+        "name": "gTree",
+        "value": "25",
+        "line": 58897
+      },
+      {
+        "name": "aSword",
+        "value": "1",
+        "line": 58915
+      },
+      {
+        "name": "aSword",
+        "value": "2",
+        "line": 58930
+      }
+    ]
+  },
+  {
+    "north": 14,
+    "east": 22,
+    "comparisons": [],
+    "assignments": [
+      {
+        "name": "rings",
+        "value": "1",
+        "line": 57753
+      },
+      {
+        "name": "rings",
+        "value": "2",
+        "line": 57758
+      },
+      {
+        "name": "rings",
+        "value": "3",
+        "line": 57763
+      },
+      {
+        "name": "rings",
+        "value": "4",
+        "line": 57769
+      },
+      {
+        "name": "rings",
+        "value": "7",
+        "line": 57775
+      },
+      {
+        "name": "rings",
+        "value": "10",
+        "line": 57780
+      },
+      {
+        "name": "rings",
+        "value": "15",
+        "line": 57785
+      }
+    ]
+  },
+  {
+    "north": 15,
+    "east": 16,
+    "comparisons": [],
+    "assignments": [
+      {
+        "name": "rings",
+        "value": "8",
+        "line": 58668
+      }
+    ]
+  },
+  {
+    "north": 15,
+    "east": 17,
+    "comparisons": [
+      {
+        "name": "gTree",
+        "value": "9",
+        "line": 50877
+      },
+      {
+        "name": "hWater",
+        "value": "0",
+        "line": 55131
+      },
+      {
+        "name": "hWater",
+        "value": "6",
+        "line": 55142
+      },
+      {
+        "name": "hWater",
+        "value": "6",
+        "line": 55147
+      }
+    ],
+    "assignments": [
+      {
+        "name": "hWater",
+        "value": "1",
+        "line": 55132
+      },
+      {
+        "name": "hWater",
+        "value": "7",
+        "line": 55148
+      }
+    ]
+  },
+  {
+    "north": 15,
+    "east": 18,
+    "comparisons": [
+      {
+        "name": "seeds",
+        "value": "2",
+        "line": 23491
+      },
+      {
+        "name": "gTree",
+        "value": "17",
+        "line": 58074
+      },
+      {
+        "name": "gTree",
+        "value": "17",
+        "line": 58094
+      },
+      {
+        "name": "gTree",
+        "value": "17",
+        "line": 58099
+      },
+      {
+        "name": "gTree",
+        "value": "19",
+        "line": 58107
+      },
+      {
+        "name": "gTree",
+        "value": "20",
+        "line": 58119
+      },
+      {
+        "name": "gTree",
+        "value": "20",
+        "line": 58124
+      },
+      {
+        "name": "gTree",
+        "value": "21",
+        "line": 58126
+      },
+      {
+        "name": "gTree",
+        "value": "20",
+        "line": 58128
+      },
+      {
+        "name": "gTree",
+        "value": "12",
+        "line": 58137
+      },
+      {
+        "name": "gTree",
+        "value": "12",
+        "line": 58157
+      },
+      {
+        "name": "gTree",
+        "value": "12",
+        "line": 58162
+      },
+      {
+        "name": "gTree",
+        "value": "10",
+        "line": 58171
+      },
+      {
+        "name": "gTree",
+        "value": "10",
+        "line": 58196
+      },
+      {
+        "name": "gTree",
+        "value": "11",
+        "line": 58198
+      },
+      {
+        "name": "gTree",
+        "value": "10",
+        "line": 58200
+      }
+    ],
+    "assignments": [
+      {
+        "name": "gTree",
+        "value": "18",
+        "line": 58101
+      },
+      {
+        "name": "gTree",
+        "value": "21",
+        "line": 58130
+      },
+      {
+        "name": "gTree",
+        "value": "13",
+        "line": 58164
+      },
+      {
+        "name": "gTree",
+        "value": "11",
+        "line": 58202
+      }
+    ]
+  },
+  {
+    "north": 15,
+    "east": 24,
+    "comparisons": [
+      {
+        "name": "oMan",
+        "value": "1",
+        "line": 59740
+      },
+      {
+        "name": "oMan",
+        "value": "2",
+        "line": 59757
+      }
+    ],
+    "assignments": [
+      {
+        "name": "oMan",
+        "value": "2",
+        "line": 59754
+      }
+    ]
+  },
+  {
+    "north": 15,
+    "east": 25,
+    "comparisons": [
+      {
+        "name": "oMan",
+        "value": "13",
+        "line": 51559
+      },
+      {
+        "name": "oMan",
+        "value": "13",
+        "line": 59721
+      }
+    ],
+    "assignments": [
+      {
+        "name": "oMan",
+        "value": "14",
+        "line": 59730
+      }
+    ]
+  },
+  {
+    "north": 16,
+    "east": 10,
+    "comparisons": [
+      {
+        "name": "rings",
+        "value": "15",
+        "line": 48000
+      }
+    ],
+    "assignments": []
+  },
+  {
+    "north": 16,
+    "east": 14,
+    "comparisons": [
+      {
+        "name": "gTree",
+        "value": "22",
+        "line": 31179
+      },
+      {
+        "name": "gTree",
+        "value": "21",
+        "line": 58587
+      },
+      {
+        "name": "gTree",
+        "value": "22",
+        "line": 58601
+      },
+      {
+        "name": "gTree",
+        "value": "9",
+        "line": 58604
+      },
+      {
+        "name": "gTree",
+        "value": "9",
+        "line": 58610
+      },
+      {
+        "name": "gTree",
+        "value": "10",
+        "line": 58612
+      },
+      {
+        "name": "gTree",
+        "value": "9",
+        "line": 58617
+      }
+    ],
+    "assignments": [
+      {
+        "name": "gTree",
+        "value": "22",
+        "line": 58599
+      },
+      {
+        "name": "gTree",
+        "value": "10",
+        "line": 58620
+      }
+    ]
+  },
+  {
+    "north": 16,
+    "east": 15,
+    "comparisons": [
+      {
+        "name": "pam",
+        "value": "9",
+        "line": 50587
+      },
+      {
+        "name": "hWater",
+        "value": "1",
+        "line": 55162
+      },
+      {
+        "name": "hWater",
+        "value": "2",
+        "line": 55163
+      }
+    ],
+    "assignments": [
+      {
+        "name": "pam",
+        "value": "16",
+        "line": 54554
+      },
+      {
+        "name": "hWater",
+        "value": "2",
+        "line": 55168
+      }
+    ]
+  },
+  {
+    "north": 16,
+    "east": 21,
+    "comparisons": [
+      {
+        "name": "dig",
+        "value": "1",
+        "line": 53566
+      },
+      {
+        "name": "geo",
+        "value": "1",
+        "line": 53570
+      }
+    ],
+    "assignments": [
+      {
+        "name": "dig",
+        "value": "2",
+        "line": 53568
+      }
+    ]
+  },
+  {
+    "north": 16,
+    "east": 22,
+    "comparisons": [
+      {
+        "name": "warp",
+        "value": "0",
+        "line": 53915
+      }
+    ],
+    "assignments": []
+  },
+  {
+    "north": 17,
+    "east": 11,
+    "comparisons": [
+      {
+        "name": "hWater",
+        "value": "3",
+        "line": 47887
+      },
+      {
+        "name": "hWater",
+        "value": "3",
+        "line": 47898
+      },
+      {
+        "name": "hWater",
+        "value": "3",
+        "line": 47911
+      },
+      {
+        "name": "hWater",
+        "value": "3",
+        "line": 53747
+      },
+      {
+        "name": "hWater",
+        "value": "3",
+        "line": 55064
+      },
+      {
+        "name": "hWater",
+        "value": "5",
+        "line": 55081
+      },
+      {
+        "name": "hWater",
+        "value": "5",
+        "line": 55087
+      },
+      {
+        "name": "hWater",
+        "value": "3",
+        "line": 55102
+      }
+    ],
+    "assignments": [
+      {
+        "name": "hWater",
+        "value": "6",
+        "line": 55089
+      },
+      {
+        "name": "hWater",
+        "value": "4",
+        "line": 55103
+      }
+    ]
+  },
+  {
+    "north": 17,
+    "east": 17,
+    "comparisons": [
+      {
+        "name": "bBomb",
+        "value": "6",
+        "line": 56780
+      },
+      {
+        "name": "seeds",
+        "value": "0",
+        "line": 56808
+      },
+      {
+        "name": "seeds",
+        "value": "3",
+        "line": 56819
+      },
+      {
+        "name": "seeds",
+        "value": "3",
+        "line": 56826
+      },
+      {
+        "name": "seeds",
+        "value": "4",
+        "line": 56837
+      }
+    ],
+    "assignments": [
+      {
+        "name": "bBomb",
+        "value": "7",
+        "line": 56790
+      },
+      {
+        "name": "seeds",
+        "value": "4",
+        "line": 56832
+      }
+    ]
+  },
+  {
+    "north": 17,
+    "east": 18,
+    "comparisons": [
+      {
+        "name": "dream",
+        "value": "6",
+        "line": 28459
+      },
+      {
+        "name": "mChal",
+        "value": "4",
+        "line": 28488
+      },
+      {
+        "name": "oMan",
+        "value": "9",
+        "line": 28675
+      },
+      {
+        "name": "isles",
+        "value": "11",
+        "line": 28834
+      },
+      {
+        "name": "hWater",
+        "value": "4",
+        "line": 28978
+      },
+      {
+        "name": "gTree",
+        "value": "18",
+        "line": 28995
+      },
+      {
+        "name": "gTree",
+        "value": "23",
+        "line": 29058
+      },
+      {
+        "name": "dream",
+        "value": "9",
+        "line": 29074
+      },
+      {
+        "name": "oMan",
+        "value": "17",
+        "line": 29082
+      },
+      {
+        "name": "oMan",
+        "value": "5",
+        "line": 29116
+      },
+      {
+        "name": "mChal",
+        "value": "4",
+        "line": 29760
+      },
+      {
+        "name": "curse",
+        "value": "1",
+        "line": 29775
+      },
+      {
+        "name": "isles",
+        "value": "19",
+        "line": 29911
+      },
+      {
+        "name": "oMan",
+        "value": "22",
+        "line": 30370
+      },
+      {
+        "name": "bBomb",
+        "value": "9",
+        "line": 56145
+      },
+      {
+        "name": "bBomb",
+        "value": "10",
+        "line": 56152
+      },
+      {
+        "name": "bBomb",
+        "value": "11",
+        "line": 56153
+      },
+      {
+        "name": "bBomb",
+        "value": "12",
+        "line": 56159
+      },
+      {
+        "name": "bBomb",
+        "value": "24",
+        "line": 56175
+      }
+    ],
+    "assignments": [
+      {
+        "name": "bBomb",
+        "value": "++",
+        "line": 28450
+      },
+      {
+        "name": "dream",
+        "value": "7",
+        "line": 28462
+      },
+      {
+        "name": "aSword",
+        "value": "++",
+        "line": 28651
+      },
+      {
+        "name": "oMan",
+        "value": "10",
+        "line": 28679
+      },
+      {
+        "name": "rings",
+        "value": "6",
+        "line": 28696
+      },
+      {
+        "name": "rings",
+        "value": "9",
+        "line": 28706
+      },
+      {
+        "name": "rings",
+        "value": "16",
+        "line": 28715
+      },
+      {
+        "name": "oMan",
+        "value": "8",
+        "line": 28718
+      },
+      {
+        "name": "gTree",
+        "value": "23",
+        "line": 28967
+      },
+      {
+        "name": "hWater",
+        "value": "5",
+        "line": 28982
+      },
+      {
+        "name": "gTree",
+        "value": "19",
+        "line": 28996
+      },
+      {
+        "name": "dream",
+        "value": "10",
+        "line": 29079
+      },
+      {
+        "name": "oMan",
+        "value": "18",
+        "line": 29087
+      },
+      {
+        "name": "oMan",
+        "value": "6",
+        "line": 29123
+      },
+      {
+        "name": "isles",
+        "value": "13",
+        "line": 29739
+      },
+      {
+        "name": "isles",
+        "value": "7",
+        "line": 29747
+      },
+      {
+        "name": "mChal",
+        "value": "5",
+        "line": 29765
+      },
+      {
+        "name": "curse",
+        "value": "2",
+        "line": 29780
+      },
+      {
+        "name": "isles",
+        "value": "++",
+        "line": 29914
+      },
+      {
+        "name": "bBomb",
+        "value": "10",
+        "line": 56149
+      },
+      {
+        "name": "bBomb",
+        "value": "13",
+        "line": 56164
+      }
+    ]
+  },
+  {
+    "north": 17,
+    "east": 19,
+    "comparisons": [
+      {
+        "name": "oMan",
+        "value": "10",
+        "line": 52035
+      },
+      {
+        "name": "oMan",
+        "value": "21",
+        "line": 52042
+      },
+      {
+        "name": "oMan",
+        "value": "0",
+        "line": 59940
+      },
+      {
+        "name": "oMan",
+        "value": "1",
+        "line": 59946
+      },
+      {
+        "name": "oMan",
+        "value": "2",
+        "line": 59952
+      },
+      {
+        "name": "oMan",
+        "value": "3",
+        "line": 59953
+      },
+      {
+        "name": "oMan",
+        "value": "20",
+        "line": 59978
+      },
+      {
+        "name": "oMan",
+        "value": "21",
+        "line": 59979
+      },
+      {
+        "name": "oMan",
+        "value": "21",
+        "line": 59988
+      },
+      {
+        "name": "oMan",
+        "value": "22",
+        "line": 59994
+      },
+      {
+        "name": "oMan",
+        "value": "14",
+        "line": 60001
+      },
+      {
+        "name": "oMan",
+        "value": "14",
+        "line": 60012
+      },
+      {
+        "name": "oMan",
+        "value": "21",
+        "line": 60018
+      },
+      {
+        "name": "oMan",
+        "value": "21",
+        "line": 60030
+      },
+      {
+        "name": "oMan",
+        "value": "20",
+        "line": 60043
+      }
+    ],
+    "assignments": [
+      {
+        "name": "oMan",
+        "value": "1",
+        "line": 59944
+      },
+      {
+        "name": "oMan",
+        "value": "3",
+        "line": 59975
+      },
+      {
+        "name": "oMan",
+        "value": "15",
+        "line": 60013
+      },
+      {
+        "name": "oMan",
+        "value": "22",
+        "line": 60031
+      },
+      {
+        "name": "oMan",
+        "value": "21",
+        "line": 60047
+      },
+      {
+        "name": "oMan",
+        "value": "13",
+        "line": 60053
+      }
+    ]
+  },
+  {
+    "north": 18,
+    "east": 11,
+    "comparisons": [
+      {
+        "name": "hWater",
+        "value": "4",
+        "line": 54984
+      }
+    ],
+    "assignments": []
+  },
+  {
+    "north": 18,
+    "east": 12,
+    "comparisons": [
+      {
+        "name": "curse",
+        "value": "5",
+        "line": 21399
+      },
+      {
+        "name": "rings",
+        "value": "15",
+        "line": 47817
+      },
+      {
+        "name": "rings",
+        "value": "15",
+        "line": 57794
+      },
+      {
+        "name": "rings",
+        "value": "16",
+        "line": 57800
+      },
+      {
+        "name": "rings",
+        "value": "17",
+        "line": 57801
+      }
+    ],
+    "assignments": [
+      {
+        "name": "rings",
+        "value": "17",
+        "line": 57806
+      }
+    ]
+  },
+  {
+    "north": 18,
+    "east": 13,
+    "comparisons": [
+      {
+        "name": "geo",
+        "value": "1",
+        "line": 21752
+      },
+      {
+        "name": "geo",
+        "value": "5",
+        "line": 21754
+      },
+      {
+        "name": "rings",
+        "value": "12",
+        "line": 21755
+      }
+    ],
+    "assignments": []
+  },
+  {
+    "north": 18,
+    "east": 15,
+    "comparisons": [
+      {
+        "name": "oMan",
+        "value": "7",
+        "line": 23051
+      },
+      {
+        "name": "oMan",
+        "value": "7",
+        "line": 32150
+      },
+      {
+        "name": "oMan",
+        "value": "7",
+        "line": 59768
+      },
+      {
+        "name": "oMan",
+        "value": "7",
+        "line": 60584
+      }
+    ],
+    "assignments": []
+  },
+  {
+    "north": 18,
+    "east": 19,
+    "comparisons": [
+      {
+        "name": "seeds",
+        "value": "2",
+        "line": 32324
+      },
+      {
+        "name": "gTree",
+        "value": "0",
+        "line": 33156
+      },
+      {
+        "name": "gTree",
+        "value": "1",
+        "line": 33163
+      },
+      {
+        "name": "gTree",
+        "value": "0",
+        "line": 60063
+      },
+      {
+        "name": "gTree",
+        "value": "0",
+        "line": 60070
+      },
+      {
+        "name": "gTree",
+        "value": "1",
+        "line": 60078
+      },
+      {
+        "name": "gTree",
+        "value": "2",
+        "line": 60084
+      },
+      {
+        "name": "gTree",
+        "value": "3",
+        "line": 60085
+      },
+      {
+        "name": "gTree",
+        "value": "4",
+        "line": 60092
+      },
+      {
+        "name": "gTree",
+        "value": "4",
+        "line": 60103
+      },
+      {
+        "name": "gTree",
+        "value": "5",
+        "line": 60105
+      },
+      {
+        "name": "gTree",
+        "value": "4",
+        "line": 60107
+      },
+      {
+        "name": "seeds",
+        "value": "1",
+        "line": 60115
+      },
+      {
+        "name": "seeds",
+        "value": "2",
+        "line": 60116
+      },
+      {
+        "name": "seeds",
+        "value": "1",
+        "line": 60124
+      },
+      {
+        "name": "seeds",
+        "value": "2",
+        "line": 60129
+      },
+      {
+        "name": "seeds",
+        "value": "2",
+        "line": 60489
+      }
+    ],
+    "assignments": [
+      {
+        "name": "seeds",
+        "value": "3",
+        "line": 32330
+      },
+      {
+        "name": "gTree",
+        "value": "1",
+        "line": 33158
+      },
+      {
+        "name": "gTree",
+        "value": "2",
+        "line": 33165
+      },
+      {
+        "name": "gTree",
+        "value": "5",
+        "line": 60108
+      },
+      {
+        "name": "seeds",
+        "value": "2",
+        "line": 60125
+      }
+    ]
+  },
+  {
+    "north": 18,
+    "east": 22,
+    "comparisons": [
+      {
+        "name": "gTree",
+        "value": "2",
+        "line": 60172
+      },
+      {
+        "name": "gTree",
+        "value": "0",
+        "line": 60182
+      },
+      {
+        "name": "gTree",
+        "value": "1",
+        "line": 60187
+      },
+      {
+        "name": "gTree",
+        "value": "2",
+        "line": 60197
+      },
+      {
+        "name": "gTree",
+        "value": "3",
+        "line": 60198
+      },
+      {
+        "name": "gTree",
+        "value": "4",
+        "line": 60222
+      },
+      {
+        "name": "gTree",
+        "value": "5",
+        "line": 60228
+      },
+      {
+        "name": "gTree",
+        "value": "5",
+        "line": 60241
+      },
+      {
+        "name": "gTree",
+        "value": "6",
+        "line": 60252
+      },
+      {
+        "name": "gTree",
+        "value": "5",
+        "line": 60254
+      },
+      {
+        "name": "gTree",
+        "value": "6",
+        "line": 60264
+      },
+      {
+        "name": "gTree",
+        "value": "8",
+        "line": 60462
+      }
+    ],
+    "assignments": [
+      {
+        "name": "gTree",
+        "value": "3",
+        "line": 60173
+      },
+      {
+        "name": "gTree",
+        "value": "6",
+        "line": 60257
+      }
+    ]
+  },
+  {
+    "north": 18,
+    "east": 25,
+    "comparisons": [
+      {
+        "name": "curse",
+        "value": "3",
+        "line": 47174
+      }
+    ],
+    "assignments": [
+      {
+        "name": "curse",
+        "value": "4",
+        "line": 47175
+      }
+    ]
+  },
+  {
+    "north": 19,
+    "east": 10,
+    "comparisons": [
+      {
+        "name": "canteen",
+        "value": "1",
+        "line": 30430
+      },
+      {
+        "name": "canteen",
+        "value": "3",
+        "line": 30431
+      }
+    ],
+    "assignments": [
+      {
+        "name": "canteen",
+        "value": "++",
+        "line": 30433
+      }
+    ]
+  },
+  {
+    "north": 19,
+    "east": 14,
+    "comparisons": [
+      {
+        "name": "gTree",
+        "value": "22",
+        "line": 48057
+      },
+      {
+        "name": "hWater",
+        "value": "2",
+        "line": 48058
+      },
+      {
+        "name": "hWater",
+        "value": "2",
+        "line": 58564
+      }
+    ],
+    "assignments": [
+      {
+        "name": "hWater",
+        "value": "3",
+        "line": 58569
+      }
+    ]
+  },
+  {
+    "north": 19,
+    "east": 16,
+    "comparisons": [
+      {
+        "name": "access",
+        "value": "5",
+        "line": 21591
+      },
+      {
+        "name": "access",
+        "value": "8",
+        "line": 21597
+      },
+      {
+        "name": "access",
+        "value": "8",
+        "line": 32242
+      },
+      {
+        "name": "access",
+        "value": "5",
+        "line": 32258
+      },
+      {
+        "name": "access",
+        "value": "0",
+        "line": 55688
+      },
+      {
+        "name": "access",
+        "value": "3",
+        "line": 55727
+      },
+      {
+        "name": "access",
+        "value": "4",
+        "line": 55733
+      },
+      {
+        "name": "access",
+        "value": "5",
+        "line": 55745
+      },
+      {
+        "name": "access",
+        "value": "5",
+        "line": 55753
+      },
+      {
+        "name": "access",
+        "value": "5",
+        "line": 55776
+      },
+      {
+        "name": "access",
+        "value": "6",
+        "line": 55782
+      },
+      {
+        "name": "access",
+        "value": "7",
+        "line": 55794
+      },
+      {
+        "name": "access",
+        "value": "8",
+        "line": 55802
+      },
+      {
+        "name": "access",
+        "value": "8",
+        "line": 55811
+      },
+      {
+        "name": "access",
+        "value": "8",
+        "line": 55819
+      },
+      {
+        "name": "access",
+        "value": "9",
+        "line": 55821
+      },
+      {
+        "name": "access",
+        "value": "8",
+        "line": 55826
+      },
+      {
+        "name": "access",
+        "value": "2",
+        "line": 55872
+      },
+      {
+        "name": "access",
+        "value": "7",
+        "line": 55878
+      },
+      {
+        "name": "access",
+        "value": "8",
+        "line": 55879
+      },
+      {
+        "name": "access",
+        "value": "7",
+        "line": 55892
+      },
+      {
+        "name": "access",
+        "value": "2",
+        "line": 55914
+      },
+      {
+        "name": "access",
+        "value": "2",
+        "line": 55936
+      },
+      {
+        "name": "access",
+        "value": "4",
+        "line": 55946
+      },
+      {
+        "name": "access",
+        "value": "2",
+        "line": 55963
+      },
+      {
+        "name": "access",
+        "value": "7",
+        "line": 55973
+      },
+      {
+        "name": "access",
+        "value": "8",
+        "line": 55978
+      }
+    ],
+    "assignments": [
+      {
+        "name": "access",
+        "value": "1",
+        "line": 55689
+      },
+      {
+        "name": "access",
+        "value": "2",
+        "line": 55699
+      },
+      {
+        "name": "access",
+        "value": "4",
+        "line": 55731
+      },
+      {
+        "name": "access",
+        "value": "5",
+        "line": 55740
+      },
+      {
+        "name": "access",
+        "value": "6",
+        "line": 55780
+      },
+      {
+        "name": "access",
+        "value": "7",
+        "line": 55789
+      },
+      {
+        "name": "access",
+        "value": "9",
+        "line": 55827
+      },
+      {
+        "name": "access",
+        "value": "3",
+        "line": 55873
+      },
+      {
+        "name": "access",
+        "value": "8",
+        "line": 55893
+      }
+    ]
+  },
+  {
+    "north": 19,
+    "east": 18,
+    "comparisons": [
+      {
+        "name": "rings",
+        "value": "11",
+        "line": 31171
+      },
+      {
+        "name": "rings",
+        "value": "10",
+        "line": 57817
+      }
+    ],
+    "assignments": [
+      {
+        "name": "rings",
+        "value": "11",
+        "line": 57822
+      }
+    ]
+  },
+  {
+    "north": 19,
+    "east": 20,
+    "comparisons": [
+      {
+        "name": "dig",
+        "value": "0",
+        "line": 21806
+      },
+      {
+        "name": "pam",
+        "value": "0",
+        "line": 55189
+      },
+      {
+        "name": "pam",
+        "value": "1",
+        "line": 55194
+      },
+      {
+        "name": "pam",
+        "value": "2",
+        "line": 55199
+      },
+      {
+        "name": "pam",
+        "value": "4",
+        "line": 55207
+      },
+      {
+        "name": "pam",
+        "value": "6",
+        "line": 55215
+      },
+      {
+        "name": "pam",
+        "value": "8",
+        "line": 55223
+      },
+      {
+        "name": "pam",
+        "value": "10",
+        "line": 55231
+      },
+      {
+        "name": "pam",
+        "value": "12",
+        "line": 55240
+      },
+      {
+        "name": "pam",
+        "value": "13",
+        "line": 55248
+      },
+      {
+        "name": "pam",
+        "value": "16",
+        "line": 55263
+      },
+      {
+        "name": "pam",
+        "value": "16",
+        "line": 55271
+      },
+      {
+        "name": "pam",
+        "value": "15",
+        "line": 55300
+      },
+      {
+        "name": "pam",
+        "value": "0",
+        "line": 60495
+      },
+      {
+        "name": "geo",
+        "value": "1",
+        "line": 60496
+      }
+    ],
+    "assignments": [
+      {
+        "name": "pam",
+        "value": "1",
+        "line": 32396
+      },
+      {
+        "name": "pam",
+        "value": "3",
+        "line": 55206
+      },
+      {
+        "name": "pam",
+        "value": "5",
+        "line": 55214
+      },
+      {
+        "name": "pam",
+        "value": "7",
+        "line": 55222
+      },
+      {
+        "name": "pam",
+        "value": "9",
+        "line": 55230
+      },
+      {
+        "name": "pam",
+        "value": "11",
+        "line": 55239
+      },
+      {
+        "name": "pam",
+        "value": "13",
+        "line": 55247
+      },
+      {
+        "name": "pam",
+        "value": "14",
+        "line": 55252
+      },
+      {
+        "name": "pam",
+        "value": "15",
+        "line": 55290
+      }
+    ]
+  },
+  {
+    "north": 19,
+    "east": 21,
+    "comparisons": [
+      {
+        "name": "dig",
+        "value": "0",
+        "line": 55311
+      },
+      {
+        "name": "dig",
+        "value": "1",
+        "line": 55320
+      },
+      {
+        "name": "dig",
+        "value": "2",
+        "line": 55328
+      },
+      {
+        "name": "dig",
+        "value": "2",
+        "line": 55333
+      },
+      {
+        "name": "dig",
+        "value": "3",
+        "line": 55351
+      },
+      {
+        "name": "dig",
+        "value": "0",
+        "line": 60475
+      }
+    ],
+    "assignments": [
+      {
+        "name": "dig",
+        "value": "1",
+        "line": 33101
+      },
+      {
+        "name": "dig",
+        "value": "3",
+        "line": 55345
+      }
+    ]
+  },
+  {
+    "north": 19,
+    "east": 23,
+    "comparisons": [
+      {
+        "name": "gTree",
+        "value": "3",
+        "line": 33146
+      },
+      {
+        "name": "gTree",
+        "value": "3",
+        "line": 59279
+      },
+      {
+        "name": "gTree",
+        "value": "3",
+        "line": 59287
+      }
+    ],
+    "assignments": [
+      {
+        "name": "gTree",
+        "value": "4",
+        "line": 33149
+      }
+    ]
+  },
+  {
+    "north": 20,
+    "east": 17,
+    "comparisons": [
+      {
+        "name": "bBomb",
+        "value": "7",
+        "line": 55580
+      }
+    ],
+    "assignments": [
+      {
+        "name": "bBomb",
+        "value": "8",
+        "line": 55584
+      }
+    ]
+  },
+  {
+    "north": 20,
+    "east": 18,
+    "comparisons": [
+      {
+        "name": "rings",
+        "value": "11",
+        "line": 57827
+      },
+      {
+        "name": "rings",
+        "value": "12",
+        "line": 57828
+      },
+      {
+        "name": "rings",
+        "value": "13",
+        "line": 57842
+      },
+      {
+        "name": "rings",
+        "value": "14",
+        "line": 57868
+      }
+    ],
+    "assignments": [
+      {
+        "name": "rings",
+        "value": "12",
+        "line": 57840
+      },
+      {
+        "name": "rings",
+        "value": "14",
+        "line": 57864
+      }
+    ]
+  },
+  {
+    "north": 20,
+    "east": 20,
+    "comparisons": [
+      {
+        "name": "gTree",
+        "value": "22",
+        "line": 56639
+      },
+      {
+        "name": "gTree",
+        "value": "23",
+        "line": 56671
+      },
+      {
+        "name": "gTree",
+        "value": "18",
+        "line": 56678
+      }
+    ],
+    "assignments": [
+      {
+        "name": "gTree",
+        "value": "24",
+        "line": 56673
+      }
+    ]
+  },
+  {
+    "north": 20,
+    "east": 21,
+    "comparisons": [
+      {
+        "name": "gTree",
+        "value": "22",
+        "line": 22158
+      }
+    ],
+    "assignments": []
+  },
+  {
+    "north": 21,
+    "east": 17,
+    "comparisons": [
+      {
+        "name": "oMan",
+        "value": "19",
+        "line": 22779
+      },
+      {
+        "name": "oMan",
+        "value": "19",
+        "line": 32160
+      },
+      {
+        "name": "oMan",
+        "value": "19",
+        "line": 59689
+      },
+      {
+        "name": "oMan",
+        "value": "19",
+        "line": 60611
+      }
+    ],
+    "assignments": [
+      {
+        "name": "oMan",
+        "value": "20",
+        "line": 32164
+      }
+    ]
+  },
+  {
+    "north": 21,
+    "east": 18,
+    "comparisons": [
+      {
+        "name": "bBomb",
+        "value": "9",
+        "line": 58537
+      },
+      {
+        "name": "bBomb",
+        "value": "9",
+        "line": 58547
+      },
+      {
+        "name": "bBomb",
+        "value": "9",
+        "line": 60566
+      }
+    ],
+    "assignments": []
+  },
+  {
+    "north": 21,
+    "east": 20,
+    "comparisons": [
+      {
+        "name": "geo",
+        "value": "3",
+        "line": 58218
+      },
+      {
+        "name": "geo",
+        "value": "4",
+        "line": 58225
+      },
+      {
+        "name": "bBomb",
+        "value": "0",
+        "line": 58230
+      },
+      {
+        "name": "bBomb",
+        "value": "1",
+        "line": 58241
+      },
+      {
+        "name": "bBomb",
+        "value": "2",
+        "line": 58247
+      },
+      {
+        "name": "bBomb",
+        "value": "2",
+        "line": 58255
+      },
+      {
+        "name": "bBomb",
+        "value": "2",
+        "line": 58258
+      }
+    ],
+    "assignments": [
+      {
+        "name": "geo",
+        "value": "4",
+        "line": 58222
+      },
+      {
+        "name": "bBomb",
+        "value": "3",
+        "line": 58260
+      }
+    ]
+  },
+  {
+    "north": 100,
+    "east": 100,
+    "comparisons": [
+      {
+        "name": "isles",
+        "value": "16",
+        "line": 57035
+      },
+      {
+        "name": "isles",
+        "value": "17",
+        "line": 57041
+      }
+    ],
+    "assignments": [
+      {
+        "name": "isles",
+        "value": "1",
+        "line": 57033
+      },
+      {
+        "name": "isles",
+        "value": "17",
+        "line": 57039
+      }
+    ]
+  },
+  {
+    "north": 201,
+    "east": 200,
+    "comparisons": [
+      {
+        "name": "isles",
+        "value": "2",
+        "line": 57177
+      },
+      {
+        "name": "isles",
+        "value": "3",
+        "line": 57183
+      },
+      {
+        "name": "isles",
+        "value": "4",
+        "line": 57188
+      },
+      {
+        "name": "isles",
+        "value": "5",
+        "line": 57200
+      },
+      {
+        "name": "isles",
+        "value": "7",
+        "line": 57205
+      },
+      {
+        "name": "isles",
+        "value": "8",
+        "line": 57218
+      },
+      {
+        "name": "isles",
+        "value": "14",
+        "line": 57229
+      },
+      {
+        "name": "isles",
+        "value": "15",
+        "line": 57242
+      }
+    ],
+    "assignments": [
+      {
+        "name": "isles",
+        "value": "3",
+        "line": 57181
+      },
+      {
+        "name": "isles",
+        "value": "5",
+        "line": 57199
+      },
+      {
+        "name": "isles",
+        "value": "8",
+        "line": 57216
+      },
+      {
+        "name": "isles",
+        "value": "15",
+        "line": 57239
+      }
+    ]
+  },
+  {
+    "north": 300,
+    "east": 300,
+    "comparisons": [
+      {
+        "name": "isles",
+        "value": "23",
+        "line": 49922
+      },
+      {
+        "name": "isles",
+        "value": "23",
+        "line": 57260
+      },
+      {
+        "name": "isles",
+        "value": "24",
+        "line": 57263
+      },
+      {
+        "name": "isles",
+        "value": "1",
+        "line": 57274
+      },
+      {
+        "name": "isles",
+        "value": "2",
+        "line": 57279
+      },
+      {
+        "name": "isles",
+        "value": "5",
+        "line": 57285
+      },
+      {
+        "name": "isles",
+        "value": "6",
+        "line": 57286
+      },
+      {
+        "name": "isles",
+        "value": "7",
+        "line": 57293
+      },
+      {
+        "name": "isles",
+        "value": "15",
+        "line": 57298
+      },
+      {
+        "name": "isles",
+        "value": "16",
+        "line": 57311
+      },
+      {
+        "name": "isles",
+        "value": "17",
+        "line": 57316
+      },
+      {
+        "name": "isles",
+        "value": "18",
+        "line": 57317
+      },
+      {
+        "name": "isles",
+        "value": "23",
+        "line": 57330
+      },
+      {
+        "name": "isles",
+        "value": "24",
+        "line": 57331
+      },
+      {
+        "name": "isles",
+        "value": "23",
+        "line": 57336
+      }
+    ],
+    "assignments": [
+      {
+        "name": "isles",
+        "value": "2",
+        "line": 57278
+      },
+      {
+        "name": "isles",
+        "value": "6",
+        "line": 57291
+      },
+      {
+        "name": "isles",
+        "value": "16",
+        "line": 57309
+      },
+      {
+        "name": "isles",
+        "value": "18",
+        "line": 57328
+      },
+      {
+        "name": "isles",
+        "value": "24",
+        "line": 57341
+      }
+    ]
+  },
+  {
+    "north": 500,
+    "east": 501,
+    "comparisons": [
+      {
+        "name": "aSword",
+        "value": "6",
+        "line": 31797
+      },
+      {
+        "name": "aSword",
+        "value": "63",
+        "line": 59335
+      },
+      {
+        "name": "aSword",
+        "value": "64",
+        "line": 59342
+      },
+      {
+        "name": "aSword",
+        "value": "57",
+        "line": 59354
+      },
+      {
+        "name": "aSword",
+        "value": "58",
+        "line": 59360
+      },
+      {
+        "name": "aSword",
+        "value": "51",
+        "line": 59367
+      },
+      {
+        "name": "aSword",
+        "value": "52",
+        "line": 59375
+      },
+      {
+        "name": "aSword",
+        "value": "45",
+        "line": 59382
+      },
+      {
+        "name": "aSword",
+        "value": "46",
+        "line": 59390
+      },
+      {
+        "name": "aSword",
+        "value": "39",
+        "line": 59397
+      },
+      {
+        "name": "aSword",
+        "value": "40",
+        "line": 59405
+      },
+      {
+        "name": "aSword",
+        "value": "23",
+        "line": 59419
+      },
+      {
+        "name": "aSword",
+        "value": "24",
+        "line": 59425
+      },
+      {
+        "name": "aSword",
+        "value": "12",
+        "line": 59439
+      },
+      {
+        "name": "aSword",
+        "value": "13",
+        "line": 59453
+      },
+      {
+        "name": "aSword",
+        "value": "7",
+        "line": 59461
+      },
+      {
+        "name": "aSword",
+        "value": "6",
+        "line": 59469
+      },
+      {
+        "name": "aSword",
+        "value": "6",
+        "line": 59477
+      },
+      {
+        "name": "aSword",
+        "value": "4",
+        "line": 59486
+      },
+      {
+        "name": "aSword",
+        "value": "5",
+        "line": 59493
+      },
+      {
+        "name": "aSword",
+        "value": "2",
+        "line": 59506
+      },
+      {
+        "name": "aSword",
+        "value": "3",
+        "line": 59507
+      },
+      {
+        "name": "aSword",
+        "value": "6",
+        "line": 60619
+      }
+    ],
+    "assignments": [
+      {
+        "name": "aSword",
+        "value": "++",
+        "line": 59341
+      },
+      {
+        "name": "aSword",
+        "value": "++",
+        "line": 59358
+      },
+      {
+        "name": "aSword",
+        "value": "++",
+        "line": 59373
+      },
+      {
+        "name": "aSword",
+        "value": "++",
+        "line": 59388
+      },
+      {
+        "name": "aSword",
+        "value": "++",
+        "line": 59403
+      },
+      {
+        "name": "aSword",
+        "value": "++",
+        "line": 59423
+      },
+      {
+        "name": "aSword",
+        "value": "13",
+        "line": 59451
+      },
+      {
+        "name": "aSword",
+        "value": "7",
+        "line": 59484
+      },
+      {
+        "name": "aSword",
+        "value": "5",
+        "line": 59490
+      },
+      {
+        "name": "aSword",
+        "value": "3",
+        "line": 59523
+      }
+    ]
+  }
+]

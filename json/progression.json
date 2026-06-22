@@ -1034,38 +1034,5 @@
       ],
       "receive": ["craft.key"]
     }
-  ],
-  "gates": [
-    {
-      "room": { "north": 12, "east": 26 },
-      "from": "south0",
-      "to": "east0",
-      "bidirectional": true,
-      "requires": [["skill:stomp", "misc:stomp code"]]
-    },
-    {
-      "room": { "north": 11, "east": 15 },
-      "from": "south0",
-      "to": "north0",
-      "bidirectional": true,
-      "requires": [["permit:bomb"]]
-    }
-  ],
-  "warps": [
-    {
-      "id": "waterwarp_9_14_9_13",
-      "rooms": [
-        {
-          "north": 9,
-          "east": 14
-        },
-        {
-          "north": 9,
-          "east": 13
-        }
-      ],
-      "bidirectional": true,
-      "requires": [["magic:fire.3?", "magic:drain.1?"]]
-    }
   ]
 }
