@@ -345,5 +345,4 @@ def generate_html():
 
     print(f"Success! Generated flipped {OUTPUT_FILE} with {len(html_elements)} interactive grouping map tiles.")
 
-if __name__ == "__main__":
-    generate_html()
+generate_html()

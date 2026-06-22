@@ -9422,7 +9422,7 @@
       "direction": "north",
       "mechanism": "edge",
       "requires": [],
-      "fromExitId": "edge:north:18.0_14.0",
+      "fromExitId": "edge:north:18_14",
       "toExitId": "edge:south:10_11_9_11_gap_2"
     },
     {
@@ -9439,7 +9439,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:10_11_9_11_gap_2",
-      "toExitId": "edge:north:18.0_14.0"
+      "toExitId": "edge:north:18_14"
     },
     {
       "originNorth": 6,
@@ -12015,7 +12015,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:9_11_8_11",
-      "toExitId": "edge:north:12.0_21.0"
+      "toExitId": "edge:north:12_21"
     },
     {
       "originNorth": 12,
@@ -12030,7 +12030,7 @@
       "direction": "north",
       "mechanism": "edge",
       "requires": [],
-      "fromExitId": "edge:north:12.0_21.0",
+      "fromExitId": "edge:north:12_21",
       "toExitId": "edge:south:9_11_8_11"
     },
     {

@@ -2237,7 +2237,7 @@
       "dest_y": 25
     },
     {
-      "id": "edge:north:18.0_14.0",
+      "id": "edge:north:18_14",
       "mechanism": "edge",
       "direction": "north",
       "origin": {
@@ -7009,7 +7009,7 @@
       "dest_y": 510
     },
     {
-      "id": "edge:north:12.0_21.0",
+      "id": "edge:north:12_21",
       "mechanism": "edge",
       "direction": "north",
       "origin": {
