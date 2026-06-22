@@ -17,8 +17,8 @@ EXITS_JSON_PATH = "./exits.json"
 PROGRESSION_ICON_PATH = "./mapimgs/"
 
 # Constants scaled down to match the layout sizes perfectly
-TILE_WIDTH = 710/2
-TILE_HEIGHT = 560/2
+TILE_WIDTH = 710
+TILE_HEIGHT = 560
 BLOCKS_X = 14
 BLOCKS_Y = 11
 
@@ -125,8 +125,7 @@ html_start = f"""<!DOCTYPE html>
             border-radius: 50%;
         }}
         .progression-icon {{
-            width: 14px;
-            height: 14px;
+            width: 28px;
             z-index: 12;
             filter: drop-shadow(0px 1px 2px rgba(0,0,0,0.8));
         }}
