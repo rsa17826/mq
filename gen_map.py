@@ -24,14 +24,10 @@ BLOCKS_Y = 11
 
 BLOCK_WIDTH_PCT = 100 / BLOCKS_X
 BLOCK_HEIGHT_PCT = 100 / BLOCKS_Y
-GAP_SIZE = 0 # Sizing gap between tiles
 
 # Local coordinate dimensions from game engine data structures
 ROOM_INTERNAL_WIDTH = 710.0
 ROOM_INTERNAL_HEIGHT = 560.0
-CONN_INTERNAL_WIDTH = ROOM_INTERNAL_WIDTH
-CONN_INTERNAL_HEIGHT = ROOM_INTERNAL_HEIGHT
-
 
 html_start = f"""<!DOCTYPE html>
 <html lang="en">
@@ -225,19 +221,10 @@ function drawArrow(route) {
   const nums = route.d
   if (nums.length < 6) return
 
-  // Normalize door paths vs connection paths
-  const isWarpDoor = route.d.includes("M 20") || nums[0] > 20
-  
   let a, b, c;
-  if (isWarpDoor) {
-    a = worldToScreen(nums[0] - 20, nums[1] - 20)
-    b = worldToScreen(nums[2] - 20, nums[3] - 20)
-    c = worldToScreen(nums[4] - 20, nums[5] - 20)
-  } else {
-    a = worldToScreen(nums[0], nums[1])
-    b = worldToScreen(nums[2], nums[3])
-    c = worldToScreen(nums[4], nums[5])
-  }
+  a = worldToScreen(nums[0], nums[1])
+  b = worldToScreen(nums[2], nums[3])
+  c = worldToScreen(nums[4], nums[5])
 
   ctx.beginPath()
   ctx.moveTo(a.x, a.y)
@@ -445,6 +432,44 @@ def main():
     connections = load_connections()
     doors = load_doors()
     geom_index = load_geometry_map()
+    exit_lookup = {}
+
+    for room_key, exits in geom_index.items():
+        exit_lookup[room_key] = {}
+    
+        for side, bounds_list in exits.items():
+            if not bounds_list:
+                continue
+            if not isinstance(bounds_list, list):
+                bounds_list = [bounds_list]
+    
+            processed = []
+    
+            for b in bounds_list:
+                if not isinstance(b, dict):
+                    continue
+    
+                if side in ["west", "east"]:
+                    start = int(float(b["top"]))
+                    end = int(float(b["bottom"]))
+                    center_block = (start + end) / 2
+    
+                    processed.append({
+                        "side": side,
+                        "block": center_block
+                    })
+    
+                else:  # north/south
+                    start = int(float(b["left"]))
+                    end = int(float(b["right"]))
+                    center_block = (start + end) / 2
+    
+                    processed.append({
+                        "side": side,
+                        "block": center_block
+                    })
+    
+            exit_lookup[room_key][side] = processed
     prog_index = load_progression_map()
 
     conn_override_index = {str(c["fromExitId"]): c for c in connections if "fromExitId" in c}
@@ -474,21 +499,19 @@ def main():
     rows = len(unique_norths)
 
     js_routes_db = {f"{north}_{east}": [] for north, east, _ in parsed_tiles}
-    tile_step_w = TILE_WIDTH + GAP_SIZE
-    tile_step_h = TILE_HEIGHT + GAP_SIZE
 
-    scale_x_conn = TILE_WIDTH / CONN_INTERNAL_WIDTH
-    scale_y_conn = TILE_HEIGHT / CONN_INTERNAL_HEIGHT
+    scale_x_conn = TILE_WIDTH / ROOM_INTERNAL_WIDTH
+    scale_y_conn = TILE_HEIGHT / ROOM_INTERNAL_HEIGHT
 
     scale_x_room = TILE_WIDTH / ROOM_INTERNAL_WIDTH
     scale_y_room = TILE_HEIGHT / ROOM_INTERNAL_HEIGHT
 
-    half_block_x_conn_scaled = (CONN_INTERNAL_WIDTH / (2 * BLOCKS_X)) * scale_x_conn
-    half_block_y_conn_scaled = (CONN_INTERNAL_HEIGHT / (2 * BLOCKS_Y)) * scale_y_conn
+    half_block_x_conn_scaled = (ROOM_INTERNAL_WIDTH / (2 * BLOCKS_X)) * scale_x_conn
+    half_block_y_conn_scaled = (ROOM_INTERNAL_HEIGHT / (2 * BLOCKS_Y)) * scale_y_conn
     half_block_x_room_scaled = (ROOM_INTERNAL_WIDTH / (2 * BLOCKS_X)) * scale_x_room
     half_block_y_room_scaled = (ROOM_INTERNAL_HEIGHT / (2 * BLOCKS_Y)) * scale_y_room
 
-    # Step 1: Process connections
+    # Step 1: Process connections (Centered exactly inside the local grid block)
     for conn in connections:
         o_n, o_e = int(conn["originNorth"]), int(conn["originEast"])
         room_key = f"{o_n}_{o_e}"
@@ -502,19 +525,15 @@ def main():
 
         src_coord = conn.get("srcCoord")
         if not direction or src_coord is None:
-            v_n, v_e = int(conn["vanillaDestNorth"]), int(conn["vanillaDestEast"])
-            if v_n > o_n: direction = "north"
-            elif v_n < o_n: direction = "south"
-            elif v_e > o_e: direction = "east"
-            else: direction = "west"
-            src_coord = CONN_INTERNAL_WIDTH / 2 if direction in ["north", "south"] else CONN_INTERNAL_HEIGHT / 2
+          print( "[WARNING] some exit missing some data", conn)
+          continue
 
         src_coord_scaled = float(src_coord) * (scale_x_conn if direction in ["north", "south"] else scale_y_conn)
 
         track_col = east_to_track[o_e]
         track_row = north_to_track[o_n]
-        base_x = track_col * tile_step_w
-        base_y = track_row * tile_step_h
+        base_x = track_col * TILE_WIDTH
+        base_y = track_row * TILE_HEIGHT
 
         if direction == "west":
             arrow_src_x, arrow_src_y = base_x, base_y + src_coord_scaled
@@ -526,29 +545,37 @@ def main():
             arrow_src_x, arrow_src_y = base_x + src_coord_scaled, base_y + TILE_HEIGHT
 
         dest_o_n, dest_o_e = int(conn["newDestNorth"]), int(conn["newDestEast"])
+        
+        # If the destination room is outside the rendering track context bounds, default to current track positions
         dest_track_col = east_to_track.get(dest_o_e, track_col)
         dest_track_row = north_to_track.get(dest_o_n, track_row)
 
-        dest_base_x = dest_track_col * tile_step_w
-        dest_base_y = dest_track_row * tile_step_h
+        dest_base_x = dest_track_col * TILE_WIDTH
+        dest_base_y = dest_track_row * TILE_HEIGHT
 
         new_x, new_y = conn.get("newX"), conn.get("newY")
-        float_new_x = float(new_x) if new_x is not None else CONN_INTERNAL_WIDTH / 2
-        float_new_y = float(new_y) if new_y is not None else CONN_INTERNAL_HEIGHT / 2
+        float_new_x = float(new_x) if new_x is not None else ROOM_INTERNAL_WIDTH / 2
+        float_new_y = float(new_y) if new_y is not None else ROOM_INTERNAL_HEIGHT / 2
 
-        arrow_dest_x = dest_base_x + (float_new_x * scale_x_conn) + half_block_x_conn_scaled
-        arrow_dest_y = dest_base_y + (float_new_y * scale_y_conn) + half_block_y_conn_scaled
+        # FIX: Snaps side connection landing positions cleanly into the visual block center
+        block_w = ROOM_INTERNAL_WIDTH / BLOCKS_X
+        block_h = ROOM_INTERNAL_HEIGHT / BLOCKS_Y
+        
+        grid_x = round(float_new_x / block_w)
+        grid_y = round(float_new_y / block_h)
+        
+        arrow_dest_x = dest_base_x + ((grid_x+1) * block_w * scale_x_conn)
+        arrow_dest_y = dest_base_y + ((grid_y+1) * block_h * scale_y_conn)
 
         mid_x, mid_y = (arrow_src_x + arrow_dest_x) / 2, (arrow_src_y + arrow_dest_y) / 2
         if direction in ["west", "east"]:
-            ctrl_x, ctrl_y = (mid_x + (0 if direction == "east" else -0), mid_y)
+            ctrl_x, ctrl_y = (mid_x + (25 if direction == "east" else -25), mid_y)
         else:
-            ctrl_x, ctrl_y = (mid_x, mid_y + (0 if direction == "south" else -0))
-
+            ctrl_x, ctrl_y = (mid_x, mid_y + (25 if direction == "south" else -25))
         color = djb2_color_hash(conn["fromExitId"], conn["toExitId"])
 
         if room_key in js_routes_db:
-            js_routes_db[room_key].append({"d": [arrow_src_x,arrow_src_y,ctrl_x,ctrl_y,arrow_dest_x,arrow_dest_y], "color": color})
+            js_routes_db[room_key].append({"d": [arrow_src_x, arrow_src_y, ctrl_x, ctrl_y, arrow_dest_x, arrow_dest_y], "color": color})
 
     # Step 2: Handle warp doors
     room_doors_index = {}
@@ -580,11 +607,11 @@ def main():
         orig_col, orig_row = east_to_track[o_e], north_to_track[o_n]
         dest_col, dest_row = east_to_track[d_e], north_to_track[d_n]
 
-        arrow_src_x = 20 + orig_col * tile_step_w + (src_x_local * scale_x_room) + half_block_x_room_scaled
-        arrow_src_y = 20 + orig_row * tile_step_h + (src_y_local * scale_y_room) + half_block_y_room_scaled
+        arrow_src_x = orig_col * TILE_WIDTH + (src_x_local * scale_x_room) + half_block_x_room_scaled
+        arrow_src_y = orig_row * TILE_HEIGHT + (src_y_local * scale_y_room) + half_block_y_room_scaled
 
-        arrow_dest_x = 20 + dest_col * tile_step_w + (dest_x_local * scale_x_room) + half_block_x_room_scaled
-        arrow_dest_y = 20 + dest_row * tile_step_h + (dest_y_local * scale_y_room) + half_block_y_room_scaled
+        arrow_dest_x = dest_col * TILE_WIDTH + (dest_x_local * scale_x_room) + half_block_x_room_scaled
+        arrow_dest_y = dest_row * TILE_HEIGHT + (dest_y_local * scale_y_room) + half_block_y_room_scaled
 
         m_x, m_y = (arrow_src_x + arrow_dest_x) / 2, (arrow_src_y + arrow_dest_y) / 2
         ctrl_x, ctrl_y = m_x, m_y - 45
@@ -592,15 +619,15 @@ def main():
         color = djb2_color_hash(d["id"], "warp_gate")
 
         if room_key in js_routes_db:
-            js_routes_db[room_key].append({"d": [arrow_src_x,arrow_src_y,ctrl_x,ctrl_y,arrow_dest_x,arrow_dest_y], "color": color})
+            js_routes_db[room_key].append({"d": [arrow_src_x, arrow_src_y, ctrl_x, ctrl_y, arrow_dest_x, arrow_dest_y], "color": color})
 
     html_elements = []
     for north, east, filename in parsed_tiles:
         track_col = east_to_track[east]
         track_row = north_to_track[north]
 
-        pixel_left = track_col * tile_step_w
-        pixel_top = track_row * tile_step_h
+        pixel_left = track_col * TILE_WIDTH
+        pixel_top = track_row * TILE_HEIGHT
         room_key = f"{north}_{east}"
 
         placeholder_img_path = f"{IMAGE_FOLDER}/{filename}"
@@ -676,8 +703,8 @@ def main():
                 override = conn_override_index[door_id_str]
                 d_n, d_e = int(override["newDestNorth"]), int(override["newDestEast"])
                 if override.get("newX") is not None and override.get("newY") is not None:
-                    dest_x_local = float(override["newX"]) * (ROOM_INTERNAL_WIDTH / CONN_INTERNAL_WIDTH)
-                    dest_y_local = (float(override["newY"]) * (ROOM_INTERNAL_HEIGHT / CONN_INTERNAL_HEIGHT))
+                    dest_x_local = float(override["newX"]) * (ROOM_INTERNAL_WIDTH / ROOM_INTERNAL_WIDTH)
+                    dest_y_local = (float(override["newY"]) * (ROOM_INTERNAL_HEIGHT / ROOM_INTERNAL_HEIGHT))
                 else:
                     dest_x_local = float(d["dest_x"])
                     dest_y_local = float(d["dest_y"])
@@ -724,8 +751,8 @@ def main():
         </div>"""
         html_elements.append(wrapper_tag)
 
-    total_svg_width = 40 + (cols * tile_step_w)
-    total_svg_height = 40 + (rows * tile_step_h)
+    total_svg_width = 40 + (cols * TILE_WIDTH)
+    total_svg_height = 40 + (rows * TILE_HEIGHT)
 
     container_style = f'id="grid" style="width: {total_svg_width}px; height: {total_svg_height}px;"'
     dynamic_html_start = html_start.replace('id="grid"', container_style)
@@ -744,6 +771,17 @@ def snapToGrid(x, y):
     snapped_x = round(float(x) / block_width) * block_width
     snapped_y = round(float(y) / block_height) * block_height
     return snapped_x, snapped_y
+def exitBlockToPixel(base_x, base_y, side, block_pos):
+    block_w = TILE_WIDTH / BLOCKS_X
+    block_h = TILE_HEIGHT / BLOCKS_Y
 
+    if side == "north":
+        return base_x + block_pos * block_w, base_y
+    elif side == "south":
+        return base_x + block_pos * block_w, base_y + TILE_HEIGHT
+    elif side == "west":
+        return base_x, base_y + block_pos * block_h
+    elif side == "east":
+        return base_x + TILE_WIDTH, base_y + block_pos * block_h
 if __name__ == "__main__":
     main()

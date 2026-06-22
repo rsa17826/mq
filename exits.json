@@ -6844,21 +6844,6 @@
       "dest_y": 510
     },
     {
-      "id": "edge:north:17.1_19",
-      "mechanism": "edge",
-      "direction": "north",
-      "origin": {
-        "north": 17.1,
-        "east": 19
-      },
-      "dest": {
-        "north": 18.1,
-        "east": 19
-      },
-      "dest_x": null,
-      "dest_y": 510
-    },
-    {
       "id": "edge:north:18_10_19_10",
       "mechanism": "edge",
       "direction": "north",

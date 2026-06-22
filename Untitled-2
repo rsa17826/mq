@@ -1,0 +1,15 @@
+for img in map/*.jpg; do
+    magick "$img" -gravity NorthEast -chop 0x4 "${img%.jpg}.crop.jpg"
+done
+
+for file in map/*.jpg; do
+  mv "$file" "${file%.jpg}"
+done
+
+rm mapSmall
+mkdir -p mapSmall
+for f in map/*.jpg; do
+    magick "$f" -resize 10% "mapSmall/$(basename "$f")"
+done
+
+magick map/100,100.jpg -gravity NorthEast -chop 5x0 "map/a.crop.jpg"
