@@ -532,15 +532,16 @@ def main():
         track_row = north_to_track[o_n]
         base_x = track_col * TILE_WIDTH
         base_y = track_row * TILE_HEIGHT
-
+        halfTileWidth = (TILE_WIDTH / BLOCKS_X)/2
+        halfTileHeight = (TILE_HEIGHT / BLOCKS_Y)/2
         if direction == "west":
-            arrow_src_x, arrow_src_y = base_x, base_y + src_coord_scaled
+            arrow_src_x, arrow_src_y = base_x+halfTileWidth, base_y + src_coord_scaled
         elif direction == "east":
-            arrow_src_x, arrow_src_y = base_x + TILE_WIDTH, base_y + src_coord_scaled
+            arrow_src_x, arrow_src_y = base_x + TILE_WIDTH-halfTileWidth, base_y + src_coord_scaled
         elif direction == "north":
-            arrow_src_x, arrow_src_y = base_x + src_coord_scaled, base_y
+            arrow_src_x, arrow_src_y = base_x + src_coord_scaled, base_y+halfTileHeight
         elif direction == "south":
-            arrow_src_x, arrow_src_y = base_x + src_coord_scaled, base_y + TILE_HEIGHT
+            arrow_src_x, arrow_src_y = base_x + src_coord_scaled, base_y + TILE_HEIGHT-halfTileHeight
 
         dest_o_n, dest_o_e = int(conn["newDestNorth"]), int(conn["newDestEast"])
         
@@ -554,16 +555,14 @@ def main():
         new_x, new_y = conn.get("newX"), conn.get("newY")
         float_new_x = float(new_x) if new_x is not None else ROOM_INTERNAL_WIDTH / 2
         float_new_y = float(new_y) if new_y is not None else ROOM_INTERNAL_HEIGHT / 2
-
-        # FIX: Snaps side connection landing positions cleanly into the visual block center
-        block_w = ROOM_INTERNAL_WIDTH / BLOCKS_X
-        block_h = ROOM_INTERNAL_HEIGHT / BLOCKS_Y
         
-        grid_x = round(float_new_x / block_w)
-        grid_y = round(float_new_y / block_h)
+        # newX/newY are already precise block-centered pixel positions
+        # (computed in shuffle_exits.py as idx*block_size + block_size/2) --
+        # just scale them into the rendered tile space directly, the same
+        # way arrow_src_x/y are computed above. No re-snapping needed.
         
-        arrow_dest_x = dest_base_x + ((grid_x+1) * block_w * scale_x_conn)
-        arrow_dest_y = dest_base_y + ((grid_y+1) * block_h * scale_y_conn)
+        arrow_dest_x = dest_base_x + (float_new_x * scale_x_conn)
+        arrow_dest_y = dest_base_y + (float_new_y * scale_y_conn)
 
         mid_x, mid_y = (arrow_src_x + arrow_dest_x) / 2, (arrow_src_y + arrow_dest_y) / 2
         if direction in ["west", "east"]:
@@ -585,17 +584,29 @@ def main():
     for d in doors:
         o_n, o_e = int(d["origin"]["north"]), int(d["origin"]["east"])
         v_dest_n, v_dest_e = int(d["dest"]["north"]), int(d["dest"]["east"])
-
-        reverse_door = room_doors_index.get(f"{v_dest_n}_{v_dest_e}->{o_n}_{o_e}")
-        src_x_local, src_y_local = snapToGrid(d["dest_x"], d["dest_y"])
-        if reverse_door:
-            dest_x_local, dest_y_local = snapToGrid(reverse_door["dest_x"], reverse_door["dest_y"])
-        else:
-            dest_x_local = ROOM_INTERNAL_WIDTH / 2
-            dest_y_local = ROOM_INTERNAL_HEIGHT / 2
-
         door_id_str = str(d["id"])
-        d_n, d_e = v_dest_n, v_dest_e
+
+        src_x_local, src_y_local = snapToGrid(d["dest_x"], d["dest_y"])
+
+        override = conn_override_index.get(door_id_str)
+        if override:
+            # shuffled: this door's actual paired destination + landing spot
+            d_n, d_e = int(override["newDestNorth"]), int(override["newDestEast"])
+            ov_x, ov_y = override.get("newX"), override.get("newY")
+            if ov_x is not None and ov_y is not None:
+                dest_x_local, dest_y_local = snapToGrid(float(ov_x), float(ov_y))
+            else:
+                dest_x_local = ROOM_INTERNAL_WIDTH / 2
+                dest_y_local = ROOM_INTERNAL_HEIGHT / 2
+        else:
+            # no override found -- fall back to vanilla reverse-door lookup
+            d_n, d_e = v_dest_n, v_dest_e
+            reverse_door = room_doors_index.get(f"{v_dest_n}_{v_dest_e}->{o_n}_{o_e}")
+            if reverse_door:
+                dest_x_local, dest_y_local = snapToGrid(reverse_door["dest_x"], reverse_door["dest_y"])
+            else:
+                dest_x_local = ROOM_INTERNAL_WIDTH / 2
+                dest_y_local = ROOM_INTERNAL_HEIGHT / 2
 
         room_key = f"{o_n}_{o_e}"
 
