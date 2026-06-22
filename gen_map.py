@@ -40,18 +40,6 @@ html_start = f"""<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>High-Performance Interactive Map Viewer</title>
     <style>
-    #grid {{
-    will-change: transform;
-    transform: translateZ(0); /* forces GPU */
-}}.tile-wrapper {{
-    will-change: transform;
-}}
-
-.grid-item {{
-    will-change: transform;
-    image-rendering: pixelated;
-    image-rendering: crisp-edges;
-}}
         html, body {{
             margin: 0;
             background-color: #111;
@@ -63,20 +51,23 @@ html_start = f"""<!DOCTYPE html>
         html::-webkit-scrollbar, body::-webkit-scrollbar {{
             display: none;
         }}
-        .fr {{
-            display:flex;
-            flex-direction:row;
-            gap:4px;
-            position: absolute;
-            bottom: calc(3px + {BLOCK_WIDTH_PCT}%);
-            right: calc(3px + {BLOCK_WIDTH_PCT}%);
-            pointer-events: none;
-            z-index:9999999999;
-        }}
-        .grid-container {{
+        #viewport {{
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
             position: relative;
-            padding: 20px;
-            margin: 0;
+        }}
+        #pan-layer {{
+            position: absolute;
+            top: 0;
+            left: 0;
+            will-change: transform;
+            z-index: 1;
+        }}
+        #grid {{
+            position: relative;
+            will-change: transform;
+            transform-origin: 0 0;
         }}
         .tile-wrapper {{
             position: absolute;
@@ -86,7 +77,6 @@ html_start = f"""<!DOCTYPE html>
             box-shadow: inset 0 0 0 1px #444;
             box-sizing: border-box;
             z-index: 5;
-            transition: box-shadow 0.1s ease-in-out;
         }}
         .tile-wrapper:hover {{
             box-shadow: inset 0 0 0 1px #fff;
@@ -97,11 +87,21 @@ html_start = f"""<!DOCTYPE html>
             width: 100%;
             height: 100%;
             opacity: 0.85;
-            transition: opacity 0.3s ease-in-out, filter 0.3s ease-in-out;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
         }}
         .grid-item.loading {{
             filter: blur(2px);
-            image-rendering: pixelated;
+        }}
+        .fr {{
+            display: flex;
+            flex-direction: row;
+            gap: 4px;
+            position: absolute;
+            bottom: calc(3px + {BLOCK_WIDTH_PCT}%);
+            right: calc(3px + {BLOCK_WIDTH_PCT}%);
+            pointer-events: none;
+            z-index: 9999999999;
         }}
         .overlay-layer {{
             position: absolute;
@@ -129,26 +129,16 @@ html_start = f"""<!DOCTYPE html>
             z-index: 12;
             filter: drop-shadow(0px 1px 2px rgba(0,0,0,0.8));
         }}
-        .global-svg-layer {{
+        /* FIX: Unique ID styled explicitly to sit on top of everything */
+        #arrow-canvas-2d {{
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 100;
-        }}
-        .route-arrow {{
-            fill: none;
-            stroke-width: 1.8;
-            stroke-linecap: round;
-            stroke-dasharray: 4, 3;
-            animation: dash 20s linear infinite;
-        }}
-        @keyframes dash {{
-            to {{
-                stroke-dashoffset: -1000;
-            }}
+            z-index: 999999;
+            transform: translateZ(0); 
         }}
     </style>
 </head>
@@ -158,135 +148,211 @@ html_start = f"""<!DOCTYPE html>
         <div id="grid">
 """
 
-html_end = """    </div>
-        </div>
-        </div>
+html_end = r"""    </div>
     </div>
-    <script>
-        const svgCanvas = document.getElementById('arrow-canvas');
+    <canvas id="arrow-canvas-2d"></canvas>
+</div>
+<script>
+// @ts-nocheck
+const canvas = document.getElementById("arrow-canvas-2d")
+const ctx = canvas.getContext("2d")
+const viewport = document.getElementById("viewport")
+const grid = document.getElementById("grid")
+const panLayer = document.getElementById("pan-layer")
 
-        document.querySelectorAll('.tile-wrapper').forEach(tile => {
-            tile.addEventListener('mouseenter', function() {
-                const roomKey = this.getAttribute('data-room');
-                const routes = ROUTES_DATA[roomKey] || [];
+let scale = 1
+let originX = 0
+let originY = 0
+let currentRoom = null
+let dashOffset = 0
+let isPanning = false
+let lastX = 0
+let lastY = 0
+let needsUpdate = false
 
-                let pathsHtml = '';
-                routes.forEach(route => {
-                    pathsHtml += `<path d="${route.d}" class="route-arrow" stroke="${route.color}" marker-end="url(#arrowhead)"/>`;
-                });
-                svgCanvas.innerHTML = pathsHtml;
-            });
+function resizeCanvas() {
+  canvas.width = viewport.clientWidth
+  canvas.height = viewport.clientHeight
+  requestUpdate()
+}
+window.addEventListener("resize", resizeCanvas)
 
-            tile.addEventListener('mouseleave', function() {
-                svgCanvas.innerHTML = '';
-            });
-        });
-    </script>
-    <script>
-const viewport = document.getElementById('viewport');
-const grid = document.getElementById('grid');
-const panLayer = document.getElementById('pan-layer');
+document.addEventListener("DOMContentLoaded", () => {
+    resizeCanvas()
+    
+    document.querySelectorAll(".tile-wrapper").forEach((tile) => {
+      tile.addEventListener("mouseenter", function () {
+        currentRoom = this.getAttribute("data-room")
+        requestUpdate()
+      })
+      tile.addEventListener("mouseleave", function () {
+        currentRoom = null
+        requestUpdate()
+      })
+    })
+    
+    // --- STABLE ASYNC IMAGE LOADER ---
+    document.querySelectorAll('.grid-item').forEach(img => {
+        const targetSrc = img.getAttribute('data-src');
+        if (targetSrc) {
+            const tempLoader = new Image();
+            tempLoader.src = targetSrc;
+            tempLoader.onload = () => {
+                img.src = targetSrc;
+                img.classList.remove('loading');
+            };
+        }
+    });
+})
 
-let scale = 1;
-let originX = 0;
-let originY = 0;
-
-let isPanning = false;
-let startX, startY;
-let needsUpdate = false;
+function worldToScreen(x, y) {
+  return {
+    x: x * scale + originX,
+    y: y * scale + originY,
+  }
+}
 
 function updateTransform() {
-    if (!needsUpdate) return;
+  if (!needsUpdate) return
+  panLayer.style.transform = `translate(${originX}px, ${originY}px)`
+  grid.style.transform = `scale(${scale})`
+  needsUpdate = false
+}
 
-    // pan = translate only
-    panLayer.style.transform = `translate(${originX}px, ${originY}px)`;
+function drawArrow(route) {
+  if (!route || !route.d) return
 
-    // zoom = scale only
-    grid.style.transform = `scale(${scale})`;
-    grid.style.transformOrigin = "0 0";
+  const nums = route.d.match(/-?\d+(\.\d+)?/g).map(Number)
+  if (nums.length < 6) return
 
-    needsUpdate = false;
+  // Normalize door paths vs connection paths
+  const isWarpDoor = route.d.includes("M 20") || nums[0] > 20
+  
+  let a, b, c;
+  if (isWarpDoor) {
+    a = worldToScreen(nums[0] - 20, nums[1] - 20)
+    b = worldToScreen(nums[2] - 20, nums[3] - 20)
+    c = worldToScreen(nums[4] - 20, nums[5] - 20)
+  } else {
+    a = worldToScreen(nums[0], nums[1])
+    b = worldToScreen(nums[2], nums[3])
+    c = worldToScreen(nums[4], nums[5])
+  }
+
+  ctx.beginPath()
+  ctx.moveTo(a.x, a.y)
+  ctx.quadraticCurveTo(b.x, b.y, c.x, c.y)
+
+  ctx.strokeStyle = route.color
+  
+  // FIX: Line properties stay completely static on screen regardless of zoom scale!
+  ctx.lineWidth = 4 
+  ctx.setLineDash([12, 8])
+  ctx.lineCap = "round"
+  ctx.stroke()
+
+  // --- NON-SCALING ARROWHEAD ---
+  const angle = Math.atan2(c.y - b.y, c.x - b.x)
+  const arrowSize = 12 
+
+  ctx.beginPath()
+  ctx.moveTo(c.x, c.y)
+  ctx.lineTo(
+    c.x - arrowSize * Math.cos(angle - 0.35),
+    c.y - arrowSize * Math.sin(angle - 0.35)
+  )
+  ctx.lineTo(
+    c.x - arrowSize * Math.cos(angle + 0.35),
+    c.y - arrowSize * Math.sin(angle + 0.35)
+  )
+  ctx.closePath()
+
+  ctx.fillStyle = route.color
+  ctx.fill()
+}
+
+function redrawCanvas() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
+  if (!currentRoom) return
+
+  ctx.lineDashOffset = -dashOffset
+  dashOffset += 0.4
+
+  const routes = ROUTES_DATA[currentRoom] || []
+  routes.forEach(drawArrow)
 }
 
 function requestUpdate() {
-    if (!needsUpdate) {
-        needsUpdate = true;
-        requestAnimationFrame(updateTransform);
-    }
+  if (!needsUpdate) {
+    needsUpdate = true
+    requestAnimationFrame(() => {
+      updateTransform()
+      redrawCanvas()
+    })
+  }
 }
 
-// --- CENTER INITIALIZATION ---
+// --- MOUSE PANNING ---
+viewport.addEventListener("mousedown", (e) => {
+  if (e.button === 2) {
+    isPanning = true
+    lastX = e.clientX
+    lastY = e.clientY
+    viewport.style.cursor = "grabbing"
+  }
+})
+
+window.addEventListener("mousemove", (e) => {
+  if (!isPanning) return
+  originX += e.clientX - lastX
+  originY += e.clientY - lastY
+  lastX = e.clientX
+  lastY = e.clientY
+  requestUpdate()
+})
+
+window.addEventListener("mouseup", () => {
+  isPanning = false
+  viewport.style.cursor = "grab"
+})
+
+// --- MOUSE ZOOM ---
+viewport.addEventListener("wheel", (e) => {
+    e.preventDefault()
+    const zoomIntensity = 0.0015
+    const rect = viewport.getBoundingClientRect()
+    const mouseX = e.clientX - rect.left
+    const mouseY = e.clientY - rect.top
+
+    const prevScale = scale
+    scale += -e.deltaY * zoomIntensity
+    scale = Math.min(Math.max(0.15, scale), 4)
+
+    originX -= (mouseX - originX) * (scale / prevScale - 1)
+    originY -= (mouseY - originY) * (scale / prevScale - 1)
+
+    if (isPanning) {
+      lastX = e.clientX
+      lastY = e.clientY
+    }
+    requestUpdate()
+}, { passive: false })
+
+viewport.addEventListener("contextmenu", (e) => e.preventDefault())
+
 function centerMap() {
-    // Ensure viewport takes up the screen or parent bounds
-    viewport.style.width = "100vw";
-    viewport.style.height = "100vh";
-    viewport.style.overflow = "hidden";
-    viewport.style.position = "relative";
-
-    const vWidth = viewport.clientWidth;
-    const vHeight = viewport.clientHeight;
-    const gWidth = grid.offsetWidth;
-    const gHeight = grid.offsetHeight;
-
-    // Calculate center offset positions
-    originX = (vWidth - gWidth * scale) / 2;
-    originY = (vHeight - gHeight * scale) / 2;
-    
-    requestUpdate();
+  originX = (viewport.clientWidth - grid.offsetWidth * scale) / 2
+  originY = (viewport.clientHeight - grid.offsetHeight * scale) / 2
+  requestUpdate()
 }
+window.addEventListener("DOMContentLoaded", centerMap)
 
-// --- PAN ---
-viewport.addEventListener('mousedown', (e) => {
-    if (e.button === 2) { // Right click to pan
-        isPanning = true;
-        startX = e.clientX - originX;
-        startY = e.clientY - originY;
-        viewport.style.cursor = "grabbing";
-    }
-});
-
-window.addEventListener('mousemove', (e) => {
-    if (!isPanning) return;
-    originX = e.clientX - startX;
-    originY = e.clientY - startY;
-    requestUpdate(); 
-});
-
-window.addEventListener('mouseup', () => {
-    isPanning = false;
-    viewport.style.cursor = "grab";
-});
-
-// --- ZOOM ---
-viewport.addEventListener('wheel', (e) => {
-    e.preventDefault();
-
-    const zoomIntensity = 0.0015;
-    const rect = viewport.getBoundingClientRect();
-    
-    // Get mouse positions relative to the viewport element container 
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-
-    const prevScale = scale;
-    scale += -e.deltaY * zoomIntensity;
-    scale = Math.min(Math.max(0.2, scale), 5);
-
-    // Adjust origin targets seamlessly matching local element spaces
-    originX -= (mouseX - originX) * (scale / prevScale - 1);
-    originY -= (mouseY - originY) * (scale / prevScale - 1);
-
-    requestUpdate();
-}, { passive: false });
-
-// disable RMB menu
-viewport.addEventListener('contextmenu', e => e.preventDefault());
-
-// Initialize positions on window load
-window.addEventListener('DOMContentLoaded', centerMap);
+setInterval(() => {
+  if (currentRoom) {
+    redrawCanvas()
+  }
+}, 30);
 </script>
-</body>
-</html>
 """
 
 def djb2_color_hash(id_a, id_b):
@@ -417,13 +483,12 @@ def main():
     scale_x_room = TILE_WIDTH / ROOM_INTERNAL_WIDTH
     scale_y_room = TILE_HEIGHT / ROOM_INTERNAL_HEIGHT
 
-    # Half block sizes used to map the absolute center coordinates for global SVG elements
     half_block_x_conn_scaled = (CONN_INTERNAL_WIDTH / (2 * BLOCKS_X)) * scale_x_conn
     half_block_y_conn_scaled = (CONN_INTERNAL_HEIGHT / (2 * BLOCKS_Y)) * scale_y_conn
     half_block_x_room_scaled = (ROOM_INTERNAL_WIDTH / (2 * BLOCKS_X)) * scale_x_room
     half_block_y_room_scaled = (ROOM_INTERNAL_HEIGHT / (2 * BLOCKS_Y)) * scale_y_room
 
-    # Step 1: Process side directional exit arrows
+    # Step 1: Process connections
     for conn in connections:
         o_n, o_e = int(conn["originNorth"]), int(conn["originEast"])
         room_key = f"{o_n}_{o_e}"
@@ -471,7 +536,6 @@ def main():
         float_new_x = float(new_x) if new_x is not None else CONN_INTERNAL_WIDTH / 2
         float_new_y = float(new_y) if new_y is not None else CONN_INTERNAL_HEIGHT / 2
 
-        # Shift global SVG destination points to the exact block visual center
         arrow_dest_x = dest_base_x + (float_new_x * scale_x_conn) + half_block_x_conn_scaled
         arrow_dest_y = dest_base_y + (float_new_y * scale_y_conn) + half_block_y_conn_scaled
 
@@ -487,7 +551,7 @@ def main():
         if room_key in js_routes_db:
             js_routes_db[room_key].append({"d": path_d, "color": color})
 
-    # Step 2: Handle precise warp doors from exits.json
+    # Step 2: Handle warp doors
     room_doors_index = {}
     for d in doors:
         o_n, o_e = int(d["origin"]["north"]), int(d["origin"]["east"])
@@ -499,9 +563,9 @@ def main():
         v_dest_n, v_dest_e = int(d["dest"]["north"]), int(d["dest"]["east"])
 
         reverse_door = room_doors_index.get(f"{v_dest_n}_{v_dest_e}->{o_n}_{o_e}")
-        src_x_local,src_y_local = snapToGrid(d["dest_x"], d["dest_y"])
+        src_x_local, src_y_local = snapToGrid(d["dest_x"], d["dest_y"])
         if reverse_door:
-            dest_x_local,dest_y_local = snapToGrid(reverse_door["dest_x"], reverse_door["dest_y"])
+            dest_x_local, dest_y_local = snapToGrid(reverse_door["dest_x"], reverse_door["dest_y"])
         else:
             dest_x_local = ROOM_INTERNAL_WIDTH / 2
             dest_y_local = ROOM_INTERNAL_HEIGHT / 2
@@ -520,7 +584,6 @@ def main():
         arrow_src_x = 20 + orig_col * tile_step_w + (src_x_local * scale_x_room) + half_block_x_room_scaled
         arrow_src_y = 20 + orig_row * tile_step_h + (src_y_local * scale_y_room) + half_block_y_room_scaled
 
-        # Global SVG Arrow ends exactly in the center of the target grid block
         arrow_dest_x = 20 + dest_col * tile_step_w + (dest_x_local * scale_x_room) + half_block_x_room_scaled
         arrow_dest_y = 20 + dest_row * tile_step_h + (dest_y_local * scale_y_room) + half_block_y_room_scaled
 
@@ -605,7 +668,6 @@ def main():
                             f'<div class="exit-square" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%; background-color:{matched_color};"></div>'
                         )
 
-        # local CSS percentages: CSS translate(-50%, -50%) aligns it perfectly.
         for d in doors:
             o_n, o_e = int(d["origin"]["north"]), int(d["origin"]["east"])
             v_dest_n, v_dest_e = int(d["dest"]["north"]), int(d["dest"]["east"])
@@ -627,12 +689,7 @@ def main():
                 dest_y_local = float(d["dest_y"])
 
             if d_n == north and d_e == east:
-              # Get the snapped base coordinates
-              block_width = float(ROOM_INTERNAL_WIDTH) / BLOCKS_X
-              block_height = float(ROOM_INTERNAL_HEIGHT) / BLOCKS_Y
-
               x_pos_local, y_pos_local = snapToGrid(dest_x_local, dest_y_local)
-
               x_pos_pct = (x_pos_local / ROOM_INTERNAL_WIDTH) * 100
               y_pos_pct = (y_pos_local / ROOM_INTERNAL_HEIGHT) * 100
 
@@ -656,14 +713,13 @@ def main():
             sanitized_name = re.sub(r"[:#?]", "_", re.sub(r"[#?].+$", "", item))
             icon_filename = f"{sanitized_name}.png"
             icon_src = os.path.join(PROGRESSION_ICON_PATH, icon_filename).replace("\\", "/")
-
             icon_html += f'\n            <img src="{icon_src}" class="progression-icon" alt="{item}" title="{item}">'
         icon_html += "</span>"
 
         overlay_content = "\n".join(squares_html)
 
         wrapper_tag = f"""        <div class="tile-wrapper" data-room="{room_key}" style="left: {pixel_left:.1f}px; top: {pixel_top:.1f}px;" title="{tooltip_str}">
-            <img src="{highres_img_path}" loading="lazy" style="background-image: url('{placeholder_img_path}'); background-size: cover;" class="grid-item" alt="Tile {north},{east}">{icon_html}
+            <img data-src="{highres_img_path}" src="{placeholder_img_path}" style="background-image: url('{placeholder_img_path}'); background-size: cover;" class="grid-item loading" alt="Tile {north},{east}">{icon_html}
             <div class="overlay-layer">
 {overlay_content}
             </div>
@@ -676,30 +732,20 @@ def main():
     container_style = f'id="grid" style="width: {total_svg_width}px; height: {total_svg_height}px;"'
     dynamic_html_start = html_start.replace('id="grid"', container_style)
 
-    svg_layer = f"""    <svg class="global-svg-layer" style="width: {total_svg_width}px; height: {total_svg_height}px;">
-        <defs>
-            <marker id="arrowhead" markerWidth="3" markerHeight="3" refX="2" refY="1.5" orient="auto">
-                <polygon points="0 0, 3 1.5, 0 3" fill="#fff" />
-            </marker>
-        </defs>
-        <g id="arrow-canvas"></g>
-    </svg>"""
+    # FIX: Redundant old overlapping SVG injection variables removed completely
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write(dynamic_html_start)
         f.write("\n".join(html_elements))
-        f.write("\n" + svg_layer)
         f.write(f"\n    <script>const ROUTES_DATA = {json.dumps(js_routes_db, indent=2)};</script>")
         f.write("\n" + html_end)
+
 def snapToGrid(x, y):
-    # Calculate the size of a single block
     block_width = float(ROOM_INTERNAL_WIDTH) / BLOCKS_X
     block_height = float(ROOM_INTERNAL_HEIGHT) / BLOCKS_Y
-
-    # Find which block index it lands on, then multiply by block size
     snapped_x = round(float(x) / block_width) * block_width
     snapped_y = round(float(y) / block_height) * block_height
-
     return snapped_x, snapped_y
+
 if __name__ == "__main__":
     main()
