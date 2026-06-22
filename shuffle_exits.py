@@ -814,7 +814,7 @@ def init():
       all_rooms.add((e['origin']['north'], e['origin']['east']))
   print('total distinct rooms across all exit pools:', len(all_rooms))
 
-  print('playercouldhave:', playercouldhave)
+  print('playercouldhave:', '\n'.join(map(lambda x: repr(x), sorted(playercouldhave.keys(), key=lambda x: x[0] if "entrance" not in x else ""))))
   print('edge_reached:', len(edge_reached))
   print('door_reached:', len(door_reached))
   print('warp_reached:', len(warp_reached))
