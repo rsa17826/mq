@@ -4,6 +4,8 @@ import json
 
 # Target folder pointing to the downsized versions
 IMAGE_FOLDER = "mapSmall"
+# Path to full resolution maps (Modify this to match your high-res folder name)
+FULL_IMAGE_FOLDER = "map"
 OUTPUT_FILE = "randomized_index.html"
 GEOMETRY_JSON_PATH = "./room_geometry.json"
 CONNECTIONS_JSON_PATH = "./connections.json"
@@ -68,13 +70,13 @@ html_start = f"""<!DOCTYPE html>
             width: {TILE_WIDTH}px;
             height: {TILE_HEIGHT}px;
             background-color: #222;
-            border: 1px solid #444;
+            box-shadow: inset 0 0 0 1px #444;
             box-sizing: border-box;
             z-index: 5;
-            transition: border-color 0.1s ease-in-out;
+            transition: box-shadow 0.1s ease-in-out;
         }}
         .tile-wrapper:hover {{
-            border-color: #fff;
+            box-shadow: inset 0 0 0 1px #fff;
             z-index: 15;
         }}
         .grid-item {{
@@ -82,6 +84,11 @@ html_start = f"""<!DOCTYPE html>
             width: 100%;
             height: 100%;
             opacity: 0.85;
+            transition: opacity 0.3s ease-in-out, filter 0.3s ease-in-out;
+        }}
+        .grid-item.loading {{
+            filter: blur(2px);
+            image-rendering: pixelated;
         }}
         .overlay-layer {{
             position: absolute;
@@ -102,7 +109,8 @@ html_start = f"""<!DOCTYPE html>
             box-sizing: border-box;
             border: 1.5px dashed #00ffff;
             background-color: rgba(0, 255, 255, 0.2);
-            border-radius: 4px;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
         }}
         .progression-icon {{
             width: 14px;
@@ -156,6 +164,20 @@ html_end = """    </div>
 
             tile.addEventListener('mouseleave', function() {
                 svgCanvas.innerHTML = '';
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll('.grid-item').forEach(img => {
+                const highResSrc = img.getAttribute('data-highres');
+                if (highResSrc) {
+                    const loader = new Image();
+                    loader.src = highResSrc;
+                    loader.onload = () => {
+                        img.src = highResSrc;
+                        img.classList.remove('loading');
+                    };
+                }
             });
         });
     </script>
@@ -227,28 +249,22 @@ def load_progression_map():
 
 def build_tooltip_text(north, east, prog_entries):
     title_lines = [f"Position: {north},{east}"]
-
     if not prog_entries:
         return "\n".join(title_lines)
-
     for idx, entry in enumerate(prog_entries):
         if len(prog_entries) > 1:
             title_lines.append(f"--- Event #{idx + 1} ---")
-
         if "info" in entry:
             title_lines.append(f"Info: {entry['info']}")
-
         if "requires" in entry:
             req_groups = []
             for group in entry["requires"]:
                 req_groups.append(" AND ".join(group))
             req_str = " OR ".join(f"({r})" for r in req_groups) if len(req_groups) > 1 else req_groups[0]
             title_lines.append(f"Requires: {req_str}")
-
         if "receive" in entry:
             rec_str = ", ".join(entry["receive"])
             title_lines.append(f"Receive: {rec_str}")
-
     return "\n".join(title_lines)
 
 def main():
@@ -260,6 +276,9 @@ def main():
     doors = load_doors()
     geom_index = load_geometry_map()
     prog_index = load_progression_map()
+
+    conn_override_index = {str(c["fromExitId"]): c for c in connections if "fromExitId" in c}
+    door_ids = {str(d["id"]) for d in doors}
 
     files = os.listdir(IMAGE_FOLDER)
     parsed_tiles = []
@@ -288,10 +307,19 @@ def main():
     tile_step_w = TILE_WIDTH + GAP_SIZE
     tile_step_h = TILE_HEIGHT + GAP_SIZE
 
-    # Step 1: Process side directional exit arrows (connections.json based on 624x493 workspace)
     scale_x_conn = TILE_WIDTH / CONN_INTERNAL_WIDTH
     scale_y_conn = TILE_HEIGHT / CONN_INTERNAL_HEIGHT
 
+    scale_x_room = TILE_WIDTH / ROOM_INTERNAL_WIDTH
+    scale_y_room = TILE_HEIGHT / ROOM_INTERNAL_HEIGHT
+
+    # Half block sizes used to map the absolute center coordinates for global SVG elements
+    half_block_x_conn_scaled = (CONN_INTERNAL_WIDTH / (2 * BLOCKS_X)) * scale_x_conn
+    half_block_y_conn_scaled = (CONN_INTERNAL_HEIGHT / (2 * BLOCKS_Y)) * scale_y_conn
+    half_block_x_room_scaled = (ROOM_INTERNAL_WIDTH / (2 * BLOCKS_X)) * scale_x_room
+    half_block_y_room_scaled = (ROOM_INTERNAL_HEIGHT / (2 * BLOCKS_Y)) * scale_y_room
+
+    # Step 1: Process side directional exit arrows
     for conn in connections:
         o_n, o_e = int(conn["originNorth"]), int(conn["originEast"])
         room_key = f"{o_n}_{o_e}"
@@ -300,8 +328,10 @@ def main():
             continue
 
         direction = conn.get("direction")
-        src_coord = conn.get("srcCoord")
+        if str(conn.get("fromExitId")) in door_ids or direction == "warp":
+            continue
 
+        src_coord = conn.get("srcCoord")
         if not direction or src_coord is None:
             v_n, v_e = int(conn["vanillaDestNorth"]), int(conn["vanillaDestEast"])
             if v_n > o_n: direction = "north"
@@ -310,7 +340,6 @@ def main():
             else: direction = "west"
             src_coord = CONN_INTERNAL_WIDTH / 2 if direction in ["north", "south"] else CONN_INTERNAL_HEIGHT / 2
 
-        # Convert exit boundary point using 624x493 aspect scale rules
         src_coord_scaled = float(src_coord) * (scale_x_conn if direction in ["north", "south"] else scale_y_conn)
 
         track_col = east_to_track[o_e]
@@ -338,8 +367,9 @@ def main():
         float_new_x = float(new_x) if new_x is not None else CONN_INTERNAL_WIDTH / 2
         float_new_y = float(new_y) if new_y is not None else CONN_INTERNAL_HEIGHT / 2
 
-        arrow_dest_x = dest_base_x + (float_new_x * scale_x_conn)
-        arrow_dest_y = dest_base_y + (float_new_y * scale_y_conn)
+        # Shift global SVG destination points to the exact block visual center
+        arrow_dest_x = dest_base_x + (float_new_x * scale_x_conn) + half_block_x_conn_scaled
+        arrow_dest_y = dest_base_y + (float_new_y * scale_y_conn) + half_block_y_conn_scaled
 
         mid_x, mid_y = (arrow_src_x + arrow_dest_x) / 2, (arrow_src_y + arrow_dest_y) / 2
         if direction in ["west", "east"]:
@@ -353,26 +383,18 @@ def main():
         if room_key in js_routes_db:
             js_routes_db[room_key].append({"d": path_d, "color": color})
 
-    # Step 2: Handle precise warp doors from exits.json (built on 710x560 workspace)
+    # Step 2: Handle precise warp doors from exits.json
     room_doors_index = {}
     for d in doors:
         o_n, o_e = int(d["origin"]["north"]), int(d["origin"]["east"])
         d_n, d_e = int(d["dest"]["north"]), int(d["dest"]["east"])
         room_doors_index[f"{o_n}_{o_e}->{d_n}_{d_e}"] = d
 
-    scale_x_room = TILE_WIDTH / ROOM_INTERNAL_WIDTH
-    scale_y_room = TILE_HEIGHT / ROOM_INTERNAL_HEIGHT
-
     for d in doors:
         o_n, o_e = int(d["origin"]["north"]), int(d["origin"]["east"])
-        d_n, d_e = int(d["dest"]["north"]), int(d["dest"]["east"])
-        room_key = f"{o_n}_{o_e}"
+        v_dest_n, v_dest_e = int(d["dest"]["north"]), int(d["dest"]["east"])
 
-        if o_n not in north_to_track or o_e not in east_to_track: continue
-        if d_n not in north_to_track or d_e not in east_to_track: continue
-
-        # Reverse link lookup gives us starting tile local positioning coordinates
-        reverse_door = room_doors_index.get(f"{d_n}_{d_e}->{o_n}_{o_e}")
+        reverse_door = room_doors_index.get(f"{v_dest_n}_{v_dest_e}->{o_n}_{o_e}")
         if reverse_door:
             src_x_local = float(reverse_door["dest_x"])
             src_y_local = float(reverse_door["dest_y"])
@@ -380,17 +402,36 @@ def main():
             src_x_local = ROOM_INTERNAL_WIDTH / 2
             src_y_local = ROOM_INTERNAL_HEIGHT / 2
 
-        dest_x_local = float(d["dest_x"])
-        dest_y_local = float(d["dest_y"])
+        door_id_str = str(d["id"])
+        if door_id_str in conn_override_index:
+            override = conn_override_index[door_id_str]
+            d_n, d_e = int(override["newDestNorth"]), int(override["newDestEast"])
+
+            if override.get("newX") is not None and override.get("newY") is not None:
+                dest_x_local = float(override["newX"]) * (ROOM_INTERNAL_WIDTH / CONN_INTERNAL_WIDTH)
+                dest_y_local = (float(override["newY"]) * (ROOM_INTERNAL_HEIGHT / CONN_INTERNAL_HEIGHT))
+            else:
+                dest_x_local = float(d["dest_x"])
+                dest_y_local = float(d["dest_y"])
+        else:
+            d_n, d_e = v_dest_n, v_dest_e
+            dest_x_local = float(d["dest_x"])
+            dest_y_local = float(d["dest_y"])
+
+        room_key = f"{o_n}_{o_e}"
+
+        if o_n not in north_to_track or o_e not in east_to_track: continue
+        if d_n not in north_to_track or d_e not in east_to_track: continue
 
         orig_col, orig_row = east_to_track[o_e], north_to_track[o_n]
         dest_col, dest_row = east_to_track[d_e], north_to_track[d_n]
 
-        arrow_src_x = 20 + orig_col * tile_step_w + (src_x_local * scale_x_room)
-        arrow_src_y = 20 + orig_row * tile_step_h + (src_y_local * scale_y_room)
+        arrow_src_x = 20 + orig_col * tile_step_w + (src_x_local * scale_x_room) + half_block_x_room_scaled
+        arrow_src_y = 20 + orig_row * tile_step_h + (src_y_local * scale_y_room) + half_block_y_room_scaled
 
-        arrow_dest_x = 20 + dest_col * tile_step_w + (dest_x_local * scale_x_room)
-        arrow_dest_y = 20 + dest_row * tile_step_h + (dest_y_local * scale_y_room)
+        # Global SVG Arrow ends exactly in the center of the target grid block
+        arrow_dest_x = 20 + dest_col * tile_step_w + (dest_x_local * scale_x_room) + half_block_x_room_scaled
+        arrow_dest_y = 20 + dest_row * tile_step_h + (dest_y_local * scale_y_room) + half_block_y_room_scaled
 
         m_x, m_y = (arrow_src_x + arrow_dest_x) / 2, (arrow_src_y + arrow_dest_y) / 2
         ctrl_x, ctrl_y = m_x, m_y - 45
@@ -410,11 +451,12 @@ def main():
         pixel_top = 20 + track_row * tile_step_h
         room_key = f"{north}_{east}"
 
-        img_path = f"{IMAGE_FOLDER}/{filename}"
+        placeholder_img_path = f"{IMAGE_FOLDER}/{filename}"
+        highres_img_path = f"{FULL_IMAGE_FOLDER}/{filename}"
+
         tile_exits = geom_index.get(room_key, {})
         squares_html = []
 
-        # Render standard exit bounding boxes
         active_connections = [
             c for c in connections
             if int(c["originNorth"]) == north and int(c["originEast"]) == east
@@ -472,28 +514,32 @@ def main():
                             f'<div class="exit-square" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%; background-color:{matched_color};"></div>'
                         )
 
-        # Render rounded local block tiles for warp points inside room grid coordinates
+        # local CSS percentages: CSS translate(-50%, -50%) aligns it perfectly.
         for d in doors:
-            d_n, d_e = int(d["dest"]["north"]), int(d["dest"]["east"])
-            if d_n == north and d_e == east:
+            door_id_str = str(d["id"])
+            if door_id_str in conn_override_index:
+                override = conn_override_index[door_id_str]
+                d_n, d_e = int(override["newDestNorth"]), int(override["newDestEast"])
+                if override.get("newX") is not None and override.get("newY") is not None:
+                    dest_x_local = float(override["newX"]) * (ROOM_INTERNAL_WIDTH / CONN_INTERNAL_WIDTH)
+                    dest_y_local = (float(override["newY"]) * (ROOM_INTERNAL_HEIGHT / CONN_INTERNAL_HEIGHT))
+                else:
+                    dest_x_local = float(d["dest_x"])
+                    dest_y_local = float(d["dest_y"])
+            else:
+                d_n, d_e = int(d["dest"]["north"]), int(d["dest"]["east"])
                 dest_x_local = float(d["dest_x"])
                 dest_y_local = float(d["dest_y"])
 
-                # Calculate closest index matrix slot (0-13, 0-10)
-                tile_idx_x = int(dest_x_local / (ROOM_INTERNAL_WIDTH / BLOCKS_X))
-                tile_idx_y = int(dest_y_local / (ROOM_INTERNAL_HEIGHT / BLOCKS_Y))
-
-                tile_idx_x = max(0, min(BLOCKS_X - 1, tile_idx_x))
-                tile_idx_y = max(0, min(BLOCKS_Y - 1, tile_idx_y))
-
-                x_pos_pct = tile_idx_x * BLOCK_WIDTH_PCT
-                y_pos_pct = tile_idx_y * BLOCK_HEIGHT_PCT
+            if d_n == north and d_e == east:
+                # We add exactly half a block worth of internal space to target the block's visual center
+                x_pos_pct = ((dest_x_local + (ROOM_INTERNAL_WIDTH / (2 * BLOCKS_X))) / ROOM_INTERNAL_WIDTH) * 100
+                y_pos_pct = ((dest_y_local + (ROOM_INTERNAL_HEIGHT / (2 * BLOCKS_Y))) / ROOM_INTERNAL_HEIGHT) * 100
 
                 squares_html.append(
                     f'<div class="warp-square" style="left:{x_pos_pct:.2f}%; top:{y_pos_pct:.2f}%; width:{BLOCK_WIDTH_PCT:.2f}%; height:{BLOCK_HEIGHT_PCT:.2f}%;"></div>'
                 )
 
-        # Pull progression event data
         room_prog_data = prog_index.get(room_key, [])
         tooltip_str = build_tooltip_text(north, east, room_prog_data)
 
@@ -515,8 +561,9 @@ def main():
         icon_html += "</span>"
 
         overlay_content = "\n".join(squares_html)
+
         wrapper_tag = f"""        <div class="tile-wrapper" data-room="{room_key}" style="left: {pixel_left:.1f}px; top: {pixel_top:.1f}px;" title="{tooltip_str}">
-            <img src="{img_path}" class="grid-item" alt="Tile {north},{east}">{icon_html}
+            <img src="{placeholder_img_path}" data-highres="{highres_img_path}" class="grid-item loading" alt="Tile {north},{east}">{icon_html}
             <div class="overlay-layer">
 {overlay_content}
             </div>
@@ -544,7 +591,6 @@ def main():
         f.write("\n" + svg_layer)
         f.write(f"\n    <script>const ROUTES_DATA = {json.dumps(js_routes_db, indent=2)};</script>")
         f.write("\n" + html_end)
-
 
 if __name__ == "__main__":
     main()
