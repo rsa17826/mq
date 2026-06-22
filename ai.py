@@ -4,6 +4,7 @@ import os
 import subprocess
 
 def open_in_codium(file_path, line_number):
+    return
     """
     Opens VSCodium and focuses on the specified line number.
     """
@@ -160,7 +161,7 @@ Now process the following input. Follow the pattern precisely.
 
     for seg in segments:
         print(f"--- Processing code snippet window (Starting line {seg['start_line']}) ---\n")
-
+        print(seg['code_snippet'])
         user_content = f"""
 Code Snippet:
 {seg['code_snippet']}
@@ -207,31 +208,23 @@ Output:
 
 # --- Execution ---
 if __name__ == "__main__":
-    metadata = {
-        "north": 5,
-        "east": 9,
-        "comparisons": [
-            {"name": "rings", "value": "5", "line": 43760},
-            {"name": "access", "value": "4", "line": 60529}
-        ],
-        "assignments": []
-    }
-
     file_path = "MathQuest/MathQuest.js"
-    result = convert_logic_to_map_format(file_path, metadata)
+    with open("./quests.json") as ff:
+      for current_metadata in json.load(ff):
+        result = convert_logic_to_map_format(file_path, current_metadata)
 
-    if result:
-        progression_path = "./json/progression.json"
-        if os.path.exists(progression_path):
-            with open(progression_path, "r+", encoding='utf-8') as f:
-                data = json.load(f)
-                if 'locations' not in data:
-                    data['locations'] = []
-                data['locations'].extend(result)
-                f.seek(0)
-                json.dump(data, f, indent=2)
-                f.truncate()
-        else:
-            print(f"Could not find baseline path: {progression_path}. Printing output instead:")
+        if result:
+            progression_path = "./json/progression.json"
+            if os.path.exists(progression_path):
+                with open(progression_path, "r+", encoding='utf-8') as f:
+                    data = json.load(f)
+                    if 'locations' not in data:
+                        data['locations'] = []
+                    data['locations'].extend(result)
+                    f.seek(0)
+                    json.dump(data, f, indent=2)
+                    f.truncate()
+            else:
+                print(f"Could not find baseline path: {progression_path}. Printing output instead:")
 
-    print(json.dumps(result, indent=2))
+        print(json.dumps(result, indent=2))
