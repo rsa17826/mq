@@ -222,7 +222,7 @@ function updateTransform() {
 function drawArrow(route) {
   if (!route || !route.d) return
 
-  const nums = route.d.match(/-?\d+(\.\d+)?/g).map(Number)
+  const nums = route.d
   if (nums.length < 6) return
 
   // Normalize door paths vs connection paths
@@ -541,15 +541,14 @@ def main():
 
         mid_x, mid_y = (arrow_src_x + arrow_dest_x) / 2, (arrow_src_y + arrow_dest_y) / 2
         if direction in ["west", "east"]:
-            ctrl_x, ctrl_y = (mid_x + (25 if direction == "east" else -25), mid_y)
+            ctrl_x, ctrl_y = (mid_x + (0 if direction == "east" else -0), mid_y)
         else:
-            ctrl_x, ctrl_y = (mid_x, mid_y + (25 if direction == "south" else -25))
+            ctrl_x, ctrl_y = (mid_x, mid_y + (0 if direction == "south" else -0))
 
-        path_d = f"M {arrow_src_x:.1f} {arrow_src_y:.1f} Q {ctrl_x:.1f} {ctrl_y:.1f} {arrow_dest_x:.1f} {arrow_dest_y:.1f}"
         color = djb2_color_hash(conn["fromExitId"], conn["toExitId"])
 
         if room_key in js_routes_db:
-            js_routes_db[room_key].append({"d": path_d, "color": color})
+            js_routes_db[room_key].append({"d": [arrow_src_x,arrow_src_y,ctrl_x,ctrl_y,arrow_dest_x,arrow_dest_y], "color": color})
 
     # Step 2: Handle warp doors
     room_doors_index = {}
@@ -590,11 +589,10 @@ def main():
         m_x, m_y = (arrow_src_x + arrow_dest_x) / 2, (arrow_src_y + arrow_dest_y) / 2
         ctrl_x, ctrl_y = m_x, m_y - 45
 
-        path_d = f"M {arrow_src_x:.1f} {arrow_src_y:.1f} Q {ctrl_x:.1f} {ctrl_y:.1f} {arrow_dest_x:.1f} {arrow_dest_y:.1f}"
         color = djb2_color_hash(d["id"], "warp_gate")
 
         if room_key in js_routes_db:
-            js_routes_db[room_key].append({"d": path_d, "color": color})
+            js_routes_db[room_key].append({"d": [arrow_src_x,arrow_src_y,ctrl_x,ctrl_y,arrow_dest_x,arrow_dest_y], "color": color})
 
     html_elements = []
     for north, east, filename in parsed_tiles:
