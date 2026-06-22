@@ -381,28 +381,15 @@ def main():
         v_dest_n, v_dest_e = int(d["dest"]["north"]), int(d["dest"]["east"])
 
         reverse_door = room_doors_index.get(f"{v_dest_n}_{v_dest_e}->{o_n}_{o_e}")
+        src_x_local,src_y_local = snapToGrid(d["dest_x"], d["dest_y"])
         if reverse_door:
-            src_x_local = float(reverse_door["dest_x"])
-            src_y_local = float(reverse_door["dest_y"])
+            dest_x_local,dest_y_local = snapToGrid(reverse_door["dest_x"], reverse_door["dest_y"])
         else:
-            src_x_local = ROOM_INTERNAL_WIDTH / 2
-            src_y_local = ROOM_INTERNAL_HEIGHT / 2
+            dest_x_local = ROOM_INTERNAL_WIDTH / 2
+            dest_y_local = ROOM_INTERNAL_HEIGHT / 2
 
         door_id_str = str(d["id"])
-        if door_id_str in conn_override_index:
-            override = conn_override_index[door_id_str]
-            d_n, d_e = int(override["newDestNorth"]), int(override["newDestEast"])
-
-            if override.get("newX") is not None and override.get("newY") is not None:
-                dest_x_local = float(override["newX"]) * (ROOM_INTERNAL_WIDTH / CONN_INTERNAL_WIDTH)
-                dest_y_local = (float(override["newY"]) * (ROOM_INTERNAL_HEIGHT / CONN_INTERNAL_HEIGHT))
-            else:
-                dest_x_local = float(d["dest_x"])
-                dest_y_local = float(d["dest_y"])
-        else:
-            d_n, d_e = v_dest_n, v_dest_e
-            dest_x_local = float(d["dest_x"])
-            dest_y_local = float(d["dest_y"])
+        d_n, d_e = v_dest_n, v_dest_e
 
         room_key = f"{o_n}_{o_e}"
 
@@ -502,6 +489,10 @@ def main():
 
         # local CSS percentages: CSS translate(-50%, -50%) aligns it perfectly.
         for d in doors:
+            o_n, o_e = int(d["origin"]["north"]), int(d["origin"]["east"])
+            v_dest_n, v_dest_e = int(d["dest"]["north"]), int(d["dest"]["east"])
+
+            reverse_door = room_doors_index.get(f"{v_dest_n}_{v_dest_e}->{o_n}_{o_e}")
             door_id_str = str(d["id"])
             if door_id_str in conn_override_index:
                 override = conn_override_index[door_id_str]
@@ -514,14 +505,16 @@ def main():
                     dest_y_local = float(d["dest_y"])
             else:
                 d_n, d_e = int(d["dest"]["north"]), int(d["dest"]["east"])
-                dest_x_local = float(d["dest_x"])
-                dest_y_local = float(d["dest_y"])
+                dest_x_local = float(reverse_door["dest_x"])
+                dest_y_local = float(reverse_door["dest_y"])
 
             if d_n == north and d_e == east:
                 # We add exactly half a block worth of internal space to target the block's visual center
-                x_pos_pct = ((dest_x_local + (ROOM_INTERNAL_WIDTH / (2 * BLOCKS_X))) / ROOM_INTERNAL_WIDTH) * 100
-                y_pos_pct = ((dest_y_local + (ROOM_INTERNAL_HEIGHT / (2 * BLOCKS_Y))) / ROOM_INTERNAL_HEIGHT) * 100
-
+                x_pos_pct,y_pos_pct = snapToGrid(dest_x_local,dest_y_local)
+                x_pos_pct/=ROOM_INTERNAL_WIDTH
+                y_pos_pct/=ROOM_INTERNAL_HEIGHT
+                x_pos_pct*=100
+                y_pos_pct*=100
                 squares_html.append(
                     f'<div class="warp-square" style="left:{x_pos_pct:.2f}%; top:{y_pos_pct:.2f}%; width:{BLOCK_WIDTH_PCT:.2f}%; height:{BLOCK_HEIGHT_PCT:.2f}%;"></div>'
                 )
@@ -577,6 +570,15 @@ def main():
         f.write("\n" + svg_layer)
         f.write(f"\n    <script>const ROUTES_DATA = {json.dumps(js_routes_db, indent=2)};</script>")
         f.write("\n" + html_end)
+def snapToGrid(x, y):
+    # Calculate the size of a single block
+    block_width = float(ROOM_INTERNAL_WIDTH) / BLOCKS_X
+    block_height = float(ROOM_INTERNAL_HEIGHT) / BLOCKS_Y
 
+    # Find which block index it lands on, then multiply by block size
+    snapped_x = round(float(x) / block_width) * block_width
+    snapped_y = round(float(y) / block_height) * block_height
+
+    return snapped_x, snapped_y
 if __name__ == "__main__":
     main()
