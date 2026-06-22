@@ -4,8 +4,8 @@ import json
 
 # Target folder pointing to the downsized versions
 IMAGE_FOLDER = "mapSmall"
-# Path to full resolution maps (Modify this to match your high-res folder name)
 FULL_IMAGE_FOLDER = "map"
+
 OUTPUT_FILE = "randomized_index.html"
 GEOMETRY_JSON_PATH = "./room_geometry.json"
 CONNECTIONS_JSON_PATH = "./connections.json"
@@ -164,20 +164,6 @@ html_end = """    </div>
 
             tile.addEventListener('mouseleave', function() {
                 svgCanvas.innerHTML = '';
-            });
-        });
-
-        document.addEventListener("DOMContentLoaded", () => {
-            document.querySelectorAll('.grid-item').forEach(img => {
-                const highResSrc = img.getAttribute('data-highres');
-                if (highResSrc) {
-                    const loader = new Image();
-                    loader.src = highResSrc;
-                    loader.onload = () => {
-                        img.src = highResSrc;
-                        img.classList.remove('loading');
-                    };
-                }
             });
         });
     </script>
@@ -563,7 +549,7 @@ def main():
         overlay_content = "\n".join(squares_html)
 
         wrapper_tag = f"""        <div class="tile-wrapper" data-room="{room_key}" style="left: {pixel_left:.1f}px; top: {pixel_top:.1f}px;" title="{tooltip_str}">
-            <img src="{placeholder_img_path}" data-highres="{highres_img_path}" class="grid-item loading" alt="Tile {north},{east}">{icon_html}
+            <img src="{highres_img_path}" loading="lazy" style="background-image: url('{placeholder_img_path}'); background-size: cover;" class="grid-item" alt="Tile {north},{east}">{icon_html}
             <div class="overlay-layer">
 {overlay_content}
             </div>
