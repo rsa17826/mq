@@ -1,3 +1,4 @@
+# @noregex
 import os
 import re
 import json
@@ -26,11 +27,11 @@ BLOCK_HEIGHT_PCT = 100 / BLOCKS_Y
 GAP_SIZE = 0 # Sizing gap between tiles
 
 # Local coordinate dimensions from game engine data structures
-CONN_INTERNAL_WIDTH = 624.0
-CONN_INTERNAL_HEIGHT = 493.0
-
 ROOM_INTERNAL_WIDTH = 710.0
 ROOM_INTERNAL_HEIGHT = 560.0
+CONN_INTERNAL_WIDTH = ROOM_INTERNAL_WIDTH
+CONN_INTERNAL_HEIGHT = ROOM_INTERNAL_HEIGHT
+
 
 html_start = f"""<!DOCTYPE html>
 <html lang="en">
@@ -39,6 +40,18 @@ html_start = f"""<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>High-Performance Interactive Map Viewer</title>
     <style>
+    #grid {{
+    will-change: transform;
+    transform: translateZ(0); /* forces GPU */
+}}.tile-wrapper {{
+    will-change: transform;
+}}
+
+.grid-item {{
+    will-change: transform;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}}
         html, body {{
             margin: 0;
             background-color: #111;
@@ -110,7 +123,6 @@ html_start = f"""<!DOCTYPE html>
             border: 1.5px dashed #00ffff;
             background-color: rgba(0, 255, 255, 0.2);
             border-radius: 50%;
-            transform: translate(-50%, -50%);
         }}
         .progression-icon {{
             width: 14px;
@@ -142,11 +154,15 @@ html_start = f"""<!DOCTYPE html>
     </style>
 </head>
 <body>
-    <div class="grid-container" id="grid">
+<div id="viewport">
+    <div id="pan-layer">
+        <div id="grid">
 """
 
 html_end = """    </div>
-
+        </div>
+        </div>
+    </div>
     <script>
         const svgCanvas = document.getElementById('arrow-canvas');
 
@@ -167,6 +183,88 @@ html_end = """    </div>
             });
         });
     </script>
+    <script>
+const viewport = document.getElementById('viewport');
+const grid = document.getElementById('grid');
+
+let scale = 1;
+let originX = 0;
+let originY = 0;
+
+let isPanning = false;
+let startX, startY;
+
+// NEW: animation frame control
+let needsUpdate = false;
+
+const panLayer = document.getElementById('pan-layer');
+
+function updateTransform() {
+    if (!needsUpdate) return;
+
+    // pan = translate only (fast, crisp)
+    panLayer.style.transform = `translate(${originX}px, ${originY}px)`;
+
+    // zoom = scale only (isolated)
+    grid.style.transform = `scale(${scale})`;
+    grid.style.transformOrigin = "0 0";
+
+    needsUpdate = false;
+}
+
+function requestUpdate() {
+    if (!needsUpdate) {
+        needsUpdate = true;
+        requestAnimationFrame(updateTransform);
+    }
+}
+
+// --- PAN ---
+viewport.addEventListener('mousedown', (e) => {
+    if (e.button === 2) {
+        isPanning = true;
+        startX = e.clientX - originX;
+        startY = e.clientY - originY;
+        viewport.style.cursor = "grabbing";
+    }
+});
+
+window.addEventListener('mousemove', (e) => {
+    if (!isPanning) return;
+    originX = e.clientX - startX;
+    originY = e.clientY - startY;
+    requestUpdate(); // 🔥 throttled now
+});
+
+window.addEventListener('mouseup', () => {
+    isPanning = false;
+    viewport.style.cursor = "grab";
+});
+
+// --- ZOOM ---
+viewport.addEventListener('wheel', (e) => {
+    e.preventDefault();
+
+    const zoomIntensity = 0.0015;
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
+
+    const prevScale = scale;
+    scale += -e.deltaY * zoomIntensity;
+    scale = Math.min(Math.max(0.2, scale), 5);
+
+    originX -= (mouseX - originX) * (scale / prevScale - 1);
+    originY -= (mouseY - originY) * (scale / prevScale - 1);
+
+    requestUpdate();
+}, { passive: false });
+
+// disable RMB menu
+viewport.addEventListener('contextmenu', e => e.preventDefault());
+
+// init
+requestUpdate();
+</script>
 </body>
 </html>
 """
@@ -330,8 +428,8 @@ def main():
 
         track_col = east_to_track[o_e]
         track_row = north_to_track[o_n]
-        base_x = 20 + track_col * tile_step_w
-        base_y = 20 + track_row * tile_step_h
+        base_x = track_col * tile_step_w
+        base_y = track_row * tile_step_h
 
         if direction == "west":
             arrow_src_x, arrow_src_y = base_x, base_y + src_coord_scaled
@@ -346,8 +444,8 @@ def main():
         dest_track_col = east_to_track.get(dest_o_e, track_col)
         dest_track_row = north_to_track.get(dest_o_n, track_row)
 
-        dest_base_x = 20 + dest_track_col * tile_step_w
-        dest_base_y = 20 + dest_track_row * tile_step_h
+        dest_base_x = dest_track_col * tile_step_w
+        dest_base_y = dest_track_row * tile_step_h
 
         new_x, new_y = conn.get("newX"), conn.get("newY")
         float_new_x = float(new_x) if new_x is not None else CONN_INTERNAL_WIDTH / 2
@@ -505,19 +603,22 @@ def main():
                     dest_y_local = float(d["dest_y"])
             else:
                 d_n, d_e = int(d["dest"]["north"]), int(d["dest"]["east"])
-                dest_x_local = float(reverse_door["dest_x"])
-                dest_y_local = float(reverse_door["dest_y"])
+                dest_x_local = float(d["dest_x"])
+                dest_y_local = float(d["dest_y"])
 
             if d_n == north and d_e == east:
-                # We add exactly half a block worth of internal space to target the block's visual center
-                x_pos_pct,y_pos_pct = snapToGrid(dest_x_local,dest_y_local)
-                x_pos_pct/=ROOM_INTERNAL_WIDTH
-                y_pos_pct/=ROOM_INTERNAL_HEIGHT
-                x_pos_pct*=100
-                y_pos_pct*=100
-                squares_html.append(
-                    f'<div class="warp-square" style="left:{x_pos_pct:.2f}%; top:{y_pos_pct:.2f}%; width:{BLOCK_WIDTH_PCT:.2f}%; height:{BLOCK_HEIGHT_PCT:.2f}%;"></div>'
-                )
+              # Get the snapped base coordinates
+              block_width = float(ROOM_INTERNAL_WIDTH) / BLOCKS_X
+              block_height = float(ROOM_INTERNAL_HEIGHT) / BLOCKS_Y
+
+              x_pos_local, y_pos_local = snapToGrid(dest_x_local, dest_y_local)
+
+              x_pos_pct = (x_pos_local / ROOM_INTERNAL_WIDTH) * 100
+              y_pos_pct = (y_pos_local / ROOM_INTERNAL_HEIGHT) * 100
+
+              squares_html.append(
+                  f'<div class="warp-square" style="left:{x_pos_pct:.2f}%; top:{y_pos_pct:.2f}%; width:{BLOCK_WIDTH_PCT:.2f}%; height:{BLOCK_HEIGHT_PCT:.2f}%;"></div>'
+              )
 
         room_prog_data = prog_index.get(room_key, [])
         tooltip_str = build_tooltip_text(north, east, room_prog_data)
