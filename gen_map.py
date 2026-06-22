@@ -558,7 +558,68 @@ def main():
         # Base scaled destination coordinates before directional offset adjustments
         raw_dest_x = dest_base_x + (float_new_x * scale_x_conn)
         raw_dest_y = dest_base_y + (float_new_y * scale_y_conn)
+        #  # --- DYNAMICALLY CALCULATE BLOCK DIMENSIONS FROM GEOMETRY ---
+        # # Default fallback values (1 grid block spans)
+        # exitSrcHeight = 1
+        # exitSrcWidth = 1
+        # exitDestHeight = 1
+        # exitDestWidth = 1
 
+        # # 1. Look up the source exit dimensions
+        # src_exits = geom_index.get(room_key, {}).get(direction, [])
+        # if src_exits:
+        #     # Sort them exactly like the HTML rendering layer does to maintain index parity
+        #     if direction in ["west", "east"]:
+        #         src_exits = sorted(src_exits, key=lambda b: int(float(b.get("top", 0))))
+        #     else:
+        #         src_exits = sorted(src_exits, key=lambda b: int(float(b.get("left", 0))))
+            
+        #     # Find all active connections for this side to find this connection's index
+        #     side_conns = [c for c in connections if int(c["originNorth"]) == o_n and int(c["originEast"]) == o_e and c.get("direction") == direction and c.get("srcCoord") is not None]
+        #     side_conns.sort(key=lambda c: float(c["srcCoord"]))
+            
+        #     try:
+        #         conn_idx = side_conns.index(conn)
+        #         if conn_idx < len(src_exits):
+        #             matched_bounds = src_exits[conn_idx]
+        #             if direction in ["west", "east"]:
+        #                 exitDestHeight = (int(float(matched_bounds["bottom"])) - int(float(matched_bounds["top"]))) + 1
+        #                 exitDestWidth = 1  # Edges on west/east are 1 block wide
+        #             else:
+        #                 exitDestHeight = 1  # Edges on north/south are 1 block high
+        #                 exitDestWidth = (int(float(matched_bounds["right"])) - int(float(matched_bounds["left"]))) + 1
+        #     except ValueError:
+        #         pass # Connection wasn't in the standard index layout
+
+        # # 2. Look up the destination exit dimensions
+        # dest_room_key = f"{dest_o_n}_{dest_o_e}"
+        # # Opposing directions map to each other (west <-> east, north <-> south)
+        # opposing_direction = {"west": "east", "east": "west", "north": "south", "south": "north"}.get(direction)
+          
+        # dest_exits = geom_index.get(dest_room_key, {}).get(opposing_direction, [])
+        # if dest_exits:
+        #     if opposing_direction in ["west", "east"]:
+        #         dest_exits = sorted(dest_exits, key=lambda b: int(float(b.get("top", 0))))
+        #     else:
+        #         dest_exits = sorted(dest_exits, key=lambda b: int(float(b.get("left", 0))))
+                
+        #     # Find matching target connection incoming index
+        #     dest_side_conns = [c for c in connections if int(c["newDestNorth"]) == dest_o_n and int(c["newDestEast"]) == dest_o_e and c.get("direction") == direction]
+        #     # Match sorting criteria based on incoming coordinates
+        #     dest_side_conns.sort(key=lambda c: float(c.get("newY" if opposing_direction in ["west", "east"] else "newX", 0)))
+            
+        #     try:
+        #         dest_idx = dest_side_conns.index(conn)
+        #         if dest_idx < len(dest_exits):
+        #             matched_dest_bounds = dest_exits[dest_idx]
+        #             if opposing_direction in ["west", "east"]:
+        #                 exitSrcHeight = (int(float(matched_dest_bounds["bottom"])) - int(float(matched_dest_bounds["top"]))) + 1
+        #                 exitSrcWidth = 1
+        #             else:
+        #                 exitSrcHeight = 1
+        #                 exitSrcWidth = (int(float(matched_dest_bounds["right"])) - int(float(matched_dest_bounds["left"]))) + 1
+        #     except ValueError:
+        #         pass
         # Calculate both source and destination coordinates with matching grid offsets
         if direction == "west":
             arrow_src_x, arrow_src_y = base_x + halfTileWidth, base_y + src_coord_scaled
@@ -572,11 +633,19 @@ def main():
         elif direction == "south":
             arrow_src_x, arrow_src_y = base_x + src_coord_scaled, base_y + TILE_HEIGHT - halfTileHeight
             arrow_dest_x, arrow_dest_y = raw_dest_x, raw_dest_y - (halfTileHeight*2)
-        if exitHeight%2:
-          arrow_src_y +=halfTileHeight
-        if exitSrcWidth%2:
-          arrow_src_x +=halfTileWidth
         mid_x, mid_y = (arrow_src_x + arrow_dest_x) / 2, (arrow_src_y + arrow_dest_y) / 2
+        # if room_key=="20_22":
+        #   if exitSrcWidth%2==0:
+        #     arrow_src_x +=halfTileWidth
+        #   elif exitSrcHeight%2==0:
+        #     print("asdasdadssad")
+        #     arrow_src_y +=halfTileHeight
+        #   else:
+        #     continue
+        #   if exitDestWidth%2==0:
+        #     arrow_dest_x +=halfTileWidth
+        #   if exitDestHeight%2==0:
+        #     arrow_dest_y +=halfTileHeight
         if direction in ["west", "east"]:
             ctrl_x, ctrl_y = (mid_x + (25 if direction == "east" else -25), mid_y)
         else:
