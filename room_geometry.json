@@ -2692,6 +2692,25 @@
     "east": 25,
     "areas": [
       {
+        "reqs": [["quest:2p.?"]],
+        "areas": [
+          [
+            {
+              "side": "west",
+              "idx": 0
+            },
+            {
+              "side": "south",
+              "idx": 0
+            },
+            {
+              "side": "east",
+              "idx": 0
+            }
+          ]
+        ]
+      },
+      {
         "reqs": [[]],
         "areas": [
           [
@@ -6794,6 +6813,40 @@
   {
     "north": 18,
     "east": 22,
+    "areas": [
+      {
+        "areas": [
+          [
+            {
+              "side": "west",
+              "idx": 0
+            },
+            {
+              "side": "east",
+              "idx": 0
+            }
+          ]
+        ],
+        "reqs": [["quest:wolf pass.?"]]
+      },
+      {
+        "areas": [
+          [
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "east",
+              "idx": 0
+            }
+          ]
+        ],
+        "reqs": [[]]
+      }
+    ],
     "exits": {
       "west": [
         {
