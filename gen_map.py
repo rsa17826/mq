@@ -185,6 +185,7 @@ html_end = """    </div>
     <script>
 const viewport = document.getElementById('viewport');
 const grid = document.getElementById('grid');
+const panLayer = document.getElementById('pan-layer');
 
 let scale = 1;
 let originX = 0;
@@ -192,19 +193,15 @@ let originY = 0;
 
 let isPanning = false;
 let startX, startY;
-
-// NEW: animation frame control
 let needsUpdate = false;
-
-const panLayer = document.getElementById('pan-layer');
 
 function updateTransform() {
     if (!needsUpdate) return;
 
-    // pan = translate only (fast, crisp)
+    // pan = translate only
     panLayer.style.transform = `translate(${originX}px, ${originY}px)`;
 
-    // zoom = scale only (isolated)
+    // zoom = scale only
     grid.style.transform = `scale(${scale})`;
     grid.style.transformOrigin = "0 0";
 
@@ -218,9 +215,29 @@ function requestUpdate() {
     }
 }
 
+// --- CENTER INITIALIZATION ---
+function centerMap() {
+    // Ensure viewport takes up the screen or parent bounds
+    viewport.style.width = "100vw";
+    viewport.style.height = "100vh";
+    viewport.style.overflow = "hidden";
+    viewport.style.position = "relative";
+
+    const vWidth = viewport.clientWidth;
+    const vHeight = viewport.clientHeight;
+    const gWidth = grid.offsetWidth;
+    const gHeight = grid.offsetHeight;
+
+    // Calculate center offset positions
+    originX = (vWidth - gWidth * scale) / 2;
+    originY = (vHeight - gHeight * scale) / 2;
+    
+    requestUpdate();
+}
+
 // --- PAN ---
 viewport.addEventListener('mousedown', (e) => {
-    if (e.button === 2) {
+    if (e.button === 2) { // Right click to pan
         isPanning = true;
         startX = e.clientX - originX;
         startY = e.clientY - originY;
@@ -232,7 +249,7 @@ window.addEventListener('mousemove', (e) => {
     if (!isPanning) return;
     originX = e.clientX - startX;
     originY = e.clientY - startY;
-    requestUpdate(); // 🔥 throttled now
+    requestUpdate(); 
 });
 
 window.addEventListener('mouseup', () => {
@@ -245,13 +262,17 @@ viewport.addEventListener('wheel', (e) => {
     e.preventDefault();
 
     const zoomIntensity = 0.0015;
-    const mouseX = e.clientX;
-    const mouseY = e.clientY;
+    const rect = viewport.getBoundingClientRect();
+    
+    // Get mouse positions relative to the viewport element container 
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
 
     const prevScale = scale;
     scale += -e.deltaY * zoomIntensity;
     scale = Math.min(Math.max(0.2, scale), 5);
 
+    // Adjust origin targets seamlessly matching local element spaces
     originX -= (mouseX - originX) * (scale / prevScale - 1);
     originY -= (mouseY - originY) * (scale / prevScale - 1);
 
@@ -261,8 +282,8 @@ viewport.addEventListener('wheel', (e) => {
 // disable RMB menu
 viewport.addEventListener('contextmenu', e => e.preventDefault());
 
-// init
-requestUpdate();
+// Initialize positions on window load
+window.addEventListener('DOMContentLoaded', centerMap);
 </script>
 </body>
 </html>
