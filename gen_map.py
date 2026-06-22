@@ -73,13 +73,8 @@ html_start = f"""<!DOCTYPE html>
             width: {TILE_WIDTH}px;
             height: {TILE_HEIGHT}px;
             background-color: #222;
-            box-shadow: inset 0 0 0 1px #444;
             box-sizing: border-box;
             z-index: 5;
-        }}
-        .tile-wrapper:hover {{
-            box-shadow: inset 0 0 0 1px #fff;
-            z-index: 15;
         }}
         .grid-item {{
             display: block;
@@ -97,7 +92,7 @@ html_start = f"""<!DOCTYPE html>
             flex-direction: row;
             gap: 4px;
             position: absolute;
-            bottom: calc(3px + {BLOCK_WIDTH_PCT}%);
+            bottom: calc(3px + {BLOCK_HEIGHT_PCT}%);
             right: calc(3px + {BLOCK_WIDTH_PCT}%);
             pointer-events: none;
             z-index: 9999999999;
@@ -124,7 +119,7 @@ html_start = f"""<!DOCTYPE html>
             border-radius: 50%;
         }}
         .progression-icon {{
-            height: 28px;
+            height: 32px;
             z-index: 12;
             filter: drop-shadow(0px 1px 2px rgba(0,0,0,0.8));
         }}
@@ -159,7 +154,7 @@ const viewport = document.getElementById("viewport")
 const grid = document.getElementById("grid")
 const panLayer = document.getElementById("pan-layer")
 
-let scale = 1
+let scale = 0.286
 let originX = 0
 let originY = 0
 let currentRoom = null
@@ -309,14 +304,14 @@ window.addEventListener("mouseup", () => {
 // --- MOUSE ZOOM ---
 viewport.addEventListener("wheel", (e) => {
     e.preventDefault()
-    const zoomIntensity = 0.0015
+    const zoomIntensity = 0.0009
     const rect = viewport.getBoundingClientRect()
     const mouseX = e.clientX - rect.left
     const mouseY = e.clientY - rect.top
 
     const prevScale = scale
     scale += -e.deltaY * zoomIntensity
-    scale = Math.min(Math.max(0.15, scale), 4)
+    scale = Math.min(Math.max(0.07, scale), 4)
 
     originX -= (mouseX - originX) * (scale / prevScale - 1)
     originY -= (mouseY - originY) * (scale / prevScale - 1)
