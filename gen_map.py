@@ -11,10 +11,10 @@ IMAGE_FOLDER = "mapSmall"
 FULL_IMAGE_FOLDER = "map"
 
 OUTPUT_FILE = "randomized_index.html"
-GEOMETRY_JSON_PATH = "./room_geometry.json"
-CONNECTIONS_JSON_PATH = "./connections.json"
-PROGRESSION_JSON_PATH = "./progression.json"
-EXITS_JSON_PATH = "./exits.json"
+GEOMETRY_JSON_PATH = "./json/room_geometry.json"
+CONNECTIONS_JSON_PATH = "./json/connections.json"
+PROGRESSION_JSON_PATH = "./json/progression.json"
+EXITS_JSON_PATH = "./json/exits.json"
 
 # Path to the icon image representing progression events
 PROGRESSION_ICON_PATH = "./mapimgs/"

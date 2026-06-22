@@ -1,4 +1,4 @@
-import map.genGrid as _
+# import map.genGrid as _
 import shuffle_exits
 import patch_game
 import gen_map

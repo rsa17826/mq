@@ -1,5 +1,5 @@
 """
-Coupled entrance-rando shuffle over exits.json with multi-gap support.
+Coupled entrance-rando shuffle over json/exits.json with multi-gap support.
 Includes dead-end protection and safer inner-screen padding offsets.
 """
 
@@ -25,9 +25,9 @@ def init():
         (room-internal connectivity scenarios -- a room with no entry here
         has no internal gating data, treated as a single open floor plan)
     """
-    path = os.path.join(OUT_DIR, "room_geometry.json")
+    path = os.path.join(OUT_DIR, "json/room_geometry.json")
     if not os.path.exists(path):
-      print(f"NOTE: no room_geometry.json found at {path} -- using fallback behavior.")
+      print(f"NOTE: no json/room_geometry.json found at {path} -- using fallback behavior.")
       return {}, {}
     raw = json.load(open(path))
     geo = {}
@@ -54,7 +54,7 @@ def init():
             scenarios.append({"requires": parse_requires(sc.get("reqs")), "groups": groups})
           room_areas[room] = scenarios
     else:
-      raise ValueError("room_geometry.json must be a list or dict")
+      raise ValueError("json/room_geometry.json must be a list or dict")
     return geo, room_areas
 
 
@@ -66,7 +66,7 @@ def init():
 
   def parse_requirement_token(tok):
     """Parse one requirement token into a structured dict. Token forms seen
-    in progression.json:
+    in json/progression.json:
       entrance.NAME            -- which exit was used to get here
       PREFIX:NAME#COUNT        -- need at least COUNT of an item-like thing
       PREFIX:NAME.TIER         -- need a tiered thing (skill/permit/quest/
@@ -143,9 +143,9 @@ def init():
 
 
   def load_progression():
-    path = os.path.join(OUT_DIR, "progression.json")
+    path = os.path.join(OUT_DIR, "json/progression.json")
     if not os.path.exists(path):
-      print(f"NOTE: no progression.json found at {path} -- no item/skill gating loaded.")
+      print(f"NOTE: no json/progression.json found at {path} -- no item/skill gating loaded.")
       return {"locations": [], "gates": [], "warps": []}
     raw = json.load(open(path))
 
@@ -204,7 +204,7 @@ def init():
           if tok["type"] == "flag":
             flags_seen.add(tok["raw"])
 
-    print(f"Loaded progression.json: {len(locations)} locations, {len(gates)} gates, {len(warps)} warps")
+    print(f"Loaded json/progression.json: {len(locations)} locations, {len(gates)} gates, {len(warps)} warps")
     with_req = sum(1 for l in locations if l["requires"])
     print(f"  locations with requirements: {with_req} / {len(locations)}")
     if placeholders_seen:
@@ -227,7 +227,7 @@ def init():
 
 
 
-  exits_data = json.load(open(f"{OUT_DIR}/exits.json"))
+  exits_data = json.load(open(f"{OUT_DIR}/json/exits.json"))
   geometry, room_areas = load_room_geometry()
   progression = load_progression()
 
@@ -299,7 +299,7 @@ def init():
     all_exits_raw.append(d)
 
   # Warps (e.g. the magic water-warp spell): unlike doors, these aren't
-  # extracted from game source -- they come straight from progression.json's
+  # extracted from game source -- they come straight from json/progression.json's
   # "warps" list, since some of these links (notably the room-(9,14) x-split
   # case) were never fully recoverable from the vanilla code at all. Each
   # warp produces one exit per room endpoint; requires travels WITH the
@@ -522,7 +522,7 @@ def init():
 
 
   # ---------------------------------------------------------------------------
-  # Room-internal connectivity (room_geometry.json's "areas" field): which of
+  # Room-internal connectivity (json/room_geometry.json's "areas" field): which of
   # a room's own exits are mutually walkable from each other isn't always a
   # given -- e.g. a bombable wall splits a room into two halves until you
   # have permit:bomb, at which point they merge into one. Each scenario lists
@@ -804,10 +804,10 @@ def init():
     "seed": SEED,
     "connections": connections,
   }
-  with open(f"{OUT_DIR}/connections.json", "w") as f:
+  with open(f"{OUT_DIR}/json/connections.json", "w") as f:
     json.dump(out, f, indent=2)
 
-  print(f"Wrote connections.json with seed={SEED}")
+  print(f"Wrote json/connections.json with seed={SEED}")
 
   all_rooms = set()
   for e in edge_exits + door_exits + warp_exits:

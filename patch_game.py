@@ -15,7 +15,7 @@ def init():
   with open(SRC_PATH, encoding="utf-8") as f:
     src = f.read()
   
-  conn_data = json.load(open(f"{OUT_DIR}/connections.json"))
+  conn_data = json.load(open(f"{OUT_DIR}/json/connections.json"))
   connections = conn_data["connections"]
   seed = conn_data["seed"]
   
