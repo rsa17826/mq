@@ -1580,6 +1580,27 @@
   {
     "north": 7,
     "east": 22,
+    "areas": [
+      {
+        "areas": [
+          [
+            {
+              "side": "west",
+              "idx": 0
+            },
+            {
+              "side": "east",
+              "idx": 0
+            },
+            {
+              "side": "north",
+              "idx": 0
+            }
+          ]
+        ],
+        "reqs": [["quest:shadowsoulEntrance.?"]]
+      }
+    ],
     "exits": {
       "west": [
         {
@@ -3997,6 +4018,25 @@
     "east": 24,
     "areas": [
       {
+        "areas": [
+          [
+            {
+              "side": "south",
+              "idx": 0
+            },
+            {
+              "side": "north",
+              "idx": 0
+            },
+            {
+              "side": "east",
+              "idx": 0
+            }
+          ]
+        ],
+        "reqs": [["quest:shadowsoulEntrance.?"]]
+      },
+      {
         "reqs": [[]],
         "areas": [
           [
@@ -4065,6 +4105,40 @@
   {
     "north": 11,
     "east": 26,
+    "areas": [
+      {
+        "areas": [
+          [
+            {
+              "side": "west",
+              "idx": 0
+            },
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ]
+        ],
+        "reqs": [["misc:stomp code", "skill:stomp"]]
+      },
+      {
+        "areas": [
+          [
+            {
+              "side": "west",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ]
+        ],
+        "reqs": [[]]
+      }
+    ],
     "exits": {
       "west": [],
       "south": [
@@ -5045,6 +5119,21 @@
     "north": 14,
     "east": 18,
     "areas": [
+      {
+        "areas": [
+          [
+            {
+              "side": "north",
+              "idx": 0
+            },
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ]
+        ],
+        "reqs": [["quest:kingWasStolen"]]
+      },
       {
         "reqs": [[]],
         "areas": [
@@ -7107,6 +7196,31 @@
     "east": 18,
     "areas": [
       {
+        "reqs": [["fireNPCPass?"]],
+        "areas": [
+          [
+            {
+              "side": "north",
+              "idx": 0
+            },
+            {
+              "side": "west",
+              "idx": 0
+            },
+            {
+              "side": "south",
+              "idx": 1
+            }
+          ],
+          [
+            {
+              "side": "south",
+              "idx": 0
+            }
+          ]
+        ]
+      },
+      {
         "reqs": [[]],
         "areas": [
           [
@@ -7122,6 +7236,12 @@
             },
             {
               "side": "west",
+              "idx": 0
+            }
+          ],
+          [
+            {
+              "side": "north",
               "idx": 0
             }
           ]
