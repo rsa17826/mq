@@ -2163,7 +2163,6 @@
     "complete": false
   },
   {
-    "err": true,
     "north": 8,
     "east": 20,
     "exits": {
@@ -2178,7 +2177,8 @@
       "north": [
         {
           "left": 8,
-          "right": 8
+          "right": 8,
+          "newY": 144
         }
       ]
     },
@@ -2777,7 +2777,6 @@
     "complete": false
   },
   {
-    "err": true,
     "north": 9,
     "east": 26,
     "exits": {
@@ -2792,7 +2791,8 @@
       "north": [
         {
           "left": 6,
-          "right": 7
+          "right": 7,
+          "newY": 148
         }
       ]
     },
@@ -4466,12 +4466,12 @@
       "north": [
         {
           "left": 10,
-          "right": 10
+          "right": 10,
+          "newY": 129
         }
       ]
     },
-    "complete": true,
-    "err": true
+    "complete": true
   },
   {
     "north": 12,
@@ -4488,12 +4488,12 @@
       "north": [
         {
           "left": 11,
-          "right": 11
+          "right": 11,
+          "newY": 107
         }
       ]
     },
-    "complete": false,
-    "err": true
+    "complete": false
   },
   {
     "north": 12,
@@ -4853,8 +4853,7 @@
         }
       ]
     },
-    "complete": true,
-    "err": true
+    "complete": true
   },
   {
     "north": 13,
@@ -5760,12 +5759,12 @@
       "north": [
         {
           "left": 2,
-          "right": 2
+          "right": 2,
+          "newY": 129
         }
       ]
     },
-    "complete": true,
-    "err": true
+    "complete": true
   },
   {
     "north": 15,
@@ -7096,7 +7095,13 @@
           "right": 6
         }
       ],
-      "east": [],
+      "east": [
+        {
+          "top": 5,
+          "bottom": 5,
+          "newX": 600
+        }
+      ],
       "north": []
     },
     "complete": false,

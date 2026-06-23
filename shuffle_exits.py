@@ -272,30 +272,33 @@ def init():
           new_e["src_coord"] = mid_block_x * BLOCK_W
           new_e["dest_x"] = mid_block_x * BLOCK_W
           new_e["dest_y"] = 0 * BLOCK_H # Pushed down safely into row 1
-          if (gap["left"] + gap["right"])%2==0:
-            new_e["dest_x"]+=(BLOCK_W/2)
+          if (gap["left"] + gap["right"])%2==1:
+            new_e['xIsEven']=(BLOCK_W/2)
         elif direction == "south":
           mid_block_x = (gap["left"] + gap["right"]) / 2
           new_e["src_coord"] = mid_block_x * BLOCK_W
           new_e["dest_x"] = mid_block_x * BLOCK_W
-          new_e["dest_y"] = 10.1 * BLOCK_H # Pushed up safely into row 9
-          if (gap["left"] + gap["right"])%2==0:
-            new_e["dest_x"]+=(BLOCK_W/2)
+          new_e["dest_y"] = 10 * BLOCK_H # Pushed up safely into row 9
+          if (gap["left"] + gap["right"])%2==1:
+            new_e['xIsEven']=(BLOCK_W/2)
         elif direction == "west":
           mid_block_y = (gap["top"] + gap["bottom"]) / 2
           new_e["src_coord"] = mid_block_y * BLOCK_H
           new_e["dest_x"] = 0 * BLOCK_W # Pushed right safely into col 1
           new_e["dest_y"] = mid_block_y * BLOCK_H
-          if (gap["top"] + gap["bottom"])%2==0:
-            new_e["dest_y"]+=(BLOCK_H/2)
+          if (gap["top"] + gap["bottom"])%2==1:
+            new_e["yIsEven"]=(BLOCK_H/2)
         elif direction == "east":
           mid_block_y = ((gap["top"] + gap["bottom"]) / 2)
           new_e["src_coord"] = mid_block_y * BLOCK_H
           new_e["dest_x"] = 13 * BLOCK_W # Pushed left safely into col 12
           new_e["dest_y"] = mid_block_y * BLOCK_H
-          if (gap["top"] + gap["bottom"])%2==0:
-            new_e["dest_y"]+=(BLOCK_H/2)
-
+          if (gap["top"] + gap["bottom"])%2==1:
+            new_e["yIsEven"]=(BLOCK_H/2)
+        if 'newY' in gap:
+          new_e['dest_y'] = gap.get("newY")
+        if 'newX' in gap:
+          new_e['dest_x'] = gap.get("newX")
         all_exits_raw.append(new_e)
     else:
       for e in edge_list:
@@ -792,6 +795,8 @@ def init():
       "newDestEast": to_exit["origin"]["east"],
       "newX": to_exit.get("dest_x", 330),
       "newY": to_exit.get("dest_y", 255),
+      "xIsEven": to_exit.get("xIsEven",0),
+      "yIsEven": to_exit.get("yIsEven",0),
       "srcCoord": from_exit.get("src_coord"),
       "direction": from_exit.get("direction"),
       "mechanism": from_exit["mechanism"],

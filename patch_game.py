@@ -34,7 +34,7 @@ def init():
   for c in connections:
     d_code = DIR_CODES.get(c.get("direction"), 0)
     rows.append(
-      "[%s,%s,%s,%s,%s,%s,%s,%s,%s,%s]"
+      "[%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s]"
       % (
         fmt_num(c["originNorth"]),
         fmt_num(c["originEast"]),
@@ -46,6 +46,8 @@ def init():
         fmt_num(c["newY"]),
         fmt_num(c.get("srcCoord")),
         str(d_code),
+        fmt_num(c.get("xIsEven")),
+        fmt_num(c.get("yIsEven")),
       )
     )
   table_js = ",".join(rows)
@@ -67,7 +69,9 @@ def init():
           newX: r[6],
           newY: r[7],
           srcCoord: r[8],
-          dirCode: r[9]
+          dirCode: r[9],
+          xIsEven: r[10],
+          yIsEven: r[11]
         }})
       }}
   
@@ -205,7 +209,7 @@ def init():
               }}
             }}
             
-            console.log("[ER DEBUG] Success! Redirecting room target to:", conn.newNorth + "," + conn.newEast, "Placing character at:", conn.newX + "," + conn.newY);
+            console.log("[ER DEBUG] Success! Redirecting room target to:", conn.newNorth + "," + conn.newEast, "Placing character at:", conn.newX + "," + conn.newY, conn.xIsEven, conn.yIsEven, conn);
             
             // Set safety lock flag to prevent our proxy properties from creating bad transition tracking chains
             erUpdatingInternal = true
@@ -215,6 +219,10 @@ def init():
               if (manager.char && manager.char[0]) {{
                 if (typeof manager.char[0].set_x === 'function') {{
                   manager.char[0].set_x(conn.newX)
+                  // left or right trnasitions move player down .5*blockY to get centered dont know why only l/r needs this
+                  if (conn.dirCode>=3)
+                  manager.char[0].set_y(conn.newY+25.3571)
+                  else
                   manager.char[0].set_y(conn.newY)
                 }} else {{
                   manager.char[0].x = conn.newX
@@ -228,7 +236,10 @@ def init():
                 if (manager.char && manager.char[0]) {{
                   if (typeof manager.char[0].set_x === 'function') {{
                     manager.char[0].set_x(conn.newX)
-                    manager.char[0].set_y(conn.newY)
+                    if (conn.dirCode>=3)
+                  manager.char[0].set_y(conn.newY+25.3571)
+                  else
+                  manager.char[0].set_y(conn.newY)
                   }} else {{
                     manager.char[0].x = conn.newX
                     manager.char[0].y = conn.newY

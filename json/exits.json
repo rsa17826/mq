@@ -4022,6 +4022,21 @@
       "dest_y": 25
     },
     {
+      "id": "edge:east:19_13_19_14",
+      "mechanism": "edge",
+      "direction": "east",
+      "origin": {
+        "north": 19,
+        "east": 13
+      },
+      "dest": {
+        "north": 19,
+        "east": 14
+      },
+      "dest_x": null,
+      "dest_y": null
+    },
+    {
       "id": "edge:south:19_16_18_16",
       "mechanism": "edge",
       "direction": "south",
