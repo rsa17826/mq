@@ -17,7 +17,7 @@ PROGRESSION_JSON_PATH = "./json/progression.json"
 EXITS_JSON_PATH = "./json/exits.json"
 
 # Path to the icon image representing progression events
-PROGRESSION_ICON_PATH = "./mapimgs/"
+PROGRESSION_ICON_PATH = "/mapimgs/"
 
 # Constants scaled down to match the layout sizes perfectly
 TILE_WIDTH = 710
@@ -720,8 +720,8 @@ def main():
         pixel_top = track_row * TILE_HEIGHT
         room_key = f"{north}_{east}"
 
-        placeholder_img_path = f"{IMAGE_FOLDER}/{filename}"
-        highres_img_path = f"{FULL_IMAGE_FOLDER}/{filename}"
+        placeholder_img_path = f"/{IMAGE_FOLDER}/{filename}"
+        highres_img_path = f"/{FULL_IMAGE_FOLDER}/{filename}"
 
         tile_exits = geom_index.get(room_key, {})
         squares_html = []
@@ -854,6 +854,18 @@ def main():
         f.write("\n".join(html_elements))
         f.write(f"\n    <script>const ROUTES_DATA = {json.dumps(js_routes_db, indent=2)};</script>")
         f.write("\n" + html_end)
+        
+    with open("./MathQuest/play.base.html", "r", encoding="utf-8") as ff:
+      with open("./MathQuest/play.html", "w", encoding="utf-8") as f:
+        oldData = ff.read().split('<map id="map"></map>')
+        f.write(oldData[0])
+        f.write('<map id="map">')
+        f.write(dynamic_html_start)
+        f.write("\n".join(html_elements))
+        f.write(f"\n    <script>const ROUTES_DATA = {json.dumps(js_routes_db, indent=2)};</script>")
+        f.write("\n" + html_end)
+        f.write('</map>')
+        f.write(oldData[1])
 
 def snapToGrid(x, y):
     block_width = float(ROOM_INTERNAL_WIDTH) / BLOCKS_X

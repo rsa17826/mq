@@ -748,7 +748,7 @@ def init():
   all_unpaired = edge_unpaired + door_unpaired + warp_unpaired
 
   print(f"playercouldhave (final, accumulated across all pools): "
-        f"{len(playercouldhave)} distinct items/skills/permits tracked")
+    f"{len(playercouldhave)} distinct items/skills/permits tracked")
 
   all_reached = edge_reached | door_reached | warp_reached
   all_rooms = set(edge_exits and {(e['origin']['north'], e['origin']['east']) for e in edge_exits} or set())
@@ -757,8 +757,8 @@ def init():
   unreached_rooms = all_rooms - all_reached
   if unreached_rooms:
     print(f"  {len(unreached_rooms)} room(s) never reached (check above pool-specific "
-          f"warnings for cause -- could be gating, could be exhausted exits): "
-          f"{sorted(unreached_rooms)[:10]}")
+      f"warnings for cause -- could be gating, could be exhausted exits): "
+      f"{sorted(unreached_rooms)[:10]}")
 
   connections = []
 
@@ -877,8 +877,8 @@ def init():
   }
   if pending_out:
     print(f"  NOTE: {len(pending_out)} requirement(s) never resolved during the "
-          f"solve -- either an intentionally late/postgame gate, or a real "
-          f"problem worth checking: {list(pending_out.keys())[:10]}")
+      f"solve -- either an intentionally late/postgame gate, or a real "
+      f"problem worth checking: {list(pending_out.keys())[:10]}")
 
   hint_data = {
     "seed": SEED,
@@ -894,12 +894,12 @@ def init():
   with open(f"{OUT_DIR}/json/hint_data.json", "w") as f:
     json.dump(hint_data, f, indent=2)
   print(f"Wrote json/hint_data.json: {len(graph)} rooms in graph, "
-        f"{len(locations_out)} locations, {len(item_give_index)} distinct "
-        f"giveable items/skills/permits indexed")
+    f"{len(locations_out)} locations, {len(item_give_index)} distinct "
+    f"giveable items/skills/permits indexed")
 
   all_rooms = set()
   for e in edge_exits + door_exits + warp_exits:
-      all_rooms.add((e['origin']['north'], e['origin']['east']))
+    all_rooms.add((e['origin']['north'], e['origin']['east']))
   print('total distinct rooms across all exit pools:', len(all_rooms))
 
   # 1. Filter out the "entrance" keys

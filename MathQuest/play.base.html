@@ -1,0 +1,303 @@
+<!doctype html>
+<style>
+  body,
+  html {
+    background-color: #000;
+  }
+</style>
+<script>
+  Object.assign(window, console)
+  // const oldXMLHttpRequest = window.XMLHttpRequest
+  // const oldDocumentXMLHttpRequest = document.XMLHttpRequest
+
+  // window.XMLHttpRequest = function () {
+  //   const xhr = new oldXMLHttpRequest()
+  //   const originalOpen = xhr.open
+  //   const originalSend = xhr.send
+
+  //   xhr.open = function (method, url, async, user, password) {
+  //     if (url.includes("MQFiles/createChar.php")) {
+  //       console.log(url)
+  //     }
+  //     if (url.includes("MQFiles/saveChar.php")) {
+  //       console.log(url)
+  //     }
+  //     if (url.includes("MQFiles/loadChar.php")) {
+  //       console.log(url)
+  //     }
+  //     return originalOpen.call(xhr, method, url, async, user, password)
+  //   }
+
+  //   xhr.send = function (data) {
+  //     return originalSend.call(xhr, data)
+  //   }
+
+  //   return xhr
+  // }
+
+  // document.XMLHttpRequest = function (...args) {
+  //   return new oldDocumentXMLHttpRequest(...args)
+  // }
+
+  // if (oldXMLHttpRequest) {
+  //   Object.setPrototypeOf(window.XMLHttpRequest, oldXMLHttpRequest)
+  // }
+
+  // if (oldDocumentXMLHttpRequest) {
+  //   Object.setPrototypeOf(document.XMLHttpRequest, oldDocumentXMLHttpRequest)
+  // }
+</script>
+<html>
+  <head>
+    <meta
+      http-equiv="Content-Type"
+      content="text/html; charset=utf-8"
+    />
+    <title>Math Quest | Adventure Game for Kids</title>
+
+    <!-- <link
+      href="https://www.roomrecess.com/Pictures/MQPics/favicon.ico"
+      rel="shortcut icon"
+      type="image/x-icon"
+    /> -->
+
+    <script type="text/javascript" src="./lib/howler.min.js"></script>
+    <script type="text/javascript" src="./lib/pako.min.js"></script>
+    <script
+      type="text/javascript"
+      src="./lib/FileSaver.min.js"
+    ></script>
+    <script type="text/javascript" src="./test.js"></script>
+    <script type="text/javascript" src="./MathQuest.js"></script>
+
+    <link rel="StyleSheet" href="/css/black.css" type="text/css" />
+    <link
+      rel="StyleSheet"
+      href="/css/roomrecess.css"
+      type="text/css"
+    />
+
+    <script type="text/javascript" src="../jquery.min.js"></script>
+    <script
+      type="text/javascript"
+      src="/java/button-effect.js"
+    ></script>
+    <script type="text/javascript" src="/java/homescroll.js"></script>
+
+    <script>
+      window.addEventListener("touchmove", function (event) {}, false)
+      if (
+        typeof window.devicePixelRatio != "undefined" &&
+        window.devicePixelRatio > 2
+      ) {
+        var meta = document.getElementById("viewport")
+        meta.setAttribute(
+          "content",
+          "width=device-width, initial-scale=" +
+            2 / window.devicePixelRatio +
+            ", user-scalable=no",
+        )
+      }
+      window.addEventListener(
+        "keydown",
+        function (e) {
+          // Check for Tab key (9)
+          if (e.keyCode === 9) {
+            e.preventDefault() // Stop default browser focus switching
+
+            var mapIframe = document.getElementById("map")
+            if (mapIframe) {
+              mapIframe.classList.toggle("in-front")
+            }
+          }
+
+          // Existing space/arrow key protection
+          if ([37, 38, 39, 40, 32, 8].indexOf(e.keyCode) > -1) {
+            e.preventDefault()
+          }
+        },
+        false,
+      )
+    </script>
+    <map id="map"></map>
+    <style>
+      /*html,body { margin: 0; padding: 0; height: 100%; overflow: auto; }*/
+
+      #map {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+      }
+      #openfl-content,#openfl-content>canvas {
+        /* Base the dimensions on a 900x600 (3:2) ratio */
+        width: 100vw;
+        height: 66.67vw; /* (600 / 900) * 100 */
+
+        /* Prevent it from clipping if the screen is too tall/narrow */
+        max-height: 100vh;
+        max-width: 150vh; /* (900 / 600) * 100 */
+
+        background: #000;
+        position: relative; /* Allows z-index positioning for child layers */
+        z-index: 2; /* Sits above the map by default */
+      }
+
+      #map {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 1; /* Sits behind the game window by default */
+      }
+
+      /* Explicit class handling for when the iframe is pulled forward */
+      #map.in-front {
+        z-index: 10 !important;
+      }
+      @font-face {
+        font-family: "Booter - Zero Zero";
+        src:
+          url("fonts/BOOTERZZ.eot?#iefix") format("embedded-opentype"),
+          url("fonts/BOOTERZZ.woff") format("woff"),
+          url("fonts/BOOTERZZ.ttf") format("truetype"),
+          url("fonts/BOOTERZZ.svg#Booter%20-%20Zero%20Zero")
+            format("svg");
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+    <script>
+      var game = document.getElementById("gameFocus")
+      if (game) game.focus()
+    </script>
+    <!-- Start of Mobile Responsive Code -->
+    <style type="text/css">
+      @media screen and (max-width: 1150px) {
+        #rightMenuHomePage {
+          position: unset;
+          width: 100%;
+          margin-top: 0;
+          height: 100%;
+        }
+        .header {
+          width: 100%;
+          min-width: 100%;
+          height: 92px;
+        }
+        .logo img {
+          width: 250px !important;
+          margin-left: 50%;
+          transform: translateX(-50%);
+        }
+        #contentHomePage {
+          min-width: 100%;
+          margin-right: 0;
+          margin-top: 100px;
+          height: 100%;
+        }
+        #openfl-content {
+          width: 100%;
+          min-width: 100%;
+          /*overflow-x: scroll;
+      overflow-y: hidden;*/
+        }
+        .fullPage {
+          min-width: 100%;
+        }
+        .w-100dr {
+          width: 100%;
+        }
+        #content {
+          width: 100% !important;
+          min-width: 100% !important;
+          height: auto !important;
+        }
+        #leftThing {
+          width: 100% !important;
+          float: unset !important;
+        }
+        #rightThing {
+          width: 100% !important;
+          float: unset !important;
+        }
+        .searchbar_Dr {
+          left: 50% !important;
+          position: fixed;
+          top: 52px !important;
+          transform: translateX(-50%);
+        }
+        #openfl-content canvas {
+          height: 100% !important;
+          width: 100% !important;
+          margin-left: 0 !important;
+          margin-top: 0 !important;
+        }
+      }
+
+      @media screen and (max-width: 767px) {
+        p.welcome-text {
+          text-align: center;
+        }
+        .header-block {
+          float: unset;
+          text-align: center;
+          padding-bottom: 14px;
+        }
+        .header-block p {
+          margin-bottom: 0px;
+          text-align: center;
+          display: inline-block;
+        }
+        .header-link {
+          float: unset;
+        }
+        .wp-organic-logo {
+          display: block;
+          margin-bottom: 25px;
+        }
+      }
+
+      @media screen and (max-width: 1150px) and (min-width: 460px) {
+        div#rightMenuContent {
+          position: static !important;
+        }
+      }
+
+      /*!-- added 5-10-20--*/
+      @media screen and (max-width: 1150px) {
+        div#ad_300 {
+          position: fixed !important;
+          right: 0 !important;
+        }
+      }
+    </style>
+    <!-- End of Mobile Responsive Code -->
+  </head>
+
+  <body>
+    <div id="gameFocus" align="center">
+      <noscript
+        >This webpage makes extensive use of JavaScript. Please enable
+        JavaScript in your web browser to view this page.</noscript
+      >
+
+      <div id="openfl-content"></div>
+
+      <script type="text/javascript">
+        lime.embed("MathQuest", "openfl-content", 900, 600, {
+          parameters: {},
+        })
+      </script>
+    </div>
+
+    <!-- spacing -->
+    <div align="center">
+      <br />
+      <script></script>
+      <br /><br />
+    </div>
+  </body>
+</html>
