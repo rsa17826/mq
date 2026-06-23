@@ -151,8 +151,6 @@ def init():
 
     locations = []
     for loc in raw.get("locations", []):
-      if "room" not in loc or 'north' not in loc["room"]:
-        print(loc)
       locations.append(
         {
           "room": (loc["room"]["north"], loc["room"]["east"]),
