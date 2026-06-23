@@ -317,7 +317,31 @@
           if (!window.player) {
             return
           }
+          // 1. Define the size of each checkerboard tile
+          var tileSize = 50 // 30x30 pixels per tile
 
+          // 2. Loop 11 tiles UP and 14 tiles RIGHT
+          for (var row = 0; row < 11; row++) {
+            for (var col = 0; col < 14; col++) {
+              // 3. Alternate colors based on row + column index
+              if ((row + col) % 2 === 0) {
+                continue
+                overlayCtx.fillStyle = "#FFFFFF" // White tile
+              } else {
+                overlayCtx.fillStyle = "#00000050" // Black tile
+              }
+
+              // 4. Calculate X coordinate (normal math going right)
+              var x = col * tileSize
+
+              // 5. Calculate Y coordinate (reverse math starting from bottom-left)
+              // Starts at canvas height, subtracts tile height, and moves UP per row
+              var y = overlayCanvas.height - tileSize - row * tileSize
+
+              // 6. Draw the tile
+              overlayCtx.fillRect(x, y, tileSize, tileSize)
+            }
+          }
           // Sample multi-line coordinate text setup
           var coordString = ""
           with (window.player) {

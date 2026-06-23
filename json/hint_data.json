@@ -17693,6 +17693,19 @@
         "300_300",
         "100_100"
       ],
+      "quest:rings": [
+        "13_16",
+        "11_11",
+        "15_16",
+        "19_18",
+        "20_18",
+        "6_12",
+        "14_22",
+        "18_12"
+      ],
+      "13.16.entrance.south0": [
+        "13_16"
+      ],
       "permit:bomb": [
         "13_16",
         "18_23",
@@ -17708,19 +17721,6 @@
         "17_20",
         "7_10",
         "6_10"
-      ],
-      "quest:rings": [
-        "13_16",
-        "11_11",
-        "15_16",
-        "19_18",
-        "20_18",
-        "6_12",
-        "14_22",
-        "18_12"
-      ],
-      "13.16.entrance.south0": [
-        "13_16"
       ],
       "item:key": [
         "18_23",
@@ -17748,6 +17748,9 @@
       "quest:headstone": [
         "11_9"
       ],
+      "item:cobra fang": [
+        "18_25"
+      ],
       "skill:medic": [
         "18_25",
         "18_25",
@@ -17755,13 +17758,10 @@
         "18_25",
         "18_25"
       ],
-      "item:cobra fang": [
+      "item:mage staf": [
         "18_25"
       ],
       "item:orc coin": [
-        "18_25"
-      ],
-      "item:mage staf": [
         "18_25"
       ],
       "item:gator skin": [
@@ -17824,16 +17824,16 @@
         "21_17",
         "17_19"
       ],
-      "skill:craft": [
-        "12_25",
-        "10_22",
-        "11_15",
-        "11_22"
-      ],
       "item:shark tooth": [
         "12_25",
         "8_14",
         "4_13",
+        "11_22"
+      ],
+      "skill:craft": [
+        "12_25",
+        "10_22",
+        "11_15",
         "11_22"
       ],
       "quest:hWater": [
@@ -17854,10 +17854,10 @@
       "quest:warp": [
         "11_9"
       ],
-      "item:mages hat": [
+      "misc:magic only resist bypass": [
         "13_25"
       ],
-      "misc:magic only resist bypass": [
+      "item:mages hat": [
         "13_25"
       ],
       "item:ring health": [
@@ -17881,10 +17881,10 @@
         "13_14",
         "8_21"
       ],
-      "8.10.entrance.east1": [
+      "8.10.entrance.east2": [
         "8_10"
       ],
-      "8.10.entrance.east2": [
+      "8.10.entrance.east1": [
         "8_10"
       ],
       "item:troll wristband": [
@@ -17904,10 +17904,10 @@
       "skill:tough": [
         "8_14"
       ],
-      "4.26.entrance.south2": [
+      "4.26.entrance.south3": [
         "4_26"
       ],
-      "4.26.entrance.south3": [
+      "4.26.entrance.south2": [
         "4_26"
       ],
       "20.23.entrance.east0": [
@@ -17925,13 +17925,13 @@
         "16_14",
         "15_18"
       ],
+      "5.9.entrance.north0": [
+        "5_9"
+      ],
       "item:minotour horn": [
         "5_9"
       ],
       "5.9.entrance.east0": [
-        "5_9"
-      ],
-      "5.9.entrance.north0": [
         "5_9"
       ],
       "skill:dig": [
@@ -17942,10 +17942,10 @@
       "13.14.entrance.east0": [
         "13_14"
       ],
-      "item:viking horn": [
+      "item:tentacle": [
         "4_13"
       ],
-      "item:tentacle": [
+      "item:viking horn": [
         "4_13"
       ],
       "item:bear tooth": [
