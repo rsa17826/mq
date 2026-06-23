@@ -3899,6 +3899,14 @@
         "mechanism": "edge",
         "direction": "south",
         "requires": []
+      },
+      {
+        "toRoom": "17_14",
+        "exitId": "edge:north:16_14_17_14",
+        "viaExitId": "edge:south:17_14_16_14",
+        "mechanism": "edge",
+        "direction": "north",
+        "requires": []
       }
     ],
     "16_15": [
@@ -4111,9 +4119,9 @@
     ],
     "17_14": [
       {
-        "toRoom": "17_14",
+        "toRoom": "16_14",
         "exitId": "edge:south:17_14_16_14",
-        "viaExitId": "edge:south:17_14_16_14",
+        "viaExitId": "edge:north:16_14_17_14",
         "mechanism": "edge",
         "direction": "south",
         "requires": []
@@ -13789,6 +13797,12 @@
       "direction": "east",
       "gapIndex": 0
     },
+    "16.14.entrance.north0": {
+      "exitId": "edge:north:16_14_17_14",
+      "room": "16_14",
+      "direction": "north",
+      "gapIndex": 0
+    },
     "19.16.entrance.south0": {
       "exitId": "edge:south:19_16_18_16",
       "room": "19_16",
@@ -17086,6 +17100,7 @@
       "19.12.entrance.south0": 1,
       "19.13.entrance.south0": 1,
       "19.13.entrance.east0": 1,
+      "16.14.entrance.north0": 1,
       "19.16.entrance.south0": 1,
       "19.17.entrance.south0": 1,
       "19.17.entrance.south1": 1,

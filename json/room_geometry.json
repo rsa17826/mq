@@ -5899,7 +5899,13 @@
         }
       ],
       "east": [],
-      "north": []
+      "north": [
+        {
+          "left": 3,
+          "right": 4,
+          "newY": 125
+        }
+      ]
     },
     "complete": false
   },
