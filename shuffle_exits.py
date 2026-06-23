@@ -46,7 +46,7 @@ def init():
             groups = [[(g["side"], g["idx"]) for g in group] for group in sc["areas"]]
             scenarios.append({"requires": parse_requires(sc.get("reqs")), "groups": groups})
           room_areas[room] = scenarios
-    elif isinstance(dict, raw):
+    elif isinstance(raw, dict):
       for k, v in raw.items():
         n_str, e_str = k.split("_")
         room = (float(n_str), float(e_str))
@@ -589,18 +589,27 @@ def init():
 
     for a in all_exits:
       partner = None
+      candidates = []
       for b in all_exits:
         if b["id"] == a["id"]:
           continue
         if b["origin"]["north"] == a["dest"]["north"] and b["origin"]["east"] == a["dest"]["east"]:
           if a["mechanism"] == "edge" and b["mechanism"] == "edge":
-            if b["direction"] == OPPOSITE[a["direction"]] and b.get("gap_index", 0) == a.get("gap_index", 0):
-              partner = b
-              break
+            if b["direction"] == OPPOSITE[a["direction"]]:
+              candidates.append(b)
           elif a["mechanism"] != "edge" and b["mechanism"] != "edge":
             if b["dest"]["north"] == a["origin"]["north"] and b["dest"]["east"] == a["origin"]["east"]:
-              partner = b
-              break
+              candidates.append(b)
+
+      if candidates:
+        if a["mechanism"] == "edge":
+          # Match by the closest physical coordinate along the room border to prevent side-exit mixups
+          candidates.sort(key=lambda x: abs(x.get("src_coord", 0) - a.get("src_coord", 0)))
+          partner = candidates[0]
+        else:
+          # For doors/warps, default to the matching target candidate
+          partner = candidates[0]
+
       if partner:
         connections.append(make_connection(a, partner))
       else:
