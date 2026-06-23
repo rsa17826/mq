@@ -130,7 +130,8 @@
         width: 100vw;
         height: 100vh;
       }
-      #openfl-content,#openfl-content>canvas {
+      #openfl-content,
+      #openfl-content > canvas:not(#overlayCanvas) {
         /* Base the dimensions on a 900x600 (3:2) ratio */
         width: 100vw;
         height: 66.67vw; /* (600 / 900) * 100 */
@@ -139,7 +140,6 @@
         max-height: 100vh;
         max-width: 150vh; /* (900 / 600) * 100 */
 
-        background: #000;
         position: relative; /* Allows z-index positioning for child layers */
         z-index: 2; /* Sits above the map by default */
       }
@@ -201,8 +201,6 @@
         #openfl-content {
           width: 100%;
           min-width: 100%;
-          /*overflow-x: scroll;
-      overflow-y: hidden;*/
         }
         .fullPage {
           min-width: 100%;
@@ -229,12 +227,6 @@
           top: 52px !important;
           transform: translateX(-50%);
         }
-        #openfl-content canvas {
-          height: 100% !important;
-          width: 100% !important;
-          margin-left: 0 !important;
-          margin-top: 0 !important;
-        }
       }
 
       @media screen and (max-width: 767px) {
@@ -259,19 +251,27 @@
           margin-bottom: 25px;
         }
       }
-
+      html,
+      body {
+        overflow-x: hidden;
+        overflow-y: hidden;
+      }
       @media screen and (max-width: 1150px) and (min-width: 460px) {
         div#rightMenuContent {
           position: static !important;
         }
       }
+      #overlayCanvas {
+        position: fixed;
+        z-index: 3;
+        pointer-events: none;
+        /* Base the dimensions on a 900x600 (3:2) ratio */
+        width: 100vw;
+        height: 66.67vw; /* (600 / 900) * 100 */
 
-      /*!-- added 5-10-20--*/
-      @media screen and (max-width: 1150px) {
-        div#ad_300 {
-          position: fixed !important;
-          right: 0 !important;
-        }
+        /* Prevent it from clipping if the screen is too tall/narrow */
+        max-height: 100vh;
+        max-width: 150vh; /* (900 / 600) * 100 */
       }
     </style>
     <!-- End of Mobile Responsive Code -->
@@ -279,12 +279,13 @@
 
   <body>
     <div id="gameFocus" align="center">
+
       <noscript
         >This webpage makes extensive use of JavaScript. Please enable
         JavaScript in your web browser to view this page.</noscript
       >
 
-      <div id="openfl-content"></div>
+      <div id="openfl-content"><canvas id="overlayCanvas" width="900" height="600"></canvas></div>
 
       <script type="text/javascript">
         lime.embed("MathQuest", "openfl-content", 900, 600, {
@@ -299,5 +300,21 @@
       <script></script>
       <br /><br />
     </div>
+    <script>
+      const overlayCanvas = document.querySelector("#overlayCanvas")
+      var a = overlayCanvas.getContext("2d")
+
+      function customDrawLoop() {
+        log("Asd")
+        a.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height)
+
+        // Draw a big target square
+        a.fillStyle = "#FF00FF"
+        a.fillRect(50, 50, 200, 200)
+
+        requestAnimationFrame(customDrawLoop)
+      }
+      customDrawLoop()
+    </script>
   </body>
 </html>

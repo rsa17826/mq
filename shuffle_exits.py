@@ -101,7 +101,9 @@ def init():
           name, count_str = rest.rsplit("#", 1)
           result["name"] = name
           if count_str.lower() in ("inf", "infinite"):
-            result["count"] = float("inf")
+            # inf not work in json
+            result["count"] = 999999999999
+            # result["count"] = float("inf")
             result["is_infinite"] = True
           else:
             try:
