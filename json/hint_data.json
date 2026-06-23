@@ -17693,6 +17693,9 @@
         "300_300",
         "100_100"
       ],
+      "13.16.entrance.south0": [
+        "13_16"
+      ],
       "quest:rings": [
         "13_16",
         "11_11",
@@ -17718,9 +17721,6 @@
         "17_20",
         "7_10",
         "6_10"
-      ],
-      "13.16.entrance.south0": [
-        "13_16"
       ],
       "item:key": [
         "18_23",
@@ -17748,9 +17748,6 @@
       "quest:headstone": [
         "11_9"
       ],
-      "item:cobra fang": [
-        "18_25"
-      ],
       "skill:medic": [
         "18_25",
         "18_25",
@@ -17758,16 +17755,14 @@
         "18_25",
         "18_25"
       ],
-      "item:mage staf": [
+      "item:cobra fang": [
         "18_25"
       ],
       "item:orc coin": [
         "18_25"
       ],
-      "item:gator skin": [
-        "18_25",
-        "9_16",
-        "21_22"
+      "item:mage staf": [
+        "18_25"
       ],
       "item:dragon scale": [
         "18_25",
@@ -17781,6 +17776,11 @@
         "20_15",
         "20_15",
         "20_15"
+      ],
+      "item:gator skin": [
+        "18_25",
+        "9_16",
+        "21_22"
       ],
       "item:alpha axe": [
         "18_25"
@@ -17881,10 +17881,10 @@
         "13_14",
         "8_21"
       ],
-      "8.10.entrance.east1": [
+      "8.10.entrance.east2": [
         "8_10"
       ],
-      "8.10.entrance.east2": [
+      "8.10.entrance.east1": [
         "8_10"
       ],
       "item:troll wristband": [
@@ -17904,10 +17904,10 @@
       "skill:tough": [
         "8_14"
       ],
-      "4.26.entrance.south2": [
+      "4.26.entrance.south3": [
         "4_26"
       ],
-      "4.26.entrance.south3": [
+      "4.26.entrance.south2": [
         "4_26"
       ],
       "20.23.entrance.east0": [
@@ -17925,13 +17925,13 @@
         "16_14",
         "15_18"
       ],
+      "5.9.entrance.east0": [
+        "5_9"
+      ],
       "item:minotour horn": [
         "5_9"
       ],
       "5.9.entrance.north0": [
-        "5_9"
-      ],
-      "5.9.entrance.east0": [
         "5_9"
       ],
       "skill:dig": [
@@ -17942,10 +17942,10 @@
       "13.14.entrance.east0": [
         "13_14"
       ],
-      "item:viking horn": [
+      "item:tentacle": [
         "4_13"
       ],
-      "item:tentacle": [
+      "item:viking horn": [
         "4_13"
       ],
       "item:bear tooth": [
@@ -18027,10 +18027,10 @@
         "20_15",
         "20_15"
       ],
-      "item:cotton thread": [
+      "item:shadow crest": [
         "18_13"
       ],
-      "item:shadow crest": [
+      "item:cotton thread": [
         "18_13"
       ],
       "weapon:bane blade": [

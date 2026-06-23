@@ -389,17 +389,15 @@ def init():
 
   def token_satisfied(tok, have, room):
     if tok.get("placeholder"):
-      return True # pending real data -- never block progress on these
+      return True
     if tok["type"] == "entrance":
-      # entrance.south1 in a requirement attached to `room` means "you
-      # entered THIS room via its south1 gap" -- qualify with room and
-      # check the same key mark_entrance_used() sets when that gap gets
-      # wired into the shuffle graph.
       return have.get(entrance_key(room, tok["value"]), 0) >= 1
+
     key = (tok["type"], tok.get("name"))
+    # If it's an item/food/drop, a bare requirement needs at least 1.
+    # If it has a specific count/tier, it needs that specific integer amount.
     needed = tok.get("count") or tok.get("tier") or 1
     return have.get(key, 0) >= needed
-
 
   def group_satisfied(group, have, room):
     return all(token_satisfied(tok, have, room) for tok in group)
@@ -919,3 +917,6 @@ def init():
   print('union reached:', len(all_reached))
   print('unreached:', len(all_rooms - all_reached))
   return (playercouldhave, edge_reached, door_reached, warp_reached, all_rooms)
+
+if __name__ == "__main__":
+  init()
