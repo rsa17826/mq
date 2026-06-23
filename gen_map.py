@@ -504,6 +504,7 @@ def main():
     rows = len(unique_norths)
 
     js_routes_db = {f"{north}_{east}": [] for north, east, _ in parsed_tiles}
+    js_exits_db = {f"{north}_{east}": [] for north, east, _ in parsed_tiles}
 
     scale_x_conn = TILE_WIDTH / ROOM_INTERNAL_WIDTH
     scale_y_conn = TILE_HEIGHT / ROOM_INTERNAL_HEIGHT
@@ -751,9 +752,11 @@ def main():
                     if not bounds or not isinstance(bounds, dict): continue
 
                     matched_color = "rgba(255,255,255,0.5)"
+                    connection_id = None
                     if idx < len(side_connections):
                         conn = side_connections[idx]
                         matched_color = djb2_color_hash(conn["fromExitId"], conn["toExitId"])
+                        connection_id = conn["fromExitId"]
 
                     if side in ["west", "east"]:
                         if bounds.get("top") is None or bounds.get("bottom") is None: continue
@@ -768,6 +771,14 @@ def main():
                         squares_html.append(
                             f'<div class="exit-square" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%; background-color:{matched_color};"></div>'
                         )
+                        
+                        js_exits_db[room_key].append({
+                            "side": side,
+                            "top": start_val,
+                            "bottom": end_val,
+                            "color": matched_color,
+                            "connectionId": connection_id,
+                        })
 
                     elif side in ["north", "south"]:
                         if bounds.get("left") is None or bounds.get("right") is None: continue
@@ -782,6 +793,14 @@ def main():
                         squares_html.append(
                             f'<div class="exit-square" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%; background-color:{matched_color};"></div>'
                         )
+                        
+                        js_exits_db[room_key].append({
+                            "side": side,
+                            "left": start_val,
+                            "right": end_val,
+                            "color": matched_color,
+                            "connectionId": connection_id,
+                        })
 
         for d in doors:
             o_n, o_e = int(d["origin"]["north"]), int(d["origin"]["east"])
@@ -811,7 +830,15 @@ def main():
               squares_html.append(
                   f'<div class="warp-square" style="left:{x_pos_pct:.2f}%; top:{y_pos_pct:.2f}%; width:{BLOCK_WIDTH_PCT:.2f}%; height:{BLOCK_HEIGHT_PCT:.2f}%;"></div>'
               )
-
+              js_exits_db[room_key].append({
+                  "side": "warp",
+                  "x": round(x_pos_local*BLOCKS_X/ROOM_INTERNAL_WIDTH),
+                  "y": 11-round(y_pos_local*BLOCKS_Y/ROOM_INTERNAL_HEIGHT),
+                  "x_pos_local":x_pos_local,
+                  "y_pos_local":y_pos_local,
+                  "color": "#1157",
+              })
+  
         room_prog_data = prog_index.get(room_key, [])
         tooltip_str = build_tooltip_text(north, east, room_prog_data)
 
@@ -847,12 +874,18 @@ def main():
     container_style = f'id="grid" style="width: {total_svg_width}px; height: {total_svg_height}px;"'
     dynamic_html_start = html_start.replace('id="grid"', container_style)
 
-    # FIX: Redundant old overlapping SVG injection variables removed completely
+    # Injecting script payload data globally
+    script_payload = f"""
+    <script>
+        const ROUTES_DATA = {json.dumps(js_routes_db, indent=2)};
+        const EXITS_DATA = {json.dumps(js_exits_db, indent=2)};
+    </script>
+    """
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write(dynamic_html_start)
         f.write("\n".join(html_elements))
-        f.write(f"\n    <script>const ROUTES_DATA = {json.dumps(js_routes_db, indent=2)};</script>")
+        f.write(script_payload)
         f.write("\n" + html_end)
         
     with open("./MathQuest/play.base.html", "r", encoding="utf-8") as ff:
@@ -862,7 +895,7 @@ def main():
         f.write('<map id="map">')
         f.write(dynamic_html_start)
         f.write("\n".join(html_elements))
-        f.write(f"\n    <script>const ROUTES_DATA = {json.dumps(js_routes_db, indent=2)};</script>")
+        f.write(script_payload)
         f.write("\n" + html_end)
         f.write('</map>')
         f.write(oldData[1])
@@ -873,6 +906,7 @@ def snapToGrid(x, y):
     snapped_x = round(float(x) / block_width) * block_width
     snapped_y = round(float(y) / block_height) * block_height
     return snapped_x, snapped_y
+
 def exitBlockToPixel(base_x, base_y, side, block_pos):
     block_w = TILE_WIDTH / BLOCKS_X
     block_h = TILE_HEIGHT / BLOCKS_Y
@@ -885,5 +919,6 @@ def exitBlockToPixel(base_x, base_y, side, block_pos):
         return base_x, base_y + block_pos * block_h
     elif side == "east":
         return base_x + TILE_WIDTH, base_y + block_pos * block_h
+
 if __name__ == "__main__":
     main()

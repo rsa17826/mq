@@ -318,33 +318,90 @@
             return
           }
           // 1. Define the size of each checkerboard tile
-          var tileSize = 50 // 30x30 pixels per tile
+          var tileSize = 50 // Pixels per tile
 
-          // 2. Loop 11 tiles UP and 14 tiles RIGHT
-          for (var row = 0; row < 11; row++) {
-            for (var col = 0; col < 14; col++) {
-              // 3. Alternate colors based on row + column index
-              if ((row + col) % 2 === 0) {
-                continue
-                overlayCtx.fillStyle = "#FFFFFF" // White tile
-              } else {
-                overlayCtx.fillStyle = "#00000050" // Black tile
+          // Helper function to check if a specific grid cell (col, row) is an exit tile
+          function getExitColor(roomExits, col, row) {
+            // Convert our bottom-up canvas row (0 at bottom, 10 at top)
+            // to the top-down row index (0 at top, 10 at bottom) used by the data generator
+            var topDownRow = 10 - row
+
+            for (var i = 0; i < roomExits.length; i++) {
+              var exit = roomExits[i]
+
+              if (exit.side === "warp") {
+                if (col == exit.x && row == exit.y) {
+                  return exit.color
+                }
               }
+              if (exit.side === "west" && col === 0) {
+                if (
+                  topDownRow >= exit.top &&
+                  topDownRow <= exit.bottom
+                ) {
+                  return exit.color
+                }
+              }
+              if (exit.side === "east" && col === 13) {
+                // 14 columns total (0 to 13)
+                if (
+                  topDownRow >= exit.top &&
+                  topDownRow <= exit.bottom
+                ) {
+                  return exit.color
+                }
+              }
+              if (exit.side === "north" && row === 10) {
+                // Top row
+                if (col >= exit.left && col <= exit.right) {
+                  return exit.color
+                }
+              }
+              if (exit.side === "south" && row === 0) {
+                // Bottom row
+                if (col >= exit.left && col <= exit.right) {
+                  return exit.color
+                }
+              }
+            }
+            return null // Not an exit tile
+          }
 
-              // 4. Calculate X coordinate (normal math going right)
-              var x = col * tileSize
+          function drawExits(room) {
+            for (var row = 0; row < 11; row++) {
+              for (var col = 0; col < 14; col++) {
+                // Check if this tile is an exit
+                var exitColor = getExitColor(room, col, row)
 
-              // 5. Calculate Y coordinate (reverse math starting from bottom-left)
-              // Starts at canvas height, subtracts tile height, and moves UP per row
-              var y = overlayCanvas.height - tileSize - row * tileSize
+                if (exitColor) {
+                  overlayCtx.fillStyle = exitColor // Render with the designated exit color
+                } else {
+                  // continue
+                  // Alternate checkerboard background colors for standard non-exit tiles
+                  if ((row + col) % 2 === 0) {
+                    overlayCtx.fillStyle = "#FFFFFF10" // Light overlay instead of skipping entirely
+                  } else {
+                    overlayCtx.fillStyle = "#00000050" // Transparent black tile
+                  }
+                }
 
-              // 6. Draw the tile
-              overlayCtx.fillRect(x, y, tileSize, tileSize)
+                // Calculate X coordinate (normal math going right)
+                var x = col * tileSize
+
+                // Calculate Y coordinate (reverse math starting from bottom-left)
+                var y =
+                  overlayCanvas.height - tileSize - row * tileSize
+
+                // Draw the tile
+                overlayCtx.fillRect(x, y, tileSize, tileSize)
+              }
             }
           }
           // Sample multi-line coordinate text setup
           var coordString = ""
           with (window.player) {
+            drawExits(EXITS_DATA[`${north}_${east}`] || [])
+
             coordString = `
             North: ${north}
             East: ${east}
