@@ -17639,16 +17639,6 @@
       "flag:red chest": 1
     },
     "unresolvedPending": {
-      "item:key": [
-        "10_9",
-        "15_21",
-        "9_10",
-        "11_19",
-        "14_19",
-        "18_23",
-        "17_20",
-        "4_26"
-      ],
       "permit:bomb": [
         "10_9",
         "9_10",
@@ -17665,6 +17655,16 @@
         "7_10",
         "6_10"
       ],
+      "item:key": [
+        "10_9",
+        "15_21",
+        "9_10",
+        "11_19",
+        "14_19",
+        "18_23",
+        "17_20",
+        "4_26"
+      ],
       "quest:hWater": [
         "17_11",
         "16_15",
@@ -17673,6 +17673,19 @@
       ],
       "21.11.entrance.north0": [
         "21_11"
+      ],
+      "item:alpha scepter": [
+        "10_22",
+        "18_25"
+      ],
+      "skill:craft": [
+        "10_22",
+        "11_15",
+        "12_25",
+        "11_22"
+      ],
+      "10.22.entrance.south1": [
+        "10_22"
       ],
       "item:dragon scale": [
         "10_22",
@@ -17686,19 +17699,6 @@
         "20_15",
         "20_15",
         "20_15"
-      ],
-      "10.22.entrance.south1": [
-        "10_22"
-      ],
-      "item:alpha scepter": [
-        "10_22",
-        "18_25"
-      ],
-      "skill:craft": [
-        "10_22",
-        "11_15",
-        "12_25",
-        "11_22"
       ],
       "item:gator skin": [
         "9_16",
@@ -17735,14 +17735,14 @@
       "16.20.entrance.north1": [
         "16_20"
       ],
+      "item:cobra fang": [
+        "18_25"
+      ],
       "skill:medic": [
         "18_25",
         "18_25",
         "18_25",
         "18_25",
-        "18_25"
-      ],
-      "item:cobra fang": [
         "18_25"
       ],
       "item:orc coin": [
@@ -17801,9 +17801,6 @@
         "11_16",
         "17_18"
       ],
-      "8.18.entrance.north1": [
-        "8_18"
-      ],
       "item:emerald": [
         "8_18",
         "21_18",
@@ -17811,6 +17808,9 @@
         "17_15",
         "12_21",
         "18_19"
+      ],
+      "8.18.entrance.north1": [
+        "8_18"
       ],
       "quest:oMan": [
         "15_24",
@@ -17851,13 +17851,13 @@
       "skill:tough": [
         "8_14"
       ],
+      "5.9.entrance.north0": [
+        "5_9"
+      ],
       "5.9.entrance.east0": [
         "5_9"
       ],
       "item:minotour horn": [
-        "5_9"
-      ],
-      "5.9.entrance.north0": [
         "5_9"
       ],
       "quest:bBomb": [
@@ -17899,10 +17899,10 @@
         "21_20",
         "6_12"
       ],
-      "8.10.entrance.east1": [
+      "8.10.entrance.north1": [
         "8_10"
       ],
-      "8.10.entrance.north1": [
+      "8.10.entrance.east1": [
         "8_10"
       ],
       "quest:headstone": [
@@ -17918,10 +17918,10 @@
       "weapon:random axe": [
         "4_17"
       ],
-      "4.26.entrance.south2": [
+      "4.26.entrance.south1": [
         "4_26"
       ],
-      "4.26.entrance.south1": [
+      "4.26.entrance.south2": [
         "4_26"
       ],
       "ring:gold": [
@@ -17992,10 +17992,10 @@
       "item:bear tooth": [
         "19_21"
       ],
-      "13.14.entrance.east0": [
+      "13.14.entrance.north0": [
         "13_14"
       ],
-      "13.14.entrance.north0": [
+      "13.14.entrance.east0": [
         "13_14"
       ],
       "quest:mChal": [
@@ -18007,10 +18007,10 @@
       "item:slamstone": [
         "7_18"
       ],
-      "item:tentacle": [
+      "item:viking horn": [
         "4_13"
       ],
-      "item:viking horn": [
+      "item:tentacle": [
         "4_13"
       ],
       "21.21.entrance.west": [
@@ -18035,10 +18035,10 @@
         "20_15",
         "20_15"
       ],
-      "item:shadow crest": [
+      "item:cotton thread": [
         "18_13"
       ],
-      "item:cotton thread": [
+      "item:shadow crest": [
         "18_13"
       ],
       "weapon:bane blade": [
