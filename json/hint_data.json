@@ -17696,16 +17696,6 @@
       "13.16.entrance.south0": [
         "13_16"
       ],
-      "quest:rings": [
-        "13_16",
-        "11_11",
-        "15_16",
-        "19_18",
-        "20_18",
-        "6_12",
-        "14_22",
-        "18_12"
-      ],
       "permit:bomb": [
         "13_16",
         "18_23",
@@ -17721,6 +17711,16 @@
         "17_20",
         "7_10",
         "6_10"
+      ],
+      "quest:rings": [
+        "13_16",
+        "11_11",
+        "15_16",
+        "19_18",
+        "20_18",
+        "6_12",
+        "14_22",
+        "18_12"
       ],
       "item:key": [
         "18_23",
@@ -17764,6 +17764,11 @@
       "item:orc coin": [
         "18_25"
       ],
+      "item:gator skin": [
+        "18_25",
+        "9_16",
+        "21_22"
+      ],
       "item:dragon scale": [
         "18_25",
         "10_22",
@@ -17777,23 +17782,18 @@
         "20_15",
         "20_15"
       ],
-      "item:gator skin": [
-        "18_25",
-        "9_16",
-        "21_22"
-      ],
       "item:alpha axe": [
         "18_25"
       ],
       "item:kings crest": [
         "18_25"
       ],
+      "item:golden feather": [
+        "18_25"
+      ],
       "item:alpha scepter": [
         "18_25",
         "10_22"
-      ],
-      "item:golden feather": [
-        "18_25"
       ],
       "item:emerald": [
         "21_18",
@@ -17824,16 +17824,16 @@
         "21_17",
         "17_19"
       ],
-      "skill:craft": [
-        "12_25",
-        "10_22",
-        "11_15",
-        "11_22"
-      ],
       "item:shark tooth": [
         "12_25",
         "8_14",
         "4_13",
+        "11_22"
+      ],
+      "skill:craft": [
+        "12_25",
+        "10_22",
+        "11_15",
         "11_22"
       ],
       "quest:hWater": [
@@ -17904,10 +17904,10 @@
       "skill:tough": [
         "8_14"
       ],
-      "4.26.entrance.south3": [
+      "4.26.entrance.south2": [
         "4_26"
       ],
-      "4.26.entrance.south2": [
+      "4.26.entrance.south3": [
         "4_26"
       ],
       "20.23.entrance.east0": [
@@ -17925,13 +17925,13 @@
         "16_14",
         "15_18"
       ],
-      "5.9.entrance.east0": [
+      "item:minotour horn": [
         "5_9"
       ],
       "5.9.entrance.north0": [
         "5_9"
       ],
-      "item:minotour horn": [
+      "5.9.entrance.east0": [
         "5_9"
       ],
       "skill:dig": [
@@ -18027,10 +18027,10 @@
         "20_15",
         "20_15"
       ],
-      "item:shadow crest": [
+      "item:cotton thread": [
         "18_13"
       ],
-      "item:cotton thread": [
+      "item:shadow crest": [
         "18_13"
       ],
       "weapon:bane blade": [
