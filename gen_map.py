@@ -418,7 +418,7 @@ def build_tooltip_text(north, east, prog_entries):
             title_lines.append(f"--- Event #{idx + 1} ---")
         if "info" in entry:
             title_lines.append(f"Info: {entry['info']}")
-        if "requires" in entry:
+        if "requires" in entry and len(entry['requires']):
             req_groups = []
             for group in entry["requires"]:
                 req_groups.append(" AND ".join(group))
