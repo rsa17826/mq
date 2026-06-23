@@ -834,8 +834,6 @@ def main():
                   "side": "warp",
                   "x": round(x_pos_local*BLOCKS_X/ROOM_INTERNAL_WIDTH),
                   "y": 11-round(y_pos_local*BLOCKS_Y/ROOM_INTERNAL_HEIGHT),
-                  "x_pos_local":x_pos_local,
-                  "y_pos_local":y_pos_local,
                   "color": "#1157",
               })
   
