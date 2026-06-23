@@ -8147,7 +8147,7 @@
       ]
     },
     {
-      "room": "12_25",
+      "room": "14_25",
       "requires": [],
       "receive": [
         "misc:three part code part 1"
@@ -8161,7 +8161,7 @@
       ]
     },
     {
-      "room": "13_25",
+      "room": "13_24",
       "requires": [],
       "receive": [
         "misc:three part code part 3"
@@ -11331,7 +11331,7 @@
     ],
     "misc:three part code part 1": [
       {
-        "room": "12_25",
+        "room": "14_25",
         "raw": "misc:three part code part 1"
       }
     ],
@@ -11343,7 +11343,7 @@
     ],
     "misc:three part code part 3": [
       {
-        "room": "13_25",
+        "room": "13_24",
         "raw": "misc:three part code part 3"
       }
     ],

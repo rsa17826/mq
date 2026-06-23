@@ -768,7 +768,7 @@
     },
     {
       "room": {
-        "north": 12,
+        "north": 14,
         "east": 25
       },
       "receive": ["misc:three part code part 1"]
@@ -783,7 +783,7 @@
     {
       "room": {
         "north": 13,
-        "east": 25
+        "east": 24
       },
       "receive": ["misc:three part code part 3"]
     },
