@@ -783,7 +783,7 @@
     {
       "room": {
         "north": 13,
-        "east": 24
+        "east": 25
       },
       "receive": ["misc:three part code part 3"]
     },

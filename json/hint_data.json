@@ -8161,7 +8161,7 @@
       ]
     },
     {
-      "room": "13_24",
+      "room": "13_25",
       "requires": [],
       "receive": [
         "misc:three part code part 3"
@@ -11343,7 +11343,7 @@
     ],
     "misc:three part code part 3": [
       {
-        "room": "13_24",
+        "room": "13_25",
         "raw": "misc:three part code part 3"
       }
     ],
