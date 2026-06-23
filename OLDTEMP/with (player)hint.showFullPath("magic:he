@@ -1,0 +1,158 @@
+with (player)hint.showFullPath("magic:heal", {px:east,py:north})
+VM2056:370 21_14 exit east
+12_10 exit west
+5_13 exit west
+11_14 exit north
+13_16 exit north
+4_18 exit west
+9_11 exit west
+21_20 exit north
+21_20 use gold to get slow
+21_20 use gold to get heal
+21_20 use gold to get blast
+'21_14 exit east\n12_10 exit west\n5_13 exit west\n11_14 exit north\n13_16 exit north\n4_18 exit west\n9_11 exit west\n21_20 exit north\n21_20 use gold to get slow\n21_20 use gold to get heal\n21_20 use gold to get blast'
+MathQuest.js:109340 [ER DEBUG] Transition initiated. From room: 19,12 at position X/Y: 50,296.6364
+MathQuest.js:109376 [ER DEBUG] Checking redirection for vanilla move path key: 19_12_19_13
+MathQuest.js:109455 [ER DEBUG] Success! Redirecting room target to: 12,19 Placing character at: 76.0714,407.2727
+MathQuest.js:30744 0 0 0 0
+MathQuest.js:30744 0 0 0 0
+MathQuest.js:24573 87.0714 407.2727
+MathQuest.js:24573 76.0714 407.2727
+MathQuest.js:24573 65.0714 407.2727
+MathQuest.js:24573 54.0714 407.2727
+MathQuest.js:24573 43.0714 407.2727
+MathQuest.js:24573 32.0714 407.2727
+MathQuest.js:24573 21.071399999999997 407.2727
+79MathQuest.js:24573 10.071399999999997 407.2727
+MathQuest.js:24573 10.071399999999997 396.2727
+MathQuest.js:24573 10.071399999999997 385.2727
+70MathQuest.js:24573 10.071399999999997 374.2727
+MathQuest.js:24573 10.071399999999997 385.2727
+MathQuest.js:24573 10.071399999999997 396.2727
+2MathQuest.js:24573 10.071399999999997 407.2727
+with (player)hint.showFullPath("magic:heal", {px:east,py:north})
+VM2056:370 12_19 exit east
+21_14 exit east
+12_10 exit west
+5_13 exit west
+11_14 exit north
+13_16 exit north
+4_18 exit west
+9_11 exit west
+21_20 exit north
+21_20 use gold to get slow
+21_20 use gold to get heal
+21_20 use gold to get blast
+'12_19 exit east\n21_14 exit east\n12_10 exit west\n5_13 exit west\n11_14 exit north\n13_16 exit north\n4_18 exit west\n9_11 exit west\n21_20 exit north\n21_20 use gold to get slow\n21_20 use gold to get heal\n21_20 use gold to get blast'
+MathQuest.js:109340 [ER DEBUG] Transition initiated. From room: 12,19 at position X/Y: 50,418.2727
+MathQuest.js:109376 [ER DEBUG] Checking redirection for vanilla move path key: 12_19_12_20
+MathQuest.js:109455 [ER DEBUG] Success! Redirecting room target to: 21,14 Placing character at: 76.0714,178.1818
+MathQuest.js:30744 0 0 0 0
+MathQuest.js:30744 0 0 0 0
+2MathQuest.js:24573 175.07139999999998 178.1818
+with (player)hint.showFullPath("magic:heal", {px:east,py:north})
+VM2056:370 20_18 exit south
+10_15 exit south
+4_17 exit east
+11_9 exit north
+get item headstone
+11_9 use gold to get weak
+11_9 use gold to get refresh
+11_9 use gold to get lightning
+4_23 exit north
+11_20 exit north
+21_20 exit west
+21_20 use gold to get slow
+21_20 use gold to get heal
+21_20 use gold to get blast
+'20_18 exit south\n10_15 exit south\n4_17 exit east\n11_9 exit north\nget item headstone\n11_9 use gold to get weak\n11_9 use gold to get refresh\n11_9 use gold to get lightning\n4_23 exit north\n11_20 exit north\n21_20 exit west\n21_20 use gold to get slow\n21_20 use gold to get heal\n21_20 use gold to get blast'
+184MathQuest.js:24573 67 421
+with (player)hint.showFullPath("magic:heal", {px:east,py:north})
+VM2056:370 20_18 exit south
+10_15 exit south
+4_17 exit east
+11_9 exit north
+get item headstone
+11_9 use gold to get weak
+11_9 use gold to get refresh
+11_9 use gold to get lightning
+4_23 exit north
+11_20 exit north
+21_20 exit west
+21_20 use gold to get slow
+21_20 use gold to get heal
+21_20 use gold to get blast
+'20_18 exit south\n10_15 exit south\n4_17 exit east\n11_9 exit north\nget item headstone\n11_9 use gold to get weak\n11_9 use gold to get refresh\n11_9 use gold to get lightning\n4_23 exit north\n11_20 exit north\n21_20 exit west\n21_20 use gold to get slow\n21_20 use gold to get heal\n21_20 use gold to get blast'
+MathQuest.js:109340 [ER DEBUG] Transition initiated. From room: 21,14 at position X/Y: 620,377
+MathQuest.js:109376 [ER DEBUG] Checking redirection for vanilla move path key: 21_14_21_13
+MathQuest.js:109383 [ER DEBUG] Multi-gap overlap discovered! Choices count: 2
+MathQuest.js:109386 377 620 21 13
+MathQuest.js:109439 warptype unknown (2) [{…}, {…}]0: {newNorth: 12, newEast: 10, newX: 633.9286, newY: 280, srcCoord: 381.8182, …}1: {newNorth: 12, newEast: 19, newX: 633.9286, newY: 407.2727, srcCoord: 178.1818, …}length: 2[[Prototype]]: Array(0)
+MathQuest.js:109446  -> Match Check candidate [0]: dir=3 expectedCoord=381.8182 distance=4.81819999999999
+MathQuest.js:109446  -> Match Check candidate [1]: dir=3 expectedCoord=178.1818 distance=198.8182
+MathQuest.js:109455 [ER DEBUG] Success! Redirecting room target to: 12,10 Placing character at: 633.9286,280
+MathQuest.js:30744 0 0 0 0
+MathQuest.js:30744 0 0 0 0
+with (player)hint.showFullPath("magic:heal", {px:east,py:north})
+VM2056:370 13_24 exit south
+get item three part code part 3
+8_12 exit east
+7_20 exit north
+12_11 exit west
+10_20 exit south
+3_13 exit south
+3_21 exit east
+9_11 exit north
+21_20 exit north
+21_20 use gold to get slow
+21_20 use gold to get heal
+21_20 use gold to get blast
+'13_24 exit south\nget item three part code part 3\n8_12 exit east\n7_20 exit north\n12_11 exit west\n10_20 exit south\n3_13 exit south\n3_21 exit east\n9_11 exit north\n21_20 exit north\n21_20 use gold to get slow\n21_20 use gold to get heal\n21_20 use gold to get blast'
+MathQuest.js:109340 [ER DEBUG] Transition initiated. From room: 12,10 at position X/Y: 622.9286,25
+MathQuest.js:109376 [ER DEBUG] Checking redirection for vanilla move path key: 12_10_11_10
+MathQuest.js:109455 [ER DEBUG] Success! Redirecting room target to: 4,16 Placing character at: 329.6429,76.3636
+MathQuest.js:30744 0 0 0 0
+MathQuest.js:30744 0 0 0 0
+with (player)hint.showFullPath("magic:heal", {px:east,py:north})
+VM2056:352 no known path to "magic:heal" from {"px":16,"py":4}
+'no known path to "magic:heal" from {"px":16,"py":4}'
+MathQuest.js:109340 [ER DEBUG] Transition initiated. From room: 4,16 at position X/Y: 329.6429,510
+MathQuest.js:109376 [ER DEBUG] Checking redirection for vanilla move path key: 4_16_5_16
+MathQuest.js:109455 [ER DEBUG] Success! Redirecting room target to: 12,10 Placing character at: 329.6429,483.6364
+MathQuest.js:30744 0 0 0 0
+MathQuest.js:30744 0 0 0 0
+with (player)hint.showFullPath("magic:heal", {px:east,py:north})
+VM2056:370 13_24 exit south
+get item three part code part 3
+8_12 exit east
+7_20 exit north
+12_11 exit west
+10_20 exit south
+3_13 exit south
+3_21 exit east
+9_11 exit north
+21_20 exit north
+21_20 use gold to get slow
+21_20 use gold to get heal
+21_20 use gold to get blast
+'13_24 exit south\nget item three part code part 3\n8_12 exit east\n7_20 exit north\n12_11 exit west\n10_20 exit south\n3_13 exit south\n3_21 exit east\n9_11 exit north\n21_20 exit north\n21_20 use gold to get slow\n21_20 use gold to get heal\n21_20 use gold to get blast'
+MathQuest.js:41494 remove listeners
+MathQuest.js:42926 Main.mob picker
+MathQuest.js:43892 11 = mobVar
+MathQuest.js:41542 add listeners
+MathQuest.js:41605 104
+MathQuest.js:29978 secs: 1
+MathQuest.js:30252 97 between 20 and 25???
+MathQuest.js:29978 secs: 5
+MathQuest.js:41494 remove listeners
+MathQuest.js:30252 97 between 20 and 25???
+MathQuest.js:30833 enterHandlerfalse
+MathQuest.js:41542 add listeners
+MathQuest.js:109340 [ER DEBUG] Transition initiated. From room: 12,10 at position X/Y: 329.6429,25
+MathQuest.js:109376 [ER DEBUG] Checking redirection for vanilla move path key: 12_10_11_10
+MathQuest.js:109455 [ER DEBUG] Success! Redirecting room target to: 4,16 Placing character at: 329.6429,76.3636
+MathQuest.js:30744 0 0 0 0
+MathQuest.js:30744 0 0 0 0
+with (player)hint.showFullPath("magic:heal", {px:east,py:north})
+VM2056:352 no known path to "magic:heal" from {"px":16,"py":4}
+'no known path to "magic:heal" from {"px":16,"py":4}'
