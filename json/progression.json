@@ -1591,360 +1591,360 @@
         "north": 9,
         "east": 25
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:curse.2"]],
+      "receive": ["quest:curse.3"]
     },
     {
       "room": {
         "north": 17,
         "east": 18
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:dream.2"]],
+      "receive": ["quest:dream.3"]
     },
     {
       "room": {
         "north": 21,
         "east": 17
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:oMan.2"]],
+      "receive": ["quest:oMan.3"]
     },
     {
       "room": {
         "north": 18,
         "east": 19
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:seeds.2"]],
+      "receive": ["quest:seeds.3"]
     },
     {
       "room": {
         "north": 19,
         "east": 20
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:pam.2"]],
+      "receive": ["quest:pam.3"]
     },
     {
       "room": {
         "north": 11,
         "east": 23
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:dream.2"]],
+      "receive": ["quest:dream.3"]
     },
     {
       "room": {
         "north": 11,
         "east": 23
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:dream.2"]],
+      "receive": ["quest:dream.3"]
     },
     {
       "room": {
         "north": 12,
         "east": 22
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:curse.2"]],
+      "receive": ["quest:curse.3"]
     },
     {
       "room": {
         "north": 6,
         "east": 12
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:rings.2"]],
+      "receive": ["quest:rings.3"]
     },
     {
       "room": {
         "north": 6,
         "east": 12
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:seeds.2"]],
+      "receive": ["quest:seeds.3"]
     },
     {
       "room": {
         "north": 11,
         "east": 17
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:bBomb.2"]],
+      "receive": ["quest:bBomb.3"]
     },
     {
       "room": {
         "north": 13,
         "east": 21
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:bBomb.2"]],
+      "receive": ["quest:bBomb.3"]
     },
     {
       "room": {
         "north": 14,
         "east": 18
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:gTree.2"]],
+      "receive": ["quest:gTree.3"]
     },
     {
       "room": {
         "north": 19,
         "east": 21
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:dig.2"]],
+      "receive": ["quest:dig.3"]
     },
     {
       "room": {
         "north": 14,
         "east": 17
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:mChal.2"]],
+      "receive": ["quest:mChal.3"]
     },
     {
       "room": {
         "north": 19,
         "east": 23
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:gTree.2"]],
+      "receive": ["quest:gTree.3"]
     },
     {
       "room": {
         "north": 18,
         "east": 19
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:gTree.2"]],
+      "receive": ["quest:gTree.3"]
     },
     {
       "room": {
         "north": 18,
         "east": 19
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:gTree.2"]],
+      "receive": ["quest:gTree.3"]
     },
     {
       "room": {
         "north": 13,
         "east": 14
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:mChal.2"]],
+      "receive": ["quest:mChal.3"]
     },
     {
       "room": {
         "north": 11,
         "east": 23
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:dream.2"]],
+      "receive": ["quest:dream.3"]
     },
     {
       "room": {
         "north": 12,
         "east": 26
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:curse.2"]],
+      "receive": ["quest:curse.3"]
     },
     {
       "room": {
         "north": 7,
         "east": 11
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:gTree.2"]],
+      "receive": ["quest:gTree.3"]
     },
     {
       "room": {
         "north": 9,
         "east": 26
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:curse.2"]],
+      "receive": ["quest:curse.3"]
     },
     {
       "room": {
         "north": 4,
         "east": 19
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:isles.2"]],
+      "receive": ["quest:isles.3"]
     },
     {
       "room": {
         "north": 16,
         "east": 21
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:dig.2"]],
+      "receive": ["quest:dig.3"]
     },
     {
       "room": {
         "north": 5,
         "east": 20
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:isles.2"]],
+      "receive": ["quest:isles.3"]
     },
     {
       "room": {
         "north": 16,
         "east": 15
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:pam.2"]],
+      "receive": ["quest:pam.3"]
     },
     {
       "room": {
         "north": 17,
         "east": 11
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:hWater.2"]],
+      "receive": ["quest:hWater.3"]
     },
     {
       "room": {
         "north": 15,
         "east": 17
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:hWater.2"]],
+      "receive": ["quest:hWater.3"]
     },
     {
       "room": {
         "north": 15,
         "east": 17
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:hWater.2"]],
+      "receive": ["quest:hWater.3"]
     },
     {
       "room": {
         "north": 16,
         "east": 15
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:hWater.2"]],
+      "receive": ["quest:hWater.3"]
     },
     {
       "room": {
         "north": 19,
         "east": 20
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:pam.2"]],
+      "receive": ["quest:pam.3"]
     },
     {
       "room": {
         "north": 19,
         "east": 20
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:pam.2"]],
+      "receive": ["quest:pam.3"]
     },
     {
       "room": {
         "north": 19,
         "east": 20
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:pam.2"]],
+      "receive": ["quest:pam.3"]
     },
     {
       "room": {
         "north": 19,
         "east": 20
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:pam.2"]],
+      "receive": ["quest:pam.3"]
     },
     {
       "room": {
         "north": 19,
         "east": 21
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:dig.2"]],
+      "receive": ["quest:dig.3"]
     },
     {
       "room": {
         "north": 14,
         "east": 17
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:mChal.2"]],
+      "receive": ["quest:mChal.3"]
     },
     {
       "room": {
         "north": 12,
         "east": 11
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:canteen.2"]],
+      "receive": ["quest:canteen.3"]
     },
     {
       "room": {
         "north": 20,
         "east": 17
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:bBomb.2"]],
+      "receive": ["quest:bBomb.3"]
     },
     {
       "room": {
         "north": 19,
         "east": 16
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:access.2"]],
+      "receive": ["quest:access.3"]
     },
     {
       "room": {
         "north": 19,
         "east": 16
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:access.2"]],
+      "receive": ["quest:access.3"]
     },
     {
       "room": {
         "north": 13,
         "east": 26
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:curse.2"]],
+      "receive": ["quest:curse.3"]
     },
     {
       "room": {
         "north": 13,
         "east": 26
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:curse.2"]],
+      "receive": ["quest:curse.3"]
     },
     {
       "room": {
         "north": 17,
         "east": 18
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:bBomb.2"]],
+      "receive": ["quest:bBomb.3"]
     },
     {
       "room": {
         "north": 17,
         "east": 18
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:bBomb.2"]],
+      "receive": ["quest:bBomb.3"]
     },
     {
       "room": {
@@ -1967,312 +1967,312 @@
         "north": 13,
         "east": 14
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:mChal.2"]],
+      "receive": ["quest:mChal.3"]
     },
     {
       "room": {
         "north": 13,
         "east": 14
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:mChal.2"]],
+      "receive": ["quest:mChal.3"]
     },
     {
       "room": {
         "north": 10,
         "east": 10
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:dream.2"]],
+      "receive": ["quest:dream.3"]
     },
     {
       "room": {
         "north": 10,
         "east": 10
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:dream.2"]],
+      "receive": ["quest:dream.3"]
     },
     {
       "room": {
         "north": 11,
         "east": 16
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:dream.2"]],
+      "receive": ["quest:dream.3"]
     },
     {
       "room": {
         "north": 11,
         "east": 16
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:dream.2"]],
+      "receive": ["quest:dream.3"]
     },
     {
       "room": {
         "north": 11,
         "east": 9
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:warp.2"]],
+      "receive": ["quest:warp.3"]
     },
     {
       "room": {
         "north": 11,
         "east": 9
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:warp.2"]],
+      "receive": ["quest:warp.3"]
     },
     {
       "room": {
         "north": 17,
         "east": 17
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:bBomb.2"]],
+      "receive": ["quest:bBomb.3"]
     },
     {
       "room": {
         "north": 12,
         "east": 9
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:gTree.2"]],
+      "receive": ["quest:gTree.3"]
     },
     {
       "room": {
         "north": 10,
         "east": 19
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:gTree.2"]],
+      "receive": ["quest:gTree.3"]
     },
     {
       "room": {
         "north": 7,
         "east": 10
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:gTree.2"]],
+      "receive": ["quest:gTree.3"]
     },
     {
       "room": {
         "north": 7,
         "east": 10
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:gTree.2"]],
+      "receive": ["quest:gTree.3"]
     },
     {
       "room": {
         "north": 100,
         "east": 100
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:isles.2"]],
+      "receive": ["quest:isles.3"]
     },
     {
       "room": {
         "north": 100,
         "east": 100
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:isles.2"]],
+      "receive": ["quest:isles.3"]
     },
     {
       "room": {
         "north": 4,
         "east": 26
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:isles.2"]],
+      "receive": ["quest:isles.3"]
     },
     {
       "room": {
         "north": 4,
         "east": 26
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:isles.2"]],
+      "receive": ["quest:isles.3"]
     },
     {
       "room": {
         "north": 201,
         "east": 200
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:isles.2"]],
+      "receive": ["quest:isles.3"]
     },
     {
       "room": {
         "north": 201,
         "east": 200
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:isles.2"]],
+      "receive": ["quest:isles.3"]
     },
     {
       "room": {
         "north": 201,
         "east": 200
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:isles.2"]],
+      "receive": ["quest:isles.3"]
     },
     {
       "room": {
         "north": 300,
         "east": 300
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:isles.2"]],
+      "receive": ["quest:isles.3"]
     },
     {
       "room": {
         "north": 300,
         "east": 300
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:isles.2"]],
+      "receive": ["quest:isles.3"]
     },
     {
       "room": {
         "north": 300,
         "east": 300
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:isles.2"]],
+      "receive": ["quest:isles.3"]
     },
     {
       "room": {
         "north": 8,
         "east": 12
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:isles.2"]],
+      "receive": ["quest:isles.3"]
     },
     {
       "room": {
         "north": 8,
         "east": 12
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:isles.2"]],
+      "receive": ["quest:isles.3"]
     },
     {
       "room": {
         "north": 9,
         "east": 18
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:isles.2"]],
+      "receive": ["quest:isles.3"]
     },
     {
       "room": {
         "north": 14,
         "east": 22
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:rings.2"]],
+      "receive": ["quest:rings.3"]
     },
     {
       "room": {
         "north": 14,
         "east": 22
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:rings.2"]],
+      "receive": ["quest:rings.3"]
     },
     {
       "room": {
         "north": 14,
         "east": 22
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:rings.2"]],
+      "receive": ["quest:rings.3"]
     },
     {
       "room": {
         "north": 14,
         "east": 22
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:rings.2"]],
+      "receive": ["quest:rings.3"]
     },
     {
       "room": {
         "north": 14,
         "east": 22
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:rings.2"]],
+      "receive": ["quest:rings.3"]
     },
     {
       "room": {
         "north": 14,
         "east": 22
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:rings.2"]],
+      "receive": ["quest:rings.3"]
     },
     {
       "room": {
         "north": 14,
         "east": 22
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:rings.2"]],
+      "receive": ["quest:rings.3"]
     },
     {
       "room": {
         "north": 18,
         "east": 12
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:rings.2"]],
+      "receive": ["quest:rings.3"]
     },
     {
       "room": {
         "north": 19,
         "east": 18
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:rings.2"]],
+      "receive": ["quest:rings.3"]
     },
     {
       "room": {
         "north": 20,
         "east": 18
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:rings.2"]],
+      "receive": ["quest:rings.3"]
     },
     {
       "room": {
         "north": 20,
         "east": 18
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:rings.2"]],
+      "receive": ["quest:rings.3"]
     },
     {
       "room": {
         "north": 11,
         "east": 11
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:rings.2"]],
+      "receive": ["quest:rings.3"]
     },
     {
       "room": {
         "north": 15,
         "east": 18
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:gTree.2"]],
+      "receive": ["quest:gTree.3"]
     },
     {
       "room": {
@@ -2287,200 +2287,200 @@
         "north": 21,
         "east": 20
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:bBomb.2"]],
+      "receive": ["quest:bBomb.3"]
     },
     {
       "room": {
         "north": 12,
         "east": 22
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:curse.2"]],
+      "receive": ["quest:curse.3"]
     },
     {
       "room": {
         "north": 19,
         "east": 14
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:hWater.2"]],
+      "receive": ["quest:hWater.3"]
     },
     {
       "room": {
         "north": 16,
         "east": 14
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:gTree.2"]],
+      "receive": ["quest:gTree.3"]
     },
     {
       "room": {
         "north": 16,
         "east": 14
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:gTree.2"]],
+      "receive": ["quest:gTree.3"]
     },
     {
       "room": {
         "north": 15,
         "east": 16
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:rings.2"]],
+      "receive": ["quest:rings.3"]
     },
     {
       "room": {
         "north": 12,
         "east": 14
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:bBomb.2"]],
+      "receive": ["quest:bBomb.3"]
     },
     {
       "room": {
         "north": 14,
         "east": 18
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:bBomb.2"]],
+      "receive": ["quest:bBomb.3"]
     },
     {
       "room": {
         "north": 14,
         "east": 18
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:bBomb.2"]],
+      "receive": ["quest:bBomb.3"]
     },
     {
       "room": {
         "north": 14,
         "east": 18
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:bBomb.2"]],
+      "receive": ["quest:bBomb.3"]
     },
     {
       "room": {
         "north": 14,
         "east": 18
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:gTree.2"]],
+      "receive": ["quest:gTree.3"]
     },
     {
       "room": {
         "north": 13,
         "east": 17
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:dream.2"]],
+      "receive": ["quest:dream.3"]
     },
     {
       "room": {
         "north": 13,
         "east": 17
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:dream.2"]],
+      "receive": ["quest:dream.3"]
     },
     {
       "room": {
         "north": 13,
         "east": 17
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:dream.2"]],
+      "receive": ["quest:dream.3"]
     },
     {
       "room": {
         "north": 15,
         "east": 25
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:oMan.2"]],
+      "receive": ["quest:oMan.3"]
     },
     {
       "room": {
         "north": 15,
         "east": 24
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:oMan.2"]],
+      "receive": ["quest:oMan.3"]
     },
     {
       "room": {
         "north": 10,
         "east": 23
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:oMan.2"]],
+      "receive": ["quest:oMan.3"]
     },
     {
       "room": {
         "north": 10,
         "east": 15
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:oMan.2"]],
+      "receive": ["quest:oMan.3"]
     },
     {
       "room": {
         "north": 10,
         "east": 15
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:oMan.2"]],
+      "receive": ["quest:oMan.3"]
     },
     {
       "room": {
         "north": 10,
         "east": 15
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:oMan.2"]],
+      "receive": ["quest:oMan.3"]
     },
     {
       "room": {
         "north": 11,
         "east": 21
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:oMan.2"]],
+      "receive": ["quest:oMan.3"]
     },
     {
       "room": {
         "north": 11,
         "east": 21
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:oMan.2"]],
+      "receive": ["quest:oMan.3"]
     },
     {
       "room": {
         "north": 17,
         "east": 19
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:oMan.2"]],
+      "receive": ["quest:oMan.3"]
     },
     {
       "room": {
         "north": 18,
         "east": 19
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:gTree.2"]],
+      "receive": ["quest:gTree.3"]
     },
     {
       "room": {
         "north": 18,
         "east": 22
       },
-      "requires": [["quest:geo.2"]],
-      "receive": ["quest:geo.3"]
+      "requires": [["quest:gTree.2"]],
+      "receive": ["quest:gTree.3"]
     },
     {
       "room": {

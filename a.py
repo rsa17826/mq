@@ -3,7 +3,7 @@ import json
 import sys
 
 # Regex patterns
-TARGET_PAT = re.compile(r"manager\.quest\[manager\.\w+\]\s*= ")
+TARGET_PAT = re.compile(r"manager\.quest\[manager\.(\w+)\]\s*= ")
 NORTH_PAT = re.compile(r"manager\.north\s*==\s*(\d+)")
 EAST_PAT = re.compile(r"manager\.east\s*==\s*(\d+)")
 
@@ -14,7 +14,7 @@ def parse_file(filepath):
     results = []
 
     for i, line in enumerate(lines):
-        if TARGET_PAT.search(line):
+        if s:=TARGET_PAT.search(line):
             line_num = i + 1
 
             closest_north_idx = None
@@ -72,8 +72,8 @@ def parse_file(filepath):
                     "north": north_val,
                     "east": east_val
                 },
-                "requires": [["quest:geo.2"]],
-                "receive": ["quest:geo.3"]
+                "requires": [["quest:"+str(s[1])+".2"]],
+                "receive": ["quest:"+str(s[1])+".3"]
             }
             results.append(quest_data)
 
