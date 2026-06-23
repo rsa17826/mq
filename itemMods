@@ -1,0 +1,510 @@
+19337:            manager.food[this.counter] = 5
+19376:            manager.food[this.counter] = 0
+19402:            manager.magic[this.counter] = 1
+19433:            manager.magic[this.counter] = 0
+19475:          manager.skills[this.counter] = 0
+19533:          manager.crafts[this.counter] = 0
+19582:          manager.weapon[this.counter] = 0
+19625:          manager.armor[this.counter] = 0
+20980:            manager.weapon[15] = 0
+20986:            manager.crafts[4] = 1
+21378:                manager.gold++
+21389:                manager.diamonds++
+26312:            manager.weapon[13] = 1
+26317:            manager.weapon[2] = 0
+26347:            manager.weapon[14] = 1
+26352:            manager.weapon[4] = 0
+26384:            manager.weapon[15] = 1
+26391:            manager.weapon[6] = 0
+26423:            manager.weapon[16] = 1
+26427:              manager.eSpeed++
+26429:            manager.weapon[7] = 0
+26461:            manager.armor[12] = 1
+26466:            manager.armor[9] = 0
+26498:            manager.armor[13] = 1
+26503:            manager.armor[6] = 0
+26533:            manager.skills[8] = 1
+26549:            manager.skills[9] = 1
+26565:            manager.skills[10] = 1
+26581:            manager.food[0]++
+26597:            manager.food[1]++
+26613:            manager.food[2]++
+26630:            manager.food[17]++
+26647:            manager.food[18]++
+26663:            manager.food[15]++
+26679:            manager.food[3]++
+26697:            manager.food[4]++
+26713:            manager.food[4]++
+26731:            manager.food[5]++
+26747:            manager.food[5]++
+26763:            manager.food[6]++
+26779:            manager.food[7]++
+26795:            manager.food[8]++
+26811:            manager.food[9]++
+26827:            manager.food[10]++
+26842:            manager.food[12]++
+26858:            manager.magic[1] = 1
+26874:            manager.magic[2] = 1
+26888:            manager.magic[3] = 1
+26904:            manager.magic[5] = 1
+26920:            manager.magic[6] = 1
+26936:            manager.magic[7] = 1
+26952:            manager.magic[9] = 1
+26968:            manager.magic[10] = 1
+26985:            manager.weapon[0] = 1
+27001:            manager.weapon[1] = 1
+27017:            manager.weapon[2] = 1
+27034:            manager.weapon[3] = 1
+27051:            manager.weapon[4] = 1
+27067:            manager.weapon[5] = 1
+27083:            manager.weapon[6] = 1
+27100:            manager.weapon[7] = 1
+27116:            manager.armor[0] = 1
+27132:            manager.armor[1] = 1
+27148:            manager.armor[2] = 1
+27163:            manager.armor[4] = 1
+27179:            manager.armor[5] = 1
+27196:            manager.armor[6] = 1
+27212:            manager.armor[7] = 1
+28282:              manager.diamonds--
+28295:              manager.diamonds--
+28309:              manager.diamonds--
+28323:              manager.diamonds--
+28336:              manager.diamonds--
+28349:              manager.diamonds--
+28362:              manager.diamonds--
+28375:              manager.diamonds--
+28388:              manager.diamonds--
+28402:              manager.diamonds--
+28416:              manager.diamonds--
+28534:                manager.ornaments++
+28570:                manager.medallions++
+28612:              manager.food[1]++
+28621:                manager.loot[manager.sTooth]++
+28643:              manager.loot[manager.oArm]++
+28654:                  manager.eStr++
+28661:                manager.food[18]++
+28671:              manager.loot[manager.vHorn]++
+28684:                manager.diamonds++
+28695:              manager.ring4 = 1
+28705:              manager.ring5 = 1
+28714:              manager.ring7 = 1
+28733:              manager.loot[manager.cThread]++
+28745:              manager.loot[manager.vAsh]++
+28759:                manager.shadowCrest++
+28779:              manager.loot[manager.sFrag]++
+28850:              manager.food[14]++
+28860:              manager.food[14]++
+28867:              manager.loot[manager.aAxe]++
+28877:              manager.loot[manager.mHorn]++
+28887:              manager.food[12]++
+28897:              manager.loot[manager.gSkin]++
+28912:              manager.loot[manager.dScale]++
+28929:                manager.loot[manager.oCoin]++
+28963:              manager.loot[manager.gFeather]++
+28974:              manager.loot[manager.sFrag]++
+28999:                manager.food[11]++
+29015:                manager.food[7]++
+29031:                manager.food[9]++
+29047:                manager.food[10]++
+29063:              manager.loot[manager.sFrag]++
+29110:              manager.loot[manager.fBone]++
+29133:              manager.loot[manager.wPelt]++
+29143:              manager.loot[manager.sClaw]++
+29151:                manager.rubies++
+29165:                manager.aurastones++
+29185:                manager.loot[manager.gFeather]++
+29240:                manager.aurastones++
+29310:                manager.aurastones++
+29350:                manager.food[18]++
+29351:                manager.food[11]++
+29370:                manager.rubies++
+29377:                manager.diamonds++
+29384:                manager.aurastones++
+29408:                  manager.food[10] = 99
+29421:                manager.food[18]++
+29450:                manager.rubies++
+29467:                manager.aurastones++
+29487:                  manager.food[10] = 99
+29522:                manager.rubies++
+29529:                manager.diamonds++
+29536:                manager.aurastones++
+29558:                  manager.food[10] = 99
+29564:                manager.shadowCrest++
+29593:                manager.rubies++
+29600:                manager.diamonds++
+29607:                manager.aurastones++
+29627:                manager.loot[manager.sFrag]++
+29632:                manager.shadowCrest++
+29661:                manager.rubies++
+29668:                manager.diamonds++
+29675:                manager.aurastones++
+29700:                manager.shadowCrest++
+29799:                manager.food[15]++
+29808:                manager.loot[manager.mHat]++
+29813:                manager.loot[manager.mStaff]++
+29828:              manager.loot[manager.cShell]++
+29854:                manager.food[11]++
+29865:              manager.loot[manager.bFang]++
+29872:              manager.loot[manager.aClub]++
+29879:              manager.loot[manager.aScepter]++
+29889:              manager.loot[manager.tBand]++
+29899:              manager.loot[manager.bTusk]++
+29990:            manager.loot[manager.bClaw]++
+30001:            manager.shadowCrest++
+30034:              manager.food[10]++
+30059:            manager.loot[manager.cFang]++
+30079:            manager.loot[manager.kCrest]++
+30101:            manager.food[4]++
+30183:            manager.pup++
+30199:            manager.keys++
+30218:            manager.aurastones++
+30236:            manager.bombs++
+30387:            manager.bombs--
+30860:                manager.weapon[8] = 1
+30875:                manager.skills[13] = 1
+30889:                manager.weapon[12] = 1
+30903:                manager.skills[0] = 1
+30918:                manager.skills[1] = 1
+30935:                manager.skills[2] = 1
+30953:                manager.skills[3] = 1
+30970:                manager.skills[4] = 1
+30987:                manager.skills[6] = 1
+31668:              manager.diamonds++
+31673:              manager.food[11]++
+31684:              manager.armor[7] = 1
+31689:              manager.loot[manager.sFrag]++
+31710:              manager.aurastones++
+31713:              manager.rubies++
+31718:              manager.pup++
+31730:            manager.keys--
+31787:              manager.magic[this.upgradeSpell]++
+31804:              manager.weapon[10] = 0
+31805:              manager.weapon[19] = 1
+31821:              manager.crafts[10] = 1
+31842:              manager.food[11]++
+31854:              manager.loot[manager.aScepter]--
+31857:              manager.crafts[9] = 1
+31872:              manager.crafts[8] = 1
+31883:              manager.weapon[8] = 0
+31884:              manager.weapon[17] = 1
+31897:              manager.slamstones--
+31899:              manager.skills[12] = 2
+31916:              manager.skills[12] = 3
+31934:              manager.skills[12] = 4
+31953:              manager.skills[12] = 5
+31971:                manager.eStr++
+31988:              manager.loot[manager.aAxe]--
+31990:              manager.skills[15] = 2
+32009:              manager.skills[15] = 3
+32026:              manager.rubies--
+32028:              manager.skills[15] = 4
+32047:              manager.skills[15] = 5
+32065:              manager.skills[14] = 6
+32081:              manager.skills[14] = 5
+32097:              manager.skills[14] = 4
+32113:              manager.skills[14] = 3
+32127:              manager.skills[14] = 2
+32142:              manager.skills[14] = 1
+32174:              manager.rubies++
+32175:              manager.aurastones--
+32185:              manager.hugeBomb = 1
+32203:              manager.skills[12] = 1
+32271:                manager.str++
+32275:                manager.str++
+32279:                manager.str++
+32283:                manager.str++
+32386:                manager.food[13]++
+32405:              manager.weapon[2] = 0
+32406:              manager.weapon[13] = 0
+32417:              manager.food[0]--
+32497:              manager.keys--
+32507:              manager.keys--
+32518:              manager.keys--
+32527:              manager.food[18]++
+32528:              manager.keys--
+32536:              manager.food[13]++
+32537:              manager.food[18]++
+32538:              manager.keys--
+32548:              manager.keys--
+32558:              manager.keys--
+32567:              manager.keys--
+32576:              manager.keys--
+32585:              manager.keys--
+32594:              manager.keys--
+32605:              manager.weapon[10] = 1
+32606:              manager.keys--
+32612:              manager.crafts[5] = 1
+32618:              manager.crafts[6] = 1
+32626:              manager.skills[11] = 1
+32627:              manager.crafts[0] = 1
+32628:              manager.crafts[1] = 1
+32629:              manager.crafts[2] = 1
+32630:              manager.crafts[3] = 1
+32636:              manager.loot[manager.venom]--
+32647:              manager.magic[13] = 1
+32648:              manager.keys--
+32655:              manager.magic[14] = 1
+32670:              manager.keys--
+32683:              manager.keys--
+32692:              manager.keys--
+32700:              manager.keys--
+32718:              manager.keys--
+32730:              manager.keys--
+32745:              manager.keys--
+32756:              manager.armor[8] = 1
+32757:              manager.keys--
+32768:              manager.armor[9] = 1
+32769:              manager.keys--
+32783:              manager.keys--
+32796:                manager.food[8] = 99
+32798:              manager.keys--
+32809:              manager.food[10]++
+32811:                manager.food[10] = 99
+32813:              manager.keys--
+32826:                manager.food[9] = 99
+32828:              manager.keys--
+32837:              manager.keys--
+32850:              manager.keys--
+32880:              manager.keys--
+32891:              manager.weapon[9] = 1
+32892:              manager.keys--
+32902:                manager.weapon[6] = 1
+32908:              manager.keys--
+32920:              manager.keys--
+32931:              manager.magic[11] = 1
+32932:              manager.keys--
+32942:              manager.magic[8] = 1
+32956:              manager.magic[9] = 1
+32957:              manager.keys--
+32970:              manager.keys--
+32993:              manager.weapon[5] = 1
+32994:              manager.keys--
+33009:              manager.magic[7] = 1
+33010:              manager.keys--
+33022:              manager.loot[manager.mHat]--
+33050:              manager.loot[manager.mHorn]--
+33068:              manager.loot[manager.tBand]--
+33081:              manager.armor[3] = 1
+33082:              manager.keys--
+33087:              manager.keys--
+33125:              manager.magic[4] = 1
+33126:              manager.keys--
+33138:              manager.keys--
+33141:                manager.food[4] = 99
+33286:                manager.food[this.innerCounter] = 99
+33384:            manager.food[0]--
+33418:            manager.food[5]--
+33441:            manager.food[6]--
+33475:            manager.food[7]--
+33509:            manager.food[8]--
+33532:            manager.food[9]--
+33555:            manager.food[12]--
+33574:              manager.food[13]--
+33618:            manager.food[14]--
+33646:            manager.food[15]--
+33676:            manager.food[16]--
+33710:            manager.food[10]--
+33727:              manager.food[11]--
+33732:            manager.food[11]--
+33749:              manager.food[17]--
+33754:            manager.food[17]--
+33784:            manager.food[18]--
+33797:            manager.food[1]--
+33843:              manager.food[4]--
+33878:            manager.food[2]--
+33907:              manager.food[3]--
+35874:            manager.fireWall = 30
+36600:            manager.food[9]++
+36620:            manager.food[3]++
+36622:            manager.loot[manager.mStaff]--
+36642:            manager.food[10]++
+36643:            manager.loot[manager.mStaff]--
+36664:            manager.food[15]++
+36666:            manager.food[8]--
+36690:            manager.diamonds--
+36691:            manager.bombs++
+36728:            manager.keys++
+36752:            manager.ring1++
+36773:            manager.pup--
+36775:            manager.food[11]++
+36797:            manager.food[16]++
+36817:            manager.aurastones--
+36818:            manager.food[17]++
+36841:            manager.crafts[10]++
+36842:            manager.emeralds++
+36861:            manager.slamstones--
+36862:            manager.rubies--
+36866:                manager.eHealth--
+36874:            manager.crafts[11]++
+36893:            manager.rubies--
+36894:            manager.aurastones--
+36898:                manager.eMagic--
+36906:            manager.crafts[12]++
+36928:            manager.weapon[0] = 0
+36929:            manager.weapon[18] = 1
+36931:            manager.crafts[13]++
+36952:            manager.crafts[13]++
+37187:              manager.weapon[0] = 2
+37208:              manager.weapon[1] = 2
+37210:              manager.eSpeed++
+37230:              manager.weapon[2] = 2
+37251:              manager.weapon[3] = 2
+37273:              manager.weapon[4] = 2
+37294:              manager.weapon[5] = 2
+37316:              manager.weapon[6] = 2
+37337:              manager.weapon[7] = 2
+37339:              manager.eSpeed--
+37359:              manager.weapon[8] = 2
+37381:              manager.weapon[9] = 2
+37404:              manager.weapon[10] = 2
+37427:              manager.weapon[11] = 2
+37449:              manager.weapon[12] = 2
+37471:              manager.weapon[13] = 2
+37492:              manager.weapon[14] = 2
+37514:              manager.weapon[15] = 2
+37536:              manager.weapon[16] = 2
+37557:              manager.weapon[17] = 2
+37579:              manager.weapon[18] = 2
+37601:              manager.weapon[19] = 2
+37629:              manager.weapon[this.weapCounter] = 1
+37634:                manager.eSpeed--
+37649:                manager.eSpeed++
+37892:              manager.armor[0] = 2
+37913:              manager.armor[1] = 2
+37934:              manager.armor[2] = 2
+37956:              manager.armor[3] = 2
+37976:              manager.armor[4] = 2
+37978:              manager.eSpeed--
+37998:              manager.armor[5] = 2
+38019:              manager.armor[6] = 2
+38040:              manager.armor[7] = 2
+38061:              manager.armor[8] = 2
+38084:              manager.armor[9] = 2
+38105:              manager.armor[10] = 2
+38125:              manager.armor[11] = 2
+38147:              manager.armor[12] = 2
+38168:              manager.armor[13] = 2
+38188:              manager.armor[14] = 2
+38220:              manager.armor[this.armorCounter] = 1
+38230:                manager.eSpeed++
+41172:            manager.pup--
+41187:            manager.pup--
+41308:              manager.gold++
+41315:              manager.gold--
+41664:              manager.correct++
+41666:                manager.skillPoints++
+42074:                manager.bombs--
+42139:              manager.wrong++
+42140:              manager.skillPoints--
+44051:          manager.food[7]--
+44064:          manager.food[10]--
+46196:          manager.fireWall--
+53542:          manager.diamonds++
+53554:          manager.ring1 = 1
+53565:          manager.ring2 = 1
+53575:          manager.geodes++
+53603:          manager.loot[manager.sFrag]++
+53622:          manager.aurastones++
+53629:          manager.keys++
+53636:          manager.pup++
+53642:          manager.loot[manager.oCoin]++
+53645:          manager.food[12]++
+53648:          manager.food[18]++
+53652:            manager.food[5]++
+53655:            manager.food[0]++
+53659:          manager.food[6]++
+53663:            manager.food[8]++
+53666:            manager.food[1]++
+53975:          manager.emeralds--
+53988:          manager.emeralds--
+53991:            manager.food[5] = 99
+54005:          manager.emeralds--
+54012:            manager.food[10] = 99
+54025:          manager.emeralds--
+54029:            manager.food[4] = 99
+54042:          manager.emeralds--
+54046:            manager.food[7] = 99
+54059:          manager.emeralds--
+54063:            manager.food[12] = 99
+54076:          manager.emeralds--
+54078:          manager.food[17]++
+54080:            manager.food[17] = 99
+54091:          manager.emeralds--
+54092:          manager.armor[14] = 1
+54105:          manager.emeralds--
+54106:          manager.gold++
+54107:          manager.rubies++
+54108:          manager.aurastones++
+54109:          manager.diamonds++
+54110:          manager.slamstones++
+54111:          manager.food[11]++
+54112:          manager.food[17]++
+54191:              manager.food[11] = 99
+54199:              manager.food[4] = 99
+54207:              manager.food[14] = 99
+54215:              manager.food[18] = 99
+54426:          manager.food[11]++
+54427:          manager.food[17]++
+54442:          manager.food[17]++
+54489:          manager.food[11]++
+54551:          manager.armor[10] = 1
+54581:            manager.bombs = 99
+54598:          manager.magic[12] = 1
+55150:                manager.crafts[7] = 1
+55245:            manager.food[11]++
+55269:                manager.food[4]++
+55523:            manager.diamonds++
+56058:              manager.crafts[11] = 1
+56059:              manager.crafts[12] = 1
+56117:            manager.food[4] = 99
+56324:              manager.skills[7] = 1
+56748:                manager.skills[5] = 1
+57068:            manager.skills[15] = 1
+57125:            manager.crafts[13] = 1
+57866:              manager.ring6 = 1
+58061:          manager.ring3 = 1
+58463:              manager.crafts[4] = 1
+58464:              manager.bombs = 15
+58466:              manager.bombCapacity = 99
+58768:            manager.weapon[3] = 0
+58769:            manager.weapon[11] = 1
+58962:            manager.food[5] = 1
+59019:              manager.armor[4] = 0
+59020:              manager.armor[11] = 1
+109515:      manager.medallions = 0
+109523:      manager.str = 1
+109524:      manager.eStr = 0
+109525:      manager.speed = 1
+109526:      manager.eSpeed = 0
+109527:      manager.eMagic = 0
+109528:      manager.eHealth = 0
+109530:      manager.correct = 0
+109531:      manager.wrong = 0
+109533:      manager.skillPoints = 0
+109534:      manager.gold = 0
+109535:      manager.diamonds = 0
+109536:      manager.keys = 0
+109537:      manager.bombs = 0
+109540:      manager.ornaments = 0
+109541:      manager.staffVar = 0
+109589:      manager.geodes = 0
+109590:      manager.shadowCrest = 0
+109591:      manager.rubies = 0
+109592:      manager.emeralds = 0
+109593:      manager.slamstones = 0
+109599:      manager.pup = 0
+109607:      manager.aurastones = 0
+109608:      manager.fireWall = 0
+109615:      manager.ring1 = 0
+109616:      manager.ring2 = 0
+109617:      manager.ring3 = 0
+109618:      manager.ring4 = 0
+109619:      manager.ring5 = 0
+109620:      manager.ring6 = 0
+109621:      manager.ring7 = 0
+109626:      manager.decimalSplitVar = 0
+109627:      manager.iceSageVar = 0
+109628:      manager.fakeHeadstone = 0
+109633:      manager.bombCapacity = 0
+109634:      manager.hugeBomb = 0
