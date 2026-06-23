@@ -177,8 +177,9 @@
       ],
       "north": [
         {
-          "left": 7,
-          "right": 7
+          "left": 6,
+          "right": 7,
+          "newY": 89
         }
       ]
     },
