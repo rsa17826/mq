@@ -1411,7 +1411,12 @@
         "east": 13
       },
       "requires": [
-        ["item:cotton thread#10", "item:shadow crest#5", "???"]
+        [
+          "item:cotton thread#10",
+          "item:shadow crest#5",
+          "???",
+          "permit:bomb"
+        ]
       ],
       "receive": ["misc:max bombs.+50"]
     },
