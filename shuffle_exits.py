@@ -315,7 +315,7 @@ def init():
       other = rooms[1] if room == rooms[0] else rooms[0]
       all_exits_raw.append(
         {
-          "id": f"{w['id']}:side{i}",
+          "id": f"door:{w['id']}:{room[0]}_{room[1]}_{other[0]}_{other[1]}",
           "mechanism": "warp",
           "origin": {"north": room[0], "east": room[1]},
           "dest": {"north": other[0], "east": other[1]},
@@ -808,6 +808,96 @@ def init():
     json.dump(out, f, indent=2)
 
   print(f"Wrote json/connections.json with seed={SEED}")
+
+  # ---------------------------------------------------------------------------
+  # Hint-system data export. The hint system itself comes later -- this is
+  # just making everything the solver already knows available in one place:
+  #   - graph: adjacency per room, each edge carrying its requires (so a
+  #     hint system can pathfind from a known room to a target, respecting
+  #     gating, without needing to recompute anything the solver already
+  #     worked out)
+  #   - locations: every pickup's requires/receive (raw tokens)
+  #   - itemGiveIndex: reverse lookup, "type:name" -> which room(s) grant it
+  #     (the first thing a hint system needs for "how do I get item X")
+  #   - entranceIndex: "N.E.entrance.directionI" -> which actual exit that
+  #     is, since "entrance.X" tokens in requirements are written relative
+  #     to whichever room they're attached to and need resolving back to a
+  #     concrete graph edge
+  #   - finalState: this seed's solved playercouldhave/pending snapshot, for
+  #     reference/debugging (a real hint system would recompute live against
+  #     actual player save state, not trust this frozen snapshot blindly)
+  # ---------------------------------------------------------------------------
+
+  def room_key_str(room):
+    return f"{fmt_coord(room[0])}_{fmt_coord(room[1])}"
+
+  def have_key_str(k):
+    return f"{k[0]}:{k[1]}" if isinstance(k, tuple) else k
+
+  graph = {}
+  for c in connections:
+    room_str = f"{fmt_coord(c['originNorth'])}_{fmt_coord(c['originEast'])}"
+    graph.setdefault(room_str, []).append(
+      {
+        "toRoom": f"{fmt_coord(c['newDestNorth'])}_{fmt_coord(c['newDestEast'])}",
+        "exitId": c["fromExitId"],
+        "viaExitId": c["toExitId"],
+        "mechanism": c["mechanism"],
+        "direction": c.get("direction"),
+        "requires": c["requires"],
+      }
+    )
+
+  locations_out = []
+  item_give_index = {}
+  for loc in progression["locations"]:
+    room_str = room_key_str(loc["room"])
+    requires_raw = [[tok["raw"] for tok in group] for group in loc["requires"]]
+    receive_raw = loc.get("receive", [])
+    locations_out.append({"room": room_str, "requires": requires_raw, "receive": receive_raw})
+    for raw_tok in receive_raw:
+      tok = parse_requirement_token(raw_tok)
+      key_str = have_key_str(token_key(tok))
+      item_give_index.setdefault(key_str, []).append({"room": room_str, "raw": raw_tok})
+
+  entrance_index = {}
+  for e in edge_exits:
+    room = (e["origin"]["north"], e["origin"]["east"])
+    ent_value = f"{e['direction']}{e.get('gap_index', 0)}"
+    key = entrance_key(room, ent_value)
+    entrance_index[key] = {
+      "exitId": e["id"],
+      "room": room_key_str(room),
+      "direction": e["direction"],
+      "gapIndex": e.get("gap_index", 0),
+    }
+
+  final_have = {have_key_str(k): v for k, v in playercouldhave.items()}
+  pending_out = {
+    have_key_str(k): [room_key_str(loc["room"]) for loc in locs]
+    for k, locs in pending.items()
+  }
+  if pending_out:
+    print(f"  NOTE: {len(pending_out)} requirement(s) never resolved during the "
+          f"solve -- either an intentionally late/postgame gate, or a real "
+          f"problem worth checking: {list(pending_out.keys())[:10]}")
+
+  hint_data = {
+    "seed": SEED,
+    "graph": graph,
+    "locations": locations_out,
+    "itemGiveIndex": item_give_index,
+    "entranceIndex": entrance_index,
+    "finalState": {
+      "playercouldhave": final_have,
+      "unresolvedPending": pending_out,
+    },
+  }
+  with open(f"{OUT_DIR}/json/hint_data.json", "w") as f:
+    json.dump(hint_data, f, indent=2)
+  print(f"Wrote json/hint_data.json: {len(graph)} rooms in graph, "
+        f"{len(locations_out)} locations, {len(item_give_index)} distinct "
+        f"giveable items/skills/permits indexed")
 
   all_rooms = set()
   for e in edge_exits + door_exits + warp_exits:
