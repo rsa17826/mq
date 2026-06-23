@@ -1,3 +1,49 @@
+import re
+
+def convert_line(line):
+    ol = line
+    if '==' in line:
+      return ol
+    line = line.strip()
+    if not line:
+        return ""
+
+    # 1. Match array assignments: manager.armor[9] = 0 -> setManagerData("armor", 9, 0)
+    # Also handles variables inside brackets like manager.armor[this.counter] = 0
+    array_match = re.match(r'^manager\.(\w+)\[([^\]]+)\]\s*=\s*(.+)$', line)
+    if array_match:
+        if f"{array_match[1]}[{array_match[2]}]" in input_text:
+          prop, index, value = array_match.groups()
+          # Clean up quotes if the index is a literal string, or leave as is if it's a number/variable
+          return f'setManagerData("{prop}", {index}, {value})'
+
+    # 2. Match standard assignments: manager.bombCapacity = 0 -> setManagerData("bombCapacity", 0)
+    # (Note: Standard variables don't have an index, so we pass None or skip that argument depending on your API)
+    direct_match = re.match(r'^manager\.(\w+)\s*=\s*(.+)$', line)
+    if direct_match:
+      if direct_match[1] in input_text:
+        prop, value = direct_match.groups()
+        return f'setManagerData("{prop}", {value})'
+
+    # 3. Match increments: manager.aurastones++ or manager.correct++ -> setManagerData("correct", manager.correct + 1)
+    inc_match = re.match(r'^manager\.(\w+)\+\+$', line)
+    if inc_match:
+      if inc_match[1] in input_text:
+        prop = inc_match.group(1)
+        return f'setManagerData("{prop}", manager.{prop} + 1)'
+
+    # 4. Match decrements: manager.aurastones-- -> setManagerData("aurastones", manager.aurastones - 1)
+    dec_match = re.match(r'^manager\.(\w+)--$', line)
+    if dec_match:
+      if dec_match[1] in input_text:
+        prop = dec_match.group(1)
+        return f'setManagerData("{prop}", manager.{prop} - 1)'
+
+    # Return the line untouched if it doesn't match any pattern
+    return ol
+
+# --- Execution ---
+input_text = re.split(r"[^\w]","""
 manager.armor[0] = 1
 manager.armor[0] = 2
 manager.armor[1] = 1
@@ -80,7 +126,6 @@ manager.eSpeed--
 manager.eSpeed++
 manager.eStr = 0
 manager.eStr++
-manager.fakeHeadstone = 0
 manager.fireWall = 0
 manager.fireWall = 30
 manager.fireWall--
@@ -319,3 +364,15 @@ manager.weapon[this.counter] = 0
 manager.weapon[this.weapCounter] = 1
 manager.wrong = 0
 manager.wrong++
+
+""")
+
+print("--- Converted Output ---")
+lines=''
+with open("./MathQuest/MathQuest.base.js", "r") as f:
+  text = f.read()
+  for line in text.strip().split('\n'):
+      lines+=(convert_line(line))
+      lines+='\n'
+with open("./MathQuest/MathQuest.base.js", "w") as f:
+  f.write(lines)
