@@ -1,10 +1,11 @@
+# @noregex
 import os
 import re
 import json
 
 IMAGE_FOLDER = "mapSmall"
 OUTPUT_FILE = "index.html"
-GEOMETRY_JSON_PATH = "./room_geometry.json"
+GEOMETRY_JSON_PATH = "./json/room_geometry.json"
 
 # Constants to map the 14x11 grid layout inside the 624x493 tile box
 TILE_WIDTH = 624
@@ -51,6 +52,7 @@ html_start = """<!DOCTYPE html>
             padding: 20px;
             transform-origin: top left;
             scale: 0.5;
+            margin-right: 460px; /* Leave clean workspace margin for the code side panel */
         }
         .tile-wrapper {
             position: relative;
@@ -96,7 +98,7 @@ html_start = """<!DOCTYPE html>
         .toast-notify {
             position: fixed;
             bottom: 20px;
-            right: 20px;
+            left: 20px; /* Moved left to prevent overlaying the generator panel */
             background: #333;
             color: #00ffcc;
             padding: 10px 16px;
@@ -108,6 +110,71 @@ html_start = """<!DOCTYPE html>
             transition: opacity 0.2s ease-in-out;
             pointer-events: none;
         }
+
+        /* Test Boilerplate Generator UI Side Panel */
+        .test-generator-panel {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 420px;
+            height: calc(100vh - 40px);
+            background-color: #1a1a1a;
+            border: 2px solid #00ffcc;
+            border-radius: 6px;
+            padding: 15px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            z-index: 10000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        .test-generator-panel h3 {
+            margin-top: 0;
+            color: #00ffcc;
+            font-size: 16px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+            margin-bottom: 10px;
+        }
+        .test-generator-panel textarea {
+            flex-grow: 1;
+            background-color: #101010;
+            color: #00ff66;
+            border: 1px solid #444;
+            border-radius: 4px;
+            padding: 10px;
+            resize: none;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 11px;
+            line-height: 1.4;
+        }
+        .test-generator-panel .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .test-generator-panel button {
+            background-color: #00ffcc;
+            color: #111;
+            border: none;
+            padding: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+            flex: 1;
+            font-size: 13px;
+            transition: background 0.1s;
+        }
+        .test-generator-panel button:hover {
+            background-color: #00ccaa;
+        }
+        .test-generator-panel button.clear-btn {
+            background-color: #ff4444;
+            color: #fff;
+        }
+        .test-generator-panel button.clear-btn:hover {
+            background-color: #cc2222;
+        }
     </style>
 </head>
 <body>
@@ -116,6 +183,16 @@ html_start = """<!DOCTYPE html>
 """
 
 html_end = """    </div>
+
+    <div class="test-generator-panel">
+        <h3>Test Automation Generator</h3>
+        <textarea id="test-code-output" readonly></textarea>
+        <div class="btn-group">
+            <button onclick="copyTestCode()">Copy Python Code</button>
+            <button class="clear-btn" onclick="clearTestCode()">Clear Lines</button>
+        </div>
+    </div>
+
     <script>
         function showToast(text) {
             const el = document.getElementById("toast");
@@ -124,99 +201,109 @@ html_end = """    </div>
             setTimeout(() => { el.style.opacity = "0"; }, 1500);
         }
 
-        // Left Click Handler on wrapper backgrounds to Copy Position
+        // State tracker for generated assertions
+        let assertionLines = [];
+
+        function updateCodeBox() {
+            const textarea = document.getElementById("test-code-output");
+            let boilerplate = "from .bases import MathQuestTestBase\\n\\n";
+            boilerplate += "class TestEasyModeLogic(MathQuestTestBase):\\n";
+            boilerplate += "    options = {\\n        \\\"hard_mode\\\": False,\\n    }\\n\\n";
+            boilerplate += "    def test_easy_mode_access(self) -> None:\\n";
+            boilerplate += "        with self.subTest(\\\"Verified Room Grid Access Requirements\\\"):\\n";
+            
+            if (assertionLines.length === 0) {
+                boilerplate += "            # [!] Left-Click tiles/exits for assertTrue\\n";
+                boilerplate += "            # [!] Right-Click tiles/exits for assertFalse\\n";
+                boilerplate += "            pass\\n";
+            } else {
+                assertionLines.forEach(item => {
+                    boilerplate += `            # Verify reachability rules for ${item.region}\\n`;
+                    boilerplate += `            self.assert${item.isTrue ? 'True' : 'False'}(self.world.get_region("${item.region}").can_reach(self.multiworld.state))\\n\\n`;
+                });
+            }
+            textarea.value = boilerplate;
+            textarea.scrollTop = textarea.scrollHeight; // Auto scroll to newest additions
+        }
+
+        function addAssertion(regionName, isTrue) {
+            assertionLines.push({ region: regionName, isTrue: isTrue });
+            updateCodeBox();
+        }
+
+        function clearTestCode() {
+            assertionLines = [];
+            updateCodeBox();
+            showToast("Cleared generated code buffer.");
+        }
+
+        function copyTestCode() {
+            const textarea = document.getElementById("test-code-output");
+            navigator.clipboard.writeText(textarea.value).then(() => {
+                showToast("Copied Test Script to Clipboard!");
+            }).catch(err => {
+                console.error("[-] Failed copying code: ", err);
+            });
+        }
+
+        // Room Background Clicks (Base Regions)
         document.querySelectorAll('.tile-wrapper').forEach(tile => {
+            // Left Click -> Assert Accessible (True)
             tile.addEventListener('click', function(e) {
                 if (e.target.classList.contains('exit-square')) return;
                 const posStr = this.getAttribute('data-pos');
-                navigator.clipboard.writeText(posStr).then(() => {
-                    showToast("Copied: " + posStr);
-                }).catch(err => {
-                    console.error("[-] Clipboard write exception error:", err);
-                });
+                const [north, east] = posStr.split(',');
+                const regionId = `${north}_${east}`;
+                
+                addAssertion(regionId, true);
+                showToast(`[+] Added True check for Room: ${regionId}`);
             });
-        });
 
-        // Interactive Area Linking Configuration
-        let selectedExits = [];
-        let currentTileKey = null;
-
-        // Register exit square selection listeners
-        document.querySelectorAll('.exit-square').forEach(square => {
-            square.addEventListener('click', function(e) {
-                e.stopPropagation(); // Avoid triggering base tile wrapper click
-
-                const parentTile = this.closest('.tile-wrapper');
-                const posStr = parentTile.getAttribute('data-pos');
-
-                // If switching rooms, clear out previous buffer tracking automatically
-                if (currentTileKey !== posStr) {
-                    document.querySelectorAll('.exit-square.selected').forEach(el => el.classList.remove('selected'));
-                    selectedExits = [];
-                    currentTileKey = posStr;
-                }
-
-                if (this.classList.contains('selected')) {
-                    this.classList.remove('selected');
-                    selectedExits = selectedExits.filter(item => item !== this);
-                } else {
-                    this.classList.add('selected');
-                    selectedExits.push(this);
-                }
-                console.log(`[+] Exit added to selection group buffer. Total items: ${selectedExits.length}`);
-            });
-        });
-
-        // Right Click Handler on Tile wrappers to build area lists
-        document.querySelectorAll('.tile-wrapper').forEach(tile => {
-            tile.addEventListener('contextmenu', function(event) {
-                event.preventDefault();
-
+            // Right Click -> Assert Unreachable (False)
+            tile.addEventListener('contextmenu', function(e) {
+                if (e.target.classList.contains('exit-square')) return;
+                e.preventDefault();
                 const posStr = this.getAttribute('data-pos');
-                const [north, east] = posStr.split(',').map(Number);
-
-                // Fetch full internal data geometry payload from injected script metadata index
-                const rawRoomData = GEOM_METADATA_INDEX[posStr];
-                if (!rawRoomData) {
-                    console.error("[-] Geometry metadata missing for room index:", posStr);
-                    return;
-                }
-
-                // If context menu is clicked with items selected, save them as a connected group area
-                if (selectedExits.length > 0 && currentTileKey === posStr) {
-                    if (!rawRoomData.areas) {
-                        rawRoomData.areas = [];
-                    }
-
-                    const subAreaGroup = selectedExits.map(el => {
-                        return {
-                            side: el.getAttribute('data-side'),
-                            idx: parseInt(el.getAttribute('data-idx'), 10)
-                        };
-                    });
-
-                    rawRoomData.areas.push(subAreaGroup);
-
-                    console.log(`%c[🎉] Connected Area Linked successfully for room ${posStr}!`, "color: #00ffcc; font-weight: bold;");
-                    const stringifiedOut = JSON.stringify(rawRoomData, null, 2);
-                    console.log(stringifiedOut);
-
-                    navigator.clipboard.writeText(stringifiedOut).then(() => {
-                        showToast(`Saved Area Group for Room ${posStr}!`);
-                    });
-
-                    // Clear highlighted selections to start mapping the next sub-zone
-                    document.querySelectorAll('.exit-square.selected').forEach(el => el.classList.remove('selected'));
-                    selectedExits = [];
-                } else {
-                    // Right-clicked with empty selection buffer, reset tracking node context completely
-                    document.querySelectorAll('.exit-square.selected').forEach(el => el.classList.remove('selected'));
-                    selectedExits = [];
-                    currentTileKey = posStr;
-                    console.log(`[x] Reset linked selection tracking buffer context for tile room ${posStr}.`);
-                }
+                const [north, east] = posStr.split(',');
+                const regionId = `${north}_${east}`;
+                
+                addAssertion(regionId, false);
+                showToast(`[-] Added False check for Room: ${regionId}`);
             });
         });
+
+        // Exit Squares Click Overrides (Sub-Regions)
+        document.querySelectorAll('.exit-square').forEach(square => {
+            // Left Click Sub-Region -> Assert Accessible (True)
+            square.addEventListener('click', function(e) {
+                e.stopPropagation(); // Block cascading down to base tile
+                const parentTile = this.closest('.tile-wrapper');
+                const [north, east] = parentTile.getAttribute('data-pos').split(',');
+                const side = this.getAttribute('data-side');
+                const idx = this.getAttribute('data-idx');
+                const subRegionId = `${north}_${east}#${side}.${idx}`;
+                
+                addAssertion(subRegionId, true);
+                showToast(`[+] Added True check for Slot: ${subRegionId}`);
+            });
+
+            // Right Click Sub-Region -> Assert Unreachable (False)
+            square.addEventListener('contextmenu', function(e) {
+                e.stopPropagation();
+                e.preventDefault();
+                const parentTile = this.closest('.tile-wrapper');
+                const [north, east] = parentTile.getAttribute('data-pos').split(',');
+                const side = this.getAttribute('data-side');
+                const idx = this.getAttribute('data-idx');
+                const subRegionId = `${north}_${east}#${side}.${idx}`;
+                
+                addAssertion(subRegionId, false);
+                showToast(`[-] Added False check for Slot: ${subRegionId}`);
+            });
+        });
+
+        // Initialize empty view template on layout boot
+        updateCodeBox();
     </script>
 </body>
 </html>
