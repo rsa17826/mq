@@ -296,7 +296,7 @@
         "north": 13,
         "east": 11
       },
-      "requires": [["item:mage staf#1"]],
+      "requires": [["item:mage staff#1"]],
       "receive": ["food:blueberry#1"]
     },
     {
@@ -367,7 +367,7 @@
         "east": 9
       },
       "requires": [["item:gold"]],
-      "receive": ["weapon:warlock staf"]
+      "receive": ["weapon:warlock staff"]
     },
     {
       "room": {
@@ -846,7 +846,7 @@
         "east": 25
       },
       "requires": [
-        ["skill:medic.2", "item:orc coin#20", "item:mage staf#10"]
+        ["skill:medic.2", "item:orc coin#20", "item:mage staff#10"]
       ],
       "receive": ["skill:medic.3"]
     },
@@ -910,7 +910,7 @@
         "east": 23
       },
       "requires": [["permit:bomb", "item:key#1"]],
-      "receive": ["weapon:warlock staf"]
+      "receive": ["weapon:warlock staff"]
     },
     {
       "room": {
@@ -1118,7 +1118,7 @@
         "north": 21,
         "east": 21
       },
-      "requires": [["entrance.west", "???"]],
+      "requires": [["entrance.west0", "???"]],
       "receive": ["skill:craft"]
     },
     {

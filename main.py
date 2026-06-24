@@ -1,13 +1,25 @@
 # import map.genGrid as _
 import shuffle_exits
-import patch_game
 import gen_map
-import patch_items_advanced
 import shuffle_items
+import patch_items
+import patch_rooms
+import os
 
 playercouldhave, edge_reached, door_reached, warp_reached, all_rooms = shuffle_exits.init()
 
-shuffle_items.init()
-patch_game.init()
+# shuffle_items.init()
+OUT_DIR = os.path.dirname(os.path.abspath(__file__))
+SRC_PATH = os.path.join(OUT_DIR, "MathQuest/MathQuest.base.js")
+OUT_PATH = os.path.join(OUT_DIR, "MathQuest/MathQuest.js")
+
+with open(SRC_PATH, encoding="utf-8") as f:
+  src = f.read()
+
+# patched = patch_items.init(src)
+src = patch_rooms.init(src)
+
+with open(OUT_PATH, "w", encoding="utf-8") as f:
+  f.write(src)
 
 gen_map.main()
