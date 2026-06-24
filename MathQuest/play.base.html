@@ -543,15 +543,37 @@
             coordString = `
             SCREEN: ${north}_${east}
             POS: ${Math.round(x)} ${Math.round(y)}
+            QUEST: ${quest
+              .map((e, i) => {
+                return (
+                  {
+                    12: "access",
+                    17: "aSword",
+                    1: "bBomb",
+                    7: "canteen",
+                    9: "curse",
+                    3: "dig",
+                    10: "dream",
+                    8: "geo",
+                    0: "gTree",
+                    14: "hWater",
+                    16: "isles",
+                    4: "mChal",
+                    15: "oMan",
+                    6: "pam",
+                    13: "rings",
+                    5: "seeds",
+                    2: "warp",
+                  }[i] +
+                  ": " +
+                  e
+                )
+              })
+              .join("\n")}
             `
           }
 
-          // 2. Define font styles
           overlayCtx.font = "bold 20px sans-serif"
-          overlayCtx.fillStyle = "#FF00FF" // Set back to clean bright color if preferred
-
-          overlayCtx.shadowColor = "black"
-          overlayCtx.shadowBlur = 4
 
           // Clean the text array up
           var allText = coordString.trim().split("\n")
@@ -568,17 +590,18 @@
             var textWidth = overlayCtx.measureText(text).width
             var x = overlayCanvas.width - textWidth - 20
 
-            // 💡 THE TRICK: Reverse offset calculation
-            // Total lines minus our current index keeps the text growing UPWARDS from the bottom corner
             var y =
               overlayCanvas.height -
               baseBottomPadding -
               (allText.length - 1 - i) * lineHeight
 
+            overlayCtx.strokeStyle = "#000"
+            overlayCtx.lineJoin = 'round';
+            overlayCtx.lineWidth = 3 // Controls the thickness of the outline
+            overlayCtx.strokeText(text, x, y)
+            overlayCtx.fillStyle = "#ddd"
             overlayCtx.fillText(text, x, y)
           }
-
-          overlayCtx.shadowBlur = 0
         } catch (e) {
           error(e)
         } finally {

@@ -1,0 +1,70 @@
+var x = [player.north,player.east]
+if (typeof ER_MAP !== "undefined" || window.ER_MAP) {
+  const mapInstance =
+    typeof ER_MAP !== "undefined" ? ER_MAP : window.ER_MAP
+  console.log(`=== Active Randomizer Routes for Room ${x.join(',')} ===`)
+
+  mapInstance.forEach((conns, key) => {
+    // Correct order: 13 (North) and 26 (East)
+    if (key.startsWith(`${x[0]}_${x[1]}_`)) {
+      console.log(`Outbound Exit -> Vanilla Path: [${key}]`, conns)
+    }
+    conns.forEach((c) => {
+      if (c.newNorth === x[0] && c.newEast === x[1]) {
+        console.log(
+          `Inbound Entrance -> Lands Here from Vanilla Path [${key}]:`,
+          c,
+        )
+      }
+    })
+  })
+} else {
+  console.log(
+    "ER_MAP is not defined or initialized in this scope yet.",
+  )
+}
+
+VM27799:5 === Active Randomizer Routes for Room 12,16 ===
+VM27799:14 Inbound Entrance -> Lands Here from Vanilla Path [12_15_12_16]: {newNorth: 12, newEast: 16, newX: 0, newY: 254.5455, srcCoord: 254.5455, …}dirCode: 4newEast: 16newNorth: 12newX: 0newY: 254.5455srcCoord: 254.5455xIsEven: 0yIsEven: 0[[Prototype]]: Object
+VM27799:10 Outbound Exit -> Vanilla Path: [12_16_12_15] [{…}]
+VM27799:14 Inbound Entrance -> Lands Here from Vanilla Path [13_16_12_16]: {newNorth: 12, newEast: 16, newX: 557.8571, newY: 0, srcCoord: 557.8571, …}dirCode: 2newEast: 16newNorth: 12newX: 557.8571newY: 0srcCoord: 557.8571xIsEven: 0yIsEven: 0[[Prototype]]: Object
+VM27799:10 Outbound Exit -> Vanilla Path: [12_16_13_16] [{…}]
+VM27799:14 Inbound Entrance -> Lands Here from Vanilla Path [12_17_12_16]: {newNorth: 12, newEast: 16, newX: 659.2857, newY: 50.9091, srcCoord: 356.3636, …}dirCode: 3newEast: 16newNorth: 12newX: 659.2857newY: 50.9091srcCoord: 356.3636xIsEven: 0yIsEven: 0[[Prototype]]: Object
+VM27799:14 Inbound Entrance -> Lands Here from Vanilla Path [12_17_12_16]: {newNorth: 12, newEast: 16, newX: 659.2857, newY: 356.3636, srcCoord: 50.9091, …}dirCode: 3newEast: 16newNorth: 12newX: 659.2857newY: 356.3636srcCoord: 50.9091xIsEven: 0yIsEven: 0[[Prototype]]: Object
+VM27799:10 Outbound Exit -> Vanilla Path: [12_16_12_17] (2) [{…}, {…}]0: dirCode: 4newEast: 17newNorth: 12newX: 0newY: 356.3636srcCoord: 50.9091xIsEven: 0yIsEven: 0[[Prototype]]: Object1: dirCode: 4newEast: 17newNorth: 12newX: 0newY: 50.9091srcCoord: 356.3636xIsEven: 0yIsEven: 0[[Prototype]]: Objectlength: 2[[Prototype]]: Array(0)
+undefined
+MathQuest.js:30744 0 0 0 0
+188MathQuest.js:24573 583.2143 410.0909
+var x = [player.north,player.east]
+if (typeof ER_MAP !== "undefined" || window.ER_MAP) {
+  const mapInstance =
+    typeof ER_MAP !== "undefined" ? ER_MAP : window.ER_MAP
+  console.log(`=== Active Randomizer Routes for Room ${x.join(',')} ===`)
+
+  mapInstance.forEach((conns, key) => {
+    // Correct order: 13 (North) and 26 (East)
+    if (key.startsWith(`${x[0]}_${x[1]}_`)) {
+      console.log(`Outbound Exit -> Vanilla Path: [${key}]`, conns)
+    }
+    conns.forEach((c) => {
+      if (c.newNorth === x[0] && c.newEast === x[1]) {
+        console.log(
+          `Inbound Entrance -> Lands Here from Vanilla Path [${key}]:`,
+          c,
+        )
+      }
+    })
+  })
+} else {
+  console.log(
+    "ER_MAP is not defined or initialized in this scope yet.",
+  )
+}
+
+VM27861:5 === Active Randomizer Routes for Room 12,17 ===
+VM27861:10 Outbound Exit -> Vanilla Path: [12_17_12_16] (2) [{…}, {…}]0: dirCode: 3newEast: 16newNorth: 12newX: 659.2857newY: 50.9091srcCoord: 356.3636xIsEven: 0yIsEven: 0[[Prototype]]: Object1: dirCode: 3newEast: 16newNorth: 12newX: 659.2857newY: 356.3636srcCoord: 50.9091xIsEven: 0yIsEven: 0[[Prototype]]: Objectlength: 2[[Prototype]]: Array(0)
+VM27861:14 Inbound Entrance -> Lands Here from Vanilla Path [12_18_12_17]: {newNorth: 12, newEast: 17, newX: 659.2857, newY: 407.2727, srcCoord: 407.2727, …}dirCode: 3newEast: 17newNorth: 12newX: 659.2857newY: 407.2727srcCoord: 407.2727xIsEven: 0yIsEven: 0[[Prototype]]: Object
+VM27861:14 Inbound Entrance -> Lands Here from Vanilla Path [12_16_12_17]: {newNorth: 12, newEast: 17, newX: 0, newY: 356.3636, srcCoord: 50.9091, …}dirCode: 4newEast: 17newNorth: 12newX: 0newY: 356.3636srcCoord: 50.9091xIsEven: 0yIsEven: 0[[Prototype]]: Object
+VM27861:14 Inbound Entrance -> Lands Here from Vanilla Path [12_16_12_17]: {newNorth: 12, newEast: 17, newX: 0, newY: 50.9091, srcCoord: 356.3636, …}dirCode: 4newEast: 17newNorth: 12newX: 0newY: 50.9091srcCoord: 356.3636xIsEven: 0yIsEven: 0[[Prototype]]: Object
+VM27861:10 Outbound Exit -> Vanilla Path: [12_17_12_18] [{…}]0: dirCode: 4newEast: 18newNorth: 12newX: 0newY: 407.2727srcCoord: 407.2727xIsEven: 0yIsEven: 0[[Prototype]]: Objectlength: 1[[Prototype]]: Array(0)
+undefined
