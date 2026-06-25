@@ -447,7 +447,7 @@ GEOM: list[ExitBase] = [
       "west": [{"top": 5, "bottom": 6}],
       "south": [],
       "east": [],
-      "north": [],
+      "north": [{"left":6, "right":7}],
     },
   },
   {
@@ -1065,7 +1065,7 @@ GEOM: list[ExitBase] = [
         ],
       }
     ],
-    "exits": {
+  "exits": {
       "west": [],
       "south": [{"left": 7, "right": 9}],
       "east": [],
@@ -3954,6 +3954,26 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [{"top": 2, "bottom": 10}],
+      "north": [],
+    },
+  },
+  {
+    "north": 17.1,
+    "east": 19,
+    "exits": {
+      "west": [],
+      "south": [],
+      "east": [],
+      "north": [],
+    },
+  },
+  {
+    "north": 9,
+    "east": 14,
+    "exits": {
+      "west": [],
+      "south": [],
+      "east": [],
       "north": [],
     },
   },

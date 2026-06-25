@@ -14,6 +14,12 @@ class ProgressionNode(TypedDict):
 
 
 PROG: list[ProgressionNode] = [
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [[]],
+    "receive": ["skill:dig", "skill:kick"],
+    "info": "can be got anywhere",
+  },
   {"room": {"north": 20, "east": 20}, "receive": ["spawnpoint"]},
   {
     "room": {"north": 15, "east": 21},
@@ -22,7 +28,7 @@ PROG: list[ProgressionNode] = [
   },
   {
     "room": {"north": 21, "east": 20},
-    "requires": [["drop:venom#1", "???"]],
+    "requires": [["item:venom#1", "???"]],
     "receive": ["food:orange#1"],
   },
   {
@@ -98,7 +104,7 @@ PROG: list[ProgressionNode] = [
   },
   {
     "room": {"north": 15, "east": 19},
-    "requires": [["item:ring health"]],
+    "requires": [["item:ring of health"]],
     "receive": ["item:gold#300", "item:bomb#10", "food:banana#5"],
     "info": "???",
   },
@@ -172,8 +178,8 @@ PROG: list[ProgressionNode] = [
   },
   {
     "room": {"north": 12, "east": 12},
-    "requires": [["quest:headstone", "entrance.west0"]],
-    "receive": ["quest:headstone.+1"],
+    "requires": [["quest:rings.1", "entrance.west0"]],
+    "receive": ["misc:headstone 2"],
   },
   {"room": {"north": 10, "east": 12}, "info": "warp skill warp point"},
   {"room": {"north": 12, "east": 9}, "receive": ["spawnpoint"]},
@@ -222,11 +228,6 @@ PROG: list[ProgressionNode] = [
     "requires": [["item:venom"]],
     "receive": ["food:orange"],
   },
-  # {
-  #   # "room": {"north": 11, "east": 9},
-  #   # "requires": [["quest:headstone.?"]],
-  #   # "receive": ["skill:warp"],
-  # },
   {"room": {"north": 11, "east": 9}, "receive": ["quest:headstone"]},
   {
     "room": {"north": 11, "east": 9},
@@ -279,7 +280,7 @@ PROG: list[ProgressionNode] = [
   },
   {
     "room": {"north": 6, "east": 10},
-    "requires": [["item:key#1", "permit:bomb.1"]],
+    "requires": [["item:key#1", "permit:bomb"]],
     "receive": ["food:chocolate#3"],
   },
   {
@@ -334,12 +335,12 @@ PROG: list[ProgressionNode] = [
   },
   {
     "room": {"north": 11, "east": 17},
-    "requires": [["item:key#1", "permit:bomb.1"]],
+    "requires": [["item:key#1", "permit:bomb"]],
     "receive": ["item:bomb#8", "item:gold#200"],
   },
   {
     "room": {"north": 7, "east": 10},
-    "requires": [["permit:bomb.1", "???"]],
+    "requires": [["permit:bomb", "???"]],
     "receive": ["item:orb of ???"],
   },
   {
@@ -403,8 +404,8 @@ PROG: list[ProgressionNode] = [
   },
   {
     "room": {"north": 10, "east": 25},
-    "requires": [["quest:headstone"]],
-    "receive": ["quest:headstone.+1"],
+    "requires": [["quest:rings.1"]],
+    "receive": ["misc:headstone 3"],
   },
   # {
   #   # "room": {"north": 11, "east": 20},
@@ -501,8 +502,8 @@ PROG: list[ProgressionNode] = [
   },
   {
     "room": {"north": 18, "east": 24},
-    "requires": [["quest:headstone"]],
-    "receive": ["quest:headstone.+1"],
+    "requires": [["quest:rings.1"]],
+    "receive": ["misc:headstone 4"],
   },
   # {
   #   # "room": {"north": 16, "east": 20},
@@ -773,8 +774,8 @@ PROG: list[ProgressionNode] = [
   },
   {
     "room": {"north": 16, "east": 16},
-    "requires": [["quest:headstone"]],
-    "receive": ["quest:headstone.+1"],
+    "requires": [["quest:rings.1"]],
+    "receive": ["misc:headstone 1"],
   },
   # {
   #   "room": {"north": 16, "east": 10},
@@ -788,10 +789,8 @@ PROG: list[ProgressionNode] = [
   },
   {
     "room": {"north": 18, "east": 13},
-    "requires": [
-      ["item:cotton thread#10", "item:shadow crest#5", "???", "permit:bomb"]
-    ],
-    "receive": ["misc:max bombs.+50"],
+    "requires": [["item:cotton thread#10", "item:shadow crest#5", "skill:reveal"]],
+    "receive": ["misc:max bombs.149"],
   },
   {"room": {"north": 19, "east": 12}, "info": "warp skill warp point"},
   {
@@ -844,11 +843,6 @@ PROG: list[ProgressionNode] = [
       ["permit:bomb", "entrance.south1", "item:key#1"],
     ],
     "receive": ["weapon:shadow staff"],
-  },
-  {
-    "room": {"north": 4, "east": 25},
-    "requires": [["??? sign debugger"]],
-    "receive": ["???"],
   },
   # {
   #   # "room": {"north": 3, "east": 20},
@@ -1514,7 +1508,7 @@ PROG: list[ProgressionNode] = [
   },
   {
     "room": {"north": 19, "east": 23},
-    "requires": [["loot:bear tooth#15", "quest:gTree.3"]],
+    "requires": [["item:bear tooth#15", "quest:gTree.3"]],
     "receive": ["quest:gTree.4"],
   },
   {
@@ -1565,7 +1559,7 @@ PROG: list[ProgressionNode] = [
   },
   {
     "room": {"north": 21, "east": 21},
-    "requires": [["food:hony#5", "loot:venom#1"]],
+    "requires": [["food:honey#5", "item:venom#1"]],
     "receive": ["skill:craft"],
   },
   {
@@ -1645,7 +1639,7 @@ at Jh.onKeyDown (http://127.0.0.1:1533/MathQuest/MathQuest.js:99147:18)
   },
   {
     "room": {"north": 12, "east": 9},
-    "requires": [["quest:gTree.14", "loot:sClaw#7", "loot:cFang#5"]],
+    "requires": [["quest:gTree.14", "item:scorpiion claw#7", "item:cobra fang#5"]],
     "receive": ["quest:gTree.15", "misc:fire crystal"],
   },
   {
@@ -1695,7 +1689,7 @@ MathQuest.js:42550 add listeners""",
   },
   {
     "room": {"north": 6, "east": 23},
-    "requires": [["state:lit torch 2", "state:lit torch 1"]],
+    "requires": [[]],
     "receive": [],
     "info": "how show the warp requiring this",
   },
@@ -1796,16 +1790,23 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 16, "east": 21},
     "requires": [["skill:dig", "quest:rings.1"]],
-    "receive": ["item:ring health"],
+    "receive": ["item:ring of health"],
   },
   {
     "room": {"north": 14, "east": 22},
-    "requires": [["item:ring of gold", "item:ring health", "quest:rings.1"]],
+    "requires": [["item:ring of gold", "item:ring of health", "quest:rings.1"]],
     "receive": ["quest:rings.3"],
   },
   {
     "room": {"north": 14, "east": 22},
-    "requires": [["item:ring of gold", "item:ring health", "item:ring evasion", "quest:rings.1"]],
+    "requires": [
+      [
+        "item:ring of gold",
+        "item:ring of health",
+        "item:ring of evasion",
+        "quest:rings.1",
+      ]
+    ],
     "receive": ["quest:rings.4"],
   },
   {
@@ -1813,10 +1814,107 @@ MathQuest.js:42550 add listeners""",
     "requires": [["quest:rings.1", "entrance.south0", "permit:bomb"]],
     "receive": ["ring.evasion"],
   },
+
   {
     "room": {"north": 20, "east": 20},
     "requires": [[]],
-    "receive": ["skill:dig"],
-    "info":"can be got anywhere"
+    "receive": ["item:cotton thread", "item:shadow crest", "item:orc coin"],
+    # TODO sort mob drops
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      [
+        "quest:warp.1",
+        "misc:headstone 1",
+        "misc:headstone 2",
+        "misc:headstone 3",
+        "misc:headstone 4",
+      ]
+    ],
+    "receive": ["quest:warp.2", "skill:warp"],
+  },
+  {
+    "room": {"north": 13, "east": 21},
+    "requires": [["quest:bBomb.5"]],
+    "receive": ["quest:bBomb.6", "permit:volcano"],
+  },
+  {
+    "room": {"north": 17, "east": 17},
+    "requires": [["quest:bBomb.6"]],
+    "receive": ["quest:bBomb.7"],
+  },
+  {
+    "room": {"north": 20, "east": 18},
+    "requires": [["quest:bBomb.7"]],
+    "receive": ["quest:bBomb.8"],
+  },
+  {
+    "room": {"north": 13, "east": 21},
+    "requires": [["quest:bBomb.8"]],
+    "receive": ["quest:bBomb.9", "permit:bomb.2"],
+  },
+  {
+    "room": {"north": 19, "east": 20},
+    "requires": [["quest:pam.8"]],
+    "receive": ["quest:pam.9"],
+  },
+  {
+    "room": {"north": 18, "east": 19},
+    "requires": [["quest:seeds.1"]],
+    "receive": ["quest:seeds.2"],
+  },
+  {
+    "room": {"north": 18, "east": 19},
+    "requires": [["quest:seeds.2", "item:orc coin#20"]],
+    "receive": ["quest:seeds.3"],
+  },
+  {
+    "room": {"north": 9, "east": 22},
+    "requires": [["quest:seeds.3", "entrance.south0"]],
+    "receive": ["quest:seeds.4", "food:orange#10", "food:pepper#3"],
+  },
+  {
+    "room": {"north": 11, "east": 11},
+    "requires": [
+      ["quest:rings.4", "entrance.north0"],
+      ["quest:rings.4", "entrance.west0"],
+    ],
+    "receive": ["quest:rings.5"],
+  },
+  {
+    "room": {"north": 11, "east": 11},
+    "requires": [
+      ["quest:rings.5"],
+    ],
+    "receive": ["quest:rings.6", "item:ring of poison"],
+    "info": "can be anywhere in desert but this loc required for .5 so best to put it here",
+  },
+  {
+    "room": {"north": 14, "east": 22},
+    "requires": [
+      [
+        "item:ring of gold",
+        "item:ring of health",
+        "item:ring of evasion",
+        "item:ring of poison",
+        "quest:rings.1",
+      ]
+    ],
+    "receive": ["quest:rings.7"],
+  },
+  {
+    "room": {"north": 16, "east": 15},
+    "requires": [["quest:pam.9", "skill:dig"]],
+    "receive": ["quest:pam.10"],
+  },
+  {
+    "room": {"north": 19, "east": 20},
+    "requires": [["quest:pam.10"]],
+    "receive": ["quest:pam.11", "food:peper#5", "food:orange#20"],
+  },{
+      "room": {"north": 15, "east": 16},
+      "requires": [["quest:rings.7", "permit:bomb"]],
+      "receive": ["quest:rings.8"]
   },
 ]
