@@ -3797,6 +3797,16 @@
         "mechanism": "edge",
         "direction": "south",
         "requires": []
+      },
+      {
+        "toRoom": "17.1_19",
+        "exitId": "door:s:15_17_17.1_19",
+        "viaExitId": "door:s:17.1_19_15_17",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
       }
     ],
     "15_18": [
@@ -6623,6 +6633,16 @@
         "mechanism": "edge",
         "direction": "west",
         "requires": []
+      },
+      {
+        "toRoom": "11_21",
+        "exitId": "door:s:12_21_11_21",
+        "viaExitId": "door:s:11_21_12_21",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
       }
     ],
     "21_9": [
@@ -7047,6 +7067,16 @@
         "mechanism": "edge",
         "direction": "east",
         "requires": []
+      },
+      {
+        "toRoom": "17.1_19",
+        "exitId": "door:s:17_19_17.1_19",
+        "viaExitId": "door:s:17.1_19_17_19",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
       }
     ],
     "17_21": [
@@ -7152,6 +7182,40 @@
         "toRoom": "10_21",
         "exitId": "door:stairsDown:10.1_21_10_21",
         "viaExitId": "door:stairsDown:10_21_10.1_21",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
+      }
+    ],
+    "11_21": [
+      {
+        "toRoom": "12_21",
+        "exitId": "door:s:11_21_12_21",
+        "viaExitId": "door:s:12_21_11_21",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
+      }
+    ],
+    "17.1_19": [
+      {
+        "toRoom": "17_19",
+        "exitId": "door:s:17.1_19_17_19",
+        "viaExitId": "door:s:17_19_17.1_19",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
+      },
+      {
+        "toRoom": "15_17",
+        "exitId": "door:s:17.1_19_15_17",
+        "viaExitId": "door:s:15_17_17.1_19",
         "mechanism": "object",
         "direction": null,
         "requires": [

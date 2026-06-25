@@ -14730,6 +14730,126 @@
       ],
       "fromExitId": "door:ss:9_21_9_22",
       "toExitId": "door:stairsDown:9_22_9_21"
+    },
+    {
+      "originNorth": 12,
+      "originEast": 21,
+      "vanillaDestNorth": 11,
+      "vanillaDestEast": 21,
+      "newDestNorth": 11,
+      "newDestEast": 21,
+      "newX": 457,
+      "newY": 147,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:s:12_21_11_21",
+      "toExitId": "door:s:11_21_12_21"
+    },
+    {
+      "originNorth": 11,
+      "originEast": 21,
+      "vanillaDestNorth": 12,
+      "vanillaDestEast": 21,
+      "newDestNorth": 12,
+      "newDestEast": 21,
+      "newX": 483,
+      "newY": 384,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:s:11_21_12_21",
+      "toExitId": "door:s:12_21_11_21"
+    },
+    {
+      "originNorth": 17,
+      "originEast": 19,
+      "vanillaDestNorth": 17.1,
+      "vanillaDestEast": 19,
+      "newDestNorth": 17.1,
+      "newDestEast": 19,
+      "newX": 541,
+      "newY": 133,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:s:17_19_17.1_19",
+      "toExitId": "door:s:17.1_19_17_19"
+    },
+    {
+      "originNorth": 17.1,
+      "originEast": 19,
+      "vanillaDestNorth": 17,
+      "vanillaDestEast": 19,
+      "newDestNorth": 17,
+      "newDestEast": 19,
+      "newX": 69,
+      "newY": 500,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:s:17.1_19_17_19",
+      "toExitId": "door:s:17_19_17.1_19"
+    },
+    {
+      "originNorth": 17.1,
+      "originEast": 19,
+      "vanillaDestNorth": 15,
+      "vanillaDestEast": 17,
+      "newDestNorth": 15,
+      "newDestEast": 17,
+      "newX": 557,
+      "newY": 253,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:s:17.1_19_15_17",
+      "toExitId": "door:s:15_17_17.1_19"
+    },
+    {
+      "originNorth": 15,
+      "originEast": 17,
+      "vanillaDestNorth": 17.1,
+      "vanillaDestEast": 19,
+      "newDestNorth": 17.1,
+      "newDestEast": 19,
+      "newX": 131,
+      "newY": 400,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:s:15_17_17.1_19",
+      "toExitId": "door:s:17.1_19_15_17"
     }
   ]
 }
