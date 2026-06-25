@@ -2588,7 +2588,6 @@ GEOM: list[ExitBase] = [
       # "east": [{"top": 4, "bottom": 4}],
       "north": [{"left": 3, "right": 4}],
     },
-    "err": True,
   },
   {
     "north": 17,

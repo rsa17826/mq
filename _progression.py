@@ -23,6 +23,7 @@ PROG: list[ProgressionNode] = [
       "skill:flee",
       "skill:swap",
       "skill:firewall",
+      "skill:firewall.1",
       "skill:halo",
       "item:aurastone",
       "item:key",
@@ -34,6 +35,7 @@ PROG: list[ProgressionNode] = [
   manager.correct - manager.wrong > 149 = flee
   manager.correct - manager.wrong > 300 = swap
   manager.correct - manager.wrong > 500 = firewall
+    can be leveled up without getting it first and doesn't give it to do so so the levels are separate
   manager.correct - manager.wrong > 800 = halo
   """,
   },
