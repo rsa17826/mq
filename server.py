@@ -95,11 +95,9 @@ class CachedCGIHTTPRequestHandler(CGIHTTPRequestHandler):
     normalized_path = self.translate_path(self.path)
     relative_path = os.path.relpath(normalized_path, os.getcwd())
 
-    is_image = relative_path.lower().endswith((".jpg", ".jpeg", ".png"))
-
     if (
       relative_path.startswith("map") or relative_path.startswith("mapimgs")
-    ) and is_image:
+    ) or relative_path.lower().split("?")[0].endswith((".jpg", ".jpeg", ".png", ".mp3", ".ogg", ".eot", ".svg", ".ttf")):
       self.send_header("Cache-Control", "public, max-age=31536000, immutable")
 
     super().end_headers()

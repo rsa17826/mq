@@ -4419,6 +4419,16 @@
         "mechanism": "edge",
         "direction": "south",
         "requires": []
+      },
+      {
+        "toRoom": "19_16",
+        "exitId": "door:a:18_16_19_16",
+        "viaExitId": "door:a:18_16_19_16",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
       }
     ],
     "18_17": [
@@ -4619,6 +4629,16 @@
         "mechanism": "edge",
         "direction": "south",
         "requires": []
+      },
+      {
+        "toRoom": "19_15",
+        "exitId": "door::19_16_19_15",
+        "viaExitId": "door::19_15_19_16",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
       }
     ],
     "19_17": [
@@ -6666,6 +6686,16 @@
         "mechanism": "edge",
         "direction": "north",
         "requires": []
+      },
+      {
+        "toRoom": "19_16",
+        "exitId": "door::19_15_19_16",
+        "viaExitId": "door::19_16_19_15",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
       }
     ],
     "12_21": [

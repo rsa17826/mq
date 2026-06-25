@@ -2971,7 +2971,7 @@ GEOM: list[ExitBase] = [
     "east": 16,
     "exits": {
       "west": [],
-      "south": [{"left": 6, "right": 7}],
+      "south": [{"left": 6, "right": 7, "newY":200}],
       "east": [],
       "north": [],
     },

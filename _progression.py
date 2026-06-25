@@ -20,11 +20,22 @@ PROG: list[ProgressionNode] = [
     "receive": [
       "skill:dig",
       "skill:kick",
+      "skill:flee",
+      "skill:swap",
+      "skill:firewall",
+      "skill:halo",
       "item:aurastone",
       "item:key",
       "item:gold",
     ],
-    "info": "can be got anywhere",
+    "info": """can be got anywhere
+  manager.correct - manager.wrong > 9 = dig
+  manager.correct - manager.wrong > 49 = kick
+  manager.correct - manager.wrong > 149 = flee
+  manager.correct - manager.wrong > 300 = swap
+  manager.correct - manager.wrong > 500 = firewall
+  manager.correct - manager.wrong > 800 = halo
+  """,
   },
   {"room": {"north": 20, "east": 20}, "receive": ["spawnpoint"]},
   {
