@@ -28,16 +28,48 @@ PROG: list[ProgressionNode] = [
       "item:aurastone",
       "item:key",
       "item:gold",
+      "item:dragon scale",
     ],
     "info": """can be got anywhere
-  manager.correct - manager.wrong > 9 = dig
-  manager.correct - manager.wrong > 49 = kick
-  manager.correct - manager.wrong > 149 = flee
-  manager.correct - manager.wrong > 300 = swap
-  manager.correct - manager.wrong > 500 = firewall
-    can be leveled up without getting it first and doesn't give it to do so so the levels are separate
-  manager.correct - manager.wrong > 800 = halo
-  """,
+manager.correct - manager.wrong > 9 = dig
+manager.correct - manager.wrong > 49 = kick
+manager.correct - manager.wrong > 149 = flee
+manager.correct - manager.wrong > 300 = swap
+manager.correct - manager.wrong > 500 = firewall
+  can be leveled up without getting it first and doesn't give it to do so so the levels are separate
+manager.correct - manager.wrong > 800 = halo
+""",
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [[]],
+    "receive": [
+      "item:bear tooth",
+      "item:boar tusk",
+      "item:cobra fang",
+      "item:emerald",
+      "item:fire crystal",
+      "item:funny bone",
+      "item:gator skin",
+      "item:golden feather",
+      "item:kings crest",
+      "item:mage staff",
+      "item:mages hat",
+      "item:minotour horn",
+      "item:ring of evasion",
+      "item:scorpiion claw",
+      "item:shark tooth",
+      "item:slamstone",
+      "item:steel fragment",
+      "item:tentacle",
+      "item:troll wristband",
+      "item:venom",
+      "item:viking horn",
+      "item:void ash",
+      "item:wolf pelt",
+    ],
+    "info": """add to correct locations later
+""",
   },
   {"room": {"north": 20, "east": 20}, "receive": ["spawnpoint"]},
   {
@@ -171,14 +203,6 @@ PROG: list[ProgressionNode] = [
     "room": {"north": 15, "east": 16},
     "requires": [["permit:bomb", "???"]],
     "receive": ["magic:ice"],
-  },
-  {
-    "room": {"north": 13, "east": 14},
-    "requires": [
-      ["magic:fire.3?", "quest:?", "entrance.east0"],
-      ["magic:fire.3?", "quest:?", "entrance.north0", "permit:bomb"],
-    ],
-    "receive": ["???"],
   },
   {
     "room": {"north": 13, "east": 13},
@@ -435,7 +459,7 @@ PROG: list[ProgressionNode] = [
   # {
   #   "room": {"north": 14, "east": 22},
   #   "requires": [["skill:dig"]],
-  #   "receive": ["ring:gold", "quest:rings.?"],
+  #   "receive": ["item:ring of gold", "quest:rings.?"],
   # },
   {
     "room": {"north": 11, "east": 21},
@@ -546,7 +570,9 @@ PROG: list[ProgressionNode] = [
   },
   {
     "room": {"north": 21, "east": 22},
-    "requires": [["ring:gold", "item:troll wristband#5", "item:gator skin#2"]],
+    "requires": [
+      ["item:ring of gold", "item:troll wristband#5", "item:gator skin#2"]
+    ],
     "receive": ["craft.ring of gold"],
   },
   {
@@ -718,47 +744,47 @@ PROG: list[ProgressionNode] = [
   {
     "room": {"north": 20, "east": 15},
     "requires": [["skill:firewall.1", "item:dragon scale#5", "item:medallion#3"]],
-    "receive": ["skill.firewall.2"],
+    "receive": ["skill:firewall.2"],
   },
   {
     "room": {"north": 20, "east": 15},
     "requires": [["skill:firewall.2", "item:dragon scale#10", "item:medallion#6"]],
-    "receive": ["skill.firewall.3"],
+    "receive": ["skill:firewall.3"],
   },
   {
     "room": {"north": 20, "east": 15},
     "requires": [["skill:firewall.3", "item:dragon scale#15", "item:medallion#9"]],
-    "receive": ["skill.firewall.4"],
+    "receive": ["skill:firewall.4"],
   },
   {
     "room": {"north": 20, "east": 15},
     "requires": [["skill:firewall.4", "item:dragon scale#20", "item:medallion#12"]],
-    "receive": ["skill.firewall.5"],
+    "receive": ["skill:firewall.5"],
   },
   {
     "room": {"north": 20, "east": 15},
     "requires": [["skill:firewall.5", "item:dragon scale#25", "item:medallion#15"]],
-    "receive": ["skill.firewall.6"],
+    "receive": ["skill:firewall.6"],
   },
   {
     "room": {"north": 20, "east": 15},
     "requires": [["skill:firewall.6", "item:dragon scale#30", "item:medallion#18"]],
-    "receive": ["skill.firewall.7"],
+    "receive": ["skill:firewall.7"],
   },
   {
     "room": {"north": 20, "east": 15},
     "requires": [["skill:firewall.7", "item:dragon scale#35", "item:medallion#21"]],
-    "receive": ["skill.firewall.8"],
+    "receive": ["skill:firewall.8"],
   },
   {
     "room": {"north": 20, "east": 15},
     "requires": [["skill:firewall.8", "item:dragon scale#40", "item:medallion#24"]],
-    "receive": ["skill.firewall.9"],
+    "receive": ["skill:firewall.9"],
   },
   {
     "room": {"north": 20, "east": 15},
     "requires": [["skill:firewall.9", "item:dragon scale#45", "item:medallion#27"]],
-    "receive": ["skill.firewall.10"],
+    "receive": ["skill:firewall.10"],
   },
   {
     "room": {"north": 19, "east": 15},
@@ -1989,6 +2015,20 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 6, "east": 12},
     "requires": [["quest:rings.12", "quest:geo.5", "item:gold#1000"]],
-    "receive": ["quest:rings.13"],
+    "receive": ["quest:rings.13", "misc:geomana"],
+  },
+  {
+    "room": {"north": 19, "east": 16},
+    "requires": [[]],
+    "receive": ["item:medallion"],
+    "info": "add reqs later",
+  },
+  {
+    "room": {"north": 13, "east": 14},
+    "requires": [
+      ["magic:fire.3?", "quest:?", "entrance.east0"],
+      ["magic:fire.3?", "quest:?", "entrance.north0", "permit:bomb"],
+    ],
+    "receive": ["???"],
   },
 ]

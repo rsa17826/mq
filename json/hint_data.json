@@ -7516,7 +7516,39 @@
         "skill:halo",
         "item:aurastone",
         "item:key",
-        "item:gold"
+        "item:gold",
+        "item:dragon scale"
+      ]
+    },
+    {
+      "room": "20_20",
+      "requires": [
+        []
+      ],
+      "receive": [
+        "item:bear tooth",
+        "item:boar tusk",
+        "item:cobra fang",
+        "item:emerald",
+        "item:fire crystal",
+        "item:funny bone",
+        "item:gator skin",
+        "item:golden feather",
+        "item:kings crest",
+        "item:mage staff",
+        "item:mages hat",
+        "item:minotour horn",
+        "item:ring of evasion",
+        "item:scorpiion claw",
+        "item:shark tooth",
+        "item:slamstone",
+        "item:steel fragment",
+        "item:tentacle",
+        "item:troll wristband",
+        "item:venom",
+        "item:viking horn",
+        "item:void ash",
+        "item:wolf pelt"
       ]
     },
     {
@@ -7823,25 +7855,6 @@
       ],
       "receive": [
         "magic:ice"
-      ]
-    },
-    {
-      "room": "13_14",
-      "requires": [
-        [
-          "magic:fire.3?",
-          "quest:?",
-          "entrance.east0"
-        ],
-        [
-          "magic:fire.3?",
-          "quest:?",
-          "entrance.north0",
-          "permit:bomb"
-        ]
-      ],
-      "receive": [
-        "???"
       ]
     },
     {
@@ -8645,7 +8658,7 @@
       "room": "21_22",
       "requires": [
         [
-          "ring:gold",
+          "item:ring of gold",
           "item:troll wristband#5",
           "item:gator skin#2"
         ]
@@ -8832,7 +8845,7 @@
         ]
       ],
       "receive": [
-        "skill.firewall.2"
+        "skill:firewall.2"
       ]
     },
     {
@@ -8845,7 +8858,7 @@
         ]
       ],
       "receive": [
-        "skill.firewall.3"
+        "skill:firewall.3"
       ]
     },
     {
@@ -8858,7 +8871,7 @@
         ]
       ],
       "receive": [
-        "skill.firewall.4"
+        "skill:firewall.4"
       ]
     },
     {
@@ -8871,7 +8884,7 @@
         ]
       ],
       "receive": [
-        "skill.firewall.5"
+        "skill:firewall.5"
       ]
     },
     {
@@ -8884,7 +8897,7 @@
         ]
       ],
       "receive": [
-        "skill.firewall.6"
+        "skill:firewall.6"
       ]
     },
     {
@@ -8897,7 +8910,7 @@
         ]
       ],
       "receive": [
-        "skill.firewall.7"
+        "skill:firewall.7"
       ]
     },
     {
@@ -8910,7 +8923,7 @@
         ]
       ],
       "receive": [
-        "skill.firewall.8"
+        "skill:firewall.8"
       ]
     },
     {
@@ -8923,7 +8936,7 @@
         ]
       ],
       "receive": [
-        "skill.firewall.9"
+        "skill:firewall.9"
       ]
     },
     {
@@ -8936,7 +8949,7 @@
         ]
       ],
       "receive": [
-        "skill.firewall.10"
+        "skill:firewall.10"
       ]
     },
     {
@@ -10258,7 +10271,36 @@
         ]
       ],
       "receive": [
-        "quest:rings.13"
+        "quest:rings.13",
+        "misc:geomana"
+      ]
+    },
+    {
+      "room": "19_16",
+      "requires": [
+        []
+      ],
+      "receive": [
+        "item:medallion"
+      ]
+    },
+    {
+      "room": "13_14",
+      "requires": [
+        [
+          "magic:fire.3?",
+          "quest:?",
+          "entrance.east0"
+        ],
+        [
+          "magic:fire.3?",
+          "quest:?",
+          "entrance.north0",
+          "permit:bomb"
+        ]
+      ],
+      "receive": [
+        "???"
       ]
     }
   ],
@@ -10295,6 +10337,42 @@
       {
         "room": "20_20",
         "raw": "skill:firewall.1"
+      },
+      {
+        "room": "20_15",
+        "raw": "skill:firewall.2"
+      },
+      {
+        "room": "20_15",
+        "raw": "skill:firewall.3"
+      },
+      {
+        "room": "20_15",
+        "raw": "skill:firewall.4"
+      },
+      {
+        "room": "20_15",
+        "raw": "skill:firewall.5"
+      },
+      {
+        "room": "20_15",
+        "raw": "skill:firewall.6"
+      },
+      {
+        "room": "20_15",
+        "raw": "skill:firewall.7"
+      },
+      {
+        "room": "20_15",
+        "raw": "skill:firewall.8"
+      },
+      {
+        "room": "20_15",
+        "raw": "skill:firewall.9"
+      },
+      {
+        "room": "20_15",
+        "raw": "skill:firewall.10"
       }
     ],
     "skill:halo": [
@@ -10411,6 +10489,150 @@
       {
         "room": "14_18",
         "raw": "item:gold#1000"
+      }
+    ],
+    "item:dragon scale": [
+      {
+        "room": "20_20",
+        "raw": "item:dragon scale"
+      }
+    ],
+    "item:bear tooth": [
+      {
+        "room": "20_20",
+        "raw": "item:bear tooth"
+      }
+    ],
+    "item:boar tusk": [
+      {
+        "room": "20_20",
+        "raw": "item:boar tusk"
+      }
+    ],
+    "item:cobra fang": [
+      {
+        "room": "20_20",
+        "raw": "item:cobra fang"
+      }
+    ],
+    "item:emerald": [
+      {
+        "room": "20_20",
+        "raw": "item:emerald"
+      }
+    ],
+    "item:fire crystal": [
+      {
+        "room": "20_20",
+        "raw": "item:fire crystal"
+      }
+    ],
+    "item:funny bone": [
+      {
+        "room": "20_20",
+        "raw": "item:funny bone"
+      }
+    ],
+    "item:gator skin": [
+      {
+        "room": "20_20",
+        "raw": "item:gator skin"
+      }
+    ],
+    "item:golden feather": [
+      {
+        "room": "20_20",
+        "raw": "item:golden feather"
+      }
+    ],
+    "item:kings crest": [
+      {
+        "room": "20_20",
+        "raw": "item:kings crest"
+      }
+    ],
+    "item:mage staff": [
+      {
+        "room": "20_20",
+        "raw": "item:mage staff"
+      }
+    ],
+    "item:mages hat": [
+      {
+        "room": "20_20",
+        "raw": "item:mages hat"
+      }
+    ],
+    "item:minotour horn": [
+      {
+        "room": "20_20",
+        "raw": "item:minotour horn"
+      }
+    ],
+    "item:ring of evasion": [
+      {
+        "room": "20_20",
+        "raw": "item:ring of evasion"
+      }
+    ],
+    "item:scorpiion claw": [
+      {
+        "room": "20_20",
+        "raw": "item:scorpiion claw"
+      }
+    ],
+    "item:shark tooth": [
+      {
+        "room": "20_20",
+        "raw": "item:shark tooth"
+      }
+    ],
+    "item:slamstone": [
+      {
+        "room": "20_20",
+        "raw": "item:slamstone"
+      }
+    ],
+    "item:steel fragment": [
+      {
+        "room": "20_20",
+        "raw": "item:steel fragment"
+      }
+    ],
+    "item:tentacle": [
+      {
+        "room": "20_20",
+        "raw": "item:tentacle"
+      }
+    ],
+    "item:troll wristband": [
+      {
+        "room": "20_20",
+        "raw": "item:troll wristband"
+      }
+    ],
+    "item:venom": [
+      {
+        "room": "20_20",
+        "raw": "item:venom"
+      }
+    ],
+    "item:viking horn": [
+      {
+        "room": "20_20",
+        "raw": "item:viking horn"
+      }
+    ],
+    "item:void ash": [
+      {
+        "room": "20_20",
+        "raw": "item:void ash"
+      }
+    ],
+    "item:wolf pelt": [
+      {
+        "room": "20_20",
+        "raw": "item:wolf pelt"
       }
     ],
     "flag:spawnpoint": [
@@ -10633,16 +10855,6 @@
       {
         "room": "15_16",
         "raw": "magic:ice"
-      }
-    ],
-    "flag:???": [
-      {
-        "room": "13_14",
-        "raw": "???"
-      },
-      {
-        "room": "13_26",
-        "raw": "???"
       }
     ],
     "flag:armour:alpha armour.+inf": [
@@ -10935,6 +11147,16 @@
         "raw": "misc:three part code part 3"
       }
     ],
+    "flag:???": [
+      {
+        "room": "13_26",
+        "raw": "???"
+      },
+      {
+        "room": "13_14",
+        "raw": "???"
+      }
+    ],
     "misc:stomp code": [
       {
         "room": "11_26",
@@ -11129,60 +11351,6 @@
       {
         "room": "6_12",
         "raw": "quest:rings.13"
-      }
-    ],
-    "flag:skill.firewall.2": [
-      {
-        "room": "20_15",
-        "raw": "skill.firewall.2"
-      }
-    ],
-    "flag:skill.firewall.3": [
-      {
-        "room": "20_15",
-        "raw": "skill.firewall.3"
-      }
-    ],
-    "flag:skill.firewall.4": [
-      {
-        "room": "20_15",
-        "raw": "skill.firewall.4"
-      }
-    ],
-    "flag:skill.firewall.5": [
-      {
-        "room": "20_15",
-        "raw": "skill.firewall.5"
-      }
-    ],
-    "flag:skill.firewall.6": [
-      {
-        "room": "20_15",
-        "raw": "skill.firewall.6"
-      }
-    ],
-    "flag:skill.firewall.7": [
-      {
-        "room": "20_15",
-        "raw": "skill.firewall.7"
-      }
-    ],
-    "flag:skill.firewall.8": [
-      {
-        "room": "20_15",
-        "raw": "skill.firewall.8"
-      }
-    ],
-    "flag:skill.firewall.9": [
-      {
-        "room": "20_15",
-        "raw": "skill.firewall.9"
-      }
-    ],
-    "flag:skill.firewall.10": [
-      {
-        "room": "20_15",
-        "raw": "skill.firewall.10"
       }
     ],
     "skill:hint": [
@@ -11683,6 +11851,18 @@
       {
         "room": "6_12",
         "raw": "skill:convert"
+      }
+    ],
+    "misc:geomana": [
+      {
+        "room": "6_12",
+        "raw": "misc:geomana"
+      }
+    ],
+    "item:medallion": [
+      {
+        "room": "19_16",
+        "raw": "item:medallion"
       }
     ]
   },

@@ -6854,7 +6854,8 @@ EXITS = {
       "origin": {"north": 22, "east": 13},
       "dest": {"north": 22, "east": 10},
       "dest_x": 361,
-      "dest_y": 217,      "one_way": True,
+      "dest_y": 217,
+      "one_way": True,
     },
     {
       "id": "door:warp:22_11_21_13",
