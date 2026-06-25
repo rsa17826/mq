@@ -2635,9 +2635,9 @@
         ]
       },
       {
-        "toRoom": "10.1_21",
-        "exitId": "door:s:9_22_10.1_21",
-        "viaExitId": "door:s:9_22_10.1_21",
+        "toRoom": "9_21",
+        "exitId": "door:s:9_22_9_21",
+        "viaExitId": "door:ss:9_21_9_22",
         "mechanism": "object",
         "direction": null,
         "requires": [

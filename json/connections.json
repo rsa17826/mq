@@ -14701,12 +14701,12 @@
     {
       "originNorth": 9,
       "originEast": 22,
-      "vanillaDestNorth": 10.1,
+      "vanillaDestNorth": 9,
       "vanillaDestEast": 21,
-      "newDestNorth": 10.1,
+      "newDestNorth": 9,
       "newDestEast": 21,
-      "newX": 335,
-      "newY": 139,
+      "newX": 465,
+      "newY": 80,
       "xIsEven": 0,
       "yIsEven": 0,
       "srcCoord": null,
@@ -14715,8 +14715,8 @@
       "requires": [
         []
       ],
-      "fromExitId": "door:s:9_22_10.1_21",
-      "toExitId": "door:s:9_22_10.1_21"
+      "fromExitId": "door:s:9_22_9_21",
+      "toExitId": "door:ss:9_21_9_22"
     },
     {
       "originNorth": 9,

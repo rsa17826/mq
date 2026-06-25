@@ -138,6 +138,9 @@ def init(src):
       __createObject.loca = function () {{
         if (erInTransition) {{
           var key = erOrigin.north + "_" + erOrigin.east + "_" + erNorth + "_" + erEast
+          if (key=="9_22_10.1_21"){{
+            key = "9_22_9_21"
+          }}
           if (erOrigin.north ==21&& erOrigin.east==21&&manager.char[0].get_x()==-1){{
             manager.char[0].set_x(50)
           }}
@@ -220,9 +223,6 @@ def init(src):
               }}
             }}
             // TODO
-            if (key=="9_22_10.1_21"){{
-              conn = {{...conn, newNorth:9,newEast:21,newX:384,newY:69}}
-            }}
             console.log("[ER DEBUG] Success! Redirecting room target to:", conn.newNorth + "," + conn.newEast, "Placing character at:", conn.newX + "," + conn.newY, conn.xIsEven, conn.yIsEven, conn);
             
             // Set safety lock flag to prevent our proxy properties from creating bad transition tracking chains
