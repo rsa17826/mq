@@ -893,9 +893,9 @@
         "requires": []
       },
       {
-        "toRoom": "23_13",
+        "toRoom": "22_13",
         "exitId": "door:warp:22_10_22_13",
-        "viaExitId": "door:warp:22_10_22_13",
+        "viaExitId": "door:warp:22_13_22_10",
         "mechanism": "object",
         "direction": null,
         "requires": [
@@ -6874,7 +6874,7 @@
       {
         "toRoom": "22_10",
         "exitId": "door:warp:22_13_22_10",
-        "viaExitId": "door:warp:22_13_22_10",
+        "viaExitId": "door:warp:22_10_22_13",
         "mechanism": "object",
         "direction": null,
         "requires": [
