@@ -2027,6 +2027,16 @@
         "mechanism": "edge",
         "direction": "north",
         "requires": []
+      },
+      {
+        "toRoom": "17_14",
+        "exitId": "door:s:18_14_17_14",
+        "viaExitId": "door:s:17_14_18_14",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
       }
     ],
     "4_23": [
@@ -4187,6 +4197,16 @@
         "mechanism": "edge",
         "direction": "south",
         "requires": []
+      },
+      {
+        "toRoom": "18_14",
+        "exitId": "door:s:17_14_18_14",
+        "viaExitId": "door:s:18_14_17_14",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
       }
     ],
     "17_15": [
@@ -4391,6 +4411,16 @@
         "mechanism": "edge",
         "direction": "west",
         "requires": []
+      },
+      {
+        "toRoom": "18_12",
+        "exitId": "door:s:18_11_18_12",
+        "viaExitId": "door:gravestone:18_12_18_11",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
       }
     ],
     "18_15": [
@@ -6606,6 +6636,18 @@
         "mechanism": "edge",
         "direction": "north",
         "requires": []
+      },
+      {
+        "toRoom": "18_11",
+        "exitId": "door:gravestone:18_12_18_11",
+        "viaExitId": "door:s:18_11_18_12",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          [
+            "permit:bomb"
+          ]
+        ]
       }
     ],
     "18_13": [
@@ -7375,6 +7417,11 @@
       "receive": [
         "skill:dig",
         "skill:kick",
+        "skill:flee",
+        "skill:swap",
+        "skill:firewall",
+        "skill:firewall.1",
+        "skill:halo",
         "item:aurastone",
         "item:key",
         "item:gold"
@@ -10134,6 +10181,34 @@
       {
         "room": "20_20",
         "raw": "skill:kick"
+      }
+    ],
+    "skill:flee": [
+      {
+        "room": "20_20",
+        "raw": "skill:flee"
+      }
+    ],
+    "skill:swap": [
+      {
+        "room": "20_20",
+        "raw": "skill:swap"
+      }
+    ],
+    "skill:firewall": [
+      {
+        "room": "20_20",
+        "raw": "skill:firewall"
+      },
+      {
+        "room": "20_20",
+        "raw": "skill:firewall.1"
+      }
+    ],
+    "skill:halo": [
+      {
+        "room": "20_20",
+        "raw": "skill:halo"
       }
     ],
     "item:aurastone": [

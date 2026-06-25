@@ -6821,6 +6821,16 @@ EXITS = {
     "dest_x": 589,
     "dest_y": 389,
     "one_way": True,
+    },{
+    "id": "door:s:18_11_18_12",
+    "mechanism": "object",
+    "trigger_object": "s",
+    "requires": [[]],
+    "origin": {"north": 18, "east":11},
+    "dest": {"north": 18, "east": 12},
+    "dest_x": 547,
+    "dest_y": 161,
+    "one_way": True,
     },
   ],
   "known_gaps": [

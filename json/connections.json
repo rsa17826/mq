@@ -15106,6 +15106,88 @@
       ],
       "fromExitId": "door::19_15_19_16",
       "toExitId": "door::19_16_19_15"
+    },
+    {
+      "originNorth": 18,
+      "originEast": 12,
+      "vanillaDestNorth": 18,
+      "vanillaDestEast": 11,
+      "newDestNorth": 18,
+      "newDestEast": 11,
+      "newX": 547,
+      "newY": 161,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        [
+          "permit:bomb"
+        ]
+      ],
+      "fromExitId": "door:gravestone:18_12_18_11",
+      "toExitId": "door:s:18_11_18_12"
+    },
+    {
+      "originNorth": 17,
+      "originEast": 14,
+      "vanillaDestNorth": 18,
+      "vanillaDestEast": 14,
+      "newDestNorth": 18,
+      "newDestEast": 14,
+      "newX": 589,
+      "newY": 389,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:s:17_14_18_14",
+      "toExitId": "door:s:18_14_17_14"
+    },
+    {
+      "originNorth": 18,
+      "originEast": 14,
+      "vanillaDestNorth": 17,
+      "vanillaDestEast": 14,
+      "newDestNorth": 17,
+      "newDestEast": 14,
+      "newX": 555,
+      "newY": 131,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:s:18_14_17_14",
+      "toExitId": "door:s:17_14_18_14"
+    },
+    {
+      "originNorth": 18,
+      "originEast": 11,
+      "vanillaDestNorth": 18,
+      "vanillaDestEast": 12,
+      "newDestNorth": 18,
+      "newDestEast": 12,
+      "newX": 386,
+      "newY": 214,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:s:18_11_18_12",
+      "toExitId": "door:gravestone:18_12_18_11"
     }
   ]
 }
