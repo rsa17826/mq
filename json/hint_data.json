@@ -309,6 +309,16 @@
         "mechanism": "edge",
         "direction": "east",
         "requires": []
+      },
+      {
+        "toRoom": "100_100",
+        "exitId": "door:town:4_13_100_100",
+        "viaExitId": "door:town:4_13_100_100",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
       }
     ],
     "6_13": [
@@ -1941,6 +1951,16 @@
         "mechanism": "edge",
         "direction": "east",
         "requires": []
+      },
+      {
+        "toRoom": "200_200",
+        "exitId": "door:town:3_16_200_200",
+        "viaExitId": "door:town:3_16_200_200",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
       }
     ],
     "3_17": [
@@ -4819,6 +4839,16 @@
         "mechanism": "edge",
         "direction": "south",
         "requires": []
+      },
+      {
+        "toRoom": "21_12",
+        "exitId": "door:castle:20_12_21_12",
+        "viaExitId": "door:castle:20_12_21_12",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
       }
     ],
     "20_15": [
@@ -5553,6 +5583,16 @@
         "mechanism": "edge",
         "direction": "south",
         "requires": []
+      },
+      {
+        "toRoom": "300_300",
+        "exitId": "door:town:6_21_300_300",
+        "viaExitId": "door:town:6_21_300_300",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
       }
     ],
     "6_23": [
@@ -6910,6 +6950,16 @@
         "mechanism": "edge",
         "direction": "north",
         "requires": []
+      },
+      {
+        "toRoom": "201_200",
+        "exitId": "door:s:200_200_201_200",
+        "viaExitId": "door:s:201_200_200_200",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
       }
     ],
     "500_500": [
@@ -7492,6 +7542,18 @@
         "toRoom": "24_13",
         "exitId": "door:warp:23_10_24_13",
         "viaExitId": "door:warp:24_13_23_10",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
+      }
+    ],
+    "201_200": [
+      {
+        "toRoom": "200_200",
+        "exitId": "door:s:201_200_200_200",
+        "viaExitId": "door:s:200_200_201_200",
         "mechanism": "object",
         "direction": null,
         "requires": [

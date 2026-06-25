@@ -21,11 +21,13 @@ class DirNodeLR(TypedDict):
   top: int
   bottom: int
   newX: NotRequired[int]
+  newY: NotRequired[int]
 
 
 class DirNodeUD(TypedDict):
   left: int
   right: int
+  newX: NotRequired[int]
   newY: NotRequired[int]
 
 
@@ -2970,7 +2972,7 @@ GEOM: list[ExitBase] = [
     "east": 16,
     "exits": {
       "west": [],
-      "south": [{"left": 6, "right": 7, "newY":200}],
+      "south": [{"left": 6, "right": 7, "newY": 200}],
       "east": [],
       "north": [],
     },
@@ -3219,7 +3221,7 @@ GEOM: list[ExitBase] = [
     "east": 12,
     "exits": {
       "west": [{"top": 4, "bottom": 6}],
-      "south": [{"left": 6, "right": 7}],
+      "south": [{"left": 6, "right": 7, "newY": 172, "newX": 308}],
       "east": [{"top": 4, "bottom": 6}],
       "north": [],
     },
@@ -3503,7 +3505,7 @@ GEOM: list[ExitBase] = [
     "east": 100,
     "exits": {
       "west": [],
-      "south": [{"left": 1, "right": 12}],
+      "south": [{"left": 1, "right": 12, "newX": 260, "newY": 315}],
       "east": [],
       "north": [],
     },
@@ -3515,7 +3517,7 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [],
-      "north": [{"left": 4, "right": 9}],
+      "north": [{"left": 4, "right": 9, "newY": 204}],
     },
   },
   {
@@ -3537,7 +3539,7 @@ GEOM: list[ExitBase] = [
     "east": 300,
     "exits": {
       "west": [],
-      "south": [{"left": 1, "right": 12}],
+      "south": [{"left": 1, "right": 12, "newX": 337, "newY": 132}],
       "east": [],
       "north": [],
     },
@@ -3886,7 +3888,7 @@ GEOM: list[ExitBase] = [
   {
     "north": 10,
     "east": 10,
-    "areas": [
+     "areas": [
       {
         "reqs": [[]],
         "areas": [
@@ -3895,11 +3897,6 @@ GEOM: list[ExitBase] = [
         ],
       }
     ],
-    "exits": {"west": [], "south": [], "east": [], "north": []},
-  },
-  {
-    "north": 10,
-    "east": 10,
     "exits": {
       "west": [{"top": 0, "bottom": 5}, {"top": 7, "bottom": 10}],
       "south": [{"left": 0, "right": 12}],

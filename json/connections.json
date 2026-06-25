@@ -5588,8 +5588,8 @@
       "vanillaDestEast": 12,
       "newDestNorth": 20,
       "newDestEast": 12,
-      "newX": 329.64285714285717,
-      "newY": 509.09090909090907,
+      "newX": 308,
+      "newY": 172,
       "xIsEven": 25.357142857142858,
       "yIsEven": 0,
       "srcCoord": 329.64285714285717,
@@ -9765,7 +9765,7 @@
       "newDestNorth": 3,
       "newDestEast": 16,
       "newX": 329.64285714285717,
-      "newY": 0.0,
+      "newY": 204,
       "xIsEven": 25.357142857142858,
       "yIsEven": 0,
       "srcCoord": 329.64285714285717,
@@ -15368,6 +15368,126 @@
       ],
       "fromExitId": "door:warp:23_10_24_13",
       "toExitId": "door:warp:24_13_23_10"
+    },
+    {
+      "originNorth": 20,
+      "originEast": 12,
+      "vanillaDestNorth": 21,
+      "vanillaDestEast": 12,
+      "newDestNorth": 21,
+      "newDestEast": 12,
+      "newX": 332,
+      "newY": 500,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:castle:20_12_21_12",
+      "toExitId": "door:castle:20_12_21_12"
+    },
+    {
+      "originNorth": 4,
+      "originEast": 13,
+      "vanillaDestNorth": 100,
+      "vanillaDestEast": 100,
+      "newDestNorth": 100,
+      "newDestEast": 100,
+      "newX": 363,
+      "newY": 444,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:town:4_13_100_100",
+      "toExitId": "door:town:4_13_100_100"
+    },
+    {
+      "originNorth": 200,
+      "originEast": 200,
+      "vanillaDestNorth": 201,
+      "vanillaDestEast": 200,
+      "newDestNorth": 201,
+      "newDestEast": 200,
+      "newX": 301,
+      "newY": 426,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:s:200_200_201_200",
+      "toExitId": "door:s:201_200_200_200"
+    },
+    {
+      "originNorth": 201,
+      "originEast": 200,
+      "vanillaDestNorth": 200,
+      "vanillaDestEast": 200,
+      "newDestNorth": 200,
+      "newDestEast": 200,
+      "newX": 388,
+      "newY": 352,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:s:201_200_200_200",
+      "toExitId": "door:s:200_200_201_200"
+    },
+    {
+      "originNorth": 3,
+      "originEast": 16,
+      "vanillaDestNorth": 200,
+      "vanillaDestEast": 200,
+      "newDestNorth": 200,
+      "newDestEast": 200,
+      "newX": 341,
+      "newY": 6,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:town:3_16_200_200",
+      "toExitId": "door:town:3_16_200_200"
+    },
+    {
+      "originNorth": 6,
+      "originEast": 21,
+      "vanillaDestNorth": 300,
+      "vanillaDestEast": 300,
+      "newDestNorth": 300,
+      "newDestEast": 300,
+      "newX": 335,
+      "newY": 500,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:town:6_21_300_300",
+      "toExitId": "door:town:6_21_300_300"
     }
   ]
 }
