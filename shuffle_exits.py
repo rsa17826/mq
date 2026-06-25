@@ -6,6 +6,8 @@ Includes dead-end protection and safer inner-screen padding offsets.
 import json
 import random
 import sys, os
+
+
 def init():
   OUT_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -20,20 +22,21 @@ def init():
   BLOCK_W = 710 / 14 # 14 blocks horizontally (0-13)
   BLOCK_H = 560 / 11 # 11 blocks vertically (0-10)
 
-
   def load_room_geometry():
     """Returns (geo, room_areas):
-      geo[(north,east)] = {"west": [...], "south": [...], "east": [...], "north": [...]}
-        (the per-side gap arrays, as before)
-      room_areas[(north,east)] = [{"requires": parsed_reqs, "groups": [[(side,idx),...],...]}, ...]
-        (room-internal connectivity scenarios -- a room with no entry here
-        has no internal gating data, treated as a single open floor plan)
+    geo[(north,east)] = {"west": [...], "south": [...], "east": [...], "north": [...]}
+      (the per-side gap arrays, as before)
+    room_areas[(north,east)] = [{"requires": parsed_reqs, "groups": [[(side,idx),...],...]}, ...]
+      (room-internal connectivity scenarios -- a room with no entry here
+      has no internal gating data, treated as a single open floor plan)
     """
-    path = os.path.join(OUT_DIR, "json/room_geometry.json")
-    if not os.path.exists(path):
-      print(f"NOTE: no json/room_geometry.json found at {path} -- using fallback behavior.")
-      return {}, {}
-    raw = json.load(open(path))
+    # path = os.path.join(OUT_DIR, "json/room_geometry.json")
+    # if not os.path.exists(path):
+    #   print(f"NOTE: no json/room_geometry.json found at {path} -- using fallback behavior.")
+    #   return {}, {}
+    # raw = json.load(open(path))
+    from _room_geometry import GEOM as raw
+
     geo = {}
     room_areas = {}
     if isinstance(raw, list):
@@ -43,30 +46,46 @@ def init():
         if rec.get("areas"):
           scenarios = []
           for sc in rec["areas"]:
-            groups = [[(g["side"], g["idx"]) for g in group] for group in sc["areas"]]
-            scenarios.append({"requires": parse_requires(sc.get("reqs")), "groups": groups})
+            groups = [
+              [(g["side"], g["idx"]) for g in group]
+              for group in sc["areas"]
+            ]
+            scenarios.append(
+              {
+                "requires": parse_requires(sc.get("reqs")),
+                "groups": groups,
+              }
+            )
           room_areas[room] = scenarios
-    elif isinstance(raw, dict):
-      for k, v in raw.items():
-        n_str, e_str = k.split("_")
-        room = (float(n_str), float(e_str))
-        geo[room] = v.get("exits", v)
-        if v.get("areas"):
-          scenarios = []
-          for sc in v["areas"]:
-            groups = [[(g["side"], g["idx"]) for g in group] for group in sc["areas"]]
-            scenarios.append({"requires": parse_requires(sc.get("reqs")), "groups": groups})
-          room_areas[room] = scenarios
+    # elif isinstance(raw, dict):
+    #   for k, v in raw.items():
+    #     n_str, e_str = k.split("_")
+    #     room = (float(n_str), float(e_str))
+    #     geo[room] = v.get("exits", v)
+    #     if v.get("areas"):
+    #       scenarios = []
+    #       for sc in v["areas"]:
+    #         groups = [[(g["side"], g["idx"]) for g in group] for group in sc["areas"]]
+    #         scenarios.append({"requires": parse_requires(sc.get("reqs")), "groups": groups})
+    #       room_areas[room] = scenarios
     else:
       raise ValueError("json/room_geometry.json must be a list or dict")
     return geo, room_areas
 
-
   REQUIREMENT_PREFIXES = {
-    "entrance", "item", "skill", "permit", "quest", "weapon", "armor",
-    "ring", "magic", "food", "drop", "misc",
+    "entrance",
+    "item",
+    "skill",
+    "permit",
+    "quest",
+    "weapon",
+    "armor",
+    "ring",
+    "magic",
+    "food",
+    "drop",
+    "misc",
   }
-
 
   def parse_requirement_token(tok):
     """Parse one requirement token into a structured dict."""
@@ -74,7 +93,7 @@ def init():
       return {"raw": tok, "type": "flag", "name": tok, "placeholder": True}
 
     if tok.startswith("entrance."):
-      return {"raw": tok, "type": "entrance", "value": tok[len("entrance."):]}
+      return {"raw": tok, "type": "entrance", "value": tok[len("entrance.") :]}
 
     if ":" in tok:
       prefix, rest = tok.split(":", 1)
@@ -96,7 +115,9 @@ def init():
             except ValueError:
               result["count"] = None
               if not placeholder:
-                result["parse_warning"] = f"could not parse count from {tok!r}"
+                result["parse_warning"] = (
+                  f"could not parse count from {tok!r}"
+                )
         elif "." in rest:
           name, tier_str = rest.rsplit(".", 1)
           result["name"] = name
@@ -109,31 +130,33 @@ def init():
             except ValueError:
               result["tier"] = None
               if not placeholder:
-                result["parse_warning"] = f"could not parse tier from {tok!r}"
+                result["parse_warning"] = (
+                  f"could not parse tier from {tok!r}"
+                )
         else:
           result["name"] = rest
           result["count"] = 1
         return result
     if "?" in tok:
-      return {"raw": tok, "type": "flag", "name": tok, "placeholder":True}
+      return {"raw": tok, "type": "flag", "name": tok, "placeholder": True}
     return {"raw": tok, "type": "flag", "name": tok}
-
 
   def parse_requires(requires):
     if not requires:
       return []
     return [[parse_requirement_token(t) for t in group] for group in requires]
 
-
   def load_progression():
-    path = os.path.join(OUT_DIR, "json/progression.json")
-    if not os.path.exists(path):
-      print(f"NOTE: no json/progression.json found at {path} -- no item/skill gating loaded.")
-      return {"locations": [], "gates": [], "warps": []}
-    raw = json.load(open(path))
+    # path = os.path.join(OUT_DIR, "json/progression.json")
+    # if not os.path.exists(path):
+    #   print(f"NOTE: no json/progression.json found at {path} -- no item/skill gating loaded.")
+    #   return {"locations": [], "gates": [], "warps": []}
+    # raw = json.load(open(path))
+    from _progression import PROG as raw
 
     locations = []
-    for loc in raw.get("locations", []):
+    for loc in raw:
+      # for loc in raw["locations"]:
       locations.append(
         {
           "room": (loc["room"]["north"], loc["room"]["east"]),
@@ -143,53 +166,62 @@ def init():
         }
       )
 
-    gates = []
-    for g in raw.get("gates", []):
-      gates.append(
-        {
-          "room": (g["room"]["north"], g["room"]["east"]),
-          "from": g["from"],
-          "to": g["to"],
-          "bidirectional": g.get("bidirectional", True),
-          "requires": parse_requires(g.get("requires")),
-          "raw": g,
-        }
-      )
+    # gates = []
+    # for g in raw["gates"]:
+    #   gates.append(
+    #     {
+    #       "room": (g["room"]["north"], g["room"]["east"]),
+    #       "from": g["from"],
+    #       "to": g["to"],
+    #       "bidirectional": g.get("bidirectional", True),
+    #       "requires": parse_requires(g.get("requires")),
+    #       "raw": g,
+    #     }
+    #   )
 
-    warps = []
-    for w in raw.get("warps", []):
-      rooms = [(r["north"], r["east"]) for r in w["rooms"]]
-      warps.append(
-        {
-          "id": w.get("id", f"warp:{rooms[0][0]}_{rooms[0][1]}:{rooms[1][0]}_{rooms[1][1]}"),
-          "rooms": rooms,
-          "bidirectional": w.get("bidirectional", True),
-          "requires": parse_requires(w.get("requires")),
-          "raw": w,
-        }
-      )
+    # warps = []
+    # for w in raw.get("warps", []):
+    #   rooms = [(r["north"], r["east"]) for r in w["rooms"]]
+    #   warps.append(
+    #     {
+    #       "id": w.get("id", f"warp:{rooms[0][0]}_{rooms[0][1]}:{rooms[1][0]}_{rooms[1][1]}"),
+    #       "rooms": rooms,
+    #       "bidirectional": w.get("bidirectional", True),
+    #       "requires": parse_requires(w.get("requires")),
+    #       "raw": w,
+    #     }
+    #   )
 
     warnings = []
     flags_seen = set()
     placeholders_seen = set()
-    for entry in locations + gates + warps:
+    # for entry in locations + gates + warps:
+    for entry in locations:
       for group in entry["requires"]:
         for tok in group:
           if tok.get("placeholder"):
             placeholders_seen.add(tok["raw"])
             continue
           if "parse_warning" in tok:
-            warnings.append((entry.get("room", entry.get("rooms")), tok["raw"], tok["parse_warning"]))
+            warnings.append(
+              (
+                entry.get("room", entry.get("rooms")),
+                tok["raw"],
+                tok["parse_warning"],
+              )
+            )
           if tok["type"] == "flag":
             flags_seen.add(tok["raw"])
 
-    print(f"Loaded json/progression.json: {len(locations)} locations, {len(gates)} gates, {len(warps)} warps")
+    print(f"Loaded json/progression.json: {len(locations)} locations")
+    # print(f"Loaded json/progression.json: {len(locations)} locations, {len(gates)} gates, {len(warps)} warps")
     with_req = sum(1 for l in locations if l["requires"])
     print(f"  locations with requirements: {with_req} / {len(locations)}")
-    return {"locations": locations, "gates": gates, "warps": warps}
+    return {"locations": locations}
+    # return {"locations": locations, "gates": gates, "warps": warps}
 
+  from _exits import EXITS as exits_data
 
-  exits_data = json.load(open(f"{OUT_DIR}/json/exits.json"))
   geometry, room_areas = load_room_geometry()
   progression = load_progression()
 
@@ -228,33 +260,33 @@ def init():
           new_e["src_coord"] = mid_block_x * BLOCK_W
           new_e["dest_x"] = mid_block_x * BLOCK_W
           new_e["dest_y"] = 0 * BLOCK_H
-          if (gap["left"] + gap["right"])%2==1:
-            new_e['xIsEven']=(BLOCK_W/2)
+          if (gap["left"] + gap["right"]) % 2 == 1:
+            new_e["xIsEven"] = BLOCK_W / 2
         elif direction == "south":
           mid_block_x = (gap["left"] + gap["right"]) / 2
           new_e["src_coord"] = mid_block_x * BLOCK_W
           new_e["dest_x"] = mid_block_x * BLOCK_W
           new_e["dest_y"] = 10 * BLOCK_H
-          if (gap["left"] + gap["right"])%2==1:
-            new_e['xIsEven']=(BLOCK_W/2)
+          if (gap["left"] + gap["right"]) % 2 == 1:
+            new_e["xIsEven"] = BLOCK_W / 2
         elif direction == "west":
           mid_block_y = (gap["top"] + gap["bottom"]) / 2
           new_e["src_coord"] = mid_block_y * BLOCK_H
           new_e["dest_x"] = 0 * BLOCK_W
           new_e["dest_y"] = mid_block_y * BLOCK_H
-          if (gap["top"] + gap["bottom"])%2==1:
-            new_e["yIsEven"]=(BLOCK_H/2)
+          if (gap["top"] + gap["bottom"]) % 2 == 1:
+            new_e["yIsEven"] = BLOCK_H / 2
         elif direction == "east":
-          mid_block_y = ((gap["top"] + gap["bottom"]) / 2)
+          mid_block_y = (gap["top"] + gap["bottom"]) / 2
           new_e["src_coord"] = mid_block_y * BLOCK_H
           new_e["dest_x"] = 13 * BLOCK_W
           new_e["dest_y"] = mid_block_y * BLOCK_H
-          if (gap["top"] + gap["bottom"])%2==1:
-            new_e["yIsEven"]=(BLOCK_H/2)
-        if 'newY' in gap:
-          new_e['dest_y'] = gap.get("newY")
-        if 'newX' in gap:
-          new_e['dest_x'] = gap.get("newX")
+          if (gap["top"] + gap["bottom"]) % 2 == 1:
+            new_e["yIsEven"] = BLOCK_H / 2
+        if "newY" in gap:
+          new_e["dest_y"] = gap.get("newY")
+        if "newX" in gap:
+          new_e["dest_x"] = gap.get("newX")
         all_exits_raw.append(new_e)
     else:
       for e in edge_list:
@@ -270,22 +302,22 @@ def init():
   WARP_FALLBACK_X = 710 / 2
   WARP_FALLBACK_Y = 560 / 2
 
-  for w in progression["warps"]:
-    rooms = w["rooms"]
-    sides = rooms if w["bidirectional"] else rooms[:1]
-    for i, room in enumerate(sides):
-      other = rooms[1] if room == rooms[0] else rooms[0]
-      all_exits_raw.append(
-        {
-          "id": f"door:{w['id']}:{room[0]}_{room[1]}_{other[0]}_{other[1]}",
-          "mechanism": "warp",
-          "origin": {"north": room[0], "east": room[1]},
-          "dest": {"north": other[0], "east": other[1]},
-          "dest_x": WARP_FALLBACK_X,
-          "dest_y": WARP_FALLBACK_Y,
-          "requires": w["requires"],
-        }
-      )
+  # for w in progression["warps"]:
+  #   rooms = w["rooms"]
+  #   sides = rooms if w["bidirectional"] else rooms[:1]
+  #   for i, room in enumerate(sides):
+  #     other = rooms[1] if room == rooms[0] else rooms[0]
+  #     all_exits_raw.append(
+  #       {
+  #         "id": f"door:{w['id']}:{room[0]}_{room[1]}_{other[0]}_{other[1]}",
+  #         "mechanism": "warp",
+  #         "origin": {"north": room[0], "east": room[1]},
+  #         "dest": {"north": other[0], "east": other[1]},
+  #         "dest_x": WARP_FALLBACK_X,
+  #         "dest_y": WARP_FALLBACK_Y,
+  #         "requires": w["requires"],
+  #       }
+  #     )
 
   seen = {}
   for e in all_exits_raw:
@@ -405,7 +437,9 @@ def init():
     if exit_obj["mechanism"] != "edge":
       return
     room = (exit_obj["origin"]["north"], exit_obj["origin"]["east"])
-    key = entrance_key(room, f"{exit_obj['direction']}{exit_obj.get('gap_index', 0)}")
+    key = entrance_key(
+      room, f"{exit_obj['direction']}{exit_obj.get('gap_index', 0)}"
+    )
     if have.get(key, 0) < 1:
       have[key] = 1
       propagate([key], have)
@@ -454,7 +488,8 @@ def init():
       return True
     side, idx = exit_obj["direction"], exit_obj.get("gap_index", 0)
     marked = [
-      (s, i) for (s, i) in known_room_exits.get(room, set())
+      (s, i)
+      for (s, i) in known_room_exits.get(room, set())
       if have.get(entrance_key(room, f"{s}{i}"), 0) >= 1
     ]
     if not marked:
@@ -504,7 +539,12 @@ def init():
     while remaining and attempts < max_attempts:
       attempts += 1
       if not frontier:
-        frontier = [e for room in reached for e in by_room.get(room, []) if e["id"] in unused]
+        frontier = [
+          e
+          for room in reached
+          for e in by_room.get(room, [])
+          if e["id"] in unused
+        ]
         rng.shuffle(frontier)
         if not frontier:
           break
@@ -512,10 +552,17 @@ def init():
       if a["id"] not in unused:
         continue
       a_room = (a["origin"]["north"], a["origin"]["east"])
-      if not requires_satisfied(a.get("requires"), playercouldhave, a_room) or not room_reachable_internally(a, playercouldhave):
+      if not requires_satisfied(
+        a.get("requires"), playercouldhave, a_room
+      ) or not room_reachable_internally(a, playercouldhave):
         continue
 
-      candidates = [e for room in remaining for e in by_room.get(room, []) if e["id"] in unused and e["id"] != a["id"]]
+      candidates = [
+        e
+        for room in remaining
+        for e in by_room.get(room, [])
+        if e["id"] in unused and e["id"] != a["id"]
+      ]
       candidates = partner_finder(a, candidates)
       if not candidates:
         continue
@@ -553,7 +600,7 @@ def init():
     origin = from_exit["origin"]
     vdest = vanilla_dest_key(from_exit)
     requires_groups = from_exit.get("requires") or []
-    requires_raw = [[tok["raw"] for tok in group] for group in requires_groups]
+    requires_raw = [[tok for tok in group] for group in requires_groups]
     return {
       "originNorth": origin["north"],
       "originEast": origin["east"],
@@ -563,8 +610,8 @@ def init():
       "newDestEast": to_exit["origin"]["east"],
       "newX": to_exit.get("dest_x", 330),
       "newY": to_exit.get("dest_y", 255),
-      "xIsEven": to_exit.get("xIsEven",0),
-      "yIsEven": to_exit.get("yIsEven",0),
+      "xIsEven": to_exit.get("xIsEven", 0),
+      "yIsEven": to_exit.get("yIsEven", 0),
       "srcCoord": from_exit.get("src_coord"),
       "direction": from_exit.get("direction"),
       "mechanism": from_exit["mechanism"],
@@ -575,8 +622,10 @@ def init():
 
   # --- Connection Logic Split ---
   if NO_SHUFFLE:
-    print("Vanilla mode requested: mapping exits directly to original layout targets.")
-    all_rooms = {(e['origin']['north'], e['origin']['east']) for e in all_exits}
+    print(
+      "Vanilla mode requested: mapping exits directly to original layout targets."
+    )
+    all_rooms = {(e["origin"]["north"], e["origin"]["east"]) for e in all_exits}
     edge_reached = all_rooms
     door_reached = all_rooms
     warp_reached = all_rooms
@@ -593,18 +642,26 @@ def init():
       for b in all_exits:
         if b["id"] == a["id"]:
           continue
-        if b["origin"]["north"] == a["dest"]["north"] and b["origin"]["east"] == a["dest"]["east"]:
+        if (
+          b["origin"]["north"] == a["dest"]["north"]
+          and b["origin"]["east"] == a["dest"]["east"]
+        ):
           if a["mechanism"] == "edge" and b["mechanism"] == "edge":
             if b["direction"] == OPPOSITE[a["direction"]]:
               candidates.append(b)
           elif a["mechanism"] != "edge" and b["mechanism"] != "edge":
-            if b["dest"]["north"] == a["origin"]["north"] and b["dest"]["east"] == a["origin"]["east"]:
+            if (
+              b["dest"]["north"] == a["origin"]["north"]
+              and b["dest"]["east"] == a["origin"]["east"]
+            ):
               candidates.append(b)
 
       if candidates:
         if a["mechanism"] == "edge":
           # Match by the closest physical coordinate along the room border to prevent side-exit mixups
-          candidates.sort(key=lambda x: abs(x.get("src_coord", 0) - a.get("src_coord", 0)))
+          candidates.sort(
+            key=lambda x: abs(x.get("src_coord", 0) - a.get("src_coord", 0))
+          )
           partner = candidates[0]
         else:
           # For doors/warps, default to the matching target candidate
@@ -635,13 +692,17 @@ def init():
     for a in all_unpaired:
       connections.append(make_connection(a, a))
 
-  print(f"playercouldhave (final, accumulated across all pools): {len(playercouldhave)} distinct items/skills/permits tracked")
+  print(
+    f"playercouldhave (final, accumulated across all pools): {len(playercouldhave)} distinct items/skills/permits tracked"
+  )
 
   all_reached = edge_reached | door_reached | warp_reached
-  all_rooms = {(e['origin']['north'], e['origin']['east']) for e in all_exits}
+  all_rooms = {(e["origin"]["north"], e["origin"]["east"]) for e in all_exits}
   unreached_rooms = all_rooms - all_reached
   if unreached_rooms:
-    print(f"  {len(unreached_rooms)} room(s) never reached: {sorted(unreached_rooms)[:10]}")
+    print(
+      f"  {len(unreached_rooms)} room(s) never reached: {sorted(unreached_rooms)[:10]}"
+    )
 
   out = {
     "seed": SEED if not NO_SHUFFLE else "vanilla",
@@ -678,11 +739,15 @@ def init():
     room_str = room_key_str(loc["room"])
     requires_raw = [[tok["raw"] for tok in group] for group in loc["requires"]]
     receive_raw = loc.get("receive", [])
-    locations_out.append({"room": room_str, "requires": requires_raw, "receive": receive_raw})
+    locations_out.append(
+      {"room": room_str, "requires": requires_raw, "receive": receive_raw}
+    )
     for raw_tok in receive_raw:
       tok = parse_requirement_token(raw_tok)
       key_str = have_key_str(token_key(tok))
-      item_give_index.setdefault(key_str, []).append({"room": room_str, "raw": raw_tok})
+      item_give_index.setdefault(key_str, []).append(
+        {"room": room_str, "raw": raw_tok}
+      )
 
   entrance_index = {}
   for e in edge_exits:
@@ -716,13 +781,14 @@ def init():
   with open(f"{OUT_DIR}/json/hint_data.json", "w") as f:
     json.dump(hint_data, f, indent=2)
 
-  print('total distinct rooms across all exit pools:', len(all_rooms))
+  print("total distinct rooms across all exit pools:", len(all_rooms))
   filtered_keys = [k for k in playercouldhave.keys() if "entrance" not in k]
   sorted_keys = sorted(filtered_keys, key=lambda x: x[0])
-  print('edge_reached:', len(edge_reached))
-  print('door_reached:', len(door_reached))
-  print('warp_reached:', len(warp_reached))
+  print("edge_reached:", len(edge_reached))
+  print("door_reached:", len(door_reached))
+  print("warp_reached:", len(warp_reached))
   return (playercouldhave, edge_reached, door_reached, warp_reached, all_rooms)
+
 
 if __name__ == "__main__":
   init()

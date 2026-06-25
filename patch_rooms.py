@@ -45,6 +45,22 @@ def init(src):
         fmt_num(c.get("yIsEven")),
       )
     )
+    #  "originNorth": origin["north"],
+    #   "originEast": origin["east"],
+    #   "vanillaDestNorth": vdest[0],
+    #   "vanillaDestEast": vdest[1],
+    #   "newDestNorth": to_exit["origin"]["north"],
+    #   "newDestEast": to_exit["origin"]["east"],
+    #   "newX": to_exit.get("dest_x", 330),
+    #   "newY": to_exit.get("dest_y", 255),
+    #   "xIsEven": to_exit.get("xIsEven",0),
+    #   "yIsEven": to_exit.get("yIsEven",0),
+    #   "srcCoord": from_exit.get("src_coord"),
+    #   "direction": from_exit.get("direction"),
+    #   "mechanism": from_exit["mechanism"],
+    #   "requires": requires_raw,
+    #   "fromExitId": from_exit["id"],
+    #   "toExitId": to_exit["id"],
   table_js = ",".join(rows)
   
   PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
@@ -203,7 +219,9 @@ def init(src):
                 }}
               }}
             }}
-            
+            if (key=="9_22_10.1_21"){{
+              conn = {{...conn, newNorth:9,newEast:21,newX:384,newY:69}}
+            }}
             console.log("[ER DEBUG] Success! Redirecting room target to:", conn.newNorth + "," + conn.newEast, "Placing character at:", conn.newX + "," + conn.newY, conn.xIsEven, conn.yIsEven, conn);
             
             // Set safety lock flag to prevent our proxy properties from creating bad transition tracking chains

@@ -30,7 +30,7 @@
       "newY": 280.0,
       "xIsEven": 0,
       "yIsEven": 25.454545454545453,
-      "srcCoord": 292.7272727272727,
+      "srcCoord": 305.45454545454544,
       "direction": "east",
       "mechanism": "edge",
       "requires": [],
@@ -675,7 +675,7 @@
       "newDestNorth": 14,
       "newDestEast": 13,
       "newX": 659.2857142857143,
-      "newY": 292.7272727272727,
+      "newY": 305.45454545454544,
       "xIsEven": 0,
       "yIsEven": 0,
       "srcCoord": 280.0,
@@ -13773,24 +13773,6 @@
     },
     {
       "originNorth": 17,
-      "originEast": 11,
-      "vanillaDestNorth": 17,
-      "vanillaDestEast": 10,
-      "newDestNorth": 17,
-      "newDestEast": 11,
-      "newX": 659.2857142857143,
-      "newY": 203.63636363636363,
-      "xIsEven": 0,
-      "yIsEven": 0,
-      "srcCoord": 203.63636363636363,
-      "direction": "east",
-      "mechanism": "edge",
-      "requires": [],
-      "fromExitId": "edge:east:17_11_17_10",
-      "toExitId": "edge:east:17_11_17_10"
-    },
-    {
-      "originNorth": 17,
       "originEast": 16,
       "vanillaDestNorth": 17,
       "vanillaDestEast": 17,
@@ -14528,20 +14510,144 @@
       "toExitId": "door:warpRing:9_21_12_14"
     },
     {
+      "originNorth": 8,
+      "originEast": 9,
+      "vanillaDestNorth": 7,
+      "vanillaDestEast": 9,
+      "newDestNorth": 8,
+      "newDestEast": 9,
+      "newX": 335,
+      "newY": 159,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        [
+          "misc:fire crystal"
+        ]
+      ],
+      "fromExitId": "door:statue:8_9_7_9",
+      "toExitId": "door:statue:8_9_7_9"
+    },
+    {
+      "originNorth": 10,
+      "originEast": 16,
+      "vanillaDestNorth": 11,
+      "vanillaDestEast": 16,
+      "newDestNorth": 10,
+      "newDestEast": 16,
+      "newX": 330,
+      "newY": 500,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:building:10_16_11_16",
+      "toExitId": "door:building:10_16_11_16"
+    },
+    {
+      "originNorth": 10,
+      "originEast": 12,
+      "vanillaDestNorth": 7,
+      "vanillaDestEast": 12,
+      "newDestNorth": 7,
+      "newDestEast": 12,
+      "newX": 225,
+      "newY": 400,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:stairsDown:10_12_7_12",
+      "toExitId": "door:stairsDown:7_12_10_12"
+    },
+    {
+      "originNorth": 7,
+      "originEast": 12,
+      "vanillaDestNorth": 10,
+      "vanillaDestEast": 12,
+      "newDestNorth": 10,
+      "newDestEast": 12,
+      "newX": 300,
+      "newY": 125,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:stairsDown:7_12_10_12",
+      "toExitId": "door:stairsDown:10_12_7_12"
+    },
+    {
+      "originNorth": 9,
+      "originEast": 20,
+      "vanillaDestNorth": 10.1,
+      "vanillaDestEast": 21,
+      "newDestNorth": 10.1,
+      "newDestEast": 21,
+      "newX": 500,
+      "newY": 400,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:stairsDown:9_20_10.1_21",
+      "toExitId": "door:stairsDown:10.1_21_9_20"
+    },
+    {
+      "originNorth": 10.1,
+      "originEast": 21,
+      "vanillaDestNorth": 9,
+      "vanillaDestEast": 20,
+      "newDestNorth": 9,
+      "newDestEast": 20,
+      "newX": 600,
+      "newY": 400,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:stairsDown:10.1_21_9_20",
+      "toExitId": "door:stairsDown:9_20_10.1_21"
+    },
+    {
       "originNorth": 10.1,
       "originEast": 21,
       "vanillaDestNorth": 10,
       "vanillaDestEast": 21,
       "newDestNorth": 10,
       "newDestEast": 21,
-      "newX": 550,
-      "newY": 222,
+      "newX": 554,
+      "newY": 220,
       "xIsEven": 0,
       "yIsEven": 0,
       "srcCoord": null,
       "direction": null,
       "mechanism": "object",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "fromExitId": "door:stairsDown:10.1_21_10_21",
       "toExitId": "door:stairsDown:10_21_10.1_21"
     },
@@ -14552,52 +14658,38 @@
       "vanillaDestEast": 21,
       "newDestNorth": 10.1,
       "newDestEast": 21,
-      "newX": 556,
-      "newY": 117,
+      "newX": 550,
+      "newY": 210,
       "xIsEven": 0,
       "yIsEven": 0,
       "srcCoord": null,
       "direction": null,
       "mechanism": "object",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "fromExitId": "door:stairsDown:10_21_10.1_21",
       "toExitId": "door:stairsDown:10.1_21_10_21"
     },
     {
-      "originNorth": 10,
-      "originEast": 21,
-      "vanillaDestNorth": 9,
-      "vanillaDestEast": 20,
-      "newDestNorth": 10,
-      "newDestEast": 21,
-      "newX": 522,
-      "newY": 401,
-      "xIsEven": 0,
-      "yIsEven": 0,
-      "srcCoord": null,
-      "direction": null,
-      "mechanism": "object",
-      "requires": [],
-      "fromExitId": "door:stairsDown:10.1_21_9_20",
-      "toExitId": "door:stairsDown:10.1_21_9_20"
-    },
-    {
       "originNorth": 9,
-      "originEast": 20,
-      "vanillaDestNorth": 10.1,
+      "originEast": 22,
+      "vanillaDestNorth": 9,
       "vanillaDestEast": 21,
       "newDestNorth": 9,
-      "newDestEast": 20,
-      "newX": 593,
-      "newY": 425,
+      "newDestEast": 21,
+      "newX": 465,
+      "newY": 80,
       "xIsEven": 0,
       "yIsEven": 0,
       "srcCoord": null,
       "direction": null,
       "mechanism": "object",
-      "requires": [],
-      "fromExitId": "door:stairsDown:9_20_10.1_21",
-      "toExitId": "door:stairsDown:9_20_10.1_21"
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:stairsDown:9_22_9_21",
+      "toExitId": "door:ss:9_21_9_22"
     },
     {
       "originNorth": 9,
@@ -14606,16 +14698,38 @@
       "vanillaDestEast": 21,
       "newDestNorth": 9,
       "newDestEast": 22,
-      "newX": 454,
-      "newY": 64,
+      "newX": 335,
+      "newY": 139,
       "xIsEven": 0,
       "yIsEven": 0,
       "srcCoord": null,
       "direction": null,
       "mechanism": "object",
-      "requires": [],
-      "fromExitId": "door:stairsDown:9_22_10.1_21",
-      "toExitId": "door:stairsDown:9_22_10.1_21"
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:s:9_22_10.1_21",
+      "toExitId": "door:s:9_22_10.1_21"
+    },
+    {
+      "originNorth": 9,
+      "originEast": 21,
+      "vanillaDestNorth": 9,
+      "vanillaDestEast": 22,
+      "newDestNorth": 9,
+      "newDestEast": 22,
+      "newX": 461,
+      "newY": 83,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:ss:9_21_9_22",
+      "toExitId": "door:stairsDown:9_22_9_21"
     }
   ]
 }

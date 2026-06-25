@@ -332,12 +332,26 @@ viewport.addEventListener("contextmenu", (e) => {
   e.stopImmediatePropagation()
 }, true)
 
+
 function centerMap() {
   originX = (viewport.clientWidth - grid.offsetWidth * scale) / 2
   originY = (viewport.clientHeight - grid.offsetHeight * scale) / 2
   requestUpdate()
 }
-window.addEventListener("DOMContentLoaded", centerMap)
+window.addEventListener("DOMContentLoaded", ()=>{centerMap()
+viewport.addEventListener("dblclick", (e) => {
+e.preventDefault()
+  e.stopPropagation()
+  e.stopImmediatePropagation()
+  if (e.target.classList.contains("tile-wrapper")){
+    let [an,ae] = e.target.dataset.room.split("_")
+    if (window.player){
+    window.player.realnorth = an
+    window.player.realeast = ae
+    test.newScreen()
+    }
+  }
+}, true)})
 
 setInterval(() => {
   if (currentRoom) {
@@ -364,28 +378,31 @@ def load_connections():
         return json.load(f).get("connections", [])
 
 def load_doors():
-    if not os.path.exists(EXITS_JSON_PATH):
-        print(f"[-] Warn: {EXITS_JSON_PATH} not found.")
-        return []
-    with open(EXITS_JSON_PATH, "r", encoding="utf-8") as f:
-        return json.load(f).get("doors", [])
+  from _exits import EXITS
+  return EXITS['doors']
+    # if not os.path.exists(EXITS_JSON_PATH):
+    #     print(f"[-] Warn: {EXITS_JSON_PATH} not found.")
+    #     return []
+    # with open(EXITS_JSON_PATH, "r", encoding="utf-8") as f:
+    #     return json.load(f).get("doors", [])
 
 def load_geometry_map():
+    from _room_geometry import GEOM
     geom_db = {}
-    if not os.path.exists(GEOMETRY_JSON_PATH):
-        print(f"[-] Warn: {GEOMETRY_JSON_PATH} not found.")
-        return geom_db
-    try:
-        with open(GEOMETRY_JSON_PATH, "r", encoding="utf-8") as f:
-            rooms_list = json.load(f)
-            for room in rooms_list:
-                if "north" in room and "east" in room:
-                    n = int(float(room["north"]))
-                    e = int(float(room["east"]))
-                    key = f"{n}_{e}"
-                    geom_db[key] = room.get("exits", {})
-    except Exception as err:
-        print(f"[-] Failed to read room geometry config details: {err}")
+    # if not os.path.exists(GEOMETRY_JSON_PATH):
+    #     print(f"[-] Warn: {GEOMETRY_JSON_PATH} not found.")
+    #     return geom_db
+    # try:
+    #     with open(GEOMETRY_JSON_PATH, "r", encoding="utf-8") as f:
+    #         rooms_list = json.load(f)
+    for room in GEOM:
+        if "north" in room and "east" in room:
+            n = int(float(room["north"]))
+            e = int(float(room["east"]))
+            key = f"{n}_{e}"
+            geom_db[key] = room.get("exits", {})
+    # except Exception as err:
+    #     print(f"[-] Failed to read room geometry config details: {err}")
     return geom_db
 
 def load_progression_map():
@@ -680,15 +697,20 @@ def main():
             else:
                 dest_x_local = ROOM_INTERNAL_WIDTH / 2
                 dest_y_local = ROOM_INTERNAL_HEIGHT / 2
+            
+            # FIX: Use paired target connection if available to lock colors together symmetrically
+            to_exit_id = override.get("toExitId", "warp_gate")
+            color = djb2_color_hash(d["id"], to_exit_id)
         else:
-            # no override found -- fall back to vanilla reverse-door lookup
-            d_n, d_e = v_dest_n, v_dest_e
-            reverse_door = room_doors_index.get(f"{v_dest_n}_{v_dest_e}->{o_n}_{o_e}")
+            d_n, d_e = int(d["dest"]["north"]), int(d["dest"]["east"])
+            reverse_door = room_doors_index.get(f"{d_n}_{d_e}->{o_n}_{o_e}")
             if reverse_door:
                 dest_x_local, dest_y_local = snapToGrid(reverse_door["dest_x"], reverse_door["dest_y"])
+                color = djb2_color_hash(d["id"], reverse_door["id"])
             else:
                 dest_x_local = ROOM_INTERNAL_WIDTH / 2
                 dest_y_local = ROOM_INTERNAL_HEIGHT / 2
+                color = djb2_color_hash(d["id"], "warp_gate")
 
         room_key = f"{o_n}_{o_e}"
 
@@ -706,8 +728,6 @@ def main():
 
         m_x, m_y = (arrow_src_x + arrow_dest_x) / 2, (arrow_src_y + arrow_dest_y) / 2
         ctrl_x, ctrl_y = m_x, m_y - 45
-
-        color = djb2_color_hash(d["id"], "warp_gate")
 
         if room_key in js_routes_db:
             js_routes_db[room_key].append({"d": [arrow_src_x, arrow_src_y, ctrl_x, ctrl_y, arrow_dest_x, arrow_dest_y], "color": color})
@@ -812,8 +832,8 @@ def main():
                 override = conn_override_index[door_id_str]
                 d_n, d_e = int(override["newDestNorth"]), int(override["newDestEast"])
                 if override.get("newX") is not None and override.get("newY") is not None:
-                    dest_x_local = float(override["newX"]) * (ROOM_INTERNAL_WIDTH / ROOM_INTERNAL_WIDTH)
-                    dest_y_local = (float(override["newY"]) * (ROOM_INTERNAL_HEIGHT / ROOM_INTERNAL_HEIGHT))
+                    dest_x_local = float(override["newX"])
+                    dest_y_local = float(override["newY"])
                 else:
                     dest_x_local = float(d["dest_x"])
                     dest_y_local = float(d["dest_y"])
