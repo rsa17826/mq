@@ -1,12 +1,18 @@
 #!/usr/bin/env python3.13
 import os
 import re
+from urllib.parse import parse_qs
 
 reg = re.compile("&stat\\d+=(-?\\d+(?:\\.\\d+)?)")
 
+
 try:
+  query_string = os.environ.get("QUERY_STRING", "")
+  parsed_params = parse_qs(query_string)
+  saveFile = parsed_params.get("saveFile", ["nonAp"])[0]
   with open(
-    os.path.join(os.path.dirname(__file__), "../MQFiles/loadChar.php"), "w"
+    os.path.join(os.path.dirname(__file__), f"../MQFiles/loadChar_{saveFile}.php"),
+    "w",
   ) as file:
     newstr = re.findall(reg, os.environ.get("QUERY_STRING", ""))
     file.write(" ".join(newstr))
@@ -14,4 +20,4 @@ try:
     #     file.write(os.environ.get('QUERY_STRING', ''))
     print("go")
 except Exception as e:
-  print("stop")
+  print("stop", e)

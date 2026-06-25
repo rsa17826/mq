@@ -122,6 +122,7 @@ class ArchipelagoClient {
    * Handshake Step 5: Client replies with authentication credentials (Connect).
    */
   onRoomInfo(packet) {
+    window.seed = packet.seed_name
     console.log(
       `RoomInfo received. Multiworld Seed: ${packet.seed_name}`,
     )
@@ -236,3 +237,55 @@ class ArchipelagoClient {
     return Math.random().toString(36).substring(2, 15)
   }
 }
+if (location.search) {
+  var data = location.search
+    .replace("?", "")
+    .split("&")
+    .map((e) => e.split("="))
+  var obj = {
+    hostname: "127.0.0.1",
+    port: "38281",
+    game: "MathQuest",
+    playerName: "test1",
+    password: "",
+  }
+  for (var [k, v] of data) {
+    obj[k] = v
+  }
+  window.ap = new ArchipelagoClient(obj)
+  window.ap.connect()
+}
+Object.defineProperty(window, "connect", {
+  get() {
+    window.cdata = []
+    window.cint = 0
+    window.__np = new Proxy(
+      {},
+      {
+        get(_target, k) {
+          window.cdata.push(k)
+          if (window.cint) {
+            clearTimeout(window.cint)
+          }
+          window.cint = setTimeout(() => {
+            var pname = window.cdata.pop()
+            var port = window.cdata.pop()
+            if (!window.cdata.length) {
+              window.cdata = ["127.0.0.1"]
+            }
+            window.ap = new ArchipelagoClient({
+              hostname: window.cdata.join("."),
+              port: port,
+              game: "MathQuest",
+              playerName: pname,
+            })
+            window.ap.connect()
+            window.cdata = []
+          })
+          return __np
+        },
+      },
+    )
+    return __np
+  },
+})
