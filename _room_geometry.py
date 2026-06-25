@@ -3090,11 +3090,12 @@ GEOM: list[ExitBase] = [
       "north": [],
     },
   },
-  {
-    "north": 20,
-    "east": 16,
-    "exits": {"west": [], "south": [], "east": [], "north": []},
-  },
+  # {
+  #   "north": 20,
+  #   "east": 16,
+  #   "exits": {"west": [], "south": [], "east": [], "north": []},
+  # },
+  # hard to make entrance rando work for 20 16 so it's gonna be unmodified and everything will be said to be in 19 16 instead
   {
     "north": 20,
     "east": 17,

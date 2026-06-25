@@ -891,6 +891,16 @@
         "mechanism": "edge",
         "direction": "south",
         "requires": []
+      },
+      {
+        "toRoom": "23_13",
+        "exitId": "door:warp:22_10_22_13",
+        "viaExitId": "door:warp:22_10_22_13",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
       }
     ],
     "21_11": [
@@ -5021,6 +5031,16 @@
         "mechanism": "edge",
         "direction": "north",
         "requires": []
+      },
+      {
+        "toRoom": "21_13",
+        "exitId": "door:warp:22_11_21_13",
+        "viaExitId": "door:warp:21_13_22_11",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
       }
     ],
     "22_14": [
@@ -5191,6 +5211,16 @@
         "mechanism": "edge",
         "direction": "west",
         "requires": []
+      },
+      {
+        "toRoom": "23_10",
+        "exitId": "door:warp:24_13_23_10",
+        "viaExitId": "door:warp:23_10_24_13",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
       }
     ],
     "24_14": [
@@ -6812,6 +6842,16 @@
         "mechanism": "edge",
         "direction": "north",
         "requires": []
+      },
+      {
+        "toRoom": "21_9",
+        "exitId": "door:warp:22_12_21_9",
+        "viaExitId": "door:warp:22_12_21_9",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
       }
     ],
     "22_13": [
@@ -6830,6 +6870,16 @@
         "mechanism": "edge",
         "direction": "east",
         "requires": []
+      },
+      {
+        "toRoom": "22_10",
+        "exitId": "door:warp:22_13_22_10",
+        "viaExitId": "door:warp:22_13_22_10",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
       }
     ],
     "23_14": [
@@ -6840,6 +6890,16 @@
         "mechanism": "edge",
         "direction": "north",
         "requires": []
+      },
+      {
+        "toRoom": "24_10",
+        "exitId": "door:warp:23_14_24_10",
+        "viaExitId": "door:warp:24_10_23_14",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
       }
     ],
     "200_200": [
@@ -7094,6 +7154,16 @@
         "mechanism": "edge",
         "direction": "east",
         "requires": []
+      },
+      {
+        "toRoom": "22_11",
+        "exitId": "door:warp:21_13_22_11",
+        "viaExitId": "door:warp:22_11_21_13",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
       }
     ],
     "7_10": [
@@ -7240,6 +7310,16 @@
         "mechanism": "edge",
         "direction": "east",
         "requires": []
+      },
+      {
+        "toRoom": "23_14",
+        "exitId": "door:warp:24_10_23_14",
+        "viaExitId": "door:warp:23_14_24_10",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
       }
     ],
     "20_21": [
@@ -7404,6 +7484,18 @@
             "magic:fire.3",
             "magic:drain"
           ]
+        ]
+      }
+    ],
+    "23_10": [
+      {
+        "toRoom": "24_13",
+        "exitId": "door:warp:23_10_24_13",
+        "viaExitId": "door:warp:24_13_23_10",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
         ]
       }
     ]

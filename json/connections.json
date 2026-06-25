@@ -15188,6 +15188,186 @@
       ],
       "fromExitId": "door:s:18_11_18_12",
       "toExitId": "door:gravestone:18_12_18_11"
+    },
+    {
+      "originNorth": 22,
+      "originEast": 10,
+      "vanillaDestNorth": 23,
+      "vanillaDestEast": 13,
+      "newDestNorth": 23,
+      "newDestEast": 13,
+      "newX": 135,
+      "newY": 169,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:warp:22_10_22_13",
+      "toExitId": "door:warp:22_10_22_13"
+    },
+    {
+      "originNorth": 22,
+      "originEast": 13,
+      "vanillaDestNorth": 22,
+      "vanillaDestEast": 10,
+      "newDestNorth": 22,
+      "newDestEast": 10,
+      "newX": 140,
+      "newY": 107,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:warp:22_13_22_10",
+      "toExitId": "door:warp:22_13_22_10"
+    },
+    {
+      "originNorth": 22,
+      "originEast": 11,
+      "vanillaDestNorth": 21,
+      "vanillaDestEast": 13,
+      "newDestNorth": 21,
+      "newDestEast": 13,
+      "newX": 160,
+      "newY": 125,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:warp:22_11_21_13",
+      "toExitId": "door:warp:21_13_22_11"
+    },
+    {
+      "originNorth": 21,
+      "originEast": 13,
+      "vanillaDestNorth": 22,
+      "vanillaDestEast": 11,
+      "newDestNorth": 22,
+      "newDestEast": 11,
+      "newX": 250,
+      "newY": 232,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:warp:21_13_22_11",
+      "toExitId": "door:warp:22_11_21_13"
+    },
+    {
+      "originNorth": 24,
+      "originEast": 10,
+      "vanillaDestNorth": 23,
+      "vanillaDestEast": 14,
+      "newDestNorth": 23,
+      "newDestEast": 14,
+      "newX": 366,
+      "newY": 370,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:warp:24_10_23_14",
+      "toExitId": "door:warp:23_14_24_10"
+    },
+    {
+      "originNorth": 23,
+      "originEast": 14,
+      "vanillaDestNorth": 24,
+      "vanillaDestEast": 10,
+      "newDestNorth": 24,
+      "newDestEast": 10,
+      "newX": 105,
+      "newY": 409,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:warp:23_14_24_10",
+      "toExitId": "door:warp:24_10_23_14"
+    },
+    {
+      "originNorth": 22,
+      "originEast": 12,
+      "vanillaDestNorth": 21,
+      "vanillaDestEast": 9,
+      "newDestNorth": 21,
+      "newDestEast": 9,
+      "newX": 308,
+      "newY": 191,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:warp:22_12_21_9",
+      "toExitId": "door:warp:22_12_21_9"
+    },
+    {
+      "originNorth": 24,
+      "originEast": 13,
+      "vanillaDestNorth": 23,
+      "vanillaDestEast": 10,
+      "newDestNorth": 23,
+      "newDestEast": 10,
+      "newX": 116,
+      "newY": 180,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:warp:24_13_23_10",
+      "toExitId": "door:warp:23_10_24_13"
+    },
+    {
+      "originNorth": 23,
+      "originEast": 10,
+      "vanillaDestNorth": 24,
+      "vanillaDestEast": 13,
+      "newDestNorth": 24,
+      "newDestEast": 13,
+      "newX": 588,
+      "newY": 120,
+      "xIsEven": 0,
+      "yIsEven": 0,
+      "srcCoord": null,
+      "direction": null,
+      "mechanism": "object",
+      "requires": [
+        []
+      ],
+      "fromExitId": "door:warp:23_10_24_13",
+      "toExitId": "door:warp:24_13_23_10"
     }
   ]
 }
