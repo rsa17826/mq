@@ -613,7 +613,7 @@ def init():
       "xIsEven": to_exit.get("xIsEven", 0),
       "yIsEven": to_exit.get("yIsEven", 0),
       "srcCoord": from_exit.get("src_coord"),
-      "direction": from_exit.get("direction"),
+    "direction": from_exit.get("direction"),
       "mechanism": from_exit["mechanism"],
       "requires": requires_raw,
       "fromExitId": from_exit["id"],
@@ -670,7 +670,26 @@ def init():
       if partner:
         connections.append(make_connection(a, partner))
       else:
-        connections.append(make_connection(a, a))
+        connections.append(
+          {
+            "originNorth": a["origin"]["north"],
+            "originEast": a["origin"]["east"],
+            "vanillaDestNorth": a["dest"]["north"],
+            "vanillaDestEast": a["dest"]["east"],
+            "newDestNorth": a["dest"]["north"],
+            "newDestEast": a["dest"]["east"],
+            "newX": a.get("dest_x", 330),
+            "newY": a.get("dest_y", 255),
+            "xIsEven": a.get("xIsEven", 0),
+            "yIsEven": a.get("yIsEven", 0),
+            "srcCoord": a.get("src_coord"),
+            "direction": a.get("direction"),
+            "mechanism": a["mechanism"],
+            "requires": a.get("requires", []),
+            "fromExitId": a["id"],
+            "toExitId": a["id"],
+          }
+        )
   else:
     edge_pairs, edge_unpaired, edge_reached = build_spanning_tree(
       edge_exits, edge_partner_finder, "edges"

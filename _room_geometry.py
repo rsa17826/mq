@@ -2820,7 +2820,7 @@ GEOM: list[ExitBase] = [
     ],
     "exits": {
       "west": [],
-      "south": [{"left": 6, "right": 7}],
+      "south": [{"left": 6, "right": 7, "newY":309}],
       "east": [{"top": 4, "bottom": 4}],
       "north": [{"left": 7, "right": 8}, {"left": 4, "right": 5}],
     },

@@ -17,7 +17,13 @@ PROG: list[ProgressionNode] = [
   {
     "room": {"north": 20, "east": 20},
     "requires": [[]],
-    "receive": ["skill:dig", "skill:kick"],
+    "receive": [
+      "skill:dig",
+      "skill:kick",
+      "item:aurastone",
+      "item:key",
+      "item:gold",
+    ],
     "info": "can be got anywhere",
   },
   {"room": {"north": 20, "east": 20}, "receive": ["spawnpoint"]},
@@ -668,19 +674,19 @@ PROG: list[ProgressionNode] = [
   },
   {
     "room": {"north": 20, "east": 18},
-    "requires": [["???", "misc:npc debugger 1"]],
-    "receive": ["???"],
+    "requires": [["quest:rings.11"]],
+    "receive": ["quest:rings.12"],
   },
-  {
-    "room": {"north": 19, "east": 18},
-    "requires": [
-      ["???", "entrance.north0"],
-      ["???", "entrance.south1"],
-      ["???", "entrance.east0"],
-    ],
-    "receive": ["misc:npc debugger 1"],
-    "info": "npc has to move out the way before other npc works",
-  },
+  # {
+  #   "room": {"north": 19, "east": 18},
+  #   "requires": [
+  #     ["???", "entrance.north0"],
+  #     ["???", "entrance.south1"],
+  #     ["???", "entrance.east0"],
+  #   ],
+  #   "receive": ["misc:npc debugger 1"],
+  #   "info": "npc has to move out the way before other npc works",
+  # },
   {
     "room": {"north": 21, "east": 18},
     "requires": [["item:emerald#1"]],
@@ -1814,7 +1820,6 @@ MathQuest.js:42550 add listeners""",
     "requires": [["quest:rings.1", "entrance.south0", "permit:bomb"]],
     "receive": ["ring.evasion"],
   },
-
   {
     "room": {"north": 20, "east": 20},
     "requires": [[]],
@@ -1912,9 +1917,65 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 19, "east": 20},
     "requires": [["quest:pam.10"]],
     "receive": ["quest:pam.11", "food:peper#5", "food:orange#20"],
-  },{
-      "room": {"north": 15, "east": 16},
-      "requires": [["quest:rings.7", "permit:bomb"]],
-      "receive": ["quest:rings.8"]
+  },
+  {
+    "room": {"north": 15, "east": 16},
+    "requires": [["quest:rings.7", "permit:bomb"]],
+    "receive": ["quest:rings.8"],
+  },
+  {
+    "room": {"north": 15, "east": 16},
+    "requires": [["quest:rings.8"]],
+    "receive": ["item:ring of magic", "quest:rings.9"],
+    "info": "doesn't require lv3 fire but using lv3 fire doesn't require as much luck but if not it will spawn eventually",
+  },
+  {
+    "room": {"north": 14, "east": 22},
+    "requires": [["quest:rings.9"]],
+    "receive": ["quest:rings.10"],
+  },
+  {
+    "room": {"north": 19, "east": 18},
+    "requires": [["quest:rings.10"]],
+    "receive": ["quest:rings.11"],
+  },
+  {
+    "room": {"north": 20, "east": 18},
+    "requires": [
+      [
+        "quest:rings.13",
+        "item:steel fragment#5",
+        "item:dragon scale#3",
+        "item:funny bone#10",
+        "misc:geomana",
+      ]
+    ],
+    "receive": ["quest:rings.14"],
+  },
+  {"room": {"north": 6, "east": 12}, "requires": [[]], "receive": ["quest:geo.1"]},
+  {
+    "room": {"north": 6, "east": 12},
+    "requires": [["quest:geo.1", "item:quartz geode#5"]],
+    "receive": ["quest:geo.2"],
+  },
+  {
+    "room": {"north": 6, "east": 12},
+    "requires": [["quest:geo.2"]],
+    "receive": ["quest:geo.3"],
+  },
+  {
+    "room": {"north": 21, "east": 20},
+    "requires": [["quest:geo.3"]],
+    "receive": ["quest:geo.4"],
+  },
+  {
+    "room": {"north": 6, "east": 12},
+    "requires": [["quest:geo.4"]],
+    "receive": ["quest:geo.5", "skill:convert"],
+  },
+  {
+    "room": {"north": 6, "east": 12},
+    "requires": [["quest:rings.12", "quest:geo.5", "item:gold#1000"]],
+    "receive": ["quest:rings.13"],
   },
 ]

@@ -647,7 +647,7 @@
         "requires": []
       },
       {
-        "toRoom": "17_11",
+        "toRoom": "18_11",
         "exitId": "edge:south:17_11_18_11",
         "viaExitId": "edge:south:17_11_18_11",
         "mechanism": "edge",
@@ -1153,7 +1153,9 @@
         "mechanism": "object",
         "direction": null,
         "requires": [
-          []
+          [
+            "permit:bomb"
+          ]
         ]
       }
     ],
@@ -1173,6 +1175,16 @@
         "mechanism": "edge",
         "direction": "west",
         "requires": []
+      },
+      {
+        "toRoom": "11_14",
+        "exitId": "door::11_13_11_14",
+        "viaExitId": "door::11_13_11_14",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
       }
     ],
     "13_13": [
@@ -2195,7 +2207,7 @@
     ],
     "7_11": [
       {
-        "toRoom": "7_11",
+        "toRoom": "6_11",
         "exitId": "edge:south:7_11_6_11",
         "viaExitId": "edge:south:7_11_6_11",
         "mechanism": "edge",
@@ -2623,7 +2635,7 @@
         ]
       },
       {
-        "toRoom": "9_22",
+        "toRoom": "10.1_21",
         "exitId": "door:s:9_22_10.1_21",
         "viaExitId": "door:s:9_22_10.1_21",
         "mechanism": "object",
@@ -2779,7 +2791,7 @@
         "requires": []
       },
       {
-        "toRoom": "10_16",
+        "toRoom": "11_16",
         "exitId": "door:building:10_16_11_16",
         "viaExitId": "door:building:10_16_11_16",
         "mechanism": "object",
@@ -3021,11 +3033,21 @@
         "mechanism": "edge",
         "direction": "north",
         "requires": []
+      },
+      {
+        "toRoom": "9_13",
+        "exitId": "door:s:11_14_9_13",
+        "viaExitId": "door:s:11_14_9_13",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
       }
     ],
     "11_16": [
       {
-        "toRoom": "11_16",
+        "toRoom": "10_16",
         "exitId": "edge:south:11_16_10_16",
         "viaExitId": "edge:south:11_16_10_16",
         "mechanism": "edge",
@@ -4209,6 +4231,18 @@
         "mechanism": "edge",
         "direction": "west",
         "requires": []
+      },
+      {
+        "toRoom": "18_17",
+        "exitId": "door:volcano:17_17_18_17",
+        "viaExitId": "door:volcano:17_17_18_17",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          [
+            "permit:volcano"
+          ]
+        ]
       }
     ],
     "17_18": [
@@ -4389,7 +4423,7 @@
     ],
     "18_17": [
       {
-        "toRoom": "18_17",
+        "toRoom": "17_17",
         "exitId": "edge:south:18_17_17_17",
         "viaExitId": "edge:south:18_17_17_17",
         "mechanism": "edge",
@@ -4579,7 +4613,7 @@
     ],
     "19_16": [
       {
-        "toRoom": "19_16",
+        "toRoom": "18_16",
         "exitId": "edge:south:19_16_18_16",
         "viaExitId": "edge:south:19_16_18_16",
         "mechanism": "edge",
@@ -4827,7 +4861,7 @@
     ],
     "21_12": [
       {
-        "toRoom": "21_12",
+        "toRoom": "20_12",
         "exitId": "edge:south:21_12_20_12",
         "viaExitId": "edge:south:21_12_20_12",
         "mechanism": "edge",
@@ -5464,7 +5498,12 @@
         "viaExitId": "door:stairsDown:5_23_6_23",
         "mechanism": "object",
         "direction": null,
-        "requires": []
+        "requires": [
+          [
+            "state:lit torch 2",
+            "state:lit torch 1"
+          ]
+        ]
       }
     ],
     "6_24": [
@@ -5563,7 +5602,7 @@
         "requires": []
       },
       {
-        "toRoom": "8_9",
+        "toRoom": "7_9",
         "exitId": "door:statue:8_9_7_9",
         "viaExitId": "door:statue:8_9_7_9",
         "mechanism": "object",
@@ -6131,6 +6170,18 @@
         "mechanism": "edge",
         "direction": "north",
         "requires": []
+      },
+      {
+        "toRoom": "9_14",
+        "exitId": "door:a:10_14_9_14",
+        "viaExitId": "door:a:9_14_10_14",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          [
+            "magic:drain"
+          ]
+        ]
       }
     ],
     "10_23": [
@@ -6721,7 +6772,7 @@
     ],
     "200_200": [
       {
-        "toRoom": "200_200",
+        "toRoom": "3_16",
         "exitId": "edge:north:200_200_3_16",
         "viaExitId": "edge:north:200_200_3_16",
         "mechanism": "edge",
@@ -7222,9 +7273,83 @@
           []
         ]
       }
+    ],
+    "9_13": [
+      {
+        "toRoom": "10_13",
+        "exitId": "door:s:9_13_10_13",
+        "viaExitId": "door:s:10_13_9_13",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
+      },
+      {
+        "toRoom": "9_14",
+        "exitId": "door:s:9_13_9_14",
+        "viaExitId": "door:a:9_14_9_13",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
+      }
+    ],
+    "10_13": [
+      {
+        "toRoom": "9_13",
+        "exitId": "door:s:10_13_9_13",
+        "viaExitId": "door:s:9_13_10_13",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          []
+        ]
+      }
+    ],
+    "9_14": [
+      {
+        "toRoom": "10_14",
+        "exitId": "door:a:9_14_10_14",
+        "viaExitId": "door:a:10_14_9_14",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          [
+            "magic:drain"
+          ]
+        ]
+      },
+      {
+        "toRoom": "9_13",
+        "exitId": "door:a:9_14_9_13",
+        "viaExitId": "door:s:9_13_9_14",
+        "mechanism": "object",
+        "direction": null,
+        "requires": [
+          [
+            "magic:fire.3",
+            "magic:drain"
+          ]
+        ]
+      }
     ]
   },
   "locations": [
+    {
+      "room": "20_20",
+      "requires": [
+        []
+      ],
+      "receive": [
+        "skill:dig",
+        "skill:kick",
+        "item:aurastone",
+        "item:key",
+        "item:gold"
+      ]
+    },
     {
       "room": "20_20",
       "requires": [],
@@ -7247,7 +7372,7 @@
       "room": "21_20",
       "requires": [
         [
-          "drop:venom#1",
+          "item:venom#1",
           "???"
         ]
       ],
@@ -7408,7 +7533,7 @@
       "room": "15_19",
       "requires": [
         [
-          "item:ring health"
+          "item:ring of health"
         ]
       ],
       "receive": [
@@ -7588,12 +7713,12 @@
       "room": "12_12",
       "requires": [
         [
-          "quest:headstone",
+          "quest:rings.1",
           "entrance.west0"
         ]
       ],
       "receive": [
-        "quest:headstone.+1"
+        "misc:headstone 2"
       ]
     },
     {
@@ -7829,7 +7954,7 @@
       "requires": [
         [
           "item:key#1",
-          "permit:bomb.1"
+          "permit:bomb"
         ]
       ],
       "receive": [
@@ -7963,7 +8088,7 @@
       "requires": [
         [
           "item:key#1",
-          "permit:bomb.1"
+          "permit:bomb"
         ]
       ],
       "receive": [
@@ -7975,7 +8100,7 @@
       "room": "7_10",
       "requires": [
         [
-          "permit:bomb.1",
+          "permit:bomb",
           "???"
         ]
       ],
@@ -8101,11 +8226,11 @@
       "room": "10_25",
       "requires": [
         [
-          "quest:headstone"
+          "quest:rings.1"
         ]
       ],
       "receive": [
-        "quest:headstone.+1"
+        "misc:headstone 3"
       ]
     },
     {
@@ -8305,11 +8430,11 @@
       "room": "18_24",
       "requires": [
         [
-          "quest:headstone"
+          "quest:rings.1"
         ]
       ],
       "receive": [
-        "quest:headstone.+1"
+        "misc:headstone 4"
       ]
     },
     {
@@ -8497,32 +8622,11 @@
       "room": "20_18",
       "requires": [
         [
-          "???",
-          "misc:npc debugger 1"
+          "quest:rings.11"
         ]
       ],
       "receive": [
-        "???"
-      ]
-    },
-    {
-      "room": "19_18",
-      "requires": [
-        [
-          "???",
-          "entrance.north0"
-        ],
-        [
-          "???",
-          "entrance.south1"
-        ],
-        [
-          "???",
-          "entrance.east0"
-        ]
-      ],
-      "receive": [
-        "misc:npc debugger 1"
+        "quest:rings.12"
       ]
     },
     {
@@ -8725,11 +8829,11 @@
       "room": "16_16",
       "requires": [
         [
-          "quest:headstone"
+          "quest:rings.1"
         ]
       ],
       "receive": [
-        "quest:headstone.+1"
+        "misc:headstone 1"
       ]
     },
     {
@@ -8750,12 +8854,11 @@
         [
           "item:cotton thread#10",
           "item:shadow crest#5",
-          "???",
-          "permit:bomb"
+          "skill:reveal"
         ]
       ],
       "receive": [
-        "misc:max bombs.+50"
+        "misc:max bombs.149"
       ]
     },
     {
@@ -8872,17 +8975,6 @@
       ],
       "receive": [
         "weapon:shadow staff"
-      ]
-    },
-    {
-      "room": "4_25",
-      "requires": [
-        [
-          "??? sign debugger"
-        ]
-      ],
-      "receive": [
-        "???"
       ]
     },
     {
@@ -9047,7 +9139,7 @@
       "room": "19_23",
       "requires": [
         [
-          "loot:bear tooth#15",
+          "item:bear tooth#15",
           "quest:gTree.3"
         ]
       ],
@@ -9161,8 +9253,8 @@
       "room": "21_21",
       "requires": [
         [
-          "food:hony#5",
-          "loot:venom#1"
+          "food:honey#5",
+          "item:venom#1"
         ]
       ],
       "receive": [
@@ -9314,8 +9406,8 @@
       "requires": [
         [
           "quest:gTree.14",
-          "loot:sClaw#7",
-          "loot:cFang#5"
+          "item:scorpiion claw#7",
+          "item:cobra fang#5"
         ]
       ],
       "receive": [
@@ -9409,10 +9501,7 @@
     {
       "room": "6_23",
       "requires": [
-        [
-          "state:lit torch 2",
-          "state:lit torch 1"
-        ]
+        []
       ],
       "receive": []
     },
@@ -9642,7 +9731,7 @@
         ]
       ],
       "receive": [
-        "item:ring health"
+        "item:ring of health"
       ]
     },
     {
@@ -9650,7 +9739,7 @@
       "requires": [
         [
           "item:ring of gold",
-          "item:ring health",
+          "item:ring of health",
           "quest:rings.1"
         ]
       ],
@@ -9663,8 +9752,8 @@
       "requires": [
         [
           "item:ring of gold",
-          "item:ring health",
-          "item:ring evasion",
+          "item:ring of health",
+          "item:ring of evasion",
           "quest:rings.1"
         ]
       ],
@@ -9691,116 +9780,353 @@
         []
       ],
       "receive": [
-        "skill:dig"
+        "item:cotton thread",
+        "item:shadow crest",
+        "item:orc coin"
+      ]
+    },
+    {
+      "room": "20_20",
+      "requires": [
+        [
+          "quest:warp.1",
+          "misc:headstone 1",
+          "misc:headstone 2",
+          "misc:headstone 3",
+          "misc:headstone 4"
+        ]
+      ],
+      "receive": [
+        "quest:warp.2",
+        "skill:warp"
+      ]
+    },
+    {
+      "room": "13_21",
+      "requires": [
+        [
+          "quest:bBomb.5"
+        ]
+      ],
+      "receive": [
+        "quest:bBomb.6",
+        "permit:volcano"
+      ]
+    },
+    {
+      "room": "17_17",
+      "requires": [
+        [
+          "quest:bBomb.6"
+        ]
+      ],
+      "receive": [
+        "quest:bBomb.7"
+      ]
+    },
+    {
+      "room": "20_18",
+      "requires": [
+        [
+          "quest:bBomb.7"
+        ]
+      ],
+      "receive": [
+        "quest:bBomb.8"
+      ]
+    },
+    {
+      "room": "13_21",
+      "requires": [
+        [
+          "quest:bBomb.8"
+        ]
+      ],
+      "receive": [
+        "quest:bBomb.9",
+        "permit:bomb.2"
+      ]
+    },
+    {
+      "room": "19_20",
+      "requires": [
+        [
+          "quest:pam.8"
+        ]
+      ],
+      "receive": [
+        "quest:pam.9"
+      ]
+    },
+    {
+      "room": "18_19",
+      "requires": [
+        [
+          "quest:seeds.1"
+        ]
+      ],
+      "receive": [
+        "quest:seeds.2"
+      ]
+    },
+    {
+      "room": "18_19",
+      "requires": [
+        [
+          "quest:seeds.2",
+          "item:orc coin#20"
+        ]
+      ],
+      "receive": [
+        "quest:seeds.3"
+      ]
+    },
+    {
+      "room": "9_22",
+      "requires": [
+        [
+          "quest:seeds.3",
+          "entrance.south0"
+        ]
+      ],
+      "receive": [
+        "quest:seeds.4",
+        "food:orange#10",
+        "food:pepper#3"
+      ]
+    },
+    {
+      "room": "11_11",
+      "requires": [
+        [
+          "quest:rings.4",
+          "entrance.north0"
+        ],
+        [
+          "quest:rings.4",
+          "entrance.west0"
+        ]
+      ],
+      "receive": [
+        "quest:rings.5"
+      ]
+    },
+    {
+      "room": "11_11",
+      "requires": [
+        [
+          "quest:rings.5"
+        ]
+      ],
+      "receive": [
+        "quest:rings.6",
+        "item:ring of poison"
+      ]
+    },
+    {
+      "room": "14_22",
+      "requires": [
+        [
+          "item:ring of gold",
+          "item:ring of health",
+          "item:ring of evasion",
+          "item:ring of poison",
+          "quest:rings.1"
+        ]
+      ],
+      "receive": [
+        "quest:rings.7"
+      ]
+    },
+    {
+      "room": "16_15",
+      "requires": [
+        [
+          "quest:pam.9",
+          "skill:dig"
+        ]
+      ],
+      "receive": [
+        "quest:pam.10"
+      ]
+    },
+    {
+      "room": "19_20",
+      "requires": [
+        [
+          "quest:pam.10"
+        ]
+      ],
+      "receive": [
+        "quest:pam.11",
+        "food:peper#5",
+        "food:orange#20"
+      ]
+    },
+    {
+      "room": "15_16",
+      "requires": [
+        [
+          "quest:rings.7",
+          "permit:bomb"
+        ]
+      ],
+      "receive": [
+        "quest:rings.8"
+      ]
+    },
+    {
+      "room": "15_16",
+      "requires": [
+        [
+          "quest:rings.8"
+        ]
+      ],
+      "receive": [
+        "item:ring of magic",
+        "quest:rings.9"
+      ]
+    },
+    {
+      "room": "14_22",
+      "requires": [
+        [
+          "quest:rings.9"
+        ]
+      ],
+      "receive": [
+        "quest:rings.10"
+      ]
+    },
+    {
+      "room": "19_18",
+      "requires": [
+        [
+          "quest:rings.10"
+        ]
+      ],
+      "receive": [
+        "quest:rings.11"
+      ]
+    },
+    {
+      "room": "20_18",
+      "requires": [
+        [
+          "quest:rings.13",
+          "item:steel fragment#5",
+          "item:dragon scale#3",
+          "item:funny bone#10",
+          "misc:geomana"
+        ]
+      ],
+      "receive": [
+        "quest:rings.14"
+      ]
+    },
+    {
+      "room": "6_12",
+      "requires": [
+        []
+      ],
+      "receive": [
+        "quest:geo.1"
+      ]
+    },
+    {
+      "room": "6_12",
+      "requires": [
+        [
+          "quest:geo.1",
+          "item:quartz geode#5"
+        ]
+      ],
+      "receive": [
+        "quest:geo.2"
+      ]
+    },
+    {
+      "room": "6_12",
+      "requires": [
+        [
+          "quest:geo.2"
+        ]
+      ],
+      "receive": [
+        "quest:geo.3"
+      ]
+    },
+    {
+      "room": "21_20",
+      "requires": [
+        [
+          "quest:geo.3"
+        ]
+      ],
+      "receive": [
+        "quest:geo.4"
+      ]
+    },
+    {
+      "room": "6_12",
+      "requires": [
+        [
+          "quest:geo.4"
+        ]
+      ],
+      "receive": [
+        "quest:geo.5",
+        "skill:convert"
+      ]
+    },
+    {
+      "room": "6_12",
+      "requires": [
+        [
+          "quest:rings.12",
+          "quest:geo.5",
+          "item:gold#1000"
+        ]
+      ],
+      "receive": [
+        "quest:rings.13"
       ]
     }
   ],
   "itemGiveIndex": {
-    "flag:spawnpoint": [
+    "skill:dig": [
       {
         "room": "20_20",
-        "raw": "spawnpoint"
+        "raw": "skill:dig"
+      }
+    ],
+    "skill:kick": [
+      {
+        "room": "20_20",
+        "raw": "skill:kick"
+      }
+    ],
+    "item:aurastone": [
+      {
+        "room": "20_20",
+        "raw": "item:aurastone"
+      }
+    ],
+    "item:key": [
+      {
+        "room": "20_20",
+        "raw": "item:key"
       },
       {
-        "room": "12_9",
-        "raw": "spawnpoint"
-      }
-    ],
-    "food:banana": [
-      {
-        "room": "15_21",
-        "raw": "food:banana#1"
-      },
-      {
-        "room": "15_19",
-        "raw": "food:banana#5"
-      },
-      {
-        "room": "12_21",
-        "raw": "food:banana#20"
-      }
-    ],
-    "food:orange": [
-      {
-        "room": "21_20",
-        "raw": "food:orange#1"
-      },
-      {
-        "room": "14_15",
-        "raw": "food:orange#12"
-      },
-      {
-        "room": "12_9",
-        "raw": "food:orange"
-      },
-      {
-        "room": "4_13",
-        "raw": "food:orange"
-      }
-    ],
-    "weapon:club": [
-      {
-        "room": "20_20",
-        "raw": "weapon:club"
-      }
-    ],
-    "weapon:dagger": [
-      {
-        "room": "20_20",
-        "raw": "weapon:dagger"
-      }
-    ],
-    "weapon:sword": [
-      {
-        "room": "20_20",
-        "raw": "weapon:sword"
-      }
-    ],
-    "armor:vest": [
-      {
-        "room": "20_20",
-        "raw": "armor:vest"
-      }
-    ],
-    "armor:magic robe": [
-      {
-        "room": "20_20",
-        "raw": "armor:magic robe"
-      }
-    ],
-    "armor:iron armour": [
-      {
-        "room": "20_20",
-        "raw": "armor:iron armour"
-      }
-    ],
-    "food:apple": [
-      {
-        "room": "20_20",
-        "raw": "food:apple"
-      },
-      {
-        "room": "14_21",
-        "raw": "food:apple#30"
-      }
-    ],
-    "food:honey": [
-      {
-        "room": "20_20",
-        "raw": "food:honey"
-      }
-    ],
-    "food:grapes": [
-      {
-        "room": "20_20",
-        "raw": "food:grapes"
-      },
-      {
-        "room": "6_13",
-        "raw": "food:grapes#5"
+        "room": "16_22",
+        "raw": "item:key#1"
       }
     ],
     "item:gold": [
+      {
+        "room": "20_20",
+        "raw": "item:gold"
+      },
       {
         "room": "18_20",
         "raw": "item:gold#30"
@@ -9890,6 +10216,118 @@
         "raw": "item:gold#1000"
       }
     ],
+    "flag:spawnpoint": [
+      {
+        "room": "20_20",
+        "raw": "spawnpoint"
+      },
+      {
+        "room": "12_9",
+        "raw": "spawnpoint"
+      }
+    ],
+    "food:banana": [
+      {
+        "room": "15_21",
+        "raw": "food:banana#1"
+      },
+      {
+        "room": "15_19",
+        "raw": "food:banana#5"
+      },
+      {
+        "room": "12_21",
+        "raw": "food:banana#20"
+      }
+    ],
+    "food:orange": [
+      {
+        "room": "21_20",
+        "raw": "food:orange#1"
+      },
+      {
+        "room": "14_15",
+        "raw": "food:orange#12"
+      },
+      {
+        "room": "12_9",
+        "raw": "food:orange"
+      },
+      {
+        "room": "4_13",
+        "raw": "food:orange"
+      },
+      {
+        "room": "9_22",
+        "raw": "food:orange#10"
+      },
+      {
+        "room": "19_20",
+        "raw": "food:orange#20"
+      }
+    ],
+    "weapon:club": [
+      {
+        "room": "20_20",
+        "raw": "weapon:club"
+      }
+    ],
+    "weapon:dagger": [
+      {
+        "room": "20_20",
+        "raw": "weapon:dagger"
+      }
+    ],
+    "weapon:sword": [
+      {
+        "room": "20_20",
+        "raw": "weapon:sword"
+      }
+    ],
+    "armor:vest": [
+      {
+        "room": "20_20",
+        "raw": "armor:vest"
+      }
+    ],
+    "armor:magic robe": [
+      {
+        "room": "20_20",
+        "raw": "armor:magic robe"
+      }
+    ],
+    "armor:iron armour": [
+      {
+        "room": "20_20",
+        "raw": "armor:iron armour"
+      }
+    ],
+    "food:apple": [
+      {
+        "room": "20_20",
+        "raw": "food:apple"
+      },
+      {
+        "room": "14_21",
+        "raw": "food:apple#30"
+      }
+    ],
+    "food:honey": [
+      {
+        "room": "20_20",
+        "raw": "food:honey"
+      }
+    ],
+    "food:grapes": [
+      {
+        "room": "20_20",
+        "raw": "food:grapes"
+      },
+      {
+        "room": "6_13",
+        "raw": "food:grapes#5"
+      }
+    ],
     "food:strawberry": [
       {
         "room": "18_19",
@@ -9906,12 +10344,6 @@
       {
         "room": "4_13",
         "raw": "food:strawberry"
-      }
-    ],
-    "item:key": [
-      {
-        "room": "16_22",
-        "raw": "item:key#1"
       }
     ],
     "item:bomb": [
@@ -10014,14 +10446,6 @@
       {
         "room": "13_26",
         "raw": "???"
-      },
-      {
-        "room": "20_18",
-        "raw": "???"
-      },
-      {
-        "room": "4_25",
-        "raw": "???"
       }
     ],
     "flag:armour:alpha armour.+inf": [
@@ -10050,26 +10474,10 @@
         "raw": "food:sunflower seed#?"
       }
     ],
-    "quest:headstone": [
+    "misc:headstone 2": [
       {
         "room": "12_12",
-        "raw": "quest:headstone.+1"
-      },
-      {
-        "room": "11_9",
-        "raw": "quest:headstone"
-      },
-      {
-        "room": "10_25",
-        "raw": "quest:headstone.+1"
-      },
-      {
-        "room": "18_24",
-        "raw": "quest:headstone.+1"
-      },
-      {
-        "room": "16_16",
-        "raw": "quest:headstone.+1"
+        "raw": "misc:headstone 2"
       }
     ],
     "food:carrot": [
@@ -10120,6 +10528,12 @@
       {
         "room": "12_9",
         "raw": "armor:speed vest"
+      }
+    ],
+    "quest:headstone": [
+      {
+        "room": "11_9",
+        "raw": "quest:headstone"
       }
     ],
     "magic:weak": [
@@ -10274,6 +10688,12 @@
         "raw": "craft.elixir"
       }
     ],
+    "misc:headstone 3": [
+      {
+        "room": "10_25",
+        "raw": "misc:headstone 3"
+      }
+    ],
     "flag:craft.emerald": [
       {
         "room": "11_22",
@@ -10346,6 +10766,12 @@
         "raw": "skill:medic.6"
       }
     ],
+    "misc:headstone 4": [
+      {
+        "room": "18_24",
+        "raw": "misc:headstone 4"
+      }
+    ],
     "flag:craft.ring of gold": [
       {
         "room": "21_22",
@@ -10398,6 +10824,18 @@
       {
         "room": "9_11",
         "raw": "quest:pam.8"
+      },
+      {
+        "room": "19_20",
+        "raw": "quest:pam.9"
+      },
+      {
+        "room": "16_15",
+        "raw": "quest:pam.10"
+      },
+      {
+        "room": "19_20",
+        "raw": "quest:pam.11"
       }
     ],
     "skill:craft": [
@@ -10438,10 +10876,62 @@
         "raw": "magic:crush"
       }
     ],
-    "misc:npc debugger 1": [
+    "quest:rings": [
+      {
+        "room": "20_18",
+        "raw": "quest:rings.12"
+      },
+      {
+        "room": "14_22",
+        "raw": "quest:rings.1"
+      },
+      {
+        "room": "14_22",
+        "raw": "quest:rings.2"
+      },
+      {
+        "room": "14_22",
+        "raw": "quest:rings.3"
+      },
+      {
+        "room": "14_22",
+        "raw": "quest:rings.4"
+      },
+      {
+        "room": "11_11",
+        "raw": "quest:rings.5"
+      },
+      {
+        "room": "11_11",
+        "raw": "quest:rings.6"
+      },
+      {
+        "room": "14_22",
+        "raw": "quest:rings.7"
+      },
+      {
+        "room": "15_16",
+        "raw": "quest:rings.8"
+      },
+      {
+        "room": "15_16",
+        "raw": "quest:rings.9"
+      },
+      {
+        "room": "14_22",
+        "raw": "quest:rings.10"
+      },
       {
         "room": "19_18",
-        "raw": "misc:npc debugger 1"
+        "raw": "quest:rings.11"
+      },
+      {
+        "room": "20_18",
+        "raw": "quest:rings.14"
+      },
+      {
+        "room": "6_12",
+        "raw": "quest:rings.13"
       }
     ],
     "flag:skill.firewall.2": [
@@ -10516,6 +11006,12 @@
         "raw": "skill:shield"
       }
     ],
+    "misc:headstone 1": [
+      {
+        "room": "16_16",
+        "raw": "misc:headstone 1"
+      }
+    ],
     "food:coolie": [
       {
         "room": "17_15",
@@ -10525,7 +11021,7 @@
     "misc:max bombs": [
       {
         "room": "18_13",
-        "raw": "misc:max bombs.+50"
+        "raw": "misc:max bombs.149"
       }
     ],
     "armor:grim gear": [
@@ -10706,6 +11202,22 @@
       {
         "room": "12_14",
         "raw": "quest:bBomb.5"
+      },
+      {
+        "room": "13_21",
+        "raw": "quest:bBomb.6"
+      },
+      {
+        "room": "17_17",
+        "raw": "quest:bBomb.7"
+      },
+      {
+        "room": "20_18",
+        "raw": "quest:bBomb.8"
+      },
+      {
+        "room": "13_21",
+        "raw": "quest:bBomb.9"
       }
     ],
     "quest:dig": [
@@ -10772,6 +11284,10 @@
       {
         "room": "13_21",
         "raw": "permit:bomb"
+      },
+      {
+        "room": "13_21",
+        "raw": "permit:bomb.2"
       }
     ],
     "misc:orb of peace": [
@@ -10790,6 +11306,10 @@
       {
         "room": "11_9",
         "raw": "quest:warp.1"
+      },
+      {
+        "room": "20_20",
+        "raw": "quest:warp.2"
       }
     ],
     "quest:canteen": [
@@ -10816,6 +11336,18 @@
       {
         "room": "9_22",
         "raw": "quest:seeds.1"
+      },
+      {
+        "room": "18_19",
+        "raw": "quest:seeds.2"
+      },
+      {
+        "room": "18_19",
+        "raw": "quest:seeds.3"
+      },
+      {
+        "room": "9_22",
+        "raw": "quest:seeds.4"
       }
     ],
     "food:holy water": [
@@ -10856,34 +11388,16 @@
         "raw": "item:diamnond#1"
       }
     ],
-    "quest:rings": [
-      {
-        "room": "14_22",
-        "raw": "quest:rings.1"
-      },
-      {
-        "room": "14_22",
-        "raw": "quest:rings.2"
-      },
-      {
-        "room": "14_22",
-        "raw": "quest:rings.3"
-      },
-      {
-        "room": "14_22",
-        "raw": "quest:rings.4"
-      }
-    ],
     "item:ring of gold": [
       {
         "room": "14_22",
         "raw": "item:ring of gold"
       }
     ],
-    "item:ring health": [
+    "item:ring of health": [
       {
         "room": "16_21",
-        "raw": "item:ring health"
+        "raw": "item:ring of health"
       }
     ],
     "flag:ring.evasion": [
@@ -10892,10 +11406,86 @@
         "raw": "ring.evasion"
       }
     ],
-    "skill:dig": [
+    "item:cotton thread": [
       {
         "room": "20_20",
-        "raw": "skill:dig"
+        "raw": "item:cotton thread"
+      }
+    ],
+    "item:shadow crest": [
+      {
+        "room": "20_20",
+        "raw": "item:shadow crest"
+      }
+    ],
+    "item:orc coin": [
+      {
+        "room": "20_20",
+        "raw": "item:orc coin"
+      }
+    ],
+    "skill:warp": [
+      {
+        "room": "20_20",
+        "raw": "skill:warp"
+      }
+    ],
+    "permit:volcano": [
+      {
+        "room": "13_21",
+        "raw": "permit:volcano"
+      }
+    ],
+    "food:pepper": [
+      {
+        "room": "9_22",
+        "raw": "food:pepper#3"
+      }
+    ],
+    "item:ring of poison": [
+      {
+        "room": "11_11",
+        "raw": "item:ring of poison"
+      }
+    ],
+    "food:peper": [
+      {
+        "room": "19_20",
+        "raw": "food:peper#5"
+      }
+    ],
+    "item:ring of magic": [
+      {
+        "room": "15_16",
+        "raw": "item:ring of magic"
+      }
+    ],
+    "quest:geo": [
+      {
+        "room": "6_12",
+        "raw": "quest:geo.1"
+      },
+      {
+        "room": "6_12",
+        "raw": "quest:geo.2"
+      },
+      {
+        "room": "6_12",
+        "raw": "quest:geo.3"
+      },
+      {
+        "room": "21_20",
+        "raw": "quest:geo.4"
+      },
+      {
+        "room": "6_12",
+        "raw": "quest:geo.5"
+      }
+    ],
+    "skill:convert": [
+      {
+        "room": "6_12",
+        "raw": "skill:convert"
       }
     ]
   },
