@@ -44,7 +44,10 @@ async function main() {
   let browser
   try {
     // 1. Connect to the existing browser session
-    browser = await puppeteer.connect({ browserURL: DEBUG_URL })
+    browser = await puppeteer.connect({
+      browserURL: DEBUG_URL,
+      defaultViewport: null,
+    })
     const pages = await browser.pages()
 
     // Find the target tab
@@ -55,7 +58,6 @@ async function main() {
       )
       return
     }
-
     console.log(
       "🚀 Automation loop started. Press Ctrl+C in terminal to stop.",
     )
@@ -93,18 +95,24 @@ async function main() {
 
         // Process each item in this coordinate chunk sequentially
         for (const item of itemsToProcess) {
-          const [prop, originalLineNumber] = item
-
+          var [prop, originalLineNumber] = item
+          originalLineNumber = Number(originalLineNumber)
           // Calculate offset: count how many previous insertions happened ABOVE this line
           const dynamicOffset = insertedOriginalLines.filter(
             (line) => line < originalLineNumber,
           ).length
 
-          var adjustedLineNumber =
-            originalLineNumber + dynamicOffset
+          console.log({
+            typeofOriginal: typeof originalLineNumber,
+            originalLineNumber: originalLineNumber,
+            startValue: start,
+            lenValue: len,
+            dynamicOffset: dynamicOffset,
+          })
+          var adjustedLineNumber = originalLineNumber + dynamicOffset
           const textToWrite = `newItem(${north},${east},'${prop}',)`
-          if (adjustedLineNumber>start){
-            adjustedLineNumber-=len
+          if (adjustedLineNumber > start) {
+            adjustedLineNumber -= len
           }
           console.log(
             `Processing: Inserting "${textToWrite}" at adjusted line ${adjustedLineNumber} ` +
@@ -119,7 +127,9 @@ async function main() {
           )
 
           // 4. Open VS Codium to the adjusted line number
-          console.log(`codium --goto "${BASE_FILE_PATH}:${adjustedLineNumber}`)
+          console.log(
+            `codium --goto "${BASE_FILE_PATH}:${adjustedLineNumber}`,
+          )
           // exec(
           //   `codium --goto "${BASE_FILE_PATH}:${adjustedLineNumber}"`,
           //   (err) => {
@@ -148,7 +158,7 @@ async function main() {
 
         try {
           execSync("python main.py 32 --no-shuffle")
-          execSync(`push adding items to randomize ${currentKey}`)
+          // execSync(`push adding items to randomize ${currentKey}`)
         } catch (cmdError) {
           console.error(
             "Error executing terminal commands:",
