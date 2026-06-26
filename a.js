@@ -105,7 +105,8 @@ async function main() {
     console.log(
       "Access list fully processed. Copying base file to final file...",
     )
-    fs.copyFileSync(BASE_FILE_PATH, FINAL_FILE_PATH)
+    exec("python main.py 32 --no-shuffle")
+    // fs.copyFileSync(BASE_FILE_PATH, FINAL_FILE_PATH)
 
     // 7. Reload the target page
     console.log("Reloading the browser page...")
