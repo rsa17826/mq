@@ -1,0 +1,2 @@
+./progression.json .locations[*a]
+./room_geometry.json [*s] for a as aa find s.north==aa.room.north&&s.east==aa.room.east as f,merge aa.* into f

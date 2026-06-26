@@ -1,83 +1,168 @@
-import re
-import json
-import sys
 
-# Regex patterns
-TARGET_PAT = re.compile(r"manager\.quest\[manager\.(\w+)\]\s*= ")
-NORTH_PAT = re.compile(r"manager\.north\s*==\s*(\d+)")
-EAST_PAT = re.compile(r"manager\.east\s*==\s*(\d+)")
+with open("./aasaaa.js", "r") as f:
+  text=f.read()
 
-def parse_file(filepath):
-    with open(filepath, 'r') as f:
-        lines = f.readlines()
-
-    results = []
-
-    for i, line in enumerate(lines):
-        if s:=TARGET_PAT.search(line):
-            line_num = i + 1
-
-            closest_north_idx = None
-            closest_east_idx = None
-            north_val = None
-            east_val = None
-
-            # 1. Scan backwards up to 50 lines to find the closest north and east
-            for j in range(i - 1, max(-1, i - 50), -1):
-                check_line = lines[j]
-
-                if closest_north_idx is None:
-                    n_match = NORTH_PAT.search(check_line)
-                    if n_match:
-                        closest_north_idx = j
-                        north_val = int(n_match.group(1))
-
-                if closest_east_idx is None:
-                    e_match = EAST_PAT.search(check_line)
-                    if e_match:
-                        closest_east_idx = j
-                        east_val = int(e_match.group(1))
-
-                # Stop scanning if we found both a north and an east
-                if closest_north_idx is not None and closest_east_idx is not None:
-                    break
-
-            # If we didn't find either coordinate, skip this target entirely
-            if closest_north_idx is None and closest_east_idx is None:
-                continue
-
-            # 2. Warning Logic: Check if there are MORE than these 2 coordinate lines nearby
-            # Determine the boundaries of our found pair block
-            found_indices = [idx for idx in [closest_north_idx, closest_east_idx] if idx is not None]
-            min_idx = min(found_indices)
-            max_idx = max(found_indices)
-
-            # Check a small buffer window around our found block (5 lines above and below)
-            search_start = max(0, min_idx - 5)
-            search_end = min(len(lines), max_idx + 6)
-
-            total_coordinates_found = 0
-            for scan_idx in range(search_start, search_end):
-                scan_line = lines[scan_idx]
-                if NORTH_PAT.search(scan_line) or EAST_PAT.search(scan_line):
-                    total_coordinates_found += 1
-
-            # If we found more than the 2 expected coordinate lines in this block, flag it
-            if total_coordinates_found > len(found_indices):
-                print(f"[WARNING] More than 2 coordinate checks found near line {line_num}. Verify block layout.", file=sys.stderr)
-
-            # 3. Build JSON data
-            quest_data = {
-                "room": {
-                    "north": north_val,
-                    "east": east_val
-                },
-                "requires": [["quest:"+str(s[1])+".2"]],
-                "receive": ["quest:"+str(s[1])+".3"]
-            }
-            results.append(quest_data)
-
-    print(json.dumps(results, indent=6))
-
-if __name__ == "__main__":
-    parse_file("MathQuest/MathQuest.js")
+Enum = {
+  "Loot": {
+    "aAxe": 19,
+    "aClub": 18,
+    "aScepter": 20,
+    "bClaw": 2,
+    "bFang": 4,
+    "bTooth": 1,
+    "bTusk": 0,
+    "cFang": 11,
+    "cShell": 6,
+    "cThread": 24,
+    "dScale": 15,
+    "fBone": 9,
+    "gFeather": 12,
+    "gSkin": 16,
+    "kCrest": 14,
+    "mHat": 21,
+    "mHorn": 17,
+    "mStaff": 7,
+    "oArm": 26,
+    "oCoin": 13,
+    "sClaw": 10,
+    "sFrag": 22,
+    "sTooth": 25,
+    "tBand": 5,
+    "vAsh": 23,
+    "venom": 3,
+    "vHorn": 27,
+    "wPelt": 8,
+  },
+  "Quest": {
+    "access": 12,
+    "aSword": 17,
+    "bBomb": 1,
+    "canteen": 7,
+    "curse": 9,
+    "dig": 3,
+    "dream": 10,
+    "geo": 8,
+    "gTree": 0,
+    "hWater": 14,
+    "isles": 16,
+    "mChal": 4,
+    "oMan": 15,
+    "pam": 6,
+    "rings": 13,
+    "seeds": 5,
+    "warp": 2,
+  },
+  "Food": {
+    "apple": 0,
+    "honey": 1,
+    "grapes": 2,
+    "orange": 3,
+    "gingerBread": 4,
+    "banana": 5,
+    "carrot": 6,
+    "beefJerky": 7,
+    "cherries": 8,
+    "chocolate": 9,
+    "steak": 10,
+    "holyWater": 11,
+    "peppers": 12,
+    "sunflowerSeeds": 13,
+    "gummyBears": 14,
+    "blueberries": 15,
+    "newtonsApple": 16,
+    "elixir": 17,
+    "strawberry": 18,
+  },
+  "Skill": {
+    "dig": 0,
+    "kick": 1,
+    "flee": 2,
+    "swap": 3,
+    "firewall": 4,
+    "warp": 5,
+    "halo": 6,
+    "convert": 7,
+    "hint": 8,
+    "fear": 9,
+    "shield": 10,
+    "craft": 11,
+    "reveal": 12,
+    "snowball": 13,
+    "medic": 14,
+    "tough": 15,
+  },
+  "Magic": {
+    "tele": 0,
+    "slow": 1,
+    "heal": 2,
+    "blast": 3,
+    "fire": 4,
+    "regen": 5,
+    "cloud": 6,
+    "weak": 7,
+    "ice": 8,
+    "refresh": 9,
+    "lightning": 10,
+    "drain": 11,
+    "blessing": 12,
+    "doubleDown": 13,
+    "crush": 14,
+  },
+  "Craft": {
+    "chocolate": 0,
+    "orange": 1,
+    "steak": 2,
+    "blueberries": 3,
+    "craftBomb": 4,
+    "craftKey": 5,
+    "craftRingGold": 6,
+    "holyWater": 7,
+    "newtonApple": 8,
+    "elixir": 9,
+    "emerald": 10,
+    "upgradeAAHP": 11,
+    "upgradeAAMP": 12,
+    "upgradeStaff": 13,
+  },
+  "Weapon": {
+    "club": 0,
+    "dagger": 1,
+    "sword": 2,
+    "royalSword": 3,
+    "royalStaff": 4,
+    "sKnife": 5,
+    "warlockStaff": 6,
+    "sunSword": 7,
+    "orcBlade": 8,
+    "shadowStaff": 9,
+    "baneBlade": 10,
+    "creeperCrusher": 11,
+    "pitchfork": 12,
+    "bombSword": 13,
+    "refreshStaff": 14,
+    "axe": 15,
+    "soulSword": 16,
+    "twinFury": 17,
+    "upgradeStaff": 18,
+    "aSword": 19,
+  },
+  "Armor": {
+    "vest": 0,
+    "robe": 1,
+    "iron": 2,
+    "regenArmor": 3,
+    "royalArmor": 4,
+    "mysticCloak": 5,
+    "sunArmor": 6,
+    "speedVest": 7,
+    "grimGear": 8,
+    "phantomCoat": 9,
+    "diamondArmor": 10,
+    "nobleArmor": 11,
+    "shadowCoat": 12,
+    "soulArmor": 13,
+    "alphaArmor": 14,
+  },
+}
+with open("./aasaaa.js", "w") as f:
+  f.write(text)

@@ -1,0 +1,52 @@
+[ER DEBUG] Transition initiated. From room: 9,22 at position X/Y: 410,102
+MathQuest.js:111036 [ER DEBUG] Checking redirection for vanilla move path key: 9_22_10.1_21
+MathQuest.js:111115 [ER DEBUG] Success! Redirecting room target to: 9,22 Placing character at: 454,64 0 0 {newNorth: 9, newEast: 22, newX: 454, newY: 64, srcCoord: -1, …}dirCode: 0newEast: 22newNorth: 9newX: 454newY: 64srcCoord: -1xIsEven: 0yIsEven: 0[[Prototype]]: Object
+
+
+var x = [player.north,player.east]
+if (typeof ER_MAP !== "undefined" || window.ER_MAP) {
+  const mapInstance =
+    typeof ER_MAP !== "undefined" ? ER_MAP : window.ER_MAP
+  console.log(`=== Active Randomizer Routes for Room ${x.join(',')} ===`)
+
+  mapInstance.forEach((conns, key) => {
+    // Correct order: 13 (North) and 26 (East)
+    if (key.startsWith(`${x[0]}_${x[1]}_`)) {
+      console.log(`Outbound Exit -> Vanilla Path: [${key}]`, conns)
+    }
+    conns.forEach((c) => {
+      if (c.newNorth === x[0] && c.newEast === x[1]) {
+        console.log(
+          `Inbound Entrance -> Lands Here from Vanilla Path [${key}]:`,
+          c,
+        )
+      }
+    })
+  })
+} else {
+  console.log(
+    "ER_MAP is not defined or initialized in this scope yet.",
+  )
+}
+
+VM13603:5 === Active Randomizer Routes for Room 9,22 ===
+VM13603:10 Outbound Exit -> Vanilla Path: [9_22_8_22] [{…}]
+VM13603:14 Inbound Entrance -> Lands Here from Vanilla Path [10_22_9_22]: {newNorth: 9, newEast: 22, newX: 405.7143, newY: 0, srcCoord: 405.7143, …}
+VM13603:14 Inbound Entrance -> Lands Here from Vanilla Path [10_22_9_22]: {newNorth: 9, newEast: 22, newX: 152.1429, newY: 0, srcCoord: 152.1429, …}
+VM13603:14 Inbound Entrance -> Lands Here from Vanilla Path [8_22_9_22]: {newNorth: 9, newEast: 22, newX: 405.7143, newY: 509.0909, srcCoord: 405.7143, …}
+VM13603:10 Outbound Exit -> Vanilla Path: [9_22_10_22] (2) [{…}, {…}]
+VM13603:10 Outbound Exit -> Vanilla Path: [9_22_10.1_21] [{…}]0: dirCode: 0newEast: 22newNorth: 9newX: 454newY: 64srcCoord: -1xIsEven: 0yIsEven: 0[[Prototype]]: Objectlength: 1[[Prototype]]: Array(0)
+[
+    {
+        "newNorth": 9,
+        "newEast": 22,
+        "newX": 454,
+        "newY": 64,
+        "srcCoord": -1,
+        "dirCode": 0,
+        "xIsEven": 0,
+        "yIsEven": 0
+    }
+]
+VM13603:14 Inbound Entrance -> Lands Here from Vanilla Path [9_22_10.1_21]: {newNorth: 9, newEast: 22, newX: 454, newY: 64, srcCoord: -1, …}
+undefined

@@ -1,0 +1,4 @@
+manager\.(\w+)\[(.*)\] ?\+= ?(\d+)
+setManagerData("$1", $2, manager.food[$2]+$3)
+
+manager.north == 18 && manager.east == 21
