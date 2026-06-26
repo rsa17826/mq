@@ -1,5 +1,5 @@
 
-with open("./aasaaa.js", "r") as f:
+with open("./MathQuest/MathQuest.js", "r") as f:
   text=f.read()
 
 Enum = {
@@ -164,5 +164,29 @@ Enum = {
     "alphaArmor": 14,
   },
 }
-with open("./aasaaa.js", "w") as f:
+import re
+for k in Enum:
+  for kk in Enum[k]:
+      v=Enum[k][kk]
+      print(k)
+      if k=="Weapon":
+        old_str = f".weapTile[{v}]"
+        new_str = f".weapTile[Enum.{k}.{kk}]"
+        text = text.replace(old_str, new_str)
+      old_str = f".{k.lower()}[{v}]"
+      new_str = f".{k.lower()}[Enum.{k}.{kk}]"
+      text = text.replace(old_str, new_str)
+      old_str = f".{k.lower()}s[{v}]"
+      new_str = f".{k.lower()}s[Enum.{k}.{kk}]"
+      text = text.replace(old_str, new_str)
+      old_str = f".{k.lower()}Tile[{v}]"
+      new_str = f".{k.lower()}Tile[Enum.{k}.{kk}]"
+      text = text.replace(old_str, new_str)
+      old_str = f".{k.lower()}sTile[{v}]"
+      new_str = f".{k.lower()}sTile[Enum.{k}.{kk}]"
+      text = text.replace(old_str, new_str)
+      old_str = f".{k.lower()}[.{kk}]"
+      new_str = f".{k.lower()}[Enum.{k}.{kk}]"
+      text = text.replace(old_str, new_str)
+with open("./MathQuest/MathQuest.js", "w") as f:
   f.write(text)
