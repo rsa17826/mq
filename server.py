@@ -13,6 +13,13 @@ class CachedCGIHTTPRequestHandler(CGIHTTPRequestHandler):
     super().__init__(*args, directory=DIRECTORY, **kwargs)
 
   def do_GET(self):
+    # Split out query parameters to safely check the file extension
+    clean_path = self.path.split("?")[0]
+
+    # Reroute any .mp3 request to /empty.mp3
+    if clean_path.lower().endswith(".mp3"):
+      self.path = "/empty.mp3"
+
     normalized_path = self.translate_path(self.path)
     relative_path = os.path.relpath(normalized_path, os.getcwd())
 
