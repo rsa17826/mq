@@ -76,7 +76,7 @@ async function main() {
     }
 
     // 3. Process each item in the accessList sequentially
-    for (const item of accessList) {
+    for (const item of accessList[`${north}_${east}`]) {
       const [prop, lineNumber] = item
       const textToWrite = `newItem(${north},${east},'${prop}',)`
 
