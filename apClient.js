@@ -190,10 +190,10 @@ class ArchipelagoClient {
     console.log(
       `Received packet containing ${packet.items.length} items.`,
     )
-
-    if (packet.index === 0) {
-      console.log("Resetting local inventory tracking.")
-      // Optional: Clear player's AP inventory here if resetting sync
+    if (!window.prevSeenItems || !window.playerLoaded) {
+      log(window.prevSeenItems, window.playerLoaded)
+      window.waitingPackets.push(packet)
+      return
     }
 
     packet.items.forEach((item, offset) => {
@@ -201,13 +201,21 @@ class ArchipelagoClient {
 
       // Look up what this item ID actually means
       const itemName = AP_ITEM_IDS[item.item]
-
-      console.log(`[Item Received] ID: ${item.item} (${itemName})`, item)
-
-      if (!window.giveItem(itemName)) {
-        error("failed to give", itemName)
+      if (window.prevSeenItems.includes(item.item)) {
+        console.log(
+          `[Item Received] ID: ${item.item} (${itemName}) - already recived`,
+          item,
+        )
+      } else {
+        console.log(
+          `[Item Received] ID: ${item.item} (${itemName})`,
+          item,
+        )
+        if (!window.giveItem(itemName)) {
+          error("failed to give", itemName)
+        }
+        window.prevSeenItems.push(item.item)
       }
-      window.prevSeenItems.push(item.item)
       this.lastProcessedIndex = globalIndex + 1
     })
   }
@@ -267,7 +275,20 @@ if (location.search) {
     if ((data = await get(`/MQFiles/loadChar_${window.seed}.php`))) {
       var newdata = data.split(" ").slice(265)
       log(newdata, "newdata")
-      window.prevSeenItems = newdata
+      window.prevSeenItems = newdata.map((e) => Number(e))
+      if (window.playerLoaded) {
+        for (var packet of window.waitingPackets) {
+          ap.handlePacket(packet)
+        }
+        waitingPackets = []
+      } else {
+        window.onPlayerLoaded = function () {
+          for (var packet of window.waitingPackets) {
+            ap.handlePacket(packet)
+          }
+          waitingPackets = []
+        }
+      }
     } else {
       get(
         "http://127.0.0.1:1533/cgi-bin/createChar.py?filename=" +
@@ -279,6 +300,7 @@ if (location.search) {
   }
   window.ap.connect()
 }
+window.waitingPackets = []
 async function get(url) {
   try {
     return await (await fetch(url)).text()
