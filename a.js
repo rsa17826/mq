@@ -99,13 +99,19 @@ async function main() {
 
       // 5. Wait for the user to manually save the file before moving to the next item
       await waitForFileSave(BASE_FILE_PATH)
+      await new Promise(e=>setTimeout(e,100))
     }
 
     // 6. When list is empty, copy MathQuest.base.js to MathQuest.js
     console.log(
       "Access list fully processed. Copying base file to final file...",
     )
-    exec("python main.py 32 --no-shuffle")
+    page.evaluate(() => {
+      window.test.save()
+    })
+    execSync("prettier --write --semi=false --print-width=70 --experimental-ternaries=true --tab-width=2  MathQuest/MathQuest.base.js")
+    execSync("python main.py 32 --no-shuffle")
+    execSync("push")
     // fs.copyFileSync(BASE_FILE_PATH, FINAL_FILE_PATH)
 
     // 7. Reload the target page
