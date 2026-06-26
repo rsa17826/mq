@@ -191,16 +191,25 @@ class ArchipelagoClient {
       `Received packet containing ${packet.items.length} items.`,
     )
 
-    // Index 0 requires erasing prior inventory state and accepting this list fresh.
     if (packet.index === 0) {
       console.log("Resetting local inventory tracking.")
+      // Optional: Clear player's AP inventory here if resetting sync
     }
 
     packet.items.forEach((item, offset) => {
       const globalIndex = packet.index + offset
-      console.log(
-        `[Item Received] ID: ${item.item} at Location: ${item.location} from Player Slot: ${item.player}`,
-      )
+
+      // Look up what this item ID actually means
+      const itemName = AP_ITEM_IDS[item.item]
+
+      console.log(`[Item Received] ID: ${item.item} (${itemName})`)
+
+      // 💥 CRITICAL: Give the item to the game!
+      if (typeof window.giveItem === "function") {
+        // Pass the item name or ID to your game's existing item management code
+        window.giveItem(itemName)
+      }
+
       this.lastProcessedIndex = globalIndex + 1
     })
   }
@@ -255,37 +264,37 @@ if (location.search) {
   window.ap = new ArchipelagoClient(obj)
   window.ap.connect()
 }
-Object.defineProperty(window, "connect", {
-  get() {
-    window.cdata = []
-    window.cint = 0
-    window.__np = new Proxy(
-      {},
-      {
-        get(_target, k) {
-          window.cdata.push(k)
-          if (window.cint) {
-            clearTimeout(window.cint)
-          }
-          window.cint = setTimeout(() => {
-            var pname = window.cdata.pop()
-            var port = window.cdata.pop()
-            if (!window.cdata.length) {
-              window.cdata = ["127.0.0.1"]
-            }
-            window.ap = new ArchipelagoClient({
-              hostname: window.cdata.join("."),
-              port: port,
-              game: "MathQuest",
-              playerName: pname,
-            })
-            window.ap.connect()
-            window.cdata = []
-          })
-          return __np
-        },
-      },
-    )
-    return __np
-  },
-})
+// Object.defineProperty(window, "connect", {
+//   get() {
+//     window.cdata = []
+//     window.cint = 0
+//     window.__np = new Proxy(
+//       {},
+//       {
+//         get(_target, k) {
+//           window.cdata.push(k)
+//           if (window.cint) {
+//             clearTimeout(window.cint)
+//           }
+//           window.cint = setTimeout(() => {
+//             var pname = window.cdata.pop()
+//             var port = window.cdata.pop()
+//             if (!window.cdata.length) {
+//               window.cdata = ["127.0.0.1"]
+//             }
+//             window.ap = new ArchipelagoClient({
+//               hostname: window.cdata.join("."),
+//               port: port,
+//               game: "MathQuest",
+//               playerName: pname,
+//             })
+//             window.ap.connect()
+//             window.cdata = []
+//           })
+//           return __np
+//         },
+//       },
+//     )
+//     return __np
+//   },
+// })
