@@ -459,7 +459,7 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [{"left": 10, "right": 11}],
       "east": [],
-      "north": [{"left": 6, "right": 7}],
+      "north": [{"left": 6, "right": 7, "newY": 94}],
     },
   },
   {
@@ -1043,10 +1043,9 @@ GEOM: list[ExitBase] = [
       {
         "reqs": [["misc:green secret code"]],
         "areas": [
-          [{"side": "south", "idx": 0},
-          {"side": "north", "idx": 0}],
+          [{"side": "south", "idx": 0}, {"side": "north", "idx": 0}],
         ],
-      }
+      },
     ],
     "exits": {
       "west": [],
@@ -3904,7 +3903,7 @@ GEOM: list[ExitBase] = [
   {
     "north": 10,
     "east": 10,
-     "areas": [
+    "areas": [
       {
         "reqs": [[]],
         "areas": [

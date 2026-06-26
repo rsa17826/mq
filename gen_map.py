@@ -11,10 +11,7 @@ IMAGE_FOLDER = "mapSmall"
 FULL_IMAGE_FOLDER = "map"
 
 OUTPUT_FILE = "randomized_index.html"
-GEOMETRY_JSON_PATH = "./json/room_geometry.json"
 CONNECTIONS_JSON_PATH = "./json/connections.json"
-PROGRESSION_JSON_PATH = "./json/progression.json"
-EXITS_JSON_PATH = "./json/exits.json"
 
 # Path to the icon image representing progression events
 PROGRESSION_ICON_PATH = "/mapimgs/"
@@ -407,21 +404,17 @@ def load_geometry_map():
 
 def load_progression_map():
     prog_db = {}
-    if not os.path.exists(PROGRESSION_JSON_PATH):
-        print(f"[-] Warn: {PROGRESSION_JSON_PATH} not found.")
-        return prog_db
     try:
-        with open(PROGRESSION_JSON_PATH, "r", encoding="utf-8") as f:
-            data = json.load(f)
-            for loc in data.get("locations", []):
-                room_coord = loc.get("room")
-                if room_coord and "north" in room_coord and "east" in room_coord:
-                    n = int(room_coord["north"])
-                    e = int(room_coord["east"])
-                    key = f"{n}_{e}"
-                    if key not in prog_db:
-                        prog_db[key] = []
-                    prog_db[key].append(loc)
+        from _progression import PROG as data
+        for loc in data:
+            room_coord = loc.get("room")
+            if room_coord and "north" in room_coord and "east" in room_coord:
+                n = int(room_coord["north"])
+                e = int(room_coord["east"])
+                key = f"{n}_{e}"
+                if key not in prog_db:
+                    prog_db[key] = []
+                prog_db[key].append(loc)
     except Exception as err:
         print(f"[-] Failed to read progression config details: {err}")
     return prog_db

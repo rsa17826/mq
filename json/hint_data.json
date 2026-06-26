@@ -2233,6 +2233,14 @@
         "mechanism": "edge",
         "direction": "south",
         "requires": []
+      },
+      {
+        "toRoom": "7_11",
+        "exitId": "edge:north:6_11_7_11",
+        "viaExitId": "edge:south:7_11_6_11",
+        "mechanism": "edge",
+        "direction": "north",
+        "requires": []
       }
     ],
     "7_9": [
@@ -2249,7 +2257,7 @@
       {
         "toRoom": "6_11",
         "exitId": "edge:south:7_11_6_11",
-        "viaExitId": "edge:south:7_11_6_11",
+        "viaExitId": "edge:north:6_11_7_11",
         "mechanism": "edge",
         "direction": "south",
         "requires": []
@@ -7592,16 +7600,16 @@
         "item:boar tusk",
         "item:cobra fang",
         "item:emerald",
-        "item:fire crystal",
+        "misc:fire crystal",
         "item:funny bone",
         "item:gator skin",
         "item:golden feather",
         "item:kings crest",
         "item:mage staff",
         "item:mages hat",
-        "item:minotour horn",
+        "item:minotaur horn",
         "item:ring of evasion",
-        "item:scorpiion claw",
+        "item:scorpion claw",
         "item:shark tooth",
         "item:slamstone",
         "item:steel fragment",
@@ -7684,7 +7692,7 @@
         ]
       ],
       "receive": [
-        "armor:vest"
+        "armour:vest"
       ]
     },
     {
@@ -7695,7 +7703,7 @@
         ]
       ],
       "receive": [
-        "armor:magic robe"
+        "armour:magic robe"
       ]
     },
     {
@@ -7706,7 +7714,7 @@
         ]
       ],
       "receive": [
-        "armor:iron armour"
+        "armour:iron armour"
       ]
     },
     {
@@ -7717,7 +7725,7 @@
         ]
       ],
       "receive": [
-        "food:apple"
+        "food:apple#inf"
       ]
     },
     {
@@ -7728,7 +7736,7 @@
         ]
       ],
       "receive": [
-        "food:honey"
+        "food:honey#inf"
       ]
     },
     {
@@ -7739,36 +7747,13 @@
         ]
       ],
       "receive": [
-        "food:grapes"
+        "food:grapes#inf"
       ]
     },
     {
       "room": "18_20",
       "requires": [],
       "receive": []
-    },
-    {
-      "room": "18_20",
-      "requires": [
-        [
-          "item:key"
-        ]
-      ],
-      "receive": [
-        "item:gold#30"
-      ]
-    },
-    {
-      "room": "18_19",
-      "requires": [
-        [
-          "item:emerald#1"
-        ]
-      ],
-      "receive": [
-        "item:gold#?",
-        "food:strawberry#1"
-      ]
     },
     {
       "room": "19_21",
@@ -7782,30 +7767,6 @@
       ]
     },
     {
-      "room": "16_22",
-      "requires": [
-        [
-          "item:gold#400"
-        ]
-      ],
-      "receive": [
-        "item:key#1"
-      ]
-    },
-    {
-      "room": "15_19",
-      "requires": [
-        [
-          "item:ring of health"
-        ]
-      ],
-      "receive": [
-        "item:gold#300",
-        "item:bomb#10",
-        "food:banana#5"
-      ]
-    },
-    {
       "room": "14_19",
       "requires": [
         [
@@ -7815,63 +7776,6 @@
       ],
       "receive": [
         "item:broken alpha club#1"
-      ]
-    },
-    {
-      "room": "14_19",
-      "requires": [
-        [
-          "item:key#1",
-          "entrance.south0"
-        ]
-      ],
-      "receive": [
-        "armour:regen armor"
-      ]
-    },
-    {
-      "room": "15_21",
-      "requires": [
-        [
-          "item:key#1",
-          "entrance.south0"
-        ]
-      ],
-      "receive": [
-        "item:gold#65",
-        "item:bomb#5"
-      ]
-    },
-    {
-      "room": "14_21",
-      "requires": [
-        [
-          "item:key#1",
-          "entrance.north0"
-        ],
-        [
-          "permit:bomb",
-          "item:key#1",
-          "entrance.south0"
-        ]
-      ],
-      "receive": [
-        "item:gold#100",
-        "item:bomb#12",
-        "food:apple#30"
-      ]
-    },
-    {
-      "room": "12_21",
-      "requires": [
-        [
-          "item:emerald#1",
-          "permit:bomb"
-        ]
-      ],
-      "receive": [
-        "item:diamond#1",
-        "food:banana#20"
       ]
     },
     {
@@ -7889,17 +7793,6 @@
       ],
       "receive": [
         "weapon:survival knife"
-      ]
-    },
-    {
-      "room": "14_15",
-      "requires": [
-        [
-          "item:key#1"
-        ]
-      ],
-      "receive": [
-        "food:orange#12"
       ]
     },
     {
@@ -7923,7 +7816,7 @@
       "room": "13_13",
       "requires": [
         [
-          "armor:alpha armor",
+          "armour:alpha armour",
           "???"
         ]
       ],
@@ -7996,7 +7889,7 @@
         ]
       ],
       "receive": [
-        "food:beef jerkey"
+        "food:beef jerky"
       ]
     },
     {
@@ -8051,7 +7944,7 @@
         ]
       ],
       "receive": [
-        "armor:sun armour"
+        "armour:sun armour"
       ]
     },
     {
@@ -8062,7 +7955,7 @@
         ]
       ],
       "receive": [
-        "armor:speed vest"
+        "armour:speed vest"
       ]
     },
     {
@@ -8139,98 +8032,19 @@
       ]
     },
     {
-      "room": "10_9",
-      "requires": [
-        [
-          "permit:bomb.2",
-          "item:key#1"
-        ]
-      ],
-      "receive": [
-        "food:steak#30"
-      ]
-    },
-    {
-      "room": "9_10",
-      "requires": [
-        [
-          "permit:bomb",
-          "item:key#1"
-        ]
-      ],
-      "receive": [
-        "item:gold#750"
-      ]
-    },
-    {
-      "room": "8_10",
-      "requires": [
-        [
-          "item:emerald#1",
-          "entrance.north1"
-        ],
-        [
-          "item:emerald#1",
-          "entrance.east1"
-        ],
-        [
-          "item:emerald#1",
-          "entrance.east2"
-        ]
-      ],
-      "receive": [
-        "item:gold#750"
-      ]
-    },
-    {
-      "room": "6_12",
-      "requires": [
-        [
-          "item:key#1"
-        ]
-      ],
-      "receive": [
-        "item:quartz geode#2"
-      ]
-    },
-    {
-      "room": "6_10",
-      "requires": [
-        [
-          "item:key#1",
-          "permit:bomb"
-        ]
-      ],
-      "receive": [
-        "food:chocolate#3"
-      ]
-    },
-    {
       "room": "5_9",
       "requires": [
         [
-          "item:minotour horn",
+          "item:minotaur horn",
           "entrance.north0"
         ],
         [
-          "item:minotour horn",
+          "item:minotaur horn",
           "entrance.east0"
         ]
       ],
       "receive": [
         "item:broken alpha axe#1"
-      ]
-    },
-    {
-      "room": "6_13",
-      "requires": [
-        [
-          "item:key#1"
-        ]
-      ],
-      "receive": [
-        "food:grapes#5",
-        "food:strawberry#1"
       ]
     },
     {
@@ -8244,28 +8058,6 @@
       ],
       "receive": [
         "skill:tough.+1"
-      ]
-    },
-    {
-      "room": "5_15",
-      "requires": [
-        [
-          "skill:reveal"
-        ]
-      ],
-      "receive": [
-        "red chest"
-      ]
-    },
-    {
-      "room": "9_15",
-      "requires": [
-        [
-          "item:key#1"
-        ]
-      ],
-      "receive": [
-        "armor:phantom coat"
       ]
     },
     {
@@ -8300,31 +8092,7 @@
       "room": "8_17",
       "requires": [],
       "receive": [
-        "green secret code"
-      ]
-    },
-    {
-      "room": "8_18",
-      "requires": [
-        [
-          "item:emerald#1",
-          "entrance.north1"
-        ]
-      ],
-      "receive": [
-        "food:steak#?",
-        "item:bomb#25"
-      ]
-    },
-    {
-      "room": "11_18",
-      "requires": [
-        [
-          "item:key#1"
-        ]
-      ],
-      "receive": [
-        "item:gold#6000"
+        "misc:green secret code"
       ]
     },
     {
@@ -8401,18 +8169,6 @@
       "room": "9_22",
       "requires": [
         [
-          "item:key#1",
-          "entrance.north1"
-        ]
-      ],
-      "receive": [
-        "magic:double down"
-      ]
-    },
-    {
-      "room": "9_22",
-      "requires": [
-        [
           "entrance.south0",
           "item:gold"
         ]
@@ -8463,7 +8219,7 @@
         ]
       ],
       "receive": [
-        "craft.elixir"
+        "craft:elixir"
       ]
     },
     {
@@ -8483,30 +8239,6 @@
       "receive": []
     },
     {
-      "room": "11_21",
-      "requires": [
-        [
-          "item:key#1"
-        ]
-      ],
-      "receive": [
-        "item:bomb#15"
-      ]
-    },
-    {
-      "room": "11_19",
-      "requires": [
-        [
-          "item:key#1",
-          "entrance.east0"
-        ]
-      ],
-      "receive": [
-        "food:sunflower seed#?",
-        "food:strawberry#1"
-      ]
-    },
-    {
       "room": "11_22",
       "requires": [
         [
@@ -8515,7 +8247,7 @@
         ]
       ],
       "receive": [
-        "craft.emerald"
+        "craft:emerald"
       ]
     },
     {
@@ -8582,28 +8314,6 @@
       "requires": [],
       "receive": [
         "misc:stomp code"
-      ]
-    },
-    {
-      "room": "9_26",
-      "requires": [
-        [
-          "item:key#1"
-        ]
-      ],
-      "receive": [
-        "food:blueberry#?"
-      ]
-    },
-    {
-      "room": "15_24",
-      "requires": [
-        [
-          "item:key#1"
-        ]
-      ],
-      "receive": [
-        "item:gold#93"
       ]
     },
     {
@@ -8682,30 +8392,6 @@
       ]
     },
     {
-      "room": "18_23",
-      "requires": [
-        [
-          "permit:bomb",
-          "item:key#1"
-        ]
-      ],
-      "receive": [
-        "weapon:warlock staff"
-      ]
-    },
-    {
-      "room": "21_23",
-      "requires": [
-        [
-          "item:key#1"
-        ]
-      ],
-      "receive": [
-        "item:diamond#2",
-        "item:gold#300"
-      ]
-    },
-    {
       "room": "21_23",
       "requires": [
         [
@@ -8726,7 +8412,7 @@
         ]
       ],
       "receive": [
-        "craft.ring of gold"
+        "craft:ring of gold"
       ]
     },
     {
@@ -8749,7 +8435,7 @@
         ]
       ],
       "receive": [
-        "red chest"
+        "misc:red chest"
       ]
     },
     {
@@ -8780,19 +8466,6 @@
       "requires": [],
       "receive": [
         "quest:pam.1"
-      ]
-    },
-    {
-      "room": "17_20",
-      "requires": [
-        [
-          "permit:bomb",
-          "item:key#1"
-        ]
-      ],
-      "receive": [
-        "food:beef jerkey#5",
-        "item:gold#200"
       ]
     },
     {
@@ -9059,17 +8732,6 @@
       ]
     },
     {
-      "room": "17_16",
-      "requires": [
-        [
-          "item:key#1"
-        ]
-      ],
-      "receive": [
-        "item:diamond#5"
-      ]
-    },
-    {
       "room": "16_16",
       "requires": [
         [
@@ -9078,18 +8740,6 @@
       ],
       "receive": [
         "misc:headstone 1"
-      ]
-    },
-    {
-      "room": "17_15",
-      "requires": [
-        [
-          "item:emerald#1"
-        ]
-      ],
-      "receive": [
-        "item:gold#100",
-        "food:coolie#50"
       ]
     },
     {
@@ -9111,28 +8761,6 @@
       "receive": []
     },
     {
-      "room": "24_14",
-      "requires": [
-        [
-          "item:key#1"
-        ]
-      ],
-      "receive": [
-        "armor:grim gear"
-      ]
-    },
-    {
-      "room": "23_10",
-      "requires": [
-        [
-          "item:emerald#1"
-        ]
-      ],
-      "receive": [
-        "armour:alpha armour"
-      ]
-    },
-    {
       "room": "23_10",
       "requires": [
         [
@@ -9142,18 +8770,6 @@
       "receive": [
         "food:newton apple#3",
         "item:diamond#3"
-      ]
-    },
-    {
-      "room": "21_11",
-      "requires": [
-        [
-          "item:key#1",
-          "entrance.north0"
-        ]
-      ],
-      "receive": [
-        "food:gummy bear#?"
       ]
     },
     {
@@ -9199,29 +8815,6 @@
       ]
     },
     {
-      "room": "4_26",
-      "requires": [
-        [
-          "permit:bomb",
-          "entrance.south3",
-          "item:key#1"
-        ],
-        [
-          "permit:bomb",
-          "entrance.south2",
-          "item:key#1"
-        ],
-        [
-          "permit:bomb",
-          "entrance.south1",
-          "item:key#1"
-        ]
-      ],
-      "receive": [
-        "weapon:shadow staff"
-      ]
-    },
-    {
       "room": "4_13",
       "requires": [
         [
@@ -9240,7 +8833,7 @@
         ]
       ],
       "receive": [
-        "food:gingerbread"
+        "food:gingerbread cookie"
       ]
     },
     {
@@ -9264,18 +8857,7 @@
         ]
       ],
       "receive": [
-        "craft.newton apple"
-      ]
-    },
-    {
-      "room": "9_13",
-      "requires": [
-        [
-          "item:key#1"
-        ]
-      ],
-      "receive": [
-        "item:bomb#10"
+        "craft:newton apple"
       ]
     },
     {
@@ -9288,7 +8870,7 @@
         ]
       ],
       "receive": [
-        "craft.key"
+        "craft:key"
       ]
     },
     {
@@ -9650,7 +9232,7 @@
       "requires": [
         [
           "quest:gTree.14",
-          "item:scorpiion claw#7",
+          "item:scorpion claw#7",
           "item:cobra fang#5"
         ]
       ],
@@ -9691,7 +9273,7 @@
       "room": "8_9",
       "requires": [
         [
-          "item:fire crystal"
+          "misc:fire crystal"
         ]
       ],
       "receive": []
@@ -9930,7 +9512,7 @@
       ],
       "receive": [
         "quest:canteen.3",
-        "item:diamnond#1"
+        "item:diamond#1"
       ]
     },
     {
@@ -10015,7 +9597,7 @@
         ]
       ],
       "receive": [
-        "ring.evasion"
+        "item:ring of evasion"
       ]
     },
     {
@@ -10364,6 +9946,790 @@
       "receive": [
         "???"
       ]
+    },
+    {
+      "room": "18_20",
+      "requires": [
+        [
+          "item:key"
+        ]
+      ],
+      "receive": [
+        "item:gold#30"
+      ]
+    },
+    {
+      "room": "18_19",
+      "requires": [
+        [
+          "item:key#1"
+        ]
+      ],
+      "receive": [
+        "item:gold#100"
+      ]
+    },
+    {
+      "room": "17_20",
+      "requires": [
+        [
+          "item:key#1"
+        ]
+      ],
+      "receive": [
+        "item:gold#200",
+        "food:beef jerky#5"
+      ]
+    },
+    {
+      "room": "15_19",
+      "requires": [
+        [
+          "skill:reveal",
+          "permit:bomb"
+        ]
+      ],
+      "receive": [
+        "misc:red chest"
+      ]
+    },
+    {
+      "room": "15_19",
+      "requires": [
+        [
+          "item:key#1",
+          "permit:bomb"
+        ]
+      ],
+      "receive": [
+        "item:gold#300",
+        "item:bomb#10",
+        "food:banana#5"
+      ]
+    },
+    {
+      "room": "14_19",
+      "requires": [
+        [
+          "item:key#1",
+          "entrance.south0"
+        ]
+      ],
+      "receive": [
+        "armour:regen armour"
+      ]
+    },
+    {
+      "room": "11_19",
+      "requires": [
+        [
+          "item:key#1",
+          "entrance.south2"
+        ]
+      ],
+      "receive": [
+        "food:sunflower seed#1",
+        "food:strawberry#1"
+      ]
+    },
+    {
+      "room": "8_18",
+      "requires": [
+        [
+          "item:emerald#1",
+          "entrance.north1"
+        ]
+      ],
+      "receive": [
+        "item:bomb#25",
+        "food:steak#5"
+      ]
+    },
+    {
+      "room": "11_18",
+      "requires": [
+        [
+          "item:key#1"
+        ]
+      ],
+      "receive": [
+        "magic:refresh#1"
+      ]
+    },
+    {
+      "room": "15_18",
+      "requires": [
+        [
+          "misc:blue crystal#1",
+          "permit:bomb.2",
+          "quest:gTree.?"
+        ]
+      ],
+      "receive": [
+        "food:chocolate#20",
+        "item:bomb#50"
+      ]
+    },
+    {
+      "room": "19_18",
+      "requires": [
+        [
+          "item:blue crystal#1"
+        ]
+      ],
+      "receive": [
+        "item:rubies#3"
+      ]
+    },
+    {
+      "room": "21_18",
+      "requires": [
+        [
+          "item:emerald#1"
+        ]
+      ],
+      "receive": [
+        "item:diamond#2",
+        "food:pepper#30"
+      ]
+    },
+    {
+      "room": "19_17",
+      "requires": [
+        [
+          "skill:reveal",
+          "entrance.south0"
+        ],
+        [
+          "skill:reveal",
+          "entrance.east0"
+        ]
+      ],
+      "receive": [
+        "misc:red chest"
+      ]
+    },
+    {
+      "room": "18_17",
+      "requires": [
+        [
+          "item:key#1"
+        ]
+      ],
+      "receive": [
+        "item:gold#1000"
+      ]
+    },
+    {
+      "room": "13_16",
+      "requires": [
+        [
+          "item:key#1",
+          "entrance.south0"
+        ]
+      ],
+      "receive": [
+        "magic:weak"
+      ]
+    },
+    {
+      "room": "17_16",
+      "requires": [
+        [
+          "item:key#1"
+        ]
+      ],
+      "receive": [
+        "item:diamond#5"
+      ]
+    },
+    {
+      "room": "18_15",
+      "requires": [
+        [
+          "misc:blue crystal"
+        ]
+      ],
+      "receive": [
+        "food:newton apple#15"
+      ]
+    },
+    {
+      "room": "17_15",
+      "requires": [
+        [
+          "item:emerald#1"
+        ]
+      ],
+      "receive": [
+        "item:gold#100",
+        "food:gingerbread cookie#50"
+      ]
+    },
+    {
+      "room": "16_15",
+      "requires": [
+        [
+          "misc:blue crystal#1"
+        ]
+      ],
+      "receive": [
+        "armour:diamond armour",
+        "quest:pam.16"
+      ]
+    },
+    {
+      "room": "14_15",
+      "requires": [
+        [
+          "item:key#1"
+        ]
+      ],
+      "receive": [
+        "food:orange#12"
+      ]
+    },
+    {
+      "room": "9_15",
+      "requires": [
+        [
+          "item:key#1"
+        ]
+      ],
+      "receive": [
+        "armour:phantom coat"
+      ]
+    },
+    {
+      "room": "5_15",
+      "requires": [
+        [
+          "skill:reveal"
+        ]
+      ],
+      "receive": [
+        "misc:red chest"
+      ]
+    },
+    {
+      "room": "14_14",
+      "requires": [
+        [
+          "skill:reveal"
+        ]
+      ],
+      "receive": [
+        "misc:red chest"
+      ]
+    },
+    {
+      "room": "15_14",
+      "requires": [
+        [
+          "item:key#1",
+          "entrance.east0"
+        ],
+        [
+          "item:key#1",
+          "permit:bomb"
+        ]
+      ],
+      "receive": [
+        "food:carrot#5"
+      ]
+    },
+    {
+      "room": "23_10",
+      "requires": [
+        [
+          "item:emerald#1"
+        ]
+      ],
+      "receive": [
+        "armour:alpha armour"
+      ]
+    },
+    {
+      "room": "23_10",
+      "requires": [
+        [
+          "item:key#1"
+        ]
+      ],
+      "receive": [
+        "item:diamond#5",
+        "food:newton apple#2"
+      ]
+    },
+    {
+      "room": "21_11",
+      "requires": [
+        [
+          "item:key#1",
+          "entrance.north0"
+        ]
+      ],
+      "receive": [
+        "food:gummy bear#5"
+      ]
+    },
+    {
+      "room": "23_13",
+      "requires": [
+        [
+          "skill:reveal"
+        ]
+      ],
+      "receive": [
+        "misc:red chest"
+      ]
+    },
+    {
+      "room": "24_14",
+      "requires": [
+        [
+          "item:key#1"
+        ]
+      ],
+      "receive": [
+        "armour:grim gear"
+      ]
+    },
+    {
+      "room": "10_13",
+      "requires": [
+        [
+          "permit:bomb",
+          "item:gold#500",
+          "skill:reveal"
+        ]
+      ],
+      "receive": [
+        "misc:ninja"
+      ]
+    },
+    {
+      "room": "10_13",
+      "requires": [
+        [
+          "item:emerald#1"
+        ]
+      ],
+      "receive": [
+        "item:gold#1",
+        "item:diamond#1",
+        "item:aurastone#1",
+        "item:slamstone#1",
+        "food:elixir#1",
+        "food:holy water#1"
+      ]
+    },
+    {
+      "room": "9_13",
+      "requires": [
+        [
+          "item:key#1"
+        ]
+      ],
+      "receive": [
+        "item:bomb#10"
+      ]
+    },
+    {
+      "room": "6_13",
+      "requires": [
+        [
+          "item:key#1"
+        ]
+      ],
+      "receive": [
+        "food:grape#5",
+        "food:strawberry#1"
+      ]
+    },
+    {
+      "room": "6_12",
+      "requires": [
+        [
+          "item:key#1"
+        ]
+      ],
+      "receive": [
+        "item:quartz geode#2"
+      ]
+    },
+    {
+      "room": "12_12",
+      "requires": [
+        [
+          "misc:blue crystal#1",
+          "entrance.east1"
+        ],
+        [
+          "misc:blue crystal#1",
+          "entrance.south0"
+        ]
+      ],
+      "receive": [
+        "magic:blessing"
+      ]
+    },
+    {
+      "room": "8_10",
+      "requires": [
+        [
+          "skill:reveal",
+          "entrance.east0"
+        ],
+        [
+          "skill:reveal",
+          "entrance.west0"
+        ],
+        [
+          "skill:reveal",
+          "entrance.north0"
+        ]
+      ],
+      "receive": [
+        "misc:red chest"
+      ]
+    },
+    {
+      "room": "8_10",
+      "requires": [
+        [
+          "item:emerald#1",
+          "entrance.north1"
+        ],
+        [
+          "item:emerald#1",
+          "entrance.east1"
+        ],
+        [
+          "item:emerald#1",
+          "entrance.east2"
+        ]
+      ],
+      "receive": [
+        "item:gold#100",
+        "food:beef jerky#30"
+      ]
+    },
+    {
+      "room": "9_10",
+      "requires": [
+        [
+          "item:key#1",
+          "permit:bomb"
+        ]
+      ],
+      "receive": [
+        "item:gold#750"
+      ]
+    },
+    {
+      "room": "10_9",
+      "requires": [
+        [
+          "item:key#1",
+          "permit:bomb.2"
+        ]
+      ],
+      "receive": [
+        "food:steak#30"
+      ]
+    },
+    {
+      "room": "6_10",
+      "requires": [
+        [
+          "item:key#1",
+          "permit:bomb"
+        ]
+      ],
+      "receive": [
+        "food:chocolate#3"
+      ]
+    },
+    {
+      "room": "18_21",
+      "requires": [
+        [
+          "item:key#1"
+        ]
+      ],
+      "receive": [
+        "item:gimgerbread cookie#5"
+      ]
+    },
+    {
+      "room": "15_21",
+      "requires": [
+        [
+          "item:key#1",
+          "entrance.south0"
+        ]
+      ],
+      "receive": [
+        "item:gold#0",
+        "item:bomb#5"
+      ]
+    },
+    {
+      "room": "14_21",
+      "requires": [
+        [
+          "item:key#1",
+          "entrance.north0"
+        ],
+        [
+          "item:key#1",
+          "permit:bomb"
+        ]
+      ],
+      "receive": [
+        "item:gold#100",
+        "item:bomb#12",
+        "food:apple#30"
+      ]
+    },
+    {
+      "room": "12_21",
+      "requires": [
+        [
+          "item:emerald#1",
+          "permit:bomb"
+        ]
+      ],
+      "receive": [
+        "item:diamond#2",
+        "food:banana#20"
+      ]
+    },
+    {
+      "room": "11_21",
+      "requires": [
+        [
+          "item:key#1"
+        ]
+      ],
+      "receive": [
+        "item:bomb#15"
+      ]
+    },
+    {
+      "room": "9_22",
+      "requires": [
+        [
+          "item:key#1",
+          "entrance.north1"
+        ]
+      ],
+      "receive": [
+        "magic:double down"
+      ]
+    },
+    {
+      "room": "16_22",
+      "requires": [
+        [
+          "item:key#1"
+        ]
+      ],
+      "receive": [
+        "item:gold#400"
+      ]
+    },
+    {
+      "room": "17_22",
+      "requires": [
+        [
+          "misc:blue crystal"
+        ]
+      ],
+      "receive": [
+        "item:diamond#20"
+      ]
+    },
+    {
+      "room": "21_23",
+      "requires": [
+        [
+          "item:key#1"
+        ]
+      ],
+      "receive": [
+        "item:gold#300",
+        "item:diamond#2"
+      ]
+    },
+    {
+      "room": "19_23",
+      "requires": [
+        [
+          "item:key#1"
+        ]
+      ],
+      "receive": [
+        "magic:fire"
+      ]
+    },
+    {
+      "room": "18_23",
+      "requires": [
+        [
+          "permit:bomb",
+          "item:key#1"
+        ]
+      ],
+      "receive": [
+        "weapon:warlock staff"
+      ]
+    },
+    {
+      "room": "9_23",
+      "requires": [
+        [
+          "item:key#1",
+          "permit:bomb"
+        ]
+      ],
+      "receive": [
+        "magic:drain"
+      ]
+    },
+    {
+      "room": "4_24",
+      "requires": [
+        [
+          "item:key#1",
+          "entrance.east0"
+        ]
+      ],
+      "receive": [
+        "food:cherry#10"
+      ]
+    },
+    {
+      "room": "6_24",
+      "requires": [
+        [
+          "skill:reveal"
+        ]
+      ],
+      "receive": [
+        "misc:red chest"
+      ]
+    },
+    {
+      "room": "15_24",
+      "requires": [
+        [
+          "item:key#1",
+          "entrance.north0"
+        ]
+      ],
+      "receive": [
+        "item:gold#2"
+      ]
+    },
+    {
+      "room": "16_24",
+      "requires": [
+        [
+          "misc:blue crystal",
+          "entrance.north1"
+        ]
+      ],
+      "receive": [
+        "item:gold#1000",
+        "food:gummy bear#12"
+      ]
+    },
+    {
+      "room": "16_25",
+      "requires": [
+        [
+          "misc:blue crystal",
+          "entrance.south0"
+        ],
+        [
+          "misc:blue crystal",
+          "entrance.west0"
+        ]
+      ],
+      "receive": [
+        "item:diamond#5",
+        "food:steak#12"
+      ]
+    },
+    {
+      "room": "12_25",
+      "requires": [
+        [
+          "misc:blue crystal"
+        ]
+      ],
+      "receive": [
+        "item:diamond#50",
+        "food:gummy bear#50"
+      ]
+    },
+    {
+      "room": "11_25",
+      "requires": [
+        [
+          "misc:blue crystal"
+        ]
+      ],
+      "receive": [
+        "food:beef jerky#20"
+      ]
+    },
+    {
+      "room": "3_26",
+      "requires": [
+        [
+          "misc:blue crystal"
+        ]
+      ],
+      "receive": [
+        "food:elixir#1"
+      ]
+    },
+    {
+      "room": "4_26",
+      "requires": [
+        [
+          "permit:bomb",
+          "entrance.south3",
+          "item:key#1"
+        ],
+        [
+          "permit:bomb",
+          "entrance.south2",
+          "item:key#1"
+        ],
+        [
+          "permit:bomb",
+          "entrance.south1",
+          "item:key#1"
+        ]
+      ],
+      "receive": [
+        "weapon:shadow staff"
+      ]
+    },
+    {
+      "room": "9_26",
+      "requires": [
+        [
+          "item:key#1"
+        ]
+      ],
+      "receive": [
+        "food:blueberry#10"
+      ]
     }
   ],
   "itemGiveIndex": {
@@ -10447,16 +10813,16 @@
       {
         "room": "20_20",
         "raw": "item:aurastone"
+      },
+      {
+        "room": "10_13",
+        "raw": "item:aurastone#1"
       }
     ],
     "item:key": [
       {
         "room": "20_20",
         "raw": "item:key"
-      },
-      {
-        "room": "16_22",
-        "raw": "item:key#1"
       }
     ],
     "item:gold": [
@@ -10465,76 +10831,28 @@
         "raw": "item:gold"
       },
       {
-        "room": "18_20",
-        "raw": "item:gold#30"
-      },
-      {
-        "room": "18_19",
-        "raw": "item:gold#?"
-      },
-      {
         "room": "19_21",
         "raw": "item:gold#25"
-      },
-      {
-        "room": "15_19",
-        "raw": "item:gold#300"
-      },
-      {
-        "room": "15_21",
-        "raw": "item:gold#65"
-      },
-      {
-        "room": "14_21",
-        "raw": "item:gold#100"
       },
       {
         "room": "11_9",
         "raw": "item:gold#22"
       },
       {
-        "room": "9_10",
-        "raw": "item:gold#750"
-      },
-      {
-        "room": "8_10",
-        "raw": "item:gold#750"
-      },
-      {
         "room": "9_16",
         "raw": "item:gold#23"
-      },
-      {
-        "room": "11_18",
-        "raw": "item:gold#6000"
       },
       {
         "room": "11_17",
         "raw": "item:gold#200"
       },
       {
-        "room": "15_24",
-        "raw": "item:gold#93"
-      },
-      {
-        "room": "21_23",
-        "raw": "item:gold#300"
-      },
-      {
         "room": "19_21",
         "raw": "item:gold#18"
       },
       {
-        "room": "17_20",
-        "raw": "item:gold#200"
-      },
-      {
         "room": "21_20",
         "raw": "item:gold#20"
-      },
-      {
-        "room": "17_15",
-        "raw": "item:gold#100"
       },
       {
         "room": "19_21",
@@ -10550,6 +10868,66 @@
       },
       {
         "room": "14_18",
+        "raw": "item:gold#1000"
+      },
+      {
+        "room": "18_20",
+        "raw": "item:gold#30"
+      },
+      {
+        "room": "18_19",
+        "raw": "item:gold#100"
+      },
+      {
+        "room": "17_20",
+        "raw": "item:gold#200"
+      },
+      {
+        "room": "15_19",
+        "raw": "item:gold#300"
+      },
+      {
+        "room": "18_17",
+        "raw": "item:gold#1000"
+      },
+      {
+        "room": "17_15",
+        "raw": "item:gold#100"
+      },
+      {
+        "room": "10_13",
+        "raw": "item:gold#1"
+      },
+      {
+        "room": "8_10",
+        "raw": "item:gold#100"
+      },
+      {
+        "room": "9_10",
+        "raw": "item:gold#750"
+      },
+      {
+        "room": "15_21",
+        "raw": "item:gold#0"
+      },
+      {
+        "room": "14_21",
+        "raw": "item:gold#100"
+      },
+      {
+        "room": "16_22",
+        "raw": "item:gold#400"
+      },
+      {
+        "room": "21_23",
+        "raw": "item:gold#300"
+      },
+      {
+        "room": "15_24",
+        "raw": "item:gold#2"
+      },
+      {
+        "room": "16_24",
         "raw": "item:gold#1000"
       }
     ],
@@ -10583,10 +10961,14 @@
         "raw": "item:emerald"
       }
     ],
-    "item:fire crystal": [
+    "misc:fire crystal": [
       {
         "room": "20_20",
-        "raw": "item:fire crystal"
+        "raw": "misc:fire crystal"
+      },
+      {
+        "room": "12_9",
+        "raw": "misc:fire crystal"
       }
     ],
     "item:funny bone": [
@@ -10625,22 +11007,26 @@
         "raw": "item:mages hat"
       }
     ],
-    "item:minotour horn": [
+    "item:minotaur horn": [
       {
         "room": "20_20",
-        "raw": "item:minotour horn"
+        "raw": "item:minotaur horn"
       }
     ],
     "item:ring of evasion": [
       {
         "room": "20_20",
         "raw": "item:ring of evasion"
+      },
+      {
+        "room": "13_16",
+        "raw": "item:ring of evasion"
       }
     ],
-    "item:scorpiion claw": [
+    "item:scorpion claw": [
       {
         "room": "20_20",
-        "raw": "item:scorpiion claw"
+        "raw": "item:scorpion claw"
       }
     ],
     "item:shark tooth": [
@@ -10653,6 +11039,10 @@
       {
         "room": "20_20",
         "raw": "item:slamstone"
+      },
+      {
+        "room": "10_13",
+        "raw": "item:slamstone#1"
       }
     ],
     "item:steel fragment": [
@@ -10727,10 +11117,6 @@
         "raw": "food:orange#1"
       },
       {
-        "room": "14_15",
-        "raw": "food:orange#12"
-      },
-      {
         "room": "12_9",
         "raw": "food:orange"
       },
@@ -10745,6 +11131,10 @@
       {
         "room": "19_20",
         "raw": "food:orange#20"
+      },
+      {
+        "room": "14_15",
+        "raw": "food:orange#12"
       }
     ],
     "weapon:club": [
@@ -10765,28 +11155,28 @@
         "raw": "weapon:sword"
       }
     ],
-    "armor:vest": [
+    "flag:armour:vest": [
       {
         "room": "20_20",
-        "raw": "armor:vest"
+        "raw": "armour:vest"
       }
     ],
-    "armor:magic robe": [
+    "flag:armour:magic robe": [
       {
         "room": "20_20",
-        "raw": "armor:magic robe"
+        "raw": "armour:magic robe"
       }
     ],
-    "armor:iron armour": [
+    "flag:armour:iron armour": [
       {
         "room": "20_20",
-        "raw": "armor:iron armour"
+        "raw": "armour:iron armour"
       }
     ],
     "food:apple": [
       {
         "room": "20_20",
-        "raw": "food:apple"
+        "raw": "food:apple#inf"
       },
       {
         "room": "14_21",
@@ -10796,111 +11186,19 @@
     "food:honey": [
       {
         "room": "20_20",
-        "raw": "food:honey"
+        "raw": "food:honey#inf"
       }
     ],
     "food:grapes": [
       {
         "room": "20_20",
-        "raw": "food:grapes"
-      },
-      {
-        "room": "6_13",
-        "raw": "food:grapes#5"
-      }
-    ],
-    "food:strawberry": [
-      {
-        "room": "18_19",
-        "raw": "food:strawberry#1"
-      },
-      {
-        "room": "6_13",
-        "raw": "food:strawberry#1"
-      },
-      {
-        "room": "11_19",
-        "raw": "food:strawberry#1"
-      },
-      {
-        "room": "4_13",
-        "raw": "food:strawberry"
-      }
-    ],
-    "item:bomb": [
-      {
-        "room": "15_19",
-        "raw": "item:bomb#10"
-      },
-      {
-        "room": "15_21",
-        "raw": "item:bomb#5"
-      },
-      {
-        "room": "14_21",
-        "raw": "item:bomb#12"
-      },
-      {
-        "room": "8_18",
-        "raw": "item:bomb#25"
-      },
-      {
-        "room": "11_17",
-        "raw": "item:bomb#8"
-      },
-      {
-        "room": "11_21",
-        "raw": "item:bomb#15"
-      },
-      {
-        "room": "9_13",
-        "raw": "item:bomb#10"
-      },
-      {
-        "room": "13_21",
-        "raw": "item:bomb#15"
+        "raw": "food:grapes#inf"
       }
     ],
     "item:broken alpha club": [
       {
         "room": "14_19",
         "raw": "item:broken alpha club#1"
-      }
-    ],
-    "flag:armour:regen armor": [
-      {
-        "room": "14_19",
-        "raw": "armour:regen armor"
-      }
-    ],
-    "item:diamond": [
-      {
-        "room": "12_21",
-        "raw": "item:diamond#1"
-      },
-      {
-        "room": "12_25",
-        "raw": "item:diamond#50"
-      },
-      {
-        "room": "21_23",
-        "raw": "item:diamond#2"
-      },
-      {
-        "room": "21_23",
-        "raw": "item:diamond#1"
-      },
-      {
-        "room": "21_18",
-        "raw": "item:diamond#2"
-      },
-      {
-        "room": "17_16",
-        "raw": "item:diamond#5"
-      },
-      {
-        "room": "23_10",
-        "raw": "item:diamond#3"
       }
     ],
     "weapon:survival knife": [
@@ -10932,7 +11230,7 @@
       },
       {
         "room": "9_26",
-        "raw": "food:blueberry#?"
+        "raw": "food:blueberry#10"
       }
     ],
     "food:sunflower seed": [
@@ -10942,7 +11240,7 @@
       },
       {
         "room": "11_19",
-        "raw": "food:sunflower seed#?"
+        "raw": "food:sunflower seed#1"
       }
     ],
     "misc:headstone 2": [
@@ -10955,22 +11253,42 @@
       {
         "room": "12_9",
         "raw": "food:carrot"
+      },
+      {
+        "room": "15_14",
+        "raw": "food:carrot#5"
       }
     ],
-    "food:beef jerkey": [
+    "food:beef jerky": [
       {
         "room": "12_9",
-        "raw": "food:beef jerkey"
+        "raw": "food:beef jerky"
+      },
+      {
+        "room": "15_18",
+        "raw": "food:beef jerky#3"
       },
       {
         "room": "17_20",
-        "raw": "food:beef jerkey#5"
+        "raw": "food:beef jerky#5"
+      },
+      {
+        "room": "8_10",
+        "raw": "food:beef jerky#30"
+      },
+      {
+        "room": "11_25",
+        "raw": "food:beef jerky#20"
       }
     ],
     "food:cherry": [
       {
         "room": "12_9",
         "raw": "food:cherry"
+      },
+      {
+        "room": "4_24",
+        "raw": "food:cherry#10"
       }
     ],
     "weapon:warlock staff": [
@@ -10989,16 +11307,16 @@
         "raw": "weapon:sun sword"
       }
     ],
-    "armor:sun armour": [
+    "flag:armour:sun armour": [
       {
         "room": "12_9",
-        "raw": "armor:sun armour"
+        "raw": "armour:sun armour"
       }
     ],
-    "armor:speed vest": [
+    "flag:armour:speed vest": [
       {
         "room": "12_9",
-        "raw": "armor:speed vest"
+        "raw": "armour:speed vest"
       }
     ],
     "quest:headstone": [
@@ -11011,12 +11329,20 @@
       {
         "room": "11_9",
         "raw": "magic:weak"
+      },
+      {
+        "room": "13_16",
+        "raw": "magic:weak"
       }
     ],
     "magic:refresh": [
       {
         "room": "11_9",
         "raw": "magic:refresh"
+      },
+      {
+        "room": "11_18",
+        "raw": "magic:refresh#1"
       }
     ],
     "magic:lightning": [
@@ -11031,40 +11357,6 @@
         "raw": "quest:???"
       }
     ],
-    "food:steak": [
-      {
-        "room": "10_9",
-        "raw": "food:steak#30"
-      },
-      {
-        "room": "8_18",
-        "raw": "food:steak#?"
-      },
-      {
-        "room": "9_22",
-        "raw": "food:steak"
-      }
-    ],
-    "item:quartz geode": [
-      {
-        "room": "6_12",
-        "raw": "item:quartz geode#2"
-      }
-    ],
-    "food:chocolate": [
-      {
-        "room": "6_10",
-        "raw": "food:chocolate#3"
-      },
-      {
-        "room": "9_22",
-        "raw": "food:chocolate"
-      },
-      {
-        "room": "19_20",
-        "raw": "food:chocolate#5"
-      }
-    ],
     "item:broken alpha axe": [
       {
         "room": "5_9",
@@ -11077,32 +11369,54 @@
         "raw": "skill:tough.+1"
       }
     ],
-    "flag:red chest": [
-      {
-        "room": "5_15",
-        "raw": "red chest"
-      },
-      {
-        "room": "20_23",
-        "raw": "red chest"
-      }
-    ],
-    "armor:phantom coat": [
-      {
-        "room": "9_15",
-        "raw": "armor:phantom coat"
-      }
-    ],
     "weapon:random axe": [
       {
         "room": "4_17",
         "raw": "weapon:random axe.+1"
       }
     ],
-    "flag:green secret code": [
+    "misc:green secret code": [
       {
         "room": "8_17",
-        "raw": "green secret code"
+        "raw": "misc:green secret code"
+      }
+    ],
+    "item:bomb": [
+      {
+        "room": "11_17",
+        "raw": "item:bomb#8"
+      },
+      {
+        "room": "13_21",
+        "raw": "item:bomb#15"
+      },
+      {
+        "room": "15_19",
+        "raw": "item:bomb#10"
+      },
+      {
+        "room": "8_18",
+        "raw": "item:bomb#25"
+      },
+      {
+        "room": "15_18",
+        "raw": "item:bomb#50"
+      },
+      {
+        "room": "9_13",
+        "raw": "item:bomb#10"
+      },
+      {
+        "room": "15_21",
+        "raw": "item:bomb#5"
+      },
+      {
+        "room": "14_21",
+        "raw": "item:bomb#12"
+      },
+      {
+        "room": "11_21",
+        "raw": "item:bomb#15"
       }
     ],
     "item:orb of ??": [
@@ -11137,10 +11451,40 @@
         "raw": "state:lit torch 1"
       }
     ],
-    "magic:double down": [
+    "food:chocolate": [
       {
         "room": "9_22",
-        "raw": "magic:double down"
+        "raw": "food:chocolate"
+      },
+      {
+        "room": "19_20",
+        "raw": "food:chocolate#5"
+      },
+      {
+        "room": "15_18",
+        "raw": "food:chocolate#20"
+      },
+      {
+        "room": "6_10",
+        "raw": "food:chocolate#3"
+      }
+    ],
+    "food:steak": [
+      {
+        "room": "9_22",
+        "raw": "food:steak"
+      },
+      {
+        "room": "8_18",
+        "raw": "food:steak#5"
+      },
+      {
+        "room": "10_9",
+        "raw": "food:steak#30"
+      },
+      {
+        "room": "16_25",
+        "raw": "food:steak#12"
       }
     ],
     "food:peppers": [
@@ -11153,10 +11497,10 @@
         "raw": "food:peppers#20"
       }
     ],
-    "flag:craft.elixir": [
+    "flag:craft:elixir": [
       {
         "room": "10_22",
-        "raw": "craft.elixir"
+        "raw": "craft:elixir"
       }
     ],
     "misc:headstone 3": [
@@ -11165,10 +11509,10 @@
         "raw": "misc:headstone 3"
       }
     ],
-    "flag:craft.emerald": [
+    "flag:craft:emerald": [
       {
         "room": "11_22",
-        "raw": "craft.emerald"
+        "raw": "craft:emerald"
       }
     ],
     "food:gummy bear": [
@@ -11177,12 +11521,78 @@
         "raw": "food:gummy bear#10"
       },
       {
-        "room": "21_11",
-        "raw": "food:gummy bear#?"
-      },
-      {
         "room": "17_10",
         "raw": "food:gummy bear#5"
+      },
+      {
+        "room": "21_11",
+        "raw": "food:gummy bear#5"
+      },
+      {
+        "room": "16_24",
+        "raw": "food:gummy bear#12"
+      },
+      {
+        "room": "12_25",
+        "raw": "food:gummy bear#50"
+      }
+    ],
+    "item:diamond": [
+      {
+        "room": "12_25",
+        "raw": "item:diamond#50"
+      },
+      {
+        "room": "21_23",
+        "raw": "item:diamond#1"
+      },
+      {
+        "room": "21_18",
+        "raw": "item:diamond#2"
+      },
+      {
+        "room": "23_10",
+        "raw": "item:diamond#3"
+      },
+      {
+        "room": "12_11",
+        "raw": "item:diamond#1"
+      },
+      {
+        "room": "21_18",
+        "raw": "item:diamond#2"
+      },
+      {
+        "room": "17_16",
+        "raw": "item:diamond#5"
+      },
+      {
+        "room": "23_10",
+        "raw": "item:diamond#5"
+      },
+      {
+        "room": "10_13",
+        "raw": "item:diamond#1"
+      },
+      {
+        "room": "12_21",
+        "raw": "item:diamond#2"
+      },
+      {
+        "room": "17_22",
+        "raw": "item:diamond#20"
+      },
+      {
+        "room": "21_23",
+        "raw": "item:diamond#2"
+      },
+      {
+        "room": "16_25",
+        "raw": "item:diamond#5"
+      },
+      {
+        "room": "12_25",
+        "raw": "item:diamond#50"
       }
     ],
     "item:alpha scepter": [
@@ -11253,10 +11663,10 @@
         "raw": "misc:headstone 4"
       }
     ],
-    "flag:craft.ring of gold": [
+    "flag:craft:ring of gold": [
       {
         "room": "21_22",
-        "raw": "craft.ring of gold"
+        "raw": "craft:ring of gold"
       }
     ],
     "item:ruby": [
@@ -11271,6 +11681,40 @@
       {
         "room": "19_15",
         "raw": "item:ruby#1"
+      }
+    ],
+    "misc:red chest": [
+      {
+        "room": "20_23",
+        "raw": "misc:red chest"
+      },
+      {
+        "room": "15_19",
+        "raw": "misc:red chest"
+      },
+      {
+        "room": "19_17",
+        "raw": "misc:red chest"
+      },
+      {
+        "room": "5_15",
+        "raw": "misc:red chest"
+      },
+      {
+        "room": "14_14",
+        "raw": "misc:red chest"
+      },
+      {
+        "room": "23_13",
+        "raw": "misc:red chest"
+      },
+      {
+        "room": "8_10",
+        "raw": "misc:red chest"
+      },
+      {
+        "room": "6_24",
+        "raw": "misc:red chest"
       }
     ],
     "quest:pam": [
@@ -11317,6 +11761,10 @@
       {
         "room": "19_20",
         "raw": "quest:pam.11"
+      },
+      {
+        "room": "16_15",
+        "raw": "quest:pam.16"
       }
     ],
     "skill:craft": [
@@ -11439,34 +11887,24 @@
         "raw": "misc:headstone 1"
       }
     ],
-    "food:coolie": [
-      {
-        "room": "17_15",
-        "raw": "food:coolie#50"
-      }
-    ],
     "misc:max bombs": [
       {
         "room": "18_13",
         "raw": "misc:max bombs.149"
       }
     ],
-    "armor:grim gear": [
-      {
-        "room": "24_14",
-        "raw": "armor:grim gear"
-      }
-    ],
-    "flag:armour:alpha armour": [
-      {
-        "room": "23_10",
-        "raw": "armour:alpha armour"
-      }
-    ],
     "food:newton apple": [
       {
         "room": "23_10",
         "raw": "food:newton apple#3"
+      },
+      {
+        "room": "18_15",
+        "raw": "food:newton apple#15"
+      },
+      {
+        "room": "23_10",
+        "raw": "food:newton apple#2"
       }
     ],
     "weapon:bane blade": [
@@ -11487,28 +11925,44 @@
         "raw": "quest:alpha blade.1"
       }
     ],
-    "weapon:shadow staff": [
-      {
-        "room": "4_26",
-        "raw": "weapon:shadow staff"
-      }
-    ],
-    "food:gingerbread": [
+    "food:gingerbread cookie": [
       {
         "room": "4_13",
-        "raw": "food:gingerbread"
+        "raw": "food:gingerbread cookie"
+      },
+      {
+        "room": "19_20",
+        "raw": "food:gingerbread cookie#10"
+      },
+      {
+        "room": "17_15",
+        "raw": "food:gingerbread cookie#50"
       }
     ],
-    "flag:craft.newton apple": [
+    "food:strawberry": [
       {
         "room": "4_13",
-        "raw": "craft.newton apple"
+        "raw": "food:strawberry"
+      },
+      {
+        "room": "11_19",
+        "raw": "food:strawberry#1"
+      },
+      {
+        "room": "6_13",
+        "raw": "food:strawberry#1"
       }
     ],
-    "flag:craft.key": [
+    "flag:craft:newton apple": [
+      {
+        "room": "4_13",
+        "raw": "craft:newton apple"
+      }
+    ],
+    "flag:craft:key": [
       {
         "room": "11_15",
-        "raw": "craft.key"
+        "raw": "craft:key"
       }
     ],
     "quest:gTree": [
@@ -11667,12 +12121,6 @@
         "raw": "misc:small locket"
       }
     ],
-    "food:gingerbread cookie": [
-      {
-        "room": "19_20",
-        "raw": "food:gingerbread cookie#10"
-      }
-    ],
     "quest:oMan": [
       {
         "room": "17_19",
@@ -11701,12 +12149,6 @@
         "raw": "misc:old pendant"
       }
     ],
-    "food:beef jerky": [
-      {
-        "room": "15_18",
-        "raw": "food:beef jerky#3"
-      }
-    ],
     "permit:bomb": [
       {
         "room": "13_21",
@@ -11721,12 +12163,6 @@
       {
         "room": "10_19",
         "raw": "misc:orb of peace"
-      }
-    ],
-    "misc:fire crystal": [
-      {
-        "room": "12_9",
-        "raw": "misc:fire crystal"
       }
     ],
     "quest:warp": [
@@ -11781,6 +12217,10 @@
       {
         "room": "5_24",
         "raw": "food:holy water#1"
+      },
+      {
+        "room": "10_13",
+        "raw": "food:holy water#1"
       }
     ],
     "flag:goal:boss dead": [
@@ -11809,12 +12249,6 @@
         "raw": "quest:aSword.3"
       }
     ],
-    "item:diamnond": [
-      {
-        "room": "12_11",
-        "raw": "item:diamnond#1"
-      }
-    ],
     "item:ring of gold": [
       {
         "room": "14_22",
@@ -11825,12 +12259,6 @@
       {
         "room": "16_21",
         "raw": "item:ring of health"
-      }
-    ],
-    "flag:ring.evasion": [
-      {
-        "room": "13_16",
-        "raw": "ring.evasion"
       }
     ],
     "item:cotton thread": [
@@ -11867,6 +12295,10 @@
       {
         "room": "9_22",
         "raw": "food:pepper#3"
+      },
+      {
+        "room": "21_18",
+        "raw": "food:pepper#30"
       }
     ],
     "item:ring of poison": [
@@ -11925,6 +12357,106 @@
       {
         "room": "19_16",
         "raw": "item:medallion"
+      }
+    ],
+    "flag:armour:regen armour": [
+      {
+        "room": "14_19",
+        "raw": "armour:regen armour"
+      }
+    ],
+    "item:rubies": [
+      {
+        "room": "19_18",
+        "raw": "item:rubies#3"
+      }
+    ],
+    "flag:armour:diamond armour": [
+      {
+        "room": "16_15",
+        "raw": "armour:diamond armour"
+      }
+    ],
+    "flag:armour:phantom coat": [
+      {
+        "room": "9_15",
+        "raw": "armour:phantom coat"
+      }
+    ],
+    "flag:armour:alpha armour": [
+      {
+        "room": "23_10",
+        "raw": "armour:alpha armour"
+      }
+    ],
+    "flag:armour:grim gear": [
+      {
+        "room": "24_14",
+        "raw": "armour:grim gear"
+      }
+    ],
+    "misc:ninja": [
+      {
+        "room": "10_13",
+        "raw": "misc:ninja"
+      }
+    ],
+    "food:elixir": [
+      {
+        "room": "10_13",
+        "raw": "food:elixir#1"
+      },
+      {
+        "room": "3_26",
+        "raw": "food:elixir#1"
+      }
+    ],
+    "food:grape": [
+      {
+        "room": "6_13",
+        "raw": "food:grape#5"
+      }
+    ],
+    "item:quartz geode": [
+      {
+        "room": "6_12",
+        "raw": "item:quartz geode#2"
+      }
+    ],
+    "magic:blessing": [
+      {
+        "room": "12_12",
+        "raw": "magic:blessing"
+      }
+    ],
+    "item:gimgerbread cookie": [
+      {
+        "room": "18_21",
+        "raw": "item:gimgerbread cookie#5"
+      }
+    ],
+    "magic:double down": [
+      {
+        "room": "9_22",
+        "raw": "magic:double down"
+      }
+    ],
+    "magic:fire": [
+      {
+        "room": "19_23",
+        "raw": "magic:fire"
+      }
+    ],
+    "magic:drain": [
+      {
+        "room": "9_23",
+        "raw": "magic:drain"
+      }
+    ],
+    "weapon:shadow staff": [
+      {
+        "room": "4_26",
+        "raw": "weapon:shadow staff"
       }
     ]
   },
@@ -12929,6 +13461,12 @@
       "exitId": "edge:south:6_11_5_11",
       "room": "6_11",
       "direction": "south",
+      "gapIndex": 0
+    },
+    "6.11.entrance.north0": {
+      "exitId": "edge:north:6_11_7_11",
+      "room": "6_11",
+      "direction": "north",
       "gapIndex": 0
     },
     "7.9.entrance.south0": {
@@ -16863,6 +17401,7 @@
       "5.24.entrance.south0": 1,
       "6.9.entrance.south0": 1,
       "6.11.entrance.south0": 1,
+      "6.11.entrance.north0": 1,
       "7.9.entrance.south0": 1,
       "7.11.entrance.south0": 1,
       "7.12.entrance.south0": 1,

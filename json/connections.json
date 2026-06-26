@@ -3008,6 +3008,24 @@
       "toExitId": "edge:north:5_11_6_11"
     },
     {
+      "originNorth": 6,
+      "originEast": 11,
+      "vanillaDestNorth": 7,
+      "vanillaDestEast": 11,
+      "newDestNorth": 7,
+      "newDestEast": 11,
+      "newX": 329.64285714285717,
+      "newY": 509.09090909090907,
+      "xIsEven": 25.357142857142858,
+      "yIsEven": 0,
+      "srcCoord": 329.64285714285717,
+      "direction": "north",
+      "mechanism": "edge",
+      "requires": [],
+      "fromExitId": "edge:north:6_11_7_11",
+      "toExitId": "edge:south:7_11_6_11"
+    },
+    {
       "originNorth": 7,
       "originEast": 9,
       "vanillaDestNorth": 6,
@@ -3033,7 +3051,7 @@
       "newDestNorth": 6,
       "newDestEast": 11,
       "newX": 329.64285714285717,
-      "newY": 509.09090909090907,
+      "newY": 94,
       "xIsEven": 25.357142857142858,
       "yIsEven": 0,
       "srcCoord": 329.64285714285717,
@@ -3041,7 +3059,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:7_11_6_11",
-      "toExitId": "edge:south:7_11_6_11"
+      "toExitId": "edge:north:6_11_7_11"
     },
     {
       "originNorth": 7,
