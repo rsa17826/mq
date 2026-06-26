@@ -111,7 +111,7 @@ async function main() {
     })
     // execSync("prettier --write --semi=false --print-width=70 --experimental-ternaries=true --tab-width=2  MathQuest/MathQuest.base.js")
     execSync("python main.py 32 --no-shuffle")
-    execSync("push adding items to randomize")
+    execSync(`push adding items to randomize ${north}_${east}`)
     // fs.copyFileSync(BASE_FILE_PATH, FINAL_FILE_PATH)
 
     // 7. Reload the target page
