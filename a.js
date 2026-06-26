@@ -1,4 +1,4 @@
-const puppeteer = require("puppeteer-core")
+const puppeteer = require("puppeteer")
 const fs = require("fs")
 const path = require("path")
 const { execSync, exec } = require("child_process")
@@ -28,7 +28,8 @@ function waitForFileSave(filePath) {
     })
   })
 }
-
+var start = 110770
+var len = 209
 // Helper to insert a line into a specific file at a specific line number
 function insertLineInFile(filePath, lineNumber, textToInsert) {
   const fileContent = fs.readFileSync(filePath, "utf8")
@@ -39,7 +40,6 @@ function insertLineInFile(filePath, lineNumber, textToInsert) {
 
   fs.writeFileSync(filePath, lines.join("\n"), "utf8")
 }
-
 async function main() {
   let browser
   try {
@@ -49,7 +49,6 @@ async function main() {
 
     // Find the target tab
     const page = pages.find((p) => p.url().includes(TARGET_PAGE_URL))
-    page.setViewport({ width: 1920, height: 1052});
     if (!page) {
       console.error(
         `Could not find a tab with URL: ${TARGET_PAGE_URL}`,
@@ -101,10 +100,12 @@ async function main() {
             (line) => line < originalLineNumber,
           ).length
 
-          const adjustedLineNumber =
+          var adjustedLineNumber =
             originalLineNumber + dynamicOffset
           const textToWrite = `newItem(${north},${east},'${prop}',)`
-
+          if (adjustedLineNumber>start){
+            adjustedLineNumber-=len
+          }
           console.log(
             `Processing: Inserting "${textToWrite}" at adjusted line ${adjustedLineNumber} ` +
               `(Original: ${originalLineNumber}, Active Offset: +${dynamicOffset})`,
