@@ -49,6 +49,7 @@ async function main() {
 
     // Find the target tab
     const page = pages.find((p) => p.url().includes(TARGET_PAGE_URL))
+    page.setViewport({ width: 1920, height: 1052});
     if (!page) {
       console.error(
         `Could not find a tab with URL: ${TARGET_PAGE_URL}`,
@@ -56,68 +57,119 @@ async function main() {
       return
     }
 
-    // 2. Extract variables from the browser page context
-    const pageData = await page.evaluate(() => {
-      return {
-        north: window.manager ? window.manager.north : null,
-        east: window.manager ? window.manager.east : null,
-        accessList: window.accessList || [],
+    console.log(
+      "🚀 Automation loop started. Press Ctrl+C in terminal to stop.",
+    )
+
+    // Tracks every original line number where we have successfully inserted a token
+    const insertedOriginalLines = []
+
+    // Continuous processing loop
+    while (true) {
+      // 2. Extract variables from the browser page context
+      const pageData = await page.evaluate(() => {
+        return {
+          north: window.manager ? window.manager.north : null,
+          east: window.manager ? window.manager.east : null,
+          accessList: window.accessList || {},
+        }
+      })
+
+      const { north, east, accessList } = pageData
+      const currentKey = `${north}_${east}`
+
+      // Check if there are active items to process for the current coordinates
+      if (
+        accessList[currentKey] &&
+        accessList[currentKey].length > 0
+      ) {
+        console.log(
+          `\nFound ${accessList[currentKey].length} items to write for: ${currentKey}`,
+        )
+
+        // Sorting ascending ensures predictable behavior within the same batch
+        const itemsToProcess = [...accessList[currentKey]].sort(
+          (a, b) => a[1] - b[1],
+        )
+
+        // Process each item in this coordinate chunk sequentially
+        for (const item of itemsToProcess) {
+          const [prop, originalLineNumber] = item
+
+          // Calculate offset: count how many previous insertions happened ABOVE this line
+          const dynamicOffset = insertedOriginalLines.filter(
+            (line) => line < originalLineNumber,
+          ).length
+
+          const adjustedLineNumber =
+            originalLineNumber + dynamicOffset
+          const textToWrite = `newItem(${north},${east},'${prop}',)`
+
+          console.log(
+            `Processing: Inserting "${textToWrite}" at adjusted line ${adjustedLineNumber} ` +
+              `(Original: ${originalLineNumber}, Active Offset: +${dynamicOffset})`,
+          )
+
+          // Write to the base file using the dynamically adjusted line number
+          insertLineInFile(
+            BASE_FILE_PATH,
+            adjustedLineNumber,
+            textToWrite,
+          )
+
+          // 4. Open VS Codium to the adjusted line number
+          console.log(`codium --goto "${BASE_FILE_PATH}:${adjustedLineNumber}`)
+          // exec(
+          //   `codium --goto "${BASE_FILE_PATH}:${adjustedLineNumber}"`,
+          //   (err) => {
+          //     if (err)
+          //       console.error(`Failed to open Codium: ${err.message}`)
+          //   },
+          // )
+
+          // 5. Wait for the user to manually save the file before moving to the next item
+          // await waitForFileSave(BASE_FILE_PATH)
+          await new Promise((e) => setTimeout(e, 1000))
+
+          // Save this original line location to history for future offset math
+          insertedOriginalLines.push(originalLineNumber)
+        }
+
+        // 6. Run post-processing commands for this batch
+        console.log(
+          "Batch complete. Saving state and running compilers...",
+        )
+        await page.evaluate(() => {
+          if (window.test && typeof window.test.save === "function") {
+            window.test.save()
+          }
+        })
+
+        try {
+          execSync("python main.py 32 --no-shuffle")
+          execSync(`push adding items to randomize ${currentKey}`)
+        } catch (cmdError) {
+          console.error(
+            "Error executing terminal commands:",
+            cmdError.message,
+          )
+        }
+
+        // 7. Clear out the processed entries from the browser so we don't loop over them again
+        await page.evaluate((key) => {
+          if (window.accessList && window.accessList[key]) {
+            delete window.accessList[key]
+          }
+        }, currentKey)
+
+        console.log(
+          `Done with batch ${currentKey}. Listening for new tokens...`,
+        )
       }
-    })
 
-    const { north, east, accessList } = pageData
-    console.log(
-      `Extracted Data - North: ${north}, East: ${east}, AccessList Length: ${accessList.length}`,
-    )
-
-    if (accessList.length === 0) {
-      console.log("accessList is empty. No operations to perform.")
-      return
+      // Poll the browser context every 1 second
+      await new Promise((resolve) => setTimeout(resolve, 1000))
     }
-
-    // 3. Process each item in the accessList sequentially
-    for (const item of accessList[`${north}_${east}`]) {
-      const [prop, lineNumber] = item
-      const textToWrite = `newItem(${north},${east},'${prop}',)`
-
-      console.log(
-        `Processing: Inserting "${textToWrite}" at line ${lineNumber}`,
-      )
-
-      // Write to the base file
-      insertLineInFile(BASE_FILE_PATH, lineNumber, textToWrite)
-
-      // 4. Open VS Codium to the specific file and line number
-      // Syntax: codium --goto filename:line:column
-      exec(
-        `codium --goto "${BASE_FILE_PATH}:${lineNumber}"`,
-        (err) => {
-          if (err)
-            console.error(`Failed to open Codium: ${err.message}`)
-        },
-      )
-
-      // 5. Wait for the user to manually save the file before moving to the next item
-      await waitForFileSave(BASE_FILE_PATH)
-      await new Promise(e=>setTimeout(e,100))
-    }
-
-    // 6. When list is empty, copy MathQuest.base.js to MathQuest.js
-    console.log(
-      "Access list fully processed. Copying base file to final file...",
-    )
-    page.evaluate(() => {
-      window.test.save()
-    })
-    // execSync("prettier --write --semi=false --print-width=70 --experimental-ternaries=true --tab-width=2  MathQuest/MathQuest.base.js")
-    execSync("python main.py 32 --no-shuffle")
-    execSync(`push adding items to randomize ${north}_${east}`)
-    // fs.copyFileSync(BASE_FILE_PATH, FINAL_FILE_PATH)
-
-    // 7. Reload the target page
-    console.log("Reloading the browser page...")
-    await page.reload({ waitUntil: "load" })
-    console.log("Done!")
   } catch (error) {
     console.error("An error occurred during execution:", error)
   } finally {

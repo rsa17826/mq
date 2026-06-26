@@ -8911,7 +8911,6 @@
         ]
       ],
       "receive": [
-        "misc:small locket",
         "quest:dig.2"
       ]
     },
@@ -8919,7 +8918,6 @@
       "room": "19_21",
       "requires": [
         [
-          "misc:small locket",
           "quest:dig.2"
         ]
       ],
@@ -12113,12 +12111,6 @@
       {
         "room": "19_21",
         "raw": "quest:dig.3"
-      }
-    ],
-    "misc:small locket": [
-      {
-        "room": "19_21",
-        "raw": "misc:small locket"
       }
     ],
     "quest:oMan": [
