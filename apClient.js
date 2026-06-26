@@ -202,12 +202,12 @@ class ArchipelagoClient {
       // Look up what this item ID actually means
       const itemName = AP_ITEM_IDS[item.item]
 
-      console.log(`[Item Received] ID: ${item.item} (${itemName})`)
+      console.log(`[Item Received] ID: ${item.item} (${itemName})`, item)
 
       if (!window.giveItem(itemName)) {
         error("failed to give", itemName)
       }
-
+      window.prevSeenItems.push(item.item)
       this.lastProcessedIndex = globalIndex + 1
     })
   }
@@ -266,7 +266,8 @@ if (location.search) {
     let data
     if ((data = await get(`/MQFiles/loadChar_${window.seed}.php`))) {
       var newdata = data.split(" ").slice(265)
-      window.log(newdata, "newdata")
+      log(newdata, "newdata")
+      window.prevSeenItems = newdata
     } else {
       get(
         "http://127.0.0.1:1533/cgi-bin/createChar.py?filename=" +
