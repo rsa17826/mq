@@ -1,4 +1,57 @@
-EXITS = {
+from __future__ import annotations
+from typing import TypedDict,NotRequired
+
+
+class Origin(TypedDict):
+  north: int
+  east: int
+
+
+class Dest(TypedDict):
+  north: int
+  east: int
+
+
+class Edge(TypedDict):
+  id: str
+  mechanism: str
+  direction: str
+  origin: Origin
+  dest: NotRequired[Dest | None]
+  dest_x: NotRequired[int | None]
+  dest_y: NotRequired[int | None]
+  one_way: NotRequired[bool | None]
+  notes: NotRequired[str | None]
+
+
+class Origin1(TypedDict):
+  north: float
+  east: int
+
+
+class Dest1(TypedDict):
+  north: float
+  east: int
+
+
+class Door(TypedDict):
+  id: str
+  mechanism: str
+  trigger_object: str
+  origin: Origin1
+  dest: Dest1
+  dest_x: int
+  dest_y: int
+  requires: NotRequired[list[list[str] | None]]
+  one_way: NotRequired[bool | None]
+
+
+class Model(TypedDict):
+  edges: list[Edge]
+  doors: list[Door]
+
+
+EXITS: Model = {
   "edges": [
     {
       "id": "edge:north:4_24_5_24",
@@ -1349,8 +1402,6 @@ EXITS = {
       "dest": {"north": 19, "east": 14},
       "dest_x": None,
       "dest_y": 510,
-      "gated": False,
-      "gate": None,
       "one_way": False,
     },
     {
@@ -4248,8 +4299,6 @@ EXITS = {
       "dest": {"north": 13, "east": 21},
       "dest_x": None,
       "dest_y": 510,
-      "gated": False,
-      "gate": None,
       "one_way": False,
       "notes": None,
     },
@@ -7009,12 +7058,5 @@ EXITS = {
       "dest_y": 500,
       "one_way": True,
     },
-  ],
-  "known_gaps": [
-    {
-      "label": "drain_waterwarp_room9_14_split",
-      "description": "Room (9,14) has TWO different water-warp sub-exits from drain, distinguished by char x-position (<=420 -> east--, >420 -> north++), not captured here since override regex only matches a plain 2-clause north==X && east==Y condition. Needs manual entry if this room's water-warp is to be included in the shuffle.",
-      "source_line": 34694,
-    }
   ],
 }

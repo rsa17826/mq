@@ -24,6 +24,9 @@ class CachedCGIHTTPRequestHandler(CGIHTTPRequestHandler):
 
     super().do_GET()
 
+  def address_string(self):
+    return self.client_address[0]
+
   def generate_placeholder_image(self, target_path):
     os.makedirs(os.path.dirname(target_path), exist_ok=True)
 
@@ -97,7 +100,9 @@ class CachedCGIHTTPRequestHandler(CGIHTTPRequestHandler):
 
     if (
       relative_path.startswith("map") or relative_path.startswith("mapimgs")
-    ) or relative_path.lower().split("?")[0].endswith((".jpg", ".jpeg", ".png", ".mp3", ".ogg", ".eot", ".svg", ".ttf")):
+    ) or relative_path.lower().split("?")[0].endswith(
+      (".jpg", ".jpeg", ".png", ".mp3", ".ogg", ".eot", ".svg", ".ttf")
+    ):
       self.send_header("Cache-Control", "public, max-age=31536000, immutable")
 
     super().end_headers()
