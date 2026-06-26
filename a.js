@@ -151,9 +151,7 @@ async function main() {
           "Batch complete. Saving state and running compilers...",
         )
         await page.evaluate(() => {
-          if (window.test && typeof window.test.save === "function") {
-            window.test.save()
-          }
+          window.test.save()
         })
 
         try {

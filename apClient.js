@@ -204,10 +204,8 @@ class ArchipelagoClient {
 
       console.log(`[Item Received] ID: ${item.item} (${itemName})`)
 
-      // 💥 CRITICAL: Give the item to the game!
-      if (typeof window.giveItem === "function") {
-        // Pass the item name or ID to your game's existing item management code
-        window.giveItem(itemName)
+      if (!window.giveItem(itemName)) {
+        error("failed to give", itemName)
       }
 
       this.lastProcessedIndex = globalIndex + 1
