@@ -140,7 +140,7 @@ async function main() {
 
           // 5. Wait for the user to manually save the file before moving to the next item
           // await waitForFileSave(BASE_FILE_PATH)
-          await new Promise((e) => setTimeout(e, 1000))
+          await new Promise((e) => setTimeout(e, 300))
 
           // Save this original line location to history for future offset math
           insertedOriginalLines.push(originalLineNumber)
