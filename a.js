@@ -154,9 +154,12 @@ async function main() {
         console.log(
           "Batch complete. Saving state and running compilers...",
         )
-        await page.evaluate(() => {
+        await page.evaluate(([l, currentKey]) => {
+          for (var i = 0;i<l;i++){
+            console.log("used!", i, accessList[currentKey].pop())
+          }
           window.test.save()
-        })
+        }, [accessList[currentKey].length, currentKey])
 
         try {
           execSync("python main.py 32 --no-shuffle")
@@ -169,11 +172,11 @@ async function main() {
         }
 
         // 7. Clear out the processed entries from the browser so we don't loop over them again
-        await page.evaluate((key) => {
-          if (window.accessList && window.accessList[key]) {
-            delete window.accessList[key]
-          }
-        }, currentKey)
+        // await page.evaluate((key) => {
+        //   if (window.accessList && window.accessList[key]) {
+        //     delete window.accessList[key]
+        //   }
+        // }, currentKey)
 
         console.log(
           `Done with batch ${currentKey}. Listening for new tokens...`,
