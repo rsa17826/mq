@@ -252,7 +252,7 @@ class ArchipelagoClient {
     return Math.random().toString(36).substring(2, 15)
   }
 }
-window.prevSeenItems=[]
+window.prevSeenItems = []
 if (location.search) {
   var data = location.search
     .replace("?", "")
@@ -306,7 +306,11 @@ if (location.search) {
 window.waitingPackets = []
 async function get(url) {
   try {
-    return await (await fetch(url)).text()
+    var resp = await fetch(url)
+    if (String(resp.status)[0] == "2") {
+      return await resp.text()
+    }
+    return false
   } catch (e) {
     return false
   }

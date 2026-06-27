@@ -21,8 +21,8 @@ def generate_js_client():
   LOCATION_NAME_TO_ID = {}
   ITEM_NAME_TO_ID = {}
 
-  loc_id_counter = 0
-  item_id_counter = 0
+  loc_id_counter = 1
+  item_id_counter = 1
 
   valid_prefixes = [
     "item:",
@@ -66,40 +66,6 @@ def generate_js_client():
 const AP_LOCATION_IDS = {json.dumps(LOCATION_NAME_TO_ID, indent=2)};
 
 const AP_ITEM_IDS = {json.dumps(ITEM_ID_TO_NAME, indent=2)};
-
-/**
- * Hook into MathQuest item collection.
- * Called when a player receives or uncovers an item at a spatial coordinate.
- */
-function newItem(north, east, name, value, isadd) {{
-  // Only process item discovery actions
-  if (!isadd) return;
-
-  // 1. Clean tracking flags if appended (e.g., "food:cherry#10" -> "food:cherry")
-  var baseName = name.split('#')[0];
-
-  // 2. Format location key to match AP server definitions
-  if (baseName.startsWith("Enum")){{
-    baseName = baseName.replace("Enum.", "").replace(".", ":").toLowerCase()
-  }}
-  const apLocationName = `${{north}}_${{east}} - ${{baseName}}`;
-
-  // 3. Resolve the item ID
-  const apLocationId = AP_LOCATION_IDS[apLocationName];
-
-  if (apLocationId === undefined) {{
-    console.warn(`[Archipelago] Ignored location check (No ID mapped): "${{apLocationName}}"`);
-    return;
-  }}
-
-  // 4. Ship payload packet to server
-  if (window.ap && window.ap.isAuthenticated) {{
-    console.log(`[Archipelago] Check registered: ${{apLocationName}} (ID: ${{apLocationId}})`);
-    window.ap.sendLocationChecks([apLocationId]);
-  }} else {{
-    console.warn("[Archipelago] Client not authenticated. Drop packet cached or deferred.");
-  }}
-}}
 
 console.log(`[Archipelago] Database ready: ${{Object.keys(AP_LOCATION_IDS).length}} locations, ${{Object.keys(AP_ITEM_IDS).length}} items.`);
 """
