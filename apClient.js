@@ -252,6 +252,7 @@ class ArchipelagoClient {
     return Math.random().toString(36).substring(2, 15)
   }
 }
+window.prevSeenItems=[]
 if (location.search) {
   var data = location.search
     .replace("?", "")

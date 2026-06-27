@@ -29,8 +29,27 @@ function waitForFileSave(filePath) {
   })
 }
 var min = 1000
-var start = 111200
-var len = 209
+
+// Read the file as a string
+const text = fs.readFileSync("MathQuest/MathQuest.js", "utf-8")
+
+// Split the text into an array of individual lines
+const lines = text.split(/\r?\n/)
+
+// Find the line index (0-based) where the text exists
+const start =
+  lines.findIndex((line) =>
+    line.includes("ENTRANCE RANDOMIZER PATCH START"),
+  ) + 1
+const len =
+  lines.findIndex((line) =>
+    line.includes("ENTRANCE RANDOMIZER PATCH END"),
+  ) +
+  1 -
+  start
+
+console.log(start, len, "start and len")
+
 // Helper to insert a line into a specific file at a specific line number
 function insertLineInFile(filePath, lineNumber, textToInsert) {
   const fileContent = fs.readFileSync(filePath, "utf8")
@@ -71,17 +90,19 @@ async function main() {
       // 2. Extract variables from the browser page context
       const pageData = await page.evaluate(() => {
         return {
+          playerLoaded:window.playerLoaded,
           north: window.manager ? window.manager.north : null,
           east: window.manager ? window.manager.east : null,
           accessList: window.accessList || {},
         }
       })
 
-      const { north, east, accessList } = pageData
+      const { north, east, accessList, playerLoaded } = pageData
       const currentKey = `${north}_${east}`
 
       // Check if there are active items to process for the current coordinates
       if (
+        playerLoaded &&
         accessList[currentKey] &&
         accessList[currentKey].length > 0
       ) {
@@ -154,12 +175,15 @@ async function main() {
         console.log(
           "Batch complete. Saving state and running compilers...",
         )
-        await page.evaluate(([l, currentKey]) => {
-          for (var i = 0;i<l;i++){
-            console.log("used!", i, accessList[currentKey].pop())
-          }
-          window.test.save()
-        }, [accessList[currentKey].length, currentKey])
+        await page.evaluate(
+          ([l, currentKey]) => {
+            for (var i = 0; i < l; i++) {
+              console.log("used!", i, accessList[currentKey].pop())
+            }
+            window.test.save()
+          },
+          [accessList[currentKey].length, currentKey],
+        )
 
         try {
           execSync("python main.py 32 --no-shuffle")
