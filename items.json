@@ -1,0 +1,1290 @@
+[
+  {
+    "room": {
+      "north": 19,
+      "east": 15
+    },
+    "requires": [["medallions:3", "no_skill:hint"]],
+    "receive": ["skill:hint"]
+  },
+  {
+    "room": {
+      "north": 19,
+      "east": 15
+    },
+    "requires": [["medallions:200", "no_skill:shield"]],
+    "receive": ["skill:shield"]
+  },
+  {
+    "room": {
+      "north": 20,
+      "east": 20
+    },
+    "requires": [["gold:5", "food_space:apple"]],
+    "receive": ["food:apple"]
+  },
+  {
+    "room": {
+      "north": 20,
+      "east": 20
+    },
+    "requires": [["gold:1", "food_space:honey"]],
+    "receive": ["food:honey"]
+  },
+  {
+    "room": {
+      "north": 20,
+      "east": 20
+    },
+    "requires": [["gold:15", "food_space:grapes"]],
+    "receive": ["food:grapes"]
+  },
+  {
+    "room": {
+      "north": 12,
+      "east": 9
+    },
+    "requires": [["gold:125", "food_space:carrot"]],
+    "receive": ["food:carrot"]
+  },
+  {
+    "room": {
+      "north": 12,
+      "east": 9
+    },
+    "requires": [["gold:200", "food_space:beefJerky"]],
+    "receive": ["food:beefJerky"]
+  },
+  {
+    "room": {
+      "north": 12,
+      "east": 9
+    },
+    "requires": [["gold:250", "food_space:cherries"]],
+    "receive": ["food:cherries"]
+  },
+  {
+    "room": {
+      "north": 0,
+      "east": 0
+    },
+    "requires": [["gold:300", "food_space:chocolate"]],
+    "receive": ["food:chocolate"]
+  },
+  {
+    "room": {
+      "north": 0,
+      "east": 0
+    },
+    "requires": [["gold:450", "food_space:steak"]],
+    "receive": ["food:steak"]
+  },
+  {
+    "room": {
+      "north": 0,
+      "east": 0
+    },
+    "requires": [["gold:500", "food_space:peppers"]],
+    "receive": ["food:peppers"]
+  },
+  {
+    "room": {
+      "north": 21,
+      "east": 20
+    },
+    "requires": [["gold:50", "no_magic:slow"]],
+    "receive": ["magic:slow"]
+  },
+  {
+    "room": {
+      "north": 21,
+      "east": 20
+    },
+    "requires": [["gold:100", "no_magic:heal"]],
+    "receive": ["magic:heal"]
+  },
+  {
+    "room": {
+      "north": 21,
+      "east": 20
+    },
+    "requires": [["gold:200", "no_magic:blast"]],
+    "receive": ["magic:blast"]
+  },
+  {
+    "room": {
+      "north": 13,
+      "east": 17
+    },
+    "requires": [["gold:300", "no_magic:regen"]],
+    "receive": ["magic:regen"]
+  },
+  {
+    "room": {
+      "north": 13,
+      "east": 17
+    },
+    "requires": [["gold:2000", "no_magic:cloud"]],
+    "receive": ["magic:cloud"]
+  },
+  {
+    "room": {
+      "north": 13,
+      "east": 17
+    },
+    "requires": [["gold:900", "no_magic:weak"]],
+    "receive": ["magic:weak"]
+  },
+  {
+    "room": {
+      "north": 11,
+      "east": 9
+    },
+    "requires": [["gold:4500", "no_magic:refresh"]],
+    "receive": ["magic:refresh"]
+  },
+  {
+    "room": {
+      "north": 11,
+      "east": 9
+    },
+    "requires": [["gold:10000", "no_magic:lightning"]],
+    "receive": ["magic:lightning"]
+  },
+  {
+    "room": {
+      "north": 20,
+      "east": 20
+    },
+    "requires": [
+      ["gold:10", "no_weapon:club", "no_weapon:upgradeStaff"]
+    ],
+    "receive": ["weapon:club"]
+  },
+  {
+    "room": {
+      "north": 20,
+      "east": 20
+    },
+    "requires": [["gold:50", "no_weapon:dagger"]],
+    "receive": ["weapon:dagger"]
+  },
+  {
+    "room": {
+      "north": 20,
+      "east": 20
+    },
+    "requires": [
+      ["gold:200", "no_weapon:sword", "no_weapon:bombSword"]
+    ],
+    "receive": ["weapon:sword"]
+  },
+  {
+    "room": {
+      "north": 13,
+      "east": 17
+    },
+    "requires": [
+      ["gold:800", "no_weapon:royalSword", "no_weapon:creeperCrusher"]
+    ],
+    "receive": ["weapon:royalSword"]
+  },
+  {
+    "room": {
+      "north": 13,
+      "east": 17
+    },
+    "requires": [
+      ["gold:500", "no_weapon:royalStaff", "no_weapon:refreshStaff"]
+    ],
+    "receive": ["weapon:royalStaff"]
+  },
+  {
+    "room": {
+      "north": 20,
+      "east": 20
+    },
+    "requires": [["gold:50"]],
+    "receive": ["armor:vest"]
+  },
+  {
+    "room": {
+      "north": 20,
+      "east": 20
+    },
+    "requires": [["gold:300"]],
+    "receive": ["armor:robe"]
+  },
+  {
+    "room": {
+      "north": 20,
+      "east": 20
+    },
+    "requires": [["gold:800"]],
+    "receive": ["armor:iron"]
+  },
+  {
+    "room": {
+      "north": 13,
+      "east": 17
+    },
+    "requires": [["gold:1500"]],
+    "receive": ["armor:royalArmor"]
+  },
+  {
+    "room": {
+      "north": 13,
+      "east": 17
+    },
+    "requires": [["gold:700"]],
+    "receive": ["armor:mysticCloak"]
+  },
+  {
+    "room": {
+      "north": 12,
+      "east": 9
+    },
+    "requires": [["gold:250"]],
+    "receive": ["armor:sunArmor"]
+  },
+  {
+    "room": {
+      "north": 12,
+      "east": 9
+    },
+    "requires": [["gold:3500"]],
+    "receive": ["armor:speedVest"]
+  },
+  {
+    "room": {
+      "north": 0,
+      "east": 0
+    },
+    "requires": [[]],
+    "receive": ["item:ring of poison"]
+  },
+  {
+    "room": {
+      "north": 0,
+      "east": 0
+    },
+    "requires": [[]],
+    "receive": ["item:ring of magic"]
+  },
+  {
+    "room": {
+      "north": 0,
+      "east": 0
+    },
+    "requires": [[]],
+    "receive": ["item:ring of death"]
+  },
+  {
+    "room": {
+      "north": 19,
+      "east": 20
+    },
+    "requires": [["no_skill:dig"]],
+    "receive": ["skill:dig"]
+  },
+  {
+    "room": {
+      "north": 19,
+      "east": 20
+    },
+    "requires": [["no_skill:kick"]],
+    "receive": ["skill:kick"]
+  },
+  {
+    "room": {
+      "north": 500,
+      "east": 501
+    },
+    "requires": [[]],
+    "receive": ["weapon:aSword"]
+  },
+  {
+    "room": {
+      "north": 200,
+      "east": 200
+    },
+    "requires": [[]],
+    "receive": ["weapon:twinFury"]
+  },
+  {
+    "room": {
+      "north": 18,
+      "east": 25
+    },
+    "requires": [
+      ["loot:gFeather:3", "loot:aScepter:5", "skill:medic:level_5"]
+    ],
+    "receive": ["skill:medic"]
+  },
+  {
+    "room": {
+      "north": 18,
+      "east": 25
+    },
+    "requires": [
+      ["loot:kCrest:10", "loot:aAxe:5", "skill:medic:level_4"]
+    ],
+    "receive": ["skill:medic"]
+  },
+  {
+    "room": {
+      "north": 18,
+      "east": 25
+    },
+    "requires": [
+      ["loot:dScale:10", "loot:gSkin:10", "skill:medic:level_3"]
+    ],
+    "receive": ["skill:medic"]
+  },
+  {
+    "room": {
+      "north": 18,
+      "east": 25
+    },
+    "requires": [
+      ["loot:oCoin:20", "loot:mStaff:10", "skill:medic:level_2"]
+    ],
+    "receive": ["skill:medic"]
+  },
+  {
+    "room": {
+      "north": 18,
+      "east": 25
+    },
+    "requires": [["loot:cFang:5", "skill:medic:level_1"]],
+    "receive": ["skill:medic"]
+  },
+  {
+    "room": {
+      "north": 18,
+      "east": 25
+    },
+    "requires": [["loot:tBand:2", "no_skill:medic"]],
+    "receive": ["skill:medic"]
+  },
+  {
+    "room": {
+      "north": 19,
+      "east": 22
+    },
+    "requires": [["no_skill:reveal"]],
+    "receive": ["skill:reveal"]
+  },
+  {
+    "room": {
+      "north": 11,
+      "east": 12
+    },
+    "requires": [["gold:100", "food_space:sunflowerSeeds"]],
+    "receive": ["food:sunflowerSeeds"]
+  },
+  {
+    "room": {
+      "north": 21,
+      "east": 23
+    },
+    "requires": [[]],
+    "receive": ["diamonds"]
+  },
+  {
+    "room": {
+      "north": 21,
+      "east": 23
+    },
+    "requires": [[]],
+    "receive": ["gold"]
+  },
+  {
+    "room": {
+      "north": 6,
+      "east": 13
+    },
+    "requires": [[]],
+    "receive": ["food:grapes"]
+  },
+  {
+    "room": {
+      "north": 6,
+      "east": 13
+    },
+    "requires": [[]],
+    "receive": ["food:strawberry"]
+  },
+  {
+    "room": {
+      "north": 11,
+      "east": 19
+    },
+    "requires": [[]],
+    "receive": ["food:sunflowerSeeds"]
+  },
+  {
+    "room": {
+      "north": 11,
+      "east": 19
+    },
+    "requires": [[]],
+    "receive": ["food:strawberry"]
+  },
+  {
+    "room": {
+      "north": 23,
+      "east": 10
+    },
+    "requires": [[]],
+    "receive": ["diamonds"]
+  },
+  {
+    "room": {
+      "north": 23,
+      "east": 10
+    },
+    "requires": [[]],
+    "receive": ["food:newtonsApple"]
+  },
+  {
+    "room": {
+      "north": 17,
+      "east": 20
+    },
+    "requires": [[]],
+    "receive": ["gold"]
+  },
+  {
+    "room": {
+      "north": 17,
+      "east": 20
+    },
+    "requires": [[]],
+    "receive": ["food:beefJerky"]
+  },
+  {
+    "room": {
+      "north": 15,
+      "east": 24
+    },
+    "requires": [[]],
+    "receive": ["gold"]
+  },
+  {
+    "room": {
+      "north": 10,
+      "east": 9
+    },
+    "requires": [[]],
+    "receive": ["food:steak"]
+  },
+  {
+    "room": {
+      "north": 9,
+      "east": 26
+    },
+    "requires": [[]],
+    "receive": ["food:blueberries"]
+  },
+  {
+    "room": {
+      "north": 21,
+      "east": 11
+    },
+    "requires": [[]],
+    "receive": ["food:gummyBears"]
+  },
+  {
+    "room": {
+      "north": 24,
+      "east": 11
+    },
+    "requires": [[]],
+    "receive": ["weapon:baneBlade"]
+  },
+  {
+    "room": {
+      "north": 21,
+      "east": 21
+    },
+    "requires": [[]],
+    "receive": ["skill:craft"]
+  },
+  {
+    "room": {
+      "north": 9,
+      "east": 22
+    },
+    "requires": [[]],
+    "receive": ["magic:doubleDown"]
+  },
+  {
+    "room": {
+      "north": 21,
+      "east": 20
+    },
+    "requires": [[]],
+    "receive": ["magic:crush"]
+  },
+  {
+    "room": {
+      "north": 18,
+      "east": 20
+    },
+    "requires": [[]],
+    "receive": ["gold"]
+  },
+  {
+    "room": {
+      "north": 6,
+      "east": 12
+    },
+    "requires": [[]],
+    "receive": ["geode"]
+  },
+  {
+    "room": {
+      "north": 17,
+      "east": 16
+    },
+    "requires": [[]],
+    "receive": ["diamonds"]
+  },
+  {
+    "room": {
+      "north": 18,
+      "east": 17
+    },
+    "requires": [[]],
+    "receive": ["gold"]
+  },
+  {
+    "room": {
+      "north": 15,
+      "east": 19
+    },
+    "requires": [[]],
+    "receive": ["gold"]
+  },
+  {
+    "room": {
+      "north": 15,
+      "east": 19
+    },
+    "requires": [[]],
+    "receive": ["item:bombs"]
+  },
+  {
+    "room": {
+      "north": 15,
+      "east": 19
+    },
+    "requires": [[]],
+    "receive": ["food:banana"]
+  },
+  {
+    "room": {
+      "north": 11,
+      "east": 21
+    },
+    "requires": [[]],
+    "receive": ["item:bombs"]
+  },
+  {
+    "room": {
+      "north": 14,
+      "east": 15
+    },
+    "requires": [[]],
+    "receive": ["item:bombs"]
+  },
+  {
+    "room": {
+      "north": 14,
+      "east": 15
+    },
+    "requires": [[]],
+    "receive": ["food:orange"]
+  },
+  {
+    "room": {
+      "north": 24,
+      "east": 14
+    },
+    "requires": [[]],
+    "receive": ["armor:grimGear"]
+  },
+  {
+    "room": {
+      "north": 9,
+      "east": 15
+    },
+    "requires": [[]],
+    "receive": ["armor:phantomCoat"]
+  },
+  {
+    "room": {
+      "north": 15,
+      "east": 21
+    },
+    "requires": [[]],
+    "receive": ["gold"]
+  },
+  {
+    "room": {
+      "north": 15,
+      "east": 21
+    },
+    "requires": [[]],
+    "receive": ["item:bombs"]
+  },
+  {
+    "room": {
+      "north": 4,
+      "east": 24
+    },
+    "requires": [[]],
+    "receive": ["food:cherries"]
+  },
+  {
+    "room": {
+      "north": 6,
+      "east": 10
+    },
+    "requires": [[]],
+    "receive": ["food:chocolate"]
+  },
+  {
+    "room": {
+      "north": 9,
+      "east": 10
+    },
+    "requires": [[]],
+    "receive": ["gold"]
+  },
+  {
+    "room": {
+      "north": 11,
+      "east": 17
+    },
+    "requires": [[]],
+    "receive": ["item:bombs"]
+  },
+  {
+    "room": {
+      "north": 11,
+      "east": 17
+    },
+    "requires": [[]],
+    "receive": ["gold"]
+  },
+  {
+    "room": {
+      "north": 14,
+      "east": 21
+    },
+    "requires": [[]],
+    "receive": ["item:bombs"]
+  },
+  {
+    "room": {
+      "north": 14,
+      "east": 21
+    },
+    "requires": [[]],
+    "receive": ["food:apple"]
+  },
+  {
+    "room": {
+      "north": 14,
+      "east": 21
+    },
+    "requires": [[]],
+    "receive": ["gold"]
+  },
+  {
+    "room": {
+      "north": 4,
+      "east": 26
+    },
+    "requires": [[]],
+    "receive": ["weapon:shadowStaff"]
+  },
+  {
+    "room": {
+      "north": 18,
+      "east": 23
+    },
+    "requires": [["no_weapon:warlockStaff"]],
+    "receive": ["weapon:warlockStaff"]
+  },
+  {
+    "room": {
+      "north": 15,
+      "east": 14
+    },
+    "requires": [[]],
+    "receive": ["food:carrot"]
+  },
+  {
+    "room": {
+      "north": 9,
+      "east": 23
+    },
+    "requires": [[]],
+    "receive": ["magic:drain"]
+  },
+  {
+    "room": {
+      "north": 15,
+      "east": 16
+    },
+    "requires": [[]],
+    "receive": ["magic:ice"]
+  },
+  {
+    "room": {
+      "north": 11,
+      "east": 18
+    },
+    "requires": [["no_magic:refresh"]],
+    "receive": ["magic:refresh"]
+  },
+  {
+    "room": {
+      "north": 13,
+      "east": 16
+    },
+    "requires": [[]],
+    "receive": ["weapon:sKnife"]
+  },
+  {
+    "room": {
+      "north": 13,
+      "east": 16
+    },
+    "requires": [[]],
+    "receive": ["magic:weak"]
+  },
+  {
+    "room": {
+      "north": 14,
+      "east": 19
+    },
+    "requires": [[]],
+    "receive": ["armor:regenArmor"]
+  },
+  {
+    "room": {
+      "north": 16,
+      "east": 22
+    },
+    "requires": [[]],
+    "receive": ["gold"]
+  },
+  {
+    "room": {
+      "north": 19,
+      "east": 23
+    },
+    "requires": [[]],
+    "receive": ["magic:fire"]
+  },
+  {
+    "room": {
+      "north": 18,
+      "east": 21
+    },
+    "requires": [[]],
+    "receive": ["food:gingerBread"]
+  },
+  {
+    "room": {
+      "north": 14,
+      "east": 22
+    },
+    "requires": [[]],
+    "receive": ["item:ring of gold"]
+  },
+  {
+    "room": {
+      "north": 16,
+      "east": 21
+    },
+    "requires": [[]],
+    "receive": ["misc:ring of health"]
+  },
+  {
+    "room": {
+      "north": 18,
+      "east": 24
+    },
+    "requires": [[]],
+    "receive": ["headstoneSwitch1"]
+  },
+  {
+    "room": {
+      "north": 16,
+      "east": 16
+    },
+    "requires": [[]],
+    "receive": ["headstoneSwitch2"]
+  },
+  {
+    "room": {
+      "north": 12,
+      "east": 12
+    },
+    "requires": [[]],
+    "receive": ["headstoneSwitch3"]
+  },
+  {
+    "room": {
+      "north": 10,
+      "east": 25
+    },
+    "requires": [[]],
+    "receive": ["headstoneSwitch4"]
+  },
+  {
+    "room": {
+      "north": 18,
+      "east": 19
+    },
+    "requires": [[]],
+    "receive": ["gold"]
+  },
+  {
+    "room": {
+      "north": 12,
+      "east": 21
+    },
+    "requires": [[]],
+    "receive": ["food:banana"]
+  },
+  {
+    "room": {
+      "north": 12,
+      "east": 21
+    },
+    "requires": [["food_space:banana"]],
+    "receive": ["diamonds"]
+  },
+  {
+    "room": {
+      "north": 8,
+      "east": 18
+    },
+    "requires": [[]],
+    "receive": ["item:bombs"]
+  },
+  {
+    "room": {
+      "north": 8,
+      "east": 18
+    },
+    "requires": [[]],
+    "receive": ["food:steak"]
+  },
+  {
+    "room": {
+      "north": 17,
+      "east": 15
+    },
+    "requires": [[]],
+    "receive": ["gold"]
+  },
+  {
+    "room": {
+      "north": 17,
+      "east": 15
+    },
+    "requires": [[]],
+    "receive": ["food:gingerBread"]
+  },
+  {
+    "room": {
+      "north": 8,
+      "east": 10
+    },
+    "requires": [[]],
+    "receive": ["gold"]
+  },
+  {
+    "room": {
+      "north": 8,
+      "east": 10
+    },
+    "requires": [[]],
+    "receive": ["food:beefJerky"]
+  },
+  {
+    "room": {
+      "north": 21,
+      "east": 18
+    },
+    "requires": [[]],
+    "receive": ["diamonds"]
+  },
+  {
+    "room": {
+      "north": 21,
+      "east": 18
+    },
+    "requires": [[]],
+    "receive": ["food:peppers"]
+  },
+  {
+    "room": {
+      "north": 9,
+      "east": 25
+    },
+    "requires": [[]],
+    "receive": ["gold"]
+  },
+  {
+    "room": {
+      "north": 9,
+      "east": 25
+    },
+    "requires": [[]],
+    "receive": ["food:elixir"]
+  },
+  {
+    "room": {
+      "north": 23,
+      "east": 10
+    },
+    "requires": [[]],
+    "receive": ["armor:alphaArmor"]
+  },
+  {
+    "room": {
+      "north": 3,
+      "east": 26
+    },
+    "requires": [[]],
+    "receive": ["food:elixir"]
+  },
+  {
+    "room": {
+      "north": 16,
+      "east": 24
+    },
+    "requires": [[]],
+    "receive": ["food:gummyBears"]
+  },
+  {
+    "room": {
+      "north": 16,
+      "east": 24
+    },
+    "requires": [[]],
+    "receive": ["gold"]
+  },
+  {
+    "room": {
+      "north": 16,
+      "east": 25
+    },
+    "requires": [[]],
+    "receive": ["food:steak"]
+  },
+  {
+    "room": {
+      "north": 16,
+      "east": 25
+    },
+    "requires": [[]],
+    "receive": ["diamonds"]
+  },
+  {
+    "room": {
+      "north": 12,
+      "east": 25
+    },
+    "requires": [[]],
+    "receive": ["food:gummyBears"]
+  },
+  {
+    "room": {
+      "north": 12,
+      "east": 25
+    },
+    "requires": [[]],
+    "receive": ["diamonds"]
+  },
+  {
+    "room": {
+      "north": 18,
+      "east": 15
+    },
+    "requires": [[]],
+    "receive": ["food:newtonsApple"]
+  },
+  {
+    "room": {
+      "north": 11,
+      "east": 25
+    },
+    "requires": [[]],
+    "receive": ["food:beefJerky"]
+  },
+  {
+    "room": {
+      "north": 16,
+      "east": 15
+    },
+    "requires": [[]],
+    "receive": ["armor:diamondArmor"]
+  },
+  {
+    "room": {
+      "north": 17,
+      "east": 22
+    },
+    "requires": [[]],
+    "receive": ["diamonds"]
+  },
+  {
+    "room": {
+      "north": 15,
+      "east": 18
+    },
+    "requires": [[]],
+    "receive": ["item:bombs"]
+  },
+  {
+    "room": {
+      "north": 15,
+      "east": 18
+    },
+    "requires": [[]],
+    "receive": ["food:chocolate"]
+  },
+  {
+    "room": {
+      "north": 12,
+      "east": 12
+    },
+    "requires": [[]],
+    "receive": ["magic:blessing"]
+  },
+  {
+    "room": {
+      "north": 19,
+      "east": 18
+    },
+    "requires": [[]],
+    "receive": ["rubies"]
+  },
+  {
+    "room": {
+      "north": 19,
+      "east": 20
+    },
+    "requires": [[]],
+    "receive": ["gold"]
+  },
+  {
+    "room": {
+      "north": 19,
+      "east": 20
+    },
+    "requires": [[]],
+    "receive": ["food:gingerBread"]
+  },
+  {
+    "room": {
+      "north": 19,
+      "east": 20
+    },
+    "requires": [[]],
+    "receive": ["food:chocolate"]
+  },
+  {
+    "room": {
+      "north": 19,
+      "east": 20
+    },
+    "requires": [[]],
+    "receive": ["food:steak"]
+  },
+  {
+    "room": {
+      "north": 19,
+      "east": 20
+    },
+    "requires": [[]],
+    "receive": ["food:peppers"]
+  },
+  {
+    "room": {
+      "north": 19,
+      "east": 20
+    },
+    "requires": [["food_space:peppers"]],
+    "receive": ["food:orange"]
+  },
+  {
+    "room": {
+      "north": 19,
+      "east": 20
+    },
+    "requires": [[]],
+    "receive": ["food:holyWater"]
+  },
+  {
+    "room": {
+      "north": 19,
+      "east": 21
+    },
+    "requires": [[]],
+    "receive": ["gold"]
+  },
+  {
+    "room": {
+      "north": 12,
+      "east": 11
+    },
+    "requires": [[]],
+    "receive": ["diamonds"]
+  },
+  {
+    "room": {
+      "north": 13,
+      "east": 26
+    },
+    "requires": [[]],
+    "receive": ["food:gingerBread"]
+  },
+  {
+    "room": {
+      "north": 6,
+      "east": 12
+    },
+    "requires": [[]],
+    "receive": ["skill:convert"]
+  },
+  {
+    "room": {
+      "north": 11,
+      "east": 9
+    },
+    "requires": [[]],
+    "receive": ["skill:warp"]
+  },
+  {
+    "room": {
+      "north": 9,
+      "east": 22
+    },
+    "requires": [[]],
+    "receive": ["food:orange"]
+  },
+  {
+    "room": {
+      "north": 9,
+      "east": 22
+    },
+    "requires": [["food_space:orange"]],
+    "receive": ["food:peppers"]
+  },
+  {
+    "room": {
+      "north": 0,
+      "east": 0
+    },
+    "requires": [[]],
+    "receive": ["item:fire crystal"]
+  },
+  {
+    "room": {
+      "north": 4,
+      "east": 26
+    },
+    "requires": [[]],
+    "receive": ["skill:tough"]
+  },
+  {
+    "room": {
+      "north": 0,
+      "east": 0
+    },
+    "requires": [["loot:dScale:3", "loot:sFrag:5", "loot:fBone:10"]],
+    "receive": ["item:ring of skill"]
+  },
+  {
+    "room": {
+      "north": 13,
+      "east": 16
+    },
+    "requires": [[]],
+    "receive": ["item:ring of evasion"]
+  },
+  {
+    "room": {
+      "north": 15,
+      "east": 18
+    },
+    "requires": [[]],
+    "receive": ["food:beefJerky"]
+  },
+  {
+    "room": {
+      "north": 0,
+      "east": 0
+    },
+    "requires": [[]],
+    "receive": ["craft:bomb"]
+  },
+  {
+    "room": {
+      "north": 14,
+      "east": 18
+    },
+    "requires": [[]],
+    "receive": ["weapon:creeperCrusher"]
+  },
+  {
+    "room": {
+      "north": 14,
+      "east": 18
+    },
+    "requires": [[]],
+    "receive": ["pup"]
+  },
+  {
+    "room": {
+      "north": 14,
+      "east": 18
+    },
+    "requires": [[]],
+    "receive": ["gold"]
+  },
+  {
+    "room": {
+      "north": 13,
+      "east": 17
+    },
+    "requires": [[]],
+    "receive": ["armor:nobleArmor"]
+  },
+  {
+    "room": {
+      "north": 0,
+      "east": 0
+    },
+    "requires": [[]],
+    "receive": ["misc:bobbisPendant"]
+  },
+  {
+    "room": {
+      "north": 21,
+      "east": 20
+    },
+    "requires": [[]],
+    "receive": ["gold"]
+  }
+]

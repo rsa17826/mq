@@ -1904,4 +1904,161 @@ MathQuest.js:42550 add listeners""",
     "requires": [["quest:oMan.12"]],
     "receive": ["quest:oMan.13"],
   },
+  {
+    "room": {"north": 19, "east": 15},
+    "requires": [["~item:medallion#3"]],
+    "receive": ["skill:hint"],
+  },{
+					"room": {"north": 19, "east": 15},
+					"requires": [["~item:medallion#200"]],
+					"receive": ["skill:shield"],
+				},{
+					"room": {"north": 20, "east": 20},
+					"requires": [["~item:gold#5"]],
+					"receive": ["food:apple"],
+				},{
+					"room": {"north": 20, "east": 20},
+					"requires": [["~item:gold#1"]],
+					"receive": ["food:honey"],
+				},{
+					"room": {"north": 20, "east": 20},
+					"requires": [["~item:gold#15"]],
+					"receive": ["food:grapes"],
+				},{
+					"room": {"north": 12, "east": 9},
+					"requires": [["~item:gold#125"]],
+					"receive": ["food:carrot"],
+				},{
+					"room": {"north": 12, "east": 9},
+					"requires": [["~item:gold#200"]],
+					"receive": ["food:beefJerky"],
+				},{
+					"room": {"north": 12, "east": 9},
+					"requires": [["~item:gold#250"]],
+					"receive": ["food:cherries"],
+				},{
+					"room": {"north": 21, "east": 20},
+					"requires": [["~item:gold#50"]],
+					"receive": ["magic:slow"],
+				},{
+					"room": {"north": 21, "east": 20},
+					"requires": [["~item:gold#100"]],
+					"receive": ["magic:heal"],
+				},{
+					"room": {"north": 21, "east": 20},
+					"requires": [["~item:gold#200"]],
+					"receive": ["magic:blast"],
+				},{
+					"room": {"north": 13, "east": 17},
+					"requires": [["~item:gold#300"]],
+					"receive": ["magic:regen"],
+				},{
+					"room": {"north": 13, "east": 17},
+					"requires": [["~item:gold#2000"]],
+					"receive": ["magic:cloud"],
+				},{
+					"room": {"north": 13, "east": 17},
+					"requires": [["~item:gold#900"]],
+					"receive": ["magic:weak"],
+				},{
+					"room": {"north": 11, "east": 9},
+					"requires": [["~item:gold#4500"]],
+					"receive": ["magic:refresh"],
+				},{
+					"room": {"north": 11, "east": 9},
+					"requires": [["~item:gold#4000"]],
+					"receive": ["magic:lightning"],
+				},{
+					"room": {"north": 20, "east": 20},
+					"requires": [["~item:gold#10"]],
+					"receive": ["weapon:club"],
+				},{
+					"room": {"north": 20, "east": 20},
+					"requires": [["~item:gold#50"]],
+					"receive": ["weapon:dagger"],
+				},{
+					"room": {"north": 20, "east": 20},
+					"requires": [["~item:gold#200"]],
+					"receive": ["weapon:sword"],
+				},{
+					"room": {"north": 13, "east": 17},
+					"requires": [["~item:gold#800"]],
+					"receive": ["weapon:royalSword"],
+				},{
+					"room": {"north": 13, "east": 17},
+					"requires": [["~item:gold#5000"]],
+					"receive": ["weapon:royalStaff"],
+				},{
+					"room": {"north": 20, "east": 20},
+					"requires": [["~item:gold#500"]],
+					"receive": ["armor:vest"],
+				},{
+					"room": {"north": 20, "east": 20},
+					"requires": [["~item:gold#300"]],
+					"receive": ["armor:robe"],
+				},{
+					"room": {"north": 20, "east": 20},
+					"requires": [["~item:gold#8000"]],
+					"receive": ["armor:iron"],
+				},{
+					"room": {"north": 13, "east": 17},
+					"requires": [["~item:gold#15000"]],
+					"receive": ["armor:royalArmor"],
+				},{
+					"room": {"north": 13, "east": 17},
+					"requires": [["~item:gold#7000"]],
+					"receive": ["armor:mysticCloak"],
+				},{
+					"room": {"north": 12, "east": 9},
+					"requires": [["~item:gold#2500"]],
+					"receive": ["armor:sunArmor"],
+				},{
+					"room": {"north": 12, "east": 9},
+					"requires": [["~item:gold#3500"]],
+					"receive": ["armor:speedVest"],
+				},{
+					"room": {"north": 19, "east": 20},
+					"requires": [[]],
+					"receive": ["skill:dig"],
+				},{
+					"room": {"north": 19, "east": 20},
+					"requires": [[]],
+					"receive": ["skill:kick"],
+				},{
+					"room": {"north": 500, "east": 501},
+					"requires": [["weapon:bane blade#"]],
+					"receive": ["weapon:alpha sword0"],
+				},{
+					"room": {"north": 200, "east": 200},
+					"requires": [["weapon:orc blade"]],
+					"receive": ["weapon:twin f0ury"],
+				},{
+					"room": {"north": 18, "east": 25},
+					"requires": [["~"]],
+					"receive": ["skill:medic"],
+				},{
+					"room": {"north": 18, "east": 25},
+					"requires": [["~0"]],
+					"receive": ["skill:medic"],
+				},{
+					"room": {"north": 18, "east": 25},
+					"requires": [["~0"]],
+					"receive": ["skill:medic"],
+				},{
+					"room": {"north": 18, "east": 25},
+					"requires": [["~0"]],
+					"receive": ["skill:medic"],
+				},{
+					"room": {"north": 18, "east": 25},
+					"requires": [["~"]],
+					"receive": ["skill:medic"],
+				},{
+					"room": {"north": 18, "east": 25},
+					"requires": [["~"]],
+					"receive": ["skill:medic"],
+				},{
+					"room": {"north": 19, "east": 22},
+					"requires": [["~item:#"]],
+					"receive": ["skill:reveal"],
+				},
 ]
