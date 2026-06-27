@@ -1,0 +1,163 @@
+newItem.*"(.*?)\.(.*)\.(.*)".*(\d+).*set.*
+
+newItem.*"(.*?)\.(.*)\.(.*)".*(\d+).*add.*
+
+manager\.\w+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                newItem("500_501 - aPower", 1, add)
+              newItem("15_16 - ring5", 1, set)
+              newItem("16_10 - ring7", 1, set)
+
+
+
+
+
+
+
+
+
+
+
+                newItem("17_23 - str", 1, add)
+                newItem("8_25 - str", 1)
+                newItem("8_25 - str", 1, add)
+                newItem("8_25 - str", 1, add)
+                newItem("8_25 - str", 3, add)
+                newItem("8_25 - str", 5, add)
+                newItem("8_25 - str", 5, add)
+                newItem("8_25 - str", 5, add)
+                newItem("8_25 - str", 3, add)
+                newItem("8_25 - str", 4, add)
+                newItem("8_25 - str", 5, add)
+
+              newItem("21_23 - diamonds", 2, add)
+              newItem("21_23 - gold", 300, add)
+
+
+              newItem("
+              newItem("
+              newItem("23_10 - diamonds", 5, add)
+
+              newItem("17_20 - gold", 200, add)
+              newItem("
+              newItem("15_24 - gold", manager.correct, add)
+
+
+
+
+
+
+
+              newItem("18_20 - gold", 30, add)
+              newItem("6_12 - geode", 2, add)
+              newItem("17_16 - diamonds", 5, add)
+              newItem("18_17 - gold", 1e3, add)
+              newItem("15_19 - gold", 300, add)
+              newItem("15_19 - bombs", 10, add)
+
+              newItem("11_21 - bombs", 15, add)
+                newItem("14_15 - bombs", 5, add)
+
+
+
+              newItem("15_21 - gold", manager.fame * 5, add)
+              newItem("15_21 - bombs", 5, add)
+
+
+              newItem("9_10 - gold", 750, add)
+              newItem("11_17 - bombs", 8, add)
+              newItem("11_17 - gold", 200, add)
+              newItem("21_20 - Enum.Quest.1", 1)
+              newItem("13_21 - Enum.Quest.1", 2)
+              newItem("14_21 - bombs", 12, add)
+
+              newItem("14_21 - gold", 100, add)
+
+
+                newItem("18_23 - gold", 2e3, add)
+
+
+
+
+
+
+
+
+
+            newItem("null_null - emeralds", 1, add)
+          newItem("14_22 - ring1", 1, set)
+          newItem("16_21 - ring2", 1, set)
+              newItem("18_24 - headstoneSwitch2", 1, set)
+              newItem("16_16 - headstoneSwitch2", 1, set)
+              newItem("12_12 - headstoneSwitch2", 1, set)
+              newItem("10_25 - headstoneSwitch2", 1, set)
+          newItem("
+
+          newItem("
+          newItem("8_18 - bombs", 25, add)
+          newItem("
+
+          newItem("
+
+          newItem("
+          newItem("
+          newItem("
+
+
+
+
+          newItem("16_24 - gold", 1e3, add)
+
+          newItem("16_25 - diamonds", 5, add)
+
+          newItem("12_25 - diamonds", 50, add)
+
+
+
+          newItem("17_22 - diamonds", 20, add)
+          newItem("15_18 - bombs", 50, add)
+          newItem("
+
+          newItem("19_18 - rubies", 3, add)
+            newItem("19_20 - gold", 20, add)
+
+
+
+
+
+
+            newItem("19_21 - gold", 25, add)
+            newItem("12_11 - diamonds", 1, add)
+
+
+
+
+
+
+              newItem("20_18 - ring6", 1, set)
+          newItem("13_16 - ring3", 1, set)
+
+                newItem("21_20 - Enum.Quest.bBomb", 3)
+              newItem("13_21 - Enum.Quest.1")
+              newItem("13_21 - Enum.Quest.bBomb", 4)
+              newItem("12_14 - Enum.Quest.bBomb", 5)
+
+            newItem("14_18 - pup", 10, add)
+            newItem("14_18 - gold", 1000, add)
+
+            newItem("21_20 - gold", 50, add)
