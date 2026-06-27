@@ -2,6 +2,7 @@
 import json
 import os
 
+
 def generate_js_client():
   # 1. Resolve paths
   CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -11,7 +12,9 @@ def generate_js_client():
   try:
     from _progression import PROG
   except ImportError:
-    print("Error: Could not find _progression.py. Ensure this script is run from its directory.")
+    print(
+      "Error: Could not find _progression.py. Ensure this script is run from its directory."
+    )
     return
 
   # 3. Mirror the ID counters exactly as they are configured in your AP world
@@ -22,8 +25,15 @@ def generate_js_client():
   item_id_counter = 0
 
   valid_prefixes = [
-    "item:", "weapon:", "armour:", "food:", "skill:",
-    "magic:", "permit:", "goal:", "misc:"
+    "item:",
+    "weapon:",
+    "armour:",
+    "food:",
+    "skill:",
+    "magic:",
+    "permit:",
+    "goal:",
+    "misc:",
   ]
 
   for thing in PROG:
@@ -45,12 +55,13 @@ def generate_js_client():
 
   # Invert the items dictionary so JavaScript can look up strings using integer IDs
   ITEM_ID_TO_NAME = {v: k for k, v in ITEM_NAME_TO_ID.items()}
-
+  # TODO
+  ITEM_ID_TO_NAME[99999] = "item:gold"
   # 4. Generate the final JavaScript code block
   js_content = f"""/**
- * AUTO-GENERATED ARCHIPELAGO MANIFESTS
- * Do not modify this file directly. Regenerate via your build script.
- */
+* AUTO-GENERATED ARCHIPELAGO MANIFESTS
+* Do not modify this file directly. Regenerate via your build script.
+*/
 
 const AP_LOCATION_IDS = {json.dumps(LOCATION_NAME_TO_ID, indent=2)};
 
@@ -99,6 +110,7 @@ console.log(`[Archipelago] Database ready: ${{Object.keys(AP_LOCATION_IDS).lengt
 
   print(f"Success! Generated Client database at: {output_path}")
   print(f"Registered {loc_id_counter} locations and {item_id_counter} items.")
+
 
 if __name__ == "__main__":
   generate_js_client()

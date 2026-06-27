@@ -7584,10 +7584,14 @@
         "skill:firewall",
         "skill:firewall.1",
         "skill:halo",
-        "item:aurastone",
-        "item:key",
-        "item:gold",
-        "item:dragon scale"
+        "~item:aurastone",
+        "~item:key",
+        "~item:gold",
+        "~item:dragon scale",
+        "~item:cotton thread",
+        "~item:shadow crest",
+        "~item:orc coin",
+        "item:blue crystal"
       ]
     },
     {
@@ -7596,29 +7600,29 @@
         []
       ],
       "receive": [
-        "item:bear tooth",
-        "item:boar tusk",
-        "item:cobra fang",
-        "item:emerald",
-        "misc:fire crystal",
-        "item:funny bone",
-        "item:gator skin",
-        "item:golden feather",
-        "item:kings crest",
-        "item:mage staff",
-        "item:mages hat",
-        "item:minotaur horn",
-        "item:ring of evasion",
-        "item:scorpion claw",
-        "item:shark tooth",
-        "item:slamstone",
-        "item:steel fragment",
-        "item:tentacle",
-        "item:troll wristband",
-        "item:venom",
-        "item:viking horn",
-        "item:void ash",
-        "item:wolf pelt"
+        "~item:bear tooth",
+        "~item:boar tusk",
+        "~item:cobra fang",
+        "~item:emerald",
+        "flag:misc:fire crystal",
+        "~item:funny bone",
+        "~item:gator skin",
+        "~~item:golden feather",
+        "~item:kings crest",
+        "~item:mage staff",
+        "~item:mages hat",
+        "~item:minotaur horn",
+        "~item:ring of evasion",
+        "~item:scorpion claw",
+        "~item:shark tooth",
+        "~item:slamstone",
+        "~item:steel fragment",
+        "~item:tentacle",
+        "~item:troll wristband",
+        "~item:venom",
+        "~item:viking horn",
+        "~item:void ash",
+        "~item:wolf pelt"
       ]
     },
     {
@@ -7643,19 +7647,19 @@
       "room": "21_20",
       "requires": [
         [
-          "item:venom#1",
+          "~item:venom#1",
           "???"
         ]
       ],
       "receive": [
-        "food:orange#1"
+        "~food:orange#1"
       ]
     },
     {
       "room": "20_20",
       "requires": [
         [
-          "item:gold"
+          "~~item:gold"
         ]
       ],
       "receive": [
@@ -7666,7 +7670,7 @@
       "room": "20_20",
       "requires": [
         [
-          "item:gold"
+          "~~item:gold"
         ]
       ],
       "receive": [
@@ -7677,7 +7681,7 @@
       "room": "20_20",
       "requires": [
         [
-          "item:gold"
+          "~~item:gold"
         ]
       ],
       "receive": [
@@ -7688,7 +7692,7 @@
       "room": "20_20",
       "requires": [
         [
-          "item:gold"
+          "~~item:gold"
         ]
       ],
       "receive": [
@@ -7699,7 +7703,7 @@
       "room": "20_20",
       "requires": [
         [
-          "item:gold"
+          "~~item:gold"
         ]
       ],
       "receive": [
@@ -7710,7 +7714,7 @@
       "room": "20_20",
       "requires": [
         [
-          "item:gold"
+          "~~item:gold"
         ]
       ],
       "receive": [
@@ -7721,7 +7725,7 @@
       "room": "20_20",
       "requires": [
         [
-          "item:gold"
+          "~~item:gold"
         ]
       ],
       "receive": [
@@ -7732,7 +7736,7 @@
       "room": "20_20",
       "requires": [
         [
-          "item:gold"
+          "~~item:gold"
         ]
       ],
       "receive": [
@@ -7743,7 +7747,7 @@
       "room": "20_20",
       "requires": [
         [
-          "item:gold"
+          "~~item:gold"
         ]
       ],
       "receive": [
@@ -7763,14 +7767,14 @@
         ]
       ],
       "receive": [
-        "item:gold#25"
+        "~~item:gold#25"
       ]
     },
     {
       "room": "14_19",
       "requires": [
         [
-          "item:troll wristband#1",
+          "~item:troll wristband#1",
           "entrance.north0"
         ]
       ],
@@ -7787,7 +7791,7 @@
       "room": "13_16",
       "requires": [
         [
-          "item:key#1",
+          "~item:key#1",
           "entrance.west0"
         ]
       ],
@@ -7828,18 +7832,18 @@
       "room": "11_13",
       "requires": [
         [
-          "item:mage staff#1"
+          "~item:mage staff#1"
         ]
       ],
       "receive": [
-        "food:blueberry#1"
+        "food:blueberries#1"
       ]
     },
     {
       "room": "11_12",
       "requires": [
         [
-          "item:gold#100"
+          "~~item:gold#100"
         ]
       ],
       "receive": [
@@ -7874,7 +7878,7 @@
       "room": "12_9",
       "requires": [
         [
-          "item:gold"
+          "~~item:gold"
         ]
       ],
       "receive": [
@@ -7885,7 +7889,7 @@
       "room": "12_9",
       "requires": [
         [
-          "item:gold"
+          "~~item:gold"
         ]
       ],
       "receive": [
@@ -7896,7 +7900,7 @@
       "room": "12_9",
       "requires": [
         [
-          "item:gold"
+          "~~item:gold"
         ]
       ],
       "receive": [
@@ -7907,7 +7911,7 @@
       "room": "12_9",
       "requires": [
         [
-          "item:gold"
+          "~~item:gold"
         ]
       ],
       "receive": [
@@ -7918,7 +7922,7 @@
       "room": "12_9",
       "requires": [
         [
-          "item:gold"
+          "~~item:gold"
         ]
       ],
       "receive": [
@@ -7929,7 +7933,7 @@
       "room": "12_9",
       "requires": [
         [
-          "item:gold"
+          "~~item:gold"
         ]
       ],
       "receive": [
@@ -7940,7 +7944,7 @@
       "room": "12_9",
       "requires": [
         [
-          "item:gold"
+          "~~item:gold"
         ]
       ],
       "receive": [
@@ -7951,7 +7955,7 @@
       "room": "12_9",
       "requires": [
         [
-          "item:gold"
+          "~~item:gold"
         ]
       ],
       "receive": [
@@ -7962,11 +7966,11 @@
       "room": "12_9",
       "requires": [
         [
-          "item:venom"
+          "~item:venom"
         ]
       ],
       "receive": [
-        "food:orange"
+        "~food:orange"
       ]
     },
     {
@@ -7980,7 +7984,7 @@
       "room": "11_9",
       "requires": [
         [
-          "item:gold"
+          "~~item:gold"
         ]
       ],
       "receive": [
@@ -7991,7 +7995,7 @@
       "room": "11_9",
       "requires": [
         [
-          "item:gold"
+          "~~item:gold"
         ]
       ],
       "receive": [
@@ -8002,7 +8006,7 @@
       "room": "11_9",
       "requires": [
         [
-          "item:gold"
+          "~~item:gold"
         ]
       ],
       "receive": [
@@ -8013,46 +8017,35 @@
       "room": "11_9",
       "requires": [
         [
-          "item:wolf pelt"
+          "~item:wolf pelt"
         ]
       ],
       "receive": [
-        "item:gold#22"
-      ]
-    },
-    {
-      "room": "11_11",
-      "requires": [
-        [
-          "???"
-        ]
-      ],
-      "receive": [
-        "quest:???"
+        "~~item:gold#22"
       ]
     },
     {
       "room": "5_9",
       "requires": [
         [
-          "item:minotaur horn",
+          "~item:minotaur horn",
           "entrance.north0"
         ],
         [
-          "item:minotaur horn",
+          "~item:minotaur horn",
           "entrance.east0"
         ]
       ],
       "receive": [
-        "item:broken alpha axe#1"
+        "~item:broken alpha axe#1"
       ]
     },
     {
       "room": "8_14",
       "requires": [
         [
-          "item:shark tooth#30",
-          "item:gold#800",
+          "~item:shark tooth#30",
+          "~~item:gold#800",
           "skill:tough"
         ]
       ],
@@ -8069,11 +8062,11 @@
       "room": "9_16",
       "requires": [
         [
-          "item:gator skin#1"
+          "~item:gator skin#1"
         ]
       ],
       "receive": [
-        "item:gold#23"
+        "~~item:gold#23"
       ]
     },
     {
@@ -8099,43 +8092,20 @@
       "room": "11_17",
       "requires": [
         [
-          "item:key#1",
+          "~item:key#1",
           "permit:bomb"
         ]
       ],
       "receive": [
-        "item:bomb#8",
-        "item:gold#200"
-      ]
-    },
-    {
-      "room": "7_10",
-      "requires": [
-        [
-          "permit:bomb",
-          "???"
-        ]
-      ],
-      "receive": [
-        "item:orb of ???"
-      ]
-    },
-    {
-      "room": "10_19",
-      "requires": [
-        [
-          "???"
-        ]
-      ],
-      "receive": [
-        "item:orb of ???"
+        "~item:bomb#8",
+        "~~item:gold#200"
       ]
     },
     {
       "room": "7_18",
       "requires": [
         [
-          "item:slamstone#1",
+          "~item:slamstone#1",
           "skill:reveal"
         ]
       ],
@@ -8170,7 +8140,7 @@
       "requires": [
         [
           "entrance.south0",
-          "item:gold"
+          "~~item:gold"
         ]
       ],
       "receive": [
@@ -8182,7 +8152,7 @@
       "requires": [
         [
           "entrance.south0",
-          "item:gold"
+          "~~item:gold"
         ]
       ],
       "receive": [
@@ -8194,11 +8164,11 @@
       "requires": [
         [
           "entrance.south0",
-          "item:gold"
+          "~~item:gold"
         ]
       ],
       "receive": [
-        "food:peppers"
+        "~food:peppers"
       ]
     },
     {
@@ -8206,14 +8176,14 @@
       "requires": [
         [
           "entrance.south0",
-          "item:alpha scepter#1",
-          "item:dragon scale#5",
+          "~item:alpha scepter#1",
+          "~item:dragon scale#5",
           "skill:craft"
         ],
         [
           "entrance.south1",
-          "item:alpha scepter#1",
-          "item:dragon scale#5",
+          "~item:alpha scepter#1",
+          "~item:dragon scale#5",
           "skill:craft",
           "permit:bomb.2"
         ]
@@ -8242,7 +8212,7 @@
       "room": "11_22",
       "requires": [
         [
-          "item:shark tooth#10",
+          "~item:shark tooth#10",
           "skill:craft"
         ]
       ],
@@ -8254,25 +8224,25 @@
       "room": "12_25",
       "requires": [
         [
-          "item:shark tooth#10",
+          "~item:shark tooth#10",
           "skill:craft"
         ]
       ],
       "receive": [
         "food:gummy bear#10",
-        "item:diamond#50"
+        "~item:diamonds#50"
       ]
     },
     {
       "room": "13_25",
       "requires": [
         [
-          "item:mages hat#1",
+          "~item:mages hat#1",
           "misc:magic only resist bypass"
         ]
       ],
       "receive": [
-        "item:alpha scepter#1"
+        "~item:alpha scepter#1"
       ]
     },
     {
@@ -8321,7 +8291,7 @@
       "requires": [
         [
           "skill:medic.1",
-          "item:cobra fang#5"
+          "~item:cobra fang#5"
         ]
       ],
       "receive": [
@@ -8333,8 +8303,8 @@
       "requires": [
         [
           "skill:medic.2",
-          "item:orc coin#20",
-          "item:mage staff#10"
+          "~item:orc coin#20",
+          "~item:mage staff#10"
         ]
       ],
       "receive": [
@@ -8346,8 +8316,8 @@
       "requires": [
         [
           "skill:medic.3",
-          "item:dragon scale#10",
-          "item:gator skin#10"
+          "~item:dragon scale#10",
+          "~item:gator skin#10"
         ]
       ],
       "receive": [
@@ -8359,8 +8329,8 @@
       "requires": [
         [
           "skill:medic.4",
-          "item:kings crest#10",
-          "item:alpha axe#5"
+          "~item:kings crest#10",
+          "~item:alpha axe#5"
         ]
       ],
       "receive": [
@@ -8372,8 +8342,8 @@
       "requires": [
         [
           "skill:medic.5",
-          "item:golden feather#3",
-          "item:alpha scepter#5"
+          "~~item:golden feather#3",
+          "~item:alpha scepter#5"
         ]
       ],
       "receive": [
@@ -8399,7 +8369,7 @@
         ]
       ],
       "receive": [
-        "item:diamond#1"
+        "~item:diamonds#1"
       ]
     },
     {
@@ -8407,8 +8377,8 @@
       "requires": [
         [
           "item:ring of gold",
-          "item:troll wristband#5",
-          "item:gator skin#2"
+          "~item:troll wristband#5",
+          "~item:gator skin#2"
         ]
       ],
       "receive": [
@@ -8419,11 +8389,11 @@
       "room": "20_22",
       "requires": [
         [
-          "item:gold#500"
+          "~~item:gold#500"
         ]
       ],
       "receive": [
-        "item:ruby#1"
+        "~item:ruby#1"
       ]
     },
     {
@@ -8435,14 +8405,14 @@
         ]
       ],
       "receive": [
-        "misc:red chest"
+        "~misc:red chest"
       ]
     },
     {
       "room": "19_22",
       "requires": [
         [
-          "???"
+          "~item:broken alpha axe#5"
         ]
       ],
       "receive": [
@@ -8454,11 +8424,11 @@
       "requires": [
         [
           "quest:dig.3",
-          "item:bear tooth#1"
+          "~item:bear tooth#1"
         ]
       ],
       "receive": [
-        "item:gold#18"
+        "~~item:gold#18"
       ]
     },
     {
@@ -8469,22 +8439,10 @@
       ]
     },
     {
-      "room": "21_21",
-      "requires": [
-        [
-          "entrance.west0",
-          "???"
-        ]
-      ],
-      "receive": [
-        "skill:craft"
-      ]
-    },
-    {
       "room": "21_20",
       "requires": [
         [
-          "item:gold"
+          "~~item:gold"
         ]
       ],
       "receive": [
@@ -8495,7 +8453,7 @@
       "room": "21_20",
       "requires": [
         [
-          "item:gold"
+          "~~item:gold"
         ]
       ],
       "receive": [
@@ -8506,7 +8464,7 @@
       "room": "21_20",
       "requires": [
         [
-          "item:gold"
+          "~~item:gold"
         ]
       ],
       "receive": [
@@ -8517,7 +8475,7 @@
       "room": "21_20",
       "requires": [
         [
-          "food:honey#20"
+          "food:honey#10"
         ]
       ],
       "receive": [
@@ -8528,11 +8486,11 @@
       "room": "21_20",
       "requires": [
         [
-          "item:boar tusk#1"
+          "~item:boar tusk#1"
         ]
       ],
       "receive": [
-        "item:gold#20"
+        "~~item:gold#20"
       ]
     },
     {
@@ -8550,24 +8508,24 @@
       "room": "21_18",
       "requires": [
         [
-          "item:emerald#1"
+          "~item:emerald#1"
         ]
       ],
       "receive": [
-        "item:diamond#2",
-        "food:peppers#20"
+        "~item:diamonds#2",
+        "~food:peppers#20"
       ]
     },
     {
       "room": "21_17",
       "requires": [
         [
-          "item:aurastone#1",
-          "item:gold#500"
+          "~item:aurastone#1",
+          "~~item:gold#500"
         ]
       ],
       "receive": [
-        "item:ruby#1"
+        "~item:ruby#1"
       ]
     },
     {
@@ -8575,8 +8533,8 @@
       "requires": [
         [
           "skill:firewall.1",
-          "item:dragon scale#5",
-          "item:medallion#3"
+          "~item:dragon scale#5",
+          "~item:medallion#3"
         ]
       ],
       "receive": [
@@ -8588,8 +8546,8 @@
       "requires": [
         [
           "skill:firewall.2",
-          "item:dragon scale#10",
-          "item:medallion#6"
+          "~item:dragon scale#10",
+          "~item:medallion#6"
         ]
       ],
       "receive": [
@@ -8601,108 +8559,108 @@
       "requires": [
         [
           "skill:firewall.3",
-          "item:dragon scale#15",
-          "item:medallion#9"
+          "~item:dragon scale#15",
+          "~item:medallion#9"
         ]
       ],
       "receive": [
-        "skill:firewall.4"
+        "~skill:firewall.4"
       ]
     },
     {
       "room": "20_15",
       "requires": [
         [
-          "skill:firewall.4",
-          "item:dragon scale#20",
-          "item:medallion#12"
+          "~skill:firewall.4",
+          "~item:dragon scale#20",
+          "~item:medallion#12"
         ]
       ],
       "receive": [
-        "skill:firewall.5"
+        "~skill:firewall.5"
       ]
     },
     {
       "room": "20_15",
       "requires": [
         [
-          "skill:firewall.5",
-          "item:dragon scale#25",
-          "item:medallion#15"
+          "~skill:firewall.5",
+          "~item:dragon scale#25",
+          "~item:medallion#15"
         ]
       ],
       "receive": [
-        "skill:firewall.6"
+        "~skill:firewall.6"
       ]
     },
     {
       "room": "20_15",
       "requires": [
         [
-          "skill:firewall.6",
-          "item:dragon scale#30",
-          "item:medallion#18"
+          "~skill:firewall.6",
+          "~item:dragon scale#30",
+          "~item:medallion#18"
         ]
       ],
       "receive": [
-        "skill:firewall.7"
+        "~skill:firewall.7"
       ]
     },
     {
       "room": "20_15",
       "requires": [
         [
-          "skill:firewall.7",
-          "item:dragon scale#35",
-          "item:medallion#21"
+          "~skill:firewall.7",
+          "~item:dragon scale#35",
+          "~item:medallion#21"
         ]
       ],
       "receive": [
-        "skill:firewall.8"
+        "~skill:firewall.8"
       ]
     },
     {
       "room": "20_15",
       "requires": [
         [
-          "skill:firewall.8",
-          "item:dragon scale#40",
-          "item:medallion#24"
+          "~skill:firewall.8",
+          "~item:dragon scale#40",
+          "~item:medallion#24"
         ]
       ],
       "receive": [
-        "skill:firewall.9"
+        "~skill:firewall.9"
       ]
     },
     {
       "room": "20_15",
       "requires": [
         [
-          "skill:firewall.9",
-          "item:dragon scale#45",
-          "item:medallion#27"
+          "~skill:firewall.9",
+          "~item:dragon scale#45",
+          "~item:medallion#27"
         ]
       ],
       "receive": [
-        "skill:firewall.10"
+        "~skill:firewall.10"
       ]
     },
     {
       "room": "19_15",
       "requires": [
         [
-          "item:medallion#20"
+          "~item:medallion#20"
         ]
       ],
       "receive": [
-        "item:ruby#1"
+        "~item:ruby#1"
       ]
     },
     {
       "room": "19_15",
       "requires": [
         [
-          "item:medallion#3"
+          "~item:medallion#3"
         ]
       ],
       "receive": [
@@ -8713,7 +8671,7 @@
       "room": "19_15",
       "requires": [
         [
-          "item:medallion#30"
+          "~item:medallion#30"
         ]
       ],
       "receive": [
@@ -8724,7 +8682,7 @@
       "room": "19_15",
       "requires": [
         [
-          "item:medallion#200"
+          "~item:medallion#200"
         ]
       ],
       "receive": [
@@ -8746,13 +8704,13 @@
       "room": "18_13",
       "requires": [
         [
-          "item:cotton thread#10",
-          "item:shadow crest#5",
+          "~item:cotton thread#10",
+          "~item:shadow crest#5",
           "skill:reveal"
         ]
       ],
       "receive": [
-        "misc:max bombs.149"
+        "~misc:max bombs.149"
       ]
     },
     {
@@ -8764,19 +8722,19 @@
       "room": "23_10",
       "requires": [
         [
-          "item:key#1"
+          "~item:key#1"
         ]
       ],
       "receive": [
-        "food:newton apple#3",
-        "item:diamond#3"
+        "~food:newton apple#3",
+        "~item:diamonds#3"
       ]
     },
     {
       "room": "24_11",
       "requires": [
         [
-          "item:key#1",
+          "~item:key#1",
           "permit:bomb"
         ]
       ],
@@ -8785,17 +8743,10 @@
       ]
     },
     {
-      "room": "24_9",
-      "requires": [],
-      "receive": [
-        "misc:final boss"
-      ]
-    },
-    {
       "room": "17_10",
       "requires": [
         [
-          "item:void ash#6"
+          "~item:void ash#6"
         ]
       ],
       "receive": [
@@ -8818,18 +8769,18 @@
       "room": "4_13",
       "requires": [
         [
-          "item:gold"
+          "~~item:gold"
         ]
       ],
       "receive": [
-        "food:orange"
+        "~food:orange"
       ]
     },
     {
       "room": "4_13",
       "requires": [
         [
-          "item:gold"
+          "~~item:gold"
         ]
       ],
       "receive": [
@@ -8840,7 +8791,7 @@
       "room": "4_13",
       "requires": [
         [
-          "item:gold"
+          "~~item:gold"
         ]
       ],
       "receive": [
@@ -8851,9 +8802,9 @@
       "room": "4_13",
       "requires": [
         [
-          "item:shark tooth#5",
-          "item:viking horn#5",
-          "item:tentacle#5"
+          "~item:shark tooth#5",
+          "~item:viking horn#5",
+          "~item:tentacle#5"
         ]
       ],
       "receive": [
@@ -8865,8 +8816,8 @@
       "requires": [
         [
           "skill:craft",
-          "item:troll wristband#5",
-          "item:wolf pelt#2"
+          "~item:troll wristband#5",
+          "~item:wolf pelt#2"
         ]
       ],
       "receive": [
@@ -8923,7 +8874,7 @@
       ],
       "receive": [
         "quest:dig.3",
-        "item:gold#25"
+        "~~item:gold#25"
       ]
     },
     {
@@ -8963,7 +8914,7 @@
       "room": "19_23",
       "requires": [
         [
-          "item:bear tooth#15",
+          "~item:bear tooth#15",
           "quest:gTree.3"
         ]
       ],
@@ -8991,7 +8942,7 @@
       ],
       "receive": [
         "quest:gTree.6",
-        "item:gold#50"
+        "~~item:gold#50"
       ]
     },
     {
@@ -9015,7 +8966,7 @@
       ],
       "receive": [
         "quest:pam.3",
-        "item:gold#20"
+        "~~item:gold#20"
       ]
     },
     {
@@ -9078,7 +9029,7 @@
       "requires": [
         [
           "food:honey#5",
-          "item:venom#1"
+          "~item:venom#1"
         ]
       ],
       "receive": [
@@ -9141,7 +9092,7 @@
       ],
       "receive": [
         "quest:bBomb.4",
-        "item:bomb#15",
+        "~item:bomb#15",
         "permit:bomb"
       ]
     },
@@ -9230,8 +9181,8 @@
       "requires": [
         [
           "quest:gTree.14",
-          "item:scorpion claw#7",
-          "item:cobra fang#5"
+          "~item:scorpion claw#7",
+          "~item:cobra fang#5"
         ]
       ],
       "receive": [
@@ -9284,7 +9235,8 @@
         ]
       ],
       "receive": [
-        "quest:gTree.16"
+        "quest:gTree.16",
+        "flag:7_11 boss dead"
       ]
     },
     {
@@ -9292,7 +9244,8 @@
       "requires": [
         [
           "quest:gTree.16",
-          "permit:bomb"
+          "permit:bomb",
+          "!flag:7_11 boss dead"
         ]
       ],
       "receive": [
@@ -9383,7 +9336,7 @@
       ],
       "receive": [
         "quest:gTree.23",
-        "goal:boss dead"
+        "flag:final boss dead"
       ]
     },
     {
@@ -9406,8 +9359,8 @@
       ],
       "receive": [
         "quest:gTree.25",
-        "misc:power up#10",
-        "item:gold#1000"
+        "~misc:power up#10",
+        "~~item:gold#1000"
       ]
     },
     {
@@ -9510,7 +9463,7 @@
       ],
       "receive": [
         "quest:canteen.3",
-        "item:diamond#1"
+        "~item:diamonds#1"
       ]
     },
     {
@@ -9577,7 +9530,7 @@
         [
           "item:ring of gold",
           "item:ring of health",
-          "item:ring of evasion",
+          "~item:ring of evasion",
           "quest:rings.1"
         ]
       ],
@@ -9595,18 +9548,7 @@
         ]
       ],
       "receive": [
-        "item:ring of evasion"
-      ]
-    },
-    {
-      "room": "20_20",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "item:cotton thread",
-        "item:shadow crest",
-        "item:orc coin"
+        "~item:ring of evasion"
       ]
     },
     {
@@ -9698,7 +9640,7 @@
       "requires": [
         [
           "quest:seeds.2",
-          "item:orc coin#20"
+          "~item:orc coin#20"
         ]
       ],
       "receive": [
@@ -9715,8 +9657,8 @@
       ],
       "receive": [
         "quest:seeds.4",
-        "food:orange#10",
-        "food:pepper#3"
+        "~food:orange#10",
+        "~food:pepper#3"
       ]
     },
     {
@@ -9753,7 +9695,7 @@
         [
           "item:ring of gold",
           "item:ring of health",
-          "item:ring of evasion",
+          "~item:ring of evasion",
           "item:ring of poison",
           "quest:rings.1"
         ]
@@ -9783,8 +9725,8 @@
       ],
       "receive": [
         "quest:pam.11",
-        "food:peper#5",
-        "food:orange#20"
+        "~food:peper#5",
+        "~food:orange#20"
       ]
     },
     {
@@ -9838,10 +9780,10 @@
       "requires": [
         [
           "quest:rings.13",
-          "item:steel fragment#5",
-          "item:dragon scale#3",
-          "item:funny bone#10",
-          "misc:geomana"
+          "~item:steel fragment#5",
+          "~item:dragon scale#3",
+          "~item:funny bone#10",
+          "?misc:geomana"
         ]
       ],
       "receive": [
@@ -9909,12 +9851,12 @@
         [
           "quest:rings.12",
           "quest:geo.5",
-          "item:gold#1000"
+          "~~item:gold#1000"
         ]
       ],
       "receive": [
         "quest:rings.13",
-        "misc:geomana"
+        "?misc:geomana"
       ]
     },
     {
@@ -9923,7 +9865,7 @@
         []
       ],
       "receive": [
-        "item:medallion"
+        "~item:medallion"
       ]
     },
     {
@@ -9949,33 +9891,33 @@
       "room": "18_20",
       "requires": [
         [
-          "item:key"
+          "~item:key"
         ]
       ],
       "receive": [
-        "item:gold#30"
+        "~~item:gold#30"
       ]
     },
     {
       "room": "18_19",
       "requires": [
         [
-          "item:key#1"
+          "~item:key#1"
         ]
       ],
       "receive": [
-        "item:gold#100"
+        "~~item:gold#100"
       ]
     },
     {
       "room": "17_20",
       "requires": [
         [
-          "item:key#1"
+          "~item:key#1"
         ]
       ],
       "receive": [
-        "item:gold#200",
+        "~~item:gold#200",
         "food:beef jerky#5"
       ]
     },
@@ -9988,20 +9930,20 @@
         ]
       ],
       "receive": [
-        "misc:red chest"
+        "~misc:red chest"
       ]
     },
     {
       "room": "15_19",
       "requires": [
         [
-          "item:key#1",
+          "~item:key#1",
           "permit:bomb"
         ]
       ],
       "receive": [
-        "item:gold#300",
-        "item:bomb#10",
+        "~~item:gold#300",
+        "~item:bomb#10",
         "food:banana#5"
       ]
     },
@@ -10009,7 +9951,7 @@
       "room": "14_19",
       "requires": [
         [
-          "item:key#1",
+          "~item:key#1",
           "entrance.south0"
         ]
       ],
@@ -10021,7 +9963,7 @@
       "room": "11_19",
       "requires": [
         [
-          "item:key#1",
+          "~item:key#1",
           "entrance.south2"
         ]
       ],
@@ -10034,12 +9976,12 @@
       "room": "8_18",
       "requires": [
         [
-          "item:emerald#1",
+          "~item:emerald#1",
           "entrance.north1"
         ]
       ],
       "receive": [
-        "item:bomb#25",
+        "~item:bomb#25",
         "food:steak#5"
       ]
     },
@@ -10047,7 +9989,7 @@
       "room": "11_18",
       "requires": [
         [
-          "item:key#1"
+          "~item:key#1"
         ]
       ],
       "receive": [
@@ -10065,7 +10007,7 @@
       ],
       "receive": [
         "food:chocolate#20",
-        "item:bomb#50"
+        "~item:bomb#50"
       ]
     },
     {
@@ -10083,12 +10025,12 @@
       "room": "21_18",
       "requires": [
         [
-          "item:emerald#1"
+          "~item:emerald#1"
         ]
       ],
       "receive": [
-        "item:diamond#2",
-        "food:pepper#30"
+        "~item:diamonds#2",
+        "~food:pepper#30"
       ]
     },
     {
@@ -10104,25 +10046,25 @@
         ]
       ],
       "receive": [
-        "misc:red chest"
+        "~misc:red chest"
       ]
     },
     {
       "room": "18_17",
       "requires": [
         [
-          "item:key#1"
+          "~item:key#1"
         ]
       ],
       "receive": [
-        "item:gold#1000"
+        "~~item:gold#1000"
       ]
     },
     {
       "room": "13_16",
       "requires": [
         [
-          "item:key#1",
+          "~item:key#1",
           "entrance.south0"
         ]
       ],
@@ -10134,11 +10076,11 @@
       "room": "17_16",
       "requires": [
         [
-          "item:key#1"
+          "~item:key#1"
         ]
       ],
       "receive": [
-        "item:diamond#5"
+        "~item:diamonds#5"
       ]
     },
     {
@@ -10149,18 +10091,18 @@
         ]
       ],
       "receive": [
-        "food:newton apple#15"
+        "~food:newton apple#15"
       ]
     },
     {
       "room": "17_15",
       "requires": [
         [
-          "item:emerald#1"
+          "~item:emerald#1"
         ]
       ],
       "receive": [
-        "item:gold#100",
+        "~~item:gold#100",
         "food:gingerbread cookie#50"
       ]
     },
@@ -10172,7 +10114,7 @@
         ]
       ],
       "receive": [
-        "armour:diamond armour",
+        "armour:diamonds armour",
         "quest:pam.16"
       ]
     },
@@ -10180,18 +10122,18 @@
       "room": "14_15",
       "requires": [
         [
-          "item:key#1"
+          "~item:key#1"
         ]
       ],
       "receive": [
-        "food:orange#12"
+        "~food:orange#12"
       ]
     },
     {
       "room": "9_15",
       "requires": [
         [
-          "item:key#1"
+          "~item:key#1"
         ]
       ],
       "receive": [
@@ -10206,7 +10148,7 @@
         ]
       ],
       "receive": [
-        "misc:red chest"
+        "~misc:red chest"
       ]
     },
     {
@@ -10217,18 +10159,18 @@
         ]
       ],
       "receive": [
-        "misc:red chest"
+        "~misc:red chest"
       ]
     },
     {
       "room": "15_14",
       "requires": [
         [
-          "item:key#1",
+          "~item:key#1",
           "entrance.east0"
         ],
         [
-          "item:key#1",
+          "~item:key#1",
           "permit:bomb"
         ]
       ],
@@ -10240,7 +10182,7 @@
       "room": "23_10",
       "requires": [
         [
-          "item:emerald#1"
+          "~item:emerald#1"
         ]
       ],
       "receive": [
@@ -10251,19 +10193,19 @@
       "room": "23_10",
       "requires": [
         [
-          "item:key#1"
+          "~item:key#1"
         ]
       ],
       "receive": [
-        "item:diamond#5",
-        "food:newton apple#2"
+        "~item:diamonds#5",
+        "~food:newton apple#2"
       ]
     },
     {
       "room": "21_11",
       "requires": [
         [
-          "item:key#1",
+          "~item:key#1",
           "entrance.north0"
         ]
       ],
@@ -10279,14 +10221,14 @@
         ]
       ],
       "receive": [
-        "misc:red chest"
+        "~misc:red chest"
       ]
     },
     {
       "room": "24_14",
       "requires": [
         [
-          "item:key#1"
+          "~item:key#1"
         ]
       ],
       "receive": [
@@ -10298,26 +10240,26 @@
       "requires": [
         [
           "permit:bomb",
-          "item:gold#500",
+          "~~item:gold#500",
           "skill:reveal"
         ]
       ],
       "receive": [
-        "misc:ninja"
+        "~misc:ninja"
       ]
     },
     {
       "room": "10_13",
       "requires": [
         [
-          "item:emerald#1"
+          "~item:emerald#1"
         ]
       ],
       "receive": [
-        "item:gold#1",
-        "item:diamond#1",
-        "item:aurastone#1",
-        "item:slamstone#1",
+        "~~item:gold#1",
+        "~item:diamonds#1",
+        "~item:aurastone#1",
+        "~item:slamstone#1",
         "food:elixir#1",
         "food:holy water#1"
       ]
@@ -10326,18 +10268,18 @@
       "room": "9_13",
       "requires": [
         [
-          "item:key#1"
+          "~item:key#1"
         ]
       ],
       "receive": [
-        "item:bomb#10"
+        "~item:bomb#10"
       ]
     },
     {
       "room": "6_13",
       "requires": [
         [
-          "item:key#1"
+          "~item:key#1"
         ]
       ],
       "receive": [
@@ -10349,7 +10291,7 @@
       "room": "6_12",
       "requires": [
         [
-          "item:key#1"
+          "~item:key#1"
         ]
       ],
       "receive": [
@@ -10389,27 +10331,27 @@
         ]
       ],
       "receive": [
-        "misc:red chest"
+        "~misc:red chest"
       ]
     },
     {
       "room": "8_10",
       "requires": [
         [
-          "item:emerald#1",
+          "~item:emerald#1",
           "entrance.north1"
         ],
         [
-          "item:emerald#1",
+          "~item:emerald#1",
           "entrance.east1"
         ],
         [
-          "item:emerald#1",
+          "~item:emerald#1",
           "entrance.east2"
         ]
       ],
       "receive": [
-        "item:gold#100",
+        "~~item:gold#100",
         "food:beef jerky#30"
       ]
     },
@@ -10417,19 +10359,19 @@
       "room": "9_10",
       "requires": [
         [
-          "item:key#1",
+          "~item:key#1",
           "permit:bomb"
         ]
       ],
       "receive": [
-        "item:gold#750"
+        "~~item:gold#750"
       ]
     },
     {
       "room": "10_9",
       "requires": [
         [
-          "item:key#1",
+          "~item:key#1",
           "permit:bomb.2"
         ]
       ],
@@ -10441,7 +10383,7 @@
       "room": "6_10",
       "requires": [
         [
-          "item:key#1",
+          "~item:key#1",
           "permit:bomb"
         ]
       ],
@@ -10453,7 +10395,7 @@
       "room": "18_21",
       "requires": [
         [
-          "item:key#1"
+          "~item:key#1"
         ]
       ],
       "receive": [
@@ -10464,30 +10406,30 @@
       "room": "15_21",
       "requires": [
         [
-          "item:key#1",
+          "~item:key#1",
           "entrance.south0"
         ]
       ],
       "receive": [
-        "item:gold#0",
-        "item:bomb#5"
+        "~~item:gold#0",
+        "~item:bomb#5"
       ]
     },
     {
       "room": "14_21",
       "requires": [
         [
-          "item:key#1",
+          "~item:key#1",
           "entrance.north0"
         ],
         [
-          "item:key#1",
+          "~item:key#1",
           "permit:bomb"
         ]
       ],
       "receive": [
-        "item:gold#100",
-        "item:bomb#12",
+        "~~item:gold#100",
+        "~item:bomb#12",
         "food:apple#30"
       ]
     },
@@ -10495,12 +10437,12 @@
       "room": "12_21",
       "requires": [
         [
-          "item:emerald#1",
+          "~item:emerald#1",
           "permit:bomb"
         ]
       ],
       "receive": [
-        "item:diamond#2",
+        "~item:diamonds#2",
         "food:banana#20"
       ]
     },
@@ -10508,18 +10450,18 @@
       "room": "11_21",
       "requires": [
         [
-          "item:key#1"
+          "~item:key#1"
         ]
       ],
       "receive": [
-        "item:bomb#15"
+        "~item:bomb#15"
       ]
     },
     {
       "room": "9_22",
       "requires": [
         [
-          "item:key#1",
+          "~item:key#1",
           "entrance.north1"
         ]
       ],
@@ -10531,11 +10473,11 @@
       "room": "16_22",
       "requires": [
         [
-          "item:key#1"
+          "~item:key#1"
         ]
       ],
       "receive": [
-        "item:gold#400"
+        "~~item:gold#400"
       ]
     },
     {
@@ -10546,26 +10488,26 @@
         ]
       ],
       "receive": [
-        "item:diamond#20"
+        "~item:diamonds#20"
       ]
     },
     {
       "room": "21_23",
       "requires": [
         [
-          "item:key#1"
+          "~item:key#1"
         ]
       ],
       "receive": [
-        "item:gold#300",
-        "item:diamond#2"
+        "~~item:gold#300",
+        "~item:diamonds#2"
       ]
     },
     {
       "room": "19_23",
       "requires": [
         [
-          "item:key#1"
+          "~item:key#1"
         ]
       ],
       "receive": [
@@ -10577,7 +10519,7 @@
       "requires": [
         [
           "permit:bomb",
-          "item:key#1"
+          "~item:key#1"
         ]
       ],
       "receive": [
@@ -10588,7 +10530,7 @@
       "room": "9_23",
       "requires": [
         [
-          "item:key#1",
+          "~item:key#1",
           "permit:bomb"
         ]
       ],
@@ -10600,7 +10542,7 @@
       "room": "4_24",
       "requires": [
         [
-          "item:key#1",
+          "~item:key#1",
           "entrance.east0"
         ]
       ],
@@ -10616,19 +10558,19 @@
         ]
       ],
       "receive": [
-        "misc:red chest"
+        "~misc:red chest"
       ]
     },
     {
       "room": "15_24",
       "requires": [
         [
-          "item:key#1",
+          "~item:key#1",
           "entrance.north0"
         ]
       ],
       "receive": [
-        "item:gold#2"
+        "~~item:gold#2"
       ]
     },
     {
@@ -10640,7 +10582,7 @@
         ]
       ],
       "receive": [
-        "item:gold#1000",
+        "~~item:gold#1000",
         "food:gummy bear#12"
       ]
     },
@@ -10657,7 +10599,7 @@
         ]
       ],
       "receive": [
-        "item:diamond#5",
+        "~item:diamonds#5",
         "food:steak#12"
       ]
     },
@@ -10669,7 +10611,7 @@
         ]
       ],
       "receive": [
-        "item:diamond#50",
+        "~item:diamonds#50",
         "food:gummy bear#50"
       ]
     },
@@ -10701,17 +10643,17 @@
         [
           "permit:bomb",
           "entrance.south3",
-          "item:key#1"
+          "~item:key#1"
         ],
         [
           "permit:bomb",
           "entrance.south2",
-          "item:key#1"
+          "~item:key#1"
         ],
         [
           "permit:bomb",
           "entrance.south1",
-          "item:key#1"
+          "~item:key#1"
         ]
       ],
       "receive": [
@@ -10722,11 +10664,11 @@
       "room": "9_26",
       "requires": [
         [
-          "item:key#1"
+          "~item:key#1"
         ]
       ],
       "receive": [
-        "food:blueberry#10"
+        "food:blueberries#10"
       ]
     }
   ],
@@ -10771,34 +10713,6 @@
       {
         "room": "20_15",
         "raw": "skill:firewall.3"
-      },
-      {
-        "room": "20_15",
-        "raw": "skill:firewall.4"
-      },
-      {
-        "room": "20_15",
-        "raw": "skill:firewall.5"
-      },
-      {
-        "room": "20_15",
-        "raw": "skill:firewall.6"
-      },
-      {
-        "room": "20_15",
-        "raw": "skill:firewall.7"
-      },
-      {
-        "room": "20_15",
-        "raw": "skill:firewall.8"
-      },
-      {
-        "room": "20_15",
-        "raw": "skill:firewall.9"
-      },
-      {
-        "room": "20_15",
-        "raw": "skill:firewall.10"
       }
     ],
     "skill:halo": [
@@ -10807,282 +10721,194 @@
         "raw": "skill:halo"
       }
     ],
-    "item:aurastone": [
+    "flag:~item:aurastone": [
       {
         "room": "20_20",
-        "raw": "item:aurastone"
-      },
-      {
-        "room": "10_13",
-        "raw": "item:aurastone#1"
+        "raw": "~item:aurastone"
       }
     ],
-    "item:key": [
+    "flag:~item:key": [
       {
         "room": "20_20",
-        "raw": "item:key"
+        "raw": "~item:key"
       }
     ],
-    "item:gold": [
+    "flag:~item:gold": [
       {
         "room": "20_20",
-        "raw": "item:gold"
-      },
-      {
-        "room": "19_21",
-        "raw": "item:gold#25"
-      },
-      {
-        "room": "11_9",
-        "raw": "item:gold#22"
-      },
-      {
-        "room": "9_16",
-        "raw": "item:gold#23"
-      },
-      {
-        "room": "11_17",
-        "raw": "item:gold#200"
-      },
-      {
-        "room": "19_21",
-        "raw": "item:gold#18"
-      },
-      {
-        "room": "21_20",
-        "raw": "item:gold#20"
-      },
-      {
-        "room": "19_21",
-        "raw": "item:gold#25"
-      },
-      {
-        "room": "21_20",
-        "raw": "item:gold#50"
-      },
-      {
-        "room": "19_20",
-        "raw": "item:gold#20"
-      },
-      {
-        "room": "14_18",
-        "raw": "item:gold#1000"
-      },
-      {
-        "room": "18_20",
-        "raw": "item:gold#30"
-      },
-      {
-        "room": "18_19",
-        "raw": "item:gold#100"
-      },
-      {
-        "room": "17_20",
-        "raw": "item:gold#200"
-      },
-      {
-        "room": "15_19",
-        "raw": "item:gold#300"
-      },
-      {
-        "room": "18_17",
-        "raw": "item:gold#1000"
-      },
-      {
-        "room": "17_15",
-        "raw": "item:gold#100"
-      },
-      {
-        "room": "10_13",
-        "raw": "item:gold#1"
-      },
-      {
-        "room": "8_10",
-        "raw": "item:gold#100"
-      },
-      {
-        "room": "9_10",
-        "raw": "item:gold#750"
-      },
-      {
-        "room": "15_21",
-        "raw": "item:gold#0"
-      },
-      {
-        "room": "14_21",
-        "raw": "item:gold#100"
-      },
-      {
-        "room": "16_22",
-        "raw": "item:gold#400"
-      },
-      {
-        "room": "21_23",
-        "raw": "item:gold#300"
-      },
-      {
-        "room": "15_24",
-        "raw": "item:gold#2"
-      },
-      {
-        "room": "16_24",
-        "raw": "item:gold#1000"
+        "raw": "~item:gold"
       }
     ],
-    "item:dragon scale": [
+    "flag:~item:dragon scale": [
       {
         "room": "20_20",
-        "raw": "item:dragon scale"
+        "raw": "~item:dragon scale"
       }
     ],
-    "item:bear tooth": [
+    "flag:~item:cotton thread": [
       {
         "room": "20_20",
-        "raw": "item:bear tooth"
+        "raw": "~item:cotton thread"
       }
     ],
-    "item:boar tusk": [
+    "flag:~item:shadow crest": [
       {
         "room": "20_20",
-        "raw": "item:boar tusk"
+        "raw": "~item:shadow crest"
       }
     ],
-    "item:cobra fang": [
+    "flag:~item:orc coin": [
       {
         "room": "20_20",
-        "raw": "item:cobra fang"
+        "raw": "~item:orc coin"
       }
     ],
-    "item:emerald": [
+    "item:blue crystal": [
       {
         "room": "20_20",
-        "raw": "item:emerald"
+        "raw": "item:blue crystal"
       }
     ],
-    "misc:fire crystal": [
+    "flag:~item:bear tooth": [
       {
         "room": "20_20",
-        "raw": "misc:fire crystal"
-      },
-      {
-        "room": "12_9",
-        "raw": "misc:fire crystal"
+        "raw": "~item:bear tooth"
       }
     ],
-    "item:funny bone": [
+    "flag:~item:boar tusk": [
       {
         "room": "20_20",
-        "raw": "item:funny bone"
+        "raw": "~item:boar tusk"
       }
     ],
-    "item:gator skin": [
+    "flag:~item:cobra fang": [
       {
         "room": "20_20",
-        "raw": "item:gator skin"
+        "raw": "~item:cobra fang"
       }
     ],
-    "item:golden feather": [
+    "flag:~item:emerald": [
       {
         "room": "20_20",
-        "raw": "item:golden feather"
+        "raw": "~item:emerald"
       }
     ],
-    "item:kings crest": [
+    "flag:flag:misc:fire crystal": [
       {
         "room": "20_20",
-        "raw": "item:kings crest"
+        "raw": "flag:misc:fire crystal"
       }
     ],
-    "item:mage staff": [
+    "flag:~item:funny bone": [
       {
         "room": "20_20",
-        "raw": "item:mage staff"
+        "raw": "~item:funny bone"
       }
     ],
-    "item:mages hat": [
+    "flag:~item:gator skin": [
       {
         "room": "20_20",
-        "raw": "item:mages hat"
+        "raw": "~item:gator skin"
       }
     ],
-    "item:minotaur horn": [
+    "flag:~~item:golden feather": [
       {
         "room": "20_20",
-        "raw": "item:minotaur horn"
+        "raw": "~~item:golden feather"
       }
     ],
-    "item:ring of evasion": [
+    "flag:~item:kings crest": [
       {
         "room": "20_20",
-        "raw": "item:ring of evasion"
+        "raw": "~item:kings crest"
+      }
+    ],
+    "flag:~item:mage staff": [
+      {
+        "room": "20_20",
+        "raw": "~item:mage staff"
+      }
+    ],
+    "flag:~item:mages hat": [
+      {
+        "room": "20_20",
+        "raw": "~item:mages hat"
+      }
+    ],
+    "flag:~item:minotaur horn": [
+      {
+        "room": "20_20",
+        "raw": "~item:minotaur horn"
+      }
+    ],
+    "flag:~item:ring of evasion": [
+      {
+        "room": "20_20",
+        "raw": "~item:ring of evasion"
       },
       {
         "room": "13_16",
-        "raw": "item:ring of evasion"
+        "raw": "~item:ring of evasion"
       }
     ],
-    "item:scorpion claw": [
+    "flag:~item:scorpion claw": [
       {
         "room": "20_20",
-        "raw": "item:scorpion claw"
+        "raw": "~item:scorpion claw"
       }
     ],
-    "item:shark tooth": [
+    "flag:~item:shark tooth": [
       {
         "room": "20_20",
-        "raw": "item:shark tooth"
+        "raw": "~item:shark tooth"
       }
     ],
-    "item:slamstone": [
+    "flag:~item:slamstone": [
       {
         "room": "20_20",
-        "raw": "item:slamstone"
-      },
-      {
-        "room": "10_13",
-        "raw": "item:slamstone#1"
+        "raw": "~item:slamstone"
       }
     ],
-    "item:steel fragment": [
+    "flag:~item:steel fragment": [
       {
         "room": "20_20",
-        "raw": "item:steel fragment"
+        "raw": "~item:steel fragment"
       }
     ],
-    "item:tentacle": [
+    "flag:~item:tentacle": [
       {
         "room": "20_20",
-        "raw": "item:tentacle"
+        "raw": "~item:tentacle"
       }
     ],
-    "item:troll wristband": [
+    "flag:~item:troll wristband": [
       {
         "room": "20_20",
-        "raw": "item:troll wristband"
+        "raw": "~item:troll wristband"
       }
     ],
-    "item:venom": [
+    "flag:~item:venom": [
       {
         "room": "20_20",
-        "raw": "item:venom"
+        "raw": "~item:venom"
       }
     ],
-    "item:viking horn": [
+    "flag:~item:viking horn": [
       {
         "room": "20_20",
-        "raw": "item:viking horn"
+        "raw": "~item:viking horn"
       }
     ],
-    "item:void ash": [
+    "flag:~item:void ash": [
       {
         "room": "20_20",
-        "raw": "item:void ash"
+        "raw": "~item:void ash"
       }
     ],
-    "item:wolf pelt": [
+    "flag:~item:wolf pelt": [
       {
         "room": "20_20",
-        "raw": "item:wolf pelt"
+        "raw": "~item:wolf pelt"
       }
     ],
     "flag:spawnpoint": [
@@ -11109,30 +10935,10 @@
         "raw": "food:banana#20"
       }
     ],
-    "food:orange": [
+    "flag:~food:orange#1": [
       {
         "room": "21_20",
-        "raw": "food:orange#1"
-      },
-      {
-        "room": "12_9",
-        "raw": "food:orange"
-      },
-      {
-        "room": "4_13",
-        "raw": "food:orange"
-      },
-      {
-        "room": "9_22",
-        "raw": "food:orange#10"
-      },
-      {
-        "room": "19_20",
-        "raw": "food:orange#20"
-      },
-      {
-        "room": "14_15",
-        "raw": "food:orange#12"
+        "raw": "~food:orange#1"
       }
     ],
     "weapon:club": [
@@ -11193,6 +10999,16 @@
         "raw": "food:grapes#inf"
       }
     ],
+    "flag:~~item:gold#25": [
+      {
+        "room": "19_21",
+        "raw": "~~item:gold#25"
+      },
+      {
+        "room": "19_21",
+        "raw": "~~item:gold#25"
+      }
+    ],
     "item:broken alpha club": [
       {
         "room": "14_19",
@@ -11221,14 +11037,14 @@
         "raw": "armour:alpha armour.+inf"
       }
     ],
-    "food:blueberry": [
+    "food:blueberries": [
       {
         "room": "11_13",
-        "raw": "food:blueberry#1"
+        "raw": "food:blueberries#1"
       },
       {
         "room": "9_26",
-        "raw": "food:blueberry#10"
+        "raw": "food:blueberries#10"
       }
     ],
     "food:sunflower seed": [
@@ -11317,6 +11133,16 @@
         "raw": "armour:speed vest"
       }
     ],
+    "flag:~food:orange": [
+      {
+        "room": "12_9",
+        "raw": "~food:orange"
+      },
+      {
+        "room": "4_13",
+        "raw": "~food:orange"
+      }
+    ],
     "quest:headstone": [
       {
         "room": "11_9",
@@ -11349,22 +11175,28 @@
         "raw": "magic:lightning"
       }
     ],
-    "quest:??": [
+    "flag:~~item:gold#22": [
       {
-        "room": "11_11",
-        "raw": "quest:???"
+        "room": "11_9",
+        "raw": "~~item:gold#22"
       }
     ],
-    "item:broken alpha axe": [
+    "flag:~item:broken alpha axe#1": [
       {
         "room": "5_9",
-        "raw": "item:broken alpha axe#1"
+        "raw": "~item:broken alpha axe#1"
       }
     ],
     "skill:tough": [
       {
         "room": "8_14",
         "raw": "skill:tough.+1"
+      }
+    ],
+    "flag:~~item:gold#23": [
+      {
+        "room": "9_16",
+        "raw": "~~item:gold#23"
       }
     ],
     "weapon:random axe": [
@@ -11379,52 +11211,20 @@
         "raw": "misc:green secret code"
       }
     ],
-    "item:bomb": [
+    "flag:~item:bomb#8": [
       {
         "room": "11_17",
-        "raw": "item:bomb#8"
-      },
-      {
-        "room": "13_21",
-        "raw": "item:bomb#15"
-      },
-      {
-        "room": "15_19",
-        "raw": "item:bomb#10"
-      },
-      {
-        "room": "8_18",
-        "raw": "item:bomb#25"
-      },
-      {
-        "room": "15_18",
-        "raw": "item:bomb#50"
-      },
-      {
-        "room": "9_13",
-        "raw": "item:bomb#10"
-      },
-      {
-        "room": "15_21",
-        "raw": "item:bomb#5"
-      },
-      {
-        "room": "14_21",
-        "raw": "item:bomb#12"
-      },
-      {
-        "room": "11_21",
-        "raw": "item:bomb#15"
+        "raw": "~item:bomb#8"
       }
     ],
-    "item:orb of ??": [
+    "flag:~~item:gold#200": [
       {
-        "room": "7_10",
-        "raw": "item:orb of ???"
+        "room": "11_17",
+        "raw": "~~item:gold#200"
       },
       {
-        "room": "10_19",
-        "raw": "item:orb of ???"
+        "room": "17_20",
+        "raw": "~~item:gold#200"
       }
     ],
     "skill:reveal": [
@@ -11485,14 +11285,10 @@
         "raw": "food:steak#12"
       }
     ],
-    "food:peppers": [
+    "flag:~food:peppers": [
       {
         "room": "9_22",
-        "raw": "food:peppers"
-      },
-      {
-        "room": "21_18",
-        "raw": "food:peppers#20"
+        "raw": "~food:peppers"
       }
     ],
     "flag:craft:elixir": [
@@ -11535,68 +11331,20 @@
         "raw": "food:gummy bear#50"
       }
     ],
-    "item:diamond": [
+    "flag:~item:diamonds#50": [
       {
         "room": "12_25",
-        "raw": "item:diamond#50"
-      },
-      {
-        "room": "21_23",
-        "raw": "item:diamond#1"
-      },
-      {
-        "room": "21_18",
-        "raw": "item:diamond#2"
-      },
-      {
-        "room": "23_10",
-        "raw": "item:diamond#3"
-      },
-      {
-        "room": "12_11",
-        "raw": "item:diamond#1"
-      },
-      {
-        "room": "21_18",
-        "raw": "item:diamond#2"
-      },
-      {
-        "room": "17_16",
-        "raw": "item:diamond#5"
-      },
-      {
-        "room": "23_10",
-        "raw": "item:diamond#5"
-      },
-      {
-        "room": "10_13",
-        "raw": "item:diamond#1"
-      },
-      {
-        "room": "12_21",
-        "raw": "item:diamond#2"
-      },
-      {
-        "room": "17_22",
-        "raw": "item:diamond#20"
-      },
-      {
-        "room": "21_23",
-        "raw": "item:diamond#2"
-      },
-      {
-        "room": "16_25",
-        "raw": "item:diamond#5"
+        "raw": "~item:diamonds#50"
       },
       {
         "room": "12_25",
-        "raw": "item:diamond#50"
+        "raw": "~item:diamonds#50"
       }
     ],
-    "item:alpha scepter": [
+    "flag:~item:alpha scepter#1": [
       {
         "room": "13_25",
-        "raw": "item:alpha scepter#1"
+        "raw": "~item:alpha scepter#1"
       }
     ],
     "misc:three part code part 1": [
@@ -11661,58 +11409,78 @@
         "raw": "misc:headstone 4"
       }
     ],
+    "flag:~item:diamonds#1": [
+      {
+        "room": "21_23",
+        "raw": "~item:diamonds#1"
+      },
+      {
+        "room": "12_11",
+        "raw": "~item:diamonds#1"
+      },
+      {
+        "room": "10_13",
+        "raw": "~item:diamonds#1"
+      }
+    ],
     "flag:craft:ring of gold": [
       {
         "room": "21_22",
         "raw": "craft:ring of gold"
       }
     ],
-    "item:ruby": [
+    "flag:~item:ruby#1": [
       {
         "room": "20_22",
-        "raw": "item:ruby#1"
+        "raw": "~item:ruby#1"
       },
       {
         "room": "21_17",
-        "raw": "item:ruby#1"
+        "raw": "~item:ruby#1"
       },
       {
         "room": "19_15",
-        "raw": "item:ruby#1"
+        "raw": "~item:ruby#1"
       }
     ],
-    "misc:red chest": [
+    "flag:~misc:red chest": [
       {
         "room": "20_23",
-        "raw": "misc:red chest"
+        "raw": "~misc:red chest"
       },
       {
         "room": "15_19",
-        "raw": "misc:red chest"
+        "raw": "~misc:red chest"
       },
       {
         "room": "19_17",
-        "raw": "misc:red chest"
+        "raw": "~misc:red chest"
       },
       {
         "room": "5_15",
-        "raw": "misc:red chest"
+        "raw": "~misc:red chest"
       },
       {
         "room": "14_14",
-        "raw": "misc:red chest"
+        "raw": "~misc:red chest"
       },
       {
         "room": "23_13",
-        "raw": "misc:red chest"
+        "raw": "~misc:red chest"
       },
       {
         "room": "8_10",
-        "raw": "misc:red chest"
+        "raw": "~misc:red chest"
       },
       {
         "room": "6_24",
-        "raw": "misc:red chest"
+        "raw": "~misc:red chest"
+      }
+    ],
+    "flag:~~item:gold#18": [
+      {
+        "room": "19_21",
+        "raw": "~~item:gold#18"
       }
     ],
     "quest:pam": [
@@ -11765,16 +11533,6 @@
         "raw": "quest:pam.16"
       }
     ],
-    "skill:craft": [
-      {
-        "room": "21_21",
-        "raw": "skill:craft"
-      },
-      {
-        "room": "21_21",
-        "raw": "skill:craft"
-      }
-    ],
     "magic:slow": [
       {
         "room": "21_20",
@@ -11801,6 +11559,16 @@
       {
         "room": "21_20",
         "raw": "magic:crush"
+      }
+    ],
+    "flag:~~item:gold#20": [
+      {
+        "room": "21_20",
+        "raw": "~~item:gold#20"
+      },
+      {
+        "room": "19_20",
+        "raw": "~~item:gold#20"
       }
     ],
     "quest:rings": [
@@ -11861,6 +11629,72 @@
         "raw": "quest:rings.13"
       }
     ],
+    "flag:~item:diamonds#2": [
+      {
+        "room": "21_18",
+        "raw": "~item:diamonds#2"
+      },
+      {
+        "room": "21_18",
+        "raw": "~item:diamonds#2"
+      },
+      {
+        "room": "12_21",
+        "raw": "~item:diamonds#2"
+      },
+      {
+        "room": "21_23",
+        "raw": "~item:diamonds#2"
+      }
+    ],
+    "flag:~food:peppers#20": [
+      {
+        "room": "21_18",
+        "raw": "~food:peppers#20"
+      }
+    ],
+    "flag:~skill:firewall.4": [
+      {
+        "room": "20_15",
+        "raw": "~skill:firewall.4"
+      }
+    ],
+    "flag:~skill:firewall.5": [
+      {
+        "room": "20_15",
+        "raw": "~skill:firewall.5"
+      }
+    ],
+    "flag:~skill:firewall.6": [
+      {
+        "room": "20_15",
+        "raw": "~skill:firewall.6"
+      }
+    ],
+    "flag:~skill:firewall.7": [
+      {
+        "room": "20_15",
+        "raw": "~skill:firewall.7"
+      }
+    ],
+    "flag:~skill:firewall.8": [
+      {
+        "room": "20_15",
+        "raw": "~skill:firewall.8"
+      }
+    ],
+    "flag:~skill:firewall.9": [
+      {
+        "room": "20_15",
+        "raw": "~skill:firewall.9"
+      }
+    ],
+    "flag:~skill:firewall.10": [
+      {
+        "room": "20_15",
+        "raw": "~skill:firewall.10"
+      }
+    ],
     "skill:hint": [
       {
         "room": "19_15",
@@ -11885,36 +11719,28 @@
         "raw": "misc:headstone 1"
       }
     ],
-    "misc:max bombs": [
+    "flag:~misc:max bombs.149": [
       {
         "room": "18_13",
-        "raw": "misc:max bombs.149"
+        "raw": "~misc:max bombs.149"
       }
     ],
-    "food:newton apple": [
+    "flag:~food:newton apple#3": [
       {
         "room": "23_10",
-        "raw": "food:newton apple#3"
-      },
-      {
-        "room": "18_15",
-        "raw": "food:newton apple#15"
-      },
+        "raw": "~food:newton apple#3"
+      }
+    ],
+    "flag:~item:diamonds#3": [
       {
         "room": "23_10",
-        "raw": "food:newton apple#2"
+        "raw": "~item:diamonds#3"
       }
     ],
     "weapon:bane blade": [
       {
         "room": "24_11",
         "raw": "weapon:bane blade"
-      }
-    ],
-    "misc:final boss": [
-      {
-        "room": "24_9",
-        "raw": "misc:final boss"
       }
     ],
     "quest:alpha blade": [
@@ -12113,6 +11939,12 @@
         "raw": "quest:dig.3"
       }
     ],
+    "flag:~~item:gold#50": [
+      {
+        "room": "21_20",
+        "raw": "~~item:gold#50"
+      }
+    ],
     "quest:oMan": [
       {
         "room": "17_19",
@@ -12141,6 +11973,22 @@
         "raw": "misc:old pendant"
       }
     ],
+    "skill:craft": [
+      {
+        "room": "21_21",
+        "raw": "skill:craft"
+      }
+    ],
+    "flag:~item:bomb#15": [
+      {
+        "room": "13_21",
+        "raw": "~item:bomb#15"
+      },
+      {
+        "room": "11_21",
+        "raw": "~item:bomb#15"
+      }
+    ],
     "permit:bomb": [
       {
         "room": "13_21",
@@ -12155,6 +12003,12 @@
       {
         "room": "10_19",
         "raw": "misc:orb of peace"
+      }
+    ],
+    "misc:fire crystal": [
+      {
+        "room": "12_9",
+        "raw": "misc:fire crystal"
       }
     ],
     "quest:warp": [
@@ -12179,6 +12033,12 @@
       {
         "room": "12_11",
         "raw": "quest:canteen.3"
+      }
+    ],
+    "flag:flag:7_11 boss dead": [
+      {
+        "room": "7_11",
+        "raw": "flag:7_11 boss dead"
       }
     ],
     "permit:shadowsoul entrance": [
@@ -12215,16 +12075,30 @@
         "raw": "food:holy water#1"
       }
     ],
-    "flag:goal:boss dead": [
+    "flag:flag:final boss dead": [
       {
         "room": "24_9",
-        "raw": "goal:boss dead"
+        "raw": "flag:final boss dead"
       }
     ],
-    "misc:power up": [
+    "flag:~misc:power up#10": [
       {
         "room": "14_18",
-        "raw": "misc:power up#10"
+        "raw": "~misc:power up#10"
+      }
+    ],
+    "flag:~~item:gold#1000": [
+      {
+        "room": "14_18",
+        "raw": "~~item:gold#1000"
+      },
+      {
+        "room": "18_17",
+        "raw": "~~item:gold#1000"
+      },
+      {
+        "room": "16_24",
+        "raw": "~~item:gold#1000"
       }
     ],
     "quest:aSword": [
@@ -12253,24 +12127,6 @@
         "raw": "item:ring of health"
       }
     ],
-    "item:cotton thread": [
-      {
-        "room": "20_20",
-        "raw": "item:cotton thread"
-      }
-    ],
-    "item:shadow crest": [
-      {
-        "room": "20_20",
-        "raw": "item:shadow crest"
-      }
-    ],
-    "item:orc coin": [
-      {
-        "room": "20_20",
-        "raw": "item:orc coin"
-      }
-    ],
     "skill:warp": [
       {
         "room": "20_20",
@@ -12283,14 +12139,16 @@
         "raw": "permit:volcano"
       }
     ],
-    "food:pepper": [
+    "flag:~food:orange#10": [
       {
         "room": "9_22",
-        "raw": "food:pepper#3"
-      },
+        "raw": "~food:orange#10"
+      }
+    ],
+    "flag:~food:pepper#3": [
       {
-        "room": "21_18",
-        "raw": "food:pepper#30"
+        "room": "9_22",
+        "raw": "~food:pepper#3"
       }
     ],
     "item:ring of poison": [
@@ -12299,10 +12157,16 @@
         "raw": "item:ring of poison"
       }
     ],
-    "food:peper": [
+    "flag:~food:peper#5": [
       {
         "room": "19_20",
-        "raw": "food:peper#5"
+        "raw": "~food:peper#5"
+      }
+    ],
+    "flag:~food:orange#20": [
+      {
+        "room": "19_20",
+        "raw": "~food:orange#20"
       }
     ],
     "item:ring of magic": [
@@ -12339,16 +12203,60 @@
         "raw": "skill:convert"
       }
     ],
-    "misc:geomana": [
+    "flag:?misc:geomana": [
       {
         "room": "6_12",
-        "raw": "misc:geomana"
+        "raw": "?misc:geomana"
       }
     ],
-    "item:medallion": [
+    "flag:~item:medallion": [
       {
         "room": "19_16",
-        "raw": "item:medallion"
+        "raw": "~item:medallion"
+      }
+    ],
+    "flag:~~item:gold#30": [
+      {
+        "room": "18_20",
+        "raw": "~~item:gold#30"
+      }
+    ],
+    "flag:~~item:gold#100": [
+      {
+        "room": "18_19",
+        "raw": "~~item:gold#100"
+      },
+      {
+        "room": "17_15",
+        "raw": "~~item:gold#100"
+      },
+      {
+        "room": "8_10",
+        "raw": "~~item:gold#100"
+      },
+      {
+        "room": "14_21",
+        "raw": "~~item:gold#100"
+      }
+    ],
+    "flag:~~item:gold#300": [
+      {
+        "room": "15_19",
+        "raw": "~~item:gold#300"
+      },
+      {
+        "room": "21_23",
+        "raw": "~~item:gold#300"
+      }
+    ],
+    "flag:~item:bomb#10": [
+      {
+        "room": "15_19",
+        "raw": "~item:bomb#10"
+      },
+      {
+        "room": "9_13",
+        "raw": "~item:bomb#10"
       }
     ],
     "flag:armour:regen armour": [
@@ -12357,16 +12265,60 @@
         "raw": "armour:regen armour"
       }
     ],
+    "flag:~item:bomb#25": [
+      {
+        "room": "8_18",
+        "raw": "~item:bomb#25"
+      }
+    ],
+    "flag:~item:bomb#50": [
+      {
+        "room": "15_18",
+        "raw": "~item:bomb#50"
+      }
+    ],
     "item:rubies": [
       {
         "room": "19_18",
         "raw": "item:rubies#3"
       }
     ],
-    "flag:armour:diamond armour": [
+    "flag:~food:pepper#30": [
+      {
+        "room": "21_18",
+        "raw": "~food:pepper#30"
+      }
+    ],
+    "flag:~item:diamonds#5": [
+      {
+        "room": "17_16",
+        "raw": "~item:diamonds#5"
+      },
+      {
+        "room": "23_10",
+        "raw": "~item:diamonds#5"
+      },
+      {
+        "room": "16_25",
+        "raw": "~item:diamonds#5"
+      }
+    ],
+    "flag:~food:newton apple#15": [
+      {
+        "room": "18_15",
+        "raw": "~food:newton apple#15"
+      }
+    ],
+    "flag:armour:diamonds armour": [
       {
         "room": "16_15",
-        "raw": "armour:diamond armour"
+        "raw": "armour:diamonds armour"
+      }
+    ],
+    "flag:~food:orange#12": [
+      {
+        "room": "14_15",
+        "raw": "~food:orange#12"
       }
     ],
     "flag:armour:phantom coat": [
@@ -12381,16 +12333,40 @@
         "raw": "armour:alpha armour"
       }
     ],
+    "flag:~food:newton apple#2": [
+      {
+        "room": "23_10",
+        "raw": "~food:newton apple#2"
+      }
+    ],
     "flag:armour:grim gear": [
       {
         "room": "24_14",
         "raw": "armour:grim gear"
       }
     ],
-    "misc:ninja": [
+    "flag:~misc:ninja": [
       {
         "room": "10_13",
-        "raw": "misc:ninja"
+        "raw": "~misc:ninja"
+      }
+    ],
+    "flag:~~item:gold#1": [
+      {
+        "room": "10_13",
+        "raw": "~~item:gold#1"
+      }
+    ],
+    "flag:~item:aurastone#1": [
+      {
+        "room": "10_13",
+        "raw": "~item:aurastone#1"
+      }
+    ],
+    "flag:~item:slamstone#1": [
+      {
+        "room": "10_13",
+        "raw": "~item:slamstone#1"
       }
     ],
     "food:elixir": [
@@ -12421,16 +12397,52 @@
         "raw": "magic:blessing"
       }
     ],
+    "flag:~~item:gold#750": [
+      {
+        "room": "9_10",
+        "raw": "~~item:gold#750"
+      }
+    ],
     "item:gimgerbread cookie": [
       {
         "room": "18_21",
         "raw": "item:gimgerbread cookie#5"
       }
     ],
+    "flag:~~item:gold#0": [
+      {
+        "room": "15_21",
+        "raw": "~~item:gold#0"
+      }
+    ],
+    "flag:~item:bomb#5": [
+      {
+        "room": "15_21",
+        "raw": "~item:bomb#5"
+      }
+    ],
+    "flag:~item:bomb#12": [
+      {
+        "room": "14_21",
+        "raw": "~item:bomb#12"
+      }
+    ],
     "magic:double down": [
       {
         "room": "9_22",
         "raw": "magic:double down"
+      }
+    ],
+    "flag:~~item:gold#400": [
+      {
+        "room": "16_22",
+        "raw": "~~item:gold#400"
+      }
+    ],
+    "flag:~item:diamonds#20": [
+      {
+        "room": "17_22",
+        "raw": "~item:diamonds#20"
       }
     ],
     "magic:fire": [
@@ -12443,6 +12455,12 @@
       {
         "room": "9_23",
         "raw": "magic:drain"
+      }
+    ],
+    "flag:~~item:gold#2": [
+      {
+        "room": "15_24",
+        "raw": "~~item:gold#2"
       }
     ],
     "weapon:shadow staff": [

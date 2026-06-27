@@ -28,7 +28,8 @@ function waitForFileSave(filePath) {
     })
   })
 }
-var start = 110765
+var min = 1000
+var start = 111200
 var len = 209
 // Helper to insert a line into a specific file at a specific line number
 function insertLineInFile(filePath, lineNumber, textToInsert) {
@@ -102,13 +103,16 @@ async function main() {
             (line) => line < originalLineNumber,
           ).length
 
-          console.log({
+          console.log("\n", {
             typeofOriginal: typeof originalLineNumber,
             originalLineNumber: originalLineNumber,
             startValue: start,
             lenValue: len,
             dynamicOffset: dynamicOffset,
           })
+          if (originalLineNumber < min) {
+            continue
+          }
           var adjustedLineNumber = originalLineNumber + dynamicOffset
           const textToWrite = `newItem(${north},${east},'${prop}',)`
           if (adjustedLineNumber > start) {
