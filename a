@@ -1,163 +1,192 @@
-newItem.*"(.*?)\.(.*)\.(.*)".*(\d+).*set.*
-
-newItem.*"(.*?)\.(.*)\.(.*)".*(\d+).*add.*
-
-manager\.\w+
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                newItem("500_501 - aPower", 1, add)
-              newItem("15_16 - ring5", 1, set)
-              newItem("16_10 - ring7", 1, set)
-
-
-
-
-
-
-
-
-
-
-
-                newItem("17_23 - str", 1, add)
-                newItem("8_25 - str", 1)
-                newItem("8_25 - str", 1, add)
-                newItem("8_25 - str", 1, add)
-                newItem("8_25 - str", 3, add)
-                newItem("8_25 - str", 5, add)
-                newItem("8_25 - str", 5, add)
-                newItem("8_25 - str", 5, add)
-                newItem("8_25 - str", 3, add)
-                newItem("8_25 - str", 4, add)
-                newItem("8_25 - str", 5, add)
-
-              newItem("21_23 - diamonds", 2, add)
-              newItem("21_23 - gold", 300, add)
-
-
-              newItem("
-              newItem("
-              newItem("23_10 - diamonds", 5, add)
-
-              newItem("17_20 - gold", 200, add)
-              newItem("
-              newItem("15_24 - gold", manager.correct, add)
-
-
-
-
-
-
-
-              newItem("18_20 - gold", 30, add)
-              newItem("6_12 - geode", 2, add)
-              newItem("17_16 - diamonds", 5, add)
-              newItem("18_17 - gold", 1e3, add)
-              newItem("15_19 - gold", 300, add)
-              newItem("15_19 - bombs", 10, add)
-
-              newItem("11_21 - bombs", 15, add)
-                newItem("14_15 - bombs", 5, add)
-
-
-
-              newItem("15_21 - gold", manager.fame * 5, add)
-              newItem("15_21 - bombs", 5, add)
-
-
-              newItem("9_10 - gold", 750, add)
-              newItem("11_17 - bombs", 8, add)
-              newItem("11_17 - gold", 200, add)
-              newItem("21_20 - Enum.Quest.1", 1)
-              newItem("13_21 - Enum.Quest.1", 2)
-              newItem("14_21 - bombs", 12, add)
-
-              newItem("14_21 - gold", 100, add)
-
-
-                newItem("18_23 - gold", 2e3, add)
-
-
-
-
-
-
-
-
-
-            newItem("null_null - emeralds", 1, add)
-          newItem("14_22 - ring1", 1, set)
-          newItem("16_21 - ring2", 1, set)
-              newItem("18_24 - headstoneSwitch2", 1, set)
-              newItem("16_16 - headstoneSwitch2", 1, set)
-              newItem("12_12 - headstoneSwitch2", 1, set)
-              newItem("10_25 - headstoneSwitch2", 1, set)
-          newItem("
-
-          newItem("
-          newItem("8_18 - bombs", 25, add)
-          newItem("
-
-          newItem("
-
-          newItem("
-          newItem("
-          newItem("
-
-
-
-
-          newItem("16_24 - gold", 1e3, add)
-
-          newItem("16_25 - diamonds", 5, add)
-
-          newItem("12_25 - diamonds", 50, add)
-
-
-
-          newItem("17_22 - diamonds", 20, add)
-          newItem("15_18 - bombs", 50, add)
-          newItem("
-
-          newItem("19_18 - rubies", 3, add)
-            newItem("19_20 - gold", 20, add)
-
-
-
-
-
-
-            newItem("19_21 - gold", 25, add)
-            newItem("12_11 - diamonds", 1, add)
-
-
-
-
-
-
-              newItem("20_18 - ring6", 1, set)
-          newItem("13_16 - ring3", 1, set)
-
-                newItem("21_20 - Enum.Quest.bBomb", 3)
-              newItem("13_21 - Enum.Quest.1")
-              newItem("13_21 - Enum.Quest.bBomb", 4)
-              newItem("12_14 - Enum.Quest.bBomb", 5)
-
-            newItem("14_18 - pup", 10, add)
-            newItem("14_18 - gold", 1000, add)
-
-            newItem("21_20 - gold", 50, add)
+"craft:bomb"
+"19_15 - skill:hint"
+"19_15 - skill:shield"
+"20_20 - food:apple"
+"20_20 - food:honey"
+"20_20 - food:grapes"
+"food:elixir#1"
+"food:strawberry#1"
+"food:blueberries#1"
+"food:orange#1"
+"food:gingerBread#1"
+"food:gingerBread#1"
+"food:banana#1"
+"food:banana#1"
+"12_9 - food:carrot"
+"12_9 - food:beefJerky"
+"12_9 - food:cherries"
+"?_? - food:chocolate"
+"?_? - food:steak"
+"?_? - food:peppers"
+"21_20 - magic:slow"
+"21_20 - magic:heal"
+"21_20 - magic:blast"
+"13_17 - magic:regen"
+"13_17 - magic:cloud"
+"13_17 - magic:weak"
+"11_9 - magic:refresh"
+"11_9 - magic:lightning"
+"20_20 - weapon:club"
+"20_20 - weapon:dagger"
+"20_20 - weapon:sword"
+"13_17 - weapon:royalSword"
+"13_17 - weapon:royalStaff"
+"20_20 - weapon:sKnife"
+"20_20 - weapon:warlockStaff"
+"20_20 - weapon:sunSword"
+"20_20 - armor:vest"
+"20_20 - armor:robe"
+"20_20 - armor:iron"
+"13_17 - armor:royalArmor"
+"13_17 - armor:mysticCloak"
+"12_9 - armor:sunArmor"
+"12_9 - armor:speedVest"
+"item:ring of poison"
+"item:ring of magic"
+"item:ring of death"
+"19_20 - skill:dig"
+"19_20 - skill:kick"
+"500_501 - weapon:aSword"
+"craft:emerald"
+"craft:elixir"
+"craft:newtonApple"
+"200_200 - weapon:twinFury"
+"18_25 - skill:medic"
+"18_25 - skill:medic"
+"18_25 - skill:medic"
+"18_25 - skill:medic"
+"18_25 - skill:medic"
+"18_25 - skill:medic"
+"19_22 - skill:reveal"
+"misc:str up npc"
+"misc:str up npc"
+"misc:str up npc"
+"misc:str up npc"
+"misc:str up npc"
+"misc:str up npc"
+"misc:str up npc"
+"misc:str up npc"
+"misc:str up npc"
+"misc:str up npc"
+"misc:str up npc"
+"11_12 - food:sunflowerSeeds"
+"item:diamonds#2"
+"item:gold#300"
+"6_13 - food:grapes"
+"6_13 - food:strawberry"
+"11_19 - food:sunflowerSeeds"
+"11_19 - food:strawberry"
+"23_10 - diamonds"
+"23_10 - food:newtonsApple"
+"17_20 - gold"
+"17_20 - food:beefJerky"
+"15_24 - gold"
+"10_9 - food:steak"
+"9_26 - food:blueberries"
+"21_11 - food:gummyBears"
+"24_11 - weapon:baneBlade"
+"craft:key"
+"craft:ringGold"
+"21_21 - skill:craft"
+"9_22 - magic:doubleDown"
+"21_20 - magic:crush"
+"18_20 - gold"
+"6_12 - geode"
+"17_16 - diamonds"
+"18_17 - gold"
+"15_19 - gold"
+"15_19 - item:bombs"
+"15_19 - food:banana"
+"11_21 - item:bombs"
+"14_15 - item:bombs"
+"14_15 - food:orange"
+"24_14 - armor:grimGear"
+"9_15 - armor:phantomCoat"
+"15_21 - gold"
+"15_21 - item:bombs"
+"4_24 - food:cherries"
+"6_10 - food:chocolate"
+"9_10 - gold"
+"11_17 - item:bombs"
+"11_17 - gold"
+"14_21 - item:bombs"
+"14_21 - food:apple"
+"14_21 - gold"
+"4_26 - weapon:shadowStaff"
+"18_23 - weapon:warlockStaff"
+"15_14 - food:carrot"
+"9_23 - magic:drain"
+"15_16 - magic:ice"
+"11_18 - magic:refresh"
+"13_16 - weapon:sKnife"
+"13_16 - magic:weak"
+"14_19 - armor:regenArmor"
+"16_22 - gold"
+"19_23 - magic:fire"
+"18_21 - food:gingerBread"
+"item:ring of gold"
+"misc:ring of health"
+"misc:headstoneSwitch1"
+"misc:headstoneSwitch2"
+"misc:headstoneSwitch3"
+"misc:headstoneSwitch4"
+"item:gold#Enum.Craft.emerald"
+"12_21 - food:banana"
+"diamonds#Enum.Craft.emerald"
+"8_18 - item:bombs"
+"food:steak#Enum.Craft.emerald"
+"17_15 - gold"
+"17_15 - food:gingerBread"
+"item:gold#Enum.Craft.emerald"
+"8_10 - food:beefJerky"
+"diamonds#Enum.Craft.emerald"
+"food:peppers#30"
+"item:gold#Enum.Craft.emerald"
+"9_25 - food:elixir"
+"23_10 - armor:alphaArmor"
+"3_26 - food:elixir"
+"16_24 - food:gummyBears"
+"16_24 - gold"
+"16_25 - food:steak"
+"16_25 - diamonds"
+"12_25 - food:gummyBears"
+"12_25 - diamonds"
+"18_15 - food:newtonsApple"
+"11_25 - food:beefJerky"
+"16_15 - armor:diamondArmor"
+"17_22 - diamonds"
+"15_18 - item:bombs"
+"food:chocolate#20"
+"12_12 - magic:blessing"
+"item:rubies#3"
+"item:gold#20"
+"19_20 - food:gingerBread"
+"food:chocolate#5"
+"food:steak#3"
+"food:peppers#5"
+"food:orange#20"
+"food:holyWater#1"
+"food:gingerBread#10"
+"gold#25"
+"diamonds#1"
+"craft:upgradeAAHP"
+"craft:upgradeAAMP"
+"food:gingerBread#99"
+"skill:convert"
+"skill:warp"
+"food:orange#10"
+"food:peppers#3"
+"item:fire crystal"
+"skill:tough"
+"craft:upgradeStaff"
+"item:ring of skill"
+"item:ring of evasion"
+"food:beefJerky#3"
+"craft:bomb"
+"weapon:creeperCrusher"
+"pup#10"
+"gold#1000"
+"food:banana#1"
+"armor:nobleArmor"
+"misc:bobbisPendant"
+"gold#50"
