@@ -215,6 +215,10 @@ class ArchipelagoClient {
           error("failed to give", itemName)
         }
         window.prevSeenItems.push(item.item)
+        var oldtext = manager.mess.get_text() ?? ""
+        manager.mess.set_text(
+          `[Item Received] ID: ${item.item} (${itemName})\n${oldtext}`,
+        )
       }
       this.lastProcessedIndex = globalIndex + 1
     })

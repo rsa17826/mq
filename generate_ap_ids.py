@@ -24,22 +24,25 @@ def generate_js_client():
   loc_id_counter = 1
   item_id_counter = 1
 
-  valid_prefixes = [
-    "item:",
-    "weapon:",
-    "armour:",
-    "food:",
-    "skill:",
-    "magic:",
-    "permit:",
-    "goal:",
-    "misc:",
-  ]
-
   for thing in PROG:
     if "receive" in thing:
       for itemInfo in thing["receive"]:
-        if any(itemInfo.startswith(prefix) for prefix in valid_prefixes):
+        if any(
+          itemInfo.startswith(prefix)
+          for prefix in (
+            "magic:",
+            "weapon:",
+            "flag:final boss dead",
+            "permit:",
+            "item:fire crystal",
+            "item:",
+            "food:",
+            "misc:",
+            "skill:",
+            "armor:",
+            "item:ring",
+          )
+        ):
           clean_name = itemInfo.split("#")[0]
 
           # --- Locations Mapping (Name -> ID with coordinates) ---

@@ -7760,17 +7760,6 @@
       "receive": []
     },
     {
-      "room": "19_21",
-      "requires": [
-        [
-          "skill:dig"
-        ]
-      ],
-      "receive": [
-        "item:gold#25"
-      ]
-    },
-    {
       "room": "14_19",
       "requires": [
         [
@@ -8237,34 +8226,34 @@
       "room": "14_25",
       "requires": [],
       "receive": [
-        "misc:three part code part 1"
+        "flag:three part code part 1"
       ]
     },
     {
       "room": "14_24",
       "requires": [],
       "receive": [
-        "misc:three part code part 2"
+        "flag:three part code part 2"
       ]
     },
     {
       "room": "13_24",
       "requires": [],
       "receive": [
-        "misc:three part code part 3"
+        "flag:three part code part 3"
       ]
     },
     {
       "room": "13_26",
       "requires": [
         [
-          "misc:three part code part 1",
-          "misc:three part code part 2",
-          "misc:three part code part 3"
+          "flag:three part code part 1",
+          "flag:three part code part 2",
+          "flag:three part code part 3"
         ]
       ],
       "receive": [
-        "???"
+        "food:gingerBread#99"
       ]
     },
     {
@@ -8767,7 +8756,7 @@
         ]
       ],
       "receive": [
-        "food:gingerbread cookie"
+        "food:gingerbread"
       ]
     },
     {
@@ -8852,7 +8841,8 @@
       "room": "19_21",
       "requires": [
         [
-          "quest:dig.2"
+          "quest:dig.2",
+          "skill:dig"
         ]
       ],
       "receive": [
@@ -8972,7 +8962,7 @@
       ],
       "receive": [
         "quest:pam.5",
-        "food:gingerbread cookie#10"
+        "food:gingerbread#10"
       ]
     },
     {
@@ -9274,7 +9264,7 @@
       ],
       "receive": [
         "quest:gTree.19",
-        "food:holy water#1"
+        "food:holyWater#1"
       ]
     },
     {
@@ -9524,7 +9514,7 @@
       ]
     },
     {
-      "room": "20_20",
+      "room": "11_9",
       "requires": [
         [
           "quest:warp.1",
@@ -9630,7 +9620,7 @@
       "receive": [
         "quest:seeds.4",
         "food:orange#10",
-        "food:pepper#3"
+        "food:peppers#3"
       ]
     },
     {
@@ -9697,7 +9687,7 @@
       ],
       "receive": [
         "quest:pam.11",
-        "food:peper#5",
+        "food:peppers#5",
         "food:orange#20"
       ]
     },
@@ -9844,12 +9834,12 @@
       "room": "13_14",
       "requires": [
         [
-          "magic:fire.3?",
+          "magic:fire.1",
           "quest:?",
           "entrance.east0"
         ],
         [
-          "magic:fire.3?",
+          "magic:fire.1",
           "quest:?",
           "entrance.north0",
           "permit:bomb"
@@ -10002,7 +9992,7 @@
       ],
       "receive": [
         "item:diamonds#2",
-        "food:pepper#30"
+        "food:peppers#30"
       ]
     },
     {
@@ -10075,7 +10065,7 @@
       ],
       "receive": [
         "item:gold#100",
-        "food:gingerbread cookie#50"
+        "food:gingerbread#50"
       ]
     },
     {
@@ -10233,7 +10223,7 @@
         "item:aurastone#1",
         "item:slamstone#1",
         "food:elixir#1",
-        "food:holy water#1"
+        "food:holyWater#1"
       ]
     },
     {
@@ -10245,6 +10235,17 @@
       ],
       "receive": [
         "item:bomb#10"
+      ]
+    },
+    {
+      "room": "19_20",
+      "requires": [
+        [
+          "quest:pam.12"
+        ]
+      ],
+      "receive": [
+        "food:holyWater#1"
       ]
     },
     {
@@ -12163,20 +12164,6 @@
       ]
     },
     {
-      "room": "19_20",
-      "requires": [],
-      "receive": [
-        "skill:dig"
-      ]
-    },
-    {
-      "room": "19_20",
-      "requires": [],
-      "receive": [
-        "skill:kick"
-      ]
-    },
-    {
       "room": "500_501",
       "requires": [
         [
@@ -13164,16 +13151,13 @@
     },
     {
       "room": "19_20",
-      "requires": [],
+      "requires": [
+        [
+          "quest:pam.8"
+        ]
+      ],
       "receive": [
-        "food:chocolate"
-      ]
-    },
-    {
-      "room": "19_20",
-      "requires": [],
-      "receive": [
-        "food:steak"
+        "food:steak#3"
       ]
     },
     {
@@ -13181,60 +13165,6 @@
       "requires": [],
       "receive": [
         "food:peppers"
-      ]
-    },
-    {
-      "room": "19_20",
-      "requires": [],
-      "receive": [
-        "food:orange"
-      ]
-    },
-    {
-      "room": "19_20",
-      "requires": [],
-      "receive": [
-        "food:holyWater"
-      ]
-    },
-    {
-      "room": "19_21",
-      "requires": [],
-      "receive": [
-        "item:gold"
-      ]
-    },
-    {
-      "room": "12_11",
-      "requires": [],
-      "receive": [
-        "item:diamonds"
-      ]
-    },
-    {
-      "room": "13_26",
-      "requires": [],
-      "receive": [
-        "food:gingerBread"
-      ]
-    },
-    {
-      "room": "6_12",
-      "requires": [],
-      "receive": [
-        "skill:convert"
-      ]
-    },
-    {
-      "room": "11_9",
-      "requires": [
-        [
-          "quest:warp.1",
-          ""
-        ]
-      ],
-      "receive": [
-        "skill:warp"
       ]
     },
     {
@@ -15892,19 +15822,11 @@
       {
         "room": "19_20",
         "raw": "skill:dig"
-      },
-      {
-        "room": "19_20",
-        "raw": "skill:dig"
       }
     ],
     "skill:kick": [
       {
         "room": "20_20",
-        "raw": "skill:kick"
-      },
-      {
-        "room": "19_20",
         "raw": "skill:kick"
       },
       {
@@ -15996,10 +15918,6 @@
       {
         "room": "20_20",
         "raw": "item:gold"
-      },
-      {
-        "room": "19_21",
-        "raw": "item:gold#25"
       },
       {
         "room": "11_9",
@@ -16164,10 +16082,6 @@
       {
         "room": "19_20",
         "raw": "item:gold#20"
-      },
-      {
-        "room": "19_21",
-        "raw": "item:gold"
       },
       {
         "room": "14_18",
@@ -16405,10 +16319,6 @@
       },
       {
         "room": "14_15",
-        "raw": "food:orange"
-      },
-      {
-        "room": "19_20",
         "raw": "food:orange"
       },
       {
@@ -16866,10 +16776,6 @@
       {
         "room": "15_18",
         "raw": "food:chocolate"
-      },
-      {
-        "room": "19_20",
-        "raw": "food:chocolate"
       }
     ],
     "food:steak": [
@@ -16903,13 +16809,25 @@
       },
       {
         "room": "19_20",
-        "raw": "food:steak"
+        "raw": "food:steak#3"
       }
     ],
     "food:peppers": [
       {
         "room": "9_22",
         "raw": "food:peppers"
+      },
+      {
+        "room": "21_18",
+        "raw": "food:peppers#30"
+      },
+      {
+        "room": "9_22",
+        "raw": "food:peppers#3"
+      },
+      {
+        "room": "19_20",
+        "raw": "food:peppers#5"
       },
       {
         "room": "21_18",
@@ -17056,10 +16974,6 @@
       {
         "room": "17_22",
         "raw": "item:diamonds"
-      },
-      {
-        "room": "12_11",
-        "raw": "item:diamonds"
       }
     ],
     "item:alpha scepter": [
@@ -17068,32 +16982,40 @@
         "raw": "item:alpha scepter#1"
       }
     ],
-    "misc:three part code part 1": [
+    "flag:flag:three part code part 1": [
       {
         "room": "14_25",
-        "raw": "misc:three part code part 1"
+        "raw": "flag:three part code part 1"
       }
     ],
-    "misc:three part code part 2": [
+    "flag:flag:three part code part 2": [
       {
         "room": "14_24",
-        "raw": "misc:three part code part 2"
+        "raw": "flag:three part code part 2"
       }
     ],
-    "misc:three part code part 3": [
+    "flag:flag:three part code part 3": [
       {
         "room": "13_24",
-        "raw": "misc:three part code part 3"
+        "raw": "flag:three part code part 3"
       }
     ],
-    "flag:???": [
+    "food:gingerBread": [
       {
         "room": "13_26",
-        "raw": "???"
+        "raw": "food:gingerBread#99"
       },
       {
-        "room": "13_14",
-        "raw": "???"
+        "room": "18_21",
+        "raw": "food:gingerBread"
+      },
+      {
+        "room": "17_15",
+        "raw": "food:gingerBread"
+      },
+      {
+        "room": "19_20",
+        "raw": "food:gingerBread"
       }
     ],
     "misc:stomp code": [
@@ -17472,18 +17394,18 @@
         "raw": "quest:alpha blade.1"
       }
     ],
-    "food:gingerbread cookie": [
+    "food:gingerbread": [
       {
         "room": "4_13",
-        "raw": "food:gingerbread cookie"
+        "raw": "food:gingerbread"
       },
       {
         "room": "19_20",
-        "raw": "food:gingerbread cookie#10"
+        "raw": "food:gingerbread#10"
       },
       {
         "room": "17_15",
-        "raw": "food:gingerbread cookie#50"
+        "raw": "food:gingerbread#50"
       }
     ],
     "food:strawberry": [
@@ -17816,7 +17738,7 @@
         "raw": "quest:warp.1"
       },
       {
-        "room": "20_20",
+        "room": "11_9",
         "raw": "quest:warp.2"
       }
     ],
@@ -17868,14 +17790,18 @@
         "raw": "quest:seeds.4"
       }
     ],
-    "food:holy water": [
+    "food:holyWater": [
       {
         "room": "5_24",
-        "raw": "food:holy water#1"
+        "raw": "food:holyWater#1"
       },
       {
         "room": "10_13",
-        "raw": "food:holy water#1"
+        "raw": "food:holyWater#1"
+      },
+      {
+        "room": "19_20",
+        "raw": "food:holyWater#1"
       }
     ],
     "flag:flag:final boss dead": [
@@ -17966,10 +17892,6 @@
     ],
     "skill:warp": [
       {
-        "room": "20_20",
-        "raw": "skill:warp"
-      },
-      {
         "room": "11_9",
         "raw": "skill:warp"
       }
@@ -17980,26 +17902,10 @@
         "raw": "permit:volcano"
       }
     ],
-    "food:pepper": [
-      {
-        "room": "9_22",
-        "raw": "food:pepper#3"
-      },
-      {
-        "room": "21_18",
-        "raw": "food:pepper#30"
-      }
-    ],
     "item:ring of poison": [
       {
         "room": "11_11",
         "raw": "item:ring of poison"
-      }
-    ],
-    "food:peper": [
-      {
-        "room": "19_20",
-        "raw": "food:peper#5"
       }
     ],
     "item:ring of magic": [
@@ -18034,10 +17940,6 @@
       {
         "room": "6_12",
         "raw": "skill:convert"
-      },
-      {
-        "room": "6_12",
-        "raw": "skill:convert"
       }
     ],
     "flag:?misc:geomana": [
@@ -18050,6 +17952,12 @@
       {
         "room": "19_16",
         "raw": "item:medallion"
+      }
+    ],
+    "flag:???": [
+      {
+        "room": "13_14",
+        "raw": "???"
       }
     ],
     "armor:regen armor": [
@@ -18646,24 +18554,6 @@
         "raw": "armor:regenArmor"
       }
     ],
-    "food:gingerBread": [
-      {
-        "room": "18_21",
-        "raw": "food:gingerBread"
-      },
-      {
-        "room": "17_15",
-        "raw": "food:gingerBread"
-      },
-      {
-        "room": "19_20",
-        "raw": "food:gingerBread"
-      },
-      {
-        "room": "13_26",
-        "raw": "food:gingerBread"
-      }
-    ],
     "armor:alphaArmor": [
       {
         "room": "23_10",
@@ -18680,12 +18570,6 @@
       {
         "room": "19_18",
         "raw": "rubies"
-      }
-    ],
-    "food:holyWater": [
-      {
-        "room": "19_20",
-        "raw": "food:holyWater"
       }
     ],
     "weapon:creeperCrusher": [
