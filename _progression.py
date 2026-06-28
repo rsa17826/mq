@@ -90,21 +90,6 @@ manager.correct - manager.wrong > 800 = halo
   {
     "room": {"north": 20, "east": 20},
     "requires": [["item:gold"]],
-    "receive": ["weapon:club"],
-  },
-  {
-    "room": {"north": 20, "east": 20},
-    "requires": [["item:gold"]],
-    "receive": ["weapon:dagger"],
-  },
-  {
-    "room": {"north": 20, "east": 20},
-    "requires": [["item:gold"]],
-    "receive": ["weapon:sword"],
-  },
-  {
-    "room": {"north": 20, "east": 20},
-    "requires": [["item:gold"]],
     "receive": ["armor:vest"],
   },
   {
@@ -227,11 +212,6 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 11, "east": 9},
     "requires": [["item:gold"]],
     "receive": ["magic:refresh"],
-  },
-  {
-    "room": {"north": 11, "east": 9},
-    "requires": [["item:gold"]],
-    "receive": ["magic:lightning"],
   },
   {
     "room": {"north": 11, "east": 9},
@@ -420,21 +400,6 @@ manager.correct - manager.wrong > 800 = halo
   {"room": {"north": 19, "east": 20}, "receive": ["quest:pam.1"]},
   {
     "room": {"north": 21, "east": 20},
-    "requires": [["item:gold"]],
-    "receive": ["magic:slow"],
-  },
-  {
-    "room": {"north": 21, "east": 20},
-    "requires": [["item:gold"]],
-    "receive": ["magic:heal"],
-  },
-  {
-    "room": {"north": 21, "east": 20},
-    "requires": [["item:gold"]],
-    "receive": ["magic:blast"],
-  },
-  {
-    "room": {"north": 21, "east": 20},
     "requires": [["food:honey#10"]],
     "receive": ["magic:crush"],
   },
@@ -517,11 +482,6 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 19, "east": 15},
     "requires": [["item:medallion#30"]],
     "receive": ["skill:fear"],
-  },
-  {
-    "room": {"north": 19, "east": 15},
-    "requires": [["item:medallion#200"]],
-    "receive": ["skill:shield"],
   },
   {
     "room": {"north": 16, "east": 16},
@@ -1887,6 +1847,11 @@ MathQuest.js:42550 add listeners""",
   },
   {
     "room": {"north": 19, "east": 15},
+    "requires": [["item:rubies#5", "weapon:sword", "item:bomb#50"]],
+    "receive": ["weapon:bombSword"],
+  },
+  {
+    "room": {"north": 19, "east": 15},
     "requires": [["item:rubies#7", "weapon:royalStaff", "item:aScepter#3"]],
     "receive": ["weapon:refreshStaff"],
   },
@@ -1916,7 +1881,7 @@ MathQuest.js:42550 add listeners""",
     "receive": ["skill:shield"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": 20, "east": 20},/
     "requires": [["item:gold#5"]],
     "receive": ["food:apple"],
   },
@@ -1989,11 +1954,6 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 20, "east": 20},
     "requires": [["item:gold#10"]],
     "receive": ["weapon:club"],
-  },
-  {
-    "room": {"north": 20, "east": 20},
-    "requires": [["item:gold#50"]],
-    "receive": ["weapon:dagger"],
   },
   {
     "room": {"north": 20, "east": 20},
@@ -2078,32 +2038,33 @@ MathQuest.js:42550 add listeners""",
     "receive": ["skill:hint"],
   },
   {
-    "room": {"north": 19, "east": 15},
-    "requires": [["item:sFrag#7"], ["armor:sunArmor"]],
-    "receive": ["skill:shield"],
-  },
-  {
     "room": {"north": 20, "east": 20},
+    "requires":[["item:gold"]],
     "receive": ["food:apple"],
   },
   {
     "room": {"north": 20, "east": 20},
+    "requires":[["item:gold"]],
     "receive": ["food:honey"],
   },
   {
     "room": {"north": 20, "east": 20},
+    "requires":[["item:gold"]],
     "receive": ["food:grapes"],
   },
   {
     "room": {"north": 12, "east": 9},
+    "requires":[["item:gold"]],
     "receive": ["food:carrot"],
   },
   {
     "room": {"north": 12, "east": 9},
+    "requires":[["item:gold"]],
     "receive": ["food:beefJerky"],
   },
   {
     "room": {"north": 12, "east": 9},
+    "requires":[["item:gold"]],
     "receive": ["food:cherries"],
   },
   # {
@@ -2115,83 +2076,63 @@ MathQuest.js:42550 add listeners""",
   #   "receive": ["food:peppers"],
   # },
   {
-    "room": {"north": 21, "east": 20},
-    "receive": ["magic:slow"],
-  },
-  {
-    "room": {"north": 21, "east": 20},
-    "receive": ["magic:heal"],
-  },
-  {
-    "room": {"north": 21, "east": 20},
-    "receive": ["magic:blast"],
-  },
-  {
     "room": {"north": 13, "east": 17},
-    "receive": ["magic:regen"],
-  },
-  {
-    "room": {"north": 13, "east": 17},
-    "receive": ["magic:cloud"],
-  },
-  {
-    "room": {"north": 13, "east": 17},
+    "requires":[["item:gold"]],
     "receive": ["magic:weak"],
   },
   {
     "room": {"north": 11, "east": 9},
+    "requires":[["item:gold"]],
     "receive": ["magic:refresh"],
   },
   {
-    "room": {"north": 11, "east": 9},
-    "receive": ["magic:lightning"],
-  },
-  {
     "room": {"north": 20, "east": 20},
-    "receive": ["weapon:club"],
-  },
-  {
-    "room": {"north": 20, "east": 20},
+    "requires":[["item:gold"]],
     "receive": ["weapon:dagger"],
   },
   {
-    "room": {"north": 20, "east": 20},
-    "receive": ["weapon:sword"],
-  },
-  {
     "room": {"north": 13, "east": 17},
+    "requires":[["item:gold"]],
     "receive": ["weapon:royalSword"],
   },
   {
     "room": {"north": 13, "east": 17},
+    "requires":[["item:gold"]],
     "receive": ["weapon:royalStaff"],
   },
   {
     "room": {"north": 20, "east": 20},
+    "requires":[["item:gold"]],
     "receive": ["armor:vest"],
   },
   {
     "room": {"north": 20, "east": 20},
+    "requires":[["item:gold"]],
     "receive": ["armor:robe"],
   },
   {
     "room": {"north": 20, "east": 20},
+    "requires":[["item:gold"]],
     "receive": ["armor:iron"],
   },
   {
     "room": {"north": 13, "east": 17},
+    "requires":[["item:gold"]],
     "receive": ["armor:royalArmor"],
   },
   {
     "room": {"north": 13, "east": 17},
+    "requires":[["item:gold"]],
     "receive": ["armor:mysticCloak"],
   },
   {
     "room": {"north": 12, "east": 9},
+    "requires":[["item:gold"]],
     "receive": ["armor:sunArmor"],
   },
   {
     "room": {"north": 12, "east": 9},
+    "requires":[["item:gold"]],
     "receive": ["armor:speedVest"],
   },
   {
