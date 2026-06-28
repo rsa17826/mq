@@ -29,8 +29,6 @@
                   watchdog
                 ]
               ))
-              xdg-utils
-              basedpyright
             ];
             shellHook = "";
           };
