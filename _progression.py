@@ -90,11 +90,6 @@ manager.correct - manager.wrong > 800 = halo
   {
     "room": {"north": 20, "east": 20},
     "requires": [["item:gold"]],
-    "receive": ["armor:vest"],
-  },
-  {
-    "room": {"north": 20, "east": 20},
-    "requires": [["item:gold"]],
     "receive": ["armor:magic robe"],
   },
   {
@@ -132,7 +127,7 @@ manager.correct - manager.wrong > 800 = halo
   {"room": {"north": 14, "east": 16}, "info": "warp skill warp point"},
   {
     "room": {"north": 15, "east": 16},
-    "requires": [["permit:bomb", "???"]],
+    "requires": [["permit:bomb", "item:mStaff#20"]],
     "receive": ["magic:ice"],
   },
   {
@@ -157,11 +152,6 @@ manager.correct - manager.wrong > 800 = halo
   },
   # {"room": {"north": 10, "east": 12}, "info": "warp skill warp point"},
   # {"room": {"north": 12, "east": 9}, "receive": ["spawnpoint"]},
-  {
-    "room": {"north": 12, "east": 9},
-    "requires": [["item:gold"]],
-    "receive": ["food:carrot"],
-  },
   {
     "room": {"north": 12, "east": 9},
     "requires": [["item:gold"]],
@@ -207,11 +197,6 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 11, "east": 9},
     "requires": [["item:gold"]],
     "receive": ["magic:weak"],
-  },
-  {
-    "room": {"north": 11, "east": 9},
-    "requires": [["item:gold"]],
-    "receive": ["magic:refresh"],
   },
   {
     "room": {"north": 11, "east": 9},
@@ -398,11 +383,6 @@ manager.correct - manager.wrong > 800 = halo
     "receive": ["item:gold#18"],
   },
   {"room": {"north": 19, "east": 20}, "receive": ["quest:pam.1"]},
-  {
-    "room": {"north": 21, "east": 20},
-    "requires": [["food:honey#10"]],
-    "receive": ["magic:crush"],
-  },
   {
     "room": {"north": 21, "east": 20},
     "requires": [["item:boar tusk#1"]],
@@ -1842,11 +1822,6 @@ MathQuest.js:42550 add listeners""",
   },
   {
     "room": {"north": 19, "east": 15},
-    "requires": [["item:medallion#3"]],
-    "receive": ["skill:hint"],
-  },
-  {
-    "room": {"north": 19, "east": 15},
     "requires": [["item:rubies#5", "weapon:sword", "item:bomb#50"]],
     "receive": ["weapon:bombSword"],
   },
@@ -1881,7 +1856,7 @@ MathQuest.js:42550 add listeners""",
     "receive": ["skill:shield"],
   },
   {
-    "room": {"north": 20, "east": 20},/
+    "room": {"north": 20, "east": 20},
     "requires": [["item:gold#5"]],
     "receive": ["food:apple"],
   },
@@ -2027,46 +2002,6 @@ MathQuest.js:42550 add listeners""",
   },
   # Auto-generated from MathQuest_base.js newItem() calls
   # 159 items extracted
-  {
-    "room": {"north": 19, "east": 15},
-    "requires": [
-      ["item:kCrest#50"],
-      ["item:sFrag#7"],
-      ["armor:phantomCoat"],
-      ["armor:sunArmor"],
-    ],
-    "receive": ["skill:hint"],
-  },
-  {
-    "room": {"north": 20, "east": 20},
-    "requires":[["item:gold"]],
-    "receive": ["food:apple"],
-  },
-  {
-    "room": {"north": 20, "east": 20},
-    "requires":[["item:gold"]],
-    "receive": ["food:honey"],
-  },
-  {
-    "room": {"north": 20, "east": 20},
-    "requires":[["item:gold"]],
-    "receive": ["food:grapes"],
-  },
-  {
-    "room": {"north": 12, "east": 9},
-    "requires":[["item:gold"]],
-    "receive": ["food:carrot"],
-  },
-  {
-    "room": {"north": 12, "east": 9},
-    "requires":[["item:gold"]],
-    "receive": ["food:beefJerky"],
-  },
-  {
-    "room": {"north": 12, "east": 9},
-    "requires":[["item:gold"]],
-    "receive": ["food:cherries"],
-  },
   # {
   #   "room": {"north": "?", "east": "?"},
   #   "receive": ["food:steak"],
@@ -2076,64 +2011,9 @@ MathQuest.js:42550 add listeners""",
   #   "receive": ["food:peppers"],
   # },
   {
-    "room": {"north": 13, "east": 17},
-    "requires":[["item:gold"]],
-    "receive": ["magic:weak"],
-  },
-  {
-    "room": {"north": 11, "east": 9},
-    "requires":[["item:gold"]],
-    "receive": ["magic:refresh"],
-  },
-  {
     "room": {"north": 20, "east": 20},
-    "requires":[["item:gold"]],
+    "requires": [["item:gold"]],
     "receive": ["weapon:dagger"],
-  },
-  {
-    "room": {"north": 13, "east": 17},
-    "requires":[["item:gold"]],
-    "receive": ["weapon:royalSword"],
-  },
-  {
-    "room": {"north": 13, "east": 17},
-    "requires":[["item:gold"]],
-    "receive": ["weapon:royalStaff"],
-  },
-  {
-    "room": {"north": 20, "east": 20},
-    "requires":[["item:gold"]],
-    "receive": ["armor:vest"],
-  },
-  {
-    "room": {"north": 20, "east": 20},
-    "requires":[["item:gold"]],
-    "receive": ["armor:robe"],
-  },
-  {
-    "room": {"north": 20, "east": 20},
-    "requires":[["item:gold"]],
-    "receive": ["armor:iron"],
-  },
-  {
-    "room": {"north": 13, "east": 17},
-    "requires":[["item:gold"]],
-    "receive": ["armor:royalArmor"],
-  },
-  {
-    "room": {"north": 13, "east": 17},
-    "requires":[["item:gold"]],
-    "receive": ["armor:mysticCloak"],
-  },
-  {
-    "room": {"north": 12, "east": 9},
-    "requires":[["item:gold"]],
-    "receive": ["armor:sunArmor"],
-  },
-  {
-    "room": {"north": 12, "east": 9},
-    "requires":[["item:gold"]],
-    "receive": ["armor:speedVest"],
   },
   {
     "room": {"north": 500, "east": 501},
@@ -2143,11 +2023,6 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 200, "east": 200},
     "requires": [
-      ["item:sTooth#10"],
-      ["item:dScale#3"],
-      ["item:sTooth#5"],
-      ["item:vHorn#5"],
-      ["item:oArm#5"],
       ["item:vHorn#20"],
       ["item:cThread#30"],
       ["item:gFeather#5"],
@@ -2158,93 +2033,84 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 18, "east": 25},
     "requires": [
-      ["item:sTooth#30"],
-      ["item:oArm#40"],
-      ["item:cShell#25"],
-      ["item:oCoin#110"],
-      ["item:mHorn#5"],
-      ["item:aScepter#3"],
-      ["item:gFeather#3"],
-      ["item:aScepter#5"],
-    ],
-    "receive": ["skill:medic"],
-  },
-  {
-    "room": {"north": 18, "east": 25},
-    "requires": [
-      ["item:oArm#40"],
-      ["item:cShell#25"],
-      ["item:oCoin#110"],
-      ["item:mHorn#5"],
-      ["item:aScepter#3"],
-      ["item:gFeather#3"],
-      ["item:aScepter#5"],
-      ["item:kCrest#10"],
-      ["item:aAxe#5"],
-    ],
-    "receive": ["skill:medic"],
-  },
-  {
-    "room": {"north": 18, "east": 25},
-    "requires": [
-      ["item:mHorn#5"],
-      ["item:aScepter#3"],
-      ["item:gFeather#3"],
-      ["item:aScepter#5"],
-      ["item:kCrest#10"],
-      ["item:aAxe#5"],
-      ["item:dScale#10"],
-      ["item:gSkin#10"],
-    ],
-    "receive": ["skill:medic"],
-  },
-  {
-    "room": {"north": 18, "east": 25},
-    "requires": [
-      ["item:gFeather#3"],
-      ["item:aScepter#5"],
-      ["item:kCrest#10"],
-      ["item:aAxe#5"],
-      ["item:dScale#10"],
-      ["item:gSkin#10"],
-      ["item:oCoin#20"],
-      ["item:mStaff#10"],
-    ],
-    "receive": ["skill:medic"],
-  },
-  {
-    "room": {"north": 18, "east": 25},
-    "requires": [
-      ["item:gFeather#3"],
-      ["item:aScepter#5"],
-      ["item:kCrest#10"],
-      ["item:aAxe#5"],
-      ["item:dScale#10"],
-      ["item:gSkin#10"],
-      ["item:oCoin#20"],
-      ["item:mStaff#10"],
-      ["item:cFang#5"],
-    ],
-    "receive": ["skill:medic"],
-  },
-  {
-    "room": {"north": 18, "east": 25},
-    "requires": [
-      ["item:kCrest#10"],
-      ["item:aAxe#5"],
-      ["item:dScale#10"],
-      ["item:gSkin#10"],
-      ["item:oCoin#20"],
-      ["item:mStaff#10"],
-      ["item:cFang#5"],
       ["item:tBand#2"],
     ],
-    "receive": ["skill:medic"],
+    "receive": ["skill:medic.1"],
   },
   {
-    "room": {"north": 19, "east": 22},
-    "requires": [["item:tBand#2"], ["item:vAsh#30"], ["item:cThread#10"]],
-    "receive": ["skill:reveal"],
+    "room": {"north": 18, "east": 25},
+    "requires": [
+      ["item:tBand#2"],
+      #
+      ["item:cFang#5"],
+    ],
+    "receive": ["skill:medic.2"],
+  },
+  {
+    "room": {"north": 18, "east": 25},
+    "requires": [
+      ["item:tBand#2"],
+      #
+      ["item:cFang#5"],
+      #
+      ["item:mStaff#10"],
+      ["item:oCoin#20"],
+    ],
+    "receive": ["skill:medic.3"],
+  },
+  {
+    "room": {"north": 18, "east": 25},
+    "requires": [
+      ["item:tBand#2"],
+      #
+      ["item:cFang#5"],
+      #
+      ["item:mStaff#10"],
+      ["item:oCoin#20"],
+      #
+      ["item:gSkin#10"],
+      ["item:dScale#10"],
+    ],
+    "receive": ["skill:medic.4"],
+  },
+  {
+    "room": {"north": 18, "east": 25},
+    "requires": [
+      ["item:tBand#2"],
+      #
+      ["item:cFang#5"],
+      #
+      ["item:mStaff#10"],
+      ["item:oCoin#20"],
+      #
+      ["item:gSkin#10"],
+      ["item:dScale#10"],
+      #
+      ["item:aAxe#5"],
+      ["item:kCrest#10"],
+    ],
+    "receive": ["skill:medic.5"],
+  },
+  {
+    "room": {"north": 18, "east": 25},
+    "requires": [
+      ["item:tBand#2"],
+      #
+      ["item:cFang#5"],
+      #
+      ["item:mStaff#10"],
+      ["item:oCoin#20"],
+      #
+      ["item:gSkin#10"],
+      ["item:dScale#10"],
+      #
+      ["item:aAxe#5"],
+      ["item:kCrest#10"],
+      #
+      ["item:gFeather#3"],
+      ["item:aScepter#5"],
+    ],
+    "receive": ["skill:medic.6"],
   },
   {
     "room": {"north": 11, "east": 12},
@@ -2312,16 +2178,6 @@ MathQuest.js:42550 add listeners""",
     "receive": ["weapon:baneBlade"],
   },
   {
-    "room": {"north": 21, "east": 21},
-    "requires": [
-      ["item:wPelt#2"],
-      ["item:tBand#5"],
-      ["item:tBand#5"],
-      ["item:gSkin#2"],
-    ],
-    "receive": ["skill:craft"],
-  },
-  {
     "room": {"north": 9, "east": 22},
     "requires": [
       ["item:wPelt#2"],
@@ -2331,17 +2187,6 @@ MathQuest.js:42550 add listeners""",
       ["food:honey#5"],
     ],
     "receive": ["magic:doubleDown"],
-  },
-  {
-    "room": {"north": 21, "east": 20},
-    "requires": [
-      ["item:wPelt#2"],
-      ["item:tBand#5"],
-      ["item:tBand#5"],
-      ["item:gSkin#2"],
-      ["food:honey#5"],
-    ],
-    "receive": ["magic:crush"],
   },
   {
     "room": {"north": 18, "east": 20},
@@ -2463,15 +2308,6 @@ MathQuest.js:42550 add listeners""",
     "receive": ["food:carrot"],
   },
   {
-    "room": {"north": 9, "east": 23},
-    "receive": ["magic:drain"],
-  },
-  {
-    "room": {"north": 15, "east": 16},
-    "requires": [["item:mStaff#20"]],
-    "receive": ["magic:ice"],
-  },
-  {
     "room": {"north": 11, "east": 18},
     "requires": [["item:mStaff#20"]],
     "receive": ["magic:refresh"],
@@ -2482,11 +2318,6 @@ MathQuest.js:42550 add listeners""",
     "receive": ["weapon:sKnife"],
   },
   {
-    "room": {"north": 13, "east": 16},
-    "requires": [["item:mStaff#20"]],
-    "receive": ["magic:weak"],
-  },
-  {
     "room": {"north": 14, "east": 19},
     "requires": [["item:vAsh#6"]],
     "receive": ["armor:regenArmor"],
@@ -2494,11 +2325,7 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 16, "east": 22},
     "requires": [["item:vAsh#6"]],
-    "receive": ["item:gold"],
-  },
-  {
-    "room": {"north": 19, "east": 23},
-    "receive": ["magic:fire"],
+    "receive": ["item:gold#400"],
   },
   {
     "room": {"north": 18, "east": 21},
@@ -2523,10 +2350,6 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 8, "east": 18},
     "receive": ["food:steak#Enum.Craft.emerald"],
-  },
-  {
-    "room": {"north": 17, "east": 15},
-    "receive": ["item:gold"],
   },
   {
     "room": {"north": 17, "east": 15},
@@ -2611,10 +2434,6 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 15, "east": 18},
     "receive": ["food:chocolate"],
-  },
-  {
-    "room": {"north": 12, "east": 12},
-    "receive": ["magic:blessing"],
   },
   {
     "room": {"north": 19, "east": 18},
@@ -2897,7 +2716,6 @@ MathQuest.js:42550 add listeners""",
   {"room": {"north": 21, "east": 17}, "requires": [[]], "receive": ["area:12"]},
   {"room": {"north": 22, "east": 17}, "requires": [[]], "receive": ["area:12"]},
   {"room": {"north": 21, "east": 16}, "requires": [[]], "receive": ["area:12"]},
-  {"room": {"north": 19, "east": 16}, "requires": [[]], "receive": ["area:14"]},
   {"room": {"north": 18, "east": 16}, "requires": [[]], "receive": ["area:4"]},
   {"room": {"north": 17, "east": 16}, "requires": [[]], "receive": ["area:4"]},
   {"room": {"north": 16, "east": 16}, "requires": [[]], "receive": ["area:4"]},
