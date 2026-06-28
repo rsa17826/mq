@@ -7663,50 +7663,6 @@
         ]
       ],
       "receive": [
-        "weapon:club"
-      ]
-    },
-    {
-      "room": "20_20",
-      "requires": [
-        [
-          "item:gold"
-        ]
-      ],
-      "receive": [
-        "weapon:dagger"
-      ]
-    },
-    {
-      "room": "20_20",
-      "requires": [
-        [
-          "item:gold"
-        ]
-      ],
-      "receive": [
-        "weapon:sword"
-      ]
-    },
-    {
-      "room": "20_20",
-      "requires": [
-        [
-          "item:gold"
-        ]
-      ],
-      "receive": [
-        "armor:vest"
-      ]
-    },
-    {
-      "room": "20_20",
-      "requires": [
-        [
-          "item:gold"
-        ]
-      ],
-      "receive": [
         "armor:magic robe"
       ]
     },
@@ -7798,7 +7754,7 @@
       "requires": [
         [
           "permit:bomb",
-          "???"
+          "item:mStaff#20"
         ]
       ],
       "receive": [
@@ -7809,12 +7765,12 @@
       "room": "13_13",
       "requires": [
         [
-          "armor:alpha armor",
+          "armor:alphaArmor",
           "???"
         ]
       ],
       "receive": [
-        "armor:alpha armor.+inf"
+        "armor:alphaArmor.+inf"
       ]
     },
     {
@@ -7859,18 +7815,7 @@
         ]
       ],
       "receive": [
-        "food:carrot"
-      ]
-    },
-    {
-      "room": "12_9",
-      "requires": [
-        [
-          "item:gold"
-        ]
-      ],
-      "receive": [
-        "food:beef jerky"
+        "food:beefJerky"
       ]
     },
     {
@@ -7972,28 +7917,6 @@
       "room": "11_9",
       "requires": [
         [
-          "item:gold"
-        ]
-      ],
-      "receive": [
-        "magic:refresh"
-      ]
-    },
-    {
-      "room": "11_9",
-      "requires": [
-        [
-          "item:gold"
-        ]
-      ],
-      "receive": [
-        "magic:lightning"
-      ]
-    },
-    {
-      "room": "11_9",
-      "requires": [
-        [
           "item:wolf pelt"
         ]
       ],
@@ -8074,7 +7997,7 @@
         ]
       ],
       "receive": [
-        "item:bomb#8",
+        "item:bombs#8",
         "item:gold#200"
       ]
     },
@@ -8206,7 +8129,7 @@
         ]
       ],
       "receive": [
-        "food:gummy bear#10",
+        "food:gummyBears#10",
         "item:diamonds#50"
       ]
     },
@@ -8261,70 +8184,6 @@
       "requires": [],
       "receive": [
         "misc:stomp code"
-      ]
-    },
-    {
-      "room": "18_25",
-      "requires": [
-        [
-          "skill:medic.1",
-          "item:cobra fang#5"
-        ]
-      ],
-      "receive": [
-        "skill:medic.2"
-      ]
-    },
-    {
-      "room": "18_25",
-      "requires": [
-        [
-          "skill:medic.2",
-          "item:orc coin#20",
-          "item:mage staff#10"
-        ]
-      ],
-      "receive": [
-        "skill:medic.3"
-      ]
-    },
-    {
-      "room": "18_25",
-      "requires": [
-        [
-          "skill:medic.3",
-          "item:dragon scale#10",
-          "item:gator skin#10"
-        ]
-      ],
-      "receive": [
-        "skill:medic.4"
-      ]
-    },
-    {
-      "room": "18_25",
-      "requires": [
-        [
-          "skill:medic.4",
-          "item:kings crest#10",
-          "item:alpha axe#5"
-        ]
-      ],
-      "receive": [
-        "skill:medic.5"
-      ]
-    },
-    {
-      "room": "18_25",
-      "requires": [
-        [
-          "skill:medic.5",
-          "item:golden feather#3",
-          "item:alpha scepter#5"
-        ]
-      ],
-      "receive": [
-        "skill:medic.6"
       ]
     },
     {
@@ -8413,50 +8272,6 @@
       "requires": [],
       "receive": [
         "quest:pam.1"
-      ]
-    },
-    {
-      "room": "21_20",
-      "requires": [
-        [
-          "item:gold"
-        ]
-      ],
-      "receive": [
-        "magic:slow"
-      ]
-    },
-    {
-      "room": "21_20",
-      "requires": [
-        [
-          "item:gold"
-        ]
-      ],
-      "receive": [
-        "magic:heal"
-      ]
-    },
-    {
-      "room": "21_20",
-      "requires": [
-        [
-          "item:gold"
-        ]
-      ],
-      "receive": [
-        "magic:blast"
-      ]
-    },
-    {
-      "room": "21_20",
-      "requires": [
-        [
-          "food:honey#10"
-        ]
-      ],
-      "receive": [
-        "magic:crush"
       ]
     },
     {
@@ -8656,17 +8471,6 @@
       ]
     },
     {
-      "room": "19_15",
-      "requires": [
-        [
-          "item:medallion#200"
-        ]
-      ],
-      "receive": [
-        "skill:shield"
-      ]
-    },
-    {
       "room": "16_16",
       "requires": [
         [
@@ -8691,18 +8495,6 @@
       ]
     },
     {
-      "room": "23_10",
-      "requires": [
-        [
-          "item:key#1"
-        ]
-      ],
-      "receive": [
-        "food:newton apple#3",
-        "item:diamonds#3"
-      ]
-    },
-    {
       "room": "24_11",
       "requires": [
         [
@@ -8711,7 +8503,7 @@
         ]
       ],
       "receive": [
-        "weapon:bane blade"
+        "weapon:baneBlade"
       ]
     },
     {
@@ -8722,14 +8514,14 @@
         ]
       ],
       "receive": [
-        "food:gummy bear#5"
+        "food:gummyBears#5"
       ]
     },
     {
       "room": "500_501",
       "requires": [
         [
-          "weapon:bane blade",
+          "weapon:baneBlade",
           "skill:reveal"
         ]
       ],
@@ -8756,7 +8548,7 @@
         ]
       ],
       "receive": [
-        "food:gingerbread"
+        "food:gingerBread"
       ]
     },
     {
@@ -8780,7 +8572,7 @@
         ]
       ],
       "receive": [
-        "craft:newton apple"
+        "craft:newtonsApple"
       ]
     },
     {
@@ -8962,7 +8754,7 @@
       ],
       "receive": [
         "quest:pam.5",
-        "food:gingerbread#10"
+        "food:gingerBread#10"
       ]
     },
     {
@@ -9029,7 +8821,7 @@
       ],
       "receive": [
         "quest:gTree.11",
-        "food:beef jerky#3"
+        "food:beefJerky#3"
       ]
     },
     {
@@ -9065,7 +8857,7 @@
       ],
       "receive": [
         "quest:bBomb.4",
-        "item:bomb#15",
+        "item:bombs#15",
         "permit:bomb"
       ]
     },
@@ -9352,7 +9144,7 @@
       "requires": [
         [
           "quest:aSword.1",
-          "weapon:bane blade"
+          "weapon:baneBlade"
         ]
       ],
       "receive": [
@@ -9880,7 +9672,7 @@
       ],
       "receive": [
         "item:gold#200",
-        "food:beef jerky#5"
+        "food:beefJerky#5"
       ]
     },
     {
@@ -9905,7 +9697,7 @@
       ],
       "receive": [
         "item:gold#300",
-        "item:bomb#10",
+        "item:bombs#10",
         "food:banana#5"
       ]
     },
@@ -9918,7 +9710,7 @@
         ]
       ],
       "receive": [
-        "armor:regen armor"
+        "armor:regenArmor"
       ]
     },
     {
@@ -9943,7 +9735,7 @@
         ]
       ],
       "receive": [
-        "item:bomb#25",
+        "item:bombs#25",
         "food:steak#5"
       ]
     },
@@ -9969,7 +9761,7 @@
       ],
       "receive": [
         "food:chocolate#20",
-        "item:bomb#50"
+        "item:bombs#50"
       ]
     },
     {
@@ -9981,18 +9773,6 @@
       ],
       "receive": [
         "item:rubies#3"
-      ]
-    },
-    {
-      "room": "21_18",
-      "requires": [
-        [
-          "item:emerald#1"
-        ]
-      ],
-      "receive": [
-        "item:diamonds#2",
-        "food:peppers#30"
       ]
     },
     {
@@ -10053,7 +9833,7 @@
         ]
       ],
       "receive": [
-        "food:newton apple#15"
+        "food:newtonsApple#15"
       ]
     },
     {
@@ -10065,7 +9845,7 @@
       ],
       "receive": [
         "item:gold#100",
-        "food:gingerbread#50"
+        "food:gingerBread#50"
       ]
     },
     {
@@ -10076,7 +9856,7 @@
         ]
       ],
       "receive": [
-        "armor:diamonds armor",
+        "armor:diamondArmor",
         "quest:pam.16"
       ]
     },
@@ -10088,7 +9868,8 @@
         ]
       ],
       "receive": [
-        "food:orange#12"
+        "food:orange#12",
+        "item:bombs#5"
       ]
     },
     {
@@ -10099,7 +9880,7 @@
         ]
       ],
       "receive": [
-        "armor:phantom coat"
+        "armor:phantomCoat"
       ]
     },
     {
@@ -10148,7 +9929,7 @@
         ]
       ],
       "receive": [
-        "armor:alpha armor"
+        "armor:alphaArmor"
       ]
     },
     {
@@ -10160,7 +9941,7 @@
       ],
       "receive": [
         "item:diamonds#5",
-        "food:newton apple#2"
+        "food:newtonsApple#2"
       ]
     },
     {
@@ -10172,7 +9953,7 @@
         ]
       ],
       "receive": [
-        "food:gummy bear#5"
+        "food:gummyBears#5"
       ]
     },
     {
@@ -10194,7 +9975,7 @@
         ]
       ],
       "receive": [
-        "armor:grim gear"
+        "armor:grimGear"
       ]
     },
     {
@@ -10234,7 +10015,7 @@
         ]
       ],
       "receive": [
-        "item:bomb#10"
+        "item:bombs#10"
       ]
     },
     {
@@ -10325,7 +10106,7 @@
       ],
       "receive": [
         "item:gold#100",
-        "food:beef jerky#30"
+        "food:beefJerky#30"
       ]
     },
     {
@@ -10372,7 +10153,7 @@
         ]
       ],
       "receive": [
-        "item:gimgerbread cookie#5"
+        "item:gingerbread#5"
       ]
     },
     {
@@ -10384,8 +10165,8 @@
         ]
       ],
       "receive": [
-        "item:gold#0",
-        "item:bomb#5"
+        "item:gold#manager.fame * 5",
+        "item:bombs#5"
       ]
     },
     {
@@ -10402,7 +10183,7 @@
       ],
       "receive": [
         "item:gold#100",
-        "item:bomb#12",
+        "item:bombs#12",
         "food:apple#30"
       ]
     },
@@ -10427,7 +10208,7 @@
         ]
       ],
       "receive": [
-        "item:bomb#15"
+        "item:bombs#15"
       ]
     },
     {
@@ -10439,7 +10220,7 @@
         ]
       ],
       "receive": [
-        "magic:double down"
+        "magic:doubleDown"
       ]
     },
     {
@@ -10543,7 +10324,7 @@
         ]
       ],
       "receive": [
-        "item:gold#2"
+        "item:gold#correct"
       ]
     },
     {
@@ -10556,7 +10337,7 @@
       ],
       "receive": [
         "item:gold#1000",
-        "food:gummy bear#12"
+        "food:gummyBears#12"
       ]
     },
     {
@@ -10577,18 +10358,6 @@
       ]
     },
     {
-      "room": "12_25",
-      "requires": [
-        [
-          "misc:blue crystal"
-        ]
-      ],
-      "receive": [
-        "item:diamonds#50",
-        "food:gummy bear#50"
-      ]
-    },
-    {
       "room": "11_25",
       "requires": [
         [
@@ -10596,7 +10365,7 @@
         ]
       ],
       "receive": [
-        "food:beef jerky#20"
+        "food:beefJerky#20"
       ]
     },
     {
@@ -10630,7 +10399,7 @@
         ]
       ],
       "receive": [
-        "weapon:shadow staff"
+        "weapon:shadowStaff"
       ]
     },
     {
@@ -11603,11 +11372,78 @@
       "room": "19_15",
       "requires": [
         [
-          "item:medallion#3"
+          "item:rubies#5",
+          "weapon:sword",
+          "item:bombs#50"
         ]
       ],
       "receive": [
-        "skill:hint"
+        "weapon:bombSword"
+      ]
+    },
+    {
+      "room": "19_15",
+      "requires": [
+        [
+          "item:rubies#7",
+          "weapon:royalStaff",
+          "item:aScepter#3"
+        ]
+      ],
+      "receive": [
+        "weapon:refreshStaff"
+      ]
+    },
+    {
+      "room": "19_15",
+      "requires": [
+        [
+          "item:rubies#20",
+          "weapon:warlockStaff",
+          "item:aAxe#5"
+        ]
+      ],
+      "receive": [
+        "weapon:axe"
+      ]
+    },
+    {
+      "room": "19_15",
+      "requires": [
+        [
+          "item:rubies#100",
+          "weapon:sunSword",
+          "item:sFrag#5"
+        ]
+      ],
+      "receive": [
+        "weapon:soulSword"
+      ]
+    },
+    {
+      "room": "19_15",
+      "requires": [
+        [
+          "item:rubies#10",
+          "armor:phantomCoat",
+          "item:kCrest#50"
+        ]
+      ],
+      "receive": [
+        "armor:shadowCoat"
+      ]
+    },
+    {
+      "room": "19_15",
+      "requires": [
+        [
+          "item:rubies#80",
+          "armor:sunArmor",
+          "item:sFrag#7"
+        ]
+      ],
+      "receive": [
+        "armor:soulArmor"
       ]
     },
     {
@@ -11790,17 +11626,6 @@
       "room": "20_20",
       "requires": [
         [
-          "item:gold#50"
-        ]
-      ],
-      "receive": [
-        "weapon:dagger"
-      ]
-    },
-    {
-      "room": "20_20",
-      "requires": [
-        [
           "item:gold#200"
         ]
       ],
@@ -11929,11 +11754,11 @@
       "room": "500_501",
       "requires": [
         [
-          "weapon:bane blade#"
+          "weapon:baneBlade"
         ]
       ],
       "receive": [
-        "weapon:alpha sword0"
+        "weapon:alpha sword"
       ]
     },
     {
@@ -11948,219 +11773,14 @@
       ]
     },
     {
-      "room": "19_15",
+      "room": "20_20",
       "requires": [
         [
-          "item:kCrest#50"
-        ],
-        [
-          "item:sFrag#7"
-        ],
-        [
-          "armor:phantomCoat"
-        ],
-        [
-          "armor:sunArmor"
+          "item:gold"
         ]
       ],
-      "receive": [
-        "skill:hint"
-      ]
-    },
-    {
-      "room": "19_15",
-      "requires": [
-        [
-          "item:sFrag#7"
-        ],
-        [
-          "armor:sunArmor"
-        ]
-      ],
-      "receive": [
-        "skill:shield"
-      ]
-    },
-    {
-      "room": "20_20",
-      "requires": [],
-      "receive": [
-        "food:apple"
-      ]
-    },
-    {
-      "room": "20_20",
-      "requires": [],
-      "receive": [
-        "food:honey"
-      ]
-    },
-    {
-      "room": "20_20",
-      "requires": [],
-      "receive": [
-        "food:grapes"
-      ]
-    },
-    {
-      "room": "12_9",
-      "requires": [],
-      "receive": [
-        "food:carrot"
-      ]
-    },
-    {
-      "room": "12_9",
-      "requires": [],
-      "receive": [
-        "food:beefJerky"
-      ]
-    },
-    {
-      "room": "12_9",
-      "requires": [],
-      "receive": [
-        "food:cherries"
-      ]
-    },
-    {
-      "room": "21_20",
-      "requires": [],
-      "receive": [
-        "magic:slow"
-      ]
-    },
-    {
-      "room": "21_20",
-      "requires": [],
-      "receive": [
-        "magic:heal"
-      ]
-    },
-    {
-      "room": "21_20",
-      "requires": [],
-      "receive": [
-        "magic:blast"
-      ]
-    },
-    {
-      "room": "13_17",
-      "requires": [],
-      "receive": [
-        "magic:regen"
-      ]
-    },
-    {
-      "room": "13_17",
-      "requires": [],
-      "receive": [
-        "magic:cloud"
-      ]
-    },
-    {
-      "room": "13_17",
-      "requires": [],
-      "receive": [
-        "magic:weak"
-      ]
-    },
-    {
-      "room": "11_9",
-      "requires": [],
-      "receive": [
-        "magic:refresh"
-      ]
-    },
-    {
-      "room": "11_9",
-      "requires": [],
-      "receive": [
-        "magic:lightning"
-      ]
-    },
-    {
-      "room": "20_20",
-      "requires": [],
-      "receive": [
-        "weapon:club"
-      ]
-    },
-    {
-      "room": "20_20",
-      "requires": [],
       "receive": [
         "weapon:dagger"
-      ]
-    },
-    {
-      "room": "20_20",
-      "requires": [],
-      "receive": [
-        "weapon:sword"
-      ]
-    },
-    {
-      "room": "13_17",
-      "requires": [],
-      "receive": [
-        "weapon:royalSword"
-      ]
-    },
-    {
-      "room": "13_17",
-      "requires": [],
-      "receive": [
-        "weapon:royalStaff"
-      ]
-    },
-    {
-      "room": "20_20",
-      "requires": [],
-      "receive": [
-        "armor:vest"
-      ]
-    },
-    {
-      "room": "20_20",
-      "requires": [],
-      "receive": [
-        "armor:robe"
-      ]
-    },
-    {
-      "room": "20_20",
-      "requires": [],
-      "receive": [
-        "armor:iron"
-      ]
-    },
-    {
-      "room": "13_17",
-      "requires": [],
-      "receive": [
-        "armor:royalArmor"
-      ]
-    },
-    {
-      "room": "13_17",
-      "requires": [],
-      "receive": [
-        "armor:mysticCloak"
-      ]
-    },
-    {
-      "room": "12_9",
-      "requires": [],
-      "receive": [
-        "armor:sunArmor"
-      ]
-    },
-    {
-      "room": "12_9",
-      "requires": [],
-      "receive": [
-        "armor:speedVest"
       ]
     },
     {
@@ -12177,21 +11797,6 @@
     {
       "room": "200_200",
       "requires": [
-        [
-          "item:sTooth#10"
-        ],
-        [
-          "item:dScale#3"
-        ],
-        [
-          "item:sTooth#5"
-        ],
-        [
-          "item:vHorn#5"
-        ],
-        [
-          "item:oArm#5"
-        ],
         [
           "item:vHorn#20"
         ],
@@ -12213,222 +11818,148 @@
       "room": "18_25",
       "requires": [
         [
-          "item:sTooth#30"
-        ],
-        [
-          "item:oArm#40"
-        ],
-        [
-          "item:cShell#25"
-        ],
-        [
-          "item:oCoin#110"
-        ],
-        [
-          "item:mHorn#5"
-        ],
-        [
-          "item:aScepter#3"
-        ],
-        [
-          "item:gFeather#3"
-        ],
-        [
-          "item:aScepter#5"
+          "item:tBand#2"
         ]
       ],
       "receive": [
-        "skill:medic"
+        "skill:medic.1"
       ]
     },
     {
       "room": "18_25",
       "requires": [
         [
-          "item:oArm#40"
-        ],
-        [
-          "item:cShell#25"
-        ],
-        [
-          "item:oCoin#110"
-        ],
-        [
-          "item:mHorn#5"
-        ],
-        [
-          "item:aScepter#3"
-        ],
-        [
-          "item:gFeather#3"
-        ],
-        [
-          "item:aScepter#5"
-        ],
-        [
-          "item:kCrest#10"
-        ],
-        [
-          "item:aAxe#5"
-        ]
-      ],
-      "receive": [
-        "skill:medic"
-      ]
-    },
-    {
-      "room": "18_25",
-      "requires": [
-        [
-          "item:mHorn#5"
-        ],
-        [
-          "item:aScepter#3"
-        ],
-        [
-          "item:gFeather#3"
-        ],
-        [
-          "item:aScepter#5"
-        ],
-        [
-          "item:kCrest#10"
-        ],
-        [
-          "item:aAxe#5"
-        ],
-        [
-          "item:dScale#10"
-        ],
-        [
-          "item:gSkin#10"
-        ]
-      ],
-      "receive": [
-        "skill:medic"
-      ]
-    },
-    {
-      "room": "18_25",
-      "requires": [
-        [
-          "item:gFeather#3"
-        ],
-        [
-          "item:aScepter#5"
-        ],
-        [
-          "item:kCrest#10"
-        ],
-        [
-          "item:aAxe#5"
-        ],
-        [
-          "item:dScale#10"
-        ],
-        [
-          "item:gSkin#10"
-        ],
-        [
-          "item:oCoin#20"
-        ],
-        [
-          "item:mStaff#10"
-        ]
-      ],
-      "receive": [
-        "skill:medic"
-      ]
-    },
-    {
-      "room": "18_25",
-      "requires": [
-        [
-          "item:gFeather#3"
-        ],
-        [
-          "item:aScepter#5"
-        ],
-        [
-          "item:kCrest#10"
-        ],
-        [
-          "item:aAxe#5"
-        ],
-        [
-          "item:dScale#10"
-        ],
-        [
-          "item:gSkin#10"
-        ],
-        [
-          "item:oCoin#20"
-        ],
-        [
-          "item:mStaff#10"
+          "item:tBand#2"
         ],
         [
           "item:cFang#5"
         ]
       ],
       "receive": [
-        "skill:medic"
+        "skill:medic.2"
       ]
     },
     {
       "room": "18_25",
       "requires": [
         [
-          "item:kCrest#10"
-        ],
-        [
-          "item:aAxe#5"
-        ],
-        [
-          "item:dScale#10"
-        ],
-        [
-          "item:gSkin#10"
-        ],
-        [
-          "item:oCoin#20"
-        ],
-        [
-          "item:mStaff#10"
+          "item:tBand#2"
         ],
         [
           "item:cFang#5"
         ],
         [
-          "item:tBand#2"
+          "item:mStaff#10"
+        ],
+        [
+          "item:oCoin#20"
         ]
       ],
       "receive": [
-        "skill:medic"
+        "skill:medic.3"
       ]
     },
     {
-      "room": "19_22",
+      "room": "18_25",
       "requires": [
         [
           "item:tBand#2"
         ],
         [
-          "item:vAsh#30"
+          "item:cFang#5"
         ],
         [
-          "item:cThread#10"
+          "item:mStaff#10"
+        ],
+        [
+          "item:oCoin#20"
+        ],
+        [
+          "item:gSkin#10"
+        ],
+        [
+          "item:dScale#10"
         ]
       ],
       "receive": [
-        "skill:reveal"
+        "skill:medic.4"
+      ]
+    },
+    {
+      "room": "18_25",
+      "requires": [
+        [
+          "item:tBand#2"
+        ],
+        [
+          "item:cFang#5"
+        ],
+        [
+          "item:mStaff#10"
+        ],
+        [
+          "item:oCoin#20"
+        ],
+        [
+          "item:gSkin#10"
+        ],
+        [
+          "item:dScale#10"
+        ],
+        [
+          "item:aAxe#5"
+        ],
+        [
+          "item:kCrest#10"
+        ]
+      ],
+      "receive": [
+        "skill:medic.5"
+      ]
+    },
+    {
+      "room": "18_25",
+      "requires": [
+        [
+          "item:tBand#2"
+        ],
+        [
+          "item:cFang#5"
+        ],
+        [
+          "item:mStaff#10"
+        ],
+        [
+          "item:oCoin#20"
+        ],
+        [
+          "item:gSkin#10"
+        ],
+        [
+          "item:dScale#10"
+        ],
+        [
+          "item:aAxe#5"
+        ],
+        [
+          "item:kCrest#10"
+        ],
+        [
+          "item:gFeather#3"
+        ],
+        [
+          "item:aScepter#5"
+        ]
+      ],
+      "receive": [
+        "skill:medic.6"
       ]
     },
     {
       "room": "11_12",
       "requires": [
         [
-          "item:oCoin#20"
+          "item:gold#100"
         ]
       ],
       "receive": [
@@ -12451,58 +11982,36 @@
     },
     {
       "room": "6_13",
-      "requires": [],
+      "requires": [
+        [
+          "item:key#1"
+        ]
+      ],
       "receive": [
-        "food:grapes"
-      ]
-    },
-    {
-      "room": "6_13",
-      "requires": [],
-      "receive": [
-        "food:strawberry"
-      ]
-    },
-    {
-      "room": "11_19",
-      "requires": [],
-      "receive": [
-        "food:sunflowerSeeds"
+        "food:grapes#5"
       ]
     },
     {
       "room": "11_19",
-      "requires": [],
+      "requires": [
+        [
+          "item:key#1"
+        ]
+      ],
       "receive": [
+        "food:sunflowerSeeds",
         "food:strawberry"
       ]
     },
     {
-      "room": "23_10",
-      "requires": [],
-      "receive": [
-        "item:diamonds"
-      ]
-    },
-    {
-      "room": "23_10",
-      "requires": [],
-      "receive": [
-        "food:newtonsApple"
-      ]
-    },
-    {
       "room": "17_20",
-      "requires": [],
+      "requires": [
+        [
+          "item:gold"
+        ]
+      ],
       "receive": [
-        "item:gold"
-      ]
-    },
-    {
-      "room": "17_20",
-      "requires": [],
-      "receive": [
-        "food:beefJerky"
+        "food:beefJerky#1"
       ]
     },
     {
@@ -12520,203 +12029,14 @@
       ]
     },
     {
-      "room": "9_26",
-      "requires": [],
-      "receive": [
-        "food:blueberries"
-      ]
-    },
-    {
       "room": "21_11",
-      "requires": [],
-      "receive": [
-        "food:gummyBears"
-      ]
-    },
-    {
-      "room": "24_11",
-      "requires": [],
-      "receive": [
-        "weapon:baneBlade"
-      ]
-    },
-    {
-      "room": "21_21",
       "requires": [
         [
-          "item:wPelt#2"
-        ],
-        [
-          "item:tBand#5"
-        ],
-        [
-          "item:tBand#5"
-        ],
-        [
-          "item:gSkin#2"
+          "item:key#1"
         ]
       ],
       "receive": [
-        "skill:craft"
-      ]
-    },
-    {
-      "room": "9_22",
-      "requires": [
-        [
-          "item:wPelt#2"
-        ],
-        [
-          "item:tBand#5"
-        ],
-        [
-          "item:tBand#5"
-        ],
-        [
-          "item:gSkin#2"
-        ],
-        [
-          "food:honey#5"
-        ]
-      ],
-      "receive": [
-        "magic:doubleDown"
-      ]
-    },
-    {
-      "room": "21_20",
-      "requires": [
-        [
-          "item:wPelt#2"
-        ],
-        [
-          "item:tBand#5"
-        ],
-        [
-          "item:tBand#5"
-        ],
-        [
-          "item:gSkin#2"
-        ],
-        [
-          "food:honey#5"
-        ]
-      ],
-      "receive": [
-        "magic:crush"
-      ]
-    },
-    {
-      "room": "18_20",
-      "requires": [
-        [
-          "item:wPelt#2"
-        ],
-        [
-          "item:tBand#5"
-        ],
-        [
-          "item:tBand#5"
-        ],
-        [
-          "item:gSkin#2"
-        ],
-        [
-          "food:honey#5"
-        ]
-      ],
-      "receive": [
-        "item:gold"
-      ]
-    },
-    {
-      "room": "6_12",
-      "requires": [
-        [
-          "item:wPelt#2"
-        ],
-        [
-          "item:tBand#5"
-        ],
-        [
-          "item:tBand#5"
-        ],
-        [
-          "item:gSkin#2"
-        ],
-        [
-          "food:honey#5"
-        ]
-      ],
-      "receive": [
-        "geode"
-      ]
-    },
-    {
-      "room": "17_16",
-      "requires": [
-        [
-          "item:tBand#5"
-        ],
-        [
-          "item:gSkin#2"
-        ],
-        [
-          "food:honey#5"
-        ]
-      ],
-      "receive": [
-        "item:diamonds"
-      ]
-    },
-    {
-      "room": "18_17",
-      "requires": [
-        [
-          "item:tBand#5"
-        ],
-        [
-          "item:gSkin#2"
-        ],
-        [
-          "food:honey#5"
-        ]
-      ],
-      "receive": [
-        "item:gold"
-      ]
-    },
-    {
-      "room": "15_19",
-      "requires": [
-        [
-          "food:honey#5"
-        ]
-      ],
-      "receive": [
-        "item:gold"
-      ]
-    },
-    {
-      "room": "15_19",
-      "requires": [
-        [
-          "food:honey#5"
-        ]
-      ],
-      "receive": [
-        "item:bombs"
-      ]
-    },
-    {
-      "room": "15_19",
-      "requires": [
-        [
-          "food:honey#5"
-        ]
-      ],
-      "receive": [
-        "food:banana"
+        "food:gummyBears#5"
       ]
     },
     {
@@ -12727,45 +12047,10 @@
       ]
     },
     {
-      "room": "14_15",
-      "requires": [],
-      "receive": [
-        "item:bombs"
-      ]
-    },
-    {
-      "room": "14_15",
-      "requires": [],
-      "receive": [
-        "food:orange"
-      ]
-    },
-    {
-      "room": "24_14",
-      "requires": [],
-      "receive": [
-        "armor:grimGear"
-      ]
-    },
-    {
-      "room": "9_15",
-      "requires": [],
-      "receive": [
-        "armor:phantomCoat"
-      ]
-    },
-    {
       "room": "15_21",
       "requires": [],
       "receive": [
         "item:gold"
-      ]
-    },
-    {
-      "room": "15_21",
-      "requires": [],
-      "receive": [
-        "item:bombs"
       ]
     },
     {
@@ -12773,55 +12058,6 @@
       "requires": [],
       "receive": [
         "food:cherries"
-      ]
-    },
-    {
-      "room": "6_10",
-      "requires": [],
-      "receive": [
-        "food:chocolate"
-      ]
-    },
-    {
-      "room": "9_10",
-      "requires": [],
-      "receive": [
-        "item:gold"
-      ]
-    },
-    {
-      "room": "11_17",
-      "requires": [],
-      "receive": [
-        "item:bombs"
-      ]
-    },
-    {
-      "room": "11_17",
-      "requires": [],
-      "receive": [
-        "item:gold"
-      ]
-    },
-    {
-      "room": "14_21",
-      "requires": [],
-      "receive": [
-        "item:bombs"
-      ]
-    },
-    {
-      "room": "14_21",
-      "requires": [],
-      "receive": [
-        "food:apple"
-      ]
-    },
-    {
-      "room": "14_21",
-      "requires": [],
-      "receive": [
-        "item:gold"
       ]
     },
     {
@@ -12836,31 +12072,6 @@
       "requires": [],
       "receive": [
         "weapon:warlockStaff"
-      ]
-    },
-    {
-      "room": "15_14",
-      "requires": [],
-      "receive": [
-        "food:carrot"
-      ]
-    },
-    {
-      "room": "9_23",
-      "requires": [],
-      "receive": [
-        "magic:drain"
-      ]
-    },
-    {
-      "room": "15_16",
-      "requires": [
-        [
-          "item:mStaff#20"
-        ]
-      ],
-      "receive": [
-        "magic:ice"
       ]
     },
     {
@@ -12886,48 +12097,12 @@
       ]
     },
     {
-      "room": "13_16",
-      "requires": [
-        [
-          "item:mStaff#20"
-        ]
-      ],
-      "receive": [
-        "magic:weak"
-      ]
-    },
-    {
-      "room": "14_19",
-      "requires": [
-        [
-          "item:vAsh#6"
-        ]
-      ],
-      "receive": [
-        "armor:regenArmor"
-      ]
-    },
-    {
-      "room": "16_22",
-      "requires": [
-        [
-          "item:vAsh#6"
-        ]
-      ],
-      "receive": [
-        "item:gold"
-      ]
-    },
-    {
-      "room": "19_23",
-      "requires": [],
-      "receive": [
-        "magic:fire"
-      ]
-    },
-    {
       "room": "18_21",
-      "requires": [],
+      "requires": [
+        [
+          "item:key#1"
+        ]
+      ],
       "receive": [
         "food:gingerBread"
       ]
@@ -12943,21 +12118,7 @@
       "room": "12_21",
       "requires": [],
       "receive": [
-        "food:banana"
-      ]
-    },
-    {
-      "room": "12_21",
-      "requires": [],
-      "receive": [
         "item:diamonds"
-      ]
-    },
-    {
-      "room": "8_18",
-      "requires": [],
-      "receive": [
-        "item:bombs"
       ]
     },
     {
@@ -12968,31 +12129,10 @@
       ]
     },
     {
-      "room": "17_15",
-      "requires": [],
-      "receive": [
-        "item:gold"
-      ]
-    },
-    {
-      "room": "17_15",
-      "requires": [],
-      "receive": [
-        "food:gingerBread"
-      ]
-    },
-    {
       "room": "8_10",
       "requires": [],
       "receive": [
         "item:gold#Enum.Craft.emerald"
-      ]
-    },
-    {
-      "room": "8_10",
-      "requires": [],
-      "receive": [
-        "food:beefJerky"
       ]
     },
     {
@@ -13018,100 +12158,13 @@
     },
     {
       "room": "9_25",
-      "requires": [],
+      "requires": [
+        [
+          "item:emerald"
+        ]
+      ],
       "receive": [
-        "food:elixir"
-      ]
-    },
-    {
-      "room": "23_10",
-      "requires": [],
-      "receive": [
-        "armor:alphaArmor"
-      ]
-    },
-    {
-      "room": "3_26",
-      "requires": [],
-      "receive": [
-        "food:elixir"
-      ]
-    },
-    {
-      "room": "16_24",
-      "requires": [],
-      "receive": [
-        "food:gummyBears"
-      ]
-    },
-    {
-      "room": "16_24",
-      "requires": [],
-      "receive": [
-        "item:gold"
-      ]
-    },
-    {
-      "room": "16_25",
-      "requires": [],
-      "receive": [
-        "food:steak"
-      ]
-    },
-    {
-      "room": "16_25",
-      "requires": [],
-      "receive": [
-        "item:diamonds"
-      ]
-    },
-    {
-      "room": "12_25",
-      "requires": [],
-      "receive": [
-        "food:gummyBears"
-      ]
-    },
-    {
-      "room": "12_25",
-      "requires": [],
-      "receive": [
-        "item:diamonds"
-      ]
-    },
-    {
-      "room": "18_15",
-      "requires": [],
-      "receive": [
-        "food:newtonsApple"
-      ]
-    },
-    {
-      "room": "11_25",
-      "requires": [],
-      "receive": [
-        "food:beefJerky"
-      ]
-    },
-    {
-      "room": "16_15",
-      "requires": [],
-      "receive": [
-        "armor:diamondArmor"
-      ]
-    },
-    {
-      "room": "17_22",
-      "requires": [],
-      "receive": [
-        "item:diamonds"
-      ]
-    },
-    {
-      "room": "15_18",
-      "requires": [],
-      "receive": [
-        "item:bombs"
+        "food:elixir#1"
       ]
     },
     {
@@ -13122,31 +12175,10 @@
       ]
     },
     {
-      "room": "12_12",
-      "requires": [],
-      "receive": [
-        "magic:blessing"
-      ]
-    },
-    {
       "room": "19_18",
       "requires": [],
       "receive": [
         "rubies"
-      ]
-    },
-    {
-      "room": "19_20",
-      "requires": [],
-      "receive": [
-        "item:gold#20"
-      ]
-    },
-    {
-      "room": "19_20",
-      "requires": [],
-      "receive": [
-        "food:gingerBread"
       ]
     },
     {
@@ -13165,18 +12197,6 @@
       "requires": [],
       "receive": [
         "food:peppers"
-      ]
-    },
-    {
-      "room": "9_22",
-      "requires": [
-        [
-          "quest:seeds.3"
-        ]
-      ],
-      "receive": [
-        "food:peppers#3",
-        "food:orange#10"
       ]
     },
     {
@@ -13235,560 +12255,720 @@
     },
     {
       "room": "19_16",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:14"
       ]
     },
     {
       "room": "21_20",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:0"
       ]
     },
     {
       "room": "20_20",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:0"
       ]
     },
     {
       "room": "19_20",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:1"
       ]
     },
     {
       "room": "18_20",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:1"
       ]
     },
     {
       "room": "17_20",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:1"
       ]
     },
     {
       "room": "16_20",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:3"
       ]
     },
     {
       "room": "15_20",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:3"
       ]
     },
     {
       "room": "14_20",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:3.1"
       ]
     },
     {
       "room": "13_20",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:3"
       ]
     },
     {
       "room": "12_20",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:1"
       ]
     },
     {
       "room": "11_20",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16.1"
       ]
     },
     {
       "room": "10_20",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16.1"
       ]
     },
     {
       "room": "9_20",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16.1"
       ]
     },
     {
       "room": "8_20",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "7_20",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "6_20",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "5_20",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "4_20",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "3_20",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "2_20",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "3_21",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "3_22",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "4_21",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "5_21",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "6_21",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "7_21",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "8_21",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:8"
       ]
     },
     {
       "room": "9_21",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:3"
       ]
     },
     {
       "room": "10_21",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16.1"
       ]
     },
     {
       "room": "11_21",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:3"
       ]
     },
     {
       "room": "12_21",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:1"
       ]
     },
     {
       "room": "13_21",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:3"
       ]
     },
     {
       "room": "14_21",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:3"
       ]
     },
     {
       "room": "15_21",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:3"
       ]
     },
     {
       "room": "16_21",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:3"
       ]
     },
     {
       "room": "17_21",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:3.3"
       ]
     },
     {
       "room": "18_21",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:1"
       ]
     },
     {
       "room": "19_21",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:1"
       ]
     },
     {
       "room": "20_21",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:3"
       ]
     },
     {
       "room": "21_21",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:0"
       ]
     },
     {
       "room": "22_21",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:0"
       ]
     },
     {
       "room": "21_22",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "20_22",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "19_22",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:15"
       ]
     },
     {
       "room": "18_22",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:1"
       ]
     },
     {
       "room": "17_22",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:3"
       ]
     },
     {
       "room": "16_22",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:3"
       ]
     },
     {
       "room": "15_22",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "14_22",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "13_22",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:3"
       ]
     },
     {
       "room": "12_22",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:3"
       ]
     },
     {
       "room": "11_22",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "10_22",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:8"
       ]
     },
     {
       "room": "9_22",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:8.1"
       ]
     },
     {
       "room": "8_22",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:8"
       ]
     },
     {
       "room": "7_22",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:8"
       ]
     },
     {
       "room": "6_22",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:8"
       ]
     },
     {
       "room": "7_23",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:8"
       ]
     },
     {
       "room": "6_23",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:8"
       ]
     },
     {
       "room": "5_23",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:9"
       ]
     },
     {
       "room": "4_23",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:9"
       ]
     },
     {
       "room": "3_23",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:9"
       ]
     },
     {
       "room": "2_23",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:9"
       ]
     },
     {
       "room": "3_24",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:9"
       ]
     },
     {
       "room": "4_24",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:9"
       ]
     },
     {
       "room": "5_24",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:9.1"
       ]
     },
     {
       "room": "6_24",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:8"
       ]
     },
     {
       "room": "7_24",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:8"
       ]
     },
     {
       "room": "8_24",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:8"
       ]
     },
     {
       "room": "8_23",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:8"
       ]
     },
     {
       "room": "9_23",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:8"
       ]
     },
     {
       "room": "10_23",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "11_23",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "12_23",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "13_23",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "14_23",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "15_23",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "16_23",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "17_23",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2",
         "area:str up npc"
@@ -13796,203 +12976,261 @@
     },
     {
       "room": "18_23",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "19_23",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "20_23",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "21_23",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "22_23",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "22_24",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "21_24",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "20_24",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "20_25",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "19_25",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "18_25",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "18_24",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "17_24",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "19_24",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "16_24",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "15_24",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "14_24",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:13"
       ]
     },
     {
       "room": "13_24",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:13"
       ]
     },
     {
       "room": "12_24",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "11_24",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "10_24",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:8"
       ]
     },
     {
       "room": "9_24",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:8"
       ]
     },
     {
       "room": "2_24",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:9"
       ]
     },
     {
       "room": "3_25",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:9"
       ]
     },
     {
       "room": "4_25",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:9"
       ]
     },
     {
       "room": "5_25",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:9"
       ]
     },
     {
       "room": "6_25",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:9"
       ]
     },
     {
       "room": "7_25",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:8"
       ]
     },
     {
       "room": "8_25",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:8",
         "area:str up npc"
@@ -14000,679 +13238,864 @@
     },
     {
       "room": "9_25",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:8"
       ]
     },
     {
       "room": "10_25",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:8"
       ]
     },
     {
       "room": "11_25",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:8"
       ]
     },
     {
       "room": "12_25",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:13"
       ]
     },
     {
       "room": "13_25",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:13"
       ]
     },
     {
       "room": "14_25",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:13"
       ]
     },
     {
       "room": "15_25",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "16_25",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "17_25",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "19_26",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "18_26",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "17_26",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "16_26",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:2"
       ]
     },
     {
       "room": "13_26",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:13"
       ]
     },
     {
       "room": "14_26",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:13"
       ]
     },
     {
       "room": "12_26",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:13"
       ]
     },
     {
       "room": "11_26",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:13"
       ]
     },
     {
       "room": "10_26",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:13"
       ]
     },
     {
       "room": "9_26",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:8"
       ]
     },
     {
       "room": "8_26",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:8"
       ]
     },
     {
       "room": "100_100",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:17"
       ]
     },
     {
       "room": "200_200",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:17"
       ]
     },
     {
       "room": "201_200",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:17"
       ]
     },
     {
       "room": "300_300",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:17"
       ]
     },
     {
       "room": "500_500",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:1.19"
       ]
     },
     {
       "room": "500_501",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:1.19"
       ]
     },
     {
       "room": "501_501",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:1.19"
       ]
     },
     {
       "room": "501_500",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:1.19"
       ]
     },
     {
       "room": "3_19",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "4_19",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "5_19",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "6_19",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "7_19",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "8_19",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:5"
       ]
     },
     {
       "room": "9_19",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:5"
       ]
     },
     {
       "room": "10_19",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:5.1"
       ]
     },
     {
       "room": "11_19",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16.1"
       ]
     },
     {
       "room": "12_19",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:1"
       ]
     },
     {
       "room": "13_19",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:3"
       ]
     },
     {
       "room": "14_19",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:3"
       ]
     },
     {
       "room": "15_19",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:3"
       ]
     },
     {
       "room": "16_19",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:3"
       ]
     },
     {
       "room": "17_19",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:1"
       ]
     },
     {
       "room": "18_19",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:1"
       ]
     },
     {
       "room": "19_19",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:1"
       ]
     },
     {
       "room": "20_19",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:1"
       ]
     },
     {
       "room": "18_18",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:12"
       ]
     },
     {
       "room": "19_18",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:12"
       ]
     },
     {
       "room": "20_18",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:12"
       ]
     },
     {
       "room": "21_18",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:12"
       ]
     },
     {
       "room": "22_18",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:12"
       ]
     },
     {
       "room": "17_18",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:3"
       ]
     },
     {
       "room": "16_18",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:3"
       ]
     },
     {
       "room": "15_18",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:0"
       ]
     },
     {
       "room": "14_18",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:0"
       ]
     },
     {
       "room": "13_18",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:0"
       ]
     },
     {
       "room": "12_18",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:1"
       ]
     },
     {
       "room": "11_18",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:5"
       ]
     },
     {
       "room": "10_18",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:5"
       ]
     },
     {
       "room": "9_18",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:5"
       ]
     },
     {
       "room": "8_18",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:5"
       ]
     },
     {
       "room": "7_18",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "6_18",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "5_18",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "4_18",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "3_18",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "2_18",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "2_17",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "3_17",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "4_17",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "5_17",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "6_17",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "7_17",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "8_17",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:5"
       ]
     },
     {
       "room": "9_17",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:5"
       ]
     },
     {
       "room": "10_17",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:5"
       ]
     },
     {
       "room": "11_17",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:5"
       ]
     },
     {
       "room": "12_17",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:1"
       ]
     },
     {
       "room": "13_17",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:0"
       ]
     },
     {
       "room": "14_17",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:0"
       ]
     },
     {
       "room": "15_17",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:0"
       ]
     },
     {
       "room": "16_17",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:4"
       ]
     },
     {
       "room": "17_17",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:4"
       ]
     },
     {
       "room": "18_17",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:12"
       ]
     },
     {
       "room": "19_17",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:12"
       ]
     },
     {
       "room": "20_17",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:12"
       ]
     },
     {
       "room": "21_17",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:12"
       ]
     },
     {
       "room": "22_17",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:12"
       ]
     },
     {
       "room": "21_16",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:12"
       ]
     },
     {
-      "room": "19_16",
-      "requires": [],
-      "receive": [
-        "area:14"
-      ]
-    },
-    {
       "room": "18_16",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:4"
       ]
     },
     {
       "room": "17_16",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:4"
       ]
     },
     {
       "room": "16_16",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:4"
       ]
     },
     {
       "room": "15_16",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:4"
       ]
     },
     {
       "room": "14_16",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:4"
       ]
     },
     {
       "room": "13_16",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:1"
       ]
     },
     {
       "room": "12_16",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:1",
         "area:str up npc"
@@ -14680,749 +14103,963 @@
     },
     {
       "room": "11_16",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:5"
       ]
     },
     {
       "room": "10_16",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:1"
       ]
     },
     {
       "room": "9_16",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:1"
       ]
     },
     {
       "room": "8_16",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "7_16",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "6_16",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "5_16",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "4_16",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "3_16",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "3_15",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "4_15",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "5_15",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "6_15",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "7_15",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "8_15",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "9_15",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:1"
       ]
     },
     {
       "room": "10_15",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:1"
       ]
     },
     {
       "room": "11_15",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:1"
       ]
     },
     {
       "room": "12_15",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:1"
       ]
     },
     {
       "room": "13_15",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:4"
       ]
     },
     {
       "room": "14_15",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:4"
       ]
     },
     {
       "room": "15_15",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:4"
       ]
     },
     {
       "room": "16_15",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:4"
       ]
     },
     {
       "room": "17_15",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:4"
       ]
     },
     {
       "room": "18_15",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:4"
       ]
     },
     {
       "room": "19_15",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:14"
       ]
     },
     {
       "room": "20_15",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:14"
       ]
     },
     {
       "room": "19_14",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:4.1"
       ]
     },
     {
       "room": "18_14",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:4.1"
       ]
     },
     {
       "room": "17_14",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:4.1"
       ]
     },
     {
       "room": "16_14",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:4"
       ]
     },
     {
       "room": "15_14",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:4"
       ]
     },
     {
       "room": "14_14",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:4"
       ]
     },
     {
       "room": "13_14",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:4"
       ]
     },
     {
       "room": "12_14",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:3"
       ]
     },
     {
       "room": "11_14",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:3"
       ]
     },
     {
       "room": "10_14",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:3"
       ]
     },
     {
       "room": "9_14",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:5"
       ]
     },
     {
       "room": "8_14",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "7_14",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "6_14",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "5_14",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "4_14",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "3_14",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "3_13",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "4_13",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "5_13",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "6_13",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "7_13",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "8_13",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16"
       ]
     },
     {
       "room": "9_13",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:5"
       ]
     },
     {
       "room": "10_13",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:9"
       ]
     },
     {
       "room": "11_13",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:4"
       ]
     },
     {
       "room": "12_13",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:4"
       ]
     },
     {
       "room": "13_13",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:4"
       ]
     },
     {
       "room": "14_13",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:4"
       ]
     },
     {
       "room": "15_13",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:4"
       ]
     },
     {
       "room": "16_13",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:4"
       ]
     },
     {
       "room": "18_13",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:10"
       ]
     },
     {
       "room": "19_13",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:10"
       ]
     },
     {
       "room": "20_13",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:10"
       ]
     },
     {
       "room": "21_13",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11"
       ]
     },
     {
       "room": "22_13",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11"
       ]
     },
     {
       "room": "22_14",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11"
       ]
     },
     {
       "room": "21_14",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11"
       ]
     },
     {
       "room": "20_14",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11"
       ]
     },
     {
       "room": "23_14",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11"
       ]
     },
     {
       "room": "24_14",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11"
       ]
     },
     {
       "room": "24_13",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11"
       ]
     },
     {
       "room": "23_13",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11"
       ]
     },
     {
       "room": "20_12",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:10"
       ]
     },
     {
       "room": "21_12",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11"
       ]
     },
     {
       "room": "22_12",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11"
       ]
     },
     {
       "room": "23_12",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11"
       ]
     },
     {
       "room": "24_12",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11"
       ]
     },
     {
       "room": "25_12",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11"
       ]
     },
     {
       "room": "25_11",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11"
       ]
     },
     {
       "room": "24_11",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11"
       ]
     },
     {
       "room": "23_11",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11"
       ]
     },
     {
       "room": "22_11",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11"
       ]
     },
     {
       "room": "21_11",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11"
       ]
     },
     {
       "room": "20_11",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11"
       ]
     },
     {
       "room": "20_10",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11"
       ]
     },
     {
       "room": "21_10",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11"
       ]
     },
     {
       "room": "22_10",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11"
       ]
     },
     {
       "room": "23_10",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11"
       ]
     },
     {
       "room": "23_9",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11.3"
       ]
     },
     {
       "room": "24_10",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11"
       ]
     },
     {
       "room": "24_9",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11.4"
       ]
     },
     {
       "room": "22_9",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11.2"
       ]
     },
     {
       "room": "21_9",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11.1"
       ]
     },
     {
       "room": "20_9",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11.1"
       ]
     },
     {
       "room": "19_9",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:11.1"
       ]
     },
     {
       "room": "19_10",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:15"
       ]
     },
     {
       "room": "18_10",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:15"
       ]
     },
     {
       "room": "18_9",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:15"
       ]
     },
     {
       "room": "19_11",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:15"
       ]
     },
     {
       "room": "18_11",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:15"
       ]
     },
     {
       "room": "17_10",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:15"
       ]
     },
     {
       "room": "17_11",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:15"
       ]
     },
     {
       "room": "16_11",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:15"
       ]
     },
     {
       "room": "16_10",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:15"
       ]
     },
     {
       "room": "12_12",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:6"
       ]
     },
     {
       "room": "11_12",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:6"
       ]
     },
     {
       "room": "10_12",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:6"
       ]
     },
     {
       "room": "9_12",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:6"
       ]
     },
     {
       "room": "8_12",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:6",
         "area:str up npc"
@@ -15430,252 +15067,324 @@
     },
     {
       "room": "7_12",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:7"
       ]
     },
     {
       "room": "6_12",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:7.1"
       ]
     },
     {
       "room": "5_12",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:7.1"
       ]
     },
     {
       "room": "5_11",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:7"
       ]
     },
     {
       "room": "6_11",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:7"
       ]
     },
     {
       "room": "4_11",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:7"
       ]
     },
     {
       "room": "3_11",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:7"
       ]
     },
     {
       "room": "7_11",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:7.1"
       ]
     },
     {
       "room": "8_11",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:6"
       ]
     },
     {
       "room": "9_11",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:6"
       ]
     },
     {
       "room": "10_11",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:6"
       ]
     },
     {
       "room": "11_11",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:6"
       ]
     },
     {
       "room": "12_11",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:6"
       ]
     },
     {
       "room": "13_11",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:6"
       ]
     },
     {
       "room": "13_10",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:6"
       ]
     },
     {
       "room": "12_10",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:6"
       ]
     },
     {
       "room": "11_10",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:6"
       ]
     },
     {
       "room": "10_10",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:6"
       ]
     },
     {
       "room": "9_10",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:6"
       ]
     },
     {
       "room": "8_10",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:6"
       ]
     },
     {
       "room": "7_10",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:7.2"
       ]
     },
     {
       "room": "6_10",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:7"
       ]
     },
     {
       "room": "5_10",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:7"
       ]
     },
     {
       "room": "4_10",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:7"
       ]
     },
     {
       "room": "4_9",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:7"
       ]
     },
     {
       "room": "5_9",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:7"
       ]
     },
     {
       "room": "6_9",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:7"
       ]
     },
     {
       "room": "7_9",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:7.1"
       ]
     },
     {
       "room": "8_9",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:6"
       ]
     },
     {
       "room": "9_9",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:6"
       ]
     },
     {
       "room": "10_9",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:6"
       ]
     },
     {
       "room": "11_9",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:6.1"
       ]
     },
     {
       "room": "12_9",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:6.1"
       ]
     },
     {
       "room": "13_9",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:6.1"
       ]
     },
     {
       "room": "10.1_21",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:16.1"
       ]
     },
     {
       "room": "17.1_19",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "area:3"
       ]
@@ -15993,7 +15702,7 @@
       },
       {
         "room": "15_21",
-        "raw": "item:gold#0"
+        "raw": "item:gold#manager.fame * 5"
       },
       {
         "room": "14_21",
@@ -16009,7 +15718,7 @@
       },
       {
         "room": "15_24",
-        "raw": "item:gold#2"
+        "raw": "item:gold#correct"
       },
       {
         "room": "16_24",
@@ -16020,23 +15729,7 @@
         "raw": "item:gold"
       },
       {
-        "room": "17_20",
-        "raw": "item:gold"
-      },
-      {
         "room": "15_24",
-        "raw": "item:gold"
-      },
-      {
-        "room": "18_20",
-        "raw": "item:gold"
-      },
-      {
-        "room": "18_17",
-        "raw": "item:gold"
-      },
-      {
-        "room": "15_19",
         "raw": "item:gold"
       },
       {
@@ -16044,28 +15737,8 @@
         "raw": "item:gold"
       },
       {
-        "room": "9_10",
-        "raw": "item:gold"
-      },
-      {
-        "room": "11_17",
-        "raw": "item:gold"
-      },
-      {
-        "room": "14_21",
-        "raw": "item:gold"
-      },
-      {
-        "room": "16_22",
-        "raw": "item:gold"
-      },
-      {
         "room": "18_19",
         "raw": "item:gold#Enum.Craft.emerald"
-      },
-      {
-        "room": "17_15",
-        "raw": "item:gold"
       },
       {
         "room": "8_10",
@@ -16074,14 +15747,6 @@
       {
         "room": "9_25",
         "raw": "item:gold#Enum.Craft.emerald"
-      },
-      {
-        "room": "16_24",
-        "raw": "item:gold"
-      },
-      {
-        "room": "19_20",
-        "raw": "item:gold#20"
       },
       {
         "room": "14_18",
@@ -16282,14 +15947,6 @@
       {
         "room": "12_21",
         "raw": "food:banana#20"
-      },
-      {
-        "room": "15_19",
-        "raw": "food:banana"
-      },
-      {
-        "room": "12_21",
-        "raw": "food:banana"
       }
     ],
     "food:orange": [
@@ -16316,70 +15973,6 @@
       {
         "room": "14_15",
         "raw": "food:orange#12"
-      },
-      {
-        "room": "14_15",
-        "raw": "food:orange"
-      },
-      {
-        "room": "9_22",
-        "raw": "food:orange#10"
-      }
-    ],
-    "weapon:club": [
-      {
-        "room": "20_20",
-        "raw": "weapon:club"
-      },
-      {
-        "room": "20_20",
-        "raw": "weapon:club"
-      },
-      {
-        "room": "20_20",
-        "raw": "weapon:club"
-      }
-    ],
-    "weapon:dagger": [
-      {
-        "room": "20_20",
-        "raw": "weapon:dagger"
-      },
-      {
-        "room": "20_20",
-        "raw": "weapon:dagger"
-      },
-      {
-        "room": "20_20",
-        "raw": "weapon:dagger"
-      }
-    ],
-    "weapon:sword": [
-      {
-        "room": "20_20",
-        "raw": "weapon:sword"
-      },
-      {
-        "room": "20_20",
-        "raw": "weapon:sword"
-      },
-      {
-        "room": "20_20",
-        "raw": "weapon:sword"
-      }
-    ],
-    "armor:vest": [
-      {
-        "room": "20_20",
-        "raw": "armor:vest"
-      },
-      {
-        "room": "20_20",
-        "raw": "armor:vest"
-      },
-      {
-        "room": "20_20",
-        "raw": "armor:vest"
       }
     ],
     "armor:magic robe": [
@@ -16406,24 +15999,12 @@
       {
         "room": "20_20",
         "raw": "food:apple"
-      },
-      {
-        "room": "20_20",
-        "raw": "food:apple"
-      },
-      {
-        "room": "14_21",
-        "raw": "food:apple"
       }
     ],
     "food:honey": [
       {
         "room": "20_20",
         "raw": "food:honey#inf"
-      },
-      {
-        "room": "20_20",
-        "raw": "food:honey"
       },
       {
         "room": "20_20",
@@ -16440,12 +16021,8 @@
         "raw": "food:grapes"
       },
       {
-        "room": "20_20",
-        "raw": "food:grapes"
-      },
-      {
         "room": "6_13",
-        "raw": "food:grapes"
+        "raw": "food:grapes#5"
       }
     ],
     "item:broken alpha club": [
@@ -16468,20 +16045,16 @@
       {
         "room": "15_16",
         "raw": "magic:ice"
-      },
-      {
-        "room": "15_16",
-        "raw": "magic:ice"
       }
     ],
-    "armor:alpha armor": [
+    "armor:alphaArmor": [
       {
         "room": "13_13",
-        "raw": "armor:alpha armor.+inf"
+        "raw": "armor:alphaArmor.+inf"
       },
       {
         "room": "23_10",
-        "raw": "armor:alpha armor"
+        "raw": "armor:alphaArmor"
       }
     ],
     "food:blueberries": [
@@ -16492,10 +16065,6 @@
       {
         "room": "9_26",
         "raw": "food:blueberries#10"
-      },
-      {
-        "room": "9_26",
-        "raw": "food:blueberries"
       }
     ],
     "food:sunflower seed": [
@@ -16514,48 +16083,38 @@
         "raw": "misc:headstoneSwitch2"
       }
     ],
-    "food:carrot": [
+    "food:beefJerky": [
       {
         "room": "12_9",
-        "raw": "food:carrot"
-      },
-      {
-        "room": "15_14",
-        "raw": "food:carrot#5"
-      },
-      {
-        "room": "12_9",
-        "raw": "food:carrot"
-      },
-      {
-        "room": "12_9",
-        "raw": "food:carrot"
-      },
-      {
-        "room": "15_14",
-        "raw": "food:carrot"
-      }
-    ],
-    "food:beef jerky": [
-      {
-        "room": "12_9",
-        "raw": "food:beef jerky"
+        "raw": "food:beefJerky"
       },
       {
         "room": "15_18",
-        "raw": "food:beef jerky#3"
+        "raw": "food:beefJerky#3"
       },
       {
         "room": "17_20",
-        "raw": "food:beef jerky#5"
+        "raw": "food:beefJerky#5"
       },
       {
         "room": "8_10",
-        "raw": "food:beef jerky#30"
+        "raw": "food:beefJerky#30"
       },
       {
         "room": "11_25",
-        "raw": "food:beef jerky#20"
+        "raw": "food:beefJerky#20"
+      },
+      {
+        "room": "12_9",
+        "raw": "food:beefJerky"
+      },
+      {
+        "room": "17_20",
+        "raw": "food:beefJerky#1"
+      },
+      {
+        "room": "15_18",
+        "raw": "food:beefJerky"
       }
     ],
     "food:cherry": [
@@ -16614,50 +16173,6 @@
       {
         "room": "13_17",
         "raw": "magic:weak"
-      },
-      {
-        "room": "13_17",
-        "raw": "magic:weak"
-      },
-      {
-        "room": "13_16",
-        "raw": "magic:weak"
-      }
-    ],
-    "magic:refresh": [
-      {
-        "room": "11_9",
-        "raw": "magic:refresh"
-      },
-      {
-        "room": "11_18",
-        "raw": "magic:refresh#1"
-      },
-      {
-        "room": "11_9",
-        "raw": "magic:refresh"
-      },
-      {
-        "room": "11_9",
-        "raw": "magic:refresh"
-      },
-      {
-        "room": "11_18",
-        "raw": "magic:refresh"
-      }
-    ],
-    "magic:lightning": [
-      {
-        "room": "11_9",
-        "raw": "magic:lightning"
-      },
-      {
-        "room": "11_9",
-        "raw": "magic:lightning"
-      },
-      {
-        "room": "11_9",
-        "raw": "magic:lightning"
       }
     ],
     "item:broken alpha axe": [
@@ -16688,52 +16203,56 @@
         "raw": "misc:green secret code"
       }
     ],
-    "item:bomb": [
+    "item:bombs": [
       {
         "room": "11_17",
-        "raw": "item:bomb#8"
+        "raw": "item:bombs#8"
       },
       {
         "room": "13_21",
-        "raw": "item:bomb#15"
+        "raw": "item:bombs#15"
       },
       {
         "room": "15_19",
-        "raw": "item:bomb#10"
+        "raw": "item:bombs#10"
       },
       {
         "room": "8_18",
-        "raw": "item:bomb#25"
+        "raw": "item:bombs#25"
       },
       {
         "room": "15_18",
-        "raw": "item:bomb#50"
+        "raw": "item:bombs#50"
+      },
+      {
+        "room": "14_15",
+        "raw": "item:bombs#5"
       },
       {
         "room": "9_13",
-        "raw": "item:bomb#10"
+        "raw": "item:bombs#10"
       },
       {
         "room": "15_21",
-        "raw": "item:bomb#5"
+        "raw": "item:bombs#5"
       },
       {
         "room": "14_21",
-        "raw": "item:bomb#12"
+        "raw": "item:bombs#12"
       },
       {
         "room": "11_21",
-        "raw": "item:bomb#15"
+        "raw": "item:bombs#15"
+      },
+      {
+        "room": "11_21",
+        "raw": "item:bombs"
       }
     ],
     "skill:reveal": [
       {
         "room": "7_18",
         "raw": "skill:reveal.+1"
-      },
-      {
-        "room": "19_22",
-        "raw": "skill:reveal"
       },
       {
         "room": "19_22",
@@ -16770,10 +16289,6 @@
         "raw": "food:chocolate#3"
       },
       {
-        "room": "6_10",
-        "raw": "food:chocolate"
-      },
-      {
         "room": "15_18",
         "raw": "food:chocolate"
       }
@@ -16804,10 +16319,6 @@
         "raw": "food:steak#Enum.Craft.emerald"
       },
       {
-        "room": "16_25",
-        "raw": "food:steak"
-      },
-      {
         "room": "19_20",
         "raw": "food:steak#3"
       }
@@ -16831,19 +16342,11 @@
       },
       {
         "room": "21_18",
-        "raw": "food:peppers#30"
-      },
-      {
-        "room": "21_18",
         "raw": "food:peppers"
       },
       {
         "room": "19_20",
         "raw": "food:peppers"
-      },
-      {
-        "room": "9_22",
-        "raw": "food:peppers#3"
       }
     ],
     "flag:craft:elixir": [
@@ -16864,26 +16367,26 @@
         "raw": "craft:emerald"
       }
     ],
-    "food:gummy bear": [
+    "food:gummyBears": [
       {
         "room": "12_25",
-        "raw": "food:gummy bear#10"
+        "raw": "food:gummyBears#10"
       },
       {
         "room": "17_10",
-        "raw": "food:gummy bear#5"
+        "raw": "food:gummyBears#5"
       },
       {
         "room": "21_11",
-        "raw": "food:gummy bear#5"
+        "raw": "food:gummyBears#5"
       },
       {
         "room": "16_24",
-        "raw": "food:gummy bear#12"
+        "raw": "food:gummyBears#12"
       },
       {
-        "room": "12_25",
-        "raw": "food:gummy bear#50"
+        "room": "21_11",
+        "raw": "food:gummyBears#5"
       }
     ],
     "item:diamonds": [
@@ -16900,16 +16403,8 @@
         "raw": "item:diamonds#Enum.Craft.emerald"
       },
       {
-        "room": "23_10",
-        "raw": "item:diamonds#3"
-      },
-      {
         "room": "12_11",
         "raw": "item:diamonds#1"
-      },
-      {
-        "room": "21_18",
-        "raw": "item:diamonds#2"
       },
       {
         "room": "17_16",
@@ -16940,19 +16435,7 @@
         "raw": "item:diamonds#5"
       },
       {
-        "room": "12_25",
-        "raw": "item:diamonds#50"
-      },
-      {
         "room": "21_23",
-        "raw": "item:diamonds"
-      },
-      {
-        "room": "23_10",
-        "raw": "item:diamonds"
-      },
-      {
-        "room": "17_16",
         "raw": "item:diamonds"
       },
       {
@@ -16961,18 +16444,6 @@
       },
       {
         "room": "21_18",
-        "raw": "item:diamonds"
-      },
-      {
-        "room": "16_25",
-        "raw": "item:diamonds"
-      },
-      {
-        "room": "12_25",
-        "raw": "item:diamonds"
-      },
-      {
-        "room": "17_22",
         "raw": "item:diamonds"
       }
     ],
@@ -17006,15 +16477,19 @@
         "raw": "food:gingerBread#99"
       },
       {
-        "room": "18_21",
-        "raw": "food:gingerBread"
-      },
-      {
-        "room": "17_15",
+        "room": "4_13",
         "raw": "food:gingerBread"
       },
       {
         "room": "19_20",
+        "raw": "food:gingerBread#10"
+      },
+      {
+        "room": "17_15",
+        "raw": "food:gingerBread#50"
+      },
+      {
+        "room": "18_21",
         "raw": "food:gingerBread"
       }
     ],
@@ -17022,52 +16497,6 @@
       {
         "room": "11_26",
         "raw": "misc:stomp code"
-      }
-    ],
-    "skill:medic": [
-      {
-        "room": "18_25",
-        "raw": "skill:medic.2"
-      },
-      {
-        "room": "18_25",
-        "raw": "skill:medic.3"
-      },
-      {
-        "room": "18_25",
-        "raw": "skill:medic.4"
-      },
-      {
-        "room": "18_25",
-        "raw": "skill:medic.5"
-      },
-      {
-        "room": "18_25",
-        "raw": "skill:medic.6"
-      },
-      {
-        "room": "18_25",
-        "raw": "skill:medic"
-      },
-      {
-        "room": "18_25",
-        "raw": "skill:medic"
-      },
-      {
-        "room": "18_25",
-        "raw": "skill:medic"
-      },
-      {
-        "room": "18_25",
-        "raw": "skill:medic"
-      },
-      {
-        "room": "18_25",
-        "raw": "skill:medic"
-      },
-      {
-        "room": "18_25",
-        "raw": "skill:medic"
       }
     ],
     "misc:headstoneSwitch4": [
@@ -17196,62 +16625,6 @@
         "raw": "quest:pam.15"
       }
     ],
-    "magic:slow": [
-      {
-        "room": "21_20",
-        "raw": "magic:slow"
-      },
-      {
-        "room": "21_20",
-        "raw": "magic:slow"
-      },
-      {
-        "room": "21_20",
-        "raw": "magic:slow"
-      }
-    ],
-    "magic:heal": [
-      {
-        "room": "21_20",
-        "raw": "magic:heal"
-      },
-      {
-        "room": "21_20",
-        "raw": "magic:heal"
-      },
-      {
-        "room": "21_20",
-        "raw": "magic:heal"
-      }
-    ],
-    "magic:blast": [
-      {
-        "room": "21_20",
-        "raw": "magic:blast"
-      },
-      {
-        "room": "21_20",
-        "raw": "magic:blast"
-      },
-      {
-        "room": "21_20",
-        "raw": "magic:blast"
-      }
-    ],
-    "magic:crush": [
-      {
-        "room": "21_20",
-        "raw": "magic:crush"
-      },
-      {
-        "room": "21_20",
-        "raw": "magic:crush"
-      },
-      {
-        "room": "21_20",
-        "raw": "magic:crush"
-      }
-    ],
     "quest:rings": [
       {
         "room": "20_18",
@@ -17326,34 +16699,12 @@
       {
         "room": "19_15",
         "raw": "skill:hint"
-      },
-      {
-        "room": "19_15",
-        "raw": "skill:hint"
-      },
-      {
-        "room": "19_15",
-        "raw": "skill:hint"
       }
     ],
     "skill:fear": [
       {
         "room": "19_15",
         "raw": "skill:fear"
-      }
-    ],
-    "skill:shield": [
-      {
-        "room": "19_15",
-        "raw": "skill:shield"
-      },
-      {
-        "room": "19_15",
-        "raw": "skill:shield"
-      },
-      {
-        "room": "19_15",
-        "raw": "skill:shield"
       }
     ],
     "misc:headstoneSwitch1": [
@@ -17368,44 +16719,16 @@
         "raw": "misc:max bombs.149"
       }
     ],
-    "food:newton apple": [
-      {
-        "room": "23_10",
-        "raw": "food:newton apple#3"
-      },
-      {
-        "room": "18_15",
-        "raw": "food:newton apple#15"
-      },
-      {
-        "room": "23_10",
-        "raw": "food:newton apple#2"
-      }
-    ],
-    "weapon:bane blade": [
+    "weapon:baneBlade": [
       {
         "room": "24_11",
-        "raw": "weapon:bane blade"
+        "raw": "weapon:baneBlade"
       }
     ],
     "quest:alpha blade": [
       {
         "room": "500_501",
         "raw": "quest:alpha blade.1"
-      }
-    ],
-    "food:gingerbread": [
-      {
-        "room": "4_13",
-        "raw": "food:gingerbread"
-      },
-      {
-        "room": "19_20",
-        "raw": "food:gingerbread#10"
-      },
-      {
-        "room": "17_15",
-        "raw": "food:gingerbread#50"
       }
     ],
     "food:strawberry": [
@@ -17422,18 +16745,14 @@
         "raw": "food:strawberry#1"
       },
       {
-        "room": "6_13",
-        "raw": "food:strawberry"
-      },
-      {
         "room": "11_19",
         "raw": "food:strawberry"
       }
     ],
-    "flag:craft:newton apple": [
+    "flag:craft:newtonsApple": [
       {
         "room": "4_13",
-        "raw": "craft:newton apple"
+        "raw": "craft:newtonsApple"
       }
     ],
     "flag:craft:key": [
@@ -17616,6 +16935,12 @@
         "raw": "quest:dig.3"
       }
     ],
+    "magic:crush": [
+      {
+        "room": "21_20",
+        "raw": "magic:crush"
+      }
+    ],
     "quest:oMan": [
       {
         "room": "17_19",
@@ -17701,10 +17026,6 @@
       }
     ],
     "skill:craft": [
-      {
-        "room": "21_21",
-        "raw": "skill:craft"
-      },
       {
         "room": "21_21",
         "raw": "skill:craft"
@@ -17960,10 +17281,24 @@
         "raw": "???"
       }
     ],
-    "armor:regen armor": [
+    "armor:regenArmor": [
       {
         "room": "14_19",
-        "raw": "armor:regen armor"
+        "raw": "armor:regenArmor"
+      }
+    ],
+    "magic:refresh": [
+      {
+        "room": "11_18",
+        "raw": "magic:refresh#1"
+      },
+      {
+        "room": "11_9",
+        "raw": "magic:refresh"
+      },
+      {
+        "room": "11_18",
+        "raw": "magic:refresh"
       }
     ],
     "item:rubies": [
@@ -17972,22 +17307,42 @@
         "raw": "item:rubies#3"
       }
     ],
-    "armor:diamonds armor": [
+    "food:newtonsApple": [
+      {
+        "room": "18_15",
+        "raw": "food:newtonsApple#15"
+      },
+      {
+        "room": "23_10",
+        "raw": "food:newtonsApple#2"
+      }
+    ],
+    "armor:diamondArmor": [
       {
         "room": "16_15",
-        "raw": "armor:diamonds armor"
+        "raw": "armor:diamondArmor"
       }
     ],
-    "armor:phantom coat": [
+    "armor:phantomCoat": [
       {
         "room": "9_15",
-        "raw": "armor:phantom coat"
+        "raw": "armor:phantomCoat"
       }
     ],
-    "armor:grim gear": [
+    "food:carrot": [
+      {
+        "room": "15_14",
+        "raw": "food:carrot#5"
+      },
+      {
+        "room": "12_9",
+        "raw": "food:carrot"
+      }
+    ],
+    "armor:grimGear": [
       {
         "room": "24_14",
-        "raw": "armor:grim gear"
+        "raw": "armor:grimGear"
       }
     ],
     "misc:ninja": [
@@ -18007,11 +17362,7 @@
       },
       {
         "room": "9_25",
-        "raw": "food:elixir"
-      },
-      {
-        "room": "3_26",
-        "raw": "food:elixir"
+        "raw": "food:elixir#1"
       }
     ],
     "food:grape": [
@@ -18030,29 +17381,21 @@
       {
         "room": "12_12",
         "raw": "magic:blessing"
-      },
-      {
-        "room": "12_12",
-        "raw": "magic:blessing"
       }
     ],
-    "item:gimgerbread cookie": [
+    "item:gingerbread": [
       {
         "room": "18_21",
-        "raw": "item:gimgerbread cookie#5"
+        "raw": "item:gingerbread#5"
       }
     ],
-    "magic:double down": [
+    "magic:doubleDown": [
       {
         "room": "9_22",
-        "raw": "magic:double down"
+        "raw": "magic:doubleDown"
       }
     ],
     "magic:fire": [
-      {
-        "room": "19_23",
-        "raw": "magic:fire"
-      },
       {
         "room": "19_23",
         "raw": "magic:fire"
@@ -18062,16 +17405,16 @@
       {
         "room": "9_23",
         "raw": "magic:drain"
-      },
-      {
-        "room": "9_23",
-        "raw": "magic:drain"
       }
     ],
-    "weapon:shadow staff": [
+    "weapon:shadowStaff": [
       {
         "room": "4_26",
-        "raw": "weapon:shadow staff"
+        "raw": "weapon:shadowStaff"
+      },
+      {
+        "room": "4_26",
+        "raw": "weapon:shadowStaff"
       }
     ],
     "quest:dream": [
@@ -18268,37 +17611,49 @@
         "raw": "quest:access.8"
       }
     ],
-    "food:beefJerky": [
+    "weapon:bombSword": [
       {
-        "room": "12_9",
-        "raw": "food:beefJerky"
-      },
+        "room": "19_15",
+        "raw": "weapon:bombSword"
+      }
+    ],
+    "weapon:refreshStaff": [
       {
-        "room": "12_9",
-        "raw": "food:beefJerky"
-      },
+        "room": "19_15",
+        "raw": "weapon:refreshStaff"
+      }
+    ],
+    "weapon:axe": [
       {
-        "room": "17_20",
-        "raw": "food:beefJerky"
-      },
+        "room": "19_15",
+        "raw": "weapon:axe"
+      }
+    ],
+    "weapon:soulSword": [
       {
-        "room": "8_10",
-        "raw": "food:beefJerky"
-      },
+        "room": "19_15",
+        "raw": "weapon:soulSword"
+      }
+    ],
+    "armor:shadowCoat": [
       {
-        "room": "11_25",
-        "raw": "food:beefJerky"
-      },
+        "room": "19_15",
+        "raw": "armor:shadowCoat"
+      }
+    ],
+    "armor:soulArmor": [
       {
-        "room": "15_18",
-        "raw": "food:beefJerky"
+        "room": "19_15",
+        "raw": "armor:soulArmor"
+      }
+    ],
+    "skill:shield": [
+      {
+        "room": "19_15",
+        "raw": "skill:shield"
       }
     ],
     "food:cherries": [
-      {
-        "room": "12_9",
-        "raw": "food:cherries"
-      },
       {
         "room": "12_9",
         "raw": "food:cherries"
@@ -18308,11 +17663,25 @@
         "raw": "food:cherries"
       }
     ],
-    "magic:regen": [
+    "magic:slow": [
       {
-        "room": "13_17",
-        "raw": "magic:regen"
-      },
+        "room": "21_20",
+        "raw": "magic:slow"
+      }
+    ],
+    "magic:heal": [
+      {
+        "room": "21_20",
+        "raw": "magic:heal"
+      }
+    ],
+    "magic:blast": [
+      {
+        "room": "21_20",
+        "raw": "magic:blast"
+      }
+    ],
+    "magic:regen": [
       {
         "room": "13_17",
         "raw": "magic:regen"
@@ -18322,17 +17691,27 @@
       {
         "room": "13_17",
         "raw": "magic:cloud"
-      },
+      }
+    ],
+    "magic:lightning": [
       {
-        "room": "13_17",
-        "raw": "magic:cloud"
+        "room": "11_9",
+        "raw": "magic:lightning"
+      }
+    ],
+    "weapon:club": [
+      {
+        "room": "20_20",
+        "raw": "weapon:club"
+      }
+    ],
+    "weapon:sword": [
+      {
+        "room": "20_20",
+        "raw": "weapon:sword"
       }
     ],
     "weapon:royalSword": [
-      {
-        "room": "13_17",
-        "raw": "weapon:royalSword"
-      },
       {
         "room": "13_17",
         "raw": "weapon:royalSword"
@@ -18342,17 +17721,15 @@
       {
         "room": "13_17",
         "raw": "weapon:royalStaff"
-      },
+      }
+    ],
+    "armor:vest": [
       {
-        "room": "13_17",
-        "raw": "weapon:royalStaff"
+        "room": "20_20",
+        "raw": "armor:vest"
       }
     ],
     "armor:robe": [
-      {
-        "room": "20_20",
-        "raw": "armor:robe"
-      },
       {
         "room": "20_20",
         "raw": "armor:robe"
@@ -18362,17 +17739,9 @@
       {
         "room": "20_20",
         "raw": "armor:iron"
-      },
-      {
-        "room": "20_20",
-        "raw": "armor:iron"
       }
     ],
     "armor:royalArmor": [
-      {
-        "room": "13_17",
-        "raw": "armor:royalArmor"
-      },
       {
         "room": "13_17",
         "raw": "armor:royalArmor"
@@ -18382,17 +17751,9 @@
       {
         "room": "13_17",
         "raw": "armor:mysticCloak"
-      },
-      {
-        "room": "13_17",
-        "raw": "armor:mysticCloak"
       }
     ],
     "armor:sunArmor": [
-      {
-        "room": "12_9",
-        "raw": "armor:sunArmor"
-      },
       {
         "room": "12_9",
         "raw": "armor:sunArmor"
@@ -18402,22 +17763,24 @@
       {
         "room": "12_9",
         "raw": "armor:speedVest"
-      },
-      {
-        "room": "12_9",
-        "raw": "armor:speedVest"
       }
     ],
-    "weapon:alpha sword0": [
+    "weapon:alpha sword": [
       {
         "room": "500_501",
-        "raw": "weapon:alpha sword0"
+        "raw": "weapon:alpha sword"
       }
     ],
     "weapon:twin fury": [
       {
         "room": "200_200",
         "raw": "weapon:twin fury"
+      }
+    ],
+    "weapon:dagger": [
+      {
+        "room": "20_20",
+        "raw": "weapon:dagger"
       }
     ],
     "weapon:aSword": [
@@ -18432,6 +17795,32 @@
         "raw": "weapon:twinFury"
       }
     ],
+    "skill:medic": [
+      {
+        "room": "18_25",
+        "raw": "skill:medic.1"
+      },
+      {
+        "room": "18_25",
+        "raw": "skill:medic.2"
+      },
+      {
+        "room": "18_25",
+        "raw": "skill:medic.3"
+      },
+      {
+        "room": "18_25",
+        "raw": "skill:medic.4"
+      },
+      {
+        "room": "18_25",
+        "raw": "skill:medic.5"
+      },
+      {
+        "room": "18_25",
+        "raw": "skill:medic.6"
+      }
+    ],
     "food:sunflowerSeeds": [
       {
         "room": "11_12",
@@ -18440,100 +17829,6 @@
       {
         "room": "11_19",
         "raw": "food:sunflowerSeeds"
-      }
-    ],
-    "food:newtonsApple": [
-      {
-        "room": "23_10",
-        "raw": "food:newtonsApple"
-      },
-      {
-        "room": "18_15",
-        "raw": "food:newtonsApple"
-      }
-    ],
-    "food:gummyBears": [
-      {
-        "room": "21_11",
-        "raw": "food:gummyBears"
-      },
-      {
-        "room": "16_24",
-        "raw": "food:gummyBears"
-      },
-      {
-        "room": "12_25",
-        "raw": "food:gummyBears"
-      }
-    ],
-    "weapon:baneBlade": [
-      {
-        "room": "24_11",
-        "raw": "weapon:baneBlade"
-      }
-    ],
-    "magic:doubleDown": [
-      {
-        "room": "9_22",
-        "raw": "magic:doubleDown"
-      }
-    ],
-    "flag:geode": [
-      {
-        "room": "6_12",
-        "raw": "geode"
-      }
-    ],
-    "item:bombs": [
-      {
-        "room": "15_19",
-        "raw": "item:bombs"
-      },
-      {
-        "room": "11_21",
-        "raw": "item:bombs"
-      },
-      {
-        "room": "14_15",
-        "raw": "item:bombs"
-      },
-      {
-        "room": "15_21",
-        "raw": "item:bombs"
-      },
-      {
-        "room": "11_17",
-        "raw": "item:bombs"
-      },
-      {
-        "room": "14_21",
-        "raw": "item:bombs"
-      },
-      {
-        "room": "8_18",
-        "raw": "item:bombs"
-      },
-      {
-        "room": "15_18",
-        "raw": "item:bombs"
-      }
-    ],
-    "armor:grimGear": [
-      {
-        "room": "24_14",
-        "raw": "armor:grimGear"
-      }
-    ],
-    "armor:phantomCoat": [
-      {
-        "room": "9_15",
-        "raw": "armor:phantomCoat"
-      }
-    ],
-    "weapon:shadowStaff": [
-      {
-        "room": "4_26",
-        "raw": "weapon:shadowStaff"
       }
     ],
     "weapon:warlockStaff": [
@@ -18546,24 +17841,6 @@
       {
         "room": "13_16",
         "raw": "weapon:sKnife"
-      }
-    ],
-    "armor:regenArmor": [
-      {
-        "room": "14_19",
-        "raw": "armor:regenArmor"
-      }
-    ],
-    "armor:alphaArmor": [
-      {
-        "room": "23_10",
-        "raw": "armor:alphaArmor"
-      }
-    ],
-    "armor:diamondArmor": [
-      {
-        "room": "16_15",
-        "raw": "armor:diamondArmor"
       }
     ],
     "flag:rubies": [
@@ -18591,10 +17868,6 @@
       }
     ],
     "flag:area:14": [
-      {
-        "room": "19_16",
-        "raw": "area:14"
-      },
       {
         "room": "19_16",
         "raw": "area:14"

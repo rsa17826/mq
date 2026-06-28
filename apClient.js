@@ -211,9 +211,14 @@ class ArchipelagoClient {
           `[Item Received] ID: ${item.item} (${itemName})`,
           item,
         )
-        if (!window.giveItem(itemName)) {
+        if (itemList[itemName]) {
+          itemList[itemName]()
+        } else {
           error("failed to give", itemName)
         }
+        // if (!window.giveItem(itemName)) {
+        //   error("failed to give", itemName)
+        // }
         window.prevSeenItems.push(item.item)
         var oldtext = manager.mess.get_text() ?? ""
         manager.mess.set_text(

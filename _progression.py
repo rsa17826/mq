@@ -1119,7 +1119,7 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 16, "east": 15},
     "requires": [["misc:blue crystal#1"]],
-    "receive": ["armor:diamonds armor", "quest:pam.16"],
+    "receive": ["armor:diamondArmor", "quest:pam.16"],
   },
   {
     "room": {"north": 14, "east": 15},
@@ -1975,8 +1975,8 @@ MathQuest.js:42550 add listeners""",
   },
   {
     "room": {"north": 500, "east": 501},
-    "requires": [["weapon:baneBlade#"]],
-    "receive": ["weapon:alpha sword0"],
+    "requires": [["weapon:baneBlade"]],
+    "receive": ["weapon:alpha sword"],
   },
   {
     "room": {"north": 200, "east": 200},
@@ -2205,24 +2205,12 @@ MathQuest.js:42550 add listeners""",
     "receive": ["food:elixir#1"],
   },
   {
-    "room": {"north": 11, "east": 25},
-    "receive": ["food:beefJerky"],
-  },
-  {
-    "room": {"north": 16, "east": 15},
-    "receive": ["armor:diamondArmor"],
-  },
-  {
     "room": {"north": 15, "east": 18},
     "receive": ["food:chocolate"],
   },
   {
     "room": {"north": 19, "east": 18},
     "receive": ["rubies"],
-  },
-  {
-    "room": {"north": 19, "east": 20},
-    "receive": ["food:gingerBread"],
   },
   {
     "room": {"north": 19, "east": 20},
