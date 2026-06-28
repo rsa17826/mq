@@ -9,6 +9,7 @@ class ArchipelagoClient {
     this.password = password
     this.socket = null
     this.lastProcessedIndex = 0 // Tracks received items to maintain sync
+    this.itemCount = 0 // Tracks received items to maintain sync
   }
 
   /**
@@ -19,7 +20,7 @@ class ArchipelagoClient {
     this.socket = new WebSocket(this.url)
 
     this.socket.onopen = () => {
-      console.log(
+      log(
         "WebSocket connection established. Awaiting 'RoomInfo' from server...",
       )
     }
@@ -37,9 +38,7 @@ class ArchipelagoClient {
     }
 
     this.socket.onclose = (event) => {
-      console.log(
-        `Disconnected from Archipelago server. Code: ${event.code}`,
-      )
+      log(`Disconnected from Archipelago server. Code: ${event.code}`)
     }
 
     this.socket.onerror = (error) => {
@@ -51,7 +50,7 @@ class ArchipelagoClient {
    * Standardized helper to transmit packets to the server.
    */
   sendPackets(packetsArray) {
-    console.log("SENDING TO SERVER:", JSON.stringify(packetsArray)) // <-- Add this line
+    log("SENDING TO SERVER:", JSON.stringify(packetsArray)) // <-- Add this line
     if (this.socket && this.socket.readyState === WebSocket.OPEN) {
       this.socket.send(JSON.stringify(packetsArray))
     } else {
@@ -92,13 +91,11 @@ class ArchipelagoClient {
         })
         break
       default:
-        console.log(
-          `Received unhandled protocol command: ${packet.cmd}`,
-        )
+        log(`Received unhandled protocol command: ${packet.cmd}`)
     }
   }
   onRoomUpdate(packet) {
-    console.log("[Archipelago] Room state updated by server.")
+    log("[Archipelago] Room state updated by server.")
 
     // If other locations were checked (e.g. by a co-op partner in your slot)
     if (packet.checked_locations) {
@@ -123,9 +120,7 @@ class ArchipelagoClient {
    */
   onRoomInfo(packet) {
     window.seed = packet.seed_name
-    console.log(
-      `RoomInfo received. Multiworld Seed: ${packet.seed_name}`,
-    )
+    log(`RoomInfo received. Multiworld Seed: ${packet.seed_name}`)
 
     // const connectPayload = {
     //   cmd: "Connect",
@@ -152,7 +147,7 @@ class ArchipelagoClient {
       slot_data: true,
     }
 
-    console.log("Authenticating with server...")
+    log("Authenticating with server...")
     this.sendPackets([connectPayload])
   }
 
@@ -160,7 +155,7 @@ class ArchipelagoClient {
    * Handshake Step 6 (Success): Server accepts client authentication.
    */
   onConnected(packet) {
-    console.log(
+    log(
       `Successfully connected! Team: ${packet.team}, Slot ID: ${packet.slot}`,
     )
 
@@ -187,44 +182,55 @@ class ArchipelagoClient {
    * Handshake Step 7 / Syncing: Server delivers items assigned to this player.
    */
   onReceivedItems(packet) {
-    console.log(
-      `Received packet containing ${packet.items.length} items.`,
-    )
-    if (!window.prevSeenItems || !window.playerLoaded) {
-      log(window.prevSeenItems, window.playerLoaded)
+    log(`Received packet containing ${packet.items.length} items.`)
+    if (!window.playerLoaded) {
+      log(window.playerLoaded)
       window.waitingPackets.push(packet)
       return
     }
 
     packet.items.forEach((item, offset) => {
+      this.itemCount += 1
+      const itemName = AP_ITEM_IDS[item.item]
       const globalIndex = packet.index + offset
 
-      // Look up what this item ID actually means
-      const itemName = AP_ITEM_IDS[item.item]
-      if (window.prevSeenItems.includes(item.item)) {
-        console.log(
+      if (this.itemCount > window.lastRecivedItem) {
+        if (this.itemCount - 1 === window.lastRecivedItem) {
+          // Look up what this item ID actually means
+          // if (ap.checkedLocations.includes(item.item)) {
+          //   log(
+          //     `[Item Received] ID: ${item.item} (${itemName}) - already recived`,
+          //     item,
+          //   )
+          // } else {
+          // log(item.item)
+          log(`[Item Received] ID: ${item.item} (${itemName})`, item)
+          if (itemList[itemName]) {
+            itemList[itemName]()
+          } else {
+            error("failed to give", itemName)
+          }
+          // if (!window.giveItem(itemName)) {
+          //   error("failed to give", itemName)
+          // }
+          var oldtext = manager.mess.get_text() ?? ""
+          manager.mess.set_text(
+            `[Item Received] ID: ${item.item} (${itemName})\n${oldtext}`,
+          )
+        } else {
+          warn(
+            "somthing went wrong with sending items!!",
+            window.lastRecivedItem,
+            this.itemCount,
+          )
+        }
+      } else {
+        log(
           `[Item Received] ID: ${item.item} (${itemName}) - already recived`,
           item,
         )
-      } else {
-        console.log(
-          `[Item Received] ID: ${item.item} (${itemName})`,
-          item,
-        )
-        if (itemList[itemName]) {
-          itemList[itemName]()
-        } else {
-          error("failed to give", itemName)
-        }
-        // if (!window.giveItem(itemName)) {
-        //   error("failed to give", itemName)
-        // }
-        window.prevSeenItems.push(item.item)
-        var oldtext = manager.mess.get_text() ?? ""
-        manager.mess.set_text(
-          `[Item Received] ID: ${item.item} (${itemName})\n${oldtext}`,
-        )
       }
+      window.lastRecivedItem = this.itemCount
       this.lastProcessedIndex = globalIndex + 1
     })
   }
@@ -237,7 +243,7 @@ class ArchipelagoClient {
     const messageText = packet.data
       .map((part) => part.text || "")
       .join("")
-    console.log(`[Archipelago] ${messageText}`)
+    log(`[Archipelago] ${messageText}`)
   }
 
   /**
@@ -261,7 +267,7 @@ class ArchipelagoClient {
     return Math.random().toString(36).substring(2, 15)
   }
 }
-window.prevSeenItems = []
+window.lastRecivedItem = 0
 if (location.search) {
   var data = location.search
     .replace("?", "")
@@ -283,9 +289,13 @@ if (location.search) {
     a(...s)
     let data
     if ((data = await get(`/MQFiles/loadChar_${window.seed}.php`))) {
-      var newdata = data.split(" ").slice(265)
+      var newdata = Number(data.split(" ")[265] ?? "0")
+      if (isNaN(newdata)) {
+        warn("newdata was nan")
+        newdata = 0
+      }
       log(newdata, "newdata")
-      window.prevSeenItems = newdata.map((e) => Number(e))
+      window.lastRecivedItem = newdata
       if (window.playerLoaded) {
         for (var packet of window.waitingPackets) {
           ap.handlePacket(packet)

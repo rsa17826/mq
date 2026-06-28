@@ -95,7 +95,7 @@ manager.correct - manager.wrong > 800 = halo
   {
     "room": {"north": 20, "east": 20},
     "requires": [["item:gold"]],
-    "receive": ["armor:iron armor"],
+    "receive": ["armor:iron"],
   },
   {
     "room": {"north": 20, "east": 20},
@@ -268,13 +268,13 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "entrance.south0",
-        "item:alpha scepter#1",
+        "item:aScepter#1",
         "item:dragon scale#5",
         "skill:craft",
       ],
       [
         "entrance.south1",
-        "item:alpha scepter#1",
+        "item:aScepter#1",
         "item:dragon scale#5",
         "skill:craft",
         "permit:bomb.2",
@@ -301,7 +301,7 @@ manager.correct - manager.wrong > 800 = halo
   {
     "room": {"north": 13, "east": 25},
     "requires": [["item:mages hat#1", "misc:magic only resist bypass"]],
-    "receive": ["item:alpha scepter#1"],
+    "receive": ["item:aScepter#1"],
   },
   {"room": {"north": 14, "east": 25}, "receive": ["flag:three part code part 1"]},
   {"room": {"north": 14, "east": 24}, "receive": ["flag:three part code part 2"]},
@@ -341,7 +341,7 @@ manager.correct - manager.wrong > 800 = halo
   # {
   #   "room": {"north": 18, "east": 25},
   #   "requires": [
-  #     ["skill:medic.5", "item:golden feather#3", "item:alpha scepter#5"]
+  #     ["skill:medic.5", "item:golden feather#3", "item:aScepter#5"]
   #   ],
   #   "receive": ["skill:medic.6"],
   # },
