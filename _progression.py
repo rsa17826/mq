@@ -134,11 +134,6 @@ manager.correct - manager.wrong > 800 = halo
   },
   {"room": {"north": 18, "east": 20}, "info": "warp skill warp point"},
   {
-    "room": {"north": 19, "east": 21},
-    "requires": [["skill:dig"]],
-    "receive": ["item:gold#25"],
-  },
-  {
     "room": {"north": 14, "east": 19},
     "requires": [["item:troll wristband#1", "entrance.north0"]],
     "receive": ["item:broken alpha club#1"],
@@ -343,19 +338,19 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [["item:mages hat#1", "misc:magic only resist bypass"]],
     "receive": ["item:alpha scepter#1"],
   },
-  {"room": {"north": 14, "east": 25}, "receive": ["misc:three part code part 1"]},
-  {"room": {"north": 14, "east": 24}, "receive": ["misc:three part code part 2"]},
-  {"room": {"north": 13, "east": 24}, "receive": ["misc:three part code part 3"]},
+  {"room": {"north": 14, "east": 25}, "receive": ["flag:three part code part 1"]},
+  {"room": {"north": 14, "east": 24}, "receive": ["flag:three part code part 2"]},
+  {"room": {"north": 13, "east": 24}, "receive": ["flag:three part code part 3"]},
   {
     "room": {"north": 13, "east": 26},
     "requires": [
       [
-        "misc:three part code part 1",
-        "misc:three part code part 2",
-        "misc:three part code part 3",
+        "flag:three part code part 1",
+        "flag:three part code part 2",
+        "flag:three part code part 3",
       ]
     ],
-    "receive": ["???"],
+    "receive": ["food:gingerBread#99"],
   },
   {"room": {"north": 11, "east": 26}, "receive": ["misc:stomp code"]},
   {
@@ -567,7 +562,7 @@ manager.correct - manager.wrong > 800 = halo
   {
     "room": {"north": 4, "east": 13},
     "requires": [["item:gold"]],
-    "receive": ["food:gingerbread cookie"],
+    "receive": ["food:gingerbread"],
   },
   {
     "room": {"north": 4, "east": 13},
@@ -606,7 +601,7 @@ manager.correct - manager.wrong > 800 = halo
   },
   {
     "room": {"north": 19, "east": 21},
-    "requires": [["quest:dig.2"]],
+    "requires": [["quest:dig.2", "skill:dig"]],
     "receive": ["quest:dig.3", "item:gold#25"],
   },
   {
@@ -660,7 +655,7 @@ manager.correct - manager.wrong > 800 = halo
   {
     "room": {"north": 19, "east": 20},
     "requires": [["quest:pam.4"]],
-    "receive": ["quest:pam.5", "food:gingerbread cookie#10"],
+    "receive": ["quest:pam.5", "food:gingerbread#10"],
   },
   {
     "room": {"north": 14, "east": 18},
@@ -817,7 +812,7 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 5, "east": 24},
     "requires": [["quest:gTree.18"]],
-    "receive": ["quest:gTree.19", "food:holy water#1"],
+    "receive": ["quest:gTree.19", "food:holyWater#1"],
   },
   {
     "room": {"north": 5, "east": 24},
@@ -929,7 +924,7 @@ MathQuest.js:42550 add listeners""",
     "receive": ["item:ring of evasion"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": 11, "east": 9},
     "requires": [
       [
         "quest:warp.1",
@@ -979,7 +974,7 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 9, "east": 22},
     "requires": [["quest:seeds.3", "entrance.south0"]],
-    "receive": ["quest:seeds.4", "food:orange#10", "food:pepper#3"],
+    "receive": ["quest:seeds.4", "food:orange#10", "food:peppers#3"],
   },
   {
     "room": {"north": 11, "east": 11},
@@ -1018,7 +1013,7 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 19, "east": 20},
     "requires": [["quest:pam.10"]],
-    "receive": ["quest:pam.11", "food:peper#5", "food:orange#20"],
+    "receive": ["quest:pam.11", "food:peppers#5", "food:orange#20"],
   },
   {
     "room": {"north": 15, "east": 16},
@@ -1089,8 +1084,8 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 13, "east": 14},
     "requires": [
-      ["magic:fire.3?", "quest:?", "entrance.east0"],
-      ["magic:fire.3?", "quest:?", "entrance.north0", "permit:bomb"],
+      ["magic:fire.1", "quest:?", "entrance.east0"],
+      ["magic:fire.1", "quest:?", "entrance.north0", "permit:bomb"],
     ],
     "receive": ["???"],
   },
@@ -1154,7 +1149,7 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 21, "east": 18},
     "requires": [["item:emerald#1"]],
-    "receive": ["item:diamonds#2", "food:pepper#30"],
+    "receive": ["item:diamonds#2", "food:peppers#30"],
     "info": "30 not 20",
   },
   {
@@ -1189,7 +1184,7 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 17, "east": 15},
     "requires": [["item:emerald#1"]],
-    "receive": ["item:gold#100", "food:gingerbread cookie#50"],
+    "receive": ["item:gold#100", "food:gingerbread#50"],
   },
   {
     "room": {"north": 16, "east": 15},
@@ -1261,7 +1256,7 @@ MathQuest.js:42550 add listeners""",
       "item:aurastone#1",
       "item:slamstone#1",
       "food:elixir#1",
-      "food:holy water#1",
+      "food:holyWater#1",
     ],
   },
   {
@@ -1269,6 +1264,11 @@ MathQuest.js:42550 add listeners""",
     "requires": [["item:key#1"]],
     "receive": ["item:bomb#10"],
     "info": "chest respawns on room reentry",
+  },
+  {
+    "room": {"north": 19, "east": 20},
+    "requires": [["quest:pam.12"]],
+    "receive": ["food:holyWater#1"],
   },
   {
     "room": {"north": 6, "east": 13},
@@ -2083,10 +2083,6 @@ MathQuest.js:42550 add listeners""",
   },
   # {
   #   "room": {"north": "?", "east": "?"},
-  #   "receive": ["food:chocolate"],
-  # },
-  # {
-  #   "room": {"north": "?", "east": "?"},
   #   "receive": ["food:steak"],
   # },
   # {
@@ -2172,14 +2168,6 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 12, "east": 9},
     "receive": ["armor:speedVest"],
-  },
-  {
-    "room": {"north": 19, "east": 20},
-    "receive": ["skill:dig"],
-  },
-  {
-    "room": {"north": 19, "east": 20},
-    "receive": ["skill:kick"],
   },
   {
     "room": {"north": 500, "east": 501},
@@ -2676,48 +2664,16 @@ MathQuest.js:42550 add listeners""",
   },
   {
     "room": {"north": 19, "east": 20},
-    "receive": ["food:chocolate"],
-  },
-  {
-    "room": {"north": 19, "east": 20},
-    "receive": ["food:steak"],
+    "requires": [["quest:pam.8"]],
+    "receive": ["food:steak#3"],
   },
   {
     "room": {"north": 19, "east": 20},
     "receive": ["food:peppers"],
   },
   {
-    "room": {"north": 19, "east": 20},
-    "receive": ["food:orange"],
-  },
-  {
-    "room": {"north": 19, "east": 20},
-    "receive": ["food:holyWater"],
-  },
-  {
-    "room": {"north": 19, "east": 21},
-    "receive": ["item:gold"],
-  },
-  {
-    "room": {"north": 12, "east": 11},
-    "receive": ["item:diamonds"],
-  },
-  {
-    "room": {"north": 13, "east": 26},
-    "receive": ["food:gingerBread"],
-  },
-  {
-    "room": {"north": 6, "east": 12},
-    "receive": ["skill:convert"],
-  },
-  {
-    "room": {"north": 11, "east": 9},
-    "requires": [["quest:warp.1", ""]],
-    "receive": ["skill:warp"],
-  },
-  {
     "room": {"north": 9, "east": 22},
-    "requires":[["quest:seeds.3"]],
+    "requires": [["quest:seeds.3"]],
     "receive": ["food:peppers#3", "food:orange#10"],
   },
   # {
@@ -2727,7 +2683,7 @@ MathQuest.js:42550 add listeners""",
   # },
   {
     "room": {"north": 4, "east": 26},
-    "requires":[["quest:isles.22"]],
+    "requires": [["quest:isles.22"]],
     "receive": ["skill:tough"],
   },
   # {
