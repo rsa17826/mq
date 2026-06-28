@@ -9,7 +9,8 @@ class RoomCoordinates(TypedDict):
 class ProgressionNode(TypedDict):
   room: RoomCoordinates
   receive: NotRequired[list[str]]
-  requires: NotRequired[list[list[str]]]
+  # requires: NotRequired[list[list[str]]]
+  requires: list[list[str]]
   info: NotRequired[str]
 
 
@@ -172,10 +173,10 @@ manager.correct - manager.wrong > 800 = halo
   {
     "room": {"north": 12, "east": 12},
     "requires": [["quest:rings.1", "entrance.west0"]],
-    "receive": ["misc:headstone 2"],
+    "receive": ["misc:headstoneSwitch2"],
   },
-  {"room": {"north": 10, "east": 12}, "info": "warp skill warp point"},
-  {"room": {"north": 12, "east": 9}, "receive": ["spawnpoint"]},
+  # {"room": {"north": 10, "east": 12}, "info": "warp skill warp point"},
+  # {"room": {"north": 12, "east": 9}, "receive": ["spawnpoint"]},
   {
     "room": {"north": 12, "east": 9},
     "requires": [["item:gold"]],
@@ -324,7 +325,7 @@ manager.correct - manager.wrong > 800 = halo
   {
     "room": {"north": 10, "east": 25},
     "requires": [["quest:rings.1"]],
-    "receive": ["misc:headstone 3"],
+    "receive": ["misc:headstoneSwitch3"],
   },
   {"room": {"north": 11, "east": 24}, "info": "warp skill warp point"},
   {
@@ -387,7 +388,7 @@ manager.correct - manager.wrong > 800 = halo
   {
     "room": {"north": 18, "east": 24},
     "requires": [["quest:rings.1"]],
-    "receive": ["misc:headstone 4"],
+    "receive": ["misc:headstoneSwitch4"],
   },
   {
     "room": {"north": 21, "east": 23},
@@ -530,14 +531,14 @@ manager.correct - manager.wrong > 800 = halo
   {
     "room": {"north": 16, "east": 16},
     "requires": [["quest:rings.1"]],
-    "receive": ["misc:headstone 1"],
+    "receive": ["misc:headstoneSwitch1"],
   },
   {
     "room": {"north": 18, "east": 13},
     "requires": [["item:cotton thread#10", "item:shadow crest#5", "skill:reveal"]],
     "receive": ["misc:max bombs.149"],
   },
-  {"room": {"north": 19, "east": 12}, "info": "warp skill warp point"},
+  # {"room": {"north": 19, "east": 12}, "info": "warp skill warp point"},
   {
     "room": {"north": 23, "east": 10},
     "requires": [["item:key#1"]],
@@ -847,7 +848,7 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 14, "east": 18},
     "requires": [["quest:gTree.24"]],
-    "receive": ["quest:gTree.25", "misc:power up#10", "item:gold#1000"],
+    "receive": ["quest:gTree.25", "misc:pup#10", "item:gold#1000"],
   },
   {
     "room": {"north": 14, "east": 18},
@@ -932,10 +933,10 @@ MathQuest.js:42550 add listeners""",
     "requires": [
       [
         "quest:warp.1",
-        "misc:headstone 1",
-        "misc:headstone 2",
-        "misc:headstone 3",
-        "misc:headstone 4",
+        "misc:headstoneSwitch1",
+        "misc:headstoneSwitch2",
+        "misc:headstoneSwitch3",
+        "misc:headstoneSwitch4",
       ]
     ],
     "receive": ["quest:warp.2", "skill:warp"],
@@ -2550,22 +2551,6 @@ MathQuest.js:42550 add listeners""",
     "receive": ["food:gingerBread"],
   },
   {
-    "room": {"north": 18, "east": 24},
-    "receive": ["headstoneSwitch1"],
-  },
-  {
-    "room": {"north": 16, "east": 16},
-    "receive": ["headstoneSwitch2"],
-  },
-  {
-    "room": {"north": 12, "east": 12},
-    "receive": ["headstoneSwitch3"],
-  },
-  {
-    "room": {"north": 10, "east": 25},
-    "receive": ["headstoneSwitch4"],
-  },
-  {
     "room": {"north": 18, "east": 19},
     "receive": ["item:gold#Enum.Craft.emerald"],
   },
@@ -2727,15 +2712,13 @@ MathQuest.js:42550 add listeners""",
   },
   {
     "room": {"north": 11, "east": 9},
+    "requires": [["quest:warp.1", ""]],
     "receive": ["skill:warp"],
   },
   {
     "room": {"north": 9, "east": 22},
-    "receive": ["food:orange"],
-  },
-  {
-    "room": {"north": 9, "east": 22},
-    "receive": ["food:peppers"],
+    "requires":[["quest:seeds.3"]],
+    "receive": ["food:peppers#3", "food:orange#10"],
   },
   # {
   #   "room": {"north": "?", "east": "?"},
@@ -2744,6 +2727,7 @@ MathQuest.js:42550 add listeners""",
   # },
   {
     "room": {"north": 4, "east": 26},
+    "requires":[["quest:isles.22"]],
     "receive": ["skill:tough"],
   },
   # {
@@ -2785,10 +2769,6 @@ MathQuest.js:42550 add listeners""",
   #   "room": {"north": "?", "east": "?"},
   #   "receive": ["misc:bobbisPendant"],
   # },
-  {
-    "room": {"north": 21, "east": 20},
-    "receive": ["item:gold"],
-  },
   {"room": {"north": 19, "east": 16}, "receive": ["area:14"]},
   {"room": {"north": 21, "east": 20}, "receive": ["area:0"]},
   {"room": {"north": 20, "east": 20}, "receive": ["area:0"]},
