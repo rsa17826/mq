@@ -1887,6 +1887,31 @@ MathQuest.js:42550 add listeners""",
   },
   {
     "room": {"north": 19, "east": 15},
+    "requires": [["item:rubies#7", "weapon:royalStaff", "item:aScepter#3"]],
+    "receive": ["weapon:refreshStaff"],
+  },
+  {
+    "room": {"north": 19, "east": 15},
+    "requires": [["item:rubies#20", "weapon:warlockStaff", "item:aAxe#5"]],
+    "receive": ["weapon:axe"],
+  },
+  {
+    "room": {"north": 19, "east": 15},
+    "requires": [["item:rubies#100", "weapon:sunSword", "item:sFrag#5"]],
+    "receive": ["weapon:soulSword"],
+  },
+  {
+    "room": {"north": 19, "east": 15},
+    "requires": [["item:rubies#10", "armor:phantomCoat", "item:kCrest#50"]],
+    "receive": ["armor:shadowCoat"],
+  },
+  {
+    "room": {"north": 19, "east": 15},
+    "requires": [["item:rubies#80", "armor:sunArmor", "item:sFrag#7"]],
+    "receive": ["armor:soulArmor"],
+  },
+  {
+    "room": {"north": 19, "east": 15},
     "requires": [["item:medallion#200"]],
     "receive": ["skill:shield"],
   },
