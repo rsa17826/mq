@@ -7591,7 +7591,9 @@
         "item:cotton thread",
         "item:shadow crest",
         "item:orc coin",
-        "item:blue crystal"
+        "item:blue crystal",
+        "item:key#999",
+        "item:gold#999"
       ]
     },
     {
@@ -7667,55 +7669,6 @@
       ]
     },
     {
-      "room": "20_20",
-      "requires": [
-        [
-          "item:gold"
-        ]
-      ],
-      "receive": [
-        "armor:iron"
-      ]
-    },
-    {
-      "room": "20_20",
-      "requires": [
-        [
-          "item:gold"
-        ]
-      ],
-      "receive": [
-        "food:apple#inf"
-      ]
-    },
-    {
-      "room": "20_20",
-      "requires": [
-        [
-          "item:gold"
-        ]
-      ],
-      "receive": [
-        "food:honey#inf"
-      ]
-    },
-    {
-      "room": "20_20",
-      "requires": [
-        [
-          "item:gold"
-        ]
-      ],
-      "receive": [
-        "food:grapes#inf"
-      ]
-    },
-    {
-      "room": "18_20",
-      "requires": [],
-      "receive": []
-    },
-    {
       "room": "14_19",
       "requires": [
         [
@@ -7728,11 +7681,6 @@
       ]
     },
     {
-      "room": "12_19",
-      "requires": [],
-      "receive": []
-    },
-    {
       "room": "13_16",
       "requires": [
         [
@@ -7743,11 +7691,6 @@
       "receive": [
         "weapon:survival knife"
       ]
-    },
-    {
-      "room": "14_16",
-      "requires": [],
-      "receive": []
     },
     {
       "room": "15_16",
@@ -7792,7 +7735,7 @@
         ]
       ],
       "receive": [
-        "food:sunflower seed#1"
+        "food:sunflowerSeeds#1"
       ]
     },
     {
@@ -7805,17 +7748,6 @@
       ],
       "receive": [
         "misc:headstoneSwitch2"
-      ]
-    },
-    {
-      "room": "12_9",
-      "requires": [
-        [
-          "item:gold"
-        ]
-      ],
-      "receive": [
-        "food:beefJerky"
       ]
     },
     {
@@ -8264,7 +8196,9 @@
     },
     {
       "room": "19_20",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "quest:pam.1"
       ]
@@ -9090,7 +9024,7 @@
       "room": "24_9",
       "requires": [
         [
-          "quest:gTree.22"
+          "quest:gTree.454565"
         ]
       ],
       "receive": [
@@ -9715,7 +9649,7 @@
         ]
       ],
       "receive": [
-        "food:sunflower seed#1",
+        "food:sunflowerSeeds#1",
         "food:strawberry#1"
       ]
     },
@@ -11960,20 +11894,6 @@
       ]
     },
     {
-      "room": "21_23",
-      "requires": [],
-      "receive": [
-        "item:diamonds"
-      ]
-    },
-    {
-      "room": "21_23",
-      "requires": [],
-      "receive": [
-        "item:gold"
-      ]
-    },
-    {
       "room": "6_13",
       "requires": [
         [
@@ -11985,68 +11905,6 @@
       ]
     },
     {
-      "room": "11_19",
-      "requires": [
-        [
-          "item:key#1"
-        ]
-      ],
-      "receive": [
-        "food:sunflowerSeeds",
-        "food:strawberry"
-      ]
-    },
-    {
-      "room": "17_20",
-      "requires": [
-        [
-          "item:gold"
-        ]
-      ],
-      "receive": [
-        "food:beefJerky#1"
-      ]
-    },
-    {
-      "room": "15_24",
-      "requires": [],
-      "receive": [
-        "item:gold"
-      ]
-    },
-    {
-      "room": "10_9",
-      "requires": [],
-      "receive": [
-        "food:steak"
-      ]
-    },
-    {
-      "room": "21_11",
-      "requires": [
-        [
-          "item:key#1"
-        ]
-      ],
-      "receive": [
-        "food:gummyBears#5"
-      ]
-    },
-    {
-      "room": "11_21",
-      "requires": [],
-      "receive": [
-        "item:bombs"
-      ]
-    },
-    {
-      "room": "15_21",
-      "requires": [],
-      "receive": [
-        "item:gold"
-      ]
-    },
-    {
       "room": "4_24",
       "requires": [],
       "receive": [
@@ -12054,39 +11912,10 @@
       ]
     },
     {
-      "room": "4_26",
-      "requires": [],
-      "receive": [
-        "weapon:shadowStaff"
-      ]
-    },
-    {
       "room": "18_23",
       "requires": [],
       "receive": [
         "weapon:warlockStaff"
-      ]
-    },
-    {
-      "room": "11_18",
-      "requires": [
-        [
-          "item:mStaff#20"
-        ]
-      ],
-      "receive": [
-        "magic:refresh"
-      ]
-    },
-    {
-      "room": "13_16",
-      "requires": [
-        [
-          "item:mStaff#20"
-        ]
-      ],
-      "receive": [
-        "weapon:sKnife"
       ]
     },
     {
@@ -12101,13 +11930,6 @@
       ]
     },
     {
-      "room": "12_21",
-      "requires": [],
-      "receive": [
-        "item:diamonds"
-      ]
-    },
-    {
       "room": "8_18",
       "requires": [],
       "receive": [
@@ -12119,20 +11941,6 @@
       "requires": [],
       "receive": [
         "item:gold#Enum.Craft.emerald"
-      ]
-    },
-    {
-      "room": "21_18",
-      "requires": [],
-      "receive": [
-        "item:diamonds"
-      ]
-    },
-    {
-      "room": "21_18",
-      "requires": [],
-      "receive": [
-        "food:peppers"
       ]
     },
     {
@@ -12154,13 +11962,6 @@
       ]
     },
     {
-      "room": "15_18",
-      "requires": [],
-      "receive": [
-        "food:chocolate"
-      ]
-    },
-    {
       "room": "19_18",
       "requires": [],
       "receive": [
@@ -12179,13 +11980,6 @@
       ]
     },
     {
-      "room": "19_20",
-      "requires": [],
-      "receive": [
-        "food:peppers"
-      ]
-    },
-    {
       "room": "4_26",
       "requires": [
         [
@@ -12194,13 +11988,6 @@
       ],
       "receive": [
         "skill:tough"
-      ]
-    },
-    {
-      "room": "15_18",
-      "requires": [],
-      "receive": [
-        "food:beefJerky"
       ]
     },
     {
@@ -12219,13 +12006,6 @@
       "requires": [],
       "receive": [
         "item:pup"
-      ]
-    },
-    {
-      "room": "14_18",
-      "requires": [],
-      "receive": [
-        "item:gold"
       ]
     },
     {
@@ -15607,12 +15387,20 @@
       {
         "room": "20_20",
         "raw": "item:key"
+      },
+      {
+        "room": "20_20",
+        "raw": "item:key#999"
       }
     ],
     "item:gold": [
       {
         "room": "20_20",
         "raw": "item:gold"
+      },
+      {
+        "room": "20_20",
+        "raw": "item:gold#999"
       },
       {
         "room": "11_9",
@@ -15711,28 +15499,12 @@
         "raw": "item:gold#1000"
       },
       {
-        "room": "21_23",
-        "raw": "item:gold"
-      },
-      {
-        "room": "15_24",
-        "raw": "item:gold"
-      },
-      {
-        "room": "15_21",
-        "raw": "item:gold"
-      },
-      {
         "room": "8_10",
         "raw": "item:gold#Enum.Craft.emerald"
       },
       {
         "room": "9_25",
         "raw": "item:gold#Enum.Craft.emerald"
-      },
-      {
-        "room": "14_18",
-        "raw": "item:gold"
       }
     ],
     "item:dragon scale": [
@@ -15963,54 +15735,6 @@
         "raw": "armor:magic robe"
       }
     ],
-    "armor:iron": [
-      {
-        "room": "20_20",
-        "raw": "armor:iron"
-      },
-      {
-        "room": "20_20",
-        "raw": "armor:iron"
-      }
-    ],
-    "food:apple": [
-      {
-        "room": "20_20",
-        "raw": "food:apple#inf"
-      },
-      {
-        "room": "14_21",
-        "raw": "food:apple#30"
-      },
-      {
-        "room": "20_20",
-        "raw": "food:apple"
-      }
-    ],
-    "food:honey": [
-      {
-        "room": "20_20",
-        "raw": "food:honey#inf"
-      },
-      {
-        "room": "20_20",
-        "raw": "food:honey"
-      }
-    ],
-    "food:grapes": [
-      {
-        "room": "20_20",
-        "raw": "food:grapes#inf"
-      },
-      {
-        "room": "20_20",
-        "raw": "food:grapes"
-      },
-      {
-        "room": "6_13",
-        "raw": "food:grapes#5"
-      }
-    ],
     "item:broken alpha club": [
       {
         "room": "14_19",
@@ -16053,54 +15777,24 @@
         "raw": "food:blueberries#10"
       }
     ],
-    "food:sunflower seed": [
+    "food:sunflowerSeeds": [
       {
         "room": "11_12",
-        "raw": "food:sunflower seed#1"
+        "raw": "food:sunflowerSeeds#1"
       },
       {
         "room": "11_19",
-        "raw": "food:sunflower seed#1"
+        "raw": "food:sunflowerSeeds#1"
+      },
+      {
+        "room": "11_12",
+        "raw": "food:sunflowerSeeds"
       }
     ],
     "misc:headstoneSwitch2": [
       {
         "room": "12_12",
         "raw": "misc:headstoneSwitch2"
-      }
-    ],
-    "food:beefJerky": [
-      {
-        "room": "12_9",
-        "raw": "food:beefJerky"
-      },
-      {
-        "room": "15_18",
-        "raw": "food:beefJerky#3"
-      },
-      {
-        "room": "17_20",
-        "raw": "food:beefJerky#5"
-      },
-      {
-        "room": "8_10",
-        "raw": "food:beefJerky#30"
-      },
-      {
-        "room": "11_25",
-        "raw": "food:beefJerky#20"
-      },
-      {
-        "room": "12_9",
-        "raw": "food:beefJerky"
-      },
-      {
-        "room": "17_20",
-        "raw": "food:beefJerky#1"
-      },
-      {
-        "room": "15_18",
-        "raw": "food:beefJerky"
       }
     ],
     "food:cherry": [
@@ -16229,10 +15923,6 @@
       {
         "room": "11_21",
         "raw": "item:bombs#15"
-      },
-      {
-        "room": "11_21",
-        "raw": "item:bombs"
       }
     ],
     "skill:reveal": [
@@ -16273,10 +15963,6 @@
       {
         "room": "6_10",
         "raw": "food:chocolate#3"
-      },
-      {
-        "room": "15_18",
-        "raw": "food:chocolate"
       }
     ],
     "food:steak": [
@@ -16295,10 +15981,6 @@
       {
         "room": "16_25",
         "raw": "food:steak#12"
-      },
-      {
-        "room": "10_9",
-        "raw": "food:steak"
       },
       {
         "room": "8_18",
@@ -16325,14 +16007,6 @@
       {
         "room": "19_20",
         "raw": "food:peppers#5"
-      },
-      {
-        "room": "21_18",
-        "raw": "food:peppers"
-      },
-      {
-        "room": "19_20",
-        "raw": "food:peppers"
       }
     ],
     "flag:craft:elixir": [
@@ -16369,10 +16043,6 @@
       {
         "room": "16_24",
         "raw": "food:gummyBears#12"
-      },
-      {
-        "room": "21_11",
-        "raw": "food:gummyBears#5"
       }
     ],
     "item:diamonds": [
@@ -16419,18 +16089,6 @@
       {
         "room": "16_25",
         "raw": "item:diamonds#5"
-      },
-      {
-        "room": "21_23",
-        "raw": "item:diamonds"
-      },
-      {
-        "room": "12_21",
-        "raw": "item:diamonds"
-      },
-      {
-        "room": "21_18",
-        "raw": "item:diamonds"
       }
     ],
     "item:aScepter": [
@@ -16729,10 +16387,6 @@
       {
         "room": "6_13",
         "raw": "food:strawberry#1"
-      },
-      {
-        "room": "11_19",
-        "raw": "food:strawberry"
       }
     ],
     "flag:craft:newtonsApple": [
@@ -17011,6 +16665,28 @@
         "raw": "skill:craft"
       }
     ],
+    "food:beefJerky": [
+      {
+        "room": "15_18",
+        "raw": "food:beefJerky#3"
+      },
+      {
+        "room": "17_20",
+        "raw": "food:beefJerky#5"
+      },
+      {
+        "room": "8_10",
+        "raw": "food:beefJerky#30"
+      },
+      {
+        "room": "11_25",
+        "raw": "food:beefJerky#20"
+      },
+      {
+        "room": "12_9",
+        "raw": "food:beefJerky"
+      }
+    ],
     "permit:bomb": [
       {
         "room": "13_21",
@@ -17275,10 +16951,6 @@
       {
         "room": "11_9",
         "raw": "magic:refresh"
-      },
-      {
-        "room": "11_18",
-        "raw": "magic:refresh"
       }
     ],
     "item:rubies": [
@@ -17369,6 +17041,16 @@
         "raw": "item:gingerbread#5"
       }
     ],
+    "food:apple": [
+      {
+        "room": "14_21",
+        "raw": "food:apple#30"
+      },
+      {
+        "room": "20_20",
+        "raw": "food:apple"
+      }
+    ],
     "magic:doubleDown": [
       {
         "room": "9_22",
@@ -17388,10 +17070,6 @@
       }
     ],
     "weapon:shadowStaff": [
-      {
-        "room": "4_26",
-        "raw": "weapon:shadowStaff"
-      },
       {
         "room": "4_26",
         "raw": "weapon:shadowStaff"
@@ -17633,6 +17311,22 @@
         "raw": "skill:shield"
       }
     ],
+    "food:honey": [
+      {
+        "room": "20_20",
+        "raw": "food:honey"
+      }
+    ],
+    "food:grapes": [
+      {
+        "room": "20_20",
+        "raw": "food:grapes"
+      },
+      {
+        "room": "6_13",
+        "raw": "food:grapes#5"
+      }
+    ],
     "food:cherries": [
       {
         "room": "12_9",
@@ -17715,6 +17409,12 @@
         "raw": "armor:robe"
       }
     ],
+    "armor:iron": [
+      {
+        "room": "20_20",
+        "raw": "armor:iron"
+      }
+    ],
     "armor:royalArmor": [
       {
         "room": "13_17",
@@ -17795,26 +17495,10 @@
         "raw": "skill:medic.6"
       }
     ],
-    "food:sunflowerSeeds": [
-      {
-        "room": "11_12",
-        "raw": "food:sunflowerSeeds"
-      },
-      {
-        "room": "11_19",
-        "raw": "food:sunflowerSeeds"
-      }
-    ],
     "weapon:warlockStaff": [
       {
         "room": "18_23",
         "raw": "weapon:warlockStaff"
-      }
-    ],
-    "weapon:sKnife": [
-      {
-        "room": "13_16",
-        "raw": "weapon:sKnife"
       }
     ],
     "flag:rubies": [

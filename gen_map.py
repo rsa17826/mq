@@ -3,9 +3,6 @@ import os
 import re
 import json
 
-# make warp colors same color on each side!!!
-# make warps show correct dest not vinela dest!!!!!!!!!!!1
-
 # Target folder pointing to the downsized versions
 IMAGE_FOLDER = "mapSmall"
 FULL_IMAGE_FOLDER = "map"
@@ -55,6 +52,29 @@ html_start = f"""<!DOCTYPE html>
             height: 100vh;
             overflow: hidden;
             position: relative;
+        }}
+        /* Interactive Top-Right UI Panel */
+        #info-panel {{
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 300px;
+            max-height: 85vh;
+            background: rgba(20, 20, 20, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 16px;
+            box-sizing: border-box;
+            z-index: 10000000;
+            pointer-events: none;
+            white-space: pre-wrap;
+            font-family: monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+            color: #e0e0e0;
+            transition: opacity 0.15s ease;
         }}
         #pan-layer {{
             position: absolute;
@@ -123,7 +143,6 @@ html_start = f"""<!DOCTYPE html>
             z-index: 12;
             filter: drop-shadow(0px 1px 2px rgba(0,0,0,0.8));
         }}
-        /* FIX: Unique ID styled explicitly to sit on top of everything */
         #arrow-canvas-2d {{
             position: absolute;
             top: 0;
@@ -138,6 +157,7 @@ html_start = f"""<!DOCTYPE html>
 </head>
 <body>
 <div id="viewport">
+    <div id="info-panel">Hover over a room to view details.</div>
     <div id="pan-layer">
         <div id="grid">
 """
@@ -153,6 +173,7 @@ const ctx = canvas.getContext("2d")
 const viewport = document.getElementById("viewport")
 const grid = document.getElementById("grid")
 const panLayer = document.getElementById("pan-layer")
+const infoPanel = document.getElementById("info-panel")
 
 let scale = 0.286
 let originX = 0
@@ -177,10 +198,17 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".tile-wrapper").forEach((tile) => {
       tile.addEventListener("mouseenter", function () {
         currentRoom = this.getAttribute("data-room")
+        const infoText = this.getAttribute("data-info")
+        if (infoPanel && infoText) {
+            infoPanel.innerText = infoText
+        }
         requestUpdate()
       })
       tile.addEventListener("mouseleave", function () {
         currentRoom = null
+        if (infoPanel) {
+            infoPanel.innerText = "Hover over a room to view details."
+        }
         requestUpdate()
       })
     })
@@ -229,14 +257,11 @@ function drawArrow(route) {
   ctx.quadraticCurveTo(b.x, b.y, c.x, c.y)
 
   ctx.strokeStyle = route.color
-  
-  // FIX: Line properties stay completely static on screen regardless of zoom scale!
   ctx.lineWidth = 4 
   ctx.setLineDash([12, 8])
   ctx.lineCap = "round"
   ctx.stroke()
 
-  // --- NON-SCALING ARROWHEAD ---
   const angle = Math.atan2(c.y - b.y, c.x - b.x)
   const arrowSize = 12 
 
@@ -377,29 +402,16 @@ def load_connections():
 def load_doors():
   from _exits import EXITS
   return EXITS['doors']
-    # if not os.path.exists(EXITS_JSON_PATH):
-    #     print(f"[-] Warn: {EXITS_JSON_PATH} not found.")
-    #     return []
-    # with open(EXITS_JSON_PATH, "r", encoding="utf-8") as f:
-    #     return json.load(f).get("doors", [])
 
 def load_geometry_map():
     from _room_geometry import GEOM
     geom_db = {}
-    # if not os.path.exists(GEOMETRY_JSON_PATH):
-    #     print(f"[-] Warn: {GEOMETRY_JSON_PATH} not found.")
-    #     return geom_db
-    # try:
-    #     with open(GEOMETRY_JSON_PATH, "r", encoding="utf-8") as f:
-    #         rooms_list = json.load(f)
     for room in GEOM:
         if "north" in room and "east" in room:
             n = int(float(room["north"]))
             e = int(float(room["east"]))
             key = f"{n}_{e}"
             geom_db[key] = room.get("exits", {})
-    # except Exception as err:
-    #     print(f"[-] Failed to read room geometry config details: {err}")
     return geom_db
 
 def load_progression_map():
@@ -522,12 +534,9 @@ def main():
     scale_x_room = TILE_WIDTH / ROOM_INTERNAL_WIDTH
     scale_y_room = TILE_HEIGHT / ROOM_INTERNAL_HEIGHT
 
-    half_block_x_conn_scaled = (ROOM_INTERNAL_WIDTH / (2 * BLOCKS_X)) * scale_x_conn
-    half_block_y_conn_scaled = (ROOM_INTERNAL_HEIGHT / (2 * BLOCKS_Y)) * scale_y_conn
     half_block_x_room_scaled = (ROOM_INTERNAL_WIDTH / (2 * BLOCKS_X)) * scale_x_room
     half_block_y_room_scaled = (ROOM_INTERNAL_HEIGHT / (2 * BLOCKS_Y)) * scale_y_room
 
-    # Step 1: Process connections (Centered exactly inside the local grid block)
     for conn in connections:
         o_n, o_e = int(conn["originNorth"]), int(conn["originEast"])
         room_key = f"{o_n}_{o_e}"
@@ -541,7 +550,6 @@ def main():
 
         src_coord = conn.get("srcCoord")
         if not direction or src_coord is None:
-          print( "[WARNING] some exit missing some data", conn)
           continue
 
         src_coord_scaled = float(src_coord) * (scale_x_conn if direction in ["north", "south"] else scale_y_conn)
@@ -554,8 +562,6 @@ def main():
         halfTileHeight = (TILE_HEIGHT / BLOCKS_Y)/2
 
         dest_o_n, dest_o_e = int(conn["newDestNorth"]), int(conn["newDestEast"])
-        
-        # If the destination room is outside the rendering track context bounds, default to current track positions
         dest_track_col = east_to_track.get(dest_o_e, track_col)
         dest_track_row = north_to_track.get(dest_o_n, track_row)
 
@@ -566,72 +572,9 @@ def main():
         float_new_x = float(new_x) if new_x is not None else ROOM_INTERNAL_WIDTH / 2
         float_new_y = float(new_y) if new_y is not None else ROOM_INTERNAL_HEIGHT / 2
         
-        # Base scaled destination coordinates before directional offset adjustments
         raw_dest_x = dest_base_x + (float_new_x * scale_x_conn)
         raw_dest_y = dest_base_y + (float_new_y * scale_y_conn)
-        #  # --- DYNAMICALLY CALCULATE BLOCK DIMENSIONS FROM GEOMETRY ---
-        # # Default fallback values (1 grid block spans)
-        # exitSrcHeight = 1
-        # exitSrcWidth = 1
-        # exitDestHeight = 1
-        # exitDestWidth = 1
 
-        # # 1. Look up the source exit dimensions
-        # src_exits = geom_index.get(room_key, {}).get(direction, [])
-        # if src_exits:
-        #     # Sort them exactly like the HTML rendering layer does to maintain index parity
-        #     if direction in ["west", "east"]:
-        #         src_exits = sorted(src_exits, key=lambda b: int(float(b.get("top", 0))))
-        #     else:
-        #         src_exits = sorted(src_exits, key=lambda b: int(float(b.get("left", 0))))
-            
-        #     # Find all active connections for this side to find this connection's index
-        #     side_conns = [c for c in connections if int(c["originNorth"]) == o_n and int(c["originEast"]) == o_e and c.get("direction") == direction and c.get("srcCoord") is not None]
-        #     side_conns.sort(key=lambda c: float(c["srcCoord"]))
-            
-        #     try:
-        #         conn_idx = side_conns.index(conn)
-        #         if conn_idx < len(src_exits):
-        #             matched_bounds = src_exits[conn_idx]
-        #             if direction in ["west", "east"]:
-        #                 exitDestHeight = (int(float(matched_bounds["bottom"])) - int(float(matched_bounds["top"]))) + 1
-        #                 exitDestWidth = 1  # Edges on west/east are 1 block wide
-        #             else:
-        #                 exitDestHeight = 1  # Edges on north/south are 1 block high
-        #                 exitDestWidth = (int(float(matched_bounds["right"])) - int(float(matched_bounds["left"]))) + 1
-        #     except ValueError:
-        #         pass # Connection wasn't in the standard index layout
-
-        # # 2. Look up the destination exit dimensions
-        # dest_room_key = f"{dest_o_n}_{dest_o_e}"
-        # # Opposing directions map to each other (west <-> east, north <-> south)
-        # opposing_direction = {"west": "east", "east": "west", "north": "south", "south": "north"}.get(direction)
-          
-        # dest_exits = geom_index.get(dest_room_key, {}).get(opposing_direction, [])
-        # if dest_exits:
-        #     if opposing_direction in ["west", "east"]:
-        #         dest_exits = sorted(dest_exits, key=lambda b: int(float(b.get("top", 0))))
-        #     else:
-        #         dest_exits = sorted(dest_exits, key=lambda b: int(float(b.get("left", 0))))
-                
-        #     # Find matching target connection incoming index
-        #     dest_side_conns = [c for c in connections if int(c["newDestNorth"]) == dest_o_n and int(c["newDestEast"]) == dest_o_e and c.get("direction") == direction]
-        #     # Match sorting criteria based on incoming coordinates
-        #     dest_side_conns.sort(key=lambda c: float(c.get("newY" if opposing_direction in ["west", "east"] else "newX", 0)))
-            
-        #     try:
-        #         dest_idx = dest_side_conns.index(conn)
-        #         if dest_idx < len(dest_exits):
-        #             matched_dest_bounds = dest_exits[dest_idx]
-        #             if opposing_direction in ["west", "east"]:
-        #                 exitSrcHeight = (int(float(matched_dest_bounds["bottom"])) - int(float(matched_dest_bounds["top"]))) + 1
-        #                 exitSrcWidth = 1
-        #             else:
-        #                 exitSrcHeight = 1
-        #                 exitSrcWidth = (int(float(matched_dest_bounds["right"])) - int(float(matched_dest_bounds["left"]))) + 1
-        #     except ValueError:
-        #         pass
-        # Calculate both source and destination coordinates with matching grid offsets
         if direction == "west":
             arrow_src_x, arrow_src_y = base_x + halfTileWidth, base_y + src_coord_scaled
             arrow_dest_x, arrow_dest_y = raw_dest_x + (halfTileWidth*2), raw_dest_y
@@ -645,18 +588,6 @@ def main():
             arrow_src_x, arrow_src_y = base_x + src_coord_scaled, base_y + TILE_HEIGHT - halfTileHeight
             arrow_dest_x, arrow_dest_y = raw_dest_x, raw_dest_y - (halfTileHeight*2)
         mid_x, mid_y = (arrow_src_x + arrow_dest_x) / 2, (arrow_src_y + arrow_dest_y) / 2
-        # if room_key=="20_22":
-        #   if exitSrcWidth%2==0:
-        #     arrow_src_x +=halfTileWidth
-        #   elif exitSrcHeight%2==0:
-        #     print("asdasdadssad")
-        #     arrow_src_y +=halfTileHeight
-        #   else:
-        #     continue
-        #   if exitDestWidth%2==0:
-        #     arrow_dest_x +=halfTileWidth
-        #   if exitDestHeight%2==0:
-        #     arrow_dest_y +=halfTileHeight
         if direction in ["west", "east"]:
             ctrl_x, ctrl_y = (mid_x + (25 if direction == "east" else -25), mid_y)
         else:
@@ -666,7 +597,6 @@ def main():
         if room_key in js_routes_db:
             js_routes_db[room_key].append({"d": [arrow_src_x, arrow_src_y, ctrl_x, ctrl_y, arrow_dest_x, arrow_dest_y], "color": color})
             
-    # Step 2: Handle warp doors
     room_doors_index = {}
     for d in doors:
         o_n, o_e = int(d["origin"]["north"]), int(d["origin"]["east"])
@@ -682,7 +612,6 @@ def main():
 
         override = conn_override_index.get(door_id_str)
         if override:
-            # shuffled: this door's actual paired destination + landing spot
             d_n, d_e = int(override["newDestNorth"]), int(override["newDestEast"])
             ov_x, ov_y = override.get("newX"), override.get("newY")
             if ov_x is not None and ov_y is not None:
@@ -691,7 +620,6 @@ def main():
                 dest_x_local = ROOM_INTERNAL_WIDTH / 2
                 dest_y_local = ROOM_INTERNAL_HEIGHT / 2
             
-            # FIX: Use paired target connection if available to lock colors together symmetrically
             to_exit_id = override.get("toExitId", "warp_gate")
             color = djb2_color_hash(d["id"], to_exit_id)
         else:
@@ -866,12 +794,13 @@ def main():
             sanitized_name = re.sub(r"[:#?]", "_", re.sub(r"[#?].+$", "", item))
             icon_filename = f"{sanitized_name}.png"
             icon_src = os.path.join(PROGRESSION_ICON_PATH, icon_filename).replace("\\", "/")
-            icon_html += f'\n            <img src="{icon_src}" class="progression-icon" alt="{item}" title="{item}">'
+            icon_html += f'\n            <img src="{icon_src}" class="progression-icon" alt="{item}">'
         icon_html += "</span>"
 
         overlay_content = "\n".join(squares_html)
 
-        wrapper_tag = f"""        <div class="tile-wrapper" data-room="{room_key}" style="left: {pixel_left:.1f}px; top: {pixel_top:.1f}px;" title="{tooltip_str}">
+        # Replaced native HTML title="..." with custom data-info="..."
+        wrapper_tag = f"""        <div class="tile-wrapper" data-room="{room_key}" style="left: {pixel_left:.1f}px; top: {pixel_top:.1f}px;" data-info="{tooltip_str}">
             <img data-src="{highres_img_path}" src="{placeholder_img_path}" style="background-image: url('{placeholder_img_path}'); background-size: cover;" class="grid-item loading" alt="Tile {north},{east}">{icon_html}
             <div class="overlay-layer">
 {overlay_content}
@@ -885,7 +814,6 @@ def main():
     container_style = f'id="grid" style="width: {total_svg_width}px; height: {total_svg_height}px;"'
     dynamic_html_start = html_start.replace('id="grid"', container_style)
 
-    # Injecting script payload data globally
     script_payload = f"""
     <script>
         const ROUTES_DATA = {json.dumps(js_routes_db, indent=2)};
@@ -917,19 +845,6 @@ def snapToGrid(x, y):
     snapped_x = round(float(x) / block_width) * block_width
     snapped_y = round(float(y) / block_height) * block_height
     return snapped_x, snapped_y
-
-def exitBlockToPixel(base_x, base_y, side, block_pos):
-    block_w = TILE_WIDTH / BLOCKS_X
-    block_h = TILE_HEIGHT / BLOCKS_Y
-
-    if side == "north":
-        return base_x + block_pos * block_w, base_y
-    elif side == "south":
-        return base_x + block_pos * block_w, base_y + TILE_HEIGHT
-    elif side == "west":
-        return base_x, base_y + block_pos * block_h
-    elif side == "east":
-        return base_x + TILE_WIDTH, base_y + block_pos * block_h
 
 if __name__ == "__main__":
     main()
