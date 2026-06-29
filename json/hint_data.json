@@ -7585,7 +7585,6 @@
         "skill:firewall.1",
         "skill:halo",
         "item:aurastone",
-        "item:key",
         "item:gold",
         "item:dragon scale",
         "item:cotton thread",
@@ -11647,17 +11646,6 @@
       ]
     },
     {
-      "room": "500_501",
-      "requires": [
-        [
-          "weapon:baneBlade"
-        ]
-      ],
-      "receive": [
-        "weapon:aSword"
-      ]
-    },
-    {
       "room": "20_20",
       "requires": [
         [
@@ -11841,17 +11829,6 @@
       ]
     },
     {
-      "room": "11_12",
-      "requires": [
-        [
-          "item:gold#100"
-        ]
-      ],
-      "receive": [
-        "food:sunflowerSeeds"
-      ]
-    },
-    {
       "room": "6_13",
       "requires": [
         [
@@ -11867,13 +11844,6 @@
       "requires": [],
       "receive": [
         "food:cherries"
-      ]
-    },
-    {
-      "room": "18_23",
-      "requires": [],
-      "receive": [
-        "weapon:warlockStaff"
       ]
     },
     {
@@ -15341,16 +15311,6 @@
         "raw": "item:aurastone#1"
       }
     ],
-    "item:key": [
-      {
-        "room": "20_20",
-        "raw": "item:key"
-      },
-      {
-        "room": "20_20",
-        "raw": "item:key#999"
-      }
-    ],
     "item:gold": [
       {
         "room": "20_20",
@@ -15493,6 +15453,12 @@
       {
         "room": "20_20",
         "raw": "item:blue crystal"
+      }
+    ],
+    "item:key": [
+      {
+        "room": "20_20",
+        "raw": "item:key#999"
       }
     ],
     "item:bear tooth": [
@@ -15737,10 +15703,6 @@
       {
         "room": "11_19",
         "raw": "food:sunflowerSeeds#1"
-      },
-      {
-        "room": "11_12",
-        "raw": "food:sunflowerSeeds"
       }
     ],
     "misc:headstoneSwitch2": [
@@ -15762,10 +15724,6 @@
     "weapon:warlockStaff": [
       {
         "room": "12_9",
-        "raw": "weapon:warlockStaff"
-      },
-      {
-        "room": "18_23",
         "raw": "weapon:warlockStaff"
       },
       {
@@ -17381,20 +17339,16 @@
         "raw": "armor:speedVest"
       }
     ],
-    "weapon:aSword": [
-      {
-        "room": "500_501",
-        "raw": "weapon:aSword"
-      },
-      {
-        "room": "500_501",
-        "raw": "weapon:aSword"
-      }
-    ],
     "weapon:dagger": [
       {
         "room": "20_20",
         "raw": "weapon:dagger"
+      }
+    ],
+    "weapon:aSword": [
+      {
+        "room": "500_501",
+        "raw": "weapon:aSword"
       }
     ],
     "weapon:twinFury": [
