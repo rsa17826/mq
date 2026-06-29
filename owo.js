@@ -21,7 +21,7 @@
  * @param {String} inputText
  * @returns {String}
  */
-function owowify(inputText) {
+function owo(inputText) {
   const endSentencePattern = String.raw`([\w ,.!?]+)?` // endSentencePattern
   // const endSentencePattern1 = String.raw`([\w ,.?]+)?`; // endSentencePattern without "!" sign
   // const endSentencePattern2 = String.raw`([\w ,.]+)?`; // endSentencePattern without "!" and "?" sign
