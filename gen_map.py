@@ -3,6 +3,9 @@ import os
 import re
 import json
 
+# make warp colors same color on each side!!!
+# make warps show correct dest not vinela dest!!!!!!!!!!!1
+
 # Target folder pointing to the downsized versions
 IMAGE_FOLDER = "mapSmall"
 FULL_IMAGE_FOLDER = "map"
@@ -60,7 +63,7 @@ html_start = f"""<!DOCTYPE html>
             right: 20px;
             width: 320px;
             max-height: 85vh;
-            background: rgba(20, 20, 20, 0.88);
+            background: rgba(20, 20, 20, 0.92);
             backdrop-filter: blur(8px);
             border: 1px solid #444;
             border-radius: 8px;
@@ -70,7 +73,7 @@ html_start = f"""<!DOCTYPE html>
             pointer-events: none;
             font-family: monospace;
             font-size: 13px;
-            line-height: 1.5;
+            line-height: 1.6;
             box-shadow: 0 4px 20px rgba(0,0,0,0.6);
             color: #e0e0e0;
             overflow-y: auto;
@@ -88,13 +91,24 @@ html_start = f"""<!DOCTYPE html>
             padding-top: 8px;
         }}
         .info-line {{
-            margin: 4px 0;
+            margin: 6px 0;
+        }}
+        /* Prevents item name and icon from breaking apart across lines */
+        .info-item-token {{
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 2px;
+            vertical-align: middle;
         }}
         .info-inline-icon {{
             height: 18px;
-            vertical-align: middle;
-            margin-right: 4px;
-            margin-left: 2px;
+            width: auto;
+            margin-right: 6px;
             filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.8));
         }}
         #pan-layer {{
@@ -478,11 +492,12 @@ def load_progression_map():
         print(f"[-] Failed to read progression config details: {err}")
     return prog_db
 
-def get_item_icon_html(item_name):
+def get_item_token_html(item_name):
+    """Generates an HTML token where item name and icon are kept unbroken together."""
     sanitized_name = re.sub(r"[:#?]", "_", re.sub(r"[#?].+$", "", item_name))
     icon_filename = f"{sanitized_name}.png"
     icon_src = os.path.join(PROGRESSION_ICON_PATH, icon_filename).replace("\\", "/")
-    return f'<img src="{icon_src}" class="info-inline-icon" alt="{item_name}">{item_name}'
+    return f'<span class="info-item-token"><img src="{icon_src}" class="info-inline-icon" alt="{item_name}">{item_name}</span>'
 
 def build_room_info_json(north, east, prog_entries):
     info_data = {
@@ -495,17 +510,18 @@ def build_room_info_json(north, east, prog_entries):
         if "info" in entry:
             parsed_entry["info"] = entry["info"]
             
+        # Omit 'Requires' section entirely if empty or only contains empty groups
         if "requires" in entry and len(entry['requires']) > 0 and any(group for group in entry['requires']):
             req_groups = []
             for group in entry["requires"]:
-                item_htmls = [get_item_icon_html(item) for item in group if item]
+                item_htmls = [get_item_token_html(item) for item in group if item]
                 if item_htmls:
                     req_groups.append(" AND ".join(item_htmls))
             if req_groups:
                 parsed_entry["requiresHtml"] = " OR ".join(f"({r})" for r in req_groups) if len(req_groups) > 1 else req_groups[0]
                 
         if "receive" in entry and len(entry["receive"]) > 0:
-            rec_htmls = [get_item_icon_html(item) for item in entry["receive"] if item]
+            rec_htmls = [get_item_token_html(item) for item in entry["receive"] if item]
             if rec_htmls:
                 parsed_entry["receiveHtml"] = ", ".join(rec_htmls)
                 
@@ -822,7 +838,6 @@ def main():
 
         overlay_content = "\n".join(squares_html)
 
-        # Replaced title string with structured info payload JSON
         wrapper_tag = f"""        <div class="tile-wrapper" data-room="{room_key}" style="left: {pixel_left:.1f}px; top: {pixel_top:.1f}px;" data-info="{info_json_str}">
             <img data-src="{highres_img_path}" src="{placeholder_img_path}" style="background-image: url('{placeholder_img_path}'); background-size: cover;" class="grid-item loading" alt="Tile {north},{east}">{icon_html}
             <div class="overlay-layer">
