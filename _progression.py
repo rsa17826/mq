@@ -287,7 +287,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [["quest:rings.1"]],
     "receive": ["misc:headstoneSwitch3"],
   },
-  {"room": {"north": 11, "east": 24}, "info": "warp skill warp point"},
+  # {"room": {"north": 11, "east": 24}, "info": "warp skill warp point"},
   {
     "room": {"north": 11, "east": 22},
     "requires": [["item:shark tooth#10", "skill:craft"]],
@@ -606,7 +606,7 @@ manager.correct - manager.wrong > 800 = halo
   {
     "room": {"north": 17, "east": 19},
     "requires": [[]],
-    "receive": ["quest:oMan.1", "misc:old pendant"],
+    "receive": ["quest:oMan.1"],
   },
   {
     "room": {"north": 21, "east": 21},
@@ -798,7 +798,7 @@ MathQuest.js:42550 add listeners""",
   },
   {
     "room": {"north": 15, "east": 24},
-    "requires": [["quest:oMan.1", "misc:old pendant"]],
+    "requires": [["quest:oMan.1"]],
     "receive": ["quest:oMan.2"],
   },
   {
@@ -1034,8 +1034,8 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 18, "east": 19},
     "requires": [["item:key#1"]],
-    "receive": ["item:gold#100"],
-    "info": "does not give a strawberry and gp is 100*level of craft emerald",
+    "receive": ["item:gold#Enum.Craft.emerald"],
+    "info": "does not give a strawberry",
   },
   {
     "room": {"north": 17, "east": 20},
@@ -2170,10 +2170,6 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 18, "east": 21},
     'requires':[['item:key#1']],
     "receive": ["food:gingerBread"],
-  },
-  {
-    "room": {"north": 18, "east": 19},
-    "receive": ["item:gold#Enum.Craft.emerald"],
   },
   {
     "room": {"north": 12, "east": 21},

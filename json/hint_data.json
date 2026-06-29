@@ -7674,7 +7674,7 @@
         ]
       ],
       "receive": [
-        "armor:iron armor"
+        "armor:iron"
       ]
     },
     {
@@ -8076,13 +8076,13 @@
       "requires": [
         [
           "entrance.south0",
-          "item:alpha scepter#1",
+          "item:aScepter#1",
           "item:dragon scale#5",
           "skill:craft"
         ],
         [
           "entrance.south1",
-          "item:alpha scepter#1",
+          "item:aScepter#1",
           "item:dragon scale#5",
           "skill:craft",
           "permit:bomb.2"
@@ -8102,11 +8102,6 @@
       "receive": [
         "misc:headstoneSwitch3"
       ]
-    },
-    {
-      "room": "11_24",
-      "requires": [],
-      "receive": []
     },
     {
       "room": "11_22",
@@ -8142,7 +8137,7 @@
         ]
       ],
       "receive": [
-        "item:alpha scepter#1"
+        "item:aScepter#1"
       ]
     },
     {
@@ -8785,8 +8780,7 @@
         []
       ],
       "receive": [
-        "quest:oMan.1",
-        "misc:old pendant"
+        "quest:oMan.1"
       ]
     },
     {
@@ -9167,8 +9161,7 @@
       "room": "15_24",
       "requires": [
         [
-          "quest:oMan.1",
-          "misc:old pendant"
+          "quest:oMan.1"
         ]
       ],
       "receive": [
@@ -9660,7 +9653,7 @@
         ]
       ],
       "receive": [
-        "item:gold#100"
+        "item:gold#Enum.Craft.emerald"
       ]
     },
     {
@@ -12105,13 +12098,6 @@
       ],
       "receive": [
         "food:gingerBread"
-      ]
-    },
-    {
-      "room": "18_19",
-      "requires": [],
-      "receive": [
-        "item:gold#Enum.Craft.emerald"
       ]
     },
     {
@@ -15670,7 +15656,7 @@
       },
       {
         "room": "18_19",
-        "raw": "item:gold#100"
+        "raw": "item:gold#Enum.Craft.emerald"
       },
       {
         "room": "17_20",
@@ -15735,10 +15721,6 @@
       {
         "room": "15_21",
         "raw": "item:gold"
-      },
-      {
-        "room": "18_19",
-        "raw": "item:gold#Enum.Craft.emerald"
       },
       {
         "room": "8_10",
@@ -15981,10 +15963,14 @@
         "raw": "armor:magic robe"
       }
     ],
-    "armor:iron armor": [
+    "armor:iron": [
       {
         "room": "20_20",
-        "raw": "armor:iron armor"
+        "raw": "armor:iron"
+      },
+      {
+        "room": "20_20",
+        "raw": "armor:iron"
       }
     ],
     "food:apple": [
@@ -16447,10 +16433,10 @@
         "raw": "item:diamonds"
       }
     ],
-    "item:alpha scepter": [
+    "item:aScepter": [
       {
         "room": "13_25",
-        "raw": "item:alpha scepter#1"
+        "raw": "item:aScepter#1"
       }
     ],
     "flag:flag:three part code part 1": [
@@ -17017,12 +17003,6 @@
       {
         "room": "17_19",
         "raw": "quest:oMan.13"
-      }
-    ],
-    "misc:old pendant": [
-      {
-        "room": "17_19",
-        "raw": "misc:old pendant"
       }
     ],
     "skill:craft": [
@@ -17733,12 +17713,6 @@
       {
         "room": "20_20",
         "raw": "armor:robe"
-      }
-    ],
-    "armor:iron": [
-      {
-        "room": "20_20",
-        "raw": "armor:iron"
       }
     ],
     "armor:royalArmor": [

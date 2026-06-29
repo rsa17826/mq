@@ -10,6 +10,7 @@ class ArchipelagoClient {
     this.socket = null
     this.lastProcessedIndex = 0 // Tracks received items to maintain sync
     this.itemCount = 0 // Tracks received items to maintain sync
+    this.itemQueue = new FIFOQueue(1, this.onReceivedItems.bind(this))
   }
 
   /**
@@ -182,41 +183,43 @@ class ArchipelagoClient {
    * Handshake Step 7 / Syncing: Server delivers items assigned to this player.
    */
   onReceivedItems(packet) {
-    log(`Received packet containing ${packet.items.length} items.`)
+    log(`Processing packet containing ${packet.items.length} items.`)
     if (!window.playerLoaded) {
       log(window.playerLoaded)
       window.waitingPackets.push(packet)
       return
     }
 
-    packet.items.forEach((item, offset) => {
+    let itemsProcessedThisFrame = 0
+    const MAX_ITEMS_PER_FRAME = 100
+    let stopIndex = packet.items.length
+
+    for (let offset = 0; offset < packet.items.length; offset++) {
+      if (itemsProcessedThisFrame >= MAX_ITEMS_PER_FRAME) {
+        stopIndex = offset
+        break
+      }
+
+      const item = packet.items[offset]
       this.itemCount += 1
       const itemName = AP_ITEM_IDS[item.item]
       const globalIndex = packet.index + offset
 
       if (this.itemCount > window.lastRecivedItem) {
         if (this.itemCount - 1 === window.lastRecivedItem) {
-          // Look up what this item ID actually means
-          // if (ap.checkedLocations.includes(item.item)) {
-          //   log(
-          //     `[Item Received] ID: ${item.item} (${itemName}) - already recived`,
-          //     item,
-          //   )
-          // } else {
-          // log(item.item)
           log(`[Item Received] ID: ${item.item} (${itemName})`, item)
           if (itemList[itemName]) {
             itemList[itemName]()
           } else {
             error("failed to give", itemName)
           }
-          // if (!window.giveItem(itemName)) {
-          //   error("failed to give", itemName)
-          // }
-          var oldtext = manager.mess.get_text() ?? ""
-          manager.mess.set_text(
-            `[Item Received] ID: ${item.item} (${itemName})\n${oldtext}`,
-          )
+
+          if (manager.mess.__visible) {
+            var oldtext = manager.mess.get_text() ?? ""
+            manager.mess.set_text(
+              `[Item Received] ID: ${item.item} (${itemName})\n${oldtext}`,
+            )
+          }
         } else {
           warn(
             "somthing went wrong with sending items!!",
@@ -230,9 +233,25 @@ class ArchipelagoClient {
           item,
         )
       }
+
       window.lastRecivedItem = this.itemCount
       this.lastProcessedIndex = globalIndex + 1
-    })
+      itemsProcessedThisFrame++
+    }
+
+    // Fix #3: Slice the remaining un-processed items and queue them for the next frame
+    if (stopIndex < packet.items.length) {
+      const remainingItems = packet.items.slice(stopIndex)
+      log(
+        `Reached limit. Queueing remaining ${remainingItems.length} items for later.`,
+      )
+
+      this.itemQueue.add({
+        cmd: "ReceivedItems",
+        index: packet.index + stopIndex, // Adjust index pointer for sync tracking
+        items: remainingItems,
+      })
+    }
   }
 
   /**
@@ -265,6 +284,46 @@ class ArchipelagoClient {
 
   generateUUID() {
     return Math.random().toString(36).substring(2, 15)
+  }
+}
+class FIFOQueue {
+  constructor(maxCount, cb) {
+    this.list = []
+    this.processing = false
+    this.cb = cb
+  }
+
+  add(thing) {
+    this.list.push(thing)
+    // Only kick off processing if it isn't already looping
+    if (!this.processing) {
+      this.process()
+    }
+  }
+
+  process() {
+    // If the queue is empty, stop the loop safely
+    if (this.list.length === 0) {
+      this.processing = false
+      return
+    }
+
+    this.processing = true
+
+    // Schedule the item processing for the next frame tick
+    setTimeout(() => {
+      try {
+        if (this.list.length > 0) {
+          const nextPacket = this.list.shift()
+          this.cb(nextPacket)
+        }
+      } catch (e) {
+        console.error(e)
+      } finally {
+        // CONTINUATION: Schedule the next single step *after* the current work is done
+        this.process()
+      }
+    }, 16) // ~16ms provides a stable ~60fps processing rhythm
   }
 }
 window.lastRecivedItem = 0
