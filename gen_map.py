@@ -53,14 +53,14 @@ html_start = f"""<!DOCTYPE html>
             overflow: hidden;
             position: relative;
         }}
-        /* Interactive Top-Right UI Panel */
+        /* Info Panel Top Right */
         #info-panel {{
             position: absolute;
             top: 20px;
             right: 20px;
-            width: 300px;
+            width: 320px;
             max-height: 85vh;
-            background: rgba(20, 20, 20, 0.85);
+            background: rgba(20, 20, 20, 0.88);
             backdrop-filter: blur(8px);
             border: 1px solid #444;
             border-radius: 8px;
@@ -68,13 +68,34 @@ html_start = f"""<!DOCTYPE html>
             box-sizing: border-box;
             z-index: 10000000;
             pointer-events: none;
-            white-space: pre-wrap;
             font-family: monospace;
             font-size: 13px;
             line-height: 1.5;
             box-shadow: 0 4px 20px rgba(0,0,0,0.6);
             color: #e0e0e0;
-            transition: opacity 0.15s ease;
+            overflow-y: auto;
+        }}
+        .info-header {{
+            font-weight: bold;
+            border-bottom: 1px solid #555;
+            padding-bottom: 4px;
+            margin-bottom: 8px;
+            color: #fff;
+        }}
+        .info-event-sep {{
+            border-top: 1px dashed #444;
+            margin: 8px 0;
+            padding-top: 8px;
+        }}
+        .info-line {{
+            margin: 4px 0;
+        }}
+        .info-inline-icon {{
+            height: 18px;
+            vertical-align: middle;
+            margin-right: 4px;
+            margin-left: 2px;
+            filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.8));
         }}
         #pan-layer {{
             position: absolute;
@@ -198,16 +219,42 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".tile-wrapper").forEach((tile) => {
       tile.addEventListener("mouseenter", function () {
         currentRoom = this.getAttribute("data-room")
-        const infoText = this.getAttribute("data-info")
-        if (infoPanel && infoText) {
-            infoPanel.innerText = infoText
+        const rawInfo = this.getAttribute("data-info")
+        if (infoPanel && rawInfo) {
+            try {
+                const infoObj = JSON.parse(rawInfo)
+                let htmlContent = `<div class="info-header">Position: ${infoObj.north}, ${infoObj.east}</div>`
+                
+                if (infoObj.entries && infoObj.entries.length > 0) {
+                    infoObj.entries.forEach((entry, idx) => {
+                        if (idx > 0) {
+                            htmlContent += `<div class="info-event-sep"></div>`
+                        }
+                        if (infoObj.entries.length > 1) {
+                            htmlContent += `<div style="color: #aaa; margin-bottom: 4px;">--- Event #${idx + 1} ---</div>`
+                        }
+                        if (entry.info) {
+                            htmlContent += `<div class="info-line">Info: ${entry.info}</div>`
+                        }
+                        if (entry.requiresHtml) {
+                            htmlContent += `<div class="info-line">Requires: ${entry.requiresHtml}</div>`
+                        }
+                        if (entry.receiveHtml) {
+                            htmlContent += `<div class="info-line">Receive: ${entry.receiveHtml}</div>`
+                        }
+                    })
+                }
+                infoPanel.innerHTML = htmlContent
+            } catch(e) {
+                infoPanel.innerText = rawInfo
+            }
         }
         requestUpdate()
       })
       tile.addEventListener("mouseleave", function () {
         currentRoom = null
         if (infoPanel) {
-            infoPanel.innerText = "Hover over a room to view details."
+            infoPanel.innerHTML = "Hover over a room to view details."
         }
         requestUpdate()
       })
@@ -400,8 +447,8 @@ def load_connections():
         return json.load(f).get("connections", [])
 
 def load_doors():
-  from _exits import EXITS
-  return EXITS['doors']
+    from _exits import EXITS
+    return EXITS['doors']
 
 def load_geometry_map():
     from _room_geometry import GEOM
@@ -431,25 +478,39 @@ def load_progression_map():
         print(f"[-] Failed to read progression config details: {err}")
     return prog_db
 
-def build_tooltip_text(north, east, prog_entries):
-    title_lines = [f"Position: {north},{east}"]
-    if not prog_entries:
-        return "\n".join(title_lines)
-    for idx, entry in enumerate(prog_entries):
-        if len(prog_entries) > 1:
-            title_lines.append(f"--- Event #{idx + 1} ---")
+def get_item_icon_html(item_name):
+    sanitized_name = re.sub(r"[:#?]", "_", re.sub(r"[#?].+$", "", item_name))
+    icon_filename = f"{sanitized_name}.png"
+    icon_src = os.path.join(PROGRESSION_ICON_PATH, icon_filename).replace("\\", "/")
+    return f'<img src="{icon_src}" class="info-inline-icon" alt="{item_name}">{item_name}'
+
+def build_room_info_json(north, east, prog_entries):
+    info_data = {
+        "north": north,
+        "east": east,
+        "entries": []
+    }
+    for entry in prog_entries:
+        parsed_entry = {}
         if "info" in entry:
-            title_lines.append(f"Info: {entry['info']}")
-        if "requires" in entry and len(entry['requires']):
+            parsed_entry["info"] = entry["info"]
+            
+        if "requires" in entry and len(entry['requires']) > 0 and any(group for group in entry['requires']):
             req_groups = []
             for group in entry["requires"]:
-                req_groups.append(" AND ".join(group))
-            req_str = " OR ".join(f"({r})" for r in req_groups) if len(req_groups) > 1 else req_groups[0]
-            title_lines.append(f"Requires: {req_str}")
-        if "receive" in entry:
-            rec_str = ", ".join(entry["receive"])
-            title_lines.append(f"Receive: {rec_str}")
-    return "\n".join(title_lines)
+                item_htmls = [get_item_icon_html(item) for item in group if item]
+                if item_htmls:
+                    req_groups.append(" AND ".join(item_htmls))
+            if req_groups:
+                parsed_entry["requiresHtml"] = " OR ".join(f"({r})" for r in req_groups) if len(req_groups) > 1 else req_groups[0]
+                
+        if "receive" in entry and len(entry["receive"]) > 0:
+            rec_htmls = [get_item_icon_html(item) for item in entry["receive"] if item]
+            if rec_htmls:
+                parsed_entry["receiveHtml"] = ", ".join(rec_htmls)
+                
+        info_data["entries"].append(parsed_entry)
+    return json.dumps(info_data).replace('"', '&quot;')
 
 def main():
     if not os.path.exists(IMAGE_FOLDER):
@@ -463,48 +524,30 @@ def main():
 
     for room_key, exits in geom_index.items():
         exit_lookup[room_key] = {}
-    
         for side, bounds_list in exits.items():
-            if not bounds_list:
-                continue
-            if not isinstance(bounds_list, list):
-                bounds_list = [bounds_list]
-    
+            if not bounds_list: continue
+            if not isinstance(bounds_list, list): bounds_list = [bounds_list]
             processed = []
-    
             for b in bounds_list:
-                if not isinstance(b, dict):
-                    continue
-    
+                if not isinstance(b, dict): continue
                 if side in ["west", "east"]:
                     start = int(float(b["top"]))
                     end = int(float(b["bottom"]))
                     center_block = (start + end) / 2
-    
-                    processed.append({
-                        "side": side,
-                        "block": center_block
-                    })
-    
-                else:  # north/south
+                    processed.append({"side": side, "block": center_block})
+                else:
                     start = int(float(b["left"]))
                     end = int(float(b["right"]))
                     center_block = (start + end) / 2
-    
-                    processed.append({
-                        "side": side,
-                        "block": center_block
-                    })
-    
+                    processed.append({"side": side, "block": center_block})
             exit_lookup[room_key][side] = processed
-    prog_index = load_progression_map()
 
+    prog_index = load_progression_map()
     conn_override_index = {str(c["fromExitId"]): c for c in connections if "fromExitId" in c}
     door_ids = {str(d["id"]) for d in doors}
 
     files = os.listdir(IMAGE_FOLDER)
     parsed_tiles = []
-
     for filename in files:
         match = re.match(r"^(\d+)[,\-](\d+)", filename)
         if match:
@@ -530,7 +573,6 @@ def main():
 
     scale_x_conn = TILE_WIDTH / ROOM_INTERNAL_WIDTH
     scale_y_conn = TILE_HEIGHT / ROOM_INTERNAL_HEIGHT
-
     scale_x_room = TILE_WIDTH / ROOM_INTERNAL_WIDTH
     scale_y_room = TILE_HEIGHT / ROOM_INTERNAL_HEIGHT
 
@@ -540,17 +582,13 @@ def main():
     for conn in connections:
         o_n, o_e = int(conn["originNorth"]), int(conn["originEast"])
         room_key = f"{o_n}_{o_e}"
-
-        if o_n not in north_to_track or o_e not in east_to_track:
-            continue
+        if o_n not in north_to_track or o_e not in east_to_track: continue
 
         direction = conn.get("direction")
-        if str(conn.get("fromExitId")) in door_ids or direction == "warp":
-            continue
+        if str(conn.get("fromExitId")) in door_ids or direction == "warp": continue
 
         src_coord = conn.get("srcCoord")
-        if not direction or src_coord is None:
-          continue
+        if not direction or src_coord is None: continue
 
         src_coord_scaled = float(src_coord) * (scale_x_conn if direction in ["north", "south"] else scale_y_conn)
 
@@ -587,6 +625,7 @@ def main():
         elif direction == "south":
             arrow_src_x, arrow_src_y = base_x + src_coord_scaled, base_y + TILE_HEIGHT - halfTileHeight
             arrow_dest_x, arrow_dest_y = raw_dest_x, raw_dest_y - (halfTileHeight*2)
+
         mid_x, mid_y = (arrow_src_x + arrow_dest_x) / 2, (arrow_src_y + arrow_dest_y) / 2
         if direction in ["west", "east"]:
             ctrl_x, ctrl_y = (mid_x + (25 if direction == "east" else -25), mid_y)
@@ -609,7 +648,6 @@ def main():
         door_id_str = str(d["id"])
 
         src_x_local, src_y_local = snapToGrid(d["dest_x"], d["dest_y"])
-
         override = conn_override_index.get(door_id_str)
         if override:
             d_n, d_e = int(override["newDestNorth"]), int(override["newDestEast"])
@@ -619,7 +657,6 @@ def main():
             else:
                 dest_x_local = ROOM_INTERNAL_WIDTH / 2
                 dest_y_local = ROOM_INTERNAL_HEIGHT / 2
-            
             to_exit_id = override.get("toExitId", "warp_gate")
             color = djb2_color_hash(d["id"], to_exit_id)
         else:
@@ -634,7 +671,6 @@ def main():
                 color = djb2_color_hash(d["id"], "warp_gate")
 
         room_key = f"{o_n}_{o_e}"
-
         if o_n not in north_to_track or o_e not in east_to_track: continue
         if d_n not in north_to_track or d_e not in east_to_track: continue
 
@@ -643,7 +679,6 @@ def main():
 
         arrow_src_x = orig_col * TILE_WIDTH + (src_x_local * scale_x_room) + half_block_x_room_scaled
         arrow_src_y = orig_row * TILE_HEIGHT + (src_y_local * scale_y_room) + half_block_y_room_scaled
-
         arrow_dest_x = dest_col * TILE_WIDTH + (dest_x_local * scale_x_room) + half_block_x_room_scaled
         arrow_dest_y = dest_row * TILE_HEIGHT + (dest_y_local * scale_y_room) + half_block_y_room_scaled
 
@@ -712,13 +747,8 @@ def main():
                         squares_html.append(
                             f'<div class="exit-square" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%; background-color:{matched_color};"></div>'
                         )
-                        
                         js_exits_db[room_key].append({
-                            "side": side,
-                            "top": start_val,
-                            "bottom": end_val,
-                            "color": matched_color,
-                            "connectionId": connection_id,
+                            "side": side, "top": start_val, "bottom": end_val, "color": matched_color, "connectionId": connection_id,
                         })
 
                     elif side in ["north", "south"]:
@@ -734,20 +764,14 @@ def main():
                         squares_html.append(
                             f'<div class="exit-square" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%; background-color:{matched_color};"></div>'
                         )
-                        
                         js_exits_db[room_key].append({
-                            "side": side,
-                            "left": start_val,
-                            "right": end_val,
-                            "color": matched_color,
-                            "connectionId": connection_id,
+                            "side": side, "left": start_val, "right": end_val, "color": matched_color, "connectionId": connection_id,
                         })
 
         for d in doors:
             o_n, o_e = int(d["origin"]["north"]), int(d["origin"]["east"])
             v_dest_n, v_dest_e = int(d["dest"]["north"]), int(d["dest"]["east"])
 
-            reverse_door = room_doors_index.get(f"{v_dest_n}_{v_dest_e}->{o_n}_{o_e}")
             door_id_str = str(d["id"])
             if door_id_str in conn_override_index:
                 override = conn_override_index[door_id_str]
@@ -764,30 +788,29 @@ def main():
                 dest_y_local = float(d["dest_y"])
 
             if d_n == north and d_e == east:
-              x_pos_local, y_pos_local = snapToGrid(dest_x_local, dest_y_local)
-              x_pos_pct = (x_pos_local / ROOM_INTERNAL_WIDTH) * 100
-              y_pos_pct = (y_pos_local / ROOM_INTERNAL_HEIGHT) * 100
+                x_pos_local, y_pos_local = snapToGrid(dest_x_local, dest_y_local)
+                x_pos_pct = (x_pos_local / ROOM_INTERNAL_WIDTH) * 100
+                y_pos_pct = (y_pos_local / ROOM_INTERNAL_HEIGHT) * 100
 
-              squares_html.append(
-                  f'<div class="warp-square" style="left:{x_pos_pct:.2f}%; top:{y_pos_pct:.2f}%; width:{BLOCK_WIDTH_PCT:.2f}%; height:{BLOCK_HEIGHT_PCT:.2f}%;"></div>'
-              )
-              js_exits_db[room_key].append({
-                  "side": "warp",
-                  "x": round(x_pos_local*BLOCKS_X/ROOM_INTERNAL_WIDTH),
-                  "y": 11-round(y_pos_local*BLOCKS_Y/ROOM_INTERNAL_HEIGHT),
-                  "color": "#1157",
-              })
+                squares_html.append(
+                    f'<div class="warp-square" style="left:{x_pos_pct:.2f}%; top:{y_pos_pct:.2f}%; width:{BLOCK_WIDTH_PCT:.2f}%; height:{BLOCK_HEIGHT_PCT:.2f}%;"></div>'
+                )
+                js_exits_db[room_key].append({
+                    "side": "warp",
+                    "x": round(x_pos_local*BLOCKS_X/ROOM_INTERNAL_WIDTH),
+                    "y": 11-round(y_pos_local*BLOCKS_Y/ROOM_INTERNAL_HEIGHT),
+                    "color": "#1157",
+                })
   
         room_prog_data = prog_index.get(room_key, [])
-        tooltip_str = build_tooltip_text(north, east, room_prog_data)
+        info_json_str = build_room_info_json(north, east, room_prog_data)
 
         unique_receives = set()
         for entry in room_prog_data:
             receive_list = entry.get("receive")
             if receive_list and isinstance(receive_list, list):
                 for item in receive_list:
-                    if item:
-                        unique_receives.add(item)
+                    if item: unique_receives.add(item)
 
         icon_html = "<span class=fr>"
         for item in sorted(unique_receives):
@@ -799,8 +822,8 @@ def main():
 
         overlay_content = "\n".join(squares_html)
 
-        # Replaced native HTML title="..." with custom data-info="..."
-        wrapper_tag = f"""        <div class="tile-wrapper" data-room="{room_key}" style="left: {pixel_left:.1f}px; top: {pixel_top:.1f}px;" data-info="{tooltip_str}">
+        # Replaced title string with structured info payload JSON
+        wrapper_tag = f"""        <div class="tile-wrapper" data-room="{room_key}" style="left: {pixel_left:.1f}px; top: {pixel_top:.1f}px;" data-info="{info_json_str}">
             <img data-src="{highres_img_path}" src="{placeholder_img_path}" style="background-image: url('{placeholder_img_path}'); background-size: cover;" class="grid-item loading" alt="Tile {north},{east}">{icon_html}
             <div class="overlay-layer">
 {overlay_content}
