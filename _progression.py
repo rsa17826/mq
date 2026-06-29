@@ -27,7 +27,6 @@ PROG: list[ProgressionNode] = [
       "skill:firewall.1",
       "skill:halo",
       "item:aurastone",
-      "item:key",
       "item:gold",
       "item:dragon scale",
       "item:cotton thread",
@@ -1941,11 +1940,6 @@ MathQuest.js:42550 add listeners""",
     "requires": [[]],
     "receive": ["skill:kick"],
   },
-  {
-    "room": {"north": 500, "east": 501},
-    "requires": [["weapon:baneBlade"]],
-    "receive": ["weapon:aSword"],
-  },
   # Auto-generated from MathQuest_base.js newItem() calls
   # 159 items extracted
   # {
@@ -2059,11 +2053,6 @@ MathQuest.js:42550 add listeners""",
     "receive": ["skill:medic.6"],
   },
   {
-    "room": {"north": 11, "east": 12},
-    "requires": [["item:gold#100"]],
-    "receive": ["food:sunflowerSeeds"],
-  },
-  {
     "room": {"north": 6, "east": 13},
     "requires": [["item:key#1"]],
     "receive": ["food:grapes#5"],
@@ -2071,10 +2060,6 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 4, "east": 24},
     "receive": ["food:cherries"],
-  },
-  {
-    "room": {"north": 18, "east": 23},
-    "receive": ["weapon:warlockStaff"],
   },
   {
     "room": {"north": 18, "east": 21},

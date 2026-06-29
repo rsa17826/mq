@@ -7658,17 +7658,6 @@
       ]
     },
     {
-      "room": "20_20",
-      "requires": [
-        [
-          "item:gold"
-        ]
-      ],
-      "receive": [
-        "armor:magic robe"
-      ]
-    },
-    {
       "room": "14_19",
       "requires": [
         [
@@ -7689,7 +7678,7 @@
         ]
       ],
       "receive": [
-        "weapon:survival knife"
+        "weapon:sKnife"
       ]
     },
     {
@@ -7769,7 +7758,7 @@
         ]
       ],
       "receive": [
-        "weapon:survival knife"
+        "weapon:sKnife"
       ]
     },
     {
@@ -7780,7 +7769,7 @@
         ]
       ],
       "receive": [
-        "weapon:warlock staff"
+        "weapon:warlockStaff"
       ]
     },
     {
@@ -7791,29 +7780,7 @@
         ]
       ],
       "receive": [
-        "weapon:sun sword"
-      ]
-    },
-    {
-      "room": "12_9",
-      "requires": [
-        [
-          "item:gold"
-        ]
-      ],
-      "receive": [
-        "armor:sun armor"
-      ]
-    },
-    {
-      "room": "12_9",
-      "requires": [
-        [
-          "item:gold"
-        ]
-      ],
-      "receive": [
-        "armor:speed vest"
+        "weapon:sunSword"
       ]
     },
     {
@@ -7829,7 +7796,9 @@
     },
     {
       "room": "11_9",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "quest:headstone"
       ]
@@ -7905,12 +7874,12 @@
       "room": "4_17",
       "requires": [
         [
-          "weapon:random axe",
+          "weapon:axe",
           "???"
         ]
       ],
       "receive": [
-        "weapon:random axe.+1"
+        "weapon:axe.+1"
       ]
     },
     {
@@ -10204,7 +10173,7 @@
         ]
       ],
       "receive": [
-        "weapon:warlock staff"
+        "weapon:warlockStaff"
       ]
     },
     {
@@ -11685,18 +11654,7 @@
         ]
       ],
       "receive": [
-        "weapon:alpha sword"
-      ]
-    },
-    {
-      "room": "200_200",
-      "requires": [
-        [
-          "weapon:orc blade"
-        ]
-      ],
-      "receive": [
-        "weapon:twin fury"
+        "weapon:aSword"
       ]
     },
     {
@@ -15729,26 +15687,20 @@
         "raw": "food:orange#12"
       }
     ],
-    "armor:magic robe": [
-      {
-        "room": "20_20",
-        "raw": "armor:magic robe"
-      }
-    ],
     "item:broken alpha club": [
       {
         "room": "14_19",
         "raw": "item:broken alpha club#1"
       }
     ],
-    "weapon:survival knife": [
+    "weapon:sKnife": [
       {
         "room": "13_16",
-        "raw": "weapon:survival knife"
+        "raw": "weapon:sKnife"
       },
       {
         "room": "12_9",
-        "raw": "weapon:survival knife"
+        "raw": "weapon:sKnife"
       }
     ],
     "magic:ice": [
@@ -15807,32 +15759,24 @@
         "raw": "food:cherry#10"
       }
     ],
-    "weapon:warlock staff": [
+    "weapon:warlockStaff": [
       {
         "room": "12_9",
-        "raw": "weapon:warlock staff"
+        "raw": "weapon:warlockStaff"
       },
       {
         "room": "18_23",
-        "raw": "weapon:warlock staff"
+        "raw": "weapon:warlockStaff"
+      },
+      {
+        "room": "18_23",
+        "raw": "weapon:warlockStaff"
       }
     ],
-    "weapon:sun sword": [
+    "weapon:sunSword": [
       {
         "room": "12_9",
-        "raw": "weapon:sun sword"
-      }
-    ],
-    "armor:sun armor": [
-      {
-        "room": "12_9",
-        "raw": "armor:sun armor"
-      }
-    ],
-    "armor:speed vest": [
-      {
-        "room": "12_9",
-        "raw": "armor:speed vest"
+        "raw": "weapon:sunSword"
       }
     ],
     "quest:headstone": [
@@ -15871,10 +15815,14 @@
         "raw": "skill:tough"
       }
     ],
-    "weapon:random axe": [
+    "weapon:axe": [
       {
         "room": "4_17",
-        "raw": "weapon:random axe.+1"
+        "raw": "weapon:axe.+1"
+      },
+      {
+        "room": "19_15",
+        "raw": "weapon:axe"
       }
     ],
     "misc:green secret code": [
@@ -17281,12 +17229,6 @@
         "raw": "weapon:refreshStaff"
       }
     ],
-    "weapon:axe": [
-      {
-        "room": "19_15",
-        "raw": "weapon:axe"
-      }
-    ],
     "weapon:soulSword": [
       {
         "room": "19_15",
@@ -17439,28 +17381,20 @@
         "raw": "armor:speedVest"
       }
     ],
-    "weapon:alpha sword": [
+    "weapon:aSword": [
       {
         "room": "500_501",
-        "raw": "weapon:alpha sword"
-      }
-    ],
-    "weapon:twin fury": [
+        "raw": "weapon:aSword"
+      },
       {
-        "room": "200_200",
-        "raw": "weapon:twin fury"
+        "room": "500_501",
+        "raw": "weapon:aSword"
       }
     ],
     "weapon:dagger": [
       {
         "room": "20_20",
         "raw": "weapon:dagger"
-      }
-    ],
-    "weapon:aSword": [
-      {
-        "room": "500_501",
-        "raw": "weapon:aSword"
       }
     ],
     "weapon:twinFury": [
@@ -17493,12 +17427,6 @@
       {
         "room": "18_25",
         "raw": "skill:medic.6"
-      }
-    ],
-    "weapon:warlockStaff": [
-      {
-        "room": "18_23",
-        "raw": "weapon:warlockStaff"
       }
     ],
     "flag:rubies": [
