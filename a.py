@@ -31,16 +31,19 @@ def find_duplicates(file_path):
       seen[coord] = set()
 
     for item in items:
-      if item.split('#')[0] in seen[coord]:
-        item_str = item.split('#')[0]
+      # Extract the base name right away so it's consistent everywhere
+      base_item = item.split('#')[0]
+
+      if base_item in seen[coord]:
         # Ensure we only record this specific duplicate item once per room coordinate
-        if (north, east, item_str) not in duplicates:
-          duplicates.append((north, east, item_str))
+        if (north, east, base_item) not in duplicates:
+          duplicates.append((north, east, base_item))
       else:
-        seen[coord].add(item)
+        # FIX: Store the base_item, not the raw item with the '#' suffix
+        seen[coord].add(base_item)
 
   # Output matching template format: \n{0}\{"north": %s, "east": %s\},[^\}]+?%s
-  format_template = r"\n{{0}}\{{\"north\": {0}, \"east\": {1}\}},[^\}}]+?{2}"
+  format_template = r"\n{{0}}\{{\"north\": {0}, \"east\": {1}\}},[^\}}]+?receive.*{2}"
 
   for north, east, item_str in duplicates:
     print(format_template.format(north, east, item_str).replace('\\"', '"'))
