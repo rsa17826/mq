@@ -34,6 +34,8 @@ PROG: list[ProgressionNode] = [
       "item:shadow crest",
       "item:orc coin",
       "item:blue crystal",
+      "item:key#999",
+      "item:gold#999",
     ],
     "info": """can be got anywhere
 manager.correct - manager.wrong > 9 = dig
@@ -332,9 +334,7 @@ manager.correct - manager.wrong > 800 = halo
   },
   {
     "room": {"north": 21, "east": 22},
-    "requires": [
-      ["item:ring of gold", "item:troll wristband#5", "item:gator skin#2"]
-    ],
+    "requires": [["item:ring of gold", "item:troll wristband#5", "item:gator skin#2"]],
     "receive": ["craft:ring of gold"],
   },
   {
@@ -743,7 +743,7 @@ MathQuest.js:42550 add listeners""",
   },
   {
     "room": {"north": 24, "east": 9},
-    "requires": [["quest:gTree.22"]],
+    "requires": [["quest:gTree.454565"]],
     "receive": ["quest:gTree.23", "flag:final boss dead"],
   },
   {
@@ -2087,11 +2087,6 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 18, "east": 23},
     "receive": ["weapon:warlockStaff"],
-  },
-  {
-    "room": {"north": 13, "east": 16},
-    "requires": [["item:mStaff#20"]],
-    "receive": ["weapon:sKnife"],
   },
   {
     "room": {"north": 18, "east": 21},
