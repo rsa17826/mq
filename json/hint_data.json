@@ -7936,7 +7936,7 @@
         []
       ],
       "receive": [
-        "flag:green secret code"
+        "misc:green secret code"
       ]
     },
     {
@@ -15463,10 +15463,10 @@
         "raw": "weapon:axe"
       }
     ],
-    "flag:flag:green secret code": [
+    "misc:green secret code": [
       {
         "room": "8_17",
-        "raw": "flag:green secret code"
+        "raw": "misc:green secret code"
       }
     ],
     "item:bombs": [
@@ -15723,7 +15723,7 @@
         "raw": "food:gingerBread"
       }
     ],
-    "flag:stomp code": [
+    "flag:flag:stomp code": [
       {
         "room": "11_26",
         "raw": "flag:stomp code"
