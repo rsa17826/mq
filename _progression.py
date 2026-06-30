@@ -218,7 +218,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [["weapon:axe", "item:vHorn#2"]],
     "receive": ["weapon:axe.+1"],
   },
-  {"room": {"north": 8, "east": 17}, "requires": [[]], "receive": ["flag:green secret code"]},
+  {"room": {"north": 8, "east": 17}, "requires": [[]], "receive": ["misc:green secret code"]},
   {
     "room": {"north": 11, "east": 17},
     "requires": [["item:key#1", "permit:bomb"]],
@@ -313,7 +313,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": ["food:gingerBread#99"],
   },
-  {"room": {"north": 11, "east": 26}, "receive": ["misc:stomp code"]},
+  {"room": {"north": 11, "east": 26}, "receive": ["flag:stomp code"]},
   # {
   #   "room": {"north": 18, "east": 25},
   #   "requires": [["skill:medic.1", "item:cFang#5"]],

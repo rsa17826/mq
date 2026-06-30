@@ -1891,7 +1891,7 @@ GEOM: list[ExitBase] = [
         "areas": [[{"side": "south", "idx": 0}], [{"side": "west", "idx": 0}]],
       },
       {
-        "reqs": [["misc:stomp code"]],
+        "reqs": [["flag:stomp code"]],
         "areas": [[{"side": "south", "idx": 0}, {"side": "west", "idx": 0}]],
       },
     ],

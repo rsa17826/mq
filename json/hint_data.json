@@ -8140,7 +8140,7 @@
       "room": "11_26",
       "requires": [],
       "receive": [
-        "misc:stomp code"
+        "flag:stomp code"
       ]
     },
     {
@@ -15723,10 +15723,10 @@
         "raw": "food:gingerBread"
       }
     ],
-    "misc:stomp code": [
+    "flag:stomp code": [
       {
         "room": "11_26",
-        "raw": "misc:stomp code"
+        "raw": "flag:stomp code"
       }
     ],
     "misc:headstoneSwitch4": [
