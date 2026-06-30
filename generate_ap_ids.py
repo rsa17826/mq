@@ -24,36 +24,64 @@ def generate_js_client():
   loc_id_counter = 1
   item_id_counter = 1
 
+  # --- Items: mirrors items.py exactly ---
   for thing in PROG:
     if "receive" in thing:
       for itemInfo in thing["receive"]:
-        if any(
-          itemInfo.startswith(prefix)
-          for prefix in (
-            "magic:",
-            "weapon:",
-            "flag:final boss dead",
-            "permit:",
-            "item:fire crystal",
+        itemName = itemInfo.removesuffix("#1")
+        if itemName not in ITEM_NAME_TO_ID:
+          if itemInfo.startswith(
+            (
+              "magic:",
+              "weapon:",
+              # "flag:final boss dead",
+              "permit:",
+              "misc:fire crystal",
+              "item:aurastones",
+              # "entrance.",
+              # "quest:",
+              # "area:",
+            )
+          ):
+            ITEM_NAME_TO_ID[itemName] = item_id_counter
+          elif itemInfo.startswith(("skill:", "armor:", "item:ring")):
+            ITEM_NAME_TO_ID[itemName] = item_id_counter
+          elif itemInfo.startswith(
+            (
+              "item:key",
+              "item:",
+              "food:",
+              "misc:",
+            )
+          ):
+            ITEM_NAME_TO_ID[itemName] = item_id_counter
+          elif itemInfo.startswith(("quest:", "area:")):
+            continue
+          else:
+            print(itemName, "not used")
+            continue
+          item_id_counter += 1
+
+  # --- Locations: mirrors locations.py exactly ---
+  for thing in PROG:
+    if "receive" in thing:
+      for itemInfo in thing["receive"]:
+        if itemInfo.startswith(
+          (
             "item:",
-            "food:",
-            "misc:",
-            "skill:",
+            "weapon:",
             "armor:",
-            "item:ring",
+            "food:",
+            "skill:",
+            "magic:",
+            "permit:",
+            "misc:",
           )
         ):
-          # clean_name = itemInfo.split("#")[0]
-          itemInfo=itemInfo.removesuffix("#1")
-          # --- Locations Mapping (Name -> ID with coordinates) ---
-          if itemInfo not in LOCATION_NAME_TO_ID:
-            LOCATION_NAME_TO_ID[itemInfo] = loc_id_counter
+          locName = f"{itemInfo.split('#')[0]}"
+          if locName not in LOCATION_NAME_TO_ID:
+            LOCATION_NAME_TO_ID[locName] = loc_id_counter
             loc_id_counter += 1
-
-          # --- Items Mapping (Name -> ID, pure string) ---
-          if itemInfo not in ITEM_NAME_TO_ID:
-            ITEM_NAME_TO_ID[itemInfo] = item_id_counter
-            item_id_counter += 1
 
   # Invert the items dictionary so JavaScript can look up strings using integer IDs
   ITEM_ID_TO_NAME = {v: k for k, v in ITEM_NAME_TO_ID.items()}
