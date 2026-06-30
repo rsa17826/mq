@@ -460,7 +460,7 @@ manager.correct - manager.wrong > 800 = halo
   {
     "room": {"north": 18, "east": 13},
     "requires": [["loot:cThread#10", "item:shadowCrest#5", "skill:reveal"]],
-    "receive": ["misc:max bombs.149"],
+    "receive": ["misc:bombCapacity"],
   },
   # {"room": {"north": 19, "east": 12}, "info": "warp skill warp point"},
   {
@@ -625,7 +625,9 @@ manager.correct - manager.wrong > 800 = halo
   {
     "room": {"north": 13, "east": 21},
     "requires": [["quest:bBomb.3", "entrance.south0"]],
-    "receive": ["quest:bBomb.4", "item:bombs#15", "permit:bomb"],
+    # TODO ???
+    # "item:bombs#15",
+    "receive": ["quest:bBomb.4", "permit:bomb", "craft:bomb"],
     "info": """bomb active here so find ui update code here
 [ACCESS SET] Key: quest"1" was set to: 4 from 3 bBomb Error
 at Object.set (http://127.0.0.1:1533/MathQuest/MathQuest.js:19993:15)
@@ -1193,7 +1195,7 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 6, "east": 13},
     "requires": [["item:key#1"]],
-    "receive": ["food:grape#5", "food:strawberry#1"],
+    "receive": ["food:grapes#5", "food:strawberry#1"],
   },
   {
     "room": {"north": 6, "east": 12},
@@ -1371,7 +1373,7 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 16, "east": 10},
     "requires": [["quest:rings.15"]],
-    "receive": ["quest:rings.16"],
+    "receive": ["quest:rings.16", "item:ring of death"],
   },
   {
     "room": {"north": 17, "east": 10},
@@ -1557,6 +1559,21 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 100, "east": 100},
     "requires": [["quest:isles.0"]],
     "receive": ["quest:isles.1"],
+  },
+  {
+    "room": {"north": 100, "east": 100},
+    "requires": [["item:gold#25"]],
+    "receive": ["food:orange"],
+  },
+  {
+    "room": {"north": 100, "east": 100},
+    "requires": [["item:gold#10"]],
+    "receive": ["food:gingerbread"],
+  },
+  {
+    "room": {"north": 100, "east": 100},
+    "requires": [["item:gold#100"]],
+    "receive": ["food:strawberry"],
   },
   {
     "room": {"north": 100, "east": 100},
@@ -1781,7 +1798,7 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 17, "east": 19},
     "requires": [["quest:oMan.21"]],
-    "receive": ["quest:oMan.22"],
+    "receive": ["quest:oMan.22", "misc:bobbisPendant"],
   },
   {
     "room": {"north": 17, "east": 19},
@@ -2076,11 +2093,6 @@ MathQuest.js:42550 add listeners""",
     "receive": ["skill:medic.6"],
   },
   {
-    "room": {"north": 6, "east": 13},
-    "requires": [["item:key#1"]],
-    "receive": ["food:grapes#5"],
-  },
-  {
     "room": {"north": 4, "east": 24},
     "receive": ["food:cherries"],
   },
@@ -2306,6 +2318,10 @@ MathQuest.js:42550 add listeners""",
   {"room": {"north": 15, "east": 18}, "requires": [[]], "receive": ["area:0"]},
   {"room": {"north": 14, "east": 18}, "requires": [[]], "receive": ["area:0"]},
   {"room": {"north": 13, "east": 18}, "requires": [[]], "receive": ["area:0"]},
+  {"room": {"north": 13, "east": 18}, "requires": [["item:gold#50"]], "receive": ["food:gingerbread"]},
+  # NOTE these grapes say 30gp but are only 15gp as they are the same ones as at 20 20
+  # {"room": {"north": 13, "east": 18}, "requires": [["item:gold#30"]], "receive": ["food:grapes"]},
+  {"room": {"north": 13, "east": 18}, "requires": [["item:gold#80"]], "receive": ["food:banana"]},
   {"room": {"north": 12, "east": 18}, "requires": [[]], "receive": ["area:1"]},
   {"room": {"north": 11, "east": 18}, "requires": [[]], "receive": ["area:5"]},
   {"room": {"north": 10, "east": 18}, "requires": [[]], "receive": ["area:5"]},

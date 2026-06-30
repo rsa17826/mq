@@ -8450,7 +8450,7 @@
         ]
       ],
       "receive": [
-        "misc:max bombs.149"
+        "misc:bombCapacity"
       ]
     },
     {
@@ -15950,7 +15950,7 @@
     "misc:max bombs": [
       {
         "room": "18_13",
-        "raw": "misc:max bombs.149"
+        "raw": "misc:bombCapacity"
       }
     ],
     "weapon:baneBlade": [
