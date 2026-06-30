@@ -59,7 +59,7 @@ def generate_js_client():
   # Invert the items dictionary so JavaScript can look up strings using integer IDs
   ITEM_ID_TO_NAME = {v: k for k, v in ITEM_NAME_TO_ID.items()}
   # TODO
-  ITEM_ID_TO_NAME[99999] = "item:gold"
+  ITEM_ID_TO_NAME[99999] = "item:trap"
   # 4. Generate the final JavaScript code block
   js_content = f"""/**
 * AUTO-GENERATED ARCHIPELAGO MANIFESTS

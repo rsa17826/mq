@@ -15,6 +15,12 @@ class ExitNode(TypedDict):
   east: list[DirNodeLR]
   north: list[DirNodeUD]
   south: list[DirNodeUD]
+  warp: NotRequired[list[Pos]]
+
+
+class Pos(TypedDict):
+  north: int | float
+  east: int | float
 
 
 class DirNodeLR(TypedDict):

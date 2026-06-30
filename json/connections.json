@@ -14471,8 +14471,8 @@
       "mechanism": "object",
       "requires": [
         [
-          "state:lit torch 2",
-          "state:lit torch 1"
+          "flag:lit torch 2",
+          "flag:lit torch 1"
         ]
       ],
       "fromExitId": "door:stairsDown:6_23_5_23",

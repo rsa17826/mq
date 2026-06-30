@@ -5628,8 +5628,8 @@
         "direction": null,
         "requires": [
           [
-            "state:lit torch 2",
-            "state:lit torch 1"
+            "flag:lit torch 2",
+            "flag:lit torch 1"
           ]
         ]
       }
@@ -7574,6 +7574,51 @@
     {
       "room": "20_20",
       "requires": [
+        [
+          "area:16"
+        ]
+      ],
+      "receive": [
+        "item:sTooth",
+        "item:vHorn"
+      ]
+    },
+    {
+      "room": "20_20",
+      "requires": [
+        [
+          "area:2"
+        ]
+      ],
+      "receive": [
+        "item:bTooth"
+      ]
+    },
+    {
+      "room": "20_20",
+      "requires": [
+        [
+          "area:15"
+        ]
+      ],
+      "receive": [
+        "item:cThread"
+      ]
+    },
+    {
+      "room": "20_20",
+      "requires": [
+        [
+          "area:11"
+        ]
+      ],
+      "receive": [
+        "item:kCrest"
+      ]
+    },
+    {
+      "room": "20_20",
+      "requires": [
         []
       ],
       "receive": [
@@ -7581,15 +7626,16 @@
         "skill:kick",
         "skill:flee",
         "skill:swap",
+        "misc:magic only resist bypass",
         "skill:firewall",
         "skill:firewall.1",
         "skill:halo",
         "item:aurastone",
         "item:gold",
-        "item:dragon scale",
-        "item:cotton thread",
-        "item:shadow crest",
-        "item:orc coin",
+        "item:dScale",
+        "item:cThread",
+        "item:shadowCrest",
+        "item:oCoin",
         "item:blue crystal",
         "item:key#999",
         "item:gold#999"
@@ -7601,36 +7647,29 @@
         []
       ],
       "receive": [
-        "item:bear tooth",
-        "item:boar tusk",
-        "item:cobra fang",
+        "item:bTooth",
+        "item:bTusk",
+        "item:cFang",
         "item:emerald",
-        "item:fire crystal",
-        "item:funny bone",
-        "item:gator skin",
-        "item:golden feather",
-        "item:kings crest",
-        "item:mage staff",
-        "item:mages hat",
-        "item:minotaur horn",
+        "misc:fire crystal",
+        "item:fBone",
+        "item:gSkin",
+        "item:gFeather",
+        "item:kCrest",
+        "item:mStaff",
+        "item:mHat",
+        "item:mHorn",
         "item:ring of evasion",
-        "item:scorpion claw",
-        "item:shark tooth",
-        "item:slamstone",
-        "item:steel fragment",
+        "item:sClaw",
+        "item:sTooth",
+        "item:slamstones",
+        "item:sFrag",
         "item:tentacle",
-        "item:troll wristband",
+        "item:tBand",
         "item:venom",
-        "item:viking horn",
-        "item:void ash",
-        "item:wolf pelt"
-      ]
-    },
-    {
-      "room": "20_20",
-      "requires": [],
-      "receive": [
-        "spawnpoint"
+        "item:vHorn",
+        "item:vAsh",
+        "item:wPelt"
       ]
     },
     {
@@ -7648,8 +7687,7 @@
       "room": "21_20",
       "requires": [
         [
-          "item:venom#1",
-          "???"
+          "item:venom#1"
         ]
       ],
       "receive": [
@@ -7660,12 +7698,12 @@
       "room": "14_19",
       "requires": [
         [
-          "item:troll wristband#1",
+          "item:tBand#1",
           "entrance.north0"
         ]
       ],
       "receive": [
-        "item:broken alpha club#1"
+        "item:aClub#1"
       ]
     },
     {
@@ -7696,19 +7734,30 @@
       "room": "13_13",
       "requires": [
         [
-          "armor:alphaArmor",
-          "???"
+          "armor:alphaArmor"
         ]
       ],
       "receive": [
-        "armor:alphaArmor.+inf"
+        "craft:upgradeAAHP",
+        "craft:upgradeAAMP"
+      ]
+    },
+    {
+      "room": "20_20",
+      "requires": [
+        [
+          "area:4"
+        ]
+      ],
+      "receive": [
+        "item:mStaff"
       ]
     },
     {
       "room": "11_13",
       "requires": [
         [
-          "item:mage staff#1"
+          "item:mStaff#1"
         ]
       ],
       "receive": [
@@ -7817,7 +7866,7 @@
       "room": "11_9",
       "requires": [
         [
-          "item:wolf pelt"
+          "item:wPelt"
         ]
       ],
       "receive": [
@@ -7828,23 +7877,23 @@
       "room": "5_9",
       "requires": [
         [
-          "item:minotaur horn",
+          "item:mHorn",
           "entrance.north0"
         ],
         [
-          "item:minotaur horn",
+          "item:mHorn",
           "entrance.east0"
         ]
       ],
       "receive": [
-        "item:broken alpha axe#1"
+        "item:aAxe#1"
       ]
     },
     {
       "room": "8_14",
       "requires": [
         [
-          "item:shark tooth#30",
+          "item:sTooth#30",
           "item:gold#800",
           "skill:tough"
         ]
@@ -7862,7 +7911,7 @@
       "room": "9_16",
       "requires": [
         [
-          "item:gator skin#1"
+          "item:gSkin#1"
         ]
       ],
       "receive": [
@@ -7874,7 +7923,7 @@
       "requires": [
         [
           "weapon:axe",
-          "???"
+          "item:vHorn#2"
         ]
       ],
       "receive": [
@@ -7883,7 +7932,9 @@
     },
     {
       "room": "8_17",
-      "requires": [],
+      "requires": [
+        []
+      ],
       "receive": [
         "misc:green secret code"
       ]
@@ -7905,12 +7956,23 @@
       "room": "7_18",
       "requires": [
         [
-          "item:slamstone#1",
+          "item:slamstones#1",
           "skill:reveal"
         ]
       ],
       "receive": [
         "skill:reveal.+1"
+      ]
+    },
+    {
+      "room": "20_20",
+      "requires": [
+        [
+          "area:red chest"
+        ]
+      ],
+      "receive": [
+        "item:slamstones"
       ]
     },
     {
@@ -7977,13 +8039,13 @@
         [
           "entrance.south0",
           "item:aScepter#1",
-          "item:dragon scale#5",
+          "item:dScale#5",
           "skill:craft"
         ],
         [
           "entrance.south1",
           "item:aScepter#1",
-          "item:dragon scale#5",
+          "item:dScale#5",
           "skill:craft",
           "permit:bomb.2"
         ]
@@ -8007,7 +8069,7 @@
       "room": "11_22",
       "requires": [
         [
-          "item:shark tooth#10",
+          "item:sTooth#10",
           "skill:craft"
         ]
       ],
@@ -8019,7 +8081,7 @@
       "room": "12_25",
       "requires": [
         [
-          "item:shark tooth#10",
+          "item:sTooth#10",
           "skill:craft"
         ]
       ],
@@ -8032,7 +8094,7 @@
       "room": "13_25",
       "requires": [
         [
-          "item:mages hat#1",
+          "item:mHat#1",
           "misc:magic only resist bypass"
         ]
       ],
@@ -8108,8 +8170,8 @@
       "requires": [
         [
           "item:ring of gold",
-          "item:troll wristband#5",
-          "item:gator skin#2"
+          "item:tBand#5",
+          "item:gSkin#2"
         ]
       ],
       "receive": [
@@ -8136,14 +8198,14 @@
         ]
       ],
       "receive": [
-        "misc:red chest"
+        "area:red chest"
       ]
     },
     {
       "room": "19_22",
       "requires": [
         [
-          "item:broken alpha axe#5"
+          "item:aAxe#5"
         ]
       ],
       "receive": [
@@ -8155,7 +8217,7 @@
       "requires": [
         [
           "quest:dig.3",
-          "item:bear tooth#1"
+          "item:bTooth#1"
         ]
       ],
       "receive": [
@@ -8175,7 +8237,7 @@
       "room": "21_20",
       "requires": [
         [
-          "item:boar tusk#1"
+          "item:bTusk#1"
         ]
       ],
       "receive": [
@@ -8221,9 +8283,9 @@
       "room": "20_15",
       "requires": [
         [
-          "skill:firewall.1",
-          "item:dragon scale#5",
-          "item:medallion#3"
+          "skill:firewall",
+          "item:dScale#5",
+          "item:medallions#3"
         ]
       ],
       "receive": [
@@ -8235,8 +8297,8 @@
       "requires": [
         [
           "skill:firewall.2",
-          "item:dragon scale#10",
-          "item:medallion#6"
+          "item:dScale#10",
+          "item:medallions#6"
         ]
       ],
       "receive": [
@@ -8248,8 +8310,8 @@
       "requires": [
         [
           "skill:firewall.3",
-          "item:dragon scale#15",
-          "item:medallion#9"
+          "item:dScale#15",
+          "item:medallions#9"
         ]
       ],
       "receive": [
@@ -8261,8 +8323,8 @@
       "requires": [
         [
           "skill:firewall.4",
-          "item:dragon scale#20",
-          "item:medallion#12"
+          "item:dScale#20",
+          "item:medallions#12"
         ]
       ],
       "receive": [
@@ -8274,8 +8336,8 @@
       "requires": [
         [
           "skill:firewall.5",
-          "item:dragon scale#25",
-          "item:medallion#15"
+          "item:dScale#25",
+          "item:medallions#15"
         ]
       ],
       "receive": [
@@ -8287,8 +8349,8 @@
       "requires": [
         [
           "skill:firewall.6",
-          "item:dragon scale#30",
-          "item:medallion#18"
+          "item:dScale#30",
+          "item:medallions#18"
         ]
       ],
       "receive": [
@@ -8300,8 +8362,8 @@
       "requires": [
         [
           "skill:firewall.7",
-          "item:dragon scale#35",
-          "item:medallion#21"
+          "item:dScale#35",
+          "item:medallions#21"
         ]
       ],
       "receive": [
@@ -8313,8 +8375,8 @@
       "requires": [
         [
           "skill:firewall.8",
-          "item:dragon scale#40",
-          "item:medallion#24"
+          "item:dScale#40",
+          "item:medallions#24"
         ]
       ],
       "receive": [
@@ -8326,8 +8388,8 @@
       "requires": [
         [
           "skill:firewall.9",
-          "item:dragon scale#45",
-          "item:medallion#27"
+          "item:dScale#45",
+          "item:medallions#27"
         ]
       ],
       "receive": [
@@ -8338,7 +8400,7 @@
       "room": "19_15",
       "requires": [
         [
-          "item:medallion#20"
+          "item:medallions#20"
         ]
       ],
       "receive": [
@@ -8349,7 +8411,7 @@
       "room": "19_15",
       "requires": [
         [
-          "item:medallion#3"
+          "item:medallions#3"
         ]
       ],
       "receive": [
@@ -8360,7 +8422,7 @@
       "room": "19_15",
       "requires": [
         [
-          "item:medallion#30"
+          "item:medallions#30"
         ]
       ],
       "receive": [
@@ -8382,8 +8444,8 @@
       "room": "18_13",
       "requires": [
         [
-          "item:cotton thread#10",
-          "item:shadow crest#5",
+          "item:cThread#10",
+          "item:shadowCrest#5",
           "skill:reveal"
         ]
       ],
@@ -8407,7 +8469,7 @@
       "room": "17_10",
       "requires": [
         [
-          "item:void ash#6"
+          "item:vAsh#6"
         ]
       ],
       "receive": [
@@ -8463,8 +8525,8 @@
       "room": "4_13",
       "requires": [
         [
-          "item:shark tooth#5",
-          "item:viking horn#5",
+          "item:sTooth#5",
+          "item:vHorn#5",
           "item:tentacle#5"
         ]
       ],
@@ -8477,8 +8539,8 @@
       "requires": [
         [
           "skill:craft",
-          "item:troll wristband#5",
-          "item:wolf pelt#2"
+          "item:tBand#5",
+          "item:wPelt#2"
         ]
       ],
       "receive": [
@@ -8497,9 +8559,7 @@
     {
       "room": "21_20",
       "requires": [
-        [
-          "entrance.south0"
-        ]
+        []
       ],
       "receive": [
         "quest:bBomb.1"
@@ -8576,7 +8636,7 @@
       "room": "19_23",
       "requires": [
         [
-          "item:bear tooth#15",
+          "item:bTooth#15",
           "quest:gTree.3"
         ]
       ],
@@ -8842,8 +8902,8 @@
       "requires": [
         [
           "quest:gTree.14",
-          "item:scorpion claw#7",
-          "item:cobra fang#5"
+          "item:sClaw#7",
+          "item:cFang#5"
         ]
       ],
       "receive": [
@@ -9289,7 +9349,7 @@
       "requires": [
         [
           "quest:seeds.2",
-          "item:orc coin#20"
+          "item:oCoin#20"
         ]
       ],
       "receive": [
@@ -9429,9 +9489,9 @@
       "requires": [
         [
           "quest:rings.13",
-          "item:steel fragment#5",
-          "item:dragon scale#3",
-          "item:funny bone#10",
+          "item:sFrag#5",
+          "item:dScale#3",
+          "item:fBone#10",
           "?misc:geomana"
         ]
       ],
@@ -9514,7 +9574,7 @@
         []
       ],
       "receive": [
-        "item:medallion"
+        "item:medallions"
       ]
     },
     {
@@ -9579,7 +9639,7 @@
         ]
       ],
       "receive": [
-        "misc:red chest"
+        "area:red chest"
       ]
     },
     {
@@ -9683,7 +9743,7 @@
         ]
       ],
       "receive": [
-        "misc:red chest"
+        "area:red chest"
       ]
     },
     {
@@ -9786,7 +9846,7 @@
         ]
       ],
       "receive": [
-        "misc:red chest"
+        "area:red chest"
       ]
     },
     {
@@ -9797,7 +9857,7 @@
         ]
       ],
       "receive": [
-        "misc:red chest"
+        "area:red chest"
       ]
     },
     {
@@ -9859,7 +9919,7 @@
         ]
       ],
       "receive": [
-        "misc:red chest"
+        "area:red chest"
       ]
     },
     {
@@ -9897,7 +9957,7 @@
         "item:gold#1",
         "item:diamonds#1",
         "item:aurastone#1",
-        "item:slamstone#1",
+        "item:slamstones#1",
         "food:elixir#1",
         "food:holyWater#1"
       ]
@@ -9980,7 +10040,7 @@
         ]
       ],
       "receive": [
-        "misc:red chest"
+        "area:red chest"
       ]
     },
     {
@@ -10207,7 +10267,7 @@
         ]
       ],
       "receive": [
-        "misc:red chest"
+        "area:red chest"
       ]
     },
     {
@@ -10534,7 +10594,8 @@
         ]
       ],
       "receive": [
-        "quest:pam.14"
+        "quest:pam.14",
+        "misc:blue crystal"
       ]
     },
     {
@@ -11024,9 +11085,7 @@
     {
       "room": "500_501",
       "requires": [
-        [
-          "quest:aSword.0"
-        ]
+        []
       ],
       "receive": [
         "quest:aSword.1"
@@ -11345,7 +11404,7 @@
       "room": "19_15",
       "requires": [
         [
-          "item:medallion#200"
+          "item:medallions#200"
         ]
       ],
       "receive": [
@@ -12128,25 +12187,7 @@
       ]
     },
     {
-      "room": "2_20",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:16"
-      ]
-    },
-    {
       "room": "3_21",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:16"
-      ]
-    },
-    {
-      "room": "3_22",
       "requires": [
         []
       ],
@@ -12317,15 +12358,6 @@
       ]
     },
     {
-      "room": "22_21",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:0"
-      ]
-    },
-    {
       "room": "21_22",
       "requires": [
         []
@@ -12461,15 +12493,6 @@
       ]
     },
     {
-      "room": "6_22",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:8"
-      ]
-    },
-    {
       "room": "7_23",
       "requires": [
         []
@@ -12507,15 +12530,6 @@
     },
     {
       "room": "3_23",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:9"
-      ]
-    },
-    {
-      "room": "2_23",
       "requires": [
         []
       ],
@@ -12705,60 +12719,6 @@
       ]
     },
     {
-      "room": "22_23",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:2"
-      ]
-    },
-    {
-      "room": "22_24",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:2"
-      ]
-    },
-    {
-      "room": "21_24",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:2"
-      ]
-    },
-    {
-      "room": "20_24",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:2"
-      ]
-    },
-    {
-      "room": "20_25",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:2"
-      ]
-    },
-    {
-      "room": "19_25",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:2"
-      ]
-    },
-    {
       "room": "18_25",
       "requires": [
         []
@@ -12867,15 +12827,6 @@
       ]
     },
     {
-      "room": "2_24",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:9"
-      ]
-    },
-    {
       "room": "3_25",
       "requires": [
         []
@@ -12886,24 +12837,6 @@
     },
     {
       "room": "4_25",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:9"
-      ]
-    },
-    {
-      "room": "5_25",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:9"
-      ]
-    },
-    {
-      "room": "6_25",
       "requires": [
         []
       ],
@@ -13012,52 +12945,7 @@
       ]
     },
     {
-      "room": "19_26",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:2"
-      ]
-    },
-    {
-      "room": "18_26",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:2"
-      ]
-    },
-    {
-      "room": "17_26",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:2"
-      ]
-    },
-    {
-      "room": "16_26",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:2"
-      ]
-    },
-    {
       "room": "13_26",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:13"
-      ]
-    },
-    {
-      "room": "14_26",
       "requires": [
         []
       ],
@@ -13094,15 +12982,6 @@
     },
     {
       "room": "9_26",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:8"
-      ]
-    },
-    {
-      "room": "8_26",
       "requires": [
         []
       ],
@@ -13260,7 +13139,8 @@
         []
       ],
       "receive": [
-        "area:16.1"
+        "area:16.1",
+        "flag:10.1 code"
       ]
     },
     {
@@ -13327,24 +13207,6 @@
       ]
     },
     {
-      "room": "19_19",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:1"
-      ]
-    },
-    {
-      "room": "20_19",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:1"
-      ]
-    },
-    {
       "room": "18_18",
       "requires": [
         []
@@ -13373,15 +13235,6 @@
     },
     {
       "room": "21_18",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:12"
-      ]
-    },
-    {
-      "room": "22_18",
       "requires": [
         []
       ],
@@ -13517,24 +13370,6 @@
     },
     {
       "room": "3_18",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:16"
-      ]
-    },
-    {
-      "room": "2_18",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:16"
-      ]
-    },
-    {
-      "room": "2_17",
       "requires": [
         []
       ],
@@ -13706,24 +13541,6 @@
     },
     {
       "room": "21_17",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:12"
-      ]
-    },
-    {
-      "room": "22_17",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:12"
-      ]
-    },
-    {
-      "room": "21_16",
       "requires": [
         []
       ],
@@ -14300,24 +14117,6 @@
       ]
     },
     {
-      "room": "15_13",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:4"
-      ]
-    },
-    {
-      "room": "16_13",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:4"
-      ]
-    },
-    {
       "room": "18_13",
       "requires": [
         []
@@ -14328,15 +14127,6 @@
     },
     {
       "room": "19_13",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:10"
-      ]
-    },
-    {
-      "room": "20_13",
       "requires": [
         []
       ],
@@ -14373,15 +14163,6 @@
     },
     {
       "room": "21_14",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:11"
-      ]
-    },
-    {
-      "room": "20_14",
       "requires": [
         []
       ],
@@ -14471,24 +14252,6 @@
       ]
     },
     {
-      "room": "25_12",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:11"
-      ]
-    },
-    {
-      "room": "25_11",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:11"
-      ]
-    },
-    {
       "room": "24_11",
       "requires": [
         []
@@ -14517,24 +14280,6 @@
     },
     {
       "room": "21_11",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:11"
-      ]
-    },
-    {
-      "room": "20_11",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:11"
-      ]
-    },
-    {
-      "room": "20_10",
       "requires": [
         []
       ],
@@ -14615,24 +14360,6 @@
       ]
     },
     {
-      "room": "20_9",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:11.1"
-      ]
-    },
-    {
-      "room": "19_9",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:11.1"
-      ]
-    },
-    {
       "room": "19_10",
       "requires": [
         []
@@ -14643,15 +14370,6 @@
     },
     {
       "room": "18_10",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:15"
-      ]
-    },
-    {
-      "room": "18_9",
       "requires": [
         []
       ],
@@ -14778,15 +14496,6 @@
       ]
     },
     {
-      "room": "5_12",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:7.1"
-      ]
-    },
-    {
       "room": "5_11",
       "requires": [
         []
@@ -14797,24 +14506,6 @@
     },
     {
       "room": "6_11",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:7"
-      ]
-    },
-    {
-      "room": "4_11",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:7"
-      ]
-    },
-    {
-      "room": "3_11",
       "requires": [
         []
       ],
@@ -14869,24 +14560,6 @@
     },
     {
       "room": "12_11",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:6"
-      ]
-    },
-    {
-      "room": "13_11",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:6"
-      ]
-    },
-    {
-      "room": "13_10",
       "requires": [
         []
       ],
@@ -14967,24 +14640,6 @@
       ]
     },
     {
-      "room": "4_10",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:7"
-      ]
-    },
-    {
-      "room": "4_9",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:7"
-      ]
-    },
-    {
       "room": "5_9",
       "requires": [
         []
@@ -15049,15 +14704,6 @@
     },
     {
       "room": "12_9",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "area:6.1"
-      ]
-    },
-    {
-      "room": "13_9",
       "requires": [
         []
       ],
@@ -15217,6 +14863,56 @@
     }
   ],
   "itemGiveIndex": {
+    "item:sTooth": [
+      {
+        "room": "20_20",
+        "raw": "item:sTooth"
+      },
+      {
+        "room": "20_20",
+        "raw": "item:sTooth"
+      }
+    ],
+    "item:vHorn": [
+      {
+        "room": "20_20",
+        "raw": "item:vHorn"
+      },
+      {
+        "room": "20_20",
+        "raw": "item:vHorn"
+      }
+    ],
+    "item:bTooth": [
+      {
+        "room": "20_20",
+        "raw": "item:bTooth"
+      },
+      {
+        "room": "20_20",
+        "raw": "item:bTooth"
+      }
+    ],
+    "item:cThread": [
+      {
+        "room": "20_20",
+        "raw": "item:cThread"
+      },
+      {
+        "room": "20_20",
+        "raw": "item:cThread"
+      }
+    ],
+    "item:kCrest": [
+      {
+        "room": "20_20",
+        "raw": "item:kCrest"
+      },
+      {
+        "room": "20_20",
+        "raw": "item:kCrest"
+      }
+    ],
     "skill:dig": [
       {
         "room": "20_20",
@@ -15247,6 +14943,12 @@
       {
         "room": "20_20",
         "raw": "skill:swap"
+      }
+    ],
+    "misc:magic only resist bypass": [
+      {
+        "room": "20_20",
+        "raw": "misc:magic only resist bypass"
       }
     ],
     "skill:firewall": [
@@ -15425,28 +15127,22 @@
         "raw": "item:gold#Enum.Craft.emerald"
       }
     ],
-    "item:dragon scale": [
+    "item:dScale": [
       {
         "room": "20_20",
-        "raw": "item:dragon scale"
+        "raw": "item:dScale"
       }
     ],
-    "item:cotton thread": [
+    "item:shadowCrest": [
       {
         "room": "20_20",
-        "raw": "item:cotton thread"
+        "raw": "item:shadowCrest"
       }
     ],
-    "item:shadow crest": [
+    "item:oCoin": [
       {
         "room": "20_20",
-        "raw": "item:shadow crest"
-      }
-    ],
-    "item:orc coin": [
-      {
-        "room": "20_20",
-        "raw": "item:orc coin"
+        "raw": "item:oCoin"
       }
     ],
     "item:blue crystal": [
@@ -15461,22 +15157,16 @@
         "raw": "item:key#999"
       }
     ],
-    "item:bear tooth": [
+    "item:bTusk": [
       {
         "room": "20_20",
-        "raw": "item:bear tooth"
+        "raw": "item:bTusk"
       }
     ],
-    "item:boar tusk": [
+    "item:cFang": [
       {
         "room": "20_20",
-        "raw": "item:boar tusk"
-      }
-    ],
-    "item:cobra fang": [
-      {
-        "room": "20_20",
-        "raw": "item:cobra fang"
+        "raw": "item:cFang"
       }
     ],
     "item:emerald": [
@@ -15485,52 +15175,54 @@
         "raw": "item:emerald"
       }
     ],
-    "item:fire crystal": [
+    "misc:fire crystal": [
       {
         "room": "20_20",
-        "raw": "item:fire crystal"
+        "raw": "misc:fire crystal"
+      },
+      {
+        "room": "12_9",
+        "raw": "misc:fire crystal"
       }
     ],
-    "item:funny bone": [
+    "item:fBone": [
       {
         "room": "20_20",
-        "raw": "item:funny bone"
+        "raw": "item:fBone"
       }
     ],
-    "item:gator skin": [
+    "item:gSkin": [
       {
         "room": "20_20",
-        "raw": "item:gator skin"
+        "raw": "item:gSkin"
       }
     ],
-    "item:golden feather": [
+    "item:gFeather": [
       {
         "room": "20_20",
-        "raw": "item:golden feather"
+        "raw": "item:gFeather"
       }
     ],
-    "item:kings crest": [
+    "item:mStaff": [
       {
         "room": "20_20",
-        "raw": "item:kings crest"
+        "raw": "item:mStaff"
+      },
+      {
+        "room": "20_20",
+        "raw": "item:mStaff"
       }
     ],
-    "item:mage staff": [
+    "item:mHat": [
       {
         "room": "20_20",
-        "raw": "item:mage staff"
+        "raw": "item:mHat"
       }
     ],
-    "item:mages hat": [
+    "item:mHorn": [
       {
         "room": "20_20",
-        "raw": "item:mages hat"
-      }
-    ],
-    "item:minotaur horn": [
-      {
-        "room": "20_20",
-        "raw": "item:minotaur horn"
+        "raw": "item:mHorn"
       }
     ],
     "item:ring of evasion": [
@@ -15543,32 +15235,30 @@
         "raw": "item:ring of evasion"
       }
     ],
-    "item:scorpion claw": [
+    "item:sClaw": [
       {
         "room": "20_20",
-        "raw": "item:scorpion claw"
+        "raw": "item:sClaw"
       }
     ],
-    "item:shark tooth": [
+    "item:slamstones": [
       {
         "room": "20_20",
-        "raw": "item:shark tooth"
-      }
-    ],
-    "item:slamstone": [
+        "raw": "item:slamstones"
+      },
       {
         "room": "20_20",
-        "raw": "item:slamstone"
+        "raw": "item:slamstones"
       },
       {
         "room": "10_13",
-        "raw": "item:slamstone#1"
+        "raw": "item:slamstones#1"
       }
     ],
-    "item:steel fragment": [
+    "item:sFrag": [
       {
         "room": "20_20",
-        "raw": "item:steel fragment"
+        "raw": "item:sFrag"
       }
     ],
     "item:tentacle": [
@@ -15577,10 +15267,10 @@
         "raw": "item:tentacle"
       }
     ],
-    "item:troll wristband": [
+    "item:tBand": [
       {
         "room": "20_20",
-        "raw": "item:troll wristband"
+        "raw": "item:tBand"
       }
     ],
     "item:venom": [
@@ -15589,28 +15279,16 @@
         "raw": "item:venom"
       }
     ],
-    "item:viking horn": [
+    "item:vAsh": [
       {
         "room": "20_20",
-        "raw": "item:viking horn"
+        "raw": "item:vAsh"
       }
     ],
-    "item:void ash": [
+    "item:wPelt": [
       {
         "room": "20_20",
-        "raw": "item:void ash"
-      }
-    ],
-    "item:wolf pelt": [
-      {
-        "room": "20_20",
-        "raw": "item:wolf pelt"
-      }
-    ],
-    "flag:spawnpoint": [
-      {
-        "room": "20_20",
-        "raw": "spawnpoint"
+        "raw": "item:wPelt"
       }
     ],
     "food:banana": [
@@ -15653,10 +15331,10 @@
         "raw": "food:orange#12"
       }
     ],
-    "item:broken alpha club": [
+    "item:aClub": [
       {
         "room": "14_19",
-        "raw": "item:broken alpha club#1"
+        "raw": "item:aClub#1"
       }
     ],
     "weapon:sKnife": [
@@ -15675,14 +15353,16 @@
         "raw": "magic:ice"
       }
     ],
-    "armor:alphaArmor": [
+    "flag:craft:upgradeAAHP": [
       {
         "room": "13_13",
-        "raw": "armor:alphaArmor.+inf"
-      },
+        "raw": "craft:upgradeAAHP"
+      }
+    ],
+    "flag:craft:upgradeAAMP": [
       {
-        "room": "23_10",
-        "raw": "armor:alphaArmor"
+        "room": "13_13",
+        "raw": "craft:upgradeAAMP"
       }
     ],
     "food:blueberries": [
@@ -15757,10 +15437,10 @@
         "raw": "magic:weak"
       }
     ],
-    "item:broken alpha axe": [
+    "item:aAxe": [
       {
         "room": "5_9",
-        "raw": "item:broken alpha axe#1"
+        "raw": "item:aAxe#1"
       }
     ],
     "skill:tough": [
@@ -16075,38 +15755,38 @@
         "raw": "item:ruby#1"
       }
     ],
-    "misc:red chest": [
+    "flag:area:red chest": [
       {
         "room": "20_23",
-        "raw": "misc:red chest"
+        "raw": "area:red chest"
       },
       {
         "room": "15_19",
-        "raw": "misc:red chest"
+        "raw": "area:red chest"
       },
       {
         "room": "19_17",
-        "raw": "misc:red chest"
+        "raw": "area:red chest"
       },
       {
         "room": "5_15",
-        "raw": "misc:red chest"
+        "raw": "area:red chest"
       },
       {
         "room": "14_14",
-        "raw": "misc:red chest"
+        "raw": "area:red chest"
       },
       {
         "room": "23_13",
-        "raw": "misc:red chest"
+        "raw": "area:red chest"
       },
       {
         "room": "8_10",
-        "raw": "misc:red chest"
+        "raw": "area:red chest"
       },
       {
         "room": "6_24",
-        "raw": "misc:red chest"
+        "raw": "area:red chest"
       }
     ],
     "quest:pam": [
@@ -16609,12 +16289,6 @@
         "raw": "misc:orb of peace"
       }
     ],
-    "misc:fire crystal": [
-      {
-        "room": "12_9",
-        "raw": "misc:fire crystal"
-      }
-    ],
     "quest:warp": [
       {
         "room": "11_9",
@@ -16831,10 +16505,10 @@
         "raw": "?misc:geomana"
       }
     ],
-    "item:medallion": [
+    "item:medallions": [
       {
         "room": "19_16",
-        "raw": "item:medallion"
+        "raw": "item:medallions"
       }
     ],
     "flag:???": [
@@ -16895,6 +16569,12 @@
       {
         "room": "12_9",
         "raw": "food:carrot"
+      }
+    ],
+    "armor:alphaArmor": [
+      {
+        "room": "23_10",
+        "raw": "armor:alphaArmor"
       }
     ],
     "armor:grimGear": [
@@ -17139,6 +16819,12 @@
       {
         "room": "9_18",
         "raw": "quest:isles.10"
+      }
+    ],
+    "misc:blue crystal": [
+      {
+        "room": "19_20",
+        "raw": "misc:blue crystal"
       }
     ],
     "quest:access": [
@@ -17435,10 +17121,6 @@
         "raw": "area:0"
       },
       {
-        "room": "22_21",
-        "raw": "area:0"
-      },
-      {
         "room": "15_18",
         "raw": "area:0"
       },
@@ -17506,14 +17188,6 @@
       },
       {
         "room": "18_19",
-        "raw": "area:1"
-      },
-      {
-        "room": "19_19",
-        "raw": "area:1"
-      },
-      {
-        "room": "20_19",
         "raw": "area:1"
       },
       {
@@ -17713,15 +17387,7 @@
         "raw": "area:16"
       },
       {
-        "room": "2_20",
-        "raw": "area:16"
-      },
-      {
         "room": "3_21",
-        "raw": "area:16"
-      },
-      {
-        "room": "3_22",
         "raw": "area:16"
       },
       {
@@ -17778,14 +17444,6 @@
       },
       {
         "room": "3_18",
-        "raw": "area:16"
-      },
-      {
-        "room": "2_18",
-        "raw": "area:16"
-      },
-      {
-        "room": "2_17",
         "raw": "area:16"
       },
       {
@@ -17923,10 +17581,6 @@
         "raw": "area:8"
       },
       {
-        "room": "6_22",
-        "raw": "area:8"
-      },
-      {
         "room": "7_23",
         "raw": "area:8"
       },
@@ -17984,10 +17638,6 @@
       },
       {
         "room": "9_26",
-        "raw": "area:8"
-      },
-      {
-        "room": "8_26",
         "raw": "area:8"
       }
     ],
@@ -18067,30 +17717,6 @@
         "raw": "area:2"
       },
       {
-        "room": "22_23",
-        "raw": "area:2"
-      },
-      {
-        "room": "22_24",
-        "raw": "area:2"
-      },
-      {
-        "room": "21_24",
-        "raw": "area:2"
-      },
-      {
-        "room": "20_24",
-        "raw": "area:2"
-      },
-      {
-        "room": "20_25",
-        "raw": "area:2"
-      },
-      {
-        "room": "19_25",
-        "raw": "area:2"
-      },
-      {
         "room": "18_25",
         "raw": "area:2"
       },
@@ -18133,22 +17759,6 @@
       {
         "room": "17_25",
         "raw": "area:2"
-      },
-      {
-        "room": "19_26",
-        "raw": "area:2"
-      },
-      {
-        "room": "18_26",
-        "raw": "area:2"
-      },
-      {
-        "room": "17_26",
-        "raw": "area:2"
-      },
-      {
-        "room": "16_26",
-        "raw": "area:2"
       }
     ],
     "flag:area:15": [
@@ -18162,10 +17772,6 @@
       },
       {
         "room": "18_10",
-        "raw": "area:15"
-      },
-      {
-        "room": "18_9",
         "raw": "area:15"
       },
       {
@@ -18213,10 +17819,6 @@
         "raw": "area:9"
       },
       {
-        "room": "2_23",
-        "raw": "area:9"
-      },
-      {
         "room": "3_24",
         "raw": "area:9"
       },
@@ -18225,23 +17827,11 @@
         "raw": "area:9"
       },
       {
-        "room": "2_24",
-        "raw": "area:9"
-      },
-      {
         "room": "3_25",
         "raw": "area:9"
       },
       {
         "room": "4_25",
-        "raw": "area:9"
-      },
-      {
-        "room": "5_25",
-        "raw": "area:9"
-      },
-      {
-        "room": "6_25",
         "raw": "area:9"
       },
       {
@@ -18296,10 +17886,6 @@
       },
       {
         "room": "13_26",
-        "raw": "area:13"
-      },
-      {
-        "room": "14_26",
         "raw": "area:13"
       },
       {
@@ -18411,6 +17997,12 @@
         "raw": "area:5.1"
       }
     ],
+    "flag:flag:10.1 code": [
+      {
+        "room": "11_19",
+        "raw": "flag:10.1 code"
+      }
+    ],
     "flag:area:12": [
       {
         "room": "18_18",
@@ -18429,10 +18021,6 @@
         "raw": "area:12"
       },
       {
-        "room": "22_18",
-        "raw": "area:12"
-      },
-      {
         "room": "18_17",
         "raw": "area:12"
       },
@@ -18446,14 +18034,6 @@
       },
       {
         "room": "21_17",
-        "raw": "area:12"
-      },
-      {
-        "room": "22_17",
-        "raw": "area:12"
-      },
-      {
-        "room": "21_16",
         "raw": "area:12"
       }
     ],
@@ -18541,14 +18121,6 @@
       {
         "room": "14_13",
         "raw": "area:4"
-      },
-      {
-        "room": "15_13",
-        "raw": "area:4"
-      },
-      {
-        "room": "16_13",
-        "raw": "area:4"
       }
     ],
     "flag:area:4.1": [
@@ -18575,10 +18147,6 @@
         "raw": "area:10"
       },
       {
-        "room": "20_13",
-        "raw": "area:10"
-      },
-      {
         "room": "20_12",
         "raw": "area:10"
       }
@@ -18598,10 +18166,6 @@
       },
       {
         "room": "21_14",
-        "raw": "area:11"
-      },
-      {
-        "room": "20_14",
         "raw": "area:11"
       },
       {
@@ -18637,14 +18201,6 @@
         "raw": "area:11"
       },
       {
-        "room": "25_12",
-        "raw": "area:11"
-      },
-      {
-        "room": "25_11",
-        "raw": "area:11"
-      },
-      {
         "room": "24_11",
         "raw": "area:11"
       },
@@ -18658,14 +18214,6 @@
       },
       {
         "room": "21_11",
-        "raw": "area:11"
-      },
-      {
-        "room": "20_11",
-        "raw": "area:11"
-      },
-      {
-        "room": "20_10",
         "raw": "area:11"
       },
       {
@@ -18706,14 +18254,6 @@
     "flag:area:11.1": [
       {
         "room": "21_9",
-        "raw": "area:11.1"
-      },
-      {
-        "room": "20_9",
-        "raw": "area:11.1"
-      },
-      {
-        "room": "19_9",
         "raw": "area:11.1"
       }
     ],
@@ -18756,14 +18296,6 @@
       },
       {
         "room": "12_11",
-        "raw": "area:6"
-      },
-      {
-        "room": "13_11",
-        "raw": "area:6"
-      },
-      {
-        "room": "13_10",
         "raw": "area:6"
       },
       {
@@ -18813,27 +18345,11 @@
         "raw": "area:7"
       },
       {
-        "room": "4_11",
-        "raw": "area:7"
-      },
-      {
-        "room": "3_11",
-        "raw": "area:7"
-      },
-      {
         "room": "6_10",
         "raw": "area:7"
       },
       {
         "room": "5_10",
-        "raw": "area:7"
-      },
-      {
-        "room": "4_10",
-        "raw": "area:7"
-      },
-      {
-        "room": "4_9",
         "raw": "area:7"
       },
       {
@@ -18848,10 +18364,6 @@
     "flag:area:7.1": [
       {
         "room": "6_12",
-        "raw": "area:7.1"
-      },
-      {
-        "room": "5_12",
         "raw": "area:7.1"
       },
       {
@@ -18876,10 +18388,6 @@
       },
       {
         "room": "12_9",
-        "raw": "area:6.1"
-      },
-      {
-        "room": "13_9",
         "raw": "area:6.1"
       }
     ],

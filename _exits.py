@@ -6497,7 +6497,7 @@ EXITS: Model = {
       "id": "door:stairsDown:6_23_5_23",
       "mechanism": "object",
       "trigger_object": "stairsDown",
-      "requires": [["state:lit torch 2", "state:lit torch 1"]],
+      "requires": [["flag:lit torch 2", "flag:lit torch 1"]],
       "origin": {"north": 6, "east": 23},
       "dest": {"north": 5, "east": 23},
       "dest_x": 180,
