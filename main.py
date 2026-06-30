@@ -2,7 +2,6 @@
 import shuffle_exits
 import gen_map
 import patch_rooms
-import generate_ap_ids
 import os
 
 playercouldhave, edge_reached, door_reached, warp_reached, all_rooms = shuffle_exits.init()
@@ -20,5 +19,4 @@ src = patch_rooms.init(src)
 with open(OUT_PATH, "w", encoding="utf-8") as f:
   f.write(src)
 
-generate_ap_ids.generate_js_client()
 gen_map.main()

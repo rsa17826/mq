@@ -17,23 +17,28 @@ class ProgressionNode(TypedDict):
 PROG: list[ProgressionNode] = [
   {
     "room": {"north": 20, "east": 20},
+    "requires": [["area:4"]],
+    "receive": ["loot:mStaff"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
     "requires": [["area:16"]],
-    "receive": ["item:sTooth", "item:vHorn"],
+    "receive": ["loot:sTooth", "loot:vHorn"],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [["area:2"]],
-    "receive": ["item:bTooth"],
+    "receive": ["loot:bTooth"],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [["area:15"]],
-    "receive": ["item:cThread"],
+    "receive": ["loot:cThread"],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [["area:11"]],
-    "receive": ["item:kCrest"],
+    "receive": ["loot:kCrest"],
   },
   {
     "room": {"north": 20, "east": 20},
@@ -49,10 +54,9 @@ PROG: list[ProgressionNode] = [
       "skill:halo",
       "item:aurastones",
       "item:gold",
-      "item:dScale",
-      "item:cThread",
+      "loot:dScale",
       "item:shadowCrest",
-      "item:oCoin",
+      "loot:oCoin",
       "item:blue crystal",
       "item:key#999",
       "item:gold#999",
@@ -71,29 +75,24 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 20, "east": 20},
     "requires": [[]],
     "receive": [
-      "item:bTooth",
-      "item:bTusk",
-      "item:cFang",
+      "loot:bTusk",
+      "loot:cFang",
       "item:emeralds",
       "misc:fire crystal",
-      "item:fBone",
-      "item:gSkin",
-      "item:gFeather",
-      "item:kCrest",
-      "item:mStaff",
-      "item:mHat",
-      "item:mHorn",
+      "loot:fBone",
+      "loot:gSkin",
+      "loot:gFeather",
+      "loot:mHat",
+      "loot:mHorn",
       "item:ring of evasion",
-      "item:sClaw",
-      "item:sTooth",
+      "loot:sClaw",
       "item:slamstones",
-      "item:sFrag",
-      "item:oArm",
-      "item:tBand",
-      "item:venom",
-      "item:vHorn",
-      "item:vAsh",
-      "item:wPelt",
+      "loot:sFrag",
+      "loot:oArm",
+      "loot:tBand",
+      "loot:venom",
+      "loot:vAsh",
+      "loot:wPelt",
     ],
     "info": """add to correct locations later
 """,
@@ -106,14 +105,14 @@ manager.correct - manager.wrong > 800 = halo
   },
   {
     "room": {"north": 21, "east": 20},
-    "requires": [["item:venom#1"]],
+    "requires": [["loot:venom#1"]],
     "receive": ["food:orange#1"],
   },
   # {"room": {"north": 18, "east": 20}, "info": "warp skill warp point"},
   {
     "room": {"north": 14, "east": 19},
-    "requires": [["item:tBand#1", "entrance.north0"]],
-    "receive": ["item:aClub#1"],
+    "requires": [["loot:tBand#1", "entrance.north0"]],
+    "receive": ["loot:aClub#1"],
   },
   # {"room": {"north": 12, "east": 19}, "info": "warp skill warp point"},
   {
@@ -124,7 +123,7 @@ manager.correct - manager.wrong > 800 = halo
   # {"room": {"north": 14, "east": 16}, "info": "warp skill warp point"},
   {
     "room": {"north": 15, "east": 16},
-    "requires": [["permit:bomb", "item:mStaff#20"]],
+    "requires": [["permit:bomb", "loot:mStaff#20"]],
     "receive": ["magic:ice"],
   },
   {
@@ -133,13 +132,8 @@ manager.correct - manager.wrong > 800 = halo
     "receive": ["craft:upgradeAAHP", "craft:upgradeAAMP"],
   },
   {
-    "room": {"north": 20, "east": 20},
-    "requires": [["area:4"]],
-    "receive": ["item:mStaff"],
-  },
-  {
     "room": {"north": 11, "east": 13},
-    "requires": [["item:mStaff#1"]],
+    "requires": [["loot:mStaff#1"]],
     "receive": ["food:blueberries#1"],
   },
   {
@@ -176,7 +170,7 @@ manager.correct - manager.wrong > 800 = halo
   },
   {
     "room": {"north": 12, "east": 9},
-    "requires": [["item:venom"]],
+    "requires": [["loot:venom"]],
     "receive": ["food:orange"],
   },
   {
@@ -191,31 +185,31 @@ manager.correct - manager.wrong > 800 = halo
   },
   {
     "room": {"north": 11, "east": 9},
-    "requires": [["item:wPelt"]],
+    "requires": [["loot:wPelt"]],
     "receive": ["item:gold#22"],
   },
   {
     "room": {"north": 5, "east": 9},
     "requires": [
-      ["item:mHorn", "entrance.north0"],
-      ["item:mHorn", "entrance.east0"],
+      ["loot:mHorn", "entrance.north0"],
+      ["loot:mHorn", "entrance.east0"],
     ],
-    "receive": ["item:aAxe#1"],
+    "receive": ["loot:aAxe#1"],
   },
   {
     "room": {"north": 8, "east": 14},
-    "requires": [["item:sTooth#30", "item:gold#800", "skill:tough"]],
+    "requires": [["loot:sTooth#30", "item:gold#800", "skill:tough"]],
     "receive": ["skill:tough.+1"],
   },
   {"room": {"north": 10, "east": 16}, "info": "warp skill warp point"},
   {
     "room": {"north": 9, "east": 16},
-    "requires": [["item:gSkin#1"]],
+    "requires": [["loot:gSkin#1"]],
     "receive": ["item:gold#23"],
   },
   {
     "room": {"north": 4, "east": 17},
-    "requires": [["weapon:axe", "item:vHorn#2"]],
+    "requires": [["weapon:axe", "loot:vHorn#2"]],
     "receive": ["weapon:axe.+1"],
   },
   {"room": {"north": 8, "east": 17}, "requires": [[]], "receive": ["misc:green secret code"]},
@@ -264,14 +258,14 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "entrance.south0",
-        "item:aScepter#1",
-        "item:dScale#5",
+        "loot:aScepter#1",
+        "loot:dScale#5",
         "skill:craft",
       ],
       [
         "entrance.south1",
-        "item:aScepter#1",
-        "item:dScale#5",
+        "loot:aScepter#1",
+        "loot:dScale#5",
         "skill:craft",
         "permit:bomb.2",
       ],
@@ -286,18 +280,18 @@ manager.correct - manager.wrong > 800 = halo
   # {"room": {"north": 11, "east": 24}, "info": "warp skill warp point"},
   {
     "room": {"north": 11, "east": 22},
-    "requires": [["item:sTooth#10", "skill:craft"]],
+    "requires": [["loot:sTooth#10", "skill:craft"]],
     "receive": ["craft:emerald"],
   },
   {
     "room": {"north": 12, "east": 25},
-    "requires": [["item:sTooth#10", "skill:craft"]],
+    "requires": [["loot:sTooth#10", "skill:craft"]],
     "receive": ["food:gummyBears#10", "item:diamonds#50"],
   },
   {
     "room": {"north": 13, "east": 25},
-    "requires": [["item:mHat#1", "misc:magic only resist bypass"]],
-    "receive": ["item:aScepter#1"],
+    "requires": [["loot:mHat#1", "misc:magic only resist bypass"]],
+    "receive": ["loot:aScepter#1"],
   },
   {"room": {"north": 14, "east": 25}, "receive": ["flag:three part code part 1"]},
   {"room": {"north": 14, "east": 24}, "receive": ["flag:three part code part 2"]},
@@ -316,28 +310,28 @@ manager.correct - manager.wrong > 800 = halo
   {"room": {"north": 11, "east": 26}, "receive": ["flag:stomp code"]},
   # {
   #   "room": {"north": 18, "east": 25},
-  #   "requires": [["skill:medic.1", "item:cFang#5"]],
+  #   "requires": [["skill:medic.1", "loot:cFang#5"]],
   #   "receive": ["skill:medic.2"],
   # },
   # {
   #   "room": {"north": 18, "east": 25},
-  #   "requires": [["skill:medic.2", "item:oCoin#20", "item:mStaff#10"]],
+  #   "requires": [["skill:medic.2", "loot:oCoin#20", "loot:mStaff#10"]],
   #   "receive": ["skill:medic.3"],
   # },
   # {
   #   "room": {"north": 18, "east": 25},
-  #   "requires": [["skill:medic.3", "item:dScale#10", "item:gSkin#10"]],
+  #   "requires": [["skill:medic.3", "loot:dScale#10", "loot:gSkin#10"]],
   #   "receive": ["skill:medic.4"],
   # },
   # {
   #   "room": {"north": 18, "east": 25},
-  #   "requires": [["skill:medic.4", "item:kCrest#10", "item:alpha axe#5"]],
+  #   "requires": [["skill:medic.4", "loot:kCrest#10", "item:alpha axe#5"]],
   #   "receive": ["skill:medic.5"],
   # },
   # {
   #   "room": {"north": 18, "east": 25},
   #   "requires": [
-  #     ["skill:medic.5", "item:gFeather#3", "item:aScepter#5"]
+  #     ["skill:medic.5", "loot:gFeather#3", "loot:aScepter#5"]
   #   ],
   #   "receive": ["skill:medic.6"],
   # },
@@ -353,7 +347,7 @@ manager.correct - manager.wrong > 800 = halo
   },
   {
     "room": {"north": 21, "east": 22},
-    "requires": [["item:ring of gold", "item:tBand#5", "item:gSkin#2"]],
+    "requires": [["item:ring of gold", "loot:tBand#5", "loot:gSkin#2"]],
     "receive": ["craft:ring of gold"],
   },
   {
@@ -368,18 +362,18 @@ manager.correct - manager.wrong > 800 = halo
   },
   {
     "room": {"north": 19, "east": 22},
-    "requires": [["item:aAxe#5"]],
+    "requires": [["loot:aAxe#5"]],
     "receive": ["skill:reveal"],
   },
   {
     "room": {"north": 19, "east": 21},
-    "requires": [["quest:dig.3", "item:bTooth#1"]],
+    "requires": [["quest:dig.3", "loot:bTooth#1"]],
     "receive": ["item:gold#18"],
   },
   {"room": {"north": 19, "east": 20}, "requires": [[]], "receive": ["quest:pam.1"]},
   {
     "room": {"north": 21, "east": 20},
-    "requires": [["item:bTusk#1"]],
+    "requires": [["loot:bTusk#1"]],
     "receive": ["item:gold#20"],
   },
   {
@@ -400,47 +394,47 @@ manager.correct - manager.wrong > 800 = halo
   },
   {
     "room": {"north": 20, "east": 15},
-    "requires": [["skill:firewall", "item:dScale#5", "item:medallions#3"]],
+    "requires": [["skill:firewall", "loot:dScale#5", "item:medallions#3"]],
     "receive": ["skill:firewall.2"],
   },
   {
     "room": {"north": 20, "east": 15},
-    "requires": [["skill:firewall.2", "item:dScale#10", "item:medallions#6"]],
+    "requires": [["skill:firewall.2", "loot:dScale#10", "item:medallions#6"]],
     "receive": ["skill:firewall.3"],
   },
   {
     "room": {"north": 20, "east": 15},
-    "requires": [["skill:firewall.3", "item:dScale#15", "item:medallions#9"]],
+    "requires": [["skill:firewall.3", "loot:dScale#15", "item:medallions#9"]],
     "receive": ["skill:firewall.4"],
   },
   {
     "room": {"north": 20, "east": 15},
-    "requires": [["skill:firewall.4", "item:dScale#20", "item:medallions#12"]],
+    "requires": [["skill:firewall.4", "loot:dScale#20", "item:medallions#12"]],
     "receive": ["skill:firewall.5"],
   },
   {
     "room": {"north": 20, "east": 15},
-    "requires": [["skill:firewall.5", "item:dScale#25", "item:medallions#15"]],
+    "requires": [["skill:firewall.5", "loot:dScale#25", "item:medallions#15"]],
     "receive": ["skill:firewall.6"],
   },
   {
     "room": {"north": 20, "east": 15},
-    "requires": [["skill:firewall.6", "item:dScale#30", "item:medallions#18"]],
+    "requires": [["skill:firewall.6", "loot:dScale#30", "item:medallions#18"]],
     "receive": ["skill:firewall.7"],
   },
   {
     "room": {"north": 20, "east": 15},
-    "requires": [["skill:firewall.7", "item:dScale#35", "item:medallions#21"]],
+    "requires": [["skill:firewall.7", "loot:dScale#35", "item:medallions#21"]],
     "receive": ["skill:firewall.8"],
   },
   {
     "room": {"north": 20, "east": 15},
-    "requires": [["skill:firewall.8", "item:dScale#40", "item:medallions#24"]],
+    "requires": [["skill:firewall.8", "loot:dScale#40", "item:medallions#24"]],
     "receive": ["skill:firewall.9"],
   },
   {
     "room": {"north": 20, "east": 15},
-    "requires": [["skill:firewall.9", "item:dScale#45", "item:medallions#27"]],
+    "requires": [["skill:firewall.9", "loot:dScale#45", "item:medallions#27"]],
     "receive": ["skill:firewall.10"],
   },
   {
@@ -465,7 +459,7 @@ manager.correct - manager.wrong > 800 = halo
   },
   {
     "room": {"north": 18, "east": 13},
-    "requires": [["item:cThread#10", "item:shadowCrest#5", "skill:reveal"]],
+    "requires": [["loot:cThread#10", "item:shadowCrest#5", "skill:reveal"]],
     "receive": ["misc:max bombs.149"],
   },
   # {"room": {"north": 19, "east": 12}, "info": "warp skill warp point"},
@@ -476,7 +470,7 @@ manager.correct - manager.wrong > 800 = halo
   },
   {
     "room": {"north": 17, "east": 10},
-    "requires": [["item:vAsh#6"]],
+    "requires": [["loot:vAsh#6"]],
     "receive": ["food:gummyBears#5"],
   },
   {
@@ -501,12 +495,12 @@ manager.correct - manager.wrong > 800 = halo
   },
   {
     "room": {"north": 4, "east": 13},
-    "requires": [["item:sTooth#5", "item:vHorn#5", "item:oArm#5"]],
+    "requires": [["loot:sTooth#5", "loot:vHorn#5", "loot:oArm#5"]],
     "receive": ["craft:newtonsApple"],
   },
   {
     "room": {"north": 11, "east": 15},
-    "requires": [["skill:craft", "item:tBand#5", "item:wPelt#2"]],
+    "requires": [["skill:craft", "loot:tBand#5", "loot:wPelt#2"]],
     "receive": ["craft:key"],
   },
   {
@@ -553,7 +547,7 @@ manager.correct - manager.wrong > 800 = halo
   },
   {
     "room": {"north": 19, "east": 23},
-    "requires": [["item:bTooth#15", "quest:gTree.3"]],
+    "requires": [["loot:bTooth#15", "quest:gTree.3"]],
     "receive": ["quest:gTree.4"],
   },
   {
@@ -604,7 +598,7 @@ manager.correct - manager.wrong > 800 = halo
   },
   {
     "room": {"north": 21, "east": 21},
-    "requires": [["food:honey#5", "item:venom#1"]],
+    "requires": [["food:honey#5", "loot:venom#1"]],
     "receive": ["skill:craft"],
   },
   {
@@ -684,7 +678,7 @@ at Jh.onKeyDown (http://127.0.0.1:1533/MathQuest/MathQuest.js:99147:18)
   },
   {
     "room": {"north": 12, "east": 9},
-    "requires": [["quest:gTree.14", "item:sClaw#7", "item:cFang#5"]],
+    "requires": [["quest:gTree.14", "loot:sClaw#7", "loot:cFang#5"]],
     "receive": ["quest:gTree.15", "misc:fire crystal"],
   },
   {
@@ -900,7 +894,7 @@ MathQuest.js:42550 add listeners""",
   },
   {
     "room": {"north": 18, "east": 19},
-    "requires": [["quest:seeds.2", "item:oCoin#20"]],
+    "requires": [["quest:seeds.2", "loot:oCoin#20"]],
     "receive": ["quest:seeds.3"],
   },
   {
@@ -973,9 +967,9 @@ MathQuest.js:42550 add listeners""",
     "requires": [
       [
         "quest:rings.13",
-        "item:sFrag#5",
-        "item:dScale#3",
-        "item:fBone#10",
+        "loot:sFrag#5",
+        "loot:dScale#3",
+        "loot:fBone#10",
         "?misc:geomana",
       ]
     ],
@@ -1806,27 +1800,27 @@ MathQuest.js:42550 add listeners""",
   },
   {
     "room": {"north": 19, "east": 15},
-    "requires": [["item:rubies#7", "weapon:royalStaff", "item:aScepter#3"]],
+    "requires": [["item:rubies#7", "weapon:royalStaff", "loot:aScepter#3"]],
     "receive": ["weapon:refreshStaff"],
   },
   {
     "room": {"north": 19, "east": 15},
-    "requires": [["item:rubies#20", "weapon:warlockStaff", "item:aAxe#5"]],
+    "requires": [["item:rubies#20", "weapon:warlockStaff", "loot:aAxe#5"]],
     "receive": ["weapon:axe"],
   },
   {
     "room": {"north": 19, "east": 15},
-    "requires": [["item:rubies#100", "weapon:sunSword", "item:sFrag#5"]],
+    "requires": [["item:rubies#100", "weapon:sunSword", "loot:sFrag#5"]],
     "receive": ["weapon:soulSword"],
   },
   {
     "room": {"north": 19, "east": 15},
-    "requires": [["item:rubies#10", "armor:phantomCoat", "item:kCrest#50"]],
+    "requires": [["item:rubies#10", "armor:phantomCoat", "loot:kCrest#50"]],
     "receive": ["armor:shadowCoat"],
   },
   {
     "room": {"north": 19, "east": 15},
-    "requires": [["item:rubies#80", "armor:sunArmor", "item:sFrag#7"]],
+    "requires": [["item:rubies#80", "armor:sunArmor", "loot:sFrag#7"]],
     "receive": ["armor:soulArmor"],
   },
   {
@@ -1992,9 +1986,9 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 200, "east": 200},
     "requires": [
-      ["item:vHorn#20"],
-      ["item:cThread#30"],
-      ["item:gFeather#5"],
+      ["loot:vHorn#20"],
+      ["loot:cThread#30"],
+      ["loot:gFeather#5"],
       ["weapon:orcBlade"],
     ],
     "receive": ["weapon:twinFury"],
@@ -2002,82 +1996,82 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 18, "east": 25},
     "requires": [
-      ["item:tBand#2"],
+      ["loot:tBand#2"],
     ],
     "receive": ["skill:medic.1"],
   },
   {
     "room": {"north": 18, "east": 25},
     "requires": [
-      ["item:tBand#2"],
+      ["loot:tBand#2"],
       #
-      ["item:cFang#5"],
+      ["loot:cFang#5"],
     ],
     "receive": ["skill:medic.2"],
   },
   {
     "room": {"north": 18, "east": 25},
     "requires": [
-      ["item:tBand#2"],
+      ["loot:tBand#2"],
       #
-      ["item:cFang#5"],
+      ["loot:cFang#5"],
       #
-      ["item:mStaff#10"],
-      ["item:oCoin#20"],
+      ["loot:mStaff#10"],
+      ["loot:oCoin#20"],
     ],
     "receive": ["skill:medic.3"],
   },
   {
     "room": {"north": 18, "east": 25},
     "requires": [
-      ["item:tBand#2"],
+      ["loot:tBand#2"],
       #
-      ["item:cFang#5"],
+      ["loot:cFang#5"],
       #
-      ["item:mStaff#10"],
-      ["item:oCoin#20"],
+      ["loot:mStaff#10"],
+      ["loot:oCoin#20"],
       #
-      ["item:gSkin#10"],
-      ["item:dScale#10"],
+      ["loot:gSkin#10"],
+      ["loot:dScale#10"],
     ],
     "receive": ["skill:medic.4"],
   },
   {
     "room": {"north": 18, "east": 25},
     "requires": [
-      ["item:tBand#2"],
+      ["loot:tBand#2"],
       #
-      ["item:cFang#5"],
+      ["loot:cFang#5"],
       #
-      ["item:mStaff#10"],
-      ["item:oCoin#20"],
+      ["loot:mStaff#10"],
+      ["loot:oCoin#20"],
       #
-      ["item:gSkin#10"],
-      ["item:dScale#10"],
+      ["loot:gSkin#10"],
+      ["loot:dScale#10"],
       #
-      ["item:aAxe#5"],
-      ["item:kCrest#10"],
+      ["loot:aAxe#5"],
+      ["loot:kCrest#10"],
     ],
     "receive": ["skill:medic.5"],
   },
   {
     "room": {"north": 18, "east": 25},
     "requires": [
-      ["item:tBand#2"],
+      ["loot:tBand#2"],
       #
-      ["item:cFang#5"],
+      ["loot:cFang#5"],
       #
-      ["item:mStaff#10"],
-      ["item:oCoin#20"],
+      ["loot:mStaff#10"],
+      ["loot:oCoin#20"],
       #
-      ["item:gSkin#10"],
-      ["item:dScale#10"],
+      ["loot:gSkin#10"],
+      ["loot:dScale#10"],
       #
-      ["item:aAxe#5"],
-      ["item:kCrest#10"],
+      ["loot:aAxe#5"],
+      ["loot:kCrest#10"],
       #
-      ["item:gFeather#3"],
-      ["item:aScepter#5"],
+      ["loot:gFeather#3"],
+      ["loot:aScepter#5"],
     ],
     "receive": ["skill:medic.6"],
   },
@@ -2123,7 +2117,7 @@ MathQuest.js:42550 add listeners""",
   },
   # {
   #   "room": {"north": "?", "east": "?"},
-  #   "requires": [["item:sClaw#7"], ["item:cFang#5"]],
+  #   "requires": [["loot:sClaw#7"], ["loot:cFang#5"]],
   #   "receive": ["misc:fire crystal"],
   # },
   {
@@ -2133,7 +2127,7 @@ MathQuest.js:42550 add listeners""",
   },
   # {
   #   "room": {"north": "?", "east": "?"},
-  #   "requires": [["item:dScale#3"], ["item:sFrag#5"], ["item:fBone#10"]],
+  #   "requires": [["loot:dScale#3"], ["loot:sFrag#5"], ["loot:fBone#10"]],
   #   "receive": ["item:ring of skill"],
   # },
   # {
@@ -2482,47 +2476,47 @@ MathQuest.js:42550 add listeners""",
   {"room": {"north": 17.1, "east": 19}, "requires": [[]], "receive": ["area:3"]},
   {
     "room": {"north": 20, "east": 20},
-    "requires": [["area:str up npc", "item:bClaw#13"]],
+    "requires": [["area:str up npc", "loot:bClaw#13"]],
     "receive": ["misc:str up npc"],
   },
   {
     "room": {"north": 20, "east": 20},
-    "requires": [["area:str up npc", "item:tBand#15"]],
+    "requires": [["area:str up npc", "loot:tBand#15"]],
     "receive": ["misc:str up npc"],
   },
   {
     "room": {"north": 20, "east": 20},
-    "requires": [["area:str up npc", "item:mStaff#12"]],
+    "requires": [["area:str up npc", "loot:mStaff#12"]],
     "receive": ["misc:str up npc"],
   },
   {
     "room": {"north": 20, "east": 20},
-    "requires": [["area:str up npc", "item:fBone#10"]],
+    "requires": [["area:str up npc", "loot:fBone#10"]],
     "receive": ["misc:str up npc"],
   },
   {
     "room": {"north": 20, "east": 20},
-    "requires": [["area:str up npc", "item:cFang#15"]],
+    "requires": [["area:str up npc", "loot:cFang#15"]],
     "receive": ["misc:str up npc"],
   },
   {
     "room": {"north": 20, "east": 20},
-    "requires": [["area:str up npc", "item:oCoin#50"]],
+    "requires": [["area:str up npc", "loot:oCoin#50"]],
     "receive": ["misc:str up npc"],
   },
   {
     "room": {"north": 20, "east": 20},
-    "requires": [["area:str up npc", "item:kCrest#10"]],
+    "requires": [["area:str up npc", "loot:kCrest#10"]],
     "receive": ["misc:str up npc"],
   },
   {
     "room": {"north": 20, "east": 20},
-    "requires": [["area:str up npc", "item:dScale#10"]],
+    "requires": [["area:str up npc", "loot:dScale#10"]],
     "receive": ["misc:str up npc"],
   },
   {
     "room": {"north": 20, "east": 20},
-    "requires": [["area:str up npc", "item:vHorn#20"]],
+    "requires": [["area:str up npc", "loot:vHorn#20"]],
     "receive": ["misc:str up npc"],
   },
   {
