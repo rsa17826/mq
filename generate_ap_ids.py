@@ -43,17 +43,16 @@ def generate_js_client():
             "item:ring",
           )
         ):
-          clean_name = itemInfo.split("#")[0]
-
+          # clean_name = itemInfo.split("#")[0]
+          itemInfo=itemInfo.removesuffix("#1")
           # --- Locations Mapping (Name -> ID with coordinates) ---
-          locName = f"{thing['room']['north']}_{thing['room']['east']} - {clean_name}"
-          if locName not in LOCATION_NAME_TO_ID:
-            LOCATION_NAME_TO_ID[locName] = loc_id_counter
+          if itemInfo not in LOCATION_NAME_TO_ID:
+            LOCATION_NAME_TO_ID[itemInfo] = loc_id_counter
             loc_id_counter += 1
 
           # --- Items Mapping (Name -> ID, pure string) ---
-          if clean_name not in ITEM_NAME_TO_ID:
-            ITEM_NAME_TO_ID[clean_name] = item_id_counter
+          if itemInfo not in ITEM_NAME_TO_ID:
+            ITEM_NAME_TO_ID[itemInfo] = item_id_counter
             item_id_counter += 1
 
   # Invert the items dictionary so JavaScript can look up strings using integer IDs

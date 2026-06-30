@@ -1047,7 +1047,7 @@ GEOM: list[ExitBase] = [
         ],
       },
       {
-        "reqs": [["misc:green secret code"]],
+        "reqs": [["flag:green secret code"]],
         "areas": [
           [{"side": "south", "idx": 0}, {"side": "north", "idx": 0}],
         ],

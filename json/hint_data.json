@@ -7630,7 +7630,7 @@
         "skill:firewall",
         "skill:firewall.1",
         "skill:halo",
-        "item:aurastone",
+        "item:aurastones",
         "item:gold",
         "item:dScale",
         "item:cThread",
@@ -7650,7 +7650,7 @@
         "item:bTooth",
         "item:bTusk",
         "item:cFang",
-        "item:emerald",
+        "item:emeralds",
         "misc:fire crystal",
         "item:fBone",
         "item:gSkin",
@@ -7664,7 +7664,7 @@
         "item:sTooth",
         "item:slamstones",
         "item:sFrag",
-        "item:tentacle",
+        "item:oArm",
         "item:tBand",
         "item:venom",
         "item:vHorn",
@@ -8186,7 +8186,7 @@
         ]
       ],
       "receive": [
-        "item:ruby#1"
+        "item:rubies#1"
       ]
     },
     {
@@ -8259,7 +8259,7 @@
       "room": "21_18",
       "requires": [
         [
-          "item:emerald#1"
+          "item:emeralds#1"
         ]
       ],
       "receive": [
@@ -8271,12 +8271,12 @@
       "room": "21_17",
       "requires": [
         [
-          "item:aurastone#1",
+          "item:aurastones#1",
           "item:gold#500"
         ]
       ],
       "receive": [
-        "item:ruby#1"
+        "item:rubies#1"
       ]
     },
     {
@@ -8404,7 +8404,7 @@
         ]
       ],
       "receive": [
-        "item:ruby#1"
+        "item:rubies#1"
       ]
     },
     {
@@ -8527,7 +8527,7 @@
         [
           "item:sTooth#5",
           "item:vHorn#5",
-          "item:tentacle#5"
+          "item:oArm#5"
         ]
       ],
       "receive": [
@@ -9685,7 +9685,7 @@
       "room": "8_18",
       "requires": [
         [
-          "item:emerald#1",
+          "item:emeralds#1",
           "entrance.north1"
         ]
       ],
@@ -9795,7 +9795,7 @@
       "room": "17_15",
       "requires": [
         [
-          "item:emerald#1"
+          "item:emeralds#1"
         ]
       ],
       "receive": [
@@ -9880,7 +9880,7 @@
       "room": "23_10",
       "requires": [
         [
-          "item:emerald#1"
+          "item:emeralds#1"
         ]
       ],
       "receive": [
@@ -9950,13 +9950,13 @@
       "room": "10_13",
       "requires": [
         [
-          "item:emerald#1"
+          "item:emeralds#1"
         ]
       ],
       "receive": [
         "item:gold#1",
         "item:diamonds#1",
-        "item:aurastone#1",
+        "item:aurastones#1",
         "item:slamstones#1",
         "food:elixir#1",
         "food:holyWater#1"
@@ -10047,15 +10047,15 @@
       "room": "8_10",
       "requires": [
         [
-          "item:emerald#1",
+          "item:emeralds#1",
           "entrance.north1"
         ],
         [
-          "item:emerald#1",
+          "item:emeralds#1",
           "entrance.east1"
         ],
         [
-          "item:emerald#1",
+          "item:emeralds#1",
           "entrance.east2"
         ]
       ],
@@ -10108,7 +10108,7 @@
         ]
       ],
       "receive": [
-        "item:gingerbread#5"
+        "item:gingerBread#5"
       ]
     },
     {
@@ -10146,7 +10146,7 @@
       "room": "12_21",
       "requires": [
         [
-          "item:emerald#1",
+          "item:emeralds#1",
           "permit:bomb"
         ]
       ],
@@ -11941,7 +11941,7 @@
       "room": "9_25",
       "requires": [
         [
-          "item:emerald"
+          "item:emeralds"
         ]
       ],
       "receive": [
@@ -15003,14 +15003,14 @@
         "raw": "skill:halo"
       }
     ],
-    "item:aurastone": [
+    "item:aurastones": [
       {
         "room": "20_20",
-        "raw": "item:aurastone"
+        "raw": "item:aurastones"
       },
       {
         "room": "10_13",
-        "raw": "item:aurastone#1"
+        "raw": "item:aurastones#1"
       }
     ],
     "item:gold": [
@@ -15169,10 +15169,10 @@
         "raw": "item:cFang"
       }
     ],
-    "item:emerald": [
+    "item:emeralds": [
       {
         "room": "20_20",
-        "raw": "item:emerald"
+        "raw": "item:emeralds"
       }
     ],
     "misc:fire crystal": [
@@ -15261,10 +15261,10 @@
         "raw": "item:sFrag"
       }
     ],
-    "item:tentacle": [
+    "item:oArm": [
       {
         "room": "20_20",
-        "raw": "item:tentacle"
+        "raw": "item:oArm"
       }
     ],
     "item:tBand": [
@@ -15741,18 +15741,18 @@
         "raw": "craft:ring of gold"
       }
     ],
-    "item:ruby": [
+    "item:rubies": [
       {
         "room": "20_22",
-        "raw": "item:ruby#1"
+        "raw": "item:rubies#1"
       },
       {
         "room": "21_17",
-        "raw": "item:ruby#1"
+        "raw": "item:rubies#1"
       },
       {
         "room": "19_15",
-        "raw": "item:ruby#1"
+        "raw": "item:rubies#1"
       }
     ],
     "flag:area:red chest": [
@@ -16621,10 +16621,10 @@
         "raw": "magic:blessing"
       }
     ],
-    "item:gingerbread": [
+    "item:gingerBread": [
       {
         "room": "18_21",
-        "raw": "item:gingerbread#5"
+        "raw": "item:gingerBread#5"
       }
     ],
     "food:apple": [

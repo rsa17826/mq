@@ -199,7 +199,8 @@ class ArchipelagoClient {
           log(`[Item Received] ID: ${item.item} (${itemName})`, item)
           if (itemList[itemName]) {
             itemList[itemName]()
-          } else {
+          } else if (tryGiveLoot(itemName)){
+          }else {
             error("failed to give", itemName)
           }
           // if (!window.giveItem(itemName)) {

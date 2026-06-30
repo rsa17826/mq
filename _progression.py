@@ -47,7 +47,7 @@ PROG: list[ProgressionNode] = [
       "skill:firewall",
       "skill:firewall.1",
       "skill:halo",
-      "item:aurastone",
+      "item:aurastones",
       "item:gold",
       "item:dScale",
       "item:cThread",
@@ -74,7 +74,7 @@ manager.correct - manager.wrong > 800 = halo
       "item:bTooth",
       "item:bTusk",
       "item:cFang",
-      "item:emerald",
+      "item:emeralds",
       "misc:fire crystal",
       "item:fBone",
       "item:gSkin",
@@ -88,7 +88,7 @@ manager.correct - manager.wrong > 800 = halo
       "item:sTooth",
       "item:slamstones",
       "item:sFrag",
-      "item:tentacle",
+      "item:oArm",
       "item:tBand",
       "item:venom",
       "item:vHorn",
@@ -218,7 +218,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [["weapon:axe", "item:vHorn#2"]],
     "receive": ["weapon:axe.+1"],
   },
-  {"room": {"north": 8, "east": 17}, "requires": [[]], "receive": ["misc:green secret code"]},
+  {"room": {"north": 8, "east": 17}, "requires": [[]], "receive": ["flag:green secret code"]},
   {
     "room": {"north": 11, "east": 17},
     "requires": [["item:key#1", "permit:bomb"]],
@@ -359,7 +359,7 @@ manager.correct - manager.wrong > 800 = halo
   {
     "room": {"north": 20, "east": 22},
     "requires": [["item:gold#500"]],
-    "receive": ["item:ruby#1"],
+    "receive": ["item:rubies#1"],
   },
   {
     "room": {"north": 20, "east": 23},
@@ -389,14 +389,14 @@ manager.correct - manager.wrong > 800 = halo
   },
   {
     "room": {"north": 21, "east": 18},
-    "requires": [["item:emerald#1"]],
+    "requires": [["item:emeralds#1"]],
     "receive": ["item:diamonds#Enum.Craft.emerald", "food:peppers#30"],
     "info": "30 not 20",
   },
   {
     "room": {"north": 21, "east": 17},
-    "requires": [["item:aurastone#1", "item:gold#500"]],
-    "receive": ["item:ruby#1"],
+    "requires": [["item:aurastones#1", "item:gold#500"]],
+    "receive": ["item:rubies#1"],
   },
   {
     "room": {"north": 20, "east": 15},
@@ -446,7 +446,7 @@ manager.correct - manager.wrong > 800 = halo
   {
     "room": {"north": 19, "east": 15},
     "requires": [["item:medallions#20"]],
-    "receive": ["item:ruby#1"],
+    "receive": ["item:rubies#1"],
   },
   {
     "room": {"north": 19, "east": 15},
@@ -501,7 +501,7 @@ manager.correct - manager.wrong > 800 = halo
   },
   {
     "room": {"north": 4, "east": 13},
-    "requires": [["item:sTooth#5", "item:vHorn#5", "item:tentacle#5"]],
+    "requires": [["item:sTooth#5", "item:vHorn#5", "item:oArm#5"]],
     "receive": ["craft:newtonsApple"],
   },
   {
@@ -1060,7 +1060,7 @@ MathQuest.js:42550 add listeners""",
   },
   {
     "room": {"north": 8, "east": 18},
-    "requires": [["item:emerald#1", "entrance.north1"]],
+    "requires": [["item:emeralds#1", "entrance.north1"]],
     "receive": ["item:bombs#25", "food:steak#5"],
   },
   {
@@ -1109,7 +1109,7 @@ MathQuest.js:42550 add listeners""",
   },
   {
     "room": {"north": 17, "east": 15},
-    "requires": [["item:emerald#1"]],
+    "requires": [["item:emeralds#1"]],
     "receive": ["item:gold#100", "food:gingerBread#50"],
   },
   {
@@ -1144,7 +1144,7 @@ MathQuest.js:42550 add listeners""",
   },
   {
     "room": {"north": 23, "east": 10},
-    "requires": [["item:emerald#1"]],
+    "requires": [["item:emeralds#1"]],
     "receive": ["armor:alphaArmor"],
   },
   {
@@ -1175,11 +1175,11 @@ MathQuest.js:42550 add listeners""",
   },
   {
     "room": {"north": 10, "east": 13},
-    "requires": [["item:emerald#1"]],
+    "requires": [["item:emeralds#1"]],
     "receive": [
       "item:gold#1",
       "item:diamonds#1",
-      "item:aurastone#1",
+      "item:aurastones#1",
       "item:slamstones#1",
       "food:elixir#1",
       "food:holyWater#1",
@@ -1226,9 +1226,9 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 8, "east": 10},
     "requires": [
-      ["item:emerald#1", "entrance.north1"],
-      ["item:emerald#1", "entrance.east1"],
-      ["item:emerald#1", "entrance.east2"],
+      ["item:emeralds#1", "entrance.north1"],
+      ["item:emeralds#1", "entrance.east1"],
+      ["item:emeralds#1", "entrance.east2"],
     ],
     "receive": ["item:gold#100", "food:beefJerky#30"],
     "info": "gold not fixed",
@@ -1251,7 +1251,7 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 18, "east": 21},
     "requires": [["item:key#1"]],
-    "receive": ["item:gingerbread#5"],
+    "receive": ["item:gingerBread#5"],
   },
   {
     "room": {"north": 15, "east": 21},
@@ -1268,7 +1268,7 @@ MathQuest.js:42550 add listeners""",
   },
   {
     "room": {"north": 12, "east": 21},
-    "requires": [["item:emerald#1", "permit:bomb"]],
+    "requires": [["item:emeralds#1", "permit:bomb"]],
     "receive": ["item:diamonds#Enum.Craft.emerald", "food:banana#20"],
   },
   {
@@ -2109,7 +2109,7 @@ MathQuest.js:42550 add listeners""",
   },
   {
     "room": {"north": 9, "east": 25},
-    "requires": [["item:emerald"]],
+    "requires": [["item:emeralds"]],
     "receive": ["food:elixir#1"],
   },
   {
