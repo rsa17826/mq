@@ -1109,7 +1109,7 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 17, "east": 15},
     "requires": [["item:emeralds#1"]],
-    "receive": ["item:gold#100", "food:gingerBread#50"],
+    "receive": ["item:gold#100", "food:gingerBread#50", "item:gold#Enum.Craft.emerald"],
   },
   {
     "room": {"north": 16, "east": 15},
