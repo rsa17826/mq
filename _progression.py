@@ -2149,10 +2149,6 @@ MathQuest.js:42550 add listeners""",
   #   "room": {"north": "?", "east": "?"},
   #   "receive": ["item:ring of evasion"],
   # },
-  # {
-  #   "room": {"north": "?", "east": "?"},
-  #   "receive": ["craft:bomb"],
-  # },
   {
     "room": {"north": 14, "east": 18},
     "requires": [["weapon:royalSword"]],
