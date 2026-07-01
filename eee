@@ -1,24 +1,3 @@
-⚠️ Room 49 (north: 8, east: 10) has unsorted exits in direction 'east'!
-   Current order of `top`: [7, 0, 5]
-
-⚠️ Room 50 (north: 8, east: 11) has unsorted exits in direction 'west'!
-   Current order of `top`: [7, 0, 5]
-
-⚠️ Room 50 (north: 8, east: 11) has unsorted exits in direction 'north'!
-   Current order of `left`: [7, 0, 4]
-
-⚠️ Room 56 (north: 8, east: 17) has unsorted exits in direction 'north'!
-   Current order of `left`: [11, 1]
-
-⚠️ Room 57 (north: 8, east: 18) has unsorted exits in direction 'north'!
-   Current order of `left`: [10, 6]
-
-⚠️ Room 65 (north: 9, east: 10) has unsorted exits in direction 'south'!
-   Current order of `left`: [11, 0]
-
-⚠️ Room 70 (north: 9, east: 18) has unsorted exits in direction 'south'!
-   Current order of `left`: [10, 6]
-
 ⚠️ Room 74 (north: 9, east: 22) has unsorted exits in direction 'north'!
    Current order of `left`: [7, 1]
 

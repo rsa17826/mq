@@ -1071,8 +1071,8 @@ MathQuest.js:42550 add listeners""",
   },
   {
     "room": {"north": 8, "east": 18},
-    "requires": [["item:emeralds#1", "entrance.north1"]],
-    "receive": ["item:bombs#25", "food:steak#5"],
+    "requires": [["item:emeralds#1", "entrance.north0"]],
+    "receive": ["item:bombs#25", "food:steak#Enum.Craft.emerald"],
   },
   {
     "room": {"north": 11, "east": 18},
@@ -1288,7 +1288,7 @@ MathQuest.js:42550 add listeners""",
   },
   {
     "room": {"north": 9, "east": 22},
-    "requires": [["item:key#1", "entrance.north1"]],
+    "requires": [["item:key#1", "entrance.north0"]],
     "receive": ["magic:doubleDown"],
   },
   {
@@ -2176,10 +2176,6 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 18, "east": 21},
     "requires": [["item:key#1"]],
     "receive": ["food:gingerBread"],
-  },
-  {
-    "room": {"north": 8, "east": 18},
-    "receive": ["food:steak#Enum.Craft.emerald"],
   },
   {
     "room": {"north": 9, "east": 25},
