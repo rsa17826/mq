@@ -1,18 +1,3 @@
-⚠️ Room 74 (north: 9, east: 22) has unsorted exits in direction 'north'!
-   Current order of `left`: [7, 1]
-
-⚠️ Room 79 (north: 10, east: 9) has unsorted exits in direction 'east'!
-   Current order of `top`: [7, 0]
-
-⚠️ Room 89 (north: 10, east: 20) has unsorted exits in direction 'north'!
-   Current order of `left`: [11, 3]
-
-⚠️ Room 90 (north: 10, east: 22) has unsorted exits in direction 'south'!
-   Current order of `left`: [7, 1]
-
-⚠️ Room 96 (north: 11, east: 9) has unsorted exits in direction 'east'!
-   Current order of `top`: [5, 0]
-
 ⚠️ Room 106 (north: 11, east: 19) has unsorted exits in direction 'east'!
    Current order of `top`: [8, 5, 2]
 
