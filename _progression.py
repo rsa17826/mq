@@ -201,7 +201,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 5, "east": 9},
     "requires": [
       ["loot:mHorn", "entrance.north0"],
-      ["loot:mHorn", "entrance.east0"],
+      ["loot:mHorn", "entrance.east2"],
     ],
     "receive": ["loot:aAxe#1"],
   },
@@ -1228,7 +1228,7 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 8, "east": 10},
     "requires": [
-      ["skill:reveal", "entrance.east0"],
+      ["skill:reveal", "entrance.east2"],
       ["skill:reveal", "entrance.west0"],
       ["skill:reveal", "entrance.north0"],
     ],
@@ -1364,8 +1364,8 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 4, "east": 26},
     "requires": [
       ["permit:bomb", "entrance.south3", "item:key#1"],
-      ["permit:bomb", "entrance.south2", "item:key#1"],
       ["permit:bomb", "entrance.south1", "item:key#1"],
+      ["permit:bomb", "entrance.south0", "item:key#1"],
     ],
     "receive": ["weapon:shadowStaff"],
   },

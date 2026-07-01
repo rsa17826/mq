@@ -1,0 +1,81 @@
+⚠️ Room 49 (north: 8, east: 10) has unsorted exits in direction 'east'!
+   Current order of `top`: [7, 0, 5]
+
+⚠️ Room 50 (north: 8, east: 11) has unsorted exits in direction 'west'!
+   Current order of `top`: [7, 0, 5]
+
+⚠️ Room 50 (north: 8, east: 11) has unsorted exits in direction 'north'!
+   Current order of `left`: [7, 0, 4]
+
+⚠️ Room 56 (north: 8, east: 17) has unsorted exits in direction 'north'!
+   Current order of `left`: [11, 1]
+
+⚠️ Room 57 (north: 8, east: 18) has unsorted exits in direction 'north'!
+   Current order of `left`: [10, 6]
+
+⚠️ Room 65 (north: 9, east: 10) has unsorted exits in direction 'south'!
+   Current order of `left`: [11, 0]
+
+⚠️ Room 70 (north: 9, east: 18) has unsorted exits in direction 'south'!
+   Current order of `left`: [10, 6]
+
+⚠️ Room 74 (north: 9, east: 22) has unsorted exits in direction 'north'!
+   Current order of `left`: [7, 1]
+
+⚠️ Room 79 (north: 10, east: 9) has unsorted exits in direction 'east'!
+   Current order of `top`: [7, 0]
+
+⚠️ Room 89 (north: 10, east: 20) has unsorted exits in direction 'north'!
+   Current order of `left`: [11, 3]
+
+⚠️ Room 90 (north: 10, east: 22) has unsorted exits in direction 'south'!
+   Current order of `left`: [7, 1]
+
+⚠️ Room 96 (north: 11, east: 9) has unsorted exits in direction 'east'!
+   Current order of `top`: [5, 0]
+
+⚠️ Room 106 (north: 11, east: 19) has unsorted exits in direction 'east'!
+   Current order of `top`: [8, 5, 2]
+
+⚠️ Room 120 (north: 12, east: 17) has unsorted exits in direction 'west'!
+   Current order of `top`: [5, 1]
+
+⚠️ Room 154 (north: 14, east: 24) has unsorted exits in direction 'east'!
+   Current order of `top`: [9, 7, 5, 3, 1]
+
+⚠️ Room 155 (north: 14, east: 25) has unsorted exits in direction 'west'!
+   Current order of `top`: [9, 7, 5, 3, 1]
+
+⚠️ Room 165 (north: 15, east: 23) has unsorted exits in direction 'south'!
+   Current order of `left`: [10, 6, 4]
+
+⚠️ Room 166 (north: 15, east: 24) has unsorted exits in direction 'north'!
+   Current order of `left`: [9, 1]
+
+⚠️ Room 167 (north: 15, east: 25) has unsorted exits in direction 'north'!
+   Current order of `left`: [8, 5]
+
+⚠️ Room 180 (north: 16, east: 24) has unsorted exits in direction 'north'!
+   Current order of `left`: [5, 1]
+
+⚠️ Room 181 (north: 16, east: 25) has unsorted exits in direction 'south'!
+   Current order of `left`: [8, 5]
+
+⚠️ Room 194 (north: 17, east: 24) has unsorted exits in direction 'south'!
+   Current order of `left`: [5, 1]
+
+⚠️ Room 203 (north: 18, east: 17) has unsorted exits in direction 'north'!
+   Current order of `left`: [7, 4]
+
+⚠️ Room 218 (north: 19, east: 17) has unsorted exits in direction 'south'!
+   Current order of `left`: [7, 4]
+
+⚠️ Room 236 (north: 21, east: 13) has unsorted exits in direction 'east'!
+   Current order of `top`: [7, 2]
+
+⚠️ Room 239 (north: 21, east: 18) has unsorted exits in direction 'south'!
+   Current order of `left`: [8, 10, 6]
+
+⚠️ Room 294 (north: 9, east: 17) has unsorted exits in direction 'south'!
+   Current order of `left`: [11, 1]
+
