@@ -1241,8 +1241,7 @@ MathQuest.js:42550 add listeners""",
       ["item:emeralds#1", "entrance.east1"],
       ["item:emeralds#1", "entrance.east2"],
     ],
-    "receive": ["item:gold#100", "food:beefJerky#30"],
-    "info": "gold not fixed",
+    "receive": ["item:gold#Enum.Craft.emerald", "food:beefJerky#30"],
   },
   {
     "room": {"north": 9, "east": 10},
@@ -2181,10 +2180,6 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 8, "east": 18},
     "receive": ["food:steak#Enum.Craft.emerald"],
-  },
-  {
-    "room": {"north": 8, "east": 10},
-    "receive": ["item:gold#Enum.Craft.emerald"],
   },
   {
     "room": {"north": 9, "east": 25},
