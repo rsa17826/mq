@@ -9605,7 +9605,7 @@
       "room": "18_19",
       "requires": [
         [
-          "item:key#1"
+          "item:emeralds#1"
         ]
       ],
       "receive": [

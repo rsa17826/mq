@@ -1025,7 +1025,7 @@ MathQuest.js:42550 add listeners""",
   },
   {
     "room": {"north": 18, "east": 19},
-    "requires": [["item:key#1"]],
+    "requires": [["item:emeralds#1"]],
     "receive": ["item:gold#Enum.Craft.emerald"],
     "info": "does not give a strawberry",
   },
