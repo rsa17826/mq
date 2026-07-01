@@ -10820,7 +10820,7 @@
         ]
       ],
       "receive": [
-        "food:gingerbread"
+        "food:gingerBread"
       ]
     },
     {
@@ -13312,7 +13312,7 @@
         ]
       ],
       "receive": [
-        "food:gingerbread"
+        "food:gingerBread"
       ]
     },
     {
@@ -14777,7 +14777,7 @@
         ]
       ],
       "receive": [
-        "misc:str up npc"
+        "misc:str up npc.1"
       ]
     },
     {
@@ -14789,7 +14789,7 @@
         ]
       ],
       "receive": [
-        "misc:str up npc"
+        "misc:str up npc.2"
       ]
     },
     {
@@ -14801,7 +14801,7 @@
         ]
       ],
       "receive": [
-        "misc:str up npc"
+        "misc:str up npc.3"
       ]
     },
     {
@@ -14813,7 +14813,7 @@
         ]
       ],
       "receive": [
-        "misc:str up npc"
+        "misc:str up npc.4"
       ]
     },
     {
@@ -14825,7 +14825,7 @@
         ]
       ],
       "receive": [
-        "misc:str up npc"
+        "misc:str up npc.5"
       ]
     },
     {
@@ -14837,7 +14837,7 @@
         ]
       ],
       "receive": [
-        "misc:str up npc"
+        "misc:str up npc.6"
       ]
     },
     {
@@ -14849,7 +14849,7 @@
         ]
       ],
       "receive": [
-        "misc:str up npc"
+        "misc:str up npc.7"
       ]
     },
     {
@@ -14861,7 +14861,7 @@
         ]
       ],
       "receive": [
-        "misc:str up npc"
+        "misc:str up npc.8"
       ]
     },
     {
@@ -14873,7 +14873,7 @@
         ]
       ],
       "receive": [
-        "misc:str up npc"
+        "misc:str up npc.9"
       ]
     },
     {
@@ -14885,7 +14885,7 @@
         ]
       ],
       "receive": [
-        "misc:str up npc"
+        "misc:str up npc.10"
       ]
     },
     {
@@ -14897,7 +14897,7 @@
         ]
       ],
       "receive": [
-        "misc:str up npc"
+        "misc:str up npc.11"
       ]
     }
   ],
@@ -15738,7 +15738,15 @@
         "raw": "food:gingerBread#50"
       },
       {
+        "room": "100_100",
+        "raw": "food:gingerBread"
+      },
+      {
         "room": "18_21",
+        "raw": "food:gingerBread"
+      },
+      {
+        "room": "13_18",
         "raw": "food:gingerBread"
       }
     ],
@@ -16890,16 +16898,6 @@
       {
         "room": "19_16",
         "raw": "quest:access.8"
-      }
-    ],
-    "food:gingerbread": [
-      {
-        "room": "100_100",
-        "raw": "food:gingerbread"
-      },
-      {
-        "room": "13_18",
-        "raw": "food:gingerbread"
       }
     ],
     "misc:bobbisPendant": [
@@ -18431,47 +18429,47 @@
     "misc:str up npc": [
       {
         "room": "20_20",
-        "raw": "misc:str up npc"
+        "raw": "misc:str up npc.1"
       },
       {
         "room": "20_20",
-        "raw": "misc:str up npc"
+        "raw": "misc:str up npc.2"
       },
       {
         "room": "20_20",
-        "raw": "misc:str up npc"
+        "raw": "misc:str up npc.3"
       },
       {
         "room": "20_20",
-        "raw": "misc:str up npc"
+        "raw": "misc:str up npc.4"
       },
       {
         "room": "20_20",
-        "raw": "misc:str up npc"
+        "raw": "misc:str up npc.5"
       },
       {
         "room": "20_20",
-        "raw": "misc:str up npc"
+        "raw": "misc:str up npc.6"
       },
       {
         "room": "20_20",
-        "raw": "misc:str up npc"
+        "raw": "misc:str up npc.7"
       },
       {
         "room": "20_20",
-        "raw": "misc:str up npc"
+        "raw": "misc:str up npc.8"
       },
       {
         "room": "20_20",
-        "raw": "misc:str up npc"
+        "raw": "misc:str up npc.9"
       },
       {
         "room": "20_20",
-        "raw": "misc:str up npc"
+        "raw": "misc:str up npc.10"
       },
       {
         "room": "20_20",
-        "raw": "misc:str up npc"
+        "raw": "misc:str up npc.11"
       }
     ]
   },
