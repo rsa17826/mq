@@ -655,7 +655,10 @@ at Jh.onKeyDown (http://127.0.0.1:1533/MathQuest/MathQuest.js:99147:18)
   {
     "room": {"north": 10, "east": 19},
     "requires": [["quest:gTree.11"]],
-    "receive": ["quest:gTree.12", "misc:orb of peace"],
+    "receive": [
+      "quest:gTree.12"
+      # , "misc:orb of peace"
+    ],
   },
   {
     "room": {"north": 15, "east": 18},

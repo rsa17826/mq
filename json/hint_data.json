@@ -8842,8 +8842,7 @@
         ]
       ],
       "receive": [
-        "quest:gTree.12",
-        "misc:orb of peace"
+        "quest:gTree.12"
       ]
     },
     {
@@ -16315,12 +16314,6 @@
       {
         "room": "13_21",
         "raw": "craft:bomb"
-      }
-    ],
-    "misc:orb of peace": [
-      {
-        "room": "10_19",
-        "raw": "misc:orb of peace"
       }
     ],
     "quest:warp": [
