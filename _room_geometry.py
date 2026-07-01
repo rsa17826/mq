@@ -2355,11 +2355,11 @@ GEOM: list[ExitBase] = [
         "reqs": [["permit:bomb"]],
         "areas": [
           [
+            {"side": "east", "idx": 0},
             {"side": "east", "idx": 1},
-            {"side": "east", "idx": 2},
           ],
           [
-            {"side": "east", "idx": 0},
+            {"side": "east", "idx": 2},
           ],
         ],
       },
@@ -3791,11 +3791,11 @@ GEOM: list[ExitBase] = [
             {"side": "south", "idx": 1},
           ],
           [
-            {"side": "north", "idx": 0},
+            {"side": "north", "idx": 1},
             {"side": "south", "idx": 0},
           ],
           [
-            {"side": "north", "idx": 1},
+            {"side": "north", "idx": 0},
           ],
         ],
       }
@@ -3823,11 +3823,11 @@ GEOM: list[ExitBase] = [
         "reqs": [[]],
         "areas": [
           [
-            {"side": "south", "idx": 0},
+            {"side": "south", "idx": 1},
             {"side": "north", "idx": 0},
           ],
           [
-            {"side": "south", "idx": 1},
+            {"side": "south", "idx": 0},
             {"side": "west", "idx": 0},
           ],
         ],
@@ -4157,10 +4157,10 @@ GEOM: list[ExitBase] = [
         "reqs": [[]],
         "areas": [
           [
-            {"side": "north", "idx": 0},
+            {"side": "north", "idx": 1},
           ],
           [
-            {"side": "north", "idx": 1},
+            {"side": "north", "idx": 0},
             {"side": "south", "idx": 0},
             {"side": "east", "idx": 0},
           ],
@@ -4412,11 +4412,11 @@ GEOM: list[ExitBase] = [
         "reqs": [[]],
         "areas": [
           [
-            {"side": "south", "idx": 1},
+            {"side": "south", "idx": 0},
             {"side": "north", "idx": 0},
           ],
           [
-            {"side": "south", "idx": 0},
+            {"side": "south", "idx": 1},
             {"side": "east", "idx": 0},
           ],
         ],
@@ -4764,10 +4764,10 @@ GEOM: list[ExitBase] = [
         "reqs": [[]],
         "areas": [
           [
-            {"side": "east", "idx": 1},
+            {"side": "east", "idx": 0},
           ],
           [
-            {"side": "east", "idx": 0},
+            {"side": "east", "idx": 1},
             {"side": "west", "idx": 0},
           ],
         ],

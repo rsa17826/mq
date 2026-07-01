@@ -1448,7 +1448,7 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 19, "east": 17},
     "requires": [
-      ["skill:reveal", "entrance.south0"],
+      ["skill:reveal", "entrance.south1"],
       ["skill:reveal", "entrance.east0"],
     ],
     "receive": ["area:red chest"],
@@ -1456,7 +1456,7 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 18, "east": 17},
     "requires": [
-      ["item:key#1"],
+      ["item:key#1", "entrance.north1"],
     ],
     "receive": ["item:gold#1000"],
   },
@@ -1774,7 +1774,7 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 16, "east": 24},
     "requires": [
-      ["misc:blue crystal", "entrance.north1"],
+      ["misc:blue crystal", "entrance.north0"],
     ],
     "receive": ["item:gold#1000", "food:gummyBears#12"],
   },
