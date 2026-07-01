@@ -177,7 +177,45 @@ class ArchipelagoClient {
       packet.errors,
     )
   }
+  /**
+   * Scout locations to see what item they contain, optionally creating a hint.
+   * @param {number[]} locationIds - Array of location IDs to scout.
+   * @param {number} createAsHint - 0: Don't hint, 1: Hint & broadcast all, 2: Hint & broadcast only new.
+   */
+  sendLocationScouts(locationIds, createAsHint = 1) {
+    if (!this.isAuthenticated) {
+      console.error(
+        "Cannot scout locations yet. Waiting for authentication.",
+      )
+      return
+    }
 
+    const scoutPayload = {
+      cmd: "LocationScouts",
+      locations: locationIds, // Array of integer location IDs
+      create_as_hint: createAsHint, // 1 or 2 will turn this check into a server-tracked hint
+    }
+
+    this.sendPackets([scoutPayload])
+  } /**
+   * Requests a hint from the server using the in-game text command system.
+   * @param {string} searchString - The name of the item or location you want a hint for.
+   */
+  requestItemHint(searchString) {
+    if (!this.isAuthenticated) {
+      console.error(
+        "Cannot request hint yet. Waiting for authentication.",
+      )
+      return
+    }
+
+    const sayPayload = {
+      cmd: "Say",
+      text: `!hint ${searchString}`,
+    }
+
+    this.sendPackets([sayPayload])
+  }
   /**
    * Handshake Step 7 / Syncing: Server delivers items assigned to this player.
    */
@@ -199,8 +237,8 @@ class ArchipelagoClient {
           log(`[Item Received] ID: ${item.item} (${itemName})`, item)
           if (itemList[itemName]) {
             itemList[itemName]()
-          } else if (tryGiveLoot(itemName)){
-          }else {
+          } else if (tryGiveLoot(itemName)) {
+          } else {
             error("failed to give", itemName)
           }
           // if (!window.giveItem(itemName)) {

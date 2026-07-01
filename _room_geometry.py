@@ -660,8 +660,20 @@ GEOM: list[ExitBase] = [
             {"side": "north", "idx": 0},
           ]
         ],
-        "reqs": [["permit:shadowsoul entrance"]],
-      }
+        "reqs": [["permit:shadowsoulEntrance"]],
+      },
+      {
+        "areas": [
+          [
+            {"side": "west", "idx": 0},
+            {"side": "north", "idx": 0},
+          ],
+          [
+            {"side": "east", "idx": 0},
+          ],
+        ],
+        "reqs": [[]],
+      },
     ],
     "exits": {
       "west": [{"top": 1, "bottom": 9}],
@@ -1673,7 +1685,7 @@ GEOM: list[ExitBase] = [
             {"side": "east", "idx": 0},
           ]
         ],
-        "reqs": [["permit:shadowsoul entrance"]],
+        "reqs": [["permit:shadowsoulEntrance"]],
       },
       {
         "reqs": [[]],
@@ -1688,6 +1700,16 @@ GEOM: list[ExitBase] = [
       "south": [{"left": 3, "right": 4}],
       "east": [{"top": 6, "bottom": 7}],
       "north": [{"left": 3, "right": 4}],
+    },
+  },
+  {
+    "north": 9.11,
+    "east": 20,
+    "exits": {
+      "west": [],
+      "south": [],
+      "east": [],
+      "north": [],
     },
   },
   {
