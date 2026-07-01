@@ -214,6 +214,12 @@ GEOM: list[ExitBase] = [
     "east": 23,
     "areas": [
       {
+        "reqs": [["permit:bomb"]],
+        "areas": [
+          [{"side": "south", "idx": 0},{"side": "east", "idx": 0}, {"side": "north", "idx": 0}],
+        ],
+      },
+      {
         "reqs": [[]],
         "areas": [
           [{"side": "south", "idx": 0}],
@@ -1094,9 +1100,9 @@ GEOM: list[ExitBase] = [
       {
         "reqs": [[]],
         "areas": [
-          [{"side": "north", "idx": 0}],
-          [{"side": "north", "idx": 1}],
-          [{"side": "south", "idx": 0}],
+          [{"side": "north", "idx": 0}
+          ,{"side": "north", "idx": 1}
+          ,{"side": "south", "idx": 0}],
         ],
       }
     ],

@@ -369,7 +369,7 @@
       "newDestNorth": 9,
       "newDestEast": 18,
       "newX": 0.0,
-      "newY": 305.45454545454544,
+      "newY": 203.63636363636363,
       "xIsEven": 0,
       "yIsEven": 0,
       "srcCoord": 305.45454545454544,
@@ -377,7 +377,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:east:9_17_9_18_gap_1",
-      "toExitId": "edge:west:9_18_9_17_gap_1"
+      "toExitId": "edge:west:9_18_9_17"
     },
     {
       "originNorth": 12,
@@ -495,7 +495,7 @@
       "newDestNorth": 10,
       "newDestEast": 9,
       "newX": 659.2857142857143,
-      "newY": 127.27272727272727,
+      "newY": 432.7272727272727,
       "xIsEven": 0,
       "yIsEven": 25.454545454545453,
       "srcCoord": 127.27272727272727,
@@ -503,7 +503,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:west:10_10_10_9",
-      "toExitId": "edge:east:10_9_10_10_gap_1"
+      "toExitId": "edge:east:10_9_10_10"
     },
     {
       "originNorth": 10,
@@ -693,7 +693,7 @@
       "newDestNorth": 10,
       "newDestEast": 10,
       "newX": 0.0,
-      "newY": 432.7272727272727,
+      "newY": 127.27272727272727,
       "xIsEven": 0,
       "yIsEven": 25.454545454545453,
       "srcCoord": 432.7272727272727,
@@ -701,7 +701,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:east:10_9_10_10",
-      "toExitId": "edge:west:10_10_10_9_gap_1"
+      "toExitId": "edge:west:10_10_10_9"
     },
     {
       "originNorth": 10,
@@ -1269,7 +1269,7 @@
       "newDestNorth": 9,
       "newDestEast": 17,
       "newX": 659.2857142857143,
-      "newY": 305.45454545454544,
+      "newY": 203.63636363636363,
       "xIsEven": 0,
       "yIsEven": 0,
       "srcCoord": 305.45454545454544,
@@ -1277,7 +1277,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:west:9_18_9_17_gap_1",
-      "toExitId": "edge:east:9_17_9_18_gap_1"
+      "toExitId": "edge:east:9_17_9_18"
     },
     {
       "originNorth": 9,
@@ -1304,7 +1304,7 @@
       "vanillaDestEast": 17,
       "newDestNorth": 8,
       "newDestEast": 17,
-      "newX": 76.07142857142857,
+      "newX": 583.2142857142858,
       "newY": 0.0,
       "xIsEven": 25.357142857142858,
       "yIsEven": 0,
@@ -1313,7 +1313,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:9_17_8_17_gap_1",
-      "toExitId": "edge:north:8_17_9_17_gap_1"
+      "toExitId": "edge:north:8_17_9_17"
     },
     {
       "originNorth": 8,
@@ -1340,7 +1340,7 @@
       "vanillaDestEast": 17,
       "newDestNorth": 9,
       "newDestEast": 17,
-      "newX": 76.07142857142857,
+      "newX": 583.2142857142858,
       "newY": 509.09090909090907,
       "xIsEven": 25.357142857142858,
       "yIsEven": 0,
@@ -1349,7 +1349,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:north:8_17_9_17_gap_1",
-      "toExitId": "edge:south:9_17_8_17_gap_1"
+      "toExitId": "edge:south:9_17_8_17"
     },
     {
       "originNorth": 7,
@@ -2852,7 +2852,7 @@
       "vanillaDestEast": 26,
       "newDestNorth": 3,
       "newDestEast": 26,
-      "newX": 507.14285714285717,
+      "newX": 608.5714285714286,
       "newY": 0.0,
       "xIsEven": 0,
       "yIsEven": 0,
@@ -2861,7 +2861,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:4_26_3_26_gap_1",
-      "toExitId": "edge:north:3_26_4_26_gap_1"
+      "toExitId": "edge:north:3_26_4_26"
     },
     {
       "originNorth": 4,
@@ -2870,7 +2870,7 @@
       "vanillaDestEast": 26,
       "newDestNorth": 3,
       "newDestEast": 26,
-      "newX": 304.2857142857143,
+      "newX": 608.5714285714286,
       "newY": 0.0,
       "xIsEven": 0,
       "yIsEven": 0,
@@ -2879,7 +2879,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:4_26_3_26_gap_2",
-      "toExitId": "edge:north:3_26_4_26_gap_3"
+      "toExitId": "edge:north:3_26_4_26"
     },
     {
       "originNorth": 4,
@@ -2888,7 +2888,7 @@
       "vanillaDestEast": 26,
       "newDestNorth": 3,
       "newDestEast": 26,
-      "newX": 202.85714285714286,
+      "newX": 608.5714285714286,
       "newY": 0.0,
       "xIsEven": 0,
       "yIsEven": 0,
@@ -2897,7 +2897,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:4_26_3_26_gap_3",
-      "toExitId": "edge:north:3_26_4_26_gap_4"
+      "toExitId": "edge:north:3_26_4_26"
     },
     {
       "originNorth": 4,
@@ -2906,7 +2906,7 @@
       "vanillaDestEast": 26,
       "newDestNorth": 3,
       "newDestEast": 26,
-      "newX": 405.7142857142857,
+      "newX": 608.5714285714286,
       "newY": 0.0,
       "xIsEven": 0,
       "yIsEven": 0,
@@ -2915,7 +2915,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:4_26_3_26_gap_4",
-      "toExitId": "edge:north:3_26_4_26_gap_2"
+      "toExitId": "edge:north:3_26_4_26"
     },
     {
       "originNorth": 5,
@@ -3320,16 +3320,16 @@
       "vanillaDestEast": 10,
       "newDestNorth": 8,
       "newDestEast": 10,
-      "newX": 608.5714285714286,
+      "newX": 228.21428571428572,
       "newY": 0.0,
-      "xIsEven": 0,
+      "xIsEven": 25.357142857142858,
       "yIsEven": 0,
       "srcCoord": 608.5714285714286,
       "direction": "south",
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:9_10_8_10",
-      "toExitId": "edge:north:8_10_9_10_gap_1"
+      "toExitId": "edge:north:8_10_9_10"
     },
     {
       "originNorth": 9,
@@ -3356,7 +3356,7 @@
       "vanillaDestEast": 11,
       "newDestNorth": 8,
       "newDestEast": 11,
-      "newX": 50.714285714285715,
+      "newX": 507.14285714285717,
       "newY": 0.0,
       "xIsEven": 0,
       "yIsEven": 0,
@@ -3365,7 +3365,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:9_11_8_11",
-      "toExitId": "edge:north:8_11_9_11_gap_1"
+      "toExitId": "edge:north:8_11_9_11"
     },
     {
       "originNorth": 9,
@@ -3374,16 +3374,16 @@
       "vanillaDestEast": 11,
       "newDestNorth": 8,
       "newDestEast": 11,
-      "newX": 228.21428571428572,
+      "newX": 507.14285714285717,
       "newY": 0.0,
-      "xIsEven": 25.357142857142858,
+      "xIsEven": 0,
       "yIsEven": 0,
       "srcCoord": 228.21428571428572,
       "direction": "south",
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:9_11_8_11_gap_1",
-      "toExitId": "edge:north:8_11_9_11_gap_2"
+      "toExitId": "edge:north:8_11_9_11"
     },
     {
       "originNorth": 9,
@@ -3446,16 +3446,16 @@
       "vanillaDestEast": 18,
       "newDestNorth": 8,
       "newDestEast": 18,
-      "newX": 329.64285714285717,
+      "newX": 557.8571428571429,
       "newY": 0.0,
-      "xIsEven": 25.357142857142858,
+      "xIsEven": 0,
       "yIsEven": 0,
       "srcCoord": 329.64285714285717,
       "direction": "south",
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:9_18_8_18_gap_1",
-      "toExitId": "edge:north:8_18_9_18_gap_1"
+      "toExitId": "edge:north:8_18_9_18"
     },
     {
       "originNorth": 9,
@@ -3590,7 +3590,7 @@
       "vanillaDestEast": 11,
       "newDestNorth": 9,
       "newDestEast": 11,
-      "newX": 228.21428571428572,
+      "newX": 76.07142857142857,
       "newY": 0.0,
       "xIsEven": 25.357142857142858,
       "yIsEven": 0,
@@ -3599,7 +3599,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:10_11_9_11_gap_1",
-      "toExitId": "edge:north:9_11_10_11_gap_1"
+      "toExitId": "edge:north:9_11_10_11"
     },
     {
       "originNorth": 10,
@@ -3608,16 +3608,16 @@
       "vanillaDestEast": 11,
       "newDestNorth": 9,
       "newDestEast": 11,
-      "newX": 507.14285714285717,
+      "newX": 76.07142857142857,
       "newY": 0.0,
-      "xIsEven": 0,
+      "xIsEven": 25.357142857142858,
       "yIsEven": 0,
       "srcCoord": 507.14285714285717,
       "direction": "south",
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:10_11_9_11_gap_2",
-      "toExitId": "edge:north:9_11_10_11_gap_2"
+      "toExitId": "edge:north:9_11_10_11"
     },
     {
       "originNorth": 10,
@@ -3734,7 +3734,7 @@
       "vanillaDestEast": 22,
       "newDestNorth": 9,
       "newDestEast": 22,
-      "newX": 152.14285714285714,
+      "newX": 405.7142857142857,
       "newY": 0.0,
       "xIsEven": 0,
       "yIsEven": 0,
@@ -3743,7 +3743,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:10_22_9_22_gap_1",
-      "toExitId": "edge:north:9_22_10_22_gap_1"
+      "toExitId": "edge:north:9_22_10_22"
     },
     {
       "originNorth": 10,
@@ -3824,7 +3824,7 @@
       "vanillaDestEast": 11,
       "newDestNorth": 10,
       "newDestEast": 11,
-      "newX": 228.21428571428572,
+      "newX": 76.07142857142857,
       "newY": 0.0,
       "xIsEven": 25.357142857142858,
       "yIsEven": 0,
@@ -3833,7 +3833,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:11_11_10_11_gap_1",
-      "toExitId": "edge:north:10_11_11_11_gap_1"
+      "toExitId": "edge:north:10_11_11_11"
     },
     {
       "originNorth": 11,
@@ -3842,16 +3842,16 @@
       "vanillaDestEast": 11,
       "newDestNorth": 10,
       "newDestEast": 11,
-      "newX": 507.14285714285717,
+      "newX": 76.07142857142857,
       "newY": 0.0,
-      "xIsEven": 0,
+      "xIsEven": 25.357142857142858,
       "yIsEven": 0,
       "srcCoord": 507.14285714285717,
       "direction": "south",
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:11_11_10_11_gap_2",
-      "toExitId": "edge:north:10_11_11_11_gap_2"
+      "toExitId": "edge:north:10_11_11_11"
     },
     {
       "originNorth": 11,
@@ -3968,7 +3968,7 @@
       "vanillaDestEast": 20,
       "newDestNorth": 10,
       "newDestEast": 20,
-      "newX": 177.5,
+      "newX": 583.2142857142858,
       "newY": 0.0,
       "xIsEven": 25.357142857142858,
       "yIsEven": 0,
@@ -3977,7 +3977,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:11_20_10_20",
-      "toExitId": "edge:north:10_20_11_20_gap_1"
+      "toExitId": "edge:north:10_20_11_20"
     },
     {
       "originNorth": 11,
@@ -4112,7 +4112,7 @@
       "vanillaDestEast": 11,
       "newDestNorth": 11,
       "newDestEast": 11,
-      "newX": 380.3571428571429,
+      "newX": 126.78571428571429,
       "newY": 0.0,
       "xIsEven": 25.357142857142858,
       "yIsEven": 0,
@@ -4121,7 +4121,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:12_11_11_11_gap_1",
-      "toExitId": "edge:north:11_11_12_11_gap_1"
+      "toExitId": "edge:north:11_11_12_11"
     },
     {
       "originNorth": 12,
@@ -4130,7 +4130,7 @@
       "vanillaDestEast": 11,
       "newDestNorth": 11,
       "newDestEast": 11,
-      "newX": 583.2142857142858,
+      "newX": 126.78571428571429,
       "newY": 0.0,
       "xIsEven": 25.357142857142858,
       "yIsEven": 0,
@@ -4139,7 +4139,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:12_11_11_11_gap_2",
-      "toExitId": "edge:north:11_11_12_11_gap_2"
+      "toExitId": "edge:north:11_11_12_11"
     },
     {
       "originNorth": 12,
@@ -4670,7 +4670,7 @@
       "vanillaDestEast": 23,
       "newDestNorth": 14,
       "newDestEast": 23,
-      "newX": 507.14285714285717,
+      "newX": 202.85714285714286,
       "newY": 0.0,
       "xIsEven": 0,
       "yIsEven": 0,
@@ -4679,7 +4679,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:15_23_14_23",
-      "toExitId": "edge:north:14_23_15_23_gap_2"
+      "toExitId": "edge:north:14_23_15_23"
     },
     {
       "originNorth": 15,
@@ -4688,16 +4688,16 @@
       "vanillaDestEast": 23,
       "newDestNorth": 14,
       "newDestEast": 23,
-      "newX": 329.64285714285717,
+      "newX": 202.85714285714286,
       "newY": 0.0,
-      "xIsEven": 25.357142857142858,
+      "xIsEven": 0,
       "yIsEven": 0,
       "srcCoord": 329.64285714285717,
       "direction": "south",
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:15_23_14_23_gap_1",
-      "toExitId": "edge:north:14_23_15_23_gap_1"
+      "toExitId": "edge:north:14_23_15_23"
     },
     {
       "originNorth": 15,
@@ -4850,16 +4850,16 @@
       "vanillaDestEast": 24,
       "newDestNorth": 15,
       "newDestEast": 24,
-      "newX": 50.714285714285715,
+      "newX": 532.5,
       "newY": 0.0,
-      "xIsEven": 0,
+      "xIsEven": 25.357142857142858,
       "yIsEven": 0,
       "srcCoord": 50.714285714285715,
       "direction": "south",
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:16_24_15_24",
-      "toExitId": "edge:north:15_24_16_24_gap_1"
+      "toExitId": "edge:north:15_24_16_24"
     },
     {
       "originNorth": 16,
@@ -4904,7 +4904,7 @@
       "vanillaDestEast": 25,
       "newDestNorth": 15,
       "newDestEast": 25,
-      "newX": 278.92857142857144,
+      "newX": 431.07142857142856,
       "newY": 0.0,
       "xIsEven": 25.357142857142858,
       "yIsEven": 0,
@@ -4913,7 +4913,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:16_25_15_25_gap_1",
-      "toExitId": "edge:north:15_25_16_25_gap_1"
+      "toExitId": "edge:north:15_25_16_25"
     },
     {
       "originNorth": 17,
@@ -5066,16 +5066,16 @@
       "vanillaDestEast": 24,
       "newDestNorth": 16,
       "newDestEast": 24,
-      "newX": 101.42857142857143,
+      "newX": 278.92857142857144,
       "newY": 0.0,
-      "xIsEven": 0,
+      "xIsEven": 25.357142857142858,
       "yIsEven": 0,
       "srcCoord": 101.42857142857143,
       "direction": "south",
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:17_24_16_24_gap_1",
-      "toExitId": "edge:north:16_24_17_24_gap_1"
+      "toExitId": "edge:north:16_24_17_24"
     },
     {
       "originNorth": 17,
@@ -5138,7 +5138,7 @@
       "vanillaDestEast": 15,
       "newDestNorth": 17,
       "newDestEast": 15,
-      "newX": 507.14285714285717,
+      "newX": 253.57142857142858,
       "newY": 0.0,
       "xIsEven": 0,
       "yIsEven": 0,
@@ -5147,7 +5147,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:18_15_17_15_gap_1",
-      "toExitId": "edge:north:17_15_18_15_gap_1"
+      "toExitId": "edge:north:17_15_18_15"
     },
     {
       "originNorth": 18,
@@ -5372,7 +5372,7 @@
       "vanillaDestEast": 17,
       "newDestNorth": 18,
       "newDestEast": 17,
-      "newX": 228.21428571428572,
+      "newX": 380.3571428571429,
       "newY": 0.0,
       "xIsEven": 25.357142857142858,
       "yIsEven": 0,
@@ -5381,7 +5381,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:19_17_18_17_gap_1",
-      "toExitId": "edge:north:18_17_19_17_gap_1"
+      "toExitId": "edge:north:18_17_19_17"
     },
     {
       "originNorth": 19,
@@ -5408,7 +5408,7 @@
       "vanillaDestEast": 18,
       "newDestNorth": 18,
       "newDestEast": 18,
-      "newX": 557.8571428571429,
+      "newX": 50.714285714285715,
       "newY": 0.0,
       "xIsEven": 0,
       "yIsEven": 0,
@@ -5417,7 +5417,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:19_18_18_18_gap_1",
-      "toExitId": "edge:north:18_18_19_18_gap_1"
+      "toExitId": "edge:north:18_18_19_18"
     },
     {
       "originNorth": 19,
@@ -5462,7 +5462,7 @@
       "vanillaDestEast": 21,
       "newDestNorth": 18,
       "newDestEast": 21,
-      "newX": 405.7142857142857,
+      "newX": 152.14285714285714,
       "newY": 0.0,
       "xIsEven": 0,
       "yIsEven": 0,
@@ -5471,7 +5471,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:19_21_18_21_gap_1",
-      "toExitId": "edge:north:18_21_19_21_gap_1"
+      "toExitId": "edge:north:18_21_19_21"
     },
     {
       "originNorth": 19,
@@ -5624,7 +5624,7 @@
       "vanillaDestEast": 18,
       "newDestNorth": 20,
       "newDestEast": 18,
-      "newX": 405.7142857142857,
+      "newX": 304.2857142857143,
       "newY": 0.0,
       "xIsEven": 0,
       "yIsEven": 0,
@@ -5633,7 +5633,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:21_18_20_18",
-      "toExitId": "edge:north:20_18_21_18_gap_1"
+      "toExitId": "edge:north:20_18_21_18"
     },
     {
       "originNorth": 21,
@@ -5642,7 +5642,7 @@
       "vanillaDestEast": 18,
       "newDestNorth": 20,
       "newDestEast": 18,
-      "newX": 507.14285714285717,
+      "newX": 304.2857142857143,
       "newY": 0.0,
       "xIsEven": 0,
       "yIsEven": 0,
@@ -5651,7 +5651,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:south:21_18_20_18_gap_1",
-      "toExitId": "edge:north:20_18_21_18_gap_2"
+      "toExitId": "edge:north:20_18_21_18"
     },
     {
       "originNorth": 21,
@@ -6092,7 +6092,7 @@
       "vanillaDestEast": 26,
       "newDestNorth": 4,
       "newDestEast": 26,
-      "newX": 507.14285714285717,
+      "newX": 608.5714285714286,
       "newY": 509.09090909090907,
       "xIsEven": 0,
       "yIsEven": 0,
@@ -6101,7 +6101,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:north:3_26_4_26_gap_1",
-      "toExitId": "edge:south:4_26_3_26_gap_1"
+      "toExitId": "edge:south:4_26_3_26"
     },
     {
       "originNorth": 3,
@@ -6110,7 +6110,7 @@
       "vanillaDestEast": 26,
       "newDestNorth": 4,
       "newDestEast": 26,
-      "newX": 405.7142857142857,
+      "newX": 608.5714285714286,
       "newY": 509.09090909090907,
       "xIsEven": 0,
       "yIsEven": 0,
@@ -6119,7 +6119,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:north:3_26_4_26_gap_2",
-      "toExitId": "edge:south:4_26_3_26_gap_4"
+      "toExitId": "edge:south:4_26_3_26"
     },
     {
       "originNorth": 3,
@@ -6128,7 +6128,7 @@
       "vanillaDestEast": 26,
       "newDestNorth": 4,
       "newDestEast": 26,
-      "newX": 304.2857142857143,
+      "newX": 608.5714285714286,
       "newY": 509.09090909090907,
       "xIsEven": 0,
       "yIsEven": 0,
@@ -6137,7 +6137,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:north:3_26_4_26_gap_3",
-      "toExitId": "edge:south:4_26_3_26_gap_2"
+      "toExitId": "edge:south:4_26_3_26"
     },
     {
       "originNorth": 3,
@@ -6146,7 +6146,7 @@
       "vanillaDestEast": 26,
       "newDestNorth": 4,
       "newDestEast": 26,
-      "newX": 202.85714285714286,
+      "newX": 608.5714285714286,
       "newY": 509.09090909090907,
       "xIsEven": 0,
       "yIsEven": 0,
@@ -6155,7 +6155,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:north:3_26_4_26_gap_4",
-      "toExitId": "edge:south:4_26_3_26_gap_3"
+      "toExitId": "edge:south:4_26_3_26"
     },
     {
       "originNorth": 4,
@@ -6506,16 +6506,16 @@
       "vanillaDestEast": 10,
       "newDestNorth": 9,
       "newDestEast": 10,
-      "newX": 228.21428571428572,
+      "newX": 608.5714285714286,
       "newY": 509.09090909090907,
-      "xIsEven": 25.357142857142858,
+      "xIsEven": 0,
       "yIsEven": 0,
       "srcCoord": 228.21428571428572,
       "direction": "north",
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:north:8_10_9_10",
-      "toExitId": "edge:south:9_10_8_10_gap_1"
+      "toExitId": "edge:south:9_10_8_10"
     },
     {
       "originNorth": 8,
@@ -6542,7 +6542,7 @@
       "vanillaDestEast": 11,
       "newDestNorth": 9,
       "newDestEast": 11,
-      "newX": 507.14285714285717,
+      "newX": 50.714285714285715,
       "newY": 509.09090909090907,
       "xIsEven": 0,
       "yIsEven": 0,
@@ -6551,7 +6551,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:north:8_11_9_11",
-      "toExitId": "edge:south:9_11_8_11_gap_2"
+      "toExitId": "edge:south:9_11_8_11"
     },
     {
       "originNorth": 8,
@@ -6578,16 +6578,16 @@
       "vanillaDestEast": 11,
       "newDestNorth": 9,
       "newDestEast": 11,
-      "newX": 228.21428571428572,
+      "newX": 50.714285714285715,
       "newY": 509.09090909090907,
-      "xIsEven": 25.357142857142858,
+      "xIsEven": 0,
       "yIsEven": 0,
       "srcCoord": 228.21428571428572,
       "direction": "north",
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:north:8_11_9_11_gap_2",
-      "toExitId": "edge:south:9_11_8_11_gap_1"
+      "toExitId": "edge:south:9_11_8_11"
     },
     {
       "originNorth": 8,
@@ -6632,16 +6632,16 @@
       "vanillaDestEast": 18,
       "newDestNorth": 9,
       "newDestEast": 18,
-      "newX": 329.64285714285717,
+      "newX": 557.8571428571429,
       "newY": 509.09090909090907,
-      "xIsEven": 25.357142857142858,
+      "xIsEven": 0,
       "yIsEven": 0,
       "srcCoord": 329.64285714285717,
       "direction": "north",
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:north:8_18_9_18_gap_1",
-      "toExitId": "edge:south:9_18_8_18_gap_1"
+      "toExitId": "edge:south:9_18_8_18"
     },
     {
       "originNorth": 8,
@@ -7586,7 +7586,7 @@
       "vanillaDestEast": 11,
       "newDestNorth": 10,
       "newDestEast": 11,
-      "newX": 228.21428571428572,
+      "newX": 76.07142857142857,
       "newY": 509.09090909090907,
       "xIsEven": 25.357142857142858,
       "yIsEven": 0,
@@ -7595,7 +7595,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:north:9_11_10_11_gap_1",
-      "toExitId": "edge:south:10_11_9_11_gap_1"
+      "toExitId": "edge:south:10_11_9_11"
     },
     {
       "originNorth": 9,
@@ -7604,16 +7604,16 @@
       "vanillaDestEast": 11,
       "newDestNorth": 10,
       "newDestEast": 11,
-      "newX": 507.14285714285717,
+      "newX": 76.07142857142857,
       "newY": 509.09090909090907,
-      "xIsEven": 0,
+      "xIsEven": 25.357142857142858,
       "yIsEven": 0,
       "srcCoord": 507.14285714285717,
       "direction": "north",
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:north:9_11_10_11_gap_2",
-      "toExitId": "edge:south:10_11_9_11_gap_2"
+      "toExitId": "edge:south:10_11_9_11"
     },
     {
       "originNorth": 9,
@@ -7730,7 +7730,7 @@
       "vanillaDestEast": 22,
       "newDestNorth": 10,
       "newDestEast": 22,
-      "newX": 152.14285714285714,
+      "newX": 405.7142857142857,
       "newY": 509.09090909090907,
       "xIsEven": 0,
       "yIsEven": 0,
@@ -7739,7 +7739,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:north:9_22_10_22_gap_1",
-      "toExitId": "edge:south:10_22_9_22_gap_1"
+      "toExitId": "edge:south:10_22_9_22"
     },
     {
       "originNorth": 9,
@@ -7820,7 +7820,7 @@
       "vanillaDestEast": 11,
       "newDestNorth": 11,
       "newDestEast": 11,
-      "newX": 228.21428571428572,
+      "newX": 76.07142857142857,
       "newY": 509.09090909090907,
       "xIsEven": 25.357142857142858,
       "yIsEven": 0,
@@ -7829,7 +7829,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:north:10_11_11_11_gap_1",
-      "toExitId": "edge:south:11_11_10_11_gap_1"
+      "toExitId": "edge:south:11_11_10_11"
     },
     {
       "originNorth": 10,
@@ -7838,16 +7838,16 @@
       "vanillaDestEast": 11,
       "newDestNorth": 11,
       "newDestEast": 11,
-      "newX": 507.14285714285717,
+      "newX": 76.07142857142857,
       "newY": 509.09090909090907,
-      "xIsEven": 0,
+      "xIsEven": 25.357142857142858,
       "yIsEven": 0,
       "srcCoord": 507.14285714285717,
       "direction": "north",
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:north:10_11_11_11_gap_2",
-      "toExitId": "edge:south:11_11_10_11_gap_2"
+      "toExitId": "edge:south:11_11_10_11"
     },
     {
       "originNorth": 10,
@@ -7946,7 +7946,7 @@
       "vanillaDestEast": 20,
       "newDestNorth": 11,
       "newDestEast": 20,
-      "newX": 583.2142857142858,
+      "newX": 177.5,
       "newY": 509.09090909090907,
       "xIsEven": 25.357142857142858,
       "yIsEven": 0,
@@ -7955,7 +7955,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:north:10_20_11_20",
-      "toExitId": "edge:south:11_20_10_20_gap_1"
+      "toExitId": "edge:south:11_20_10_20"
     },
     {
       "originNorth": 10,
@@ -8090,7 +8090,7 @@
       "vanillaDestEast": 11,
       "newDestNorth": 12,
       "newDestEast": 11,
-      "newX": 380.3571428571429,
+      "newX": 126.78571428571429,
       "newY": 509.09090909090907,
       "xIsEven": 25.357142857142858,
       "yIsEven": 0,
@@ -8099,7 +8099,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:north:11_11_12_11_gap_1",
-      "toExitId": "edge:south:12_11_11_11_gap_1"
+      "toExitId": "edge:south:12_11_11_11"
     },
     {
       "originNorth": 11,
@@ -8108,7 +8108,7 @@
       "vanillaDestEast": 11,
       "newDestNorth": 12,
       "newDestEast": 11,
-      "newX": 583.2142857142858,
+      "newX": 126.78571428571429,
       "newY": 509.09090909090907,
       "xIsEven": 25.357142857142858,
       "yIsEven": 0,
@@ -8117,7 +8117,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:north:11_11_12_11_gap_2",
-      "toExitId": "edge:south:12_11_11_11_gap_2"
+      "toExitId": "edge:south:12_11_11_11"
     },
     {
       "originNorth": 11,
@@ -8630,7 +8630,7 @@
       "vanillaDestEast": 23,
       "newDestNorth": 15,
       "newDestEast": 23,
-      "newX": 202.85714285714286,
+      "newX": 507.14285714285717,
       "newY": 509.09090909090907,
       "xIsEven": 0,
       "yIsEven": 0,
@@ -8639,7 +8639,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:north:14_23_15_23",
-      "toExitId": "edge:south:15_23_14_23_gap_2"
+      "toExitId": "edge:south:15_23_14_23"
     },
     {
       "originNorth": 14,
@@ -8648,16 +8648,16 @@
       "vanillaDestEast": 23,
       "newDestNorth": 15,
       "newDestEast": 23,
-      "newX": 329.64285714285717,
+      "newX": 507.14285714285717,
       "newY": 509.09090909090907,
-      "xIsEven": 25.357142857142858,
+      "xIsEven": 0,
       "yIsEven": 0,
       "srcCoord": 329.64285714285717,
       "direction": "north",
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:north:14_23_15_23_gap_1",
-      "toExitId": "edge:south:15_23_14_23_gap_1"
+      "toExitId": "edge:south:15_23_14_23"
     },
     {
       "originNorth": 14,
@@ -8810,16 +8810,16 @@
       "vanillaDestEast": 24,
       "newDestNorth": 16,
       "newDestEast": 24,
-      "newX": 532.5,
+      "newX": 50.714285714285715,
       "newY": 509.09090909090907,
-      "xIsEven": 25.357142857142858,
+      "xIsEven": 0,
       "yIsEven": 0,
       "srcCoord": 532.5,
       "direction": "north",
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:north:15_24_16_24",
-      "toExitId": "edge:south:16_24_15_24_gap_1"
+      "toExitId": "edge:south:16_24_15_24"
     },
     {
       "originNorth": 15,
@@ -8864,7 +8864,7 @@
       "vanillaDestEast": 25,
       "newDestNorth": 16,
       "newDestEast": 25,
-      "newX": 278.92857142857144,
+      "newX": 431.07142857142856,
       "newY": 509.09090909090907,
       "xIsEven": 25.357142857142858,
       "yIsEven": 0,
@@ -8873,7 +8873,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:north:15_25_16_25_gap_1",
-      "toExitId": "edge:south:16_25_15_25_gap_1"
+      "toExitId": "edge:south:16_25_15_25"
     },
     {
       "originNorth": 16,
@@ -9008,16 +9008,16 @@
       "vanillaDestEast": 24,
       "newDestNorth": 17,
       "newDestEast": 24,
-      "newX": 101.42857142857143,
+      "newX": 278.92857142857144,
       "newY": 509.09090909090907,
-      "xIsEven": 0,
+      "xIsEven": 25.357142857142858,
       "yIsEven": 0,
       "srcCoord": 101.42857142857143,
       "direction": "north",
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:north:16_24_17_24_gap_1",
-      "toExitId": "edge:south:17_24_16_24_gap_1"
+      "toExitId": "edge:south:17_24_16_24"
     },
     {
       "originNorth": 16,
@@ -9062,7 +9062,7 @@
       "vanillaDestEast": 15,
       "newDestNorth": 18,
       "newDestEast": 15,
-      "newX": 507.14285714285717,
+      "newX": 253.57142857142858,
       "newY": 509.09090909090907,
       "xIsEven": 0,
       "yIsEven": 0,
@@ -9071,7 +9071,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:north:17_15_18_15_gap_1",
-      "toExitId": "edge:south:18_15_17_15_gap_1"
+      "toExitId": "edge:south:18_15_17_15"
     },
     {
       "originNorth": 17,
@@ -9224,7 +9224,7 @@
       "vanillaDestEast": 17,
       "newDestNorth": 19,
       "newDestEast": 17,
-      "newX": 228.21428571428572,
+      "newX": 380.3571428571429,
       "newY": 509.09090909090907,
       "xIsEven": 25.357142857142858,
       "yIsEven": 0,
@@ -9233,7 +9233,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:north:18_17_19_17_gap_1",
-      "toExitId": "edge:south:19_17_18_17_gap_1"
+      "toExitId": "edge:south:19_17_18_17"
     },
     {
       "originNorth": 18,
@@ -9260,7 +9260,7 @@
       "vanillaDestEast": 18,
       "newDestNorth": 19,
       "newDestEast": 18,
-      "newX": 557.8571428571429,
+      "newX": 50.714285714285715,
       "newY": 509.09090909090907,
       "xIsEven": 0,
       "yIsEven": 0,
@@ -9269,7 +9269,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:north:18_18_19_18_gap_1",
-      "toExitId": "edge:south:19_18_18_18_gap_1"
+      "toExitId": "edge:south:19_18_18_18"
     },
     {
       "originNorth": 18,
@@ -9314,7 +9314,7 @@
       "vanillaDestEast": 21,
       "newDestNorth": 19,
       "newDestEast": 21,
-      "newX": 405.7142857142857,
+      "newX": 152.14285714285714,
       "newY": 509.09090909090907,
       "xIsEven": 0,
       "yIsEven": 0,
@@ -9323,7 +9323,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:north:18_21_19_21_gap_1",
-      "toExitId": "edge:south:19_21_18_21_gap_1"
+      "toExitId": "edge:south:19_21_18_21"
     },
     {
       "originNorth": 18,
@@ -9476,7 +9476,7 @@
       "vanillaDestEast": 18,
       "newDestNorth": 21,
       "newDestEast": 18,
-      "newX": 304.2857142857143,
+      "newX": 405.7142857142857,
       "newY": 509.09090909090907,
       "xIsEven": 0,
       "yIsEven": 0,
@@ -9485,7 +9485,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:north:20_18_21_18",
-      "toExitId": "edge:south:21_18_20_18_gap_2"
+      "toExitId": "edge:south:21_18_20_18"
     },
     {
       "originNorth": 20,
@@ -9512,7 +9512,7 @@
       "vanillaDestEast": 18,
       "newDestNorth": 21,
       "newDestEast": 18,
-      "newX": 507.14285714285717,
+      "newX": 405.7142857142857,
       "newY": 509.09090909090907,
       "xIsEven": 0,
       "yIsEven": 0,
@@ -9521,7 +9521,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:north:20_18_21_18_gap_2",
-      "toExitId": "edge:south:21_18_20_18_gap_1"
+      "toExitId": "edge:south:21_18_20_18"
     },
     {
       "originNorth": 20,
@@ -9891,15 +9891,15 @@
       "newDestNorth": 3,
       "newDestEast": 24,
       "newX": 659.2857142857143,
-      "newY": 458.18181818181813,
+      "newY": 280.0,
       "xIsEven": 0,
-      "yIsEven": 0,
+      "yIsEven": 25.454545454545453,
       "srcCoord": 458.18181818181813,
       "direction": "west",
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:west:3_25_3_24_gap_1",
-      "toExitId": "edge:east:3_24_3_25_gap_1"
+      "toExitId": "edge:east:3_24_3_25"
     },
     {
       "originNorth": 3,
@@ -10017,7 +10017,7 @@
       "newDestNorth": 5,
       "newDestEast": 9,
       "newX": 659.2857142857143,
-      "newY": 76.36363636363636,
+      "newY": 381.8181818181818,
       "xIsEven": 0,
       "yIsEven": 25.454545454545453,
       "srcCoord": 76.36363636363636,
@@ -10025,7 +10025,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:west:5_10_5_9",
-      "toExitId": "edge:east:5_9_5_10_gap_1"
+      "toExitId": "edge:east:5_9_5_10"
     },
     {
       "originNorth": 5,
@@ -10035,7 +10035,7 @@
       "newDestNorth": 5,
       "newDestEast": 9,
       "newX": 659.2857142857143,
-      "newY": 229.09090909090907,
+      "newY": 381.8181818181818,
       "xIsEven": 0,
       "yIsEven": 25.454545454545453,
       "srcCoord": 229.09090909090907,
@@ -10043,7 +10043,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:west:5_10_5_9_gap_1",
-      "toExitId": "edge:east:5_9_5_10_gap_2"
+      "toExitId": "edge:east:5_9_5_10"
     },
     {
       "originNorth": 5,
@@ -10071,7 +10071,7 @@
       "newDestNorth": 5,
       "newDestEast": 10,
       "newX": 659.2857142857143,
-      "newY": 381.8181818181818,
+      "newY": 76.36363636363636,
       "xIsEven": 0,
       "yIsEven": 25.454545454545453,
       "srcCoord": 381.8181818181818,
@@ -10079,7 +10079,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:west:5_11_5_10",
-      "toExitId": "edge:east:5_10_5_11_gap_2"
+      "toExitId": "edge:east:5_10_5_11"
     },
     {
       "originNorth": 5,
@@ -10107,7 +10107,7 @@
       "newDestNorth": 5,
       "newDestEast": 10,
       "newX": 659.2857142857143,
-      "newY": 229.09090909090907,
+      "newY": 76.36363636363636,
       "xIsEven": 0,
       "yIsEven": 25.454545454545453,
       "srcCoord": 229.09090909090907,
@@ -10115,7 +10115,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:west:5_11_5_10_gap_2",
-      "toExitId": "edge:east:5_10_5_11_gap_1"
+      "toExitId": "edge:east:5_10_5_11"
     },
     {
       "originNorth": 6,
@@ -10341,15 +10341,15 @@
       "newDestNorth": 8,
       "newDestEast": 10,
       "newX": 659.2857142857143,
-      "newY": 76.36363636363636,
+      "newY": 407.27272727272725,
       "xIsEven": 0,
-      "yIsEven": 25.454545454545453,
+      "yIsEven": 0,
       "srcCoord": 76.36363636363636,
       "direction": "west",
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:west:8_11_8_10_gap_1",
-      "toExitId": "edge:east:8_10_8_11_gap_1"
+      "toExitId": "edge:east:8_10_8_11"
     },
     {
       "originNorth": 8,
@@ -10359,7 +10359,7 @@
       "newDestNorth": 8,
       "newDestEast": 10,
       "newX": 659.2857142857143,
-      "newY": 254.54545454545453,
+      "newY": 407.27272727272725,
       "xIsEven": 0,
       "yIsEven": 0,
       "srcCoord": 254.54545454545453,
@@ -10367,7 +10367,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:west:8_11_8_10_gap_2",
-      "toExitId": "edge:east:8_10_8_11_gap_2"
+      "toExitId": "edge:east:8_10_8_11"
     },
     {
       "originNorth": 8,
@@ -10683,7 +10683,7 @@
       "newDestNorth": 11,
       "newDestEast": 9,
       "newX": 659.2857142857143,
-      "newY": 76.36363636363636,
+      "newY": 381.8181818181818,
       "xIsEven": 0,
       "yIsEven": 25.454545454545453,
       "srcCoord": 76.36363636363636,
@@ -10691,7 +10691,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:west:11_10_11_9",
-      "toExitId": "edge:east:11_9_11_10_gap_1"
+      "toExitId": "edge:east:11_9_11_10"
     },
     {
       "originNorth": 11,
@@ -10809,7 +10809,7 @@
       "newDestNorth": 11,
       "newDestEast": 19,
       "newX": 659.2857142857143,
-      "newY": 127.27272727272727,
+      "newY": 432.7272727272727,
       "xIsEven": 0,
       "yIsEven": 25.454545454545453,
       "srcCoord": 127.27272727272727,
@@ -10817,7 +10817,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:west:11_20_11_19",
-      "toExitId": "edge:east:11_19_11_20_gap_2"
+      "toExitId": "edge:east:11_19_11_20"
     },
     {
       "originNorth": 11,
@@ -10827,7 +10827,7 @@
       "newDestNorth": 11,
       "newDestEast": 19,
       "newX": 659.2857142857143,
-      "newY": 280.0,
+      "newY": 432.7272727272727,
       "xIsEven": 0,
       "yIsEven": 25.454545454545453,
       "srcCoord": 280.0,
@@ -10835,7 +10835,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:west:11_20_11_19_gap_1",
-      "toExitId": "edge:east:11_19_11_20_gap_1"
+      "toExitId": "edge:east:11_19_11_20"
     },
     {
       "originNorth": 11,
@@ -10917,15 +10917,15 @@
       "newDestNorth": 12,
       "newDestEast": 11,
       "newX": 659.2857142857143,
-      "newY": 407.27272727272725,
+      "newY": 127.27272727272727,
       "xIsEven": 0,
-      "yIsEven": 0,
+      "yIsEven": 25.454545454545453,
       "srcCoord": 407.27272727272725,
       "direction": "west",
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:west:12_12_12_11_gap_1",
-      "toExitId": "edge:east:12_11_12_12_gap_1"
+      "toExitId": "edge:east:12_11_12_12"
     },
     {
       "originNorth": 12,
@@ -10935,7 +10935,7 @@
       "newDestNorth": 12,
       "newDestEast": 16,
       "newX": 659.2857142857143,
-      "newY": 356.3636363636364,
+      "newY": 50.90909090909091,
       "xIsEven": 0,
       "yIsEven": 0,
       "srcCoord": 356.3636363636364,
@@ -10943,7 +10943,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:west:12_17_12_16",
-      "toExitId": "edge:east:12_16_12_17_gap_1"
+      "toExitId": "edge:east:12_16_12_17"
     },
     {
       "originNorth": 12,
@@ -11259,7 +11259,7 @@
       "newDestNorth": 14,
       "newDestEast": 24,
       "newX": 659.2857142857143,
-      "newY": 356.3636363636364,
+      "newY": 458.18181818181813,
       "xIsEven": 0,
       "yIsEven": 0,
       "srcCoord": 356.3636363636364,
@@ -11267,7 +11267,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:west:14_25_14_24_gap_1",
-      "toExitId": "edge:east:14_24_14_25_gap_1"
+      "toExitId": "edge:east:14_24_14_25"
     },
     {
       "originNorth": 14,
@@ -11277,7 +11277,7 @@
       "newDestNorth": 14,
       "newDestEast": 24,
       "newX": 659.2857142857143,
-      "newY": 254.54545454545453,
+      "newY": 458.18181818181813,
       "xIsEven": 0,
       "yIsEven": 0,
       "srcCoord": 254.54545454545453,
@@ -11285,7 +11285,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:west:14_25_14_24_gap_2",
-      "toExitId": "edge:east:14_24_14_25_gap_2"
+      "toExitId": "edge:east:14_24_14_25"
     },
     {
       "originNorth": 14,
@@ -11295,7 +11295,7 @@
       "newDestNorth": 14,
       "newDestEast": 24,
       "newX": 659.2857142857143,
-      "newY": 152.72727272727272,
+      "newY": 458.18181818181813,
       "xIsEven": 0,
       "yIsEven": 0,
       "srcCoord": 152.72727272727272,
@@ -11303,7 +11303,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:west:14_25_14_24_gap_3",
-      "toExitId": "edge:east:14_24_14_25_gap_3"
+      "toExitId": "edge:east:14_24_14_25"
     },
     {
       "originNorth": 14,
@@ -11313,7 +11313,7 @@
       "newDestNorth": 14,
       "newDestEast": 24,
       "newX": 659.2857142857143,
-      "newY": 50.90909090909091,
+      "newY": 458.18181818181813,
       "xIsEven": 0,
       "yIsEven": 0,
       "srcCoord": 50.90909090909091,
@@ -11321,7 +11321,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:west:14_25_14_24_gap_4",
-      "toExitId": "edge:east:14_24_14_25_gap_4"
+      "toExitId": "edge:east:14_24_14_25"
     },
     {
       "originNorth": 15,
@@ -11619,7 +11619,7 @@
       "newDestNorth": 17,
       "newDestEast": 24,
       "newX": 659.2857142857143,
-      "newY": 280.0,
+      "newY": 76.36363636363636,
       "xIsEven": 0,
       "yIsEven": 25.454545454545453,
       "srcCoord": 280.0,
@@ -11627,7 +11627,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:west:17_25_17_24_gap_1",
-      "toExitId": "edge:east:17_24_17_25_gap_1"
+      "toExitId": "edge:east:17_24_17_25"
     },
     {
       "originNorth": 17,
@@ -11637,7 +11637,7 @@
       "newDestNorth": 17,
       "newDestEast": 24,
       "newX": 659.2857142857143,
-      "newY": 432.7272727272727,
+      "newY": 76.36363636363636,
       "xIsEven": 0,
       "yIsEven": 25.454545454545453,
       "srcCoord": 432.7272727272727,
@@ -11645,7 +11645,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:west:17_25_17_24_gap_2",
-      "toExitId": "edge:east:17_24_17_25_gap_2"
+      "toExitId": "edge:east:17_24_17_25"
     },
     {
       "originNorth": 18,
@@ -11907,7 +11907,7 @@
       "newDestNorth": 21,
       "newDestEast": 13,
       "newX": 659.2857142857143,
-      "newY": 178.1818181818182,
+      "newY": 381.8181818181818,
       "xIsEven": 0,
       "yIsEven": 25.454545454545453,
       "srcCoord": 178.1818181818182,
@@ -11915,7 +11915,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:west:21_14_21_13",
-      "toExitId": "edge:east:21_13_21_14_gap_1"
+      "toExitId": "edge:east:21_13_21_14"
     },
     {
       "originNorth": 21,
@@ -12123,15 +12123,15 @@
       "newDestNorth": 3,
       "newDestEast": 25,
       "newX": 0.0,
-      "newY": 458.18181818181813,
+      "newY": 280.0,
       "xIsEven": 0,
-      "yIsEven": 0,
+      "yIsEven": 25.454545454545453,
       "srcCoord": 458.18181818181813,
       "direction": "east",
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:east:3_24_3_25_gap_1",
-      "toExitId": "edge:west:3_25_3_24_gap_1"
+      "toExitId": "edge:west:3_25_3_24"
     },
     {
       "originNorth": 3,
@@ -12249,7 +12249,7 @@
       "newDestNorth": 5,
       "newDestEast": 10,
       "newX": 0.0,
-      "newY": 381.8181818181818,
+      "newY": 76.36363636363636,
       "xIsEven": 0,
       "yIsEven": 25.454545454545453,
       "srcCoord": 381.8181818181818,
@@ -12257,7 +12257,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:east:5_9_5_10",
-      "toExitId": "edge:west:5_10_5_9_gap_2"
+      "toExitId": "edge:west:5_10_5_9"
     },
     {
       "originNorth": 5,
@@ -12285,7 +12285,7 @@
       "newDestNorth": 5,
       "newDestEast": 10,
       "newX": 0.0,
-      "newY": 229.09090909090907,
+      "newY": 76.36363636363636,
       "xIsEven": 0,
       "yIsEven": 25.454545454545453,
       "srcCoord": 229.09090909090907,
@@ -12293,7 +12293,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:east:5_9_5_10_gap_2",
-      "toExitId": "edge:west:5_10_5_9_gap_1"
+      "toExitId": "edge:west:5_10_5_9"
     },
     {
       "originNorth": 5,
@@ -12303,7 +12303,7 @@
       "newDestNorth": 5,
       "newDestEast": 11,
       "newX": 0.0,
-      "newY": 76.36363636363636,
+      "newY": 381.8181818181818,
       "xIsEven": 0,
       "yIsEven": 25.454545454545453,
       "srcCoord": 76.36363636363636,
@@ -12311,7 +12311,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:east:5_10_5_11",
-      "toExitId": "edge:west:5_11_5_10_gap_1"
+      "toExitId": "edge:west:5_11_5_10"
     },
     {
       "originNorth": 5,
@@ -12321,7 +12321,7 @@
       "newDestNorth": 5,
       "newDestEast": 11,
       "newX": 0.0,
-      "newY": 229.09090909090907,
+      "newY": 381.8181818181818,
       "xIsEven": 0,
       "yIsEven": 25.454545454545453,
       "srcCoord": 229.09090909090907,
@@ -12329,7 +12329,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:east:5_10_5_11_gap_1",
-      "toExitId": "edge:west:5_11_5_10_gap_2"
+      "toExitId": "edge:west:5_11_5_10"
     },
     {
       "originNorth": 5,
@@ -12573,15 +12573,15 @@
       "newDestNorth": 8,
       "newDestEast": 11,
       "newX": 0.0,
-      "newY": 76.36363636363636,
+      "newY": 407.27272727272725,
       "xIsEven": 0,
-      "yIsEven": 25.454545454545453,
+      "yIsEven": 0,
       "srcCoord": 76.36363636363636,
       "direction": "east",
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:east:8_10_8_11_gap_1",
-      "toExitId": "edge:west:8_11_8_10_gap_1"
+      "toExitId": "edge:west:8_11_8_10"
     },
     {
       "originNorth": 8,
@@ -12591,7 +12591,7 @@
       "newDestNorth": 8,
       "newDestEast": 11,
       "newX": 0.0,
-      "newY": 254.54545454545453,
+      "newY": 407.27272727272725,
       "xIsEven": 0,
       "yIsEven": 0,
       "srcCoord": 254.54545454545453,
@@ -12599,7 +12599,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:east:8_10_8_11_gap_2",
-      "toExitId": "edge:west:8_11_8_10_gap_2"
+      "toExitId": "edge:west:8_11_8_10"
     },
     {
       "originNorth": 8,
@@ -12915,7 +12915,7 @@
       "newDestNorth": 11,
       "newDestEast": 10,
       "newX": 0.0,
-      "newY": 381.8181818181818,
+      "newY": 76.36363636363636,
       "xIsEven": 0,
       "yIsEven": 25.454545454545453,
       "srcCoord": 381.8181818181818,
@@ -12923,7 +12923,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:east:11_9_11_10",
-      "toExitId": "edge:west:11_10_11_9_gap_1"
+      "toExitId": "edge:west:11_10_11_9"
     },
     {
       "originNorth": 11,
@@ -13041,7 +13041,7 @@
       "newDestNorth": 11,
       "newDestEast": 20,
       "newX": 0.0,
-      "newY": 432.7272727272727,
+      "newY": 127.27272727272727,
       "xIsEven": 0,
       "yIsEven": 25.454545454545453,
       "srcCoord": 432.7272727272727,
@@ -13049,7 +13049,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:east:11_19_11_20",
-      "toExitId": "edge:west:11_20_11_19_gap_2"
+      "toExitId": "edge:west:11_20_11_19"
     },
     {
       "originNorth": 11,
@@ -13059,7 +13059,7 @@
       "newDestNorth": 11,
       "newDestEast": 20,
       "newX": 0.0,
-      "newY": 280.0,
+      "newY": 127.27272727272727,
       "xIsEven": 0,
       "yIsEven": 25.454545454545453,
       "srcCoord": 280.0,
@@ -13067,7 +13067,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:east:11_19_11_20_gap_1",
-      "toExitId": "edge:west:11_20_11_19_gap_1"
+      "toExitId": "edge:west:11_20_11_19"
     },
     {
       "originNorth": 11,
@@ -13149,15 +13149,15 @@
       "newDestNorth": 12,
       "newDestEast": 12,
       "newX": 0.0,
-      "newY": 407.27272727272725,
+      "newY": 127.27272727272727,
       "xIsEven": 0,
-      "yIsEven": 0,
+      "yIsEven": 25.454545454545453,
       "srcCoord": 407.27272727272725,
       "direction": "east",
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:east:12_11_12_12_gap_1",
-      "toExitId": "edge:west:12_12_12_11_gap_1"
+      "toExitId": "edge:west:12_12_12_11"
     },
     {
       "originNorth": 12,
@@ -13167,7 +13167,7 @@
       "newDestNorth": 12,
       "newDestEast": 17,
       "newX": 0.0,
-      "newY": 50.90909090909091,
+      "newY": 356.3636363636364,
       "xIsEven": 0,
       "yIsEven": 0,
       "srcCoord": 50.90909090909091,
@@ -13175,7 +13175,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:east:12_16_12_17",
-      "toExitId": "edge:west:12_17_12_16_gap_1"
+      "toExitId": "edge:west:12_17_12_16"
     },
     {
       "originNorth": 12,
@@ -13491,7 +13491,7 @@
       "newDestNorth": 14,
       "newDestEast": 25,
       "newX": 0.0,
-      "newY": 356.3636363636364,
+      "newY": 458.18181818181813,
       "xIsEven": 0,
       "yIsEven": 0,
       "srcCoord": 356.3636363636364,
@@ -13499,7 +13499,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:east:14_24_14_25_gap_1",
-      "toExitId": "edge:west:14_25_14_24_gap_1"
+      "toExitId": "edge:west:14_25_14_24"
     },
     {
       "originNorth": 14,
@@ -13509,7 +13509,7 @@
       "newDestNorth": 14,
       "newDestEast": 25,
       "newX": 0.0,
-      "newY": 254.54545454545453,
+      "newY": 458.18181818181813,
       "xIsEven": 0,
       "yIsEven": 0,
       "srcCoord": 254.54545454545453,
@@ -13517,7 +13517,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:east:14_24_14_25_gap_2",
-      "toExitId": "edge:west:14_25_14_24_gap_2"
+      "toExitId": "edge:west:14_25_14_24"
     },
     {
       "originNorth": 14,
@@ -13527,7 +13527,7 @@
       "newDestNorth": 14,
       "newDestEast": 25,
       "newX": 0.0,
-      "newY": 152.72727272727272,
+      "newY": 458.18181818181813,
       "xIsEven": 0,
       "yIsEven": 0,
       "srcCoord": 152.72727272727272,
@@ -13535,7 +13535,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:east:14_24_14_25_gap_3",
-      "toExitId": "edge:west:14_25_14_24_gap_3"
+      "toExitId": "edge:west:14_25_14_24"
     },
     {
       "originNorth": 14,
@@ -13545,7 +13545,7 @@
       "newDestNorth": 14,
       "newDestEast": 25,
       "newX": 0.0,
-      "newY": 50.90909090909091,
+      "newY": 458.18181818181813,
       "xIsEven": 0,
       "yIsEven": 0,
       "srcCoord": 50.90909090909091,
@@ -13553,7 +13553,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:east:14_24_14_25_gap_4",
-      "toExitId": "edge:west:14_25_14_24_gap_4"
+      "toExitId": "edge:west:14_25_14_24"
     },
     {
       "originNorth": 15,
@@ -13869,7 +13869,7 @@
       "newDestNorth": 17,
       "newDestEast": 25,
       "newX": 0.0,
-      "newY": 280.0,
+      "newY": 76.36363636363636,
       "xIsEven": 0,
       "yIsEven": 25.454545454545453,
       "srcCoord": 280.0,
@@ -13877,7 +13877,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:east:17_24_17_25_gap_1",
-      "toExitId": "edge:west:17_25_17_24_gap_1"
+      "toExitId": "edge:west:17_25_17_24"
     },
     {
       "originNorth": 17,
@@ -13887,7 +13887,7 @@
       "newDestNorth": 17,
       "newDestEast": 25,
       "newX": 0.0,
-      "newY": 432.7272727272727,
+      "newY": 76.36363636363636,
       "xIsEven": 0,
       "yIsEven": 25.454545454545453,
       "srcCoord": 432.7272727272727,
@@ -13895,7 +13895,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:east:17_24_17_25_gap_2",
-      "toExitId": "edge:west:17_25_17_24_gap_2"
+      "toExitId": "edge:west:17_25_17_24"
     },
     {
       "originNorth": 18,
@@ -14157,7 +14157,7 @@
       "newDestNorth": 21,
       "newDestEast": 14,
       "newX": 0.0,
-      "newY": 381.8181818181818,
+      "newY": 178.1818181818182,
       "xIsEven": 0,
       "yIsEven": 25.454545454545453,
       "srcCoord": 381.8181818181818,
@@ -14165,7 +14165,7 @@
       "mechanism": "edge",
       "requires": [],
       "fromExitId": "edge:east:21_13_21_14",
-      "toExitId": "edge:west:21_14_21_13_gap_1"
+      "toExitId": "edge:west:21_14_21_13"
     },
     {
       "originNorth": 21,

@@ -427,7 +427,7 @@
       {
         "toRoom": "9_18",
         "exitId": "edge:east:9_17_9_18_gap_1",
-        "viaExitId": "edge:west:9_18_9_17_gap_1",
+        "viaExitId": "edge:west:9_18_9_17",
         "mechanism": "edge",
         "direction": "east",
         "requires": []
@@ -443,7 +443,7 @@
       {
         "toRoom": "8_17",
         "exitId": "edge:south:9_17_8_17_gap_1",
-        "viaExitId": "edge:north:8_17_9_17_gap_1",
+        "viaExitId": "edge:north:8_17_9_17",
         "mechanism": "edge",
         "direction": "south",
         "requires": []
@@ -531,7 +531,7 @@
       {
         "toRoom": "10_9",
         "exitId": "edge:west:10_10_10_9",
-        "viaExitId": "edge:east:10_9_10_10_gap_1",
+        "viaExitId": "edge:east:10_9_10_10",
         "mechanism": "edge",
         "direction": "west",
         "requires": []
@@ -573,7 +573,7 @@
       {
         "toRoom": "11_9",
         "exitId": "edge:west:11_10_11_9",
-        "viaExitId": "edge:east:11_9_11_10_gap_1",
+        "viaExitId": "edge:east:11_9_11_10",
         "mechanism": "edge",
         "direction": "west",
         "requires": []
@@ -767,7 +767,7 @@
       {
         "toRoom": "10_10",
         "exitId": "edge:east:10_9_10_10",
-        "viaExitId": "edge:west:10_10_10_9_gap_1",
+        "viaExitId": "edge:west:10_10_10_9",
         "mechanism": "edge",
         "direction": "east",
         "requires": []
@@ -817,7 +817,7 @@
       {
         "toRoom": "11_20",
         "exitId": "edge:north:10_20_11_20",
-        "viaExitId": "edge:south:11_20_10_20_gap_1",
+        "viaExitId": "edge:south:11_20_10_20",
         "mechanism": "edge",
         "direction": "north",
         "requires": []
@@ -977,7 +977,7 @@
       {
         "toRoom": "11_11",
         "exitId": "edge:south:12_11_11_11_gap_1",
-        "viaExitId": "edge:north:11_11_12_11_gap_1",
+        "viaExitId": "edge:north:11_11_12_11",
         "mechanism": "edge",
         "direction": "south",
         "requires": []
@@ -985,7 +985,7 @@
       {
         "toRoom": "11_11",
         "exitId": "edge:south:12_11_11_11_gap_2",
-        "viaExitId": "edge:north:11_11_12_11_gap_2",
+        "viaExitId": "edge:north:11_11_12_11",
         "mechanism": "edge",
         "direction": "south",
         "requires": []
@@ -1001,7 +1001,7 @@
       {
         "toRoom": "12_12",
         "exitId": "edge:east:12_11_12_12_gap_1",
-        "viaExitId": "edge:west:12_12_12_11_gap_1",
+        "viaExitId": "edge:west:12_12_12_11",
         "mechanism": "edge",
         "direction": "east",
         "requires": []
@@ -1019,7 +1019,7 @@
       {
         "toRoom": "8_10",
         "exitId": "edge:south:9_10_8_10",
-        "viaExitId": "edge:north:8_10_9_10_gap_1",
+        "viaExitId": "edge:north:8_10_9_10",
         "mechanism": "edge",
         "direction": "south",
         "requires": []
@@ -1061,7 +1061,7 @@
       {
         "toRoom": "8_11",
         "exitId": "edge:south:9_11_8_11",
-        "viaExitId": "edge:north:8_11_9_11_gap_1",
+        "viaExitId": "edge:north:8_11_9_11",
         "mechanism": "edge",
         "direction": "south",
         "requires": []
@@ -1069,7 +1069,7 @@
       {
         "toRoom": "8_11",
         "exitId": "edge:south:9_11_8_11_gap_1",
-        "viaExitId": "edge:north:8_11_9_11_gap_2",
+        "viaExitId": "edge:north:8_11_9_11",
         "mechanism": "edge",
         "direction": "south",
         "requires": []
@@ -1093,7 +1093,7 @@
       {
         "toRoom": "10_11",
         "exitId": "edge:north:9_11_10_11_gap_1",
-        "viaExitId": "edge:south:10_11_9_11_gap_1",
+        "viaExitId": "edge:south:10_11_9_11",
         "mechanism": "edge",
         "direction": "north",
         "requires": []
@@ -1101,7 +1101,7 @@
       {
         "toRoom": "10_11",
         "exitId": "edge:north:9_11_10_11_gap_2",
-        "viaExitId": "edge:south:10_11_9_11_gap_2",
+        "viaExitId": "edge:south:10_11_9_11",
         "mechanism": "edge",
         "direction": "north",
         "requires": []
@@ -1289,7 +1289,7 @@
       {
         "toRoom": "12_17",
         "exitId": "edge:east:12_16_12_17",
-        "viaExitId": "edge:west:12_17_12_16_gap_1",
+        "viaExitId": "edge:west:12_17_12_16",
         "mechanism": "edge",
         "direction": "east",
         "requires": []
@@ -1333,7 +1333,7 @@
       {
         "toRoom": "9_17",
         "exitId": "edge:west:9_18_9_17_gap_1",
-        "viaExitId": "edge:east:9_17_9_18_gap_1",
+        "viaExitId": "edge:east:9_17_9_18",
         "mechanism": "edge",
         "direction": "west",
         "requires": []
@@ -1349,7 +1349,7 @@
       {
         "toRoom": "8_18",
         "exitId": "edge:south:9_18_8_18_gap_1",
-        "viaExitId": "edge:north:8_18_9_18_gap_1",
+        "viaExitId": "edge:north:8_18_9_18",
         "mechanism": "edge",
         "direction": "south",
         "requires": []
@@ -1375,7 +1375,7 @@
       {
         "toRoom": "9_17",
         "exitId": "edge:north:8_17_9_17_gap_1",
-        "viaExitId": "edge:south:9_17_8_17_gap_1",
+        "viaExitId": "edge:south:9_17_8_17",
         "mechanism": "edge",
         "direction": "north",
         "requires": []
@@ -2133,7 +2133,7 @@
       {
         "toRoom": "3_26",
         "exitId": "edge:south:4_26_3_26_gap_1",
-        "viaExitId": "edge:north:3_26_4_26_gap_1",
+        "viaExitId": "edge:north:3_26_4_26",
         "mechanism": "edge",
         "direction": "south",
         "requires": []
@@ -2141,7 +2141,7 @@
       {
         "toRoom": "3_26",
         "exitId": "edge:south:4_26_3_26_gap_2",
-        "viaExitId": "edge:north:3_26_4_26_gap_3",
+        "viaExitId": "edge:north:3_26_4_26",
         "mechanism": "edge",
         "direction": "south",
         "requires": []
@@ -2149,7 +2149,7 @@
       {
         "toRoom": "3_26",
         "exitId": "edge:south:4_26_3_26_gap_3",
-        "viaExitId": "edge:north:3_26_4_26_gap_4",
+        "viaExitId": "edge:north:3_26_4_26",
         "mechanism": "edge",
         "direction": "south",
         "requires": []
@@ -2157,7 +2157,7 @@
       {
         "toRoom": "3_26",
         "exitId": "edge:south:4_26_3_26_gap_4",
-        "viaExitId": "edge:north:3_26_4_26_gap_2",
+        "viaExitId": "edge:north:3_26_4_26",
         "mechanism": "edge",
         "direction": "south",
         "requires": []
@@ -2667,7 +2667,7 @@
       {
         "toRoom": "10_22",
         "exitId": "edge:north:9_22_10_22_gap_1",
-        "viaExitId": "edge:south:10_22_9_22_gap_1",
+        "viaExitId": "edge:south:10_22_9_22",
         "mechanism": "edge",
         "direction": "north",
         "requires": []
@@ -2749,7 +2749,7 @@
       {
         "toRoom": "9_11",
         "exitId": "edge:south:10_11_9_11_gap_1",
-        "viaExitId": "edge:north:9_11_10_11_gap_1",
+        "viaExitId": "edge:north:9_11_10_11",
         "mechanism": "edge",
         "direction": "south",
         "requires": []
@@ -2757,7 +2757,7 @@
       {
         "toRoom": "9_11",
         "exitId": "edge:south:10_11_9_11_gap_2",
-        "viaExitId": "edge:north:9_11_10_11_gap_2",
+        "viaExitId": "edge:north:9_11_10_11",
         "mechanism": "edge",
         "direction": "south",
         "requires": []
@@ -2773,7 +2773,7 @@
       {
         "toRoom": "11_11",
         "exitId": "edge:north:10_11_11_11_gap_1",
-        "viaExitId": "edge:south:11_11_10_11_gap_1",
+        "viaExitId": "edge:south:11_11_10_11",
         "mechanism": "edge",
         "direction": "north",
         "requires": []
@@ -2781,7 +2781,7 @@
       {
         "toRoom": "11_11",
         "exitId": "edge:north:10_11_11_11_gap_2",
-        "viaExitId": "edge:south:11_11_10_11_gap_2",
+        "viaExitId": "edge:south:11_11_10_11",
         "mechanism": "edge",
         "direction": "north",
         "requires": []
@@ -2889,7 +2889,7 @@
       {
         "toRoom": "9_22",
         "exitId": "edge:south:10_22_9_22_gap_1",
-        "viaExitId": "edge:north:9_22_10_22_gap_1",
+        "viaExitId": "edge:north:9_22_10_22",
         "mechanism": "edge",
         "direction": "south",
         "requires": []
@@ -2951,7 +2951,7 @@
       {
         "toRoom": "11_10",
         "exitId": "edge:east:11_9_11_10",
-        "viaExitId": "edge:west:11_10_11_9_gap_1",
+        "viaExitId": "edge:west:11_10_11_9",
         "mechanism": "edge",
         "direction": "east",
         "requires": []
@@ -2977,7 +2977,7 @@
       {
         "toRoom": "10_11",
         "exitId": "edge:south:11_11_10_11_gap_1",
-        "viaExitId": "edge:north:10_11_11_11_gap_1",
+        "viaExitId": "edge:north:10_11_11_11",
         "mechanism": "edge",
         "direction": "south",
         "requires": []
@@ -2985,7 +2985,7 @@
       {
         "toRoom": "10_11",
         "exitId": "edge:south:11_11_10_11_gap_2",
-        "viaExitId": "edge:north:10_11_11_11_gap_2",
+        "viaExitId": "edge:north:10_11_11_11",
         "mechanism": "edge",
         "direction": "south",
         "requires": []
@@ -3001,7 +3001,7 @@
       {
         "toRoom": "12_11",
         "exitId": "edge:north:11_11_12_11_gap_1",
-        "viaExitId": "edge:south:12_11_11_11_gap_1",
+        "viaExitId": "edge:south:12_11_11_11",
         "mechanism": "edge",
         "direction": "north",
         "requires": []
@@ -3009,7 +3009,7 @@
       {
         "toRoom": "12_11",
         "exitId": "edge:north:11_11_12_11_gap_2",
-        "viaExitId": "edge:south:12_11_11_11_gap_2",
+        "viaExitId": "edge:south:12_11_11_11",
         "mechanism": "edge",
         "direction": "north",
         "requires": []
@@ -3159,7 +3159,7 @@
       {
         "toRoom": "10_20",
         "exitId": "edge:south:11_20_10_20",
-        "viaExitId": "edge:north:10_20_11_20_gap_1",
+        "viaExitId": "edge:north:10_20_11_20",
         "mechanism": "edge",
         "direction": "south",
         "requires": []
@@ -3175,7 +3175,7 @@
       {
         "toRoom": "11_19",
         "exitId": "edge:west:11_20_11_19",
-        "viaExitId": "edge:east:11_19_11_20_gap_2",
+        "viaExitId": "edge:east:11_19_11_20",
         "mechanism": "edge",
         "direction": "west",
         "requires": []
@@ -3183,7 +3183,7 @@
       {
         "toRoom": "11_19",
         "exitId": "edge:west:11_20_11_19_gap_1",
-        "viaExitId": "edge:east:11_19_11_20_gap_1",
+        "viaExitId": "edge:east:11_19_11_20",
         "mechanism": "edge",
         "direction": "west",
         "requires": []
@@ -3305,7 +3305,7 @@
       {
         "toRoom": "12_11",
         "exitId": "edge:west:12_12_12_11_gap_1",
-        "viaExitId": "edge:east:12_11_12_12_gap_1",
+        "viaExitId": "edge:east:12_11_12_12",
         "mechanism": "edge",
         "direction": "west",
         "requires": []
@@ -3677,7 +3677,7 @@
       {
         "toRoom": "15_23",
         "exitId": "edge:north:14_23_15_23",
-        "viaExitId": "edge:south:15_23_14_23_gap_2",
+        "viaExitId": "edge:south:15_23_14_23",
         "mechanism": "edge",
         "direction": "north",
         "requires": []
@@ -3685,7 +3685,7 @@
       {
         "toRoom": "15_23",
         "exitId": "edge:north:14_23_15_23_gap_1",
-        "viaExitId": "edge:south:15_23_14_23_gap_1",
+        "viaExitId": "edge:south:15_23_14_23",
         "mechanism": "edge",
         "direction": "north",
         "requires": []
@@ -3727,7 +3727,7 @@
       {
         "toRoom": "14_25",
         "exitId": "edge:east:14_24_14_25_gap_1",
-        "viaExitId": "edge:west:14_25_14_24_gap_1",
+        "viaExitId": "edge:west:14_25_14_24",
         "mechanism": "edge",
         "direction": "east",
         "requires": []
@@ -3735,7 +3735,7 @@
       {
         "toRoom": "14_25",
         "exitId": "edge:east:14_24_14_25_gap_2",
-        "viaExitId": "edge:west:14_25_14_24_gap_2",
+        "viaExitId": "edge:west:14_25_14_24",
         "mechanism": "edge",
         "direction": "east",
         "requires": []
@@ -3743,7 +3743,7 @@
       {
         "toRoom": "14_25",
         "exitId": "edge:east:14_24_14_25_gap_3",
-        "viaExitId": "edge:west:14_25_14_24_gap_3",
+        "viaExitId": "edge:west:14_25_14_24",
         "mechanism": "edge",
         "direction": "east",
         "requires": []
@@ -3751,7 +3751,7 @@
       {
         "toRoom": "14_25",
         "exitId": "edge:east:14_24_14_25_gap_4",
-        "viaExitId": "edge:west:14_25_14_24_gap_4",
+        "viaExitId": "edge:west:14_25_14_24",
         "mechanism": "edge",
         "direction": "east",
         "requires": []
@@ -3777,7 +3777,7 @@
       {
         "toRoom": "14_24",
         "exitId": "edge:west:14_25_14_24_gap_1",
-        "viaExitId": "edge:east:14_24_14_25_gap_1",
+        "viaExitId": "edge:east:14_24_14_25",
         "mechanism": "edge",
         "direction": "west",
         "requires": []
@@ -3785,7 +3785,7 @@
       {
         "toRoom": "14_24",
         "exitId": "edge:west:14_25_14_24_gap_2",
-        "viaExitId": "edge:east:14_24_14_25_gap_2",
+        "viaExitId": "edge:east:14_24_14_25",
         "mechanism": "edge",
         "direction": "west",
         "requires": []
@@ -3793,7 +3793,7 @@
       {
         "toRoom": "14_24",
         "exitId": "edge:west:14_25_14_24_gap_3",
-        "viaExitId": "edge:east:14_24_14_25_gap_3",
+        "viaExitId": "edge:east:14_24_14_25",
         "mechanism": "edge",
         "direction": "west",
         "requires": []
@@ -3801,7 +3801,7 @@
       {
         "toRoom": "14_24",
         "exitId": "edge:west:14_25_14_24_gap_4",
-        "viaExitId": "edge:east:14_24_14_25_gap_4",
+        "viaExitId": "edge:east:14_24_14_25",
         "mechanism": "edge",
         "direction": "west",
         "requires": []
@@ -3955,7 +3955,7 @@
       {
         "toRoom": "14_23",
         "exitId": "edge:south:15_23_14_23",
-        "viaExitId": "edge:north:14_23_15_23_gap_2",
+        "viaExitId": "edge:north:14_23_15_23",
         "mechanism": "edge",
         "direction": "south",
         "requires": []
@@ -3963,7 +3963,7 @@
       {
         "toRoom": "14_23",
         "exitId": "edge:south:15_23_14_23_gap_1",
-        "viaExitId": "edge:north:14_23_15_23_gap_1",
+        "viaExitId": "edge:north:14_23_15_23",
         "mechanism": "edge",
         "direction": "south",
         "requires": []
@@ -4155,7 +4155,7 @@
       {
         "toRoom": "15_24",
         "exitId": "edge:south:16_24_15_24",
-        "viaExitId": "edge:north:15_24_16_24_gap_1",
+        "viaExitId": "edge:north:15_24_16_24",
         "mechanism": "edge",
         "direction": "south",
         "requires": []
@@ -4179,7 +4179,7 @@
       {
         "toRoom": "17_24",
         "exitId": "edge:north:16_24_17_24_gap_1",
-        "viaExitId": "edge:south:17_24_16_24_gap_1",
+        "viaExitId": "edge:south:17_24_16_24",
         "mechanism": "edge",
         "direction": "north",
         "requires": []
@@ -4205,7 +4205,7 @@
       {
         "toRoom": "15_25",
         "exitId": "edge:south:16_25_15_25_gap_1",
-        "viaExitId": "edge:north:15_25_16_25_gap_1",
+        "viaExitId": "edge:north:15_25_16_25",
         "mechanism": "edge",
         "direction": "south",
         "requires": []
@@ -4267,7 +4267,7 @@
       {
         "toRoom": "18_15",
         "exitId": "edge:north:17_15_18_15_gap_1",
-        "viaExitId": "edge:south:18_15_17_15_gap_1",
+        "viaExitId": "edge:south:18_15_17_15",
         "mechanism": "edge",
         "direction": "north",
         "requires": []
@@ -4361,7 +4361,7 @@
       {
         "toRoom": "16_24",
         "exitId": "edge:south:17_24_16_24_gap_1",
-        "viaExitId": "edge:north:16_24_17_24_gap_1",
+        "viaExitId": "edge:north:16_24_17_24",
         "mechanism": "edge",
         "direction": "south",
         "requires": []
@@ -4377,7 +4377,7 @@
       {
         "toRoom": "17_25",
         "exitId": "edge:east:17_24_17_25_gap_1",
-        "viaExitId": "edge:west:17_25_17_24_gap_1",
+        "viaExitId": "edge:west:17_25_17_24",
         "mechanism": "edge",
         "direction": "east",
         "requires": []
@@ -4385,7 +4385,7 @@
       {
         "toRoom": "17_25",
         "exitId": "edge:east:17_24_17_25_gap_2",
-        "viaExitId": "edge:west:17_25_17_24_gap_2",
+        "viaExitId": "edge:west:17_25_17_24",
         "mechanism": "edge",
         "direction": "east",
         "requires": []
@@ -4419,7 +4419,7 @@
       {
         "toRoom": "17_24",
         "exitId": "edge:west:17_25_17_24_gap_1",
-        "viaExitId": "edge:east:17_24_17_25_gap_1",
+        "viaExitId": "edge:east:17_24_17_25",
         "mechanism": "edge",
         "direction": "west",
         "requires": []
@@ -4427,7 +4427,7 @@
       {
         "toRoom": "17_24",
         "exitId": "edge:west:17_25_17_24_gap_2",
-        "viaExitId": "edge:east:17_24_17_25_gap_2",
+        "viaExitId": "edge:east:17_24_17_25",
         "mechanism": "edge",
         "direction": "west",
         "requires": []
@@ -4473,7 +4473,7 @@
       {
         "toRoom": "17_15",
         "exitId": "edge:south:18_15_17_15_gap_1",
-        "viaExitId": "edge:north:17_15_18_15_gap_1",
+        "viaExitId": "edge:north:17_15_18_15",
         "mechanism": "edge",
         "direction": "south",
         "requires": []
@@ -4519,7 +4519,7 @@
       {
         "toRoom": "19_17",
         "exitId": "edge:north:18_17_19_17_gap_1",
-        "viaExitId": "edge:south:19_17_18_17_gap_1",
+        "viaExitId": "edge:south:19_17_18_17",
         "mechanism": "edge",
         "direction": "north",
         "requires": []
@@ -4721,7 +4721,7 @@
       {
         "toRoom": "18_17",
         "exitId": "edge:south:19_17_18_17_gap_1",
-        "viaExitId": "edge:north:18_17_19_17_gap_1",
+        "viaExitId": "edge:north:18_17_19_17",
         "mechanism": "edge",
         "direction": "south",
         "requires": []
@@ -4755,7 +4755,7 @@
       {
         "toRoom": "18_18",
         "exitId": "edge:south:19_18_18_18_gap_1",
-        "viaExitId": "edge:north:18_18_19_18_gap_1",
+        "viaExitId": "edge:north:18_18_19_18",
         "mechanism": "edge",
         "direction": "south",
         "requires": []
@@ -4807,7 +4807,7 @@
       {
         "toRoom": "18_21",
         "exitId": "edge:south:19_21_18_21_gap_1",
-        "viaExitId": "edge:north:18_21_19_21_gap_1",
+        "viaExitId": "edge:north:18_21_19_21",
         "mechanism": "edge",
         "direction": "south",
         "requires": []
@@ -4891,7 +4891,7 @@
       {
         "toRoom": "21_18",
         "exitId": "edge:north:20_18_21_18",
-        "viaExitId": "edge:south:21_18_20_18_gap_2",
+        "viaExitId": "edge:south:21_18_20_18",
         "mechanism": "edge",
         "direction": "north",
         "requires": []
@@ -4907,7 +4907,7 @@
       {
         "toRoom": "21_18",
         "exitId": "edge:north:20_18_21_18_gap_2",
-        "viaExitId": "edge:south:21_18_20_18_gap_1",
+        "viaExitId": "edge:south:21_18_20_18",
         "mechanism": "edge",
         "direction": "north",
         "requires": []
@@ -4987,7 +4987,7 @@
       {
         "toRoom": "20_18",
         "exitId": "edge:south:21_18_20_18",
-        "viaExitId": "edge:north:20_18_21_18_gap_1",
+        "viaExitId": "edge:north:20_18_21_18",
         "mechanism": "edge",
         "direction": "south",
         "requires": []
@@ -4995,7 +4995,7 @@
       {
         "toRoom": "20_18",
         "exitId": "edge:south:21_18_20_18_gap_1",
-        "viaExitId": "edge:north:20_18_21_18_gap_2",
+        "viaExitId": "edge:north:20_18_21_18",
         "mechanism": "edge",
         "direction": "south",
         "requires": []
@@ -5399,7 +5399,7 @@
       {
         "toRoom": "3_25",
         "exitId": "edge:east:3_24_3_25_gap_1",
-        "viaExitId": "edge:west:3_25_3_24_gap_1",
+        "viaExitId": "edge:west:3_25_3_24",
         "mechanism": "edge",
         "direction": "east",
         "requires": []
@@ -5425,7 +5425,7 @@
       {
         "toRoom": "3_24",
         "exitId": "edge:west:3_25_3_24_gap_1",
-        "viaExitId": "edge:east:3_24_3_25_gap_1",
+        "viaExitId": "edge:east:3_24_3_25",
         "mechanism": "edge",
         "direction": "west",
         "requires": []
@@ -5451,7 +5451,7 @@
       {
         "toRoom": "4_26",
         "exitId": "edge:north:3_26_4_26_gap_1",
-        "viaExitId": "edge:south:4_26_3_26_gap_1",
+        "viaExitId": "edge:south:4_26_3_26",
         "mechanism": "edge",
         "direction": "north",
         "requires": []
@@ -5459,7 +5459,7 @@
       {
         "toRoom": "4_26",
         "exitId": "edge:north:3_26_4_26_gap_2",
-        "viaExitId": "edge:south:4_26_3_26_gap_4",
+        "viaExitId": "edge:south:4_26_3_26",
         "mechanism": "edge",
         "direction": "north",
         "requires": []
@@ -5467,7 +5467,7 @@
       {
         "toRoom": "4_26",
         "exitId": "edge:north:3_26_4_26_gap_3",
-        "viaExitId": "edge:south:4_26_3_26_gap_2",
+        "viaExitId": "edge:south:4_26_3_26",
         "mechanism": "edge",
         "direction": "north",
         "requires": []
@@ -5475,7 +5475,7 @@
       {
         "toRoom": "4_26",
         "exitId": "edge:north:3_26_4_26_gap_4",
-        "viaExitId": "edge:south:4_26_3_26_gap_3",
+        "viaExitId": "edge:south:4_26_3_26",
         "mechanism": "edge",
         "direction": "north",
         "requires": []
@@ -5501,7 +5501,7 @@
       {
         "toRoom": "5_10",
         "exitId": "edge:east:5_9_5_10",
-        "viaExitId": "edge:west:5_10_5_9_gap_2",
+        "viaExitId": "edge:west:5_10_5_9",
         "mechanism": "edge",
         "direction": "east",
         "requires": []
@@ -5517,7 +5517,7 @@
       {
         "toRoom": "5_10",
         "exitId": "edge:east:5_9_5_10_gap_2",
-        "viaExitId": "edge:west:5_10_5_9_gap_1",
+        "viaExitId": "edge:west:5_10_5_9",
         "mechanism": "edge",
         "direction": "east",
         "requires": []
@@ -5535,7 +5535,7 @@
       {
         "toRoom": "5_10",
         "exitId": "edge:west:5_11_5_10",
-        "viaExitId": "edge:east:5_10_5_11_gap_2",
+        "viaExitId": "edge:east:5_10_5_11",
         "mechanism": "edge",
         "direction": "west",
         "requires": []
@@ -5551,7 +5551,7 @@
       {
         "toRoom": "5_10",
         "exitId": "edge:west:5_11_5_10_gap_2",
-        "viaExitId": "edge:east:5_10_5_11_gap_1",
+        "viaExitId": "edge:east:5_10_5_11",
         "mechanism": "edge",
         "direction": "west",
         "requires": []
@@ -5746,7 +5746,7 @@
       {
         "toRoom": "9_10",
         "exitId": "edge:north:8_10_9_10",
-        "viaExitId": "edge:south:9_10_8_10_gap_1",
+        "viaExitId": "edge:south:9_10_8_10",
         "mechanism": "edge",
         "direction": "north",
         "requires": []
@@ -5778,7 +5778,7 @@
       {
         "toRoom": "8_11",
         "exitId": "edge:east:8_10_8_11_gap_1",
-        "viaExitId": "edge:west:8_11_8_10_gap_1",
+        "viaExitId": "edge:west:8_11_8_10",
         "mechanism": "edge",
         "direction": "east",
         "requires": []
@@ -5786,7 +5786,7 @@
       {
         "toRoom": "8_11",
         "exitId": "edge:east:8_10_8_11_gap_2",
-        "viaExitId": "edge:west:8_11_8_10_gap_2",
+        "viaExitId": "edge:west:8_11_8_10",
         "mechanism": "edge",
         "direction": "east",
         "requires": []
@@ -5796,7 +5796,7 @@
       {
         "toRoom": "9_11",
         "exitId": "edge:north:8_11_9_11",
-        "viaExitId": "edge:south:9_11_8_11_gap_2",
+        "viaExitId": "edge:south:9_11_8_11",
         "mechanism": "edge",
         "direction": "north",
         "requires": []
@@ -5812,7 +5812,7 @@
       {
         "toRoom": "9_11",
         "exitId": "edge:north:8_11_9_11_gap_2",
-        "viaExitId": "edge:south:9_11_8_11_gap_1",
+        "viaExitId": "edge:south:9_11_8_11",
         "mechanism": "edge",
         "direction": "north",
         "requires": []
@@ -5828,7 +5828,7 @@
       {
         "toRoom": "8_10",
         "exitId": "edge:west:8_11_8_10_gap_1",
-        "viaExitId": "edge:east:8_10_8_11_gap_1",
+        "viaExitId": "edge:east:8_10_8_11",
         "mechanism": "edge",
         "direction": "west",
         "requires": []
@@ -5836,7 +5836,7 @@
       {
         "toRoom": "8_10",
         "exitId": "edge:west:8_11_8_10_gap_2",
-        "viaExitId": "edge:east:8_10_8_11_gap_2",
+        "viaExitId": "edge:east:8_10_8_11",
         "mechanism": "edge",
         "direction": "west",
         "requires": []
@@ -5862,7 +5862,7 @@
       {
         "toRoom": "9_18",
         "exitId": "edge:north:8_18_9_18_gap_1",
-        "viaExitId": "edge:south:9_18_8_18_gap_1",
+        "viaExitId": "edge:south:9_18_8_18",
         "mechanism": "edge",
         "direction": "north",
         "requires": []
@@ -6558,7 +6558,7 @@
       {
         "toRoom": "16_24",
         "exitId": "edge:north:15_24_16_24",
-        "viaExitId": "edge:south:16_24_15_24_gap_1",
+        "viaExitId": "edge:south:16_24_15_24",
         "mechanism": "edge",
         "direction": "north",
         "requires": []
@@ -6592,7 +6592,7 @@
       {
         "toRoom": "16_25",
         "exitId": "edge:north:15_25_16_25_gap_1",
-        "viaExitId": "edge:south:16_25_15_25_gap_1",
+        "viaExitId": "edge:south:16_25_15_25",
         "mechanism": "edge",
         "direction": "north",
         "requires": []
@@ -6750,7 +6750,7 @@
       {
         "toRoom": "19_18",
         "exitId": "edge:north:18_18_19_18_gap_1",
-        "viaExitId": "edge:south:19_18_18_18_gap_1",
+        "viaExitId": "edge:south:19_18_18_18",
         "mechanism": "edge",
         "direction": "north",
         "requires": []
@@ -6776,7 +6776,7 @@
       {
         "toRoom": "19_21",
         "exitId": "edge:north:18_21_19_21_gap_1",
-        "viaExitId": "edge:south:19_21_18_21_gap_1",
+        "viaExitId": "edge:south:19_21_18_21",
         "mechanism": "edge",
         "direction": "north",
         "requires": []
@@ -6868,7 +6868,7 @@
       {
         "toRoom": "21_13",
         "exitId": "edge:west:21_14_21_13",
-        "viaExitId": "edge:east:21_13_21_14_gap_1",
+        "viaExitId": "edge:east:21_13_21_14",
         "mechanism": "edge",
         "direction": "west",
         "requires": []
@@ -7002,7 +7002,7 @@
       {
         "toRoom": "5_9",
         "exitId": "edge:west:5_10_5_9",
-        "viaExitId": "edge:east:5_9_5_10_gap_1",
+        "viaExitId": "edge:east:5_9_5_10",
         "mechanism": "edge",
         "direction": "west",
         "requires": []
@@ -7010,7 +7010,7 @@
       {
         "toRoom": "5_9",
         "exitId": "edge:west:5_10_5_9_gap_1",
-        "viaExitId": "edge:east:5_9_5_10_gap_2",
+        "viaExitId": "edge:east:5_9_5_10",
         "mechanism": "edge",
         "direction": "west",
         "requires": []
@@ -7026,7 +7026,7 @@
       {
         "toRoom": "5_11",
         "exitId": "edge:east:5_10_5_11",
-        "viaExitId": "edge:west:5_11_5_10_gap_1",
+        "viaExitId": "edge:west:5_11_5_10",
         "mechanism": "edge",
         "direction": "east",
         "requires": []
@@ -7034,7 +7034,7 @@
       {
         "toRoom": "5_11",
         "exitId": "edge:east:5_10_5_11_gap_1",
-        "viaExitId": "edge:west:5_11_5_10_gap_2",
+        "viaExitId": "edge:west:5_11_5_10",
         "mechanism": "edge",
         "direction": "east",
         "requires": []
@@ -7072,7 +7072,7 @@
       {
         "toRoom": "12_16",
         "exitId": "edge:west:12_17_12_16",
-        "viaExitId": "edge:east:12_16_12_17_gap_1",
+        "viaExitId": "edge:east:12_16_12_17",
         "mechanism": "edge",
         "direction": "west",
         "requires": []
@@ -7200,7 +7200,7 @@
       {
         "toRoom": "21_14",
         "exitId": "edge:east:21_13_21_14",
-        "viaExitId": "edge:west:21_14_21_13_gap_1",
+        "viaExitId": "edge:west:21_14_21_13",
         "mechanism": "edge",
         "direction": "east",
         "requires": []
@@ -7248,7 +7248,7 @@
       {
         "toRoom": "11_20",
         "exitId": "edge:east:11_19_11_20",
-        "viaExitId": "edge:west:11_20_11_19_gap_2",
+        "viaExitId": "edge:west:11_20_11_19",
         "mechanism": "edge",
         "direction": "east",
         "requires": []
@@ -7256,7 +7256,7 @@
       {
         "toRoom": "11_20",
         "exitId": "edge:east:11_19_11_20_gap_1",
-        "viaExitId": "edge:west:11_20_11_19_gap_1",
+        "viaExitId": "edge:west:11_20_11_19",
         "mechanism": "edge",
         "direction": "east",
         "requires": []
@@ -7575,6 +7575,29 @@
       "room": "20_20",
       "requires": [
         [
+          "area:2"
+        ]
+      ],
+      "receive": [
+        "loot:venom",
+        "loot:bClaw"
+      ]
+    },
+    {
+      "room": "13_25",
+      "requires": [
+        [
+          "area:13"
+        ]
+      ],
+      "receive": [
+        "loot:mHat"
+      ]
+    },
+    {
+      "room": "20_20",
+      "requires": [
+        [
           "area:4"
         ]
       ],
@@ -7672,7 +7695,6 @@
         "loot:sFrag",
         "loot:oArm",
         "loot:tBand",
-        "loot:venom",
         "loot:vAsh",
         "loot:wPelt"
       ]
@@ -7789,7 +7811,7 @@
         ]
       ],
       "receive": [
-        "food:cherry"
+        "food:cherries"
       ]
     },
     {
@@ -8188,7 +8210,8 @@
       "requires": [
         [
           "skill:reveal",
-          "entrance.east0"
+          "entrance.west0",
+          "permit:bomb"
         ]
       ],
       "receive": [
@@ -8471,18 +8494,6 @@
       ]
     },
     {
-      "room": "500_501",
-      "requires": [
-        [
-          "weapon:baneBlade",
-          "skill:reveal"
-        ]
-      ],
-      "receive": [
-        "quest:alpha blade.1"
-      ]
-    },
-    {
       "room": "4_13",
       "requires": [
         [
@@ -8659,6 +8670,17 @@
       "receive": [
         "quest:gTree.6",
         "item:gold#50"
+      ]
+    },
+    {
+      "room": "14_20",
+      "requires": [
+        [
+          "quest:gTree.6"
+        ]
+      ],
+      "receive": [
+        "quest:gTree.7"
       ]
     },
     {
@@ -8959,7 +8981,7 @@
         [
           "quest:gTree.16",
           "permit:bomb",
-          "!flag:7_11 boss dead"
+          "flag:7_11 boss dead"
         ]
       ],
       "receive": [
@@ -8975,7 +8997,7 @@
       ],
       "receive": [
         "quest:gTree.18",
-        "permit:shadowsoul entrance"
+        "permit:shadowsoulEntrance"
       ]
     },
     {
@@ -9045,7 +9067,7 @@
       "room": "24_9",
       "requires": [
         [
-          "quest:gTree.454565"
+          "quest:gTree.22"
         ]
       ],
       "receive": [
@@ -9086,30 +9108,6 @@
       ],
       "receive": [
         "quest:aSword.1"
-      ]
-    },
-    {
-      "room": "14_18",
-      "requires": [
-        [
-          "quest:aSword.1",
-          "weapon:baneBlade"
-        ]
-      ],
-      "receive": [
-        "quest:aSword.2"
-      ]
-    },
-    {
-      "room": "500_501",
-      "requires": [
-        [
-          "quest:aSword.2",
-          "skill:reveal"
-        ]
-      ],
-      "receive": [
-        "quest:aSword.3"
       ]
     },
     {
@@ -9484,8 +9482,7 @@
           "quest:rings.13",
           "loot:sFrag#5",
           "loot:dScale#3",
-          "loot:fBone#10",
-          "?misc:geomana"
+          "loot:fBone#10"
         ]
       ],
       "receive": [
@@ -9557,8 +9554,7 @@
         ]
       ],
       "receive": [
-        "quest:rings.13",
-        "?misc:geomana"
+        "quest:rings.13"
       ]
     },
     {
@@ -9568,25 +9564,6 @@
       ],
       "receive": [
         "item:medallions"
-      ]
-    },
-    {
-      "room": "13_14",
-      "requires": [
-        [
-          "magic:fire.1",
-          "quest:?",
-          "entrance.east0"
-        ],
-        [
-          "magic:fire.1",
-          "quest:?",
-          "entrance.north0",
-          "permit:bomb"
-        ]
-      ],
-      "receive": [
-        "???"
       ]
     },
     {
@@ -9666,7 +9643,7 @@
       "requires": [
         [
           "item:key#1",
-          "entrance.south2"
+          "entrance.east2"
         ]
       ],
       "receive": [
@@ -9702,9 +9679,9 @@
       "room": "15_18",
       "requires": [
         [
-          "misc:blue crystal#1",
+          "misc:blue crystal",
           "permit:bomb.2",
-          "quest:gTree.?"
+          "quest:gTree.10"
         ]
       ],
       "receive": [
@@ -9793,14 +9770,15 @@
       ],
       "receive": [
         "item:gold#100",
-        "food:gingerBread#50"
+        "food:gingerBread#50",
+        "item:gold#Enum.Craft.emerald"
       ]
     },
     {
       "room": "16_15",
       "requires": [
         [
-          "misc:blue crystal#1"
+          "misc:blue crystal"
         ]
       ],
       "receive": [
@@ -10004,11 +9982,11 @@
       "room": "12_12",
       "requires": [
         [
-          "misc:blue crystal#1",
+          "misc:blue crystal",
           "entrance.east1"
         ],
         [
-          "misc:blue crystal#1",
+          "misc:blue crystal",
           "entrance.south0"
         ]
       ],
@@ -10249,7 +10227,7 @@
         ]
       ],
       "receive": [
-        "food:cherry#10"
+        "food:cherries#10"
       ]
     },
     {
@@ -10538,11 +10516,7 @@
     },
     {
       "room": "15_17",
-      "requires": [
-        [
-          "quest:hWater.0"
-        ]
-      ],
+      "requires": [],
       "receive": [
         "quest:hWater.1"
       ]
@@ -10612,6 +10586,13 @@
       ],
       "receive": [
         "quest:mChal.3"
+      ]
+    },
+    {
+      "room": "19_16",
+      "requires": [],
+      "receive": [
+        "quest:access.1"
       ]
     },
     {
@@ -10747,6 +10728,17 @@
       ]
     },
     {
+      "room": "10_12",
+      "requires": [
+        [
+          "quest:oMan.17"
+        ]
+      ],
+      "receive": [
+        "quest:oMan.18"
+      ]
+    },
+    {
       "room": "13_14",
       "requires": [
         [
@@ -10769,6 +10761,17 @@
       ]
     },
     {
+      "room": "11_16",
+      "requires": [
+        [
+          "quest:dream.7"
+        ]
+      ],
+      "receive": [
+        "quest:dream.8"
+      ]
+    },
+    {
       "room": "10_10",
       "requires": [
         [
@@ -10777,6 +10780,33 @@
       ],
       "receive": [
         "quest:dream.9"
+      ]
+    },
+    {
+      "room": "10_10",
+      "requires": [
+        [
+          "quest:dream.9"
+        ]
+      ],
+      "receive": [
+        "quest:dream.10"
+      ]
+    },
+    {
+      "room": "10_10",
+      "requires": [
+        [
+          "quest:dream.10",
+          "entrance.north0"
+        ],
+        [
+          "quest:dream.10",
+          "entrance.west0"
+        ]
+      ],
+      "receive": [
+        "quest:dream.11"
       ]
     },
     {
@@ -10792,11 +10822,7 @@
     },
     {
       "room": "100_100",
-      "requires": [
-        [
-          "quest:isles.0"
-        ]
-      ],
+      "requires": [],
       "receive": [
         "quest:isles.1"
       ]
@@ -10854,6 +10880,21 @@
       ],
       "receive": [
         "quest:isles.19"
+      ]
+    },
+    {
+      "room": "4_26",
+      "requires": [
+        [
+          "quest:isles.19",
+          "area:17",
+          "area:6",
+          "area:9",
+          "area:2"
+        ]
+      ],
+      "receive": [
+        "quest:isles.22"
       ]
     },
     {
@@ -10923,6 +10964,17 @@
       ]
     },
     {
+      "room": "9.11_20",
+      "requires": [
+        [
+          "quest:isles.6"
+        ]
+      ],
+      "receive": [
+        "quest:isles.7"
+      ]
+    },
+    {
       "room": "300_300",
       "requires": [
         [
@@ -10986,6 +11038,28 @@
       ],
       "receive": [
         "quest:isles.12"
+      ]
+    },
+    {
+      "room": "9.11_20",
+      "requires": [
+        [
+          "quest:isles.12"
+        ]
+      ],
+      "receive": [
+        "quest:isles.13"
+      ]
+    },
+    {
+      "room": "5_20",
+      "requires": [
+        [
+          "quest:isles.13"
+        ]
+      ],
+      "receive": [
+        "quest:isles.14"
       ]
     },
     {
@@ -11066,6 +11140,13 @@
       ]
     },
     {
+      "room": "11_23",
+      "requires": [],
+      "receive": [
+        "quest:dream.1"
+      ]
+    },
+    {
       "room": "13_17",
       "requires": [
         [
@@ -11088,6 +11169,18 @@
       ]
     },
     {
+      "room": "20_20",
+      "requires": [
+        [
+          "quest:dream.12",
+          "area:4"
+        ]
+      ],
+      "receive": [
+        "quest:dream.13"
+      ]
+    },
+    {
       "room": "13_17",
       "requires": [
         [
@@ -11107,136 +11200,6 @@
       ],
       "receive": [
         "quest:dream.15"
-      ]
-    },
-    {
-      "room": "500_501",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "quest:aSword.1"
-      ]
-    },
-    {
-      "room": "500_501",
-      "requires": [
-        [
-          "quest:aSword.12"
-        ]
-      ],
-      "receive": [
-        "quest:aSword.13"
-      ]
-    },
-    {
-      "room": "500_501",
-      "requires": [
-        [
-          "quest:aSword.6"
-        ]
-      ],
-      "receive": [
-        "quest:aSword.7"
-      ]
-    },
-    {
-      "room": "500_501",
-      "requires": [
-        [
-          "quest:aSword.4"
-        ]
-      ],
-      "receive": [
-        "quest:aSword.5"
-      ]
-    },
-    {
-      "room": "19_16",
-      "requires": [
-        [
-          "quest:aSword.3"
-        ]
-      ],
-      "receive": [
-        "quest:aSword.4"
-      ]
-    },
-    {
-      "room": "20_17",
-      "requires": [
-        [
-          "quest:aSword.5"
-        ]
-      ],
-      "receive": [
-        "quest:aSword.6"
-      ]
-    },
-    {
-      "room": "500_501",
-      "requires": [
-        [
-          "quest:aSword.7"
-        ]
-      ],
-      "receive": [
-        "quest:aSword.11"
-      ]
-    },
-    {
-      "room": "500_501",
-      "requires": [
-        [
-          "quest:aSword.57"
-        ]
-      ],
-      "receive": [
-        "quest:aSword.58"
-      ]
-    },
-    {
-      "room": "500_501",
-      "requires": [
-        [
-          "quest:aSword.51"
-        ]
-      ],
-      "receive": [
-        "quest:aSword.52"
-      ]
-    },
-    {
-      "room": "500_501",
-      "requires": [
-        [
-          "quest:aSword.45"
-        ]
-      ],
-      "receive": [
-        "quest:aSword.46"
-      ]
-    },
-    {
-      "room": "500_501",
-      "requires": [
-        [
-          "quest:aSword.39"
-        ]
-      ],
-      "receive": [
-        "quest:aSword.40"
-      ]
-    },
-    {
-      "room": "500_501",
-      "requires": [
-        [
-          "quest:aSword.23"
-        ]
-      ],
-      "receive": [
-        "quest:aSword.24"
       ]
     },
     {
@@ -11270,6 +11233,29 @@
       ],
       "receive": [
         "quest:oMan.9"
+      ]
+    },
+    {
+      "room": "18_15",
+      "requires": [
+        [
+          "quest:oMan.7"
+        ]
+      ],
+      "receive": [
+        "quest:oMan.8"
+      ]
+    },
+    {
+      "room": "10_23",
+      "requires": [
+        [
+          "quest:oMan.9",
+          "magic:cloud"
+        ]
+      ],
+      "receive": [
+        "quest:oMan.10"
       ]
     },
     {
@@ -11744,17 +11730,6 @@
       ]
     },
     {
-      "room": "500_501",
-      "requires": [
-        [
-          "weapon:baneBlade"
-        ]
-      ],
-      "receive": [
-        "weapon:aSword"
-      ]
-    },
-    {
       "room": "200_200",
       "requires": [
         [
@@ -11966,13 +11941,6 @@
       ]
     },
     {
-      "room": "19_18",
-      "requires": [],
-      "receive": [
-        "rubies"
-      ]
-    },
-    {
       "room": "19_20",
       "requires": [
         [
@@ -11991,7 +11959,8 @@
         ]
       ],
       "receive": [
-        "skill:tough"
+        "skill:tough",
+        "quest:isles.23"
       ]
     },
     {
@@ -14777,7 +14746,8 @@
         ]
       ],
       "receive": [
-        "misc:str up npc.1"
+        "misc:str up npc.1",
+        "flag:str up npc counter.1"
       ]
     },
     {
@@ -14785,11 +14755,13 @@
       "requires": [
         [
           "area:str up npc",
-          "loot:tBand#15"
+          "loot:tBand#15",
+          "flag:str up npc counter.1"
         ]
       ],
       "receive": [
-        "misc:str up npc.2"
+        "misc:str up npc.2",
+        "flag:str up npc counter.2"
       ]
     },
     {
@@ -14797,11 +14769,13 @@
       "requires": [
         [
           "area:str up npc",
-          "loot:mStaff#12"
+          "loot:mStaff#12",
+          "flag:str up npc counter.2"
         ]
       ],
       "receive": [
-        "misc:str up npc.3"
+        "misc:str up npc.3",
+        "flag:str up npc counter.3"
       ]
     },
     {
@@ -14809,11 +14783,13 @@
       "requires": [
         [
           "area:str up npc",
-          "loot:fBone#10"
+          "loot:fBone#10",
+          "flag:str up npc counter.3"
         ]
       ],
       "receive": [
-        "misc:str up npc.4"
+        "misc:str up npc.4",
+        "flag:str up npc counter.4"
       ]
     },
     {
@@ -14821,11 +14797,13 @@
       "requires": [
         [
           "area:str up npc",
-          "loot:cFang#15"
+          "loot:cFang#15",
+          "flag:str up npc counter.4"
         ]
       ],
       "receive": [
-        "misc:str up npc.5"
+        "misc:str up npc.5",
+        "flag:str up npc counter.5"
       ]
     },
     {
@@ -14833,11 +14811,13 @@
       "requires": [
         [
           "area:str up npc",
-          "loot:oCoin#50"
+          "loot:oCoin#50",
+          "flag:str up npc counter.5"
         ]
       ],
       "receive": [
-        "misc:str up npc.6"
+        "misc:str up npc.6",
+        "flag:str up npc counter.6"
       ]
     },
     {
@@ -14845,11 +14825,13 @@
       "requires": [
         [
           "area:str up npc",
-          "loot:kCrest#10"
+          "loot:kCrest#10",
+          "flag:str up npc counter.6"
         ]
       ],
       "receive": [
-        "misc:str up npc.7"
+        "misc:str up npc.7",
+        "flag:str up npc counter.7"
       ]
     },
     {
@@ -14857,11 +14839,13 @@
       "requires": [
         [
           "area:str up npc",
-          "loot:dScale#10"
+          "loot:dScale#10",
+          "flag:str up npc counter.7"
         ]
       ],
       "receive": [
-        "misc:str up npc.8"
+        "misc:str up npc.8",
+        "flag:str up npc counter.8"
       ]
     },
     {
@@ -14869,11 +14853,13 @@
       "requires": [
         [
           "area:str up npc",
-          "loot:vHorn#20"
+          "loot:vHorn#20",
+          "flag:str up npc counter.8"
         ]
       ],
       "receive": [
-        "misc:str up npc.9"
+        "misc:str up npc.9",
+        "flag:str up npc counter.9"
       ]
     },
     {
@@ -14881,11 +14867,13 @@
       "requires": [
         [
           "area:str up npc",
-          "item:slamstones#10"
+          "item:slamstones#10",
+          "flag:str up npc counter.9"
         ]
       ],
       "receive": [
-        "misc:str up npc.10"
+        "misc:str up npc.10",
+        "flag:str up npc counter.10"
       ]
     },
     {
@@ -14893,15 +14881,68 @@
       "requires": [
         [
           "area:str up npc",
-          "item:shadowCrest#5"
+          "item:shadowCrest#5",
+          "flag:str up npc counter.10"
         ]
       ],
       "receive": [
-        "misc:str up npc.11"
+        "misc:str up npc.11",
+        "flag:str up npc counter.11"
+      ]
+    },
+    {
+      "room": "4_13",
+      "requires": [
+        []
+      ],
+      "receive": [
+        "area:magic upgrades"
+      ]
+    },
+    {
+      "room": "16_23",
+      "requires": [
+        []
+      ],
+      "receive": [
+        "area:magic upgrades"
+      ]
+    },
+    {
+      "room": "20_20",
+      "requires": [
+        [
+          "area:magic upgrades"
+        ]
+      ],
+      "receive": [
+        "magic:fire.2"
       ]
     }
   ],
   "itemGiveIndex": {
+    "flag:loot:venom": [
+      {
+        "room": "20_20",
+        "raw": "loot:venom"
+      }
+    ],
+    "flag:loot:bClaw": [
+      {
+        "room": "20_20",
+        "raw": "loot:bClaw"
+      }
+    ],
+    "flag:loot:mHat": [
+      {
+        "room": "13_25",
+        "raw": "loot:mHat"
+      },
+      {
+        "room": "20_20",
+        "raw": "loot:mHat"
+      }
+    ],
     "flag:loot:mStaff": [
       {
         "room": "20_20",
@@ -15108,6 +15149,10 @@
         "raw": "item:gold#100"
       },
       {
+        "room": "17_15",
+        "raw": "item:gold#Enum.Craft.emerald"
+      },
+      {
         "room": "10_13",
         "raw": "item:gold#1"
       },
@@ -15228,12 +15273,6 @@
         "raw": "loot:gFeather"
       }
     ],
-    "flag:loot:mHat": [
-      {
-        "room": "20_20",
-        "raw": "loot:mHat"
-      }
-    ],
     "flag:loot:mHorn": [
       {
         "room": "20_20",
@@ -15286,12 +15325,6 @@
       {
         "room": "20_20",
         "raw": "loot:tBand"
-      }
-    ],
-    "flag:loot:venom": [
-      {
-        "room": "20_20",
-        "raw": "loot:venom"
       }
     ],
     "flag:loot:vAsh": [
@@ -15414,14 +15447,22 @@
         "raw": "misc:headstoneSwitch2"
       }
     ],
-    "food:cherry": [
+    "food:cherries": [
       {
         "room": "12_9",
-        "raw": "food:cherry"
+        "raw": "food:cherries"
       },
       {
         "room": "4_24",
-        "raw": "food:cherry#10"
+        "raw": "food:cherries#10"
+      },
+      {
+        "room": "12_9",
+        "raw": "food:cherries"
+      },
+      {
+        "room": "4_24",
+        "raw": "food:cherries"
       }
     ],
     "weapon:warlockStaff": [
@@ -15986,12 +16027,6 @@
         "raw": "weapon:baneBlade"
       }
     ],
-    "quest:alpha blade": [
-      {
-        "room": "500_501",
-        "raw": "quest:alpha blade.1"
-      }
-    ],
     "food:strawberry": [
       {
         "room": "4_13",
@@ -16046,6 +16081,10 @@
       {
         "room": "21_20",
         "raw": "quest:gTree.6"
+      },
+      {
+        "room": "14_20",
+        "raw": "quest:gTree.7"
       },
       {
         "room": "14_18",
@@ -16240,6 +16279,10 @@
         "raw": "quest:oMan.19"
       },
       {
+        "room": "10_12",
+        "raw": "quest:oMan.18"
+      },
+      {
         "room": "15_25",
         "raw": "quest:oMan.14"
       },
@@ -16250,6 +16293,14 @@
       {
         "room": "10_15",
         "raw": "quest:oMan.9"
+      },
+      {
+        "room": "18_15",
+        "raw": "quest:oMan.8"
+      },
+      {
+        "room": "10_23",
+        "raw": "quest:oMan.10"
       },
       {
         "room": "10_15",
@@ -16358,10 +16409,10 @@
         "raw": "flag:7_11 boss dead"
       }
     ],
-    "permit:shadowsoul entrance": [
+    "permit:shadowsoulEntrance": [
       {
         "room": "15_18",
-        "raw": "permit:shadowsoul entrance"
+        "raw": "permit:shadowsoulEntrance"
       }
     ],
     "quest:seeds": [
@@ -16412,62 +16463,6 @@
       {
         "room": "14_18",
         "raw": "quest:aSword.1"
-      },
-      {
-        "room": "14_18",
-        "raw": "quest:aSword.2"
-      },
-      {
-        "room": "500_501",
-        "raw": "quest:aSword.3"
-      },
-      {
-        "room": "500_501",
-        "raw": "quest:aSword.1"
-      },
-      {
-        "room": "500_501",
-        "raw": "quest:aSword.13"
-      },
-      {
-        "room": "500_501",
-        "raw": "quest:aSword.7"
-      },
-      {
-        "room": "500_501",
-        "raw": "quest:aSword.5"
-      },
-      {
-        "room": "19_16",
-        "raw": "quest:aSword.4"
-      },
-      {
-        "room": "20_17",
-        "raw": "quest:aSword.6"
-      },
-      {
-        "room": "500_501",
-        "raw": "quest:aSword.11"
-      },
-      {
-        "room": "500_501",
-        "raw": "quest:aSword.58"
-      },
-      {
-        "room": "500_501",
-        "raw": "quest:aSword.52"
-      },
-      {
-        "room": "500_501",
-        "raw": "quest:aSword.46"
-      },
-      {
-        "room": "500_501",
-        "raw": "quest:aSword.40"
-      },
-      {
-        "room": "500_501",
-        "raw": "quest:aSword.24"
       }
     ],
     "item:ring of gold": [
@@ -16534,22 +16529,10 @@
         "raw": "skill:convert"
       }
     ],
-    "flag:?misc:geomana": [
-      {
-        "room": "6_12",
-        "raw": "?misc:geomana"
-      }
-    ],
     "item:medallions": [
       {
         "room": "19_16",
         "raw": "item:medallions"
-      }
-    ],
-    "flag:???": [
-      {
-        "room": "13_14",
-        "raw": "???"
       }
     ],
     "armor:regenArmor": [
@@ -16680,6 +16663,10 @@
       {
         "room": "19_23",
         "raw": "magic:fire"
+      },
+      {
+        "room": "20_20",
+        "raw": "magic:fire.2"
       }
     ],
     "magic:drain": [
@@ -16712,12 +16699,28 @@
         "raw": "quest:dream.5"
       },
       {
+        "room": "11_16",
+        "raw": "quest:dream.8"
+      },
+      {
         "room": "10_10",
         "raw": "quest:dream.9"
       },
       {
+        "room": "10_10",
+        "raw": "quest:dream.10"
+      },
+      {
+        "room": "10_10",
+        "raw": "quest:dream.11"
+      },
+      {
         "room": "11_16",
         "raw": "quest:dream.6"
+      },
+      {
+        "room": "11_23",
+        "raw": "quest:dream.1"
       },
       {
         "room": "13_17",
@@ -16726,6 +16729,10 @@
       {
         "room": "13_17",
         "raw": "quest:dream.12"
+      },
+      {
+        "room": "20_20",
+        "raw": "quest:dream.13"
       },
       {
         "room": "13_17",
@@ -16808,6 +16815,10 @@
         "raw": "quest:isles.19"
       },
       {
+        "room": "4_26",
+        "raw": "quest:isles.22"
+      },
+      {
         "room": "201_200",
         "raw": "quest:isles.3"
       },
@@ -16830,6 +16841,10 @@
       {
         "room": "300_300",
         "raw": "quest:isles.6"
+      },
+      {
+        "room": "9.11_20",
+        "raw": "quest:isles.7"
       },
       {
         "room": "300_300",
@@ -16856,8 +16871,20 @@
         "raw": "quest:isles.12"
       },
       {
+        "room": "9.11_20",
+        "raw": "quest:isles.13"
+      },
+      {
+        "room": "5_20",
+        "raw": "quest:isles.14"
+      },
+      {
         "room": "9_18",
         "raw": "quest:isles.10"
+      },
+      {
+        "room": "4_26",
+        "raw": "quest:isles.23"
       }
     ],
     "misc:blue crystal": [
@@ -16867,6 +16894,10 @@
       }
     ],
     "quest:access": [
+      {
+        "room": "19_16",
+        "raw": "quest:access.1"
+      },
       {
         "room": "19_16",
         "raw": "quest:access.2"
@@ -16946,16 +16977,6 @@
       {
         "room": "20_20",
         "raw": "food:honey"
-      }
-    ],
-    "food:cherries": [
-      {
-        "room": "12_9",
-        "raw": "food:cherries"
-      },
-      {
-        "room": "4_24",
-        "raw": "food:cherries"
       }
     ],
     "magic:slow": [
@@ -17066,12 +17087,6 @@
         "raw": "weapon:dagger"
       }
     ],
-    "weapon:aSword": [
-      {
-        "room": "500_501",
-        "raw": "weapon:aSword"
-      }
-    ],
     "weapon:twinFury": [
       {
         "room": "200_200",
@@ -17102,12 +17117,6 @@
       {
         "room": "18_25",
         "raw": "skill:medic.6"
-      }
-    ],
-    "flag:rubies": [
-      {
-        "room": "19_18",
-        "raw": "rubies"
       }
     ],
     "weapon:creeperCrusher": [
@@ -18470,6 +18479,82 @@
       {
         "room": "20_20",
         "raw": "misc:str up npc.11"
+      }
+    ],
+    "flag:flag:str up npc counter.1": [
+      {
+        "room": "20_20",
+        "raw": "flag:str up npc counter.1"
+      }
+    ],
+    "flag:flag:str up npc counter.2": [
+      {
+        "room": "20_20",
+        "raw": "flag:str up npc counter.2"
+      }
+    ],
+    "flag:flag:str up npc counter.3": [
+      {
+        "room": "20_20",
+        "raw": "flag:str up npc counter.3"
+      }
+    ],
+    "flag:flag:str up npc counter.4": [
+      {
+        "room": "20_20",
+        "raw": "flag:str up npc counter.4"
+      }
+    ],
+    "flag:flag:str up npc counter.5": [
+      {
+        "room": "20_20",
+        "raw": "flag:str up npc counter.5"
+      }
+    ],
+    "flag:flag:str up npc counter.6": [
+      {
+        "room": "20_20",
+        "raw": "flag:str up npc counter.6"
+      }
+    ],
+    "flag:flag:str up npc counter.7": [
+      {
+        "room": "20_20",
+        "raw": "flag:str up npc counter.7"
+      }
+    ],
+    "flag:flag:str up npc counter.8": [
+      {
+        "room": "20_20",
+        "raw": "flag:str up npc counter.8"
+      }
+    ],
+    "flag:flag:str up npc counter.9": [
+      {
+        "room": "20_20",
+        "raw": "flag:str up npc counter.9"
+      }
+    ],
+    "flag:flag:str up npc counter.10": [
+      {
+        "room": "20_20",
+        "raw": "flag:str up npc counter.10"
+      }
+    ],
+    "flag:flag:str up npc counter.11": [
+      {
+        "room": "20_20",
+        "raw": "flag:str up npc counter.11"
+      }
+    ],
+    "flag:area:magic upgrades": [
+      {
+        "room": "4_13",
+        "raw": "area:magic upgrades"
+      },
+      {
+        "room": "16_23",
+        "raw": "area:magic upgrades"
       }
     ]
   },

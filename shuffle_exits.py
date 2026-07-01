@@ -46,10 +46,7 @@ def init():
         if rec.get("areas"):
           scenarios = []
           for sc in rec["areas"]:
-            groups = [
-              [(g["side"], g["idx"]) for g in group]
-              for group in sc["areas"]
-            ]
+            groups = [[(g["side"], g["idx"]) for g in group] for group in sc["areas"]]
             scenarios.append(
               {
                 "requires": parse_requires(sc.get("reqs")),
@@ -115,9 +112,7 @@ def init():
             except ValueError:
               result["count"] = None
               if not placeholder:
-                result["parse_warning"] = (
-                  f"could not parse count from {tok!r}"
-                )
+                result["parse_warning"] = f"could not parse count from {tok!r}"
         elif "." in rest:
           name, tier_str = rest.rsplit(".", 1)
           result["name"] = name
@@ -130,9 +125,7 @@ def init():
             except ValueError:
               result["tier"] = None
               if not placeholder:
-                result["parse_warning"] = (
-                  f"could not parse tier from {tok!r}"
-                )
+                result["parse_warning"] = f"could not parse tier from {tok!r}"
         else:
           result["name"] = rest
           result["count"] = 1
@@ -437,9 +430,7 @@ def init():
     if exit_obj["mechanism"] != "edge":
       return
     room = (exit_obj["origin"]["north"], exit_obj["origin"]["east"])
-    key = entrance_key(
-      room, f"{exit_obj['direction']}{exit_obj.get('gap_index', 0)}"
-    )
+    key = entrance_key(room, f"{exit_obj['direction']}{exit_obj.get('gap_index', 0)}")
     if have.get(key, 0) < 1:
       have[key] = 1
       propagate([key], have)
@@ -487,11 +478,7 @@ def init():
     if room not in room_areas:
       return True
     side, idx = exit_obj["direction"], exit_obj.get("gap_index", 0)
-    marked = [
-      (s, i)
-      for (s, i) in known_room_exits.get(room, set())
-      if have.get(entrance_key(room, f"{s}{i}"), 0) >= 1
-    ]
+    marked = [(s, i) for (s, i) in known_room_exits.get(room, set()) if have.get(entrance_key(room, f"{s}{i}"), 0) >= 1]
     if not marked:
       return True
     my_group = room_group_of(room, side, idx, have)
@@ -539,12 +526,7 @@ def init():
     while remaining and attempts < max_attempts:
       attempts += 1
       if not frontier:
-        frontier = [
-          e
-          for room in reached
-          for e in by_room.get(room, [])
-          if e["id"] in unused
-        ]
+        frontier = [e for room in reached for e in by_room.get(room, []) if e["id"] in unused]
         rng.shuffle(frontier)
         if not frontier:
           break
@@ -552,17 +534,12 @@ def init():
       if a["id"] not in unused:
         continue
       a_room = (a["origin"]["north"], a["origin"]["east"])
-      if not requires_satisfied(
-        a.get("requires"), playercouldhave, a_room
-      ) or not room_reachable_internally(a, playercouldhave):
+      if not requires_satisfied(a.get("requires"), playercouldhave, a_room) or not room_reachable_internally(
+        a, playercouldhave
+      ):
         continue
 
-      candidates = [
-        e
-        for room in remaining
-        for e in by_room.get(room, [])
-        if e["id"] in unused and e["id"] != a["id"]
-      ]
+      candidates = [e for room in remaining for e in by_room.get(room, []) if e["id"] in unused and e["id"] != a["id"]]
       candidates = partner_finder(a, candidates)
       if not candidates:
         continue
@@ -613,7 +590,7 @@ def init():
       "xIsEven": to_exit.get("xIsEven", 0),
       "yIsEven": to_exit.get("yIsEven", 0),
       "srcCoord": from_exit.get("src_coord"),
-    "direction": from_exit.get("direction"),
+      "direction": from_exit.get("direction"),
       "mechanism": from_exit["mechanism"],
       "requires": requires_raw,
       "fromExitId": from_exit["id"],
@@ -622,9 +599,7 @@ def init():
 
   # --- Connection Logic Split ---
   if NO_SHUFFLE:
-    print(
-      "Vanilla mode requested: mapping exits directly to original layout targets."
-    )
+    print("Vanilla mode requested: mapping exits directly to original layout targets.")
     all_rooms = {(e["origin"]["north"], e["origin"]["east"]) for e in all_exits}
     edge_reached = all_rooms
     door_reached = all_rooms
@@ -642,26 +617,18 @@ def init():
       for b in all_exits:
         if b["id"] == a["id"]:
           continue
-        if (
-          b["origin"]["north"] == a["dest"]["north"]
-          and b["origin"]["east"] == a["dest"]["east"]
-        ):
+        if b["origin"]["north"] == a["dest"]["north"] and b["origin"]["east"] == a["dest"]["east"]:
           if a["mechanism"] == "edge" and b["mechanism"] == "edge":
             if b["direction"] == OPPOSITE[a["direction"]]:
               candidates.append(b)
           elif a["mechanism"] != "edge" and b["mechanism"] != "edge":
-            if (
-              b["dest"]["north"] == a["origin"]["north"]
-              and b["dest"]["east"] == a["origin"]["east"]
-            ):
+            if b["dest"]["north"] == a["origin"]["north"] and b["dest"]["east"] == a["origin"]["east"]:
               candidates.append(b)
 
       if candidates:
         if a["mechanism"] == "edge":
           # Match by the closest physical coordinate along the room border to prevent side-exit mixups
-          candidates.sort(
-            key=lambda x: abs(x.get("src_coord", 0) - a.get("src_coord", 0))
-          )
+          candidates.sort(key=lambda x: abs(x.get("src_coord", 0) - a.get("src_coord", 0)))
           partner = candidates[0]
         else:
           # For doors/warps, default to the matching target candidate
@@ -691,9 +658,7 @@ def init():
           }
         )
   else:
-    edge_pairs, edge_unpaired, edge_reached = build_spanning_tree(
-      edge_exits, edge_partner_finder, "edges"
-    )
+    edge_pairs, edge_unpaired, edge_reached = build_spanning_tree(edge_exits, edge_partner_finder, "edges")
     door_pairs, door_unpaired, door_reached = build_spanning_tree(
       door_exits, door_partner_finder, "doors", seed_reached=edge_reached
     )
@@ -719,9 +684,7 @@ def init():
   all_rooms = {(e["origin"]["north"], e["origin"]["east"]) for e in all_exits}
   unreached_rooms = all_rooms - all_reached
   if unreached_rooms:
-    print(
-      f"  {len(unreached_rooms)} room(s) never reached: {sorted(unreached_rooms)[:10]}"
-    )
+    print(f"  {len(unreached_rooms)} room(s) never reached: {sorted(unreached_rooms)[:10]}")
 
   out = {
     "seed": SEED if not NO_SHUFFLE else "vanilla",
@@ -758,15 +721,11 @@ def init():
     room_str = room_key_str(loc["room"])
     requires_raw = [[tok["raw"] for tok in group] for group in loc["requires"]]
     receive_raw = loc.get("receive", [])
-    locations_out.append(
-      {"room": room_str, "requires": requires_raw, "receive": receive_raw}
-    )
+    locations_out.append({"room": room_str, "requires": requires_raw, "receive": receive_raw})
     for raw_tok in receive_raw:
       tok = parse_requirement_token(raw_tok)
       key_str = have_key_str(token_key(tok))
-      item_give_index.setdefault(key_str, []).append(
-        {"room": room_str, "raw": raw_tok}
-      )
+      item_give_index.setdefault(key_str, []).append({"room": room_str, "raw": raw_tok})
 
   entrance_index = {}
   for e in edge_exits:
@@ -781,10 +740,7 @@ def init():
     }
 
   final_have = {have_key_str(k): v for k, v in playercouldhave.items()}
-  pending_out = {
-    have_key_str(k): [room_key_str(loc["room"]) for loc in locs]
-    for k, locs in pending.items()
-  }
+  pending_out = {have_key_str(k): [room_key_str(loc["room"]) for loc in locs] for k, locs in pending.items()}
 
   hint_data = {
     "seed": SEED if not NO_SHUFFLE else "vanilla",
