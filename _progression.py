@@ -1118,7 +1118,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "quest:dig.3",
-      "item:gold#25",
+      "item:gold#25 - dig3",
     ],
   },
   {
@@ -1223,7 +1223,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "quest:pam.3",
-      "item:gold#20",
+      "item:gold#20 -  - pam2",
     ],
   },
   {
@@ -1930,7 +1930,7 @@ MathQuest.js:42550 add listeners""",
     "receive": [
       "quest:seeds.4",
       "food:orange#10",
-      "food:peppers#3",
+      "food:peppers#3 - seeds3",
     ],
   },
   {
