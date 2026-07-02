@@ -6,7 +6,7 @@ class ExitBase(TypedDict):
   north: int | float
   east: int | float
   exits: ExitNode
-  areas: NotRequired[list[AreaNode]]
+  areas: NotRequired[list[AreaNode],]
   err: NotRequired[bool]
 
 
@@ -15,7 +15,7 @@ class ExitNode(TypedDict):
   east: list[DirNodeLR]
   north: list[DirNodeUD]
   south: list[DirNodeUD]
-  warp: NotRequired[list[Pos]]
+  warp: NotRequired[list[Pos],]
 
 
 class Pos(TypedDict):
@@ -38,12 +38,17 @@ class DirNodeUD(TypedDict):
 
 
 class AreaNode(TypedDict):
-  reqs: list[list[str]]
-  areas: list[list[AreaAreaNode]]
+  reqs: list[list[str],]
+  areas: list[list[AreaAreaNode],]
 
 
 class AreaAreaNode(TypedDict):
-  side: Literal["east", "west", "south", "north"]
+  side: Literal[
+    "east",
+    "west",
+    "south",
+    "north",
+  ]
   idx: int
 
 
@@ -115,7 +120,11 @@ GEOM: list[ExitBase] = [
     "east": 24,
     "areas": [
       {
-        "reqs": [["permit:bomb"]],
+        "reqs": [
+          [
+            "permit:bomb",
+          ],
+        ],
         "areas": [
           [
             {"side": "east", "idx": 0},
@@ -128,7 +137,9 @@ GEOM: list[ExitBase] = [
         ],
       },
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "west", "idx": 0},
@@ -164,7 +175,11 @@ GEOM: list[ExitBase] = [
     "east": 25,
     "areas": [
       {
-        "reqs": [["permit:bomb"]],
+        "reqs": [
+          [
+            "permit:bomb",
+          ],
+        ],
         "areas": [
           [
             {"side": "west", "idx": 1},
@@ -177,7 +192,9 @@ GEOM: list[ExitBase] = [
         ],
       },
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "west", "idx": 1},
@@ -317,7 +334,11 @@ GEOM: list[ExitBase] = [
     "east": 23,
     "areas": [
       {
-        "reqs": [["permit:bomb"]],
+        "reqs": [
+          [
+            "permit:bomb",
+          ],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 0},
@@ -327,7 +348,9 @@ GEOM: list[ExitBase] = [
         ],
       },
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 0},
@@ -357,7 +380,11 @@ GEOM: list[ExitBase] = [
     "east": 24,
     "areas": [
       {
-        "reqs": [["permit:bomb"]],
+        "reqs": [
+          [
+            "permit:bomb",
+          ],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 0},
@@ -372,7 +399,9 @@ GEOM: list[ExitBase] = [
         ],
       },
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "east", "idx": 0},
@@ -425,7 +454,11 @@ GEOM: list[ExitBase] = [
     "east": 26,
     "areas": [
       {
-        "reqs": [["permit:bomb"]],
+        "reqs": [
+          [
+            "permit:bomb",
+          ],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 0},
@@ -442,7 +475,9 @@ GEOM: list[ExitBase] = [
         ],
       },
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 2},
@@ -483,15 +518,17 @@ GEOM: list[ExitBase] = [
     "east": 9,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
-            {"side": "east", "idx": 0},
-            {"side": "north", "idx": 2},
+            {"side": "north", "idx": 0},
+            {"side": "east", "idx": 2},
           ],
           [
+            {"side": "east", "idx": 0},
             {"side": "east", "idx": 1},
-            {"side": "east", "idx": 2},
           ],
         ],
       }
@@ -514,7 +551,11 @@ GEOM: list[ExitBase] = [
     "east": 10,
     "areas": [
       {
-        "reqs": [["permit:bomb"]],
+        "reqs": [
+          [
+            "permit:bomb",
+          ],
+        ],
         "areas": [
           [
             {"side": "west", "idx": 0},
@@ -531,7 +572,9 @@ GEOM: list[ExitBase] = [
         ],
       },
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "west", "idx": 2},
@@ -570,7 +613,11 @@ GEOM: list[ExitBase] = [
     "east": 11,
     "areas": [
       {
-        "reqs": [["permit:bomb"]],
+        "reqs": [
+          [
+            "permit:bomb",
+          ],
+        ],
         "areas": [
           [
             {"side": "west", "idx": 1},
@@ -583,7 +630,9 @@ GEOM: list[ExitBase] = [
         ],
       },
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "west", "idx": 0},
@@ -1003,7 +1052,11 @@ GEOM: list[ExitBase] = [
             {"side": "north", "idx": 0},
           ]
         ],
-        "reqs": [["permit:shadowsoulEntrance"]],
+        "reqs": [
+          [
+            "permit:shadowsoulEntrance",
+          ],
+        ],
       },
       {
         "areas": [
@@ -1015,7 +1068,9 @@ GEOM: list[ExitBase] = [
             {"side": "east", "idx": 0},
           ],
         ],
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
       },
     ],
     "exits": {
@@ -1098,7 +1153,9 @@ GEOM: list[ExitBase] = [
     "east": 10,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "east", "idx": 0},
@@ -1134,7 +1191,9 @@ GEOM: list[ExitBase] = [
     "east": 11,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "north", "idx": 2},
@@ -1254,7 +1313,9 @@ GEOM: list[ExitBase] = [
     "east": 17,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "east", "idx": 0},
@@ -1283,7 +1344,11 @@ GEOM: list[ExitBase] = [
     "east": 18,
     "areas": [
       {
-        "reqs": [["permit:bomb"]],
+        "reqs": [
+          [
+            "permit:bomb",
+          ],
+        ],
         "areas": [
           [
             {"side": "east", "idx": 0},
@@ -1296,7 +1361,9 @@ GEOM: list[ExitBase] = [
         ],
       },
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "north", "idx": 0},
@@ -1455,7 +1522,9 @@ GEOM: list[ExitBase] = [
     "east": 11,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "west", "idx": 0},
@@ -1498,7 +1567,12 @@ GEOM: list[ExitBase] = [
   {
     "north": 9,
     "east": 13,
-    "exits": {"west": [], "south": [], "east": [], "north": []},
+    "exits": {
+      "west": [],
+      "south": [],
+      "east": [],
+      "north": [],
+    },
   },
   {
     "north": 9,
@@ -1535,7 +1609,9 @@ GEOM: list[ExitBase] = [
     "east": 18,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "west", "idx": 0},
@@ -1571,7 +1647,9 @@ GEOM: list[ExitBase] = [
     "east": 19,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 0},
@@ -1582,7 +1660,11 @@ GEOM: list[ExitBase] = [
         ],
       },
       {
-        "reqs": [["flag:green secret code"]],
+        "reqs": [
+          [
+            "flag:green secret code",
+          ],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 0},
@@ -1619,14 +1701,21 @@ GEOM: list[ExitBase] = [
   {
     "north": 9,
     "east": 21,
-    "exits": {"west": [], "south": [], "east": [], "north": []},
+    "exits": {
+      "west": [],
+      "south": [],
+      "east": [],
+      "north": [],
+    },
   },
   {
     "north": 9,
     "east": 22,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "north", "idx": 0},
@@ -1689,7 +1778,11 @@ GEOM: list[ExitBase] = [
     "east": 25,
     "areas": [
       {
-        "reqs": [["quest:2p.?"]],
+        "reqs": [
+          [
+            "quest:curse.5",
+          ],
+        ],
         "areas": [
           [
             {"side": "west", "idx": 0},
@@ -1699,7 +1792,9 @@ GEOM: list[ExitBase] = [
         ],
       },
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 0},
@@ -1760,7 +1855,9 @@ GEOM: list[ExitBase] = [
     "east": 11,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "east", "idx": 0},
@@ -1812,7 +1909,12 @@ GEOM: list[ExitBase] = [
   {
     "north": 10,
     "east": 13,
-    "exits": {"west": [], "south": [], "east": [], "north": []},
+    "exits": {
+      "west": [],
+      "south": [],
+      "east": [],
+      "north": [],
+    },
   },
   {
     "north": 10,
@@ -1901,7 +2003,11 @@ GEOM: list[ExitBase] = [
     "east": 20,
     "areas": [
       {
-        "reqs": [["permit:bomb"]],
+        "reqs": [
+          [
+            "permit:bomb",
+          ],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 0},
@@ -1912,7 +2018,9 @@ GEOM: list[ExitBase] = [
         ],
       },
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "east", "idx": 0},
@@ -1944,7 +2052,11 @@ GEOM: list[ExitBase] = [
     "east": 22,
     "areas": [
       {
-        "reqs": [["permit:bomb"]],
+        "reqs": [
+          [
+            "permit:bomb",
+          ],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 1},
@@ -1953,7 +2065,9 @@ GEOM: list[ExitBase] = [
         ],
       },
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 0},
@@ -2043,7 +2157,9 @@ GEOM: list[ExitBase] = [
     "east": 9,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "north", "idx": 0},
@@ -2075,7 +2191,11 @@ GEOM: list[ExitBase] = [
     "east": 10,
     "areas": [
       {
-        "reqs": [["permit:bomb"]],
+        "reqs": [
+          [
+            "permit:bomb",
+          ],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 0},
@@ -2087,7 +2207,9 @@ GEOM: list[ExitBase] = [
         ],
       },
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "west", "idx": 1},
@@ -2122,7 +2244,9 @@ GEOM: list[ExitBase] = [
     "east": 11,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "north", "idx": 0},
@@ -2199,7 +2323,11 @@ GEOM: list[ExitBase] = [
     "east": 14,
     "areas": [
       {
-        "reqs": [["permit:bomb"]],
+        "reqs": [
+          [
+            "permit:bomb",
+          ],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 0},
@@ -2208,7 +2336,9 @@ GEOM: list[ExitBase] = [
         ],
       },
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 0},
@@ -2235,7 +2365,11 @@ GEOM: list[ExitBase] = [
     "east": 15,
     "areas": [
       {
-        "reqs": [["permit:bomb"]],
+        "reqs": [
+          [
+            "permit:bomb",
+          ],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 0},
@@ -2244,7 +2378,9 @@ GEOM: list[ExitBase] = [
         ],
       },
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 0},
@@ -2285,7 +2421,11 @@ GEOM: list[ExitBase] = [
     "east": 17,
     "areas": [
       {
-        "reqs": [["permit:bomb"]],
+        "reqs": [
+          [
+            "permit:bomb",
+          ],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 0},
@@ -2295,7 +2435,9 @@ GEOM: list[ExitBase] = [
         ],
       },
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 0},
@@ -2325,7 +2467,9 @@ GEOM: list[ExitBase] = [
     "east": 18,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "west", "idx": 0},
@@ -2352,7 +2496,11 @@ GEOM: list[ExitBase] = [
     "east": 19,
     "areas": [
       {
-        "reqs": [["permit:bomb"]],
+        "reqs": [
+          [
+            "permit:bomb",
+          ],
+        ],
         "areas": [
           [
             {"side": "east", "idx": 0},
@@ -2364,7 +2512,9 @@ GEOM: list[ExitBase] = [
         ],
       },
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "east", "idx": 0},
@@ -2394,7 +2544,9 @@ GEOM: list[ExitBase] = [
     "east": 20,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "west", "idx": 2},
@@ -2425,7 +2577,12 @@ GEOM: list[ExitBase] = [
   {
     "north": 11,
     "east": 21,
-    "exits": {"west": [], "south": [], "east": [], "north": []},
+    "exits": {
+      "west": [],
+      "south": [],
+      "east": [],
+      "north": [],
+    },
   },
   {
     "north": 11,
@@ -2467,10 +2624,16 @@ GEOM: list[ExitBase] = [
             {"side": "east", "idx": 0},
           ]
         ],
-        "reqs": [["permit:shadowsoulEntrance"]],
+        "reqs": [
+          [
+            "permit:shadowsoulEntrance",
+          ],
+        ],
       },
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "north", "idx": 0},
@@ -2552,7 +2715,9 @@ GEOM: list[ExitBase] = [
     "east": 11,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 2},
@@ -2590,7 +2755,9 @@ GEOM: list[ExitBase] = [
     "east": 12,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "west", "idx": 0},
@@ -2631,7 +2798,9 @@ GEOM: list[ExitBase] = [
     "east": 16,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "east", "idx": 0},
@@ -2794,7 +2963,9 @@ GEOM: list[ExitBase] = [
     "east": 26,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 0},
@@ -2805,7 +2976,11 @@ GEOM: list[ExitBase] = [
         ],
       },
       {
-        "reqs": [["flag:stomp code"]],
+        "reqs": [
+          [
+            "flag:stomp code",
+          ],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 0},
@@ -2844,7 +3019,11 @@ GEOM: list[ExitBase] = [
     "east": 14,
     "areas": [
       {
-        "reqs": [["permit:bomb"]],
+        "reqs": [
+          [
+            "permit:bomb",
+          ],
+        ],
         "areas": [
           [
             {"side": "north", "idx": 0},
@@ -2853,7 +3032,9 @@ GEOM: list[ExitBase] = [
         ],
       },
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "north", "idx": 0},
@@ -2896,7 +3077,9 @@ GEOM: list[ExitBase] = [
     "east": 16,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "west", "idx": 0},
@@ -2983,7 +3166,11 @@ GEOM: list[ExitBase] = [
     "east": 21,
     "areas": [
       {
-        "reqs": [["permit:bomb"]],
+        "reqs": [
+          [
+            "permit:bomb",
+          ],
+        ],
         "areas": [
           [
             {"side": "north", "idx": 0},
@@ -2992,7 +3179,9 @@ GEOM: list[ExitBase] = [
         ],
       },
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 0},
@@ -3157,10 +3346,16 @@ GEOM: list[ExitBase] = [
             {"side": "south", "idx": 0},
           ]
         ],
-        "reqs": [["quest:kingWasStolen"]],
+        "reqs": [
+          [
+            "quest:gTree.10",
+          ],
+        ],
       },
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 0},
@@ -3187,7 +3382,9 @@ GEOM: list[ExitBase] = [
     "east": 19,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "north", "idx": 0},
@@ -3228,7 +3425,11 @@ GEOM: list[ExitBase] = [
     "east": 21,
     "areas": [
       {
-        "reqs": [["permit:bomb"]],
+        "reqs": [
+          [
+            "permit:bomb",
+          ],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 0},
@@ -3237,7 +3438,9 @@ GEOM: list[ExitBase] = [
         ],
       },
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 0},
@@ -3312,7 +3515,9 @@ GEOM: list[ExitBase] = [
     "east": 25,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "west", "idx": 0},
@@ -3349,7 +3554,11 @@ GEOM: list[ExitBase] = [
     "east": 14,
     "areas": [
       {
-        "reqs": [["permit:bomb"]],
+        "reqs": [
+          [
+            "permit:bomb",
+          ],
+        ],
         "areas": [
           [
             {"side": "east", "idx": 0},
@@ -3359,7 +3568,9 @@ GEOM: list[ExitBase] = [
         ],
       },
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "east", "idx": 0},
@@ -3405,7 +3616,11 @@ GEOM: list[ExitBase] = [
     "east": 16,
     "areas": [
       {
-        "reqs": [["permit:bomb"]],
+        "reqs": [
+          [
+            "permit:bomb",
+          ],
+        ],
         "areas": [
           [
             {"side": "west", "idx": 0},
@@ -3415,7 +3630,9 @@ GEOM: list[ExitBase] = [
         ],
       },
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 0},
@@ -3499,7 +3716,9 @@ GEOM: list[ExitBase] = [
     "east": 21,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "west", "idx": 0},
@@ -3684,7 +3903,9 @@ GEOM: list[ExitBase] = [
     "east": 19,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "east", "idx": 0},
@@ -3696,7 +3917,11 @@ GEOM: list[ExitBase] = [
         ],
       },
       {
-        "reqs": [["permit:bomb.2"]],
+        "reqs": [
+          [
+            "permit:bomb.2",
+          ],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 0},
@@ -3784,7 +4009,9 @@ GEOM: list[ExitBase] = [
     "east": 24,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "east", "idx": 0},
@@ -3820,7 +4047,9 @@ GEOM: list[ExitBase] = [
     "east": 25,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 1},
@@ -4031,7 +4260,9 @@ GEOM: list[ExitBase] = [
     "east": 25,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "west", "idx": 2},
@@ -4154,7 +4385,9 @@ GEOM: list[ExitBase] = [
     "east": 17,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "north", "idx": 1},
@@ -4254,7 +4487,11 @@ GEOM: list[ExitBase] = [
             {"side": "east", "idx": 0},
           ]
         ],
-        "reqs": [["quest:gTree.2"]],
+        "reqs": [
+          [
+            "quest:gTree.2",
+          ],
+        ],
       },
       {
         "areas": [
@@ -4265,7 +4502,9 @@ GEOM: list[ExitBase] = [
             {"side": "east", "idx": 0},
           ],
         ],
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
       },
     ],
     "exits": {
@@ -4409,7 +4648,9 @@ GEOM: list[ExitBase] = [
     "east": 17,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 0},
@@ -4441,7 +4682,11 @@ GEOM: list[ExitBase] = [
     "east": 18,
     "areas": [
       {
-        "reqs": [["fireNPCPass?"]],
+        "reqs": [
+          [
+            "quest:rings.10",
+          ],
+        ],
         "areas": [
           [
             {"side": "north", "idx": 0},
@@ -4454,7 +4699,9 @@ GEOM: list[ExitBase] = [
         ],
       },
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 0},
@@ -4513,7 +4760,12 @@ GEOM: list[ExitBase] = [
   {
     "north": 19,
     "east": 22,
-    "exits": {"west": [], "south": [], "east": [], "north": []},
+    "exits": {
+      "west": [],
+      "south": [],
+      "east": [],
+      "north": [],
+    },
   },
   {
     "north": 19,
@@ -4570,7 +4822,7 @@ GEOM: list[ExitBase] = [
   # {
   #   "north": 20,
   #   "east": 16,
-  #   "exits": {"west": [], "south": [], "east": [], "north": []},
+  #   "exits": {"west": [], "south": [], "east": [], "north": [],},
   # },
   # hard to make entrance rando work for 20 16 so it's gonna be unmodified and everything will be said to be in 19 16 instead
   {
@@ -4618,14 +4870,23 @@ GEOM: list[ExitBase] = [
   {
     "north": 20,
     "east": 21,
-    "exits": {"west": [], "south": [], "east": [], "north": []},
+    "exits": {
+      "west": [],
+      "south": [],
+      "east": [],
+      "north": [],
+    },
   },
   {
     "north": 20,
     "east": 22,
     "areas": [
       {
-        "reqs": [["permit:bomb.2"]],
+        "reqs": [
+          [
+            "permit:bomb.2",
+          ],
+        ],
         "areas": [
           [
             {"side": "east", "idx": 0},
@@ -4634,7 +4895,9 @@ GEOM: list[ExitBase] = [
         ],
       },
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "east", "idx": 0},
@@ -4661,7 +4924,11 @@ GEOM: list[ExitBase] = [
     "east": 23,
     "areas": [
       {
-        "reqs": [["permit:bomb"]],
+        "reqs": [
+          [
+            "permit:bomb",
+          ],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 0},
@@ -4673,7 +4940,9 @@ GEOM: list[ExitBase] = [
         ],
       },
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "north", "idx": 0},
@@ -4717,7 +4986,9 @@ GEOM: list[ExitBase] = [
     "east": 11,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "north", "idx": 0},
@@ -4761,7 +5032,9 @@ GEOM: list[ExitBase] = [
     "east": 13,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "east", "idx": 0},
@@ -4847,7 +5120,9 @@ GEOM: list[ExitBase] = [
     "east": 21,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "east", "idx": 0},
@@ -4980,7 +5255,12 @@ GEOM: list[ExitBase] = [
   {
     "north": 23,
     "east": 10,
-    "exits": {"west": [], "south": [], "east": [], "north": []},
+    "exits": {
+      "west": [],
+      "south": [],
+      "east": [],
+      "north": [],
+    },
   },
   {
     "north": 23,
@@ -5069,7 +5349,11 @@ GEOM: list[ExitBase] = [
     "east": 11,
     "areas": [
       {
-        "reqs": [["permit:bomb"]],
+        "reqs": [
+          [
+            "permit:bomb",
+          ],
+        ],
         "areas": [
           [
             {"side": "west", "idx": 0},
@@ -5078,7 +5362,9 @@ GEOM: list[ExitBase] = [
         ],
       },
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 0},
@@ -5167,16 +5453,22 @@ GEOM: list[ExitBase] = [
   {
     "north": 201,
     "east": 200,
-    "exits": {"west": [], "south": [], "east": [], "north": []},
+    "exits": {
+      "west": [],
+      "south": [],
+      "east": [],
+      "north": [],
+    },
   },
   {
-    # Pocket room between the two stairsDown warps near 10_21 / 9_20.
-    # Not part of the grid (no GEOM-adjacent edges reference it, see _exits.py),
-    # only reachable via door entries in EXITS["doors"]. Fully open inside,
-    # so no "areas" key.
     "north": 10.1,
     "east": 21,
-    "exits": {"west": [], "south": [], "east": [], "north": []},
+    "exits": {
+      "west": [],
+      "south": [],
+      "east": [],
+      "north": [],
+    },
   },
   {
     "north": 300,
@@ -5752,7 +6044,9 @@ GEOM: list[ExitBase] = [
     "east": 10,
     "areas": [
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "north", "idx": 0},
@@ -5798,7 +6092,11 @@ GEOM: list[ExitBase] = [
     "east": 13,
     "areas": [
       {
-        "reqs": [["permit:bomb"]],
+        "reqs": [
+          [
+            "permit:bomb",
+          ],
+        ],
         "areas": [
           [
             {"side": "north", "idx": 0},
@@ -5807,7 +6105,9 @@ GEOM: list[ExitBase] = [
         ],
       },
       {
-        "reqs": [[]],
+        "reqs": [
+          [],
+        ],
         "areas": [
           [
             {"side": "south", "idx": 0},

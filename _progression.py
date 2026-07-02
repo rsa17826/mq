@@ -8,9 +8,9 @@ class RoomCoordinates(TypedDict):
 
 class ProgressionNode(TypedDict):
   room: RoomCoordinates
-  receive: NotRequired[list[str]]
-  # requires: NotRequired[list[list[str]]]
-  requires: list[list[str]]
+  receive: NotRequired[list[str],]
+  # requires: NotRequired[list[list[str],],]
+  requires: list[list[str],]
   info: NotRequired[str]
 
 
@@ -18,51 +18,81 @@ PROG: list[ProgressionNode] = [
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      ["area:2"],
+      [
+        "area:2",
+      ],
     ],
-    "receive": ["loot:venom", "loot:bClaw"],
+    "receive": [
+      "loot:venom",
+      "loot:bClaw",
+    ],
   },
   {
     "room": {"north": 13, "east": 25},
     "requires": [
-      ["area:13"],
+      [
+        "area:13",
+      ],
     ],
-    "receive": ["loot:mHat"],
+    "receive": [
+      "loot:mHat",
+    ],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      ["area:4"],
+      [
+        "area:4",
+      ],
     ],
-    "receive": ["loot:mStaff"],
+    "receive": [
+      "loot:mStaff",
+    ],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      ["area:16"],
+      [
+        "area:16",
+      ],
     ],
-    "receive": ["loot:sTooth", "loot:vHorn"],
+    "receive": [
+      "loot:sTooth",
+      "loot:vHorn",
+    ],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      ["area:2"],
+      [
+        "area:2",
+      ],
     ],
-    "receive": ["loot:bTooth"],
+    "receive": [
+      "loot:bTooth",
+    ],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      ["area:15"],
+      [
+        "area:15",
+      ],
     ],
-    "receive": ["loot:cThread"],
+    "receive": [
+      "loot:cThread",
+    ],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      ["area:11"],
+      [
+        "area:11",
+      ],
     ],
-    "receive": ["loot:kCrest"],
+    "receive": [
+      "loot:kCrest",
+    ],
   },
   {
     "room": {"north": 20, "east": 20},
@@ -74,7 +104,7 @@ PROG: list[ProgressionNode] = [
       "skill:kick",
       "skill:flee",
       "skill:swap",
-      "misc:magic only resist bypass",
+      "flag:magic only resist bypass",
       "skill:firewall",
       "skill:firewall.1",
       "skill:halo",
@@ -124,218 +154,361 @@ manager.correct - manager.wrong > 800 = halo
     "info": """add to correct locations later
 """,
   },
-  # {"room": {"north": 20, "east": 20}, "receive": ["spawnpoint"]},
+  # {"room": {"north": 20, "east": 20}, "receive": ["spawnpoint",],},
   {
     "room": {"north": 15, "east": 21},
     "requires": [
-      ["entrance.west0"],
+      [
+        "entrance.west0",
+      ],
     ],
-    "receive": ["food:banana#1"],
+    "receive": [
+      "food:banana#1",
+    ],
   },
   {
     "room": {"north": 21, "east": 20},
     "requires": [
-      ["loot:venom#1"],
+      [
+        "loot:venom#1",
+      ],
     ],
-    "receive": ["food:orange#1"],
+    "receive": [
+      "food:orange#1",
+    ],
   },
-  # {"room": {"north": 18, "east": 20}, "info": "warp skill warp point"},
+  # {"room": {"north": 18, "east": 20}, "info": "warp skill warp point",},
   {
     "room": {"north": 14, "east": 19},
     "requires": [
-      ["loot:tBand#1", "entrance.north0"],
+      [
+        "loot:tBand#1",
+        "entrance.north0",
+      ],
     ],
-    "receive": ["loot:aClub#1"],
+    "receive": [
+      "loot:aClub#1",
+    ],
   },
-  # {"room": {"north": 12, "east": 19}, "info": "warp skill warp point"},
+  # {"room": {"north": 12, "east": 19}, "info": "warp skill warp point",},
   {
     "room": {"north": 13, "east": 16},
     "requires": [
-      ["item:key#1", "entrance.west0"],
+      [
+        "item:key#1",
+        "entrance.west0",
+      ],
     ],
-    "receive": ["weapon:sKnife"],
+    "receive": [
+      "weapon:sKnife",
+    ],
   },
-  # {"room": {"north": 14, "east": 16}, "info": "warp skill warp point"},
+  # {"room": {"north": 14, "east": 16}, "info": "warp skill warp point",},
   {
     "room": {"north": 15, "east": 16},
     "requires": [
-      ["permit:bomb", "loot:mStaff#20"],
+      [
+        "permit:bomb",
+        "loot:mStaff#20",
+      ],
     ],
-    "receive": ["magic:ice"],
+    "receive": [
+      "magic:ice",
+    ],
   },
   {
     "room": {"north": 13, "east": 13},
     "requires": [
-      ["armor:alphaArmor"],
+      [
+        "armor:alphaArmor",
+      ],
     ],
-    "receive": ["craft:upgradeAAHP", "craft:upgradeAAMP"],
+    "receive": [
+      "craft:upgradeAAHP",
+      "craft:upgradeAAMP",
+    ],
   },
   {
     "room": {"north": 11, "east": 13},
     "requires": [
-      ["loot:mStaff#1"],
+      [
+        "loot:mStaff#1",
+      ],
     ],
-    "receive": ["food:blueberries#1"],
+    "receive": [
+      "food:blueberries#1",
+    ],
   },
   {
     "room": {"north": 11, "east": 12},
     "requires": [
-      ["item:gold#100"],
+      [
+        "item:gold#100",
+      ],
     ],
-    "receive": ["food:sunflowerSeeds#1"],
+    "receive": [
+      "food:sunflowerSeeds#1",
+    ],
   },
   {
     "room": {"north": 12, "east": 12},
     "requires": [
-      ["quest:rings.1", "entrance.west0"],
+      [
+        "quest:rings.1",
+        "entrance.west0",
+      ],
     ],
-    "receive": ["misc:headstoneSwitch2"],
+    "receive": [
+      "misc:headstoneSwitch2",
+    ],
   },
-  # {"room": {"north": 10, "east": 12}, "info": "warp skill warp point"},
-  # {"room": {"north": 12, "east": 9}, "receive": ["spawnpoint"]},
+  # {"room": {"north": 10, "east": 12}, "info": "warp skill warp point",},
+  # {"room": {"north": 12, "east": 9}, "receive": ["spawnpoint",],},
   {
     "room": {"north": 12, "east": 9},
     "requires": [
-      ["item:gold"],
+      [
+        "item:gold",
+      ],
     ],
-    "receive": ["food:cherries"],
-  },
-  {
-    "room": {"north": 12, "east": 9},
-    "requires": [
-      ["item:gold"],
+    "receive": [
+      "food:cherries",
     ],
-    "receive": ["weapon:sKnife"],
-  },
-  {
-    "room": {"north": 12, "east": 9},
-    "requires": [
-      ["item:gold"],
-    ],
-    "receive": ["weapon:warlockStaff"],
   },
   {
     "room": {"north": 12, "east": 9},
     "requires": [
-      ["item:gold"],
+      [
+        "item:gold",
+      ],
     ],
-    "receive": ["weapon:sunSword"],
+    "receive": [
+      "weapon:sKnife",
+    ],
   },
   {
     "room": {"north": 12, "east": 9},
     "requires": [
-      ["loot:venom"],
+      [
+        "item:gold",
+      ],
     ],
-    "receive": ["food:orange"],
+    "receive": [
+      "weapon:warlockStaff",
+    ],
+  },
+  {
+    "room": {"north": 12, "east": 9},
+    "requires": [
+      [
+        "item:gold",
+      ],
+    ],
+    "receive": [
+      "weapon:sunSword",
+    ],
+  },
+  {
+    "room": {"north": 12, "east": 9},
+    "requires": [
+      [
+        "loot:venom",
+      ],
+    ],
+    "receive": [
+      "food:orange",
+    ],
   },
   {
     "room": {"north": 11, "east": 9},
     "requires": [
-      ["item:gold", "entrance.north0"],
-      ["item:gold", "entrance.east0"],
+      [
+        "item:gold",
+        "entrance.north0",
+      ],
+      [
+        "item:gold",
+        "entrance.east0",
+      ],
     ],
-    "receive": ["magic:weak"],
+    "receive": [
+      "magic:weak",
+    ],
   },
   {
     "room": {"north": 11, "east": 9},
     "requires": [
-      ["loot:wPelt", "entrance.north0"],
-      ["loot:wPelt", "entrance.east0"],
+      [
+        "loot:wPelt",
+        "entrance.north0",
+      ],
+      [
+        "loot:wPelt",
+        "entrance.east0",
+      ],
     ],
-    "receive": ["item:gold#22"],
+    "receive": [
+      "item:gold#22",
+    ],
   },
   {
     "room": {"north": 5, "east": 9},
     "requires": [
-      ["loot:mHorn", "entrance.north0"],
-      ["loot:mHorn", "entrance.east2"],
+      [
+        "loot:mHorn",
+        "entrance.north0",
+      ],
+      [
+        "loot:mHorn",
+        "entrance.east2",
+      ],
     ],
-    "receive": ["loot:aAxe#1"],
+    "receive": [
+      "loot:aAxe#1",
+    ],
   },
   {
     "room": {"north": 8, "east": 14},
     "requires": [
-      ["loot:sTooth#30", "item:gold#800", "skill:tough"],
+      [
+        "loot:sTooth#30",
+        "item:gold#800",
+        "skill:tough",
+      ],
     ],
-    "receive": ["skill:tough.+1"],
+    "receive": [
+      "skill:tough.+1",
+    ],
   },
-  {"room": {"north": 10, "east": 16}, "info": "warp skill warp point"},
+  {
+    "room": {"north": 10, "east": 16},
+    "info": "warp skill warp point",
+  },
   {
     "room": {"north": 9, "east": 16},
     "requires": [
-      ["loot:gSkin#1"],
+      [
+        "loot:gSkin#1",
+      ],
     ],
-    "receive": ["item:gold#23"],
+    "receive": [
+      "item:gold#23",
+    ],
   },
   {
     "room": {"north": 4, "east": 17},
     "requires": [
-      ["weapon:axe", "loot:vHorn#2"],
+      [
+        "weapon:axe",
+        "loot:vHorn#2",
+      ],
     ],
-    "receive": ["weapon:axe.+1"],
+    "receive": [
+      "weapon:axe.+1",
+    ],
   },
   {
     "room": {"north": 8, "east": 17},
     "requires": [
       [],
     ],
-    "receive": ["misc:green secret code"],
+    "receive": [
+      "flag:green secret code",
+    ],
   },
   {
     "room": {"north": 11, "east": 17},
     "requires": [
-      ["item:key#1", "permit:bomb"],
+      [
+        "item:key#1",
+        "permit:bomb",
+      ],
     ],
-    "receive": ["item:bombs#8", "item:gold#200"],
+    "receive": [
+      "item:bombs#8",
+      "item:gold#200",
+    ],
   },
   {
     "room": {"north": 7, "east": 18},
     "requires": [
-      ["item:slamstones#1", "skill:reveal"],
+      [
+        "item:slamstones#1",
+        "skill:reveal",
+      ],
     ],
-    "receive": ["skill:reveal.+1"],
+    "receive": [
+      "skill:reveal.+1",
+    ],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      ["area:red chest"],
+      [
+        "area:red chest",
+      ],
     ],
-    "receive": ["item:slamstones"],
+    "receive": [
+      "item:slamstones",
+    ],
   },
   {
     "room": {"north": 7, "east": 25},
     "requires": [
-      ["magic:fire.2"],
+      [
+        "magic:fire.2",
+      ],
     ],
-    "receive": ["flag:lit torch 2"],
+    "receive": [
+      "flag:lit torch 2",
+    ],
   },
   {
     "room": {"north": 8, "east": 21},
     "requires": [
-      ["magic:fire.2"],
+      [
+        "magic:fire.2",
+      ],
     ],
-    "receive": ["flag:lit torch 1"],
+    "receive": [
+      "flag:lit torch 1",
+    ],
   },
   {
     "room": {"north": 9, "east": 22},
     "requires": [
-      ["entrance.south0", "item:gold"],
+      [
+        "entrance.south0",
+        "item:gold",
+      ],
     ],
-    "receive": ["food:chocolate"],
+    "receive": [
+      "food:chocolate",
+    ],
   },
   {
     "room": {"north": 9, "east": 22},
     "requires": [
-      ["entrance.south0", "item:gold"],
+      [
+        "entrance.south0",
+        "item:gold",
+      ],
     ],
-    "receive": ["food:steak"],
+    "receive": [
+      "food:steak",
+    ],
   },
   {
     "room": {"north": 9, "east": 22},
     "requires": [
-      ["entrance.south0", "item:gold"],
+      [
+        "entrance.south0",
+        "item:gold",
+      ],
     ],
-    "receive": ["food:peppers"],
+    "receive": [
+      "food:peppers",
+    ],
   },
   {
     "room": {"north": 10, "east": 22},
@@ -354,40 +527,77 @@ manager.correct - manager.wrong > 800 = halo
         "permit:bomb.2",
       ],
     ],
-    "receive": ["craft:elixir"],
+    "receive": [
+      "craft:elixir",
+    ],
   },
   {
     "room": {"north": 10, "east": 25},
     "requires": [
-      ["quest:rings.1"],
+      [
+        "quest:rings.1",
+      ],
     ],
-    "receive": ["misc:headstoneSwitch3"],
+    "receive": [
+      "misc:headstoneSwitch3",
+    ],
   },
-  # {"room": {"north": 11, "east": 24}, "info": "warp skill warp point"},
+  # {"room": {"north": 11, "east": 24}, "info": "warp skill warp point",},
   {
     "room": {"north": 11, "east": 22},
     "requires": [
-      ["loot:sTooth#10", "skill:craft"],
+      [
+        "loot:sTooth#10",
+        "skill:craft",
+      ],
     ],
-    "receive": ["craft:emerald"],
+    "receive": [
+      "craft:emerald",
+    ],
   },
   {
     "room": {"north": 12, "east": 25},
     "requires": [
-      ["loot:sTooth#10", "skill:craft"],
+      [
+        "loot:sTooth#10",
+        "skill:craft",
+      ],
     ],
-    "receive": ["food:gummyBears#10", "item:diamonds#50"],
+    "receive": [
+      "food:gummyBears#10",
+      "item:diamonds#50",
+    ],
   },
   {
     "room": {"north": 13, "east": 25},
     "requires": [
-      ["loot:mHat#1", "misc:magic only resist bypass"],
+      [
+        "loot:mHat#1",
+        "flag:magic only resist bypass",
+      ],
     ],
-    "receive": ["loot:aScepter#1"],
+    "receive": [
+      "loot:aScepter#1",
+    ],
   },
-  {"room": {"north": 14, "east": 25}, "receive": ["flag:three part code part 1"]},
-  {"room": {"north": 14, "east": 24}, "receive": ["flag:three part code part 2"]},
-  {"room": {"north": 13, "east": 24}, "receive": ["flag:three part code part 3"]},
+  {
+    "room": {"north": 14, "east": 25},
+    "receive": [
+      "flag:three part code part 1",
+    ],
+  },
+  {
+    "room": {"north": 14, "east": 24},
+    "receive": [
+      "flag:three part code part 2",
+    ],
+  },
+  {
+    "room": {"north": 13, "east": 24},
+    "receive": [
+      "flag:three part code part 3",
+    ],
+  },
   {
     "room": {"north": 13, "east": 26},
     "requires": [
@@ -397,449 +607,724 @@ manager.correct - manager.wrong > 800 = halo
         "flag:three part code part 3",
       ]
     ],
-    "receive": ["food:gingerBread#99"],
+    "receive": [
+      "food:gingerBread#99",
+    ],
   },
-  {"room": {"north": 11, "east": 26}, "receive": ["flag:stomp code"]},
+  {
+    "room": {"north": 11, "east": 26},
+    "receive": [
+      "flag:stomp code",
+    ],
+  },
   # {
   #   "room": {"north": 18, "east": 25},
-  #   "requires": [["skill:medic.1", "loot:cFang#5"],],
-  #   "receive": ["skill:medic.2"],
+  #   "requires": [["skill:medic.1", "loot:cFang#5",],],
+  #   "receive": ["skill:medic.2",],
   # },
   # {
   #   "room": {"north": 18, "east": 25},
-  #   "requires": [["skill:medic.2", "loot:oCoin#20", "loot:mStaff#10"],],
-  #   "receive": ["skill:medic.3"],
+  #   "requires": [["skill:medic.2", "loot:oCoin#20", "loot:mStaff#10",],],
+  #   "receive": ["skill:medic.3",],
   # },
   # {
   #   "room": {"north": 18, "east": 25},
-  #   "requires": [["skill:medic.3", "loot:dScale#10", "loot:gSkin#10"],],
-  #   "receive": ["skill:medic.4"],
+  #   "requires": [["skill:medic.3", "loot:dScale#10", "loot:gSkin#10",],],
+  #   "receive": ["skill:medic.4",],
   # },
   # {
   #   "room": {"north": 18, "east": 25},
-  #   "requires": [["skill:medic.4", "loot:kCrest#10", "item:alpha axe#5"],],
-  #   "receive": ["skill:medic.5"],
+  #   "requires": [["skill:medic.4", "loot:kCrest#10", "item:alpha axe#5",],],
+  #   "receive": ["skill:medic.5",],
   # },
   # {
   #   "room": {"north": 18, "east": 25},
   #   "requires": [
-  #     ["skill:medic.5", "loot:gFeather#3", "loot:aScepter#5"]
+  #     ["skill:medic.5", "loot:gFeather#3", "loot:aScepter#5",]
   #   ],
-  #   "receive": ["skill:medic.6"],
+  #   "receive": ["skill:medic.6",],
   # },
   {
     "room": {"north": 18, "east": 24},
     "requires": [
-      ["quest:rings.1"],
+      [
+        "quest:rings.1",
+      ],
     ],
-    "receive": ["misc:headstoneSwitch4"],
+    "receive": [
+      "misc:headstoneSwitch4",
+    ],
   },
   {
     "room": {"north": 21, "east": 23},
     "requires": [
-      ["skill:dig"],
+      [
+        "skill:dig",
+      ],
     ],
-    "receive": ["item:diamonds#2"],
+    "receive": [
+      "item:diamonds#2",
+    ],
   },
   {
     "room": {"north": 21, "east": 22},
     "requires": [
-      ["item:ring of gold", "loot:tBand#5", "loot:gSkin#2"],
+      [
+        "item:ring of gold",
+        "loot:tBand#5",
+        "loot:gSkin#2",
+      ],
     ],
-    "receive": ["craft:ring of gold"],
+    "receive": [
+      "craft:ring of gold",
+    ],
   },
   {
     "room": {"north": 20, "east": 22},
     "requires": [
-      ["item:gold#500"],
+      [
+        "item:gold#500",
+      ],
     ],
-    "receive": ["item:rubies#1"],
+    "receive": [
+      "item:rubies#1",
+    ],
   },
   {
     "room": {"north": 20, "east": 23},
     "requires": [
-      ["skill:reveal", "entrance.west0", "permit:bomb"],
+      [
+        "skill:reveal",
+        "entrance.west0",
+        "permit:bomb",
+      ],
     ],
-    "receive": ["area:red chest"],
+    "receive": [
+      "area:red chest",
+    ],
   },
   {
     "room": {"north": 19, "east": 22},
     "requires": [
-      ["loot:aAxe#5"],
+      [
+        "loot:aAxe#5",
+      ],
     ],
-    "receive": ["skill:reveal"],
+    "receive": [
+      "skill:reveal",
+    ],
   },
   {
     "room": {"north": 19, "east": 21},
     "requires": [
-      ["quest:dig.3", "loot:bTooth#1"],
+      [
+        "quest:dig.3",
+        "loot:bTooth#1",
+      ],
     ],
-    "receive": ["item:gold#18"],
+    "receive": [
+      "item:gold#18",
+    ],
   },
   {
     "room": {"north": 19, "east": 20},
     "requires": [
       [],
     ],
-    "receive": ["quest:pam.1"],
+    "receive": [
+      "quest:pam.1",
+    ],
   },
   {
     "room": {"north": 21, "east": 20},
     "requires": [
-      ["loot:bTusk#1"],
+      [
+        "loot:bTusk#1",
+      ],
     ],
-    "receive": ["item:gold#20"],
+    "receive": [
+      "item:gold#20",
+    ],
   },
   {
     "room": {"north": 20, "east": 18},
     "requires": [
-      ["quest:rings.11"],
+      [
+        "quest:rings.11",
+      ],
     ],
-    "receive": ["quest:rings.12"],
+    "receive": [
+      "quest:rings.12",
+    ],
   },
   {
     "room": {"north": 21, "east": 18},
     "requires": [
-      ["item:emeralds#1"],
+      [
+        "item:emeralds#1",
+      ],
     ],
-    "receive": ["item:diamonds#Enum.Craft.emerald", "food:peppers#30"],
+    "receive": [
+      "item:diamonds#Enum.Craft.emerald",
+      "food:peppers#30",
+    ],
     "info": "30 not 20",
   },
   {
     "room": {"north": 21, "east": 17},
     "requires": [
-      ["item:aurastones#1", "item:gold#500"],
+      [
+        "item:aurastones#1",
+        "item:gold#500",
+      ],
     ],
-    "receive": ["item:rubies#1"],
+    "receive": [
+      "item:rubies#1",
+    ],
   },
   {
     "room": {"north": 20, "east": 15},
     "requires": [
-      ["skill:firewall", "loot:dScale#5", "item:medallions#3"],
+      [
+        "skill:firewall",
+        "loot:dScale#5",
+        "loot:medallions#3",
+      ],
     ],
-    "receive": ["skill:firewall.2"],
+    "receive": [
+      "skill:firewall.2",
+    ],
   },
   {
     "room": {"north": 20, "east": 15},
     "requires": [
-      ["skill:firewall.2", "loot:dScale#10", "item:medallions#6"],
+      [
+        "skill:firewall.2",
+        "loot:dScale#10",
+        "loot:medallions#6",
+      ],
     ],
-    "receive": ["skill:firewall.3"],
+    "receive": [
+      "skill:firewall.3",
+    ],
   },
   {
     "room": {"north": 20, "east": 15},
     "requires": [
-      ["skill:firewall.3", "loot:dScale#15", "item:medallions#9"],
+      [
+        "skill:firewall.3",
+        "loot:dScale#15",
+        "loot:medallions#9",
+      ],
     ],
-    "receive": ["skill:firewall.4"],
+    "receive": [
+      "skill:firewall.4",
+    ],
   },
   {
     "room": {"north": 20, "east": 15},
     "requires": [
-      ["skill:firewall.4", "loot:dScale#20", "item:medallions#12"],
+      [
+        "skill:firewall.4",
+        "loot:dScale#20",
+        "loot:medallions#12",
+      ],
     ],
-    "receive": ["skill:firewall.5"],
+    "receive": [
+      "skill:firewall.5",
+    ],
   },
   {
     "room": {"north": 20, "east": 15},
     "requires": [
-      ["skill:firewall.5", "loot:dScale#25", "item:medallions#15"],
+      [
+        "skill:firewall.5",
+        "loot:dScale#25",
+        "loot:medallions#15",
+      ],
     ],
-    "receive": ["skill:firewall.6"],
+    "receive": [
+      "skill:firewall.6",
+    ],
   },
   {
     "room": {"north": 20, "east": 15},
     "requires": [
-      ["skill:firewall.6", "loot:dScale#30", "item:medallions#18"],
+      [
+        "skill:firewall.6",
+        "loot:dScale#30",
+        "loot:medallions#18",
+      ],
     ],
-    "receive": ["skill:firewall.7"],
+    "receive": [
+      "skill:firewall.7",
+    ],
   },
   {
     "room": {"north": 20, "east": 15},
     "requires": [
-      ["skill:firewall.7", "loot:dScale#35", "item:medallions#21"],
+      [
+        "skill:firewall.7",
+        "loot:dScale#35",
+        "loot:medallions#21",
+      ],
     ],
-    "receive": ["skill:firewall.8"],
+    "receive": [
+      "skill:firewall.8",
+    ],
   },
   {
     "room": {"north": 20, "east": 15},
     "requires": [
-      ["skill:firewall.8", "loot:dScale#40", "item:medallions#24"],
+      [
+        "skill:firewall.8",
+        "loot:dScale#40",
+        "loot:medallions#24",
+      ],
     ],
-    "receive": ["skill:firewall.9"],
+    "receive": [
+      "skill:firewall.9",
+    ],
   },
   {
     "room": {"north": 20, "east": 15},
     "requires": [
-      ["skill:firewall.9", "loot:dScale#45", "item:medallions#27"],
+      [
+        "skill:firewall.9",
+        "loot:dScale#45",
+        "loot:medallions#27",
+      ],
     ],
-    "receive": ["skill:firewall.10"],
+    "receive": [
+      "skill:firewall.10",
+    ],
   },
   {
     "room": {"north": 19, "east": 15},
     "requires": [
-      ["item:medallions#20"],
+      [
+        "loot:medallions#20",
+      ],
     ],
-    "receive": ["item:rubies#1"],
+    "receive": [
+      "item:rubies#1",
+    ],
   },
   {
     "room": {"north": 19, "east": 15},
     "requires": [
-      ["item:medallions#3"],
+      [
+        "loot:medallions#3",
+      ],
     ],
-    "receive": ["skill:hint"],
+    "receive": [
+      "skill:hint",
+    ],
   },
   {
     "room": {"north": 19, "east": 15},
     "requires": [
-      ["item:medallions#30"],
+      [
+        "loot:medallions#30",
+      ],
     ],
-    "receive": ["skill:fear"],
+    "receive": [
+      "skill:fear",
+    ],
   },
   {
     "room": {"north": 16, "east": 16},
     "requires": [
-      ["quest:rings.1"],
+      [
+        "quest:rings.1",
+      ],
     ],
-    "receive": ["misc:headstoneSwitch1"],
+    "receive": [
+      "misc:headstoneSwitch1",
+    ],
   },
   {
     "room": {"north": 18, "east": 13},
     "requires": [
-      ["loot:cThread#10", "item:shadowCrest#5", "skill:reveal"],
+      [
+        "loot:cThread#10",
+        "item:shadowCrest#5",
+        "skill:reveal",
+      ],
     ],
-    "receive": ["misc:bombCapacity"],
+    "receive": [
+      "misc:bombCapacity",
+    ],
   },
-  # {"room": {"north": 19, "east": 12}, "info": "warp skill warp point"},
+  # {"room": {"north": 19, "east": 12}, "info": "warp skill warp point",},
   {
     "room": {"north": 24, "east": 11},
     "requires": [
-      ["item:key#1", "permit:bomb"],
+      [
+        "item:key#1",
+        "permit:bomb",
+      ],
     ],
-    "receive": ["weapon:baneBlade"],
+    "receive": [
+      "weapon:baneBlade",
+    ],
   },
   {
     "room": {"north": 17, "east": 10},
     "requires": [
-      ["loot:vAsh#6"],
+      [
+        "loot:vAsh#6",
+      ],
     ],
-    "receive": ["food:gummyBears#5"],
+    "receive": [
+      "food:gummyBears#5",
+    ],
   },
   {
     "room": {"north": 4, "east": 13},
     "requires": [
-      ["item:gold"],
+      [
+        "item:gold",
+      ],
     ],
-    "receive": ["food:orange"],
+    "receive": [
+      "food:orange",
+    ],
   },
   {
     "room": {"north": 4, "east": 13},
     "requires": [
-      ["item:gold"],
+      [
+        "item:gold",
+      ],
     ],
-    "receive": ["food:gingerBread"],
+    "receive": [
+      "food:gingerBread",
+    ],
   },
   {
     "room": {"north": 4, "east": 13},
     "requires": [
-      ["item:gold"],
+      [
+        "item:gold",
+      ],
     ],
-    "receive": ["food:strawberry"],
+    "receive": [
+      "food:strawberry",
+    ],
   },
   {
     "room": {"north": 4, "east": 13},
     "requires": [
-      ["loot:sTooth#5", "loot:vHorn#5", "loot:oArm#5"],
+      [
+        "loot:sTooth#5",
+        "loot:vHorn#5",
+        "loot:oArm#5",
+      ],
     ],
-    "receive": ["craft:newtonsApple"],
+    "receive": [
+      "craft:newtonsApple",
+    ],
   },
   {
     "room": {"north": 11, "east": 15},
     "requires": [
-      ["skill:craft", "loot:tBand#5", "loot:wPelt#2"],
+      [
+        "skill:craft",
+        "loot:tBand#5",
+        "loot:wPelt#2",
+      ],
     ],
-    "receive": ["craft:key"],
+    "receive": [
+      "craft:key",
+    ],
   },
   {
     "room": {"north": 18, "east": 19},
     "requires": [
       [],
     ],
-    "receive": ["quest:gTree.1"],
+    "receive": [
+      "quest:gTree.1",
+    ],
   },
   {
     "room": {"north": 21, "east": 20},
     "requires": [
       [],
     ],
-    "receive": ["quest:bBomb.1"],
+    "receive": [
+      "quest:bBomb.1",
+    ],
   },
   {
     "room": {"north": 19, "east": 21},
     "requires": [
       [],
     ],
-    "receive": ["quest:dig.1"],
+    "receive": [
+      "quest:dig.1",
+    ],
   },
   {
     "room": {"north": 19, "east": 21},
     "requires": [
-      ["skill:dig", "quest:dig.1"],
+      [
+        "skill:dig",
+        "quest:dig.1",
+      ],
     ],
-    "receive": ["quest:dig.2"],
+    "receive": [
+      "quest:dig.2",
+    ],
   },
   {
     "room": {"north": 19, "east": 21},
     "requires": [
-      ["quest:dig.2", "skill:dig"],
+      [
+        "quest:dig.2",
+        "skill:dig",
+      ],
     ],
-    "receive": ["quest:dig.3", "item:gold#25"],
+    "receive": [
+      "quest:dig.3",
+      "item:gold#25",
+    ],
   },
   {
     "room": {"north": 21, "east": 20},
     "requires": [
-      ["food:honey#10"],
+      [
+        "food:honey#10",
+      ],
     ],
-    "receive": ["magic:crush"],
+    "receive": [
+      "magic:crush",
+    ],
   },
   {
     "room": {"north": 21, "east": 20},
     "requires": [
-      ["quest:gTree.1"],
+      [
+        "quest:gTree.1",
+      ],
     ],
-    "receive": ["quest:gTree.2"],
+    "receive": [
+      "quest:gTree.2",
+    ],
   },
   {
     "room": {"north": 18, "east": 22},
     "requires": [
-      ["quest:gTree.2"],
+      [
+        "quest:gTree.2",
+      ],
     ],
-    "receive": ["quest:gTree.3"],
+    "receive": [
+      "quest:gTree.3",
+    ],
     # TODO
     "info": "also unblocks the path here add info to other place too",
   },
   {
     "room": {"north": 19, "east": 23},
     "requires": [
-      ["loot:bTooth#15", "quest:gTree.3"],
+      [
+        "loot:bTooth#15",
+        "quest:gTree.3",
+      ],
     ],
-    "receive": ["quest:gTree.4"],
+    "receive": [
+      "quest:gTree.4",
+    ],
   },
   {
     "room": {"north": 18, "east": 19},
     "requires": [
-      ["quest:gTree.4"],
+      [
+        "quest:gTree.4",
+      ],
     ],
-    "receive": ["quest:gTree.5"],
+    "receive": [
+      "quest:gTree.5",
+    ],
   },
   {
     "room": {"north": 21, "east": 20},
     "requires": [
-      ["quest:gTree.5"],
+      [
+        "quest:gTree.5",
+      ],
     ],
-    "receive": ["quest:gTree.6", "item:gold#50"],
+    "receive": [
+      "quest:gTree.6",
+      "item:gold#50",
+    ],
   },
   {
     "room": {"north": 14, "east": 20},
     "requires": [
-      ["quest:gTree.6"],
+      [
+        "quest:gTree.6",
+      ],
     ],
-    "receive": ["quest:gTree.7"],
+    "receive": [
+      "quest:gTree.7",
+    ],
   },
   {
     "room": {"north": 15, "east": 23},
     "requires": [
-      ["quest:pam.1", "skill:dig"],
+      [
+        "quest:pam.1",
+        "skill:dig",
+      ],
     ],
-    "receive": ["quest:pam.2"],
+    "receive": [
+      "quest:pam.2",
+    ],
   },
   {
     "room": {"north": 19, "east": 20},
     "requires": [
-      ["quest:pam.2"],
+      [
+        "quest:pam.2",
+      ],
     ],
-    "receive": ["quest:pam.3", "item:gold#20"],
+    "receive": [
+      "quest:pam.3",
+      "item:gold#20",
+    ],
   },
   {
     "room": {"north": 12, "east": 20},
     "requires": [
-      ["quest:pam.3"],
+      [
+        "quest:pam.3",
+      ],
     ],
-    "receive": ["quest:pam.4"],
+    "receive": [
+      "quest:pam.4",
+    ],
     # TODO make sure to show all req pam also req skill dig
   },
   {
     "room": {"north": 19, "east": 20},
     "requires": [
-      ["quest:pam.4"],
+      [
+        "quest:pam.4",
+      ],
     ],
-    "receive": ["quest:pam.5", "food:gingerBread#10"],
+    "receive": [
+      "quest:pam.5",
+      "food:gingerBread#10",
+    ],
   },
   {
     "room": {"north": 14, "east": 18},
     "requires": [
-      ["quest:gTree.7"],
+      [
+        "quest:gTree.7",
+      ],
     ],
-    "receive": ["quest:gTree.8"],
+    "receive": [
+      "quest:gTree.8",
+    ],
   },
   {
     "room": {"north": 14, "east": 18},
     "requires": [
-      ["quest:gTree.8"],
+      [
+        "quest:gTree.8",
+      ],
     ],
-    "receive": ["quest:gTree.9"],
+    "receive": [
+      "quest:gTree.9",
+    ],
   },
   {
     "room": {"north": 17, "east": 19},
     "requires": [
       [],
     ],
-    "receive": ["quest:oMan.1"],
+    "receive": [
+      "quest:oMan.1",
+    ],
   },
   {
     "room": {"north": 21, "east": 21},
     "requires": [
-      ["food:honey#5", "loot:venom#1"],
+      [
+        "food:honey#5",
+        "loot:venom#1",
+      ],
     ],
-    "receive": ["skill:craft"],
+    "receive": [
+      "skill:craft",
+    ],
   },
   {
     "room": {"north": 16, "east": 14},
     "requires": [
-      ["quest:gTree.9"],
+      [
+        "quest:gTree.9",
+      ],
     ],
-    "receive": ["quest:gTree.10"],
+    "receive": [
+      "quest:gTree.10",
+    ],
   },
   {
     "room": {"north": 15, "east": 18},
     "requires": [
-      ["quest:gTree.10"],
+      [
+        "quest:gTree.10",
+      ],
     ],
-    "receive": ["quest:gTree.11", "food:beefJerky#3"],
+    "receive": [
+      "quest:gTree.11",
+      "food:beefJerky#3",
+    ],
   },
   {
     "room": {"north": 13, "east": 21},
     "requires": [
-      ["quest:bBomb.1", "entrance.south0"],
+      [
+        "quest:bBomb.1",
+        "entrance.south0",
+      ],
     ],
-    "receive": ["quest:bBomb.2"],
+    "receive": [
+      "quest:bBomb.2",
+    ],
   },
   {
     "room": {"north": 21, "east": 20},
     "requires": [
-      ["quest:bBomb.2"],
+      [
+        "quest:bBomb.2",
+      ],
     ],
-    "receive": ["quest:bBomb.3"],
+    "receive": [
+      "quest:bBomb.3",
+    ],
     "info": "sable broke here once but now working, unsure why",
   },
   {
     "room": {"north": 13, "east": 21},
     "requires": [
-      ["quest:bBomb.3", "entrance.south0"],
+      [
+        "quest:bBomb.3",
+        "entrance.south0",
+      ],
     ],
     # TODO ???
     # "item:bombs#15",
-    "receive": ["quest:bBomb.4", "permit:bomb", "craft:bomb"],
+    "receive": [
+      "quest:bBomb.4",
+      "permit:bomb",
+      "craft:bomb",
+    ],
     "info": """bomb active here so find ui update code here
 [ACCESS SET] Key: quest"1" was set to: 4 from 3 bBomb Error
 at Object.set (http://127.0.0.1:1533/MathQuest/MathQuest.js:19993:15)
@@ -857,21 +1342,32 @@ at Jh.onKeyDown (http://127.0.0.1:1533/MathQuest/MathQuest.js:99147:18)
   {
     "room": {"north": 10, "east": 17},
     "requires": [
-      ["quest:pam.5"],
+      [
+        "quest:pam.5",
+      ],
     ],
-    "receive": ["quest:pam.6"],
+    "receive": [
+      "quest:pam.6",
+    ],
   },
   {
     "room": {"north": 19, "east": 20},
     "requires": [
-      ["quest:pam.6"],
+      [
+        "quest:pam.6",
+      ],
     ],
-    "receive": ["quest:pam.7", "food:chocolate#5"],
+    "receive": [
+      "quest:pam.7",
+      "food:chocolate#5",
+    ],
   },
   {
     "room": {"north": 10, "east": 19},
     "requires": [
-      ["quest:gTree.11"],
+      [
+        "quest:gTree.11",
+      ],
     ],
     "receive": [
       "quest:gTree.12"
@@ -881,59 +1377,97 @@ at Jh.onKeyDown (http://127.0.0.1:1533/MathQuest/MathQuest.js:99147:18)
   {
     "room": {"north": 15, "east": 18},
     "requires": [
-      ["quest:gTree.12"],
+      [
+        "quest:gTree.12",
+      ],
     ],
-    "receive": ["quest:gTree.13"],
+    "receive": [
+      "quest:gTree.13",
+    ],
   },
   {
     "room": {"north": 12, "east": 14},
     "requires": [
-      ["quest:bBomb.4"],
+      [
+        "quest:bBomb.4",
+      ],
     ],
-    "receive": ["quest:bBomb.5"],
+    "receive": [
+      "quest:bBomb.5",
+    ],
     "info": "fix warp zone around here they appear to be incorrect",
   },
   {
     "room": {"north": 9, "east": 11},
     "requires": [
-      ["quest:pam.7", "entrance.south1"],
+      [
+        "quest:pam.7",
+        "entrance.south1",
+      ],
     ],
-    "receive": ["quest:pam.8"],
+    "receive": [
+      "quest:pam.8",
+    ],
   },
   {
     "room": {"north": 12, "east": 9},
     "requires": [
-      ["quest:gTree.13"],
+      [
+        "quest:gTree.13",
+      ],
     ],
-    "receive": ["quest:gTree.14"],
+    "receive": [
+      "quest:gTree.14",
+    ],
   },
   {
     "room": {"north": 12, "east": 9},
     "requires": [
-      ["quest:gTree.14", "loot:sClaw#7", "loot:cFang#5"],
+      [
+        "quest:gTree.14",
+        "loot:sClaw#7",
+        "loot:cFang#5",
+      ],
     ],
-    "receive": ["quest:gTree.15", "misc:fire crystal"],
+    "receive": [
+      "quest:gTree.15",
+      "misc:fire crystal",
+    ],
   },
   {
     "room": {"north": 11, "east": 9},
     "requires": [
-      ["entrance.north0"],
-      ["entrance.east0"],
+      [
+        "entrance.north0",
+      ],
+      [
+        "entrance.east0",
+      ],
     ],
-    "receive": ["quest:warp.1"],
+    "receive": [
+      "quest:warp.1",
+    ],
   },
   {
     "room": {"north": 12, "east": 11},
     "requires": [
-      ["entrance.west0"],
-      ["entrance.south0"],
+      [
+        "entrance.west0",
+      ],
+      [
+        "entrance.south0",
+      ],
     ],
-    "receive": ["quest:canteen.1"],
+    "receive": [
+      "quest:canteen.1",
+    ],
   },
   {
     "room": {"north": 8, "east": 9},
     "requires": [
-      ["misc:fire crystal"],
+      [
+        "misc:fire crystal",
+      ],
     ],
     "receive": [],
     "info": """289 374
@@ -948,33 +1482,53 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 7, "east": 11},
     "requires": [
-      ["quest:gTree.15"],
+      [
+        "quest:gTree.15",
+      ],
     ],
-    "receive": ["quest:gTree.16", "flag:7_11 boss dead"],
+    "receive": [
+      "quest:gTree.16",
+      "flag:7_11 boss dead",
+    ],
   },
   {
     "room": {"north": 7, "east": 10},
     "requires": [
-      ["quest:gTree.16", "permit:bomb", "flag:7_11 boss dead"],
+      [
+        "quest:gTree.16",
+        "permit:bomb",
+        "flag:7_11 boss dead",
+      ],
     ],
     # TODO
-    "receive": ["quest:gTree.17"],
+    "receive": [
+      "quest:gTree.17",
+    ],
     "info": "forgot to add permit:bomb to above, do so later",
   },
   {
     "room": {"north": 15, "east": 18},
     "requires": [
-      ["quest:gTree.17"],
+      [
+        "quest:gTree.17",
+      ],
     ],
     # TODO
-    "receive": ["quest:gTree.18", "permit:shadowsoulEntrance"],
+    "receive": [
+      "quest:gTree.18",
+      "permit:shadowsoulEntrance",
+    ],
   },
   {
     "room": {"north": 9, "east": 22},
     "requires": [
-      ["entrance.south0"],
+      [
+        "entrance.south0",
+      ],
     ],
-    "receive": ["quest:seeds.1"],
+    "receive": [
+      "quest:seeds.1",
+    ],
   },
   {
     "room": {"north": 6, "east": 23},
@@ -987,141 +1541,221 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 5, "east": 24},
     "requires": [
-      ["quest:gTree.18"],
+      [
+        "quest:gTree.18",
+      ],
     ],
-    "receive": ["quest:gTree.19", "food:holyWater#1"],
+    "receive": [
+      "quest:gTree.19",
+      "food:holyWater#1",
+    ],
   },
   {
     "room": {"north": 5, "east": 24},
     "requires": [
-      ["quest:gTree.19"],
+      [
+        "quest:gTree.19",
+      ],
     ],
-    "receive": ["quest:gTree.20"],
+    "receive": [
+      "quest:gTree.20",
+    ],
   },
   {
     "room": {"north": 15, "east": 18},
     "requires": [
-      ["quest:gTree.20"],
+      [
+        "quest:gTree.20",
+      ],
     ],
-    "receive": ["quest:gTree.21"],
+    "receive": [
+      "quest:gTree.21",
+    ],
   },
   {
     "room": {"north": 16, "east": 14},
     "requires": [
-      ["quest:gTree.21"],
+      [
+        "quest:gTree.21",
+      ],
     ],
-    "receive": ["quest:gTree.22"],
+    "receive": [
+      "quest:gTree.22",
+    ],
     "info": "passage up now available",
   },
   {
     "room": {"north": 24, "east": 9},
-    # "requires": [["quest:gTree.454565"],],
+    # "requires": [["quest:gTree.454565",],],
     # TODO gen should fail to win like this
     "requires": [
-      ["quest:gTree.22"],
+      [
+        "quest:gTree.22",
+      ],
     ],
-    "receive": ["quest:gTree.23", "flag:final boss dead"],
+    "receive": [
+      "quest:gTree.23",
+      "flag:final boss dead",
+    ],
   },
   {
     "room": {"north": 24, "east": 9},
     "requires": [
-      ["quest:gTree.23"],
+      [
+        "quest:gTree.23",
+      ],
     ],
-    "receive": ["quest:gTree.24"],
+    "receive": [
+      "quest:gTree.24",
+    ],
   },
   {
     "room": {"north": 14, "east": 18},
     "requires": [
-      ["quest:gTree.24"],
+      [
+        "quest:gTree.24",
+      ],
     ],
-    "receive": ["quest:gTree.25", "misc:pup#10", "item:gold#1000"],
+    "receive": [
+      "quest:gTree.25",
+      "misc:pup#10",
+      "item:gold#1000",
+    ],
   },
   {
     "room": {"north": 14, "east": 18},
     "requires": [
-      ["quest:gTree.25"],
+      [
+        "quest:gTree.25",
+      ],
     ],
-    "receive": ["quest:aSword.1"],
+    "receive": [
+      "quest:aSword.1",
+    ],
   },
   # {
   #   "room": {"north": 14, "east": 18},
-  #   "requires": [["quest:aSword.1", "weapon:baneBlade"],],
-  #   "receive": ["quest:aSword.2"],
+  #   "requires": [["quest:aSword.1", "weapon:baneBlade",],],
+  #   "receive": ["quest:aSword.2",],
   # },
   # {
   #   "room": {"north": 500, "east": 501},
-  #   "requires": [["quest:aSword.2", "skill:reveal"],],
-  #   "receive": ["quest:aSword.3"],
+  #   "requires": [["quest:aSword.2", "skill:reveal",],],
+  #   "receive": ["quest:aSword.3",],
   # },
   {
     "room": {"north": 15, "east": 24},
     "requires": [
-      ["quest:oMan.1"],
+      [
+        "quest:oMan.1",
+      ],
     ],
-    "receive": ["quest:oMan.2"],
+    "receive": [
+      "quest:oMan.2",
+    ],
   },
   {
     "room": {"north": 17, "east": 19},
     "requires": [
-      ["quest:oMan.2"],
+      [
+        "quest:oMan.2",
+      ],
     ],
-    "receive": ["quest:oMan.3"],
+    "receive": [
+      "quest:oMan.3",
+    ],
   },
   {
     "room": {"north": 11, "east": 21},
     "requires": [
-      ["quest:oMan.3"],
+      [
+        "quest:oMan.3",
+      ],
     ],
-    "receive": ["quest:oMan.4"],
+    "receive": [
+      "quest:oMan.4",
+    ],
   },
   {
     "room": {"north": 10, "east": 15},
     "requires": [
-      ["quest:oMan.4"],
+      [
+        "quest:oMan.4",
+      ],
     ],
-    "receive": ["quest:oMan.5"],
+    "receive": [
+      "quest:oMan.5",
+    ],
   },
   {
     "room": {"north": 12, "east": 11},
     "requires": [
-      ["quest:canteen.2"],
+      [
+        "quest:canteen.2",
+      ],
     ],
-    "receive": ["quest:canteen.3", "item:diamonds#1"],
+    "receive": [
+      "quest:canteen.3",
+      "item:diamonds#1",
+    ],
   },
   {
     "room": {"north": 14, "east": 22},
     "requires": [
       [],
     ],
-    "receive": ["quest:rings.1"],
+    "receive": [
+      "quest:rings.1",
+    ],
   },
   {
     "room": {"north": 14, "east": 22},
     "requires": [
-      ["quest:rings.1", "skill:dig"],
+      [
+        "quest:rings.1",
+        "skill:dig",
+      ],
     ],
-    "receive": ["item:ring of gold"],
+    "receive": [
+      "item:ring of gold",
+    ],
   },
   {
     "room": {"north": 14, "east": 22},
     "requires": [
-      ["quest:rings.1", "item:ring of gold"],
+      [
+        "quest:rings.1",
+        "item:ring of gold",
+      ],
     ],
-    "receive": ["quest:rings.2"],
+    "receive": [
+      "quest:rings.2",
+    ],
   },
   {
     "room": {"north": 16, "east": 21},
     "requires": [
-      ["skill:dig", "quest:rings.1"],
+      [
+        "skill:dig",
+        "quest:rings.1",
+      ],
     ],
-    "receive": ["item:ring of health"],
+    "receive": [
+      "item:ring of health",
+    ],
   },
   {
     "room": {"north": 14, "east": 22},
     "requires": [
-      ["item:ring of gold", "item:ring of health", "quest:rings.1"],
+      [
+        "item:ring of gold",
+        "item:ring of health",
+        "quest:rings.1",
+      ],
     ],
-    "receive": ["quest:rings.3"],
+    "receive": [
+      "quest:rings.3",
+    ],
   },
   {
     "room": {"north": 14, "east": 22},
@@ -1133,14 +1767,22 @@ MathQuest.js:42550 add listeners""",
         "quest:rings.1",
       ]
     ],
-    "receive": ["quest:rings.4"],
+    "receive": [
+      "quest:rings.4",
+    ],
   },
   {
     "room": {"north": 13, "east": 16},
     "requires": [
-      ["quest:rings.1", "entrance.south0", "permit:bomb"],
+      [
+        "quest:rings.1",
+        "entrance.south0",
+        "permit:bomb",
+      ],
     ],
-    "receive": ["item:ring of evasion"],
+    "receive": [
+      "item:ring of evasion",
+    ],
   },
   {
     "room": {"north": 11, "east": 9},
@@ -1162,78 +1804,132 @@ MathQuest.js:42550 add listeners""",
         "entrance.east0",
       ],
     ],
-    "receive": ["quest:warp.2", "skill:warp"],
+    "receive": [
+      "quest:warp.2",
+      "skill:warp",
+    ],
   },
   {
     "room": {"north": 13, "east": 21},
     "requires": [
-      ["quest:bBomb.5"],
+      [
+        "quest:bBomb.5",
+      ],
     ],
-    "receive": ["quest:bBomb.6", "permit:volcano"],
+    "receive": [
+      "quest:bBomb.6",
+      "permit:volcano",
+    ],
   },
   {
     "room": {"north": 17, "east": 17},
     "requires": [
-      ["quest:bBomb.6"],
+      [
+        "quest:bBomb.6",
+      ],
     ],
-    "receive": ["quest:bBomb.7"],
+    "receive": [
+      "quest:bBomb.7",
+    ],
   },
   {
     "room": {"north": 20, "east": 18},
     "requires": [
-      ["quest:bBomb.7"],
+      [
+        "quest:bBomb.7",
+      ],
     ],
-    "receive": ["quest:bBomb.8"],
+    "receive": [
+      "quest:bBomb.8",
+    ],
   },
   {
     "room": {"north": 13, "east": 21},
     "requires": [
-      ["quest:bBomb.8"],
+      [
+        "quest:bBomb.8",
+      ],
     ],
-    "receive": ["quest:bBomb.9", "permit:bomb.2"],
+    "receive": [
+      "quest:bBomb.9",
+      "permit:bomb.2",
+    ],
   },
   {
     "room": {"north": 19, "east": 20},
     "requires": [
-      ["quest:pam.8"],
+      [
+        "quest:pam.8",
+      ],
     ],
-    "receive": ["quest:pam.9"],
+    "receive": [
+      "quest:pam.9",
+    ],
   },
   {
     "room": {"north": 18, "east": 19},
     "requires": [
-      ["quest:seeds.1"],
+      [
+        "quest:seeds.1",
+      ],
     ],
-    "receive": ["quest:seeds.2"],
+    "receive": [
+      "quest:seeds.2",
+    ],
   },
   {
     "room": {"north": 18, "east": 19},
     "requires": [
-      ["quest:seeds.2", "loot:oCoin#20"],
+      [
+        "quest:seeds.2",
+        "loot:oCoin#20",
+      ],
     ],
-    "receive": ["quest:seeds.3"],
+    "receive": [
+      "quest:seeds.3",
+    ],
   },
   {
     "room": {"north": 9, "east": 22},
     "requires": [
-      ["quest:seeds.3", "entrance.south0"],
+      [
+        "quest:seeds.3",
+        "entrance.south0",
+      ],
     ],
-    "receive": ["quest:seeds.4", "food:orange#10", "food:peppers#3"],
+    "receive": [
+      "quest:seeds.4",
+      "food:orange#10",
+      "food:peppers#3",
+    ],
   },
   {
     "room": {"north": 11, "east": 11},
     "requires": [
-      ["quest:rings.4", "entrance.north0"],
-      ["quest:rings.4", "entrance.west0"],
+      [
+        "quest:rings.4",
+        "entrance.north0",
+      ],
+      [
+        "quest:rings.4",
+        "entrance.west0",
+      ],
     ],
-    "receive": ["quest:rings.5"],
+    "receive": [
+      "quest:rings.5",
+    ],
   },
   {
     "room": {"north": 11, "east": 11},
     "requires": [
-      ["quest:rings.5"],
+      [
+        "quest:rings.5",
+      ],
     ],
-    "receive": ["quest:rings.6", "item:ring of poison"],
+    "receive": [
+      "quest:rings.6",
+      "item:ring of poison",
+    ],
     "info": "can be anywhere in desert but this loc required for .5 so best to put it here",
   },
   {
@@ -1247,50 +1943,81 @@ MathQuest.js:42550 add listeners""",
         "quest:rings.1",
       ]
     ],
-    "receive": ["quest:rings.7"],
+    "receive": [
+      "quest:rings.7",
+    ],
   },
   {
     "room": {"north": 16, "east": 15},
     "requires": [
-      ["quest:pam.9", "skill:dig"],
+      [
+        "quest:pam.9",
+        "skill:dig",
+      ],
     ],
-    "receive": ["quest:pam.10"],
+    "receive": [
+      "quest:pam.10",
+    ],
   },
   {
     "room": {"north": 19, "east": 20},
     "requires": [
-      ["quest:pam.10"],
+      [
+        "quest:pam.10",
+      ],
     ],
-    "receive": ["quest:pam.11", "food:peppers#5", "food:orange#20"],
+    "receive": [
+      "quest:pam.11",
+      "food:peppers#5",
+      "food:orange#20",
+    ],
   },
   {
     "room": {"north": 15, "east": 16},
     "requires": [
-      ["quest:rings.7", "permit:bomb"],
+      [
+        "quest:rings.7",
+        "permit:bomb",
+      ],
     ],
-    "receive": ["quest:rings.8"],
+    "receive": [
+      "quest:rings.8",
+    ],
   },
   {
     "room": {"north": 15, "east": 16},
     "requires": [
-      ["quest:rings.8"],
+      [
+        "quest:rings.8",
+      ],
     ],
-    "receive": ["item:ring of magic", "quest:rings.9"],
+    "receive": [
+      "item:ring of magic",
+      "quest:rings.9",
+    ],
     "info": "doesn't require lv3 fire but using lv3 fire doesn't require as much luck but if not it will spawn eventually",
   },
   {
     "room": {"north": 14, "east": 22},
     "requires": [
-      ["quest:rings.9"],
+      [
+        "quest:rings.9",
+      ],
     ],
-    "receive": ["quest:rings.10"],
+    "receive": [
+      "quest:rings.10",
+    ],
   },
   {
     "room": {"north": 19, "east": 18},
     "requires": [
-      ["quest:rings.10"],
+      [
+        "quest:rings.10",
+      ],
     ],
-    "receive": ["quest:rings.11"],
+    "receive": [
+      "quest:rings.11",
+    ],
   },
   {
     "room": {"north": 20, "east": 18},
@@ -1303,47 +2030,73 @@ MathQuest.js:42550 add listeners""",
         # "?misc:geomana",
       ]
     ],
-    "receive": ["quest:rings.14"],
+    "receive": [
+      "quest:rings.14",
+    ],
   },
   {
     "room": {"north": 6, "east": 12},
     "requires": [
       [],
     ],
-    "receive": ["quest:geo.1"],
+    "receive": [
+      "quest:geo.1",
+    ],
   },
   {
     "room": {"north": 6, "east": 12},
     "requires": [
-      ["quest:geo.1", "item:geode#5"],
+      [
+        "quest:geo.1",
+        "item:geode#5",
+      ],
     ],
-    "receive": ["quest:geo.2"],
+    "receive": [
+      "quest:geo.2",
+    ],
   },
   {
     "room": {"north": 6, "east": 12},
     "requires": [
-      ["quest:geo.2"],
+      [
+        "quest:geo.2",
+      ],
     ],
-    "receive": ["quest:geo.3"],
+    "receive": [
+      "quest:geo.3",
+    ],
   },
   {
     "room": {"north": 21, "east": 20},
     "requires": [
-      ["quest:geo.3"],
+      [
+        "quest:geo.3",
+      ],
     ],
-    "receive": ["quest:geo.4"],
+    "receive": [
+      "quest:geo.4",
+    ],
   },
   {
     "room": {"north": 6, "east": 12},
     "requires": [
-      ["quest:geo.4"],
+      [
+        "quest:geo.4",
+      ],
     ],
-    "receive": ["quest:geo.5", "skill:convert"],
+    "receive": [
+      "quest:geo.5",
+      "skill:convert",
+    ],
   },
   {
     "room": {"north": 6, "east": 12},
     "requires": [
-      ["quest:rings.12", "quest:geo.5", "item:gold#1000"],
+      [
+        "quest:rings.12",
+        "quest:geo.5",
+        "item:gold#1000",
+      ],
     ],
     "receive": [
       "quest:rings.13"
@@ -1355,230 +2108,381 @@ MathQuest.js:42550 add listeners""",
     "requires": [
       [],
     ],
-    "receive": ["item:medallions"],
+    "receive": [
+      "loot:medallions",
+    ],
     "info": "add reqs later",
   },
   # {
   #   "room": {"north": 13, "east": 14},
   #   "requires": [
-  #     ["magic:fire.1", "quest:?", "entrance.east0"],
-  #     ["magic:fire.1", "quest:?", "entrance.north0", "permit:bomb"],
+  #     ["magic:fire.1", "quest:?", "entrance.east0",],
+  #     ["magic:fire.1", "quest:?", "entrance.north0", "permit:bomb",],
   #   ],
-  #   "receive": ["???"],
+  #   "receive": ["???",],
   # },
   # TODO start of all chests remove dupes when done
   {
     "room": {"north": 18, "east": 20},
     "requires": [
-      ["item:key"],
+      [
+        "item:key",
+      ],
     ],
-    "receive": ["item:gold#30"],
+    "receive": [
+      "item:gold#30",
+    ],
   },
   {
     "room": {"north": 18, "east": 19},
     "requires": [
-      ["item:emeralds#1"],
+      [
+        "item:emeralds#1",
+      ],
     ],
-    "receive": ["item:gold#Enum.Craft.emerald"],
+    "receive": [
+      "item:gold#Enum.Craft.emerald",
+    ],
     "info": "does not give a strawberry",
   },
   {
     "room": {"north": 17, "east": 20},
     "requires": [
-      ["item:key#1"],
+      [
+        "item:key#1",
+      ],
     ],
-    "receive": ["item:gold#200", "food:beefJerky#5"],
+    "receive": [
+      "item:gold#200",
+      "food:beefJerky#5",
+    ],
   },
   {
     "room": {"north": 15, "east": 19},
     "requires": [
-      ["skill:reveal", "permit:bomb"],
+      [
+        "skill:reveal",
+        "permit:bomb",
+      ],
     ],
-    "receive": ["area:red chest"],
+    "receive": [
+      "area:red chest",
+    ],
   },
   {
     "room": {"north": 15, "east": 19},
     "requires": [
-      ["item:key#1", "permit:bomb"],
+      [
+        "item:key#1",
+        "permit:bomb",
+      ],
     ],
-    "receive": ["item:gold#300", "item:bombs#10", "food:banana#5"],
+    "receive": [
+      "item:gold#300",
+      "item:bombs#10",
+      "food:banana#5",
+    ],
   },
   {
     "room": {"north": 14, "east": 19},
     "requires": [
-      ["item:key#1", "entrance.south0"],
+      [
+        "item:key#1",
+        "entrance.south0",
+      ],
     ],
-    "receive": ["armor:regenArmor"],
+    "receive": [
+      "armor:regenArmor",
+    ],
   },
   {
     "room": {"north": 11, "east": 19},
     "requires": [
-      ["item:key#1", "entrance.east2"],
+      [
+        "item:key#1",
+        "entrance.east2",
+      ],
     ],
-    "receive": ["food:sunflowerSeeds#1", "food:strawberry#1"],
+    "receive": [
+      "food:sunflowerSeeds#1",
+      "food:strawberry#1",
+    ],
   },
   {
     "room": {"north": 8, "east": 18},
     "requires": [
-      ["item:emeralds#1", "entrance.north0"],
+      [
+        "item:emeralds#1",
+        "entrance.north0",
+      ],
     ],
-    "receive": ["item:bombs#25", "food:steak#Enum.Craft.emerald"],
+    "receive": [
+      "item:bombs#25",
+      "food:steak#Enum.Craft.emerald",
+    ],
   },
   {
     "room": {"north": 11, "east": 18},
     "requires": [
-      ["item:key#1"],
+      [
+        "item:key#1",
+      ],
     ],
-    "receive": ["magic:refresh#1"],
+    "receive": [
+      "magic:refresh#1",
+    ],
   },
   {
     "room": {"north": 15, "east": 18},
     "requires": [
-      ["misc:blue crystal", "permit:bomb.2", "quest:gTree.10"],
+      [
+        "misc:blue crystal",
+        "permit:bomb.2",
+        "quest:gTree.10",
+      ],
     ],
-    "receive": ["food:chocolate#20", "item:bombs#50"],
+    "receive": [
+      "food:chocolate#20",
+      "item:bombs#50",
+    ],
   },
   {
     "room": {"north": 19, "east": 18},
     "requires": [
-      ["item:blue crystal#1"],
+      [
+        "item:blue crystal#1",
+      ],
     ],
-    "receive": ["item:rubies#3"],
+    "receive": [
+      "item:rubies#3",
+    ],
   },
   {
     "room": {"north": 19, "east": 17},
     "requires": [
-      ["skill:reveal", "entrance.south1"],
-      ["skill:reveal", "entrance.east0"],
+      [
+        "skill:reveal",
+        "entrance.south1",
+      ],
+      [
+        "skill:reveal",
+        "entrance.east0",
+      ],
     ],
-    "receive": ["area:red chest"],
+    "receive": [
+      "area:red chest",
+    ],
   },
   {
     "room": {"north": 18, "east": 17},
     "requires": [
-      ["item:key#1", "entrance.north1"],
+      [
+        "item:key#1",
+        "entrance.north1",
+      ],
     ],
-    "receive": ["item:gold#1000"],
+    "receive": [
+      "item:gold#1000",
+    ],
   },
   {
     "room": {"north": 13, "east": 16},
     "requires": [
-      ["item:key#1", "entrance.south0"],
+      [
+        "item:key#1",
+        "entrance.south0",
+      ],
     ],
-    "receive": ["magic:weak"],
+    "receive": [
+      "magic:weak",
+    ],
   },
   {
     "room": {"north": 17, "east": 16},
     "requires": [
-      ["item:key#1"],
+      [
+        "item:key#1",
+      ],
     ],
-    "receive": ["item:diamonds#5"],
+    "receive": [
+      "item:diamonds#5",
+    ],
   },
   {
     "room": {"north": 18, "east": 15},
     "requires": [
-      ["misc:blue crystal"],
+      [
+        "misc:blue crystal",
+      ],
     ],
-    "receive": ["food:newtonsApple#15"],
+    "receive": [
+      "food:newtonsApple#15",
+    ],
     "info": "full refresh too",
   },
   {
     "room": {"north": 17, "east": 15},
     "requires": [
-      ["item:emeralds#1"],
+      [
+        "item:emeralds#1",
+      ],
     ],
-    "receive": ["item:gold#100", "food:gingerBread#50", "item:gold#Enum.Craft.emerald"],
+    "receive": [
+      "item:gold#100",
+      "food:gingerBread#50",
+      "item:gold#Enum.Craft.emerald",
+    ],
   },
   {
     "room": {"north": 16, "east": 15},
     "requires": [
-      ["misc:blue crystal"],
+      [
+        "misc:blue crystal",
+      ],
     ],
-    "receive": ["armor:diamondArmor", "quest:pam.16"],
+    "receive": [
+      "armor:diamondArmor",
+      "quest:pam.16",
+    ],
   },
   {
     "room": {"north": 14, "east": 15},
     "requires": [
-      ["item:key#1"],
+      [
+        "item:key#1",
+      ],
     ],
-    "receive": ["food:orange#12", "item:bombs#5"],
+    "receive": [
+      "food:orange#12",
+      "item:bombs#5",
+    ],
   },
   {
     "room": {"north": 9, "east": 15},
     "requires": [
-      ["item:key#1"],
+      [
+        "item:key#1",
+      ],
     ],
-    "receive": ["armor:phantomCoat"],
+    "receive": [
+      "armor:phantomCoat",
+    ],
   },
   {
     "room": {"north": 5, "east": 15},
     "requires": [
-      ["skill:reveal"],
+      [
+        "skill:reveal",
+      ],
     ],
-    "receive": ["area:red chest"],
+    "receive": [
+      "area:red chest",
+    ],
   },
   {
     "room": {"north": 14, "east": 14},
     "requires": [
-      ["skill:reveal"],
+      [
+        "skill:reveal",
+      ],
     ],
-    "receive": ["area:red chest"],
+    "receive": [
+      "area:red chest",
+    ],
   },
   {
     "room": {"north": 15, "east": 14},
     "requires": [
-      ["item:key#1", "entrance.east0"],
-      ["item:key#1", "permit:bomb"],
+      [
+        "item:key#1",
+        "entrance.east0",
+      ],
+      [
+        "item:key#1",
+        "permit:bomb",
+      ],
     ],
-    "receive": ["food:carrot#5"],
+    "receive": [
+      "food:carrot#5",
+    ],
   },
   {
     "room": {"north": 23, "east": 10},
     "requires": [
-      ["item:emeralds#1"],
+      [
+        "item:emeralds#1",
+      ],
     ],
-    "receive": ["armor:alphaArmor"],
+    "receive": [
+      "armor:alphaArmor",
+    ],
   },
   {
     "room": {"north": 23, "east": 10},
     "requires": [
-      ["item:key#1"],
+      [
+        "item:key#1",
+      ],
     ],
-    "receive": ["item:diamonds#5", "food:newtonsApple#2"],
+    "receive": [
+      "item:diamonds#5",
+      "food:newtonsApple#2",
+    ],
     "info": "2 not 3",
   },
   {
     "room": {"north": 21, "east": 11},
     "requires": [
-      ["item:key#1", "entrance.north0"],
+      [
+        "item:key#1",
+        "entrance.north0",
+      ],
     ],
-    "receive": ["food:gummyBears#5"],
+    "receive": [
+      "food:gummyBears#5",
+    ],
   },
   {
     "room": {"north": 23, "east": 13},
     "requires": [
-      ["skill:reveal"],
+      [
+        "skill:reveal",
+      ],
     ],
-    "receive": ["area:red chest"],
+    "receive": [
+      "area:red chest",
+    ],
   },
   {
     "room": {"north": 24, "east": 14},
     "requires": [
-      ["item:key#1"],
+      [
+        "item:key#1",
+      ],
     ],
-    "receive": ["armor:grimGear"],
+    "receive": [
+      "armor:grimGear",
+    ],
   },
   {
     "room": {"north": 10, "east": 13},
     "requires": [
-      ["permit:bomb", "item:gold#500", "skill:reveal"],
+      [
+        "permit:bomb",
+        "item:gold#500",
+        "skill:reveal",
+      ],
     ],
-    "receive": ["misc:ninja"],
+    "receive": [
+      "misc:ninja",
+    ],
   },
   {
     "room": {"north": 10, "east": 13},
     "requires": [
-      ["item:emeralds#1"],
+      [
+        "item:emeralds#1",
+      ],
     ],
     "receive": [
       "item:gold#1",
@@ -1592,3570 +2496,5221 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 9, "east": 13},
     "requires": [
-      ["item:key#1"],
+      [
+        "item:key#1",
+      ],
     ],
-    "receive": ["item:bombs#10"],
+    "receive": [
+      "item:bombs#10",
+    ],
     "info": "chest respawns on room reentry",
   },
   {
     "room": {"north": 19, "east": 20},
     "requires": [
-      ["quest:pam.12"],
+      [
+        "quest:pam.12",
+      ],
     ],
-    "receive": ["food:holyWater#1"],
+    "receive": [
+      "food:holyWater#1",
+    ],
   },
   {
     "room": {"north": 6, "east": 13},
     "requires": [
-      ["item:key#1"],
+      [
+        "item:key#1",
+      ],
     ],
-    "receive": ["food:grapes#5", "food:strawberry#1"],
+    "receive": [
+      "food:grapes#5",
+      "food:strawberry#1",
+    ],
   },
   {
     "room": {"north": 6, "east": 12},
     "requires": [
-      ["item:key#1"],
+      [
+        "item:key#1",
+      ],
     ],
-    "receive": ["item:geode#2"],
+    "receive": [
+      "item:geode#2",
+    ],
   },
   {
     "room": {"north": 12, "east": 12},
     "requires": [
-      ["misc:blue crystal", "entrance.east1"],
-      ["misc:blue crystal", "entrance.south0"],
+      [
+        "misc:blue crystal",
+        "entrance.east1",
+      ],
+      [
+        "misc:blue crystal",
+        "entrance.south0",
+      ],
     ],
-    "receive": ["magic:blessing"],
+    "receive": [
+      "magic:blessing",
+    ],
   },
   {
     "room": {"north": 8, "east": 10},
     "requires": [
-      ["skill:reveal", "entrance.east2"],
-      ["skill:reveal", "entrance.west0"],
-      ["skill:reveal", "entrance.north0"],
+      [
+        "skill:reveal",
+        "entrance.east2",
+      ],
+      [
+        "skill:reveal",
+        "entrance.west0",
+      ],
+      [
+        "skill:reveal",
+        "entrance.north0",
+      ],
     ],
-    "receive": ["area:red chest"],
+    "receive": [
+      "area:red chest",
+    ],
   },
   {
     "room": {"north": 8, "east": 10},
     "requires": [
-      ["item:emeralds#1", "entrance.north1"],
-      ["item:emeralds#1", "entrance.east1"],
-      ["item:emeralds#1", "entrance.east2"],
+      [
+        "item:emeralds#1",
+        "entrance.north1",
+      ],
+      [
+        "item:emeralds#1",
+        "entrance.east1",
+      ],
+      [
+        "item:emeralds#1",
+        "entrance.east2",
+      ],
     ],
-    "receive": ["item:gold#Enum.Craft.emerald", "food:beefJerky#30"],
+    "receive": [
+      "item:gold#Enum.Craft.emerald",
+      "food:beefJerky#30",
+    ],
   },
   {
     "room": {"north": 9, "east": 10},
     "requires": [
-      ["item:key#1", "permit:bomb"],
+      [
+        "item:key#1",
+        "permit:bomb",
+      ],
     ],
-    "receive": ["item:gold#750"],
+    "receive": [
+      "item:gold#750",
+    ],
   },
   {
     "room": {"north": 10, "east": 9},
     "requires": [
-      ["item:key#1", "permit:bomb.2"],
+      [
+        "item:key#1",
+        "permit:bomb.2",
+      ],
     ],
-    "receive": ["food:steak#30"],
+    "receive": [
+      "food:steak#30",
+    ],
   },
   {
     "room": {"north": 6, "east": 10},
     "requires": [
-      ["item:key#1", "permit:bomb"],
+      [
+        "item:key#1",
+        "permit:bomb",
+      ],
     ],
-    "receive": ["food:chocolate#3"],
+    "receive": [
+      "food:chocolate#3",
+    ],
   },
   {
     "room": {"north": 18, "east": 21},
     "requires": [
-      ["item:key#1"],
+      [
+        "item:key#1",
+      ],
     ],
-    "receive": ["item:gingerBread#5"],
+    "receive": [
+      "item:gingerBread#5",
+    ],
   },
   {
     "room": {"north": 15, "east": 21},
     "requires": [
-      ["item:key#1", "entrance.south0"],
+      [
+        "item:key#1",
+        "entrance.south0",
+      ],
     ],
-    "receive": ["item:gold#manager.fame * 5", "item:bombs#5"],
+    "receive": [
+      "item:gold#manager.fame * 5",
+      "item:bombs#5",
+    ],
   },
   {
     "room": {"north": 14, "east": 21},
     "requires": [
-      ["item:key#1", "entrance.north0"],
-      ["item:key#1", "permit:bomb"],
+      [
+        "item:key#1",
+        "entrance.north0",
+      ],
+      [
+        "item:key#1",
+        "permit:bomb",
+      ],
     ],
-    "receive": ["item:gold#100", "item:bombs#12", "food:apple#30"],
+    "receive": [
+      "item:gold#100",
+      "item:bombs#12",
+      "food:apple#30",
+    ],
   },
   {
     "room": {"north": 12, "east": 21},
     "requires": [
-      ["item:emeralds#1", "permit:bomb"],
+      [
+        "item:emeralds#1",
+        "permit:bomb",
+      ],
     ],
-    "receive": ["item:diamonds#Enum.Craft.emerald", "food:banana#20"],
+    "receive": [
+      "item:diamonds#Enum.Craft.emerald",
+      "food:banana#20",
+    ],
   },
   {
     "room": {"north": 11, "east": 21},
     "requires": [
-      ["item:key#1"],
+      [
+        "item:key#1",
+      ],
     ],
-    "receive": ["item:bombs#15"],
+    "receive": [
+      "item:bombs#15",
+    ],
   },
   {
     "room": {"north": 9, "east": 22},
     "requires": [
-      ["item:key#1", "entrance.north0"],
+      [
+        "item:key#1",
+        "entrance.north0",
+      ],
     ],
-    "receive": ["magic:doubleDown"],
+    "receive": [
+      "magic:doubleDown",
+    ],
   },
   {
     "room": {"north": 16, "east": 22},
     "requires": [
-      ["item:key#1"],
+      [
+        "item:key#1",
+      ],
     ],
-    "receive": ["item:gold#400"],
+    "receive": [
+      "item:gold#400",
+    ],
   },
   {
     "room": {"north": 17, "east": 22},
     "requires": [
-      ["misc:blue crystal"],
+      [
+        "misc:blue crystal",
+      ],
     ],
-    "receive": ["item:diamonds#20"],
+    "receive": [
+      "item:diamonds#20",
+    ],
   },
   {
     "room": {"north": 21, "east": 23},
     "requires": [
-      ["item:key#1"],
+      [
+        "item:key#1",
+      ],
     ],
-    "receive": ["item:gold#300", "item:diamonds#2"],
+    "receive": [
+      "item:gold#300",
+      "item:diamonds#2",
+    ],
   },
   {
     "room": {"north": 19, "east": 23},
     "requires": [
-      ["item:key#1"],
+      [
+        "item:key#1",
+      ],
     ],
-    "receive": ["magic:fire"],
+    "receive": [
+      "magic:fire",
+    ],
   },
   {
     "room": {"north": 18, "east": 23},
     "requires": [
-      ["permit:bomb", "item:key#1"],
+      [
+        "permit:bomb",
+        "item:key#1",
+      ],
     ],
-    "receive": ["weapon:warlockStaff"],
+    "receive": [
+      "weapon:warlockStaff",
+    ],
   },
   {
     "room": {"north": 9, "east": 23},
     "requires": [
-      ["item:key#1", "permit:bomb"],
+      [
+        "item:key#1",
+        "permit:bomb",
+      ],
     ],
-    "receive": ["magic:drain"],
+    "receive": [
+      "magic:drain",
+    ],
   },
   {
     "room": {"north": 4, "east": 24},
     "requires": [
-      ["item:key#1", "entrance.east0"],
+      [
+        "item:key#1",
+        "entrance.east0",
+      ],
     ],
-    "receive": ["food:cherries#10"],
+    "receive": [
+      "food:cherries#10",
+    ],
   },
   {
     "room": {"north": 6, "east": 24},
     "requires": [
-      ["skill:reveal"],
+      [
+        "skill:reveal",
+      ],
     ],
-    "receive": ["area:red chest"],
+    "receive": [
+      "area:red chest",
+    ],
   },
   {
     "room": {"north": 15, "east": 24},
     "requires": [
-      ["item:key#1", "entrance.north0"],
+      [
+        "item:key#1",
+        "entrance.north0",
+      ],
     ],
-    "receive": ["item:gold#correct"],
+    "receive": [
+      "item:gold#correct",
+    ],
   },
   {
     "room": {"north": 16, "east": 24},
     "requires": [
-      ["misc:blue crystal", "entrance.north0"],
+      [
+        "misc:blue crystal",
+        "entrance.north0",
+      ],
     ],
-    "receive": ["item:gold#1000", "food:gummyBears#12"],
+    "receive": [
+      "item:gold#1000",
+      "food:gummyBears#12",
+    ],
   },
   {
     "room": {"north": 16, "east": 25},
     "requires": [
-      ["misc:blue crystal", "entrance.south0"],
-      ["misc:blue crystal", "entrance.west0"],
+      [
+        "misc:blue crystal",
+        "entrance.south0",
+      ],
+      [
+        "misc:blue crystal",
+        "entrance.west0",
+      ],
     ],
-    "receive": ["item:diamonds#5", "food:steak#12"],
+    "receive": [
+      "item:diamonds#5",
+      "food:steak#12",
+    ],
   },
   {
     "room": {"north": 11, "east": 25},
     "requires": [
-      ["misc:blue crystal"],
+      [
+        "misc:blue crystal",
+      ],
     ],
-    "receive": ["food:beefJerky#20"],
+    "receive": [
+      "food:beefJerky#20",
+    ],
   },
   {
     "room": {"north": 3, "east": 26},
     "requires": [
-      ["misc:blue crystal"],
+      [
+        "misc:blue crystal",
+      ],
     ],
-    "receive": ["food:elixir#1"],
+    "receive": [
+      "food:elixir#1",
+    ],
   },
   {
     "room": {"north": 4, "east": 26},
     "requires": [
-      ["permit:bomb", "entrance.south3", "item:key#1"],
-      ["permit:bomb", "entrance.south1", "item:key#1"],
-      ["permit:bomb", "entrance.south0", "item:key#1"],
+      [
+        "permit:bomb",
+        "entrance.south3",
+        "item:key#1",
+      ],
+      [
+        "permit:bomb",
+        "entrance.south1",
+        "item:key#1",
+      ],
+      [
+        "permit:bomb",
+        "entrance.south0",
+        "item:key#1",
+      ],
     ],
-    "receive": ["weapon:shadowStaff"],
+    "receive": [
+      "weapon:shadowStaff",
+    ],
   },
   {
     "room": {"north": 9, "east": 26},
     "requires": [
-      ["item:key#1"],
+      [
+        "item:key#1",
+      ],
     ],
-    "receive": ["food:blueberries#10"],
+    "receive": [
+      "food:blueberries#10",
+    ],
   },
   # TODO
   {
     "room": {"north": 16, "east": 18},
     "requires": [
-      ["quest:bBomb.13"],
+      [
+        "quest:bBomb.13",
+      ],
     ],
-    "receive": ["quest:bBomb.25"],
+    "receive": [
+      "quest:bBomb.25",
+    ],
   },
   {
     "room": {"north": 11, "east": 16},
     "requires": [
-      ["quest:dream.6"],
+      [
+        "quest:dream.6",
+      ],
     ],
-    "receive": ["quest:dream.7"],
+    "receive": [
+      "quest:dream.7",
+    ],
   },
   {
     "room": {"north": 16, "east": 10},
     "requires": [
-      ["quest:rings.15"],
+      [
+        "quest:rings.15",
+      ],
     ],
-    "receive": ["quest:rings.16", "item:ring of death"],
+    "receive": [
+      "quest:rings.16",
+      "item:ring of death",
+    ],
   },
   {
     "room": {"north": 17, "east": 10},
     "requires": [
-      ["quest:hWater.4"],
+      [
+        "quest:hWater.4",
+      ],
     ],
-    "receive": ["quest:hWater.5"],
+    "receive": [
+      "quest:hWater.5",
+    ],
   },
   {
     "room": {"north": 11, "east": 16},
     "requires": [
-      ["quest:oMan.5"],
+      [
+        "quest:oMan.5",
+      ],
     ],
-    "receive": ["quest:oMan.6"],
+    "receive": [
+      "quest:oMan.6",
+    ],
   },
   {
     "room": {"north": 10, "east": 15},
     "requires": [
-      ["quest:canteen.1"],
+      [
+        "quest:canteen.1",
+      ],
     ],
-    "receive": ["quest:canteen.2"],
+    "receive": [
+      "quest:canteen.2",
+    ],
   },
   {
     "room": {"north": 10, "east": 15},
     "requires": [
-      ["quest:canteen.3"],
+      [
+        "quest:canteen.3",
+      ],
     ],
-    "receive": ["quest:canteen.4"],
+    "receive": [
+      "quest:canteen.4",
+    ],
   },
   {
     "room": {"north": 21, "east": 17},
     "requires": [
-      ["quest:oMan.19"],
+      [
+        "quest:oMan.19",
+      ],
     ],
-    "receive": ["quest:oMan.20"],
+    "receive": [
+      "quest:oMan.20",
+    ],
   },
   {
     "room": {"north": 11, "east": 23},
     "requires": [
-      ["quest:dream.2"],
+      [
+        "quest:dream.2",
+      ],
     ],
-    "receive": ["quest:dream.3"],
+    "receive": [
+      "quest:dream.3",
+    ],
   },
   {
     "room": {"north": 14, "east": 17},
     "requires": [
       [],
     ],
-    "receive": ["quest:mChal.1"],
+    "receive": [
+      "quest:mChal.1",
+    ],
   },
   {
     "room": {"north": 13, "east": 14},
     "requires": [
-      ["quest:mChal.1"],
+      [
+        "quest:mChal.1",
+      ],
     ],
-    "receive": ["quest:mChal.2"],
+    "receive": [
+      "quest:mChal.2",
+    ],
   },
   {
     "room": {"north": 11, "east": 23},
     "requires": [
-      ["quest:dream.3"],
+      [
+        "quest:dream.3",
+      ],
     ],
-    "receive": ["quest:dream.4"],
+    "receive": [
+      "quest:dream.4",
+    ],
   },
   {
     "room": {"north": 6, "east": 24},
     "requires": [
-      ["quest:pam.11"],
+      [
+        "quest:pam.11",
+      ],
     ],
-    "receive": ["quest:pam.12"],
+    "receive": [
+      "quest:pam.12",
+    ],
   },
   {
     "room": {"north": 4, "east": 19},
     "requires": [
-      ["quest:isles.3"],
+      [
+        "quest:isles.3",
+      ],
     ],
-    "receive": ["quest:isles.4"],
+    "receive": [
+      "quest:isles.4",
+    ],
   },
   {
     "room": {"north": 17, "east": 11},
     "requires": [
-      ["quest:hWater.5"],
+      [
+        "quest:hWater.5",
+      ],
     ],
-    "receive": ["quest:hWater.6"],
+    "receive": [
+      "quest:hWater.6",
+    ],
   },
   {
     "room": {"north": 17, "east": 11},
     "requires": [
-      ["quest:hWater.3"],
+      [
+        "quest:hWater.3",
+      ],
     ],
-    "receive": ["quest:hWater.4"],
+    "receive": [
+      "quest:hWater.4",
+    ],
   },
   {
     "room": {"north": 15, "east": 17},
-    "receive": ["quest:hWater.1"],
+    "receive": [
+      "quest:hWater.1",
+    ],
   },
   {
     "room": {"north": 15, "east": 17},
     "requires": [
-      ["quest:hWater.6"],
+      [
+        "quest:hWater.6",
+      ],
     ],
-    "receive": ["quest:hWater.7"],
+    "receive": [
+      "quest:hWater.7",
+    ],
   },
   {
     "room": {"north": 16, "east": 15},
     "requires": [
-      ["quest:hWater.1"],
+      [
+        "quest:hWater.1",
+      ],
     ],
-    "receive": ["quest:hWater.2"],
+    "receive": [
+      "quest:hWater.2",
+    ],
   },
   {
     "room": {"north": 19, "east": 20},
     "requires": [
-      ["quest:pam.12"],
+      [
+        "quest:pam.12",
+      ],
     ],
-    "receive": ["quest:pam.13"],
+    "receive": [
+      "quest:pam.13",
+    ],
   },
   {
     "room": {"north": 19, "east": 20},
     "requires": [
-      ["quest:pam.13"],
+      [
+        "quest:pam.13",
+      ],
     ],
-    "receive": ["quest:pam.14", "misc:blue crystal"],
+    "receive": [
+      "quest:pam.14",
+      "misc:blue crystal",
+    ],
   },
   {
     "room": {"north": 19, "east": 20},
     "requires": [
-      ["quest:pam.14"],
+      [
+        "quest:pam.14",
+      ],
     ],
-    "receive": ["quest:pam.15"],
+    "receive": [
+      "quest:pam.15",
+    ],
   },
   {
     "room": {"north": 14, "east": 17},
     "requires": [
-      ["quest:mChal.2"],
+      [
+        "quest:mChal.2",
+      ],
     ],
-    "receive": ["quest:mChal.3"],
+    "receive": [
+      "quest:mChal.3",
+    ],
   },
   {
     "room": {"north": 19, "east": 16},
-    "receive": ["quest:access.1"],
-  },
-  {
-    "room": {"north": 19, "east": 16},
-    "requires": [
-      ["quest:access.1"],
+    "receive": [
+      "quest:access.1",
     ],
-    "receive": ["quest:access.2"],
-  },
-  {
-    "room": {"north": 19, "east": 16},
-    "requires": [
-      ["quest:access.3"],
-    ],
-    "receive": ["quest:access.4"],
   },
   {
     "room": {"north": 19, "east": 16},
     "requires": [
-      ["quest:access.4"],
+      [
+        "quest:access.1",
+      ],
     ],
-    "receive": ["quest:access.5"],
+    "receive": [
+      "quest:access.2",
+    ],
   },
   {
     "room": {"north": 19, "east": 16},
     "requires": [
-      ["quest:access.5"],
+      [
+        "quest:access.3",
+      ],
     ],
-    "receive": ["quest:access.6"],
+    "receive": [
+      "quest:access.4",
+    ],
   },
   {
     "room": {"north": 19, "east": 16},
     "requires": [
-      ["quest:access.6"],
+      [
+        "quest:access.4",
+      ],
     ],
-    "receive": ["quest:access.7"],
+    "receive": [
+      "quest:access.5",
+    ],
   },
   {
     "room": {"north": 19, "east": 16},
     "requires": [
-      ["quest:access.8"],
+      [
+        "quest:access.5",
+      ],
     ],
-    "receive": ["quest:access.9"],
+    "receive": [
+      "quest:access.6",
+    ],
   },
   {
     "room": {"north": 19, "east": 16},
     "requires": [
-      ["quest:access.2"],
+      [
+        "quest:access.6",
+      ],
     ],
-    "receive": ["quest:access.3"],
+    "receive": [
+      "quest:access.7",
+    ],
   },
   {
     "room": {"north": 19, "east": 16},
     "requires": [
-      ["quest:access.7"],
+      [
+        "quest:access.8",
+      ],
     ],
-    "receive": ["quest:access.8"],
+    "receive": [
+      "quest:access.9",
+    ],
+  },
+  {
+    "room": {"north": 19, "east": 16},
+    "requires": [
+      [
+        "quest:access.2",
+      ],
+    ],
+    "receive": [
+      "quest:access.3",
+    ],
+  },
+  {
+    "room": {"north": 19, "east": 16},
+    "requires": [
+      [
+        "quest:access.7",
+      ],
+    ],
+    "receive": [
+      "quest:access.8",
+    ],
   },
   {
     "room": {"north": 17, "east": 18},
     "requires": [
-      ["quest:bBomb.9"],
+      [
+        "quest:bBomb.9",
+      ],
     ],
-    "receive": ["quest:bBomb.10"],
+    "receive": [
+      "quest:bBomb.10",
+    ],
   },
   {
     "room": {"north": 17, "east": 18},
     "requires": [
-      ["quest:bBomb.12"],
+      [
+        "quest:bBomb.12",
+      ],
     ],
-    "receive": ["quest:bBomb.13"],
+    "receive": [
+      "quest:bBomb.13",
+    ],
   },
   {
     "room": {"north": 6, "east": 12},
     "requires": [
-      ["quest:oMan.16"],
+      [
+        "quest:oMan.16",
+      ],
     ],
-    "receive": ["quest:oMan.17"],
+    "receive": [
+      "quest:oMan.17",
+    ],
   },
   {
     "room": {"north": 6, "east": 12},
     "requires": [
-      ["quest:oMan.18"],
+      [
+        "quest:oMan.18",
+      ],
     ],
-    "receive": ["quest:oMan.19"],
+    "receive": [
+      "quest:oMan.19",
+    ],
   },
   {
     "room": {"north": 10, "east": 12},
     "requires": [
-      ["quest:oMan.17"],
+      [
+        "quest:oMan.17",
+      ],
     ],
-    "receive": ["quest:oMan.18"],
+    "receive": [
+      "quest:oMan.18",
+    ],
   },
   {
     "room": {"north": 13, "east": 14},
     "requires": [
-      ["quest:mChal.3"],
+      [
+        "quest:mChal.3",
+      ],
     ],
-    "receive": ["quest:mChal.4"],
+    "receive": [
+      "quest:mChal.4",
+    ],
   },
   {
     "room": {"north": 11, "east": 23},
     "requires": [
-      ["quest:dream.4"],
+      [
+        "quest:dream.4",
+      ],
     ],
-    "receive": ["quest:dream.5"],
+    "receive": [
+      "quest:dream.5",
+    ],
   },
   {
     "room": {"north": 11, "east": 16},
     "requires": [
-      ["quest:dream.7"],
+      [
+        "quest:dream.7",
+      ],
     ],
-    "receive": ["quest:dream.8"],
+    "receive": [
+      "quest:dream.8",
+    ],
   },
   {
     "room": {"north": 10, "east": 10},
     "requires": [
-      ["quest:dream.8"],
+      [
+        "quest:dream.8",
+      ],
     ],
-    "receive": ["quest:dream.9"],
+    "receive": [
+      "quest:dream.9",
+    ],
   },
   {
     "room": {"north": 10, "east": 10},
     "requires": [
-      ["quest:dream.9"],
+      [
+        "quest:dream.9",
+      ],
     ],
-    "receive": ["quest:dream.10"],
+    "receive": [
+      "quest:dream.10",
+    ],
   },
   {
     "room": {"north": 10, "east": 10},
     "requires": [
-      ["quest:dream.10", "entrance.north0"],
-      ["quest:dream.10", "entrance.west0"],
+      [
+        "quest:dream.10",
+        "entrance.north0",
+      ],
+      [
+        "quest:dream.10",
+        "entrance.west0",
+      ],
     ],
-    "receive": ["quest:dream.11"],
+    "receive": [
+      "quest:dream.11",
+    ],
   },
   {
     "room": {"north": 11, "east": 16},
     "requires": [
-      ["quest:dream.5"],
+      [
+        "quest:dream.5",
+      ],
     ],
-    "receive": ["quest:dream.6"],
+    "receive": [
+      "quest:dream.6",
+    ],
   },
   {
     "room": {"north": 100, "east": 100},
-    "receive": ["quest:isles.1"],
-  },
-  {
-    "room": {"north": 100, "east": 100},
-    "requires": [
-      ["item:gold#25"],
+    "receive": [
+      "quest:isles.1",
     ],
-    "receive": ["food:orange"],
-  },
-  {
-    "room": {"north": 100, "east": 100},
-    "requires": [
-      ["item:gold#10"],
-    ],
-    "receive": ["food:gingerBread"],
   },
   {
     "room": {"north": 100, "east": 100},
     "requires": [
-      ["item:gold#100"],
+      [
+        "item:gold#25",
+      ],
     ],
-    "receive": ["food:strawberry"],
+    "receive": [
+      "food:orange",
+    ],
   },
   {
     "room": {"north": 100, "east": 100},
     "requires": [
-      ["quest:isles.16"],
+      [
+        "item:gold#10",
+      ],
     ],
-    "receive": ["quest:isles.17"],
+    "receive": [
+      "food:gingerBread",
+    ],
+  },
+  {
+    "room": {"north": 100, "east": 100},
+    "requires": [
+      [
+        "item:gold#100",
+      ],
+    ],
+    "receive": [
+      "food:strawberry",
+    ],
+  },
+  {
+    "room": {"north": 100, "east": 100},
+    "requires": [
+      [
+        "quest:isles.16",
+      ],
+    ],
+    "receive": [
+      "quest:isles.17",
+    ],
   },
   {
     "room": {"north": 4, "east": 26},
     "requires": [
-      ["quest:isles.18"],
+      [
+        "quest:isles.18",
+      ],
     ],
-    "receive": ["quest:isles.19"],
+    "receive": [
+      "quest:isles.19",
+    ],
   },
   {
     "room": {"north": 4, "east": 26},
     "requires": [
-      ["quest:isles.19", "area:17", "area:6", "area:9", "area:2"],
+      [
+        "quest:isles.19",
+        "area:17",
+        "area:6",
+        "area:9",
+        "area:2",
+      ],
     ],
-    "receive": ["quest:isles.22"],
+    "receive": [
+      "quest:isles.22",
+    ],
   },
   {
     "room": {"north": 201, "east": 200},
     "requires": [
-      ["quest:isles.2"],
+      [
+        "quest:isles.2",
+      ],
     ],
-    "receive": ["quest:isles.3"],
+    "receive": [
+      "quest:isles.3",
+    ],
   },
   {
     "room": {"north": 201, "east": 200},
     "requires": [
-      ["quest:isles.4"],
+      [
+        "quest:isles.4",
+      ],
     ],
-    "receive": ["quest:isles.5"],
+    "receive": [
+      "quest:isles.5",
+    ],
   },
   {
     "room": {"north": 201, "east": 200},
     "requires": [
-      ["quest:isles.7"],
+      [
+        "quest:isles.7",
+      ],
     ],
-    "receive": ["quest:isles.8"],
+    "receive": [
+      "quest:isles.8",
+    ],
   },
   {
     "room": {"north": 201, "east": 200},
     "requires": [
-      ["quest:isles.14"],
+      [
+        "quest:isles.14",
+      ],
     ],
-    "receive": ["quest:isles.15"],
+    "receive": [
+      "quest:isles.15",
+    ],
   },
   {
     "room": {"north": 300, "east": 300},
     "requires": [
-      ["quest:isles.1"],
+      [
+        "quest:isles.1",
+      ],
     ],
-    "receive": ["quest:isles.2"],
+    "receive": [
+      "quest:isles.2",
+    ],
   },
   {
     "room": {"north": 300, "east": 300},
     "requires": [
-      ["quest:isles.5"],
+      [
+        "quest:isles.5",
+      ],
     ],
-    "receive": ["quest:isles.6"],
+    "receive": [
+      "quest:isles.6",
+    ],
   },
   {
     "room": {"north": 9.11, "east": 20},
     "requires": [
-      ["quest:isles.6"],
+      [
+        "quest:isles.6",
+      ],
     ],
-    "receive": ["quest:isles.7"],
+    "receive": [
+      "quest:isles.7",
+    ],
   },
   {
     "room": {"north": 300, "east": 300},
     "requires": [
-      ["quest:isles.15"],
+      [
+        "quest:isles.15",
+      ],
     ],
-    "receive": ["quest:isles.16"],
+    "receive": [
+      "quest:isles.16",
+    ],
   },
   {
     "room": {"north": 300, "east": 300},
     "requires": [
-      ["quest:isles.17"],
+      [
+        "quest:isles.17",
+      ],
     ],
-    "receive": ["quest:isles.18"],
+    "receive": [
+      "quest:isles.18",
+    ],
   },
   {
     "room": {"north": 300, "east": 300},
     "requires": [
-      ["quest:isles.23"],
+      [
+        "quest:isles.23",
+      ],
     ],
-    "receive": ["quest:isles.24"],
+    "receive": [
+      "quest:isles.24",
+    ],
   },
   {
     "room": {"north": 8, "east": 12},
     "requires": [
-      ["quest:isles.8"],
+      [
+        "quest:isles.8",
+      ],
     ],
-    "receive": ["quest:isles.9"],
+    "receive": [
+      "quest:isles.9",
+    ],
   },
   {
     "room": {"north": 8, "east": 12},
     "requires": [
-      ["quest:isles.10"],
+      [
+        "quest:isles.10",
+      ],
     ],
-    "receive": ["quest:isles.11"],
+    "receive": [
+      "quest:isles.11",
+    ],
   },
   {
     "room": {"north": 8, "east": 12},
     "requires": [
-      ["quest:isles.11"],
+      [
+        "quest:isles.11",
+      ],
     ],
-    "receive": ["quest:isles.12"],
+    "receive": [
+      "quest:isles.12",
+    ],
   },
   {
     "room": {"north": 9.11, "east": 20},
     "requires": [
-      ["quest:isles.12"],
+      [
+        "quest:isles.12",
+      ],
     ],
-    "receive": ["quest:isles.13"],
+    "receive": [
+      "quest:isles.13",
+    ],
   },
   {
     "room": {"north": 5, "east": 20},
     "requires": [
-      ["quest:isles.13"],
+      [
+        "quest:isles.13",
+      ],
     ],
-    "receive": ["quest:isles.14"],
+    "receive": [
+      "quest:isles.14",
+    ],
   },
   {
     "room": {"north": 9, "east": 18},
     "requires": [
-      ["quest:isles.9"],
+      [
+        "quest:isles.9",
+      ],
     ],
-    "receive": ["quest:isles.10"],
+    "receive": [
+      "quest:isles.10",
+    ],
   },
   {
     "room": {"north": 14, "east": 22},
     "requires": [
-      ["quest:rings.14"],
+      [
+        "quest:rings.14",
+      ],
     ],
-    "receive": ["quest:rings.15"],
+    "receive": [
+      "quest:rings.15",
+    ],
   },
   {
     "room": {"north": 18, "east": 12},
     "requires": [
-      ["quest:rings.16"],
+      [
+        "quest:rings.16",
+      ],
     ],
-    "receive": ["quest:rings.17"],
+    "receive": [
+      "quest:rings.17",
+    ],
   },
   {
     "room": {"north": 19, "east": 14},
     "requires": [
-      ["quest:hWater.2"],
+      [
+        "quest:hWater.2",
+      ],
     ],
-    "receive": ["quest:hWater.3"],
+    "receive": [
+      "quest:hWater.3",
+    ],
   },
   {
     "room": {"north": 14, "east": 18},
     "requires": [
-      ["quest:bBomb.10"],
+      [
+        "quest:bBomb.10",
+      ],
     ],
-    "receive": ["quest:bBomb.11"],
+    "receive": [
+      "quest:bBomb.11",
+    ],
   },
   {
     "room": {"north": 14, "east": 18},
     "requires": [
-      ["quest:bBomb.11"],
+      [
+        "quest:bBomb.11",
+      ],
     ],
-    "receive": ["quest:bBomb.12"],
+    "receive": [
+      "quest:bBomb.12",
+    ],
   },
   {
     "room": {"north": 14, "east": 18},
     "requires": [
-      ["quest:bBomb.25"],
+      [
+        "quest:bBomb.25",
+      ],
     ],
-    "receive": ["quest:bBomb.26"],
+    "receive": [
+      "quest:bBomb.26",
+    ],
   },
   {
     "room": {"north": 11, "east": 23},
-    "receive": ["quest:dream.1"],
+    "receive": [
+      "quest:dream.1",
+    ],
   },
   {
     "room": {"north": 13, "east": 17},
     "requires": [
-      ["quest:dream.1"],
+      [
+        "quest:dream.1",
+      ],
     ],
-    "receive": ["quest:dream.2"],
+    "receive": [
+      "quest:dream.2",
+    ],
   },
   {
     "room": {"north": 13, "east": 17},
     "requires": [
-      ["quest:dream.11"],
+      [
+        "quest:dream.11",
+      ],
     ],
-    "receive": ["quest:dream.12"],
+    "receive": [
+      "quest:dream.12",
+    ],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      ["quest:dream.12", "area:4"],
+      [
+        "quest:dream.12",
+        "area:4",
+      ],
     ],
-    "receive": ["quest:dream.13"],
+    "receive": [
+      "quest:dream.13",
+    ],
   },
   {
     "room": {"north": 13, "east": 17},
     "requires": [
-      ["quest:dream.13"],
+      [
+        "quest:dream.13",
+      ],
     ],
-    "receive": ["quest:dream.14"],
+    "receive": [
+      "quest:dream.14",
+    ],
   },
   {
     "room": {"north": 13, "east": 17},
     "requires": [
-      ["quest:dream.14"],
+      [
+        "quest:dream.14",
+      ],
     ],
-    "receive": ["quest:dream.15"],
+    "receive": [
+      "quest:dream.15",
+    ],
   },
   # {
   #   "room": {"north": 500, "east": 501},
   #   "requires": [[],],
-  #   "receive": ["quest:aSword.1"],
+  #   "receive": ["quest:aSword.1",],
   # },
   # {
   #   "room": {"north": 500, "east": 501},
-  #   "requires": [["quest:aSword.12"],],
-  #   "receive": ["quest:aSword.13"],
+  #   "requires": [["quest:aSword.12",],],
+  #   "receive": ["quest:aSword.13",],
   # },
   # {
   #   "room": {"north": 500, "east": 501},
-  #   "requires": [["quest:aSword.6"],],
-  #   "receive": ["quest:aSword.7"],
+  #   "requires": [["quest:aSword.6",],],
+  #   "receive": ["quest:aSword.7",],
   # },
   # {
   #   "room": {"north": 500, "east": 501},
-  #   "requires": [["quest:aSword.4"],],
-  #   "receive": ["quest:aSword.5"],
+  #   "requires": [["quest:aSword.4",],],
+  #   "receive": ["quest:aSword.5",],
   # },
   # {
   #   "room": {"north": 19, "east": 16},
-  #   "requires": [["quest:aSword.3"],],
-  #   "receive": ["quest:aSword.4"],
+  #   "requires": [["quest:aSword.3",],],
+  #   "receive": ["quest:aSword.4",],
   # },
   # {
   #   "room": {"north": 20, "east": 17},
-  #   "requires": [["quest:aSword.5"],],
-  #   "receive": ["quest:aSword.6"],
+  #   "requires": [["quest:aSword.5",],],
+  #   "receive": ["quest:aSword.6",],
   # },
   # {
   #   "room": {"north": 500, "east": 501},
-  #   "requires": [["quest:aSword.7"],],
-  #   "receive": ["quest:aSword.11"],
+  #   "requires": [["quest:aSword.7",],],
+  #   "receive": ["quest:aSword.11",],
   # },
   # {
   #   "room": {"north": 500, "east": 501},
-  #   "requires": [["quest:aSword.57"],],
-  #   "receive": ["quest:aSword.58"],
+  #   "requires": [["quest:aSword.57",],],
+  #   "receive": ["quest:aSword.58",],
   # },
   # {
   #   "room": {"north": 500, "east": 501},
-  #   "requires": [["quest:aSword.51"],],
-  #   "receive": ["quest:aSword.52"],
+  #   "requires": [["quest:aSword.51",],],
+  #   "receive": ["quest:aSword.52",],
   # },
   # {
   #   "room": {"north": 500, "east": 501},
-  #   "requires": [["quest:aSword.45"],],
-  #   "receive": ["quest:aSword.46"],
+  #   "requires": [["quest:aSword.45",],],
+  #   "receive": ["quest:aSword.46",],
   # },
   # {
   #   "room": {"north": 500, "east": 501},
-  #   "requires": [["quest:aSword.39"],],
-  #   "receive": ["quest:aSword.40"],
+  #   "requires": [["quest:aSword.39",],],
+  #   "receive": ["quest:aSword.40",],
   # },
   # {
   #   "room": {"north": 500, "east": 501},
-  #   "requires": [["quest:aSword.23"],],
-  #   "receive": ["quest:aSword.24"],
+  #   "requires": [["quest:aSword.23",],],
+  #   "receive": ["quest:aSword.24",],
   # },
   {
     "room": {"north": 15, "east": 25},
     "requires": [
-      ["quest:oMan.13"],
+      [
+        "quest:oMan.13",
+      ],
     ],
-    "receive": ["quest:oMan.14"],
+    "receive": [
+      "quest:oMan.14",
+    ],
   },
   {
     "room": {"north": 10, "east": 23},
     "requires": [
-      ["quest:oMan.10"],
+      [
+        "quest:oMan.10",
+      ],
     ],
-    "receive": ["quest:oMan.11"],
+    "receive": [
+      "quest:oMan.11",
+    ],
   },
   {
     "room": {"north": 10, "east": 15},
     "requires": [
-      ["quest:oMan.8"],
+      [
+        "quest:oMan.8",
+      ],
     ],
-    "receive": ["quest:oMan.9"],
+    "receive": [
+      "quest:oMan.9",
+    ],
   },
   {
     "room": {"north": 18, "east": 15},
     "requires": [
-      ["quest:oMan.7"],
+      [
+        "quest:oMan.7",
+      ],
     ],
-    "receive": ["quest:oMan.8"],
+    "receive": [
+      "quest:oMan.8",
+    ],
   },
   {
     "room": {"north": 10, "east": 23},
     "requires": [
-      ["quest:oMan.9", "magic:cloud"],
+      [
+        "quest:oMan.9",
+        "magic:cloud",
+      ],
     ],
-    "receive": ["quest:oMan.10"],
+    "receive": [
+      "quest:oMan.10",
+    ],
   },
   {
     "room": {"north": 10, "east": 15},
     "requires": [
-      ["quest:oMan.6"],
+      [
+        "quest:oMan.6",
+      ],
     ],
-    "receive": ["quest:oMan.7"],
+    "receive": [
+      "quest:oMan.7",
+    ],
   },
   {
     "room": {"north": 11, "east": 21},
     "requires": [
-      ["quest:oMan.15"],
+      [
+        "quest:oMan.15",
+      ],
     ],
-    "receive": ["quest:oMan.16"],
+    "receive": [
+      "quest:oMan.16",
+    ],
   },
   {
     "room": {"north": 11, "east": 21},
     "requires": [
-      ["quest:oMan.11"],
+      [
+        "quest:oMan.11",
+      ],
     ],
-    "receive": ["quest:oMan.12"],
+    "receive": [
+      "quest:oMan.12",
+    ],
   },
   {
     "room": {"north": 17, "east": 19},
     "requires": [
-      ["quest:oMan.14"],
+      [
+        "quest:oMan.14",
+      ],
     ],
-    "receive": ["quest:oMan.15"],
+    "receive": [
+      "quest:oMan.15",
+    ],
   },
   {
     "room": {"north": 17, "east": 19},
     "requires": [
-      ["quest:oMan.21"],
+      [
+        "quest:oMan.21",
+      ],
     ],
-    "receive": ["quest:oMan.22", "misc:bobbisPendant"],
+    "receive": [
+      "quest:oMan.22",
+      "misc:bobbisPendant",
+    ],
   },
   {
     "room": {"north": 17, "east": 19},
     "requires": [
-      ["quest:oMan.20"],
+      [
+        "quest:oMan.20",
+      ],
     ],
-    "receive": ["quest:oMan.21"],
+    "receive": [
+      "quest:oMan.21",
+    ],
   },
   {
     "room": {"north": 17, "east": 19},
     "requires": [
-      ["quest:oMan.12"],
+      [
+        "quest:oMan.12",
+      ],
     ],
-    "receive": ["quest:oMan.13"],
+    "receive": [
+      "quest:oMan.13",
+    ],
   },
   {
     "room": {"north": 19, "east": 15},
     "requires": [
-      ["item:rubies#5", "weapon:sword", "item:bombs#50"],
+      [
+        "item:rubies#5",
+        "weapon:sword",
+        "item:bombs#50",
+      ],
     ],
-    "receive": ["weapon:bombSword"],
+    "receive": [
+      "weapon:bombSword",
+    ],
   },
   {
     "room": {"north": 19, "east": 15},
     "requires": [
-      ["item:rubies#7", "weapon:royalStaff", "loot:aScepter#3"],
+      [
+        "item:rubies#7",
+        "weapon:royalStaff",
+        "loot:aScepter#3",
+      ],
     ],
-    "receive": ["weapon:refreshStaff"],
+    "receive": [
+      "weapon:refreshStaff",
+    ],
   },
   {
     "room": {"north": 19, "east": 15},
     "requires": [
-      ["item:rubies#20", "weapon:warlockStaff", "loot:aAxe#5"],
+      [
+        "item:rubies#20",
+        "weapon:warlockStaff",
+        "loot:aAxe#5",
+      ],
     ],
-    "receive": ["weapon:axe"],
+    "receive": [
+      "weapon:axe",
+    ],
   },
   {
     "room": {"north": 19, "east": 15},
     "requires": [
-      ["item:rubies#100", "weapon:sunSword", "loot:sFrag#5"],
+      [
+        "item:rubies#100",
+        "weapon:sunSword",
+        "loot:sFrag#5",
+      ],
     ],
-    "receive": ["weapon:soulSword"],
+    "receive": [
+      "weapon:soulSword",
+    ],
   },
   {
     "room": {"north": 19, "east": 15},
     "requires": [
-      ["item:rubies#10", "armor:phantomCoat", "loot:kCrest#50"],
+      [
+        "item:rubies#10",
+        "armor:phantomCoat",
+        "loot:kCrest#50",
+      ],
     ],
-    "receive": ["armor:shadowCoat"],
+    "receive": [
+      "armor:shadowCoat",
+    ],
   },
   {
     "room": {"north": 19, "east": 15},
     "requires": [
-      ["item:rubies#80", "armor:sunArmor", "loot:sFrag#7"],
+      [
+        "item:rubies#80",
+        "armor:sunArmor",
+        "loot:sFrag#7",
+      ],
     ],
-    "receive": ["armor:soulArmor"],
+    "receive": [
+      "armor:soulArmor",
+    ],
   },
   {
     "room": {"north": 19, "east": 15},
     "requires": [
-      ["item:medallions#200"],
+      [
+        "loot:medallions#200",
+      ],
     ],
-    "receive": ["skill:shield"],
+    "receive": [
+      "skill:shield",
+    ],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      ["item:gold#5"],
+      [
+        "item:gold#5",
+      ],
     ],
-    "receive": ["food:apple"],
+    "receive": [
+      "food:apple",
+    ],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      ["item:gold#1"],
+      [
+        "item:gold#1",
+      ],
     ],
-    "receive": ["food:honey"],
+    "receive": [
+      "food:honey",
+    ],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      ["item:gold#15"],
+      [
+        "item:gold#15",
+      ],
     ],
-    "receive": ["food:grapes"],
+    "receive": [
+      "food:grapes",
+    ],
   },
   {
     "room": {"north": 12, "east": 9},
     "requires": [
-      ["item:gold#125"],
+      [
+        "item:gold#125",
+      ],
     ],
-    "receive": ["food:carrot"],
+    "receive": [
+      "food:carrot",
+    ],
   },
   {
     "room": {"north": 12, "east": 9},
     "requires": [
-      ["item:gold#200"],
+      [
+        "item:gold#200",
+      ],
     ],
-    "receive": ["food:beefJerky"],
+    "receive": [
+      "food:beefJerky",
+    ],
   },
   {
     "room": {"north": 12, "east": 9},
     "requires": [
-      ["item:gold#250"],
+      [
+        "item:gold#250",
+      ],
     ],
-    "receive": ["food:cherries"],
+    "receive": [
+      "food:cherries",
+    ],
   },
   {
     "room": {"north": 21, "east": 20},
     "requires": [
-      ["item:gold#50"],
+      [
+        "item:gold#50",
+      ],
     ],
-    "receive": ["magic:slow"],
+    "receive": [
+      "magic:slow",
+    ],
   },
   {
     "room": {"north": 21, "east": 20},
     "requires": [
-      ["item:gold#100"],
+      [
+        "item:gold#100",
+      ],
     ],
-    "receive": ["magic:heal"],
+    "receive": [
+      "magic:heal",
+    ],
   },
   {
     "room": {"north": 21, "east": 20},
     "requires": [
-      ["item:gold#200"],
+      [
+        "item:gold#200",
+      ],
     ],
-    "receive": ["magic:blast"],
+    "receive": [
+      "magic:blast",
+    ],
   },
   {
     "room": {"north": 13, "east": 17},
     "requires": [
-      ["item:gold#300"],
+      [
+        "item:gold#300",
+      ],
     ],
-    "receive": ["magic:regen"],
+    "receive": [
+      "magic:regen",
+    ],
   },
   {
     "room": {"north": 13, "east": 17},
     "requires": [
-      ["item:gold#2000"],
+      [
+        "item:gold#2000",
+      ],
     ],
-    "receive": ["magic:cloud"],
+    "receive": [
+      "magic:cloud",
+    ],
   },
   {
     "room": {"north": 13, "east": 17},
     "requires": [
-      ["item:gold#900"],
+      [
+        "item:gold#900",
+      ],
     ],
-    "receive": ["magic:weak"],
+    "receive": [
+      "magic:weak",
+    ],
   },
   {
     "room": {"north": 11, "east": 9},
     "requires": [
-      ["item:gold#4500", "entrance.east0"],
-      ["item:gold#4500", "entrance.north0"],
+      [
+        "item:gold#4500",
+        "entrance.east0",
+      ],
+      [
+        "item:gold#4500",
+        "entrance.north0",
+      ],
     ],
-    "receive": ["magic:refresh"],
+    "receive": [
+      "magic:refresh",
+    ],
   },
   {
     "room": {"north": 11, "east": 9},
     "requires": [
-      ["item:gold#4000", "entrance.east0"],
-      ["item:gold#4000", "entrance.north0"],
+      [
+        "item:gold#4000",
+        "entrance.east0",
+      ],
+      [
+        "item:gold#4000",
+        "entrance.north0",
+      ],
     ],
-    "receive": ["magic:lightning"],
+    "receive": [
+      "magic:lightning",
+    ],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      ["item:gold#10"],
+      [
+        "item:gold#10",
+      ],
     ],
-    "receive": ["weapon:club"],
+    "receive": [
+      "weapon:club",
+    ],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      ["item:gold#200"],
+      [
+        "item:gold#200",
+      ],
     ],
-    "receive": ["weapon:sword"],
+    "receive": [
+      "weapon:sword",
+    ],
   },
   {
     "room": {"north": 13, "east": 17},
     "requires": [
-      ["item:gold#800"],
+      [
+        "item:gold#800",
+      ],
     ],
-    "receive": ["weapon:royalSword"],
+    "receive": [
+      "weapon:royalSword",
+    ],
   },
   {
     "room": {"north": 13, "east": 17},
     "requires": [
-      ["item:gold#5000"],
+      [
+        "item:gold#5000",
+      ],
     ],
-    "receive": ["weapon:royalStaff"],
+    "receive": [
+      "weapon:royalStaff",
+    ],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      ["item:gold#500"],
+      [
+        "item:gold#500",
+      ],
     ],
-    "receive": ["armor:vest"],
+    "receive": [
+      "armor:vest",
+    ],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      ["item:gold#300"],
+      [
+        "item:gold#300",
+      ],
     ],
-    "receive": ["armor:robe"],
+    "receive": [
+      "armor:robe",
+    ],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      ["item:gold#8000"],
+      [
+        "item:gold#8000",
+      ],
     ],
-    "receive": ["armor:iron"],
+    "receive": [
+      "armor:iron",
+    ],
   },
   {
     "room": {"north": 13, "east": 17},
     "requires": [
-      ["item:gold#15000"],
+      [
+        "item:gold#15000",
+      ],
     ],
-    "receive": ["armor:royalArmor"],
+    "receive": [
+      "armor:royalArmor",
+    ],
   },
   {
     "room": {"north": 13, "east": 17},
     "requires": [
-      ["item:gold#7000"],
+      [
+        "item:gold#7000",
+      ],
     ],
-    "receive": ["armor:mysticCloak"],
+    "receive": [
+      "armor:mysticCloak",
+    ],
   },
   {
     "room": {"north": 12, "east": 9},
     "requires": [
-      ["item:gold#2500"],
+      [
+        "item:gold#2500",
+      ],
     ],
-    "receive": ["armor:sunArmor"],
+    "receive": [
+      "armor:sunArmor",
+    ],
   },
   {
     "room": {"north": 12, "east": 9},
     "requires": [
-      ["item:gold#3500"],
+      [
+        "item:gold#3500",
+      ],
     ],
-    "receive": ["armor:speedVest"],
+    "receive": [
+      "armor:speedVest",
+    ],
   },
   {
     "room": {"north": 19, "east": 20},
     "requires": [
       [],
     ],
-    "receive": ["skill:dig"],
+    "receive": [
+      "skill:dig",
+    ],
   },
   {
     "room": {"north": 19, "east": 20},
     "requires": [
       [],
     ],
-    "receive": ["skill:kick"],
+    "receive": [
+      "skill:kick",
+    ],
   },
   # Auto-generated from MathQuest_base.js newItem() calls
   # 159 items extracted
   # {
-  #   "room": {"north": "?", "east": "?"},
-  #   "receive": ["food:steak"],
+  #   "room": {"north": "?", "east": "?",},
+  #   "receive": ["food:steak",],
   # },
   # {
-  #   "room": {"north": "?", "east": "?"},
-  #   "receive": ["food:peppers"],
+  #   "room": {"north": "?", "east": "?",},
+  #   "receive": ["food:peppers",],
   # },
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      ["item:gold"],
+      [
+        "item:gold",
+      ],
     ],
-    "receive": ["weapon:dagger"],
+    "receive": [
+      "weapon:dagger",
+    ],
   },
   # TODO
   # {
   #   "room": {"north": 500, "east": 501},
-  #   "requires": [["weapon:baneBlade"],],
-  #   "receive": ["weapon:aSword"],
+  #   "requires": [["weapon:baneBlade",],],
+  #   "receive": ["weapon:aSword",],
   # },
   {
     "room": {"north": 200, "east": 200},
     "requires": [
-      ["loot:vHorn#20"],
-      ["loot:cThread#30"],
-      ["loot:gFeather#5"],
-      ["weapon:orcBlade"],
+      [
+        "loot:vHorn#20",
+      ],
+      [
+        "loot:cThread#30",
+      ],
+      [
+        "loot:gFeather#5",
+      ],
+      [
+        "weapon:orcBlade",
+      ],
     ],
-    "receive": ["weapon:twinFury"],
+    "receive": [
+      "weapon:twinFury",
+    ],
   },
   {
     "room": {"north": 18, "east": 25},
     "requires": [
-      ["loot:tBand#2"],
+      [
+        "loot:tBand#2",
+      ],
     ],
-    "receive": ["skill:medic.1"],
+    "receive": [
+      "skill:medic.1",
+    ],
   },
   {
     "room": {"north": 18, "east": 25},
     "requires": [
-      ["loot:tBand#2"],
+      [
+        "loot:tBand#2",
+      ],
       #
-      ["loot:cFang#5"],
+      [
+        "loot:cFang#5",
+      ],
     ],
-    "receive": ["skill:medic.2"],
+    "receive": [
+      "skill:medic.2",
+    ],
   },
   {
     "room": {"north": 18, "east": 25},
     "requires": [
-      ["loot:tBand#2"],
+      [
+        "loot:tBand#2",
+      ],
       #
-      ["loot:cFang#5"],
+      [
+        "loot:cFang#5",
+      ],
       #
-      ["loot:mStaff#10"],
-      ["loot:oCoin#20"],
+      [
+        "loot:mStaff#10",
+      ],
+      [
+        "loot:oCoin#20",
+      ],
     ],
-    "receive": ["skill:medic.3"],
+    "receive": [
+      "skill:medic.3",
+    ],
   },
   {
     "room": {"north": 18, "east": 25},
     "requires": [
-      ["loot:tBand#2"],
+      [
+        "loot:tBand#2",
+      ],
       #
-      ["loot:cFang#5"],
+      [
+        "loot:cFang#5",
+      ],
       #
-      ["loot:mStaff#10"],
-      ["loot:oCoin#20"],
+      [
+        "loot:mStaff#10",
+      ],
+      [
+        "loot:oCoin#20",
+      ],
       #
-      ["loot:gSkin#10"],
-      ["loot:dScale#10"],
+      [
+        "loot:gSkin#10",
+      ],
+      [
+        "loot:dScale#10",
+      ],
     ],
-    "receive": ["skill:medic.4"],
+    "receive": [
+      "skill:medic.4",
+    ],
   },
   {
     "room": {"north": 18, "east": 25},
     "requires": [
-      ["loot:tBand#2"],
+      [
+        "loot:tBand#2",
+      ],
       #
-      ["loot:cFang#5"],
+      [
+        "loot:cFang#5",
+      ],
       #
-      ["loot:mStaff#10"],
-      ["loot:oCoin#20"],
+      [
+        "loot:mStaff#10",
+      ],
+      [
+        "loot:oCoin#20",
+      ],
       #
-      ["loot:gSkin#10"],
-      ["loot:dScale#10"],
+      [
+        "loot:gSkin#10",
+      ],
+      [
+        "loot:dScale#10",
+      ],
       #
-      ["loot:aAxe#5"],
-      ["loot:kCrest#10"],
+      [
+        "loot:aAxe#5",
+      ],
+      [
+        "loot:kCrest#10",
+      ],
     ],
-    "receive": ["skill:medic.5"],
+    "receive": [
+      "skill:medic.5",
+    ],
   },
   {
     "room": {"north": 18, "east": 25},
     "requires": [
-      ["loot:tBand#2"],
+      [
+        "loot:tBand#2",
+      ],
       #
-      ["loot:cFang#5"],
+      [
+        "loot:cFang#5",
+      ],
       #
-      ["loot:mStaff#10"],
-      ["loot:oCoin#20"],
+      [
+        "loot:mStaff#10",
+      ],
+      [
+        "loot:oCoin#20",
+      ],
       #
-      ["loot:gSkin#10"],
-      ["loot:dScale#10"],
+      [
+        "loot:gSkin#10",
+      ],
+      [
+        "loot:dScale#10",
+      ],
       #
-      ["loot:aAxe#5"],
-      ["loot:kCrest#10"],
+      [
+        "loot:aAxe#5",
+      ],
+      [
+        "loot:kCrest#10",
+      ],
       #
-      ["loot:gFeather#3"],
-      ["loot:aScepter#5"],
+      [
+        "loot:gFeather#3",
+      ],
+      [
+        "loot:aScepter#5",
+      ],
     ],
-    "receive": ["skill:medic.6"],
+    "receive": [
+      "skill:medic.6",
+    ],
   },
   {
     "room": {"north": 4, "east": 24},
-    "receive": ["food:cherries"],
+    "receive": [
+      "food:cherries",
+    ],
   },
   {
     "room": {"north": 18, "east": 21},
     "requires": [
-      ["item:key#1"],
+      [
+        "item:key#1",
+      ],
     ],
-    "receive": ["food:gingerBread"],
+    "receive": [
+      "food:gingerBread",
+    ],
   },
   {
     "room": {"north": 9, "east": 25},
-    "receive": ["item:gold#Enum.Craft.emerald"],
+    "receive": [
+      "item:gold#Enum.Craft.emerald",
+    ],
   },
   {
     "room": {"north": 9, "east": 25},
     "requires": [
-      ["item:emeralds"],
+      [
+        "item:emeralds",
+      ],
     ],
-    "receive": ["food:elixir#1"],
+    "receive": [
+      "food:elixir#1",
+    ],
   },
   {
     "room": {"north": 19, "east": 20},
     "requires": [
-      ["quest:pam.8"],
+      [
+        "quest:pam.8",
+      ],
     ],
-    "receive": ["food:steak#3"],
+    "receive": [
+      "food:steak#3",
+    ],
   },
   # {
-  #   "room": {"north": "?", "east": "?"},
-  #   "requires": [["loot:sClaw#7"], ["loot:cFang#5"],],
-  #   "receive": ["misc:fire crystal"],
+  #   "room": {"north": "?", "east": "?",},
+  #   "requires": [["loot:sClaw#7",], ["loot:cFang#5",],],
+  #   "receive": ["misc:fire crystal",],
   # },
   {
     "room": {"north": 4, "east": 26},
     "requires": [
-      ["quest:isles.22"],
+      [
+        "quest:isles.22",
+      ],
     ],
-    "receive": ["skill:tough", "quest:isles.23"],
+    "receive": [
+      "skill:tough",
+      "quest:isles.23",
+    ],
   },
   # {
-  #   "room": {"north": "?", "east": "?"},
-  #   "requires": [["loot:dScale#3"], ["loot:sFrag#5"], ["loot:fBone#10"],],
-  #   "receive": ["item:ring of skill"],
+  #   "room": {"north": "?", "east": "?",},
+  #   "requires": [["loot:dScale#3",], ["loot:sFrag#5",], ["loot:fBone#10",],],
+  #   "receive": ["item:ring of skill",],
   # },
   # {
-  #   "room": {"north": "?", "east": "?"},
-  #   "receive": ["item:ring of evasion"],
+  #   "room": {"north": "?", "east": "?",},
+  #   "receive": ["item:ring of evasion",],
   # },
   {
     "room": {"north": 14, "east": 18},
     "requires": [
-      ["weapon:royalSword"],
+      [
+        "weapon:royalSword",
+      ],
     ],
-    "receive": ["weapon:creeperCrusher"],
+    "receive": [
+      "weapon:creeperCrusher",
+    ],
   },
   {
     "room": {"north": 14, "east": 18},
-    "receive": ["item:pup"],
+    "receive": [
+      "item:pup",
+    ],
   },
   {
     "room": {"north": 13, "east": 17},
     "requires": [
-      ["armor:royalArmor"],
+      [
+        "armor:royalArmor",
+      ],
     ],
-    "receive": ["armor:nobleArmor"],
+    "receive": [
+      "armor:nobleArmor",
+    ],
   },
   # {
-  #   "room": {"north": "?", "east": "?"},
-  #   "receive": ["misc:bobbisPendant"],
+  #   "room": {"north": "?", "east": "?",},
+  #   "receive": ["misc:bobbisPendant",],
   # },
   {
     "room": {"north": 19, "east": 16},
     "requires": [
       [],
     ],
-    "receive": ["area:14"],
+    "receive": [
+      "area:14",
+    ],
   },
   {
     "room": {"north": 21, "east": 20},
     "requires": [
       [],
     ],
-    "receive": ["area:0"],
+    "receive": [
+      "area:0",
+    ],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [
       [],
     ],
-    "receive": ["area:0"],
+    "receive": [
+      "area:0",
+    ],
   },
   {
     "room": {"north": 19, "east": 20},
     "requires": [
       [],
     ],
-    "receive": ["area:1"],
+    "receive": [
+      "area:1",
+    ],
   },
   {
     "room": {"north": 18, "east": 20},
     "requires": [
       [],
     ],
-    "receive": ["area:1"],
+    "receive": [
+      "area:1",
+    ],
   },
   {
     "room": {"north": 17, "east": 20},
     "requires": [
       [],
     ],
-    "receive": ["area:1"],
+    "receive": [
+      "area:1",
+    ],
   },
   {
     "room": {"north": 16, "east": 20},
     "requires": [
       [],
     ],
-    "receive": ["area:3"],
+    "receive": [
+      "area:3",
+    ],
   },
   {
     "room": {"north": 15, "east": 20},
     "requires": [
       [],
     ],
-    "receive": ["area:3"],
+    "receive": [
+      "area:3",
+    ],
   },
   {
     "room": {"north": 14, "east": 20},
     "requires": [
       [],
     ],
-    "receive": ["area:3.1"],
+    "receive": [
+      "area:3.1",
+    ],
   },
   {
     "room": {"north": 13, "east": 20},
     "requires": [
       [],
     ],
-    "receive": ["area:3"],
+    "receive": [
+      "area:3",
+    ],
   },
   {
     "room": {"north": 12, "east": 20},
     "requires": [
       [],
     ],
-    "receive": ["area:1"],
+    "receive": [
+      "area:1",
+    ],
   },
   {
     "room": {"north": 11, "east": 20},
     "requires": [
       [],
     ],
-    "receive": ["area:16.1"],
+    "receive": [
+      "area:16.1",
+    ],
   },
   {
     "room": {"north": 10, "east": 20},
     "requires": [
       [],
     ],
-    "receive": ["area:16.1"],
+    "receive": [
+      "area:16.1",
+    ],
   },
   {
     "room": {"north": 9, "east": 20},
     "requires": [
       [],
     ],
-    "receive": ["area:16.1"],
+    "receive": [
+      "area:16.1",
+    ],
   },
   {
     "room": {"north": 8, "east": 20},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 7, "east": 20},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 6, "east": 20},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 5, "east": 20},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 4, "east": 20},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 3, "east": 20},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 3, "east": 21},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 4, "east": 21},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 5, "east": 21},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 6, "east": 21},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 7, "east": 21},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 8, "east": 21},
     "requires": [
       [],
     ],
-    "receive": ["area:8"],
+    "receive": [
+      "area:8",
+    ],
   },
   {
     "room": {"north": 9, "east": 21},
     "requires": [
       [],
     ],
-    "receive": ["area:3"],
+    "receive": [
+      "area:3",
+    ],
   },
   {
     "room": {"north": 10, "east": 21},
     "requires": [
       [],
     ],
-    "receive": ["area:16.1"],
+    "receive": [
+      "area:16.1",
+    ],
   },
   {
     "room": {"north": 11, "east": 21},
     "requires": [
       [],
     ],
-    "receive": ["area:3"],
+    "receive": [
+      "area:3",
+    ],
   },
   {
     "room": {"north": 12, "east": 21},
     "requires": [
       [],
     ],
-    "receive": ["area:1"],
+    "receive": [
+      "area:1",
+    ],
   },
   {
     "room": {"north": 13, "east": 21},
     "requires": [
       [],
     ],
-    "receive": ["area:3"],
+    "receive": [
+      "area:3",
+    ],
   },
   {
     "room": {"north": 14, "east": 21},
     "requires": [
       [],
     ],
-    "receive": ["area:3"],
+    "receive": [
+      "area:3",
+    ],
   },
   {
     "room": {"north": 15, "east": 21},
     "requires": [
       [],
     ],
-    "receive": ["area:3"],
+    "receive": [
+      "area:3",
+    ],
   },
   {
     "room": {"north": 16, "east": 21},
     "requires": [
       [],
     ],
-    "receive": ["area:3"],
+    "receive": [
+      "area:3",
+    ],
   },
   {
     "room": {"north": 17, "east": 21},
     "requires": [
       [],
     ],
-    "receive": ["area:3.3"],
+    "receive": [
+      "area:3.3",
+    ],
   },
   {
     "room": {"north": 18, "east": 21},
     "requires": [
       [],
     ],
-    "receive": ["area:1"],
+    "receive": [
+      "area:1",
+    ],
   },
   {
     "room": {"north": 19, "east": 21},
     "requires": [
       [],
     ],
-    "receive": ["area:1"],
+    "receive": [
+      "area:1",
+    ],
   },
   {
     "room": {"north": 20, "east": 21},
     "requires": [
       [],
     ],
-    "receive": ["area:3"],
+    "receive": [
+      "area:3",
+    ],
   },
   {
     "room": {"north": 21, "east": 21},
     "requires": [
       [],
     ],
-    "receive": ["area:0"],
+    "receive": [
+      "area:0",
+    ],
   },
   {
     "room": {"north": 21, "east": 22},
     "requires": [
       [],
     ],
-    "receive": ["area:2"],
+    "receive": [
+      "area:2",
+    ],
   },
   {
     "room": {"north": 20, "east": 22},
     "requires": [
       [],
     ],
-    "receive": ["area:2"],
+    "receive": [
+      "area:2",
+    ],
   },
   {
     "room": {"north": 19, "east": 22},
     "requires": [
       [],
     ],
-    "receive": ["area:15"],
+    "receive": [
+      "area:15",
+    ],
   },
   {
     "room": {"north": 18, "east": 22},
     "requires": [
       [],
     ],
-    "receive": ["area:1"],
+    "receive": [
+      "area:1",
+    ],
   },
   {
     "room": {"north": 17, "east": 22},
     "requires": [
       [],
     ],
-    "receive": ["area:3"],
+    "receive": [
+      "area:3",
+    ],
   },
   {
     "room": {"north": 16, "east": 22},
     "requires": [
       [],
     ],
-    "receive": ["area:3"],
+    "receive": [
+      "area:3",
+    ],
   },
   {
     "room": {"north": 15, "east": 22},
     "requires": [
       [],
     ],
-    "receive": ["area:2"],
+    "receive": [
+      "area:2",
+    ],
   },
   {
     "room": {"north": 14, "east": 22},
     "requires": [
       [],
     ],
-    "receive": ["area:2"],
+    "receive": [
+      "area:2",
+    ],
   },
   {
     "room": {"north": 13, "east": 22},
     "requires": [
       [],
     ],
-    "receive": ["area:3"],
+    "receive": [
+      "area:3",
+    ],
   },
   {
     "room": {"north": 12, "east": 22},
     "requires": [
       [],
     ],
-    "receive": ["area:3"],
+    "receive": [
+      "area:3",
+    ],
   },
   {
     "room": {"north": 11, "east": 22},
     "requires": [
       [],
     ],
-    "receive": ["area:2"],
+    "receive": [
+      "area:2",
+    ],
   },
   {
     "room": {"north": 10, "east": 22},
     "requires": [
       [],
     ],
-    "receive": ["area:8"],
+    "receive": [
+      "area:8",
+    ],
   },
   {
     "room": {"north": 9, "east": 22},
     "requires": [
       [],
     ],
-    "receive": ["area:8.1"],
+    "receive": [
+      "area:8.1",
+    ],
   },
   {
     "room": {"north": 8, "east": 22},
     "requires": [
       [],
     ],
-    "receive": ["area:8"],
+    "receive": [
+      "area:8",
+    ],
   },
   {
     "room": {"north": 7, "east": 22},
     "requires": [
       [],
     ],
-    "receive": ["area:8"],
+    "receive": [
+      "area:8",
+    ],
   },
   {
     "room": {"north": 7, "east": 23},
     "requires": [
       [],
     ],
-    "receive": ["area:8"],
+    "receive": [
+      "area:8",
+    ],
   },
   {
     "room": {"north": 6, "east": 23},
     "requires": [
       [],
     ],
-    "receive": ["area:8"],
+    "receive": [
+      "area:8",
+    ],
   },
   {
     "room": {"north": 5, "east": 23},
     "requires": [
       [],
     ],
-    "receive": ["area:9"],
+    "receive": [
+      "area:9",
+    ],
   },
   {
     "room": {"north": 4, "east": 23},
     "requires": [
       [],
     ],
-    "receive": ["area:9"],
+    "receive": [
+      "area:9",
+    ],
   },
   {
     "room": {"north": 3, "east": 23},
     "requires": [
       [],
     ],
-    "receive": ["area:9"],
+    "receive": [
+      "area:9",
+    ],
   },
   {
     "room": {"north": 3, "east": 24},
     "requires": [
       [],
     ],
-    "receive": ["area:9"],
+    "receive": [
+      "area:9",
+    ],
   },
   {
     "room": {"north": 4, "east": 24},
     "requires": [
       [],
     ],
-    "receive": ["area:9"],
+    "receive": [
+      "area:9",
+    ],
   },
   {
     "room": {"north": 5, "east": 24},
     "requires": [
       [],
     ],
-    "receive": ["area:9.1"],
+    "receive": [
+      "area:9.1",
+    ],
   },
   {
     "room": {"north": 6, "east": 24},
     "requires": [
       [],
     ],
-    "receive": ["area:8"],
+    "receive": [
+      "area:8",
+    ],
   },
   {
     "room": {"north": 7, "east": 24},
     "requires": [
       [],
     ],
-    "receive": ["area:8"],
+    "receive": [
+      "area:8",
+    ],
   },
   {
     "room": {"north": 8, "east": 24},
     "requires": [
       [],
     ],
-    "receive": ["area:8"],
+    "receive": [
+      "area:8",
+    ],
   },
   {
     "room": {"north": 8, "east": 23},
     "requires": [
       [],
     ],
-    "receive": ["area:8"],
+    "receive": [
+      "area:8",
+    ],
   },
   {
     "room": {"north": 9, "east": 23},
     "requires": [
       [],
     ],
-    "receive": ["area:8"],
+    "receive": [
+      "area:8",
+    ],
   },
   {
     "room": {"north": 10, "east": 23},
     "requires": [
       [],
     ],
-    "receive": ["area:2"],
+    "receive": [
+      "area:2",
+    ],
   },
   {
     "room": {"north": 11, "east": 23},
     "requires": [
       [],
     ],
-    "receive": ["area:2"],
+    "receive": [
+      "area:2",
+    ],
   },
   {
     "room": {"north": 12, "east": 23},
     "requires": [
       [],
     ],
-    "receive": ["area:2"],
+    "receive": [
+      "area:2",
+    ],
   },
   {
     "room": {"north": 13, "east": 23},
     "requires": [
       [],
     ],
-    "receive": ["area:2"],
+    "receive": [
+      "area:2",
+    ],
   },
   {
     "room": {"north": 14, "east": 23},
     "requires": [
       [],
     ],
-    "receive": ["area:2"],
+    "receive": [
+      "area:2",
+    ],
   },
   {
     "room": {"north": 15, "east": 23},
     "requires": [
       [],
     ],
-    "receive": ["area:2"],
+    "receive": [
+      "area:2",
+    ],
   },
   {
     "room": {"north": 16, "east": 23},
     "requires": [
       [],
     ],
-    "receive": ["area:2"],
+    "receive": [
+      "area:2",
+    ],
   },
   {
     "room": {"north": 17, "east": 23},
     "requires": [
       [],
     ],
-    "receive": ["area:2", "area:str up npc"],
+    "receive": [
+      "area:2",
+      "area:str up npc",
+    ],
   },
   {
     "room": {"north": 18, "east": 23},
     "requires": [
       [],
     ],
-    "receive": ["area:2"],
+    "receive": [
+      "area:2",
+    ],
   },
   {
     "room": {"north": 19, "east": 23},
     "requires": [
       [],
     ],
-    "receive": ["area:2"],
+    "receive": [
+      "area:2",
+    ],
   },
   {
     "room": {"north": 20, "east": 23},
     "requires": [
       [],
     ],
-    "receive": ["area:2"],
+    "receive": [
+      "area:2",
+    ],
   },
   {
     "room": {"north": 21, "east": 23},
     "requires": [
       [],
     ],
-    "receive": ["area:2"],
+    "receive": [
+      "area:2",
+    ],
   },
   {
     "room": {"north": 18, "east": 25},
     "requires": [
       [],
     ],
-    "receive": ["area:2"],
+    "receive": [
+      "area:2",
+    ],
   },
   {
     "room": {"north": 18, "east": 24},
     "requires": [
       [],
     ],
-    "receive": ["area:2"],
+    "receive": [
+      "area:2",
+    ],
   },
   {
     "room": {"north": 17, "east": 24},
     "requires": [
       [],
     ],
-    "receive": ["area:2"],
+    "receive": [
+      "area:2",
+    ],
   },
   {
     "room": {"north": 19, "east": 24},
     "requires": [
       [],
     ],
-    "receive": ["area:2"],
+    "receive": [
+      "area:2",
+    ],
   },
   {
     "room": {"north": 16, "east": 24},
     "requires": [
       [],
     ],
-    "receive": ["area:2"],
+    "receive": [
+      "area:2",
+    ],
   },
   {
     "room": {"north": 15, "east": 24},
     "requires": [
       [],
     ],
-    "receive": ["area:2"],
+    "receive": [
+      "area:2",
+    ],
   },
   {
     "room": {"north": 14, "east": 24},
     "requires": [
       [],
     ],
-    "receive": ["area:13"],
+    "receive": [
+      "area:13",
+    ],
   },
   {
     "room": {"north": 13, "east": 24},
     "requires": [
       [],
     ],
-    "receive": ["area:13"],
+    "receive": [
+      "area:13",
+    ],
   },
   {
     "room": {"north": 12, "east": 24},
     "requires": [
       [],
     ],
-    "receive": ["area:2"],
+    "receive": [
+      "area:2",
+    ],
   },
   {
     "room": {"north": 11, "east": 24},
     "requires": [
       [],
     ],
-    "receive": ["area:2"],
+    "receive": [
+      "area:2",
+    ],
   },
   {
     "room": {"north": 10, "east": 24},
     "requires": [
       [],
     ],
-    "receive": ["area:8"],
+    "receive": [
+      "area:8",
+    ],
   },
   {
     "room": {"north": 9, "east": 24},
     "requires": [
       [],
     ],
-    "receive": ["area:8"],
+    "receive": [
+      "area:8",
+    ],
   },
   {
     "room": {"north": 3, "east": 25},
     "requires": [
       [],
     ],
-    "receive": ["area:9"],
+    "receive": [
+      "area:9",
+    ],
+  },
+  {
+    "room": {"north": 3, "east": 26},
+    "requires": [
+      [],
+    ],
+    "receive": [
+      "area:9",
+    ],
   },
   {
     "room": {"north": 4, "east": 25},
     "requires": [
       [],
     ],
-    "receive": ["area:9"],
+    "receive": [
+      "area:9",
+    ],
   },
   {
     "room": {"north": 7, "east": 25},
     "requires": [
       [],
     ],
-    "receive": ["area:8"],
+    "receive": [
+      "area:8",
+    ],
   },
   {
     "room": {"north": 8, "east": 25},
     "requires": [
       [],
     ],
-    "receive": ["area:8", "area:str up npc"],
+    "receive": [
+      "area:8",
+      "area:str up npc",
+    ],
   },
   {
     "room": {"north": 9, "east": 25},
     "requires": [
       [],
     ],
-    "receive": ["area:8"],
+    "receive": [
+      "area:8",
+    ],
   },
   {
     "room": {"north": 10, "east": 25},
     "requires": [
       [],
     ],
-    "receive": ["area:8"],
+    "receive": [
+      "area:8",
+    ],
   },
   {
     "room": {"north": 11, "east": 25},
     "requires": [
       [],
     ],
-    "receive": ["area:8"],
+    "receive": [
+      "area:8",
+    ],
   },
   {
     "room": {"north": 12, "east": 25},
     "requires": [
       [],
     ],
-    "receive": ["area:13"],
+    "receive": [
+      "area:13",
+    ],
   },
   {
     "room": {"north": 13, "east": 25},
     "requires": [
       [],
     ],
-    "receive": ["area:13"],
+    "receive": [
+      "area:13",
+    ],
   },
   {
     "room": {"north": 14, "east": 25},
     "requires": [
       [],
     ],
-    "receive": ["area:13"],
+    "receive": [
+      "area:13",
+    ],
   },
   {
     "room": {"north": 15, "east": 25},
     "requires": [
       [],
     ],
-    "receive": ["area:2"],
+    "receive": [
+      "area:2",
+    ],
   },
   {
     "room": {"north": 16, "east": 25},
     "requires": [
       [],
     ],
-    "receive": ["area:2"],
+    "receive": [
+      "area:2",
+    ],
   },
   {
     "room": {"north": 17, "east": 25},
     "requires": [
       [],
     ],
-    "receive": ["area:2"],
+    "receive": [
+      "area:2",
+    ],
   },
   {
     "room": {"north": 13, "east": 26},
     "requires": [
       [],
     ],
-    "receive": ["area:13"],
+    "receive": [
+      "area:13",
+    ],
   },
   {
     "room": {"north": 12, "east": 26},
     "requires": [
       [],
     ],
-    "receive": ["area:13"],
+    "receive": [
+      "area:13",
+    ],
   },
   {
     "room": {"north": 11, "east": 26},
     "requires": [
       [],
     ],
-    "receive": ["area:13"],
+    "receive": [
+      "area:13",
+    ],
   },
   {
     "room": {"north": 10, "east": 26},
     "requires": [
       [],
     ],
-    "receive": ["area:13"],
+    "receive": [
+      "area:13",
+    ],
   },
   {
     "room": {"north": 9, "east": 26},
     "requires": [
       [],
     ],
-    "receive": ["area:8"],
+    "receive": [
+      "area:8",
+    ],
   },
   {
     "room": {"north": 100, "east": 100},
     "requires": [
       [],
     ],
-    "receive": ["area:17"],
+    "receive": [
+      "area:17",
+    ],
   },
   {
     "room": {"north": 200, "east": 200},
     "requires": [
       [],
     ],
-    "receive": ["area:17"],
+    "receive": [
+      "area:17",
+    ],
   },
   {
     "room": {"north": 201, "east": 200},
     "requires": [
       [],
     ],
-    "receive": ["area:17"],
+    "receive": [
+      "area:17",
+    ],
   },
   {
     "room": {"north": 300, "east": 300},
     "requires": [
       [],
     ],
-    "receive": ["area:17"],
+    "receive": [
+      "area:17",
+    ],
   },
   {
     "room": {"north": 500, "east": 500},
     "requires": [
       [],
     ],
-    "receive": ["area:1.19"],
+    "receive": [
+      "area:1.19",
+    ],
   },
   {
     "room": {"north": 500, "east": 501},
     "requires": [
       [],
     ],
-    "receive": ["area:1.19"],
+    "receive": [
+      "area:1.19",
+    ],
   },
   {
     "room": {"north": 501, "east": 501},
     "requires": [
       [],
     ],
-    "receive": ["area:1.19"],
+    "receive": [
+      "area:1.19",
+    ],
   },
   {
     "room": {"north": 501, "east": 500},
     "requires": [
       [],
     ],
-    "receive": ["area:1.19"],
+    "receive": [
+      "area:1.19",
+    ],
   },
   {
     "room": {"north": 3, "east": 19},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 4, "east": 19},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 5, "east": 19},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 6, "east": 19},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 7, "east": 19},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 8, "east": 19},
     "requires": [
       [],
     ],
-    "receive": ["area:5"],
+    "receive": [
+      "area:5",
+    ],
   },
   {
     "room": {"north": 9, "east": 19},
     "requires": [
       [],
     ],
-    "receive": ["area:5"],
+    "receive": [
+      "area:5",
+    ],
   },
   {
     "room": {"north": 10, "east": 19},
     "requires": [
       [],
     ],
-    "receive": ["area:5.1"],
+    "receive": [
+      "area:5.1",
+    ],
   },
   {
     "room": {"north": 11, "east": 19},
     "requires": [
       [],
     ],
-    "receive": ["area:16.1", "flag:10.1 code"],
+    "receive": [
+      "area:16.1",
+      "flag:10.1 code",
+    ],
   },
   {
     "room": {"north": 12, "east": 19},
     "requires": [
       [],
     ],
-    "receive": ["area:1"],
+    "receive": [
+      "area:1",
+    ],
   },
   {
     "room": {"north": 13, "east": 19},
     "requires": [
       [],
     ],
-    "receive": ["area:3"],
+    "receive": [
+      "area:3",
+    ],
   },
   {
     "room": {"north": 14, "east": 19},
     "requires": [
       [],
     ],
-    "receive": ["area:3"],
+    "receive": [
+      "area:3",
+    ],
   },
   {
     "room": {"north": 15, "east": 19},
     "requires": [
       [],
     ],
-    "receive": ["area:3"],
+    "receive": [
+      "area:3",
+    ],
   },
   {
     "room": {"north": 16, "east": 19},
     "requires": [
       [],
     ],
-    "receive": ["area:3"],
+    "receive": [
+      "area:3",
+    ],
   },
   {
     "room": {"north": 17, "east": 19},
     "requires": [
       [],
     ],
-    "receive": ["area:1"],
+    "receive": [
+      "area:1",
+    ],
   },
   {
     "room": {"north": 18, "east": 19},
     "requires": [
       [],
     ],
-    "receive": ["area:1"],
+    "receive": [
+      "area:1",
+    ],
   },
   {
     "room": {"north": 18, "east": 18},
     "requires": [
       [],
     ],
-    "receive": ["area:12"],
+    "receive": [
+      "area:12",
+    ],
   },
   {
     "room": {"north": 19, "east": 18},
     "requires": [
       [],
     ],
-    "receive": ["area:12"],
+    "receive": [
+      "area:12",
+    ],
   },
   {
     "room": {"north": 20, "east": 18},
     "requires": [
       [],
     ],
-    "receive": ["area:12"],
+    "receive": [
+      "area:12",
+    ],
   },
   {
     "room": {"north": 21, "east": 18},
     "requires": [
       [],
     ],
-    "receive": ["area:12"],
+    "receive": [
+      "area:12",
+    ],
   },
   {
     "room": {"north": 17, "east": 18},
     "requires": [
       [],
     ],
-    "receive": ["area:3"],
+    "receive": [
+      "area:3",
+    ],
   },
   {
     "room": {"north": 16, "east": 18},
     "requires": [
       [],
     ],
-    "receive": ["area:3"],
+    "receive": [
+      "area:3",
+    ],
   },
   {
     "room": {"north": 15, "east": 18},
     "requires": [
       [],
     ],
-    "receive": ["area:0"],
+    "receive": [
+      "area:0",
+    ],
   },
   {
     "room": {"north": 14, "east": 18},
     "requires": [
       [],
     ],
-    "receive": ["area:0"],
+    "receive": [
+      "area:0",
+    ],
   },
   {
     "room": {"north": 13, "east": 18},
     "requires": [
       [],
     ],
-    "receive": ["area:0"],
+    "receive": [
+      "area:0",
+    ],
   },
   {
     "room": {"north": 13, "east": 18},
     "requires": [
-      ["item:gold#50"],
+      [
+        "item:gold#50",
+      ],
     ],
-    "receive": ["food:gingerBread"],
+    "receive": [
+      "food:gingerBread",
+    ],
   },
   # NOTE these grapes say 30gp but are only 15gp as they are the same ones as at 20 20
-  # {"room": {"north": 13, "east": 18}, "requires": [["item:gold#30"],], "receive": ["food:grapes"]},
+  # {"room": {"north": 13, "east": 18}, "requires": [["item:gold#30",],], "receive": ["food:grapes",],},
   {
     "room": {"north": 13, "east": 18},
     "requires": [
-      ["item:gold#80"],
+      [
+        "item:gold#80",
+      ],
     ],
-    "receive": ["food:banana"],
+    "receive": [
+      "food:banana",
+    ],
   },
   {
     "room": {"north": 12, "east": 18},
     "requires": [
       [],
     ],
-    "receive": ["area:1"],
+    "receive": [
+      "area:1",
+    ],
   },
   {
     "room": {"north": 11, "east": 18},
     "requires": [
       [],
     ],
-    "receive": ["area:5"],
+    "receive": [
+      "area:5",
+    ],
   },
   {
     "room": {"north": 10, "east": 18},
     "requires": [
       [],
     ],
-    "receive": ["area:5"],
+    "receive": [
+      "area:5",
+    ],
   },
   {
     "room": {"north": 9, "east": 18},
     "requires": [
       [],
     ],
-    "receive": ["area:5"],
+    "receive": [
+      "area:5",
+    ],
   },
   {
     "room": {"north": 8, "east": 18},
     "requires": [
       [],
     ],
-    "receive": ["area:5"],
+    "receive": [
+      "area:5",
+    ],
   },
   {
     "room": {"north": 7, "east": 18},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 6, "east": 18},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 5, "east": 18},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 4, "east": 18},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 3, "east": 18},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 3, "east": 17},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 4, "east": 17},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 5, "east": 17},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 6, "east": 17},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 7, "east": 17},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 8, "east": 17},
     "requires": [
       [],
     ],
-    "receive": ["area:5"],
+    "receive": [
+      "area:5",
+    ],
   },
   {
     "room": {"north": 9, "east": 17},
     "requires": [
       [],
     ],
-    "receive": ["area:5"],
+    "receive": [
+      "area:5",
+    ],
   },
   {
     "room": {"north": 10, "east": 17},
     "requires": [
       [],
     ],
-    "receive": ["area:5"],
+    "receive": [
+      "area:5",
+    ],
   },
   {
     "room": {"north": 11, "east": 17},
     "requires": [
       [],
     ],
-    "receive": ["area:5"],
+    "receive": [
+      "area:5",
+    ],
   },
   {
     "room": {"north": 12, "east": 17},
     "requires": [
       [],
     ],
-    "receive": ["area:1"],
+    "receive": [
+      "area:1",
+    ],
   },
   {
     "room": {"north": 13, "east": 17},
     "requires": [
       [],
     ],
-    "receive": ["area:0"],
+    "receive": [
+      "area:0",
+    ],
   },
   {
     "room": {"north": 14, "east": 17},
     "requires": [
       [],
     ],
-    "receive": ["area:0"],
+    "receive": [
+      "area:0",
+    ],
   },
   {
     "room": {"north": 15, "east": 17},
     "requires": [
       [],
     ],
-    "receive": ["area:0"],
+    "receive": [
+      "area:0",
+    ],
   },
   {
     "room": {"north": 16, "east": 17},
     "requires": [
       [],
     ],
-    "receive": ["area:4"],
+    "receive": [
+      "area:4",
+    ],
   },
   {
     "room": {"north": 17, "east": 17},
     "requires": [
       [],
     ],
-    "receive": ["area:4"],
+    "receive": [
+      "area:4",
+    ],
   },
   {
     "room": {"north": 18, "east": 17},
     "requires": [
       [],
     ],
-    "receive": ["area:12"],
+    "receive": [
+      "area:12",
+    ],
   },
   {
     "room": {"north": 19, "east": 17},
     "requires": [
       [],
     ],
-    "receive": ["area:12"],
+    "receive": [
+      "area:12",
+    ],
   },
   {
     "room": {"north": 20, "east": 17},
     "requires": [
       [],
     ],
-    "receive": ["area:12"],
+    "receive": [
+      "area:12",
+    ],
   },
   {
     "room": {"north": 21, "east": 17},
     "requires": [
       [],
     ],
-    "receive": ["area:12"],
+    "receive": [
+      "area:12",
+    ],
   },
   {
     "room": {"north": 18, "east": 16},
     "requires": [
       [],
     ],
-    "receive": ["area:4"],
+    "receive": [
+      "area:4",
+    ],
   },
   {
     "room": {"north": 17, "east": 16},
     "requires": [
       [],
     ],
-    "receive": ["area:4"],
+    "receive": [
+      "area:4",
+    ],
   },
   {
     "room": {"north": 16, "east": 16},
     "requires": [
       [],
     ],
-    "receive": ["area:4"],
+    "receive": [
+      "area:4",
+    ],
   },
   {
     "room": {"north": 15, "east": 16},
     "requires": [
       [],
     ],
-    "receive": ["area:4"],
+    "receive": [
+      "area:4",
+    ],
   },
   {
     "room": {"north": 14, "east": 16},
     "requires": [
       [],
     ],
-    "receive": ["area:4"],
+    "receive": [
+      "area:4",
+    ],
   },
   {
     "room": {"north": 13, "east": 16},
     "requires": [
       [],
     ],
-    "receive": ["area:1"],
+    "receive": [
+      "area:1",
+    ],
   },
   {
     "room": {"north": 12, "east": 16},
     "requires": [
       [],
     ],
-    "receive": ["area:1", "area:str up npc"],
+    "receive": [
+      "area:1",
+      "area:str up npc",
+    ],
   },
   {
     "room": {"north": 11, "east": 16},
     "requires": [
       [],
     ],
-    "receive": ["area:5"],
+    "receive": [
+      "area:5",
+    ],
   },
   {
     "room": {"north": 10, "east": 16},
     "requires": [
       [],
     ],
-    "receive": ["area:1"],
+    "receive": [
+      "area:1",
+    ],
   },
   {
     "room": {"north": 9, "east": 16},
     "requires": [
       [],
     ],
-    "receive": ["area:1"],
+    "receive": [
+      "area:1",
+    ],
   },
   {
     "room": {"north": 8, "east": 16},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 7, "east": 16},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 6, "east": 16},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 5, "east": 16},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 4, "east": 16},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 3, "east": 16},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 3, "east": 15},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 4, "east": 15},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 5, "east": 15},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 6, "east": 15},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 7, "east": 15},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 8, "east": 15},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 9, "east": 15},
     "requires": [
       [],
     ],
-    "receive": ["area:1"],
+    "receive": [
+      "area:1",
+    ],
   },
   {
     "room": {"north": 10, "east": 15},
     "requires": [
       [],
     ],
-    "receive": ["area:1"],
+    "receive": [
+      "area:1",
+    ],
   },
   {
     "room": {"north": 11, "east": 15},
     "requires": [
       [],
     ],
-    "receive": ["area:1"],
+    "receive": [
+      "area:1",
+    ],
   },
   {
     "room": {"north": 12, "east": 15},
     "requires": [
       [],
     ],
-    "receive": ["area:1"],
+    "receive": [
+      "area:1",
+    ],
   },
   {
     "room": {"north": 13, "east": 15},
     "requires": [
       [],
     ],
-    "receive": ["area:4"],
+    "receive": [
+      "area:4",
+    ],
   },
   {
     "room": {"north": 14, "east": 15},
     "requires": [
       [],
     ],
-    "receive": ["area:4"],
+    "receive": [
+      "area:4",
+    ],
   },
   {
     "room": {"north": 15, "east": 15},
     "requires": [
       [],
     ],
-    "receive": ["area:4"],
+    "receive": [
+      "area:4",
+    ],
   },
   {
     "room": {"north": 16, "east": 15},
     "requires": [
       [],
     ],
-    "receive": ["area:4"],
+    "receive": [
+      "area:4",
+    ],
   },
   {
     "room": {"north": 17, "east": 15},
     "requires": [
       [],
     ],
-    "receive": ["area:4"],
+    "receive": [
+      "area:4",
+    ],
   },
   {
     "room": {"north": 18, "east": 15},
     "requires": [
       [],
     ],
-    "receive": ["area:4"],
+    "receive": [
+      "area:4",
+    ],
   },
   {
     "room": {"north": 19, "east": 15},
     "requires": [
       [],
     ],
-    "receive": ["area:14"],
+    "receive": [
+      "area:14",
+    ],
   },
   {
     "room": {"north": 20, "east": 15},
     "requires": [
       [],
     ],
-    "receive": ["area:14"],
+    "receive": [
+      "area:14",
+    ],
   },
   {
     "room": {"north": 19, "east": 14},
     "requires": [
       [],
     ],
-    "receive": ["area:4.1"],
+    "receive": [
+      "area:4.1",
+    ],
   },
   {
     "room": {"north": 18, "east": 14},
     "requires": [
       [],
     ],
-    "receive": ["area:4.1"],
+    "receive": [
+      "area:4.1",
+    ],
   },
   {
     "room": {"north": 17, "east": 14},
     "requires": [
       [],
     ],
-    "receive": ["area:4.1"],
+    "receive": [
+      "area:4.1",
+    ],
   },
   {
     "room": {"north": 16, "east": 14},
     "requires": [
       [],
     ],
-    "receive": ["area:4"],
+    "receive": [
+      "area:4",
+    ],
   },
   {
     "room": {"north": 15, "east": 14},
     "requires": [
       [],
     ],
-    "receive": ["area:4"],
+    "receive": [
+      "area:4",
+    ],
   },
   {
     "room": {"north": 14, "east": 14},
     "requires": [
       [],
     ],
-    "receive": ["area:4"],
+    "receive": [
+      "area:4",
+    ],
   },
   {
     "room": {"north": 13, "east": 14},
     "requires": [
       [],
     ],
-    "receive": ["area:4"],
+    "receive": [
+      "area:4",
+    ],
   },
   {
     "room": {"north": 12, "east": 14},
     "requires": [
       [],
     ],
-    "receive": ["area:3"],
+    "receive": [
+      "area:3",
+    ],
   },
   {
     "room": {"north": 11, "east": 14},
     "requires": [
       [],
     ],
-    "receive": ["area:3"],
+    "receive": [
+      "area:3",
+    ],
   },
   {
     "room": {"north": 10, "east": 14},
     "requires": [
       [],
     ],
-    "receive": ["area:3"],
+    "receive": [
+      "area:3",
+    ],
   },
   {
     "room": {"north": 9, "east": 14},
     "requires": [
       [],
     ],
-    "receive": ["area:5"],
+    "receive": [
+      "area:5",
+    ],
   },
   {
     "room": {"north": 8, "east": 14},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 7, "east": 14},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 6, "east": 14},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 5, "east": 14},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 4, "east": 14},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 3, "east": 14},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 3, "east": 13},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 4, "east": 13},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 5, "east": 13},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 6, "east": 13},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 7, "east": 13},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 8, "east": 13},
     "requires": [
       [],
     ],
-    "receive": ["area:16"],
+    "receive": [
+      "area:16",
+    ],
   },
   {
     "room": {"north": 9, "east": 13},
     "requires": [
       [],
     ],
-    "receive": ["area:5"],
+    "receive": [
+      "area:5",
+    ],
   },
   {
     "room": {"north": 10, "east": 13},
     "requires": [
       [],
     ],
-    "receive": ["area:9"],
+    "receive": [
+      "area:9",
+    ],
   },
   {
     "room": {"north": 11, "east": 13},
     "requires": [
       [],
     ],
-    "receive": ["area:4"],
+    "receive": [
+      "area:4",
+    ],
   },
   {
     "room": {"north": 12, "east": 13},
     "requires": [
       [],
     ],
-    "receive": ["area:4"],
+    "receive": [
+      "area:4",
+    ],
   },
   {
     "room": {"north": 13, "east": 13},
     "requires": [
       [],
     ],
-    "receive": ["area:4"],
+    "receive": [
+      "area:4",
+    ],
   },
   {
     "room": {"north": 14, "east": 13},
     "requires": [
       [],
     ],
-    "receive": ["area:4"],
+    "receive": [
+      "area:4",
+    ],
   },
   {
     "room": {"north": 18, "east": 13},
     "requires": [
       [],
     ],
-    "receive": ["area:10"],
+    "receive": [
+      "area:10",
+    ],
   },
   {
     "room": {"north": 19, "east": 13},
     "requires": [
       [],
     ],
-    "receive": ["area:10"],
+    "receive": [
+      "area:10",
+    ],
   },
   {
     "room": {"north": 21, "east": 13},
     "requires": [
       [],
     ],
-    "receive": ["area:11"],
+    "receive": [
+      "area:11",
+    ],
   },
   {
     "room": {"north": 22, "east": 13},
     "requires": [
       [],
     ],
-    "receive": ["area:11"],
+    "receive": [
+      "area:11",
+    ],
   },
   {
     "room": {"north": 22, "east": 14},
     "requires": [
       [],
     ],
-    "receive": ["area:11"],
+    "receive": [
+      "area:11",
+    ],
   },
   {
     "room": {"north": 21, "east": 14},
     "requires": [
       [],
     ],
-    "receive": ["area:11"],
+    "receive": [
+      "area:11",
+    ],
   },
   {
     "room": {"north": 23, "east": 14},
     "requires": [
       [],
     ],
-    "receive": ["area:11"],
+    "receive": [
+      "area:11",
+    ],
   },
   {
     "room": {"north": 24, "east": 14},
     "requires": [
       [],
     ],
-    "receive": ["area:11"],
+    "receive": [
+      "area:11",
+    ],
   },
   {
     "room": {"north": 24, "east": 13},
     "requires": [
       [],
     ],
-    "receive": ["area:11"],
+    "receive": [
+      "area:11",
+    ],
   },
   {
     "room": {"north": 23, "east": 13},
     "requires": [
       [],
     ],
-    "receive": ["area:11"],
+    "receive": [
+      "area:11",
+    ],
   },
   {
     "room": {"north": 20, "east": 12},
     "requires": [
       [],
     ],
-    "receive": ["area:10"],
+    "receive": [
+      "area:10",
+    ],
   },
   {
     "room": {"north": 21, "east": 12},
     "requires": [
       [],
     ],
-    "receive": ["area:11"],
+    "receive": [
+      "area:11",
+    ],
   },
   {
     "room": {"north": 22, "east": 12},
     "requires": [
       [],
     ],
-    "receive": ["area:11"],
+    "receive": [
+      "area:11",
+    ],
   },
   {
     "room": {"north": 23, "east": 12},
     "requires": [
       [],
     ],
-    "receive": ["area:11"],
+    "receive": [
+      "area:11",
+    ],
   },
   {
     "room": {"north": 24, "east": 12},
     "requires": [
       [],
     ],
-    "receive": ["area:11"],
+    "receive": [
+      "area:11",
+    ],
   },
   {
     "room": {"north": 24, "east": 11},
     "requires": [
       [],
     ],
-    "receive": ["area:11"],
+    "receive": [
+      "area:11",
+    ],
   },
   {
     "room": {"north": 23, "east": 11},
     "requires": [
       [],
     ],
-    "receive": ["area:11"],
+    "receive": [
+      "area:11",
+    ],
   },
   {
     "room": {"north": 22, "east": 11},
     "requires": [
       [],
     ],
-    "receive": ["area:11"],
+    "receive": [
+      "area:11",
+    ],
   },
   {
     "room": {"north": 21, "east": 11},
     "requires": [
       [],
     ],
-    "receive": ["area:11"],
+    "receive": [
+      "area:11",
+    ],
   },
   {
     "room": {"north": 21, "east": 10},
     "requires": [
       [],
     ],
-    "receive": ["area:11"],
+    "receive": [
+      "area:11",
+    ],
   },
   {
     "room": {"north": 22, "east": 10},
     "requires": [
       [],
     ],
-    "receive": ["area:11"],
+    "receive": [
+      "area:11",
+    ],
   },
   {
     "room": {"north": 23, "east": 10},
     "requires": [
       [],
     ],
-    "receive": ["area:11"],
+    "receive": [
+      "area:11",
+    ],
   },
   {
     "room": {"north": 23, "east": 9},
     "requires": [
       [],
     ],
-    "receive": ["area:11.3"],
+    "receive": [
+      "area:11.3",
+    ],
   },
   {
     "room": {"north": 24, "east": 10},
     "requires": [
       [],
     ],
-    "receive": ["area:11"],
+    "receive": [
+      "area:11",
+    ],
   },
   {
     "room": {"north": 24, "east": 9},
     "requires": [
       [],
     ],
-    "receive": ["area:11.4"],
+    "receive": [
+      "area:11.4",
+    ],
   },
   {
     "room": {"north": 22, "east": 9},
     "requires": [
       [],
     ],
-    "receive": ["area:11.2"],
+    "receive": [
+      "area:11.2",
+    ],
   },
   {
     "room": {"north": 21, "east": 9},
     "requires": [
       [],
     ],
-    "receive": ["area:11.1"],
+    "receive": [
+      "area:11.1",
+    ],
   },
   {
     "room": {"north": 19, "east": 10},
     "requires": [
       [],
     ],
-    "receive": ["area:15"],
+    "receive": [
+      "area:15",
+    ],
   },
   {
     "room": {"north": 18, "east": 10},
     "requires": [
       [],
     ],
-    "receive": ["area:15"],
+    "receive": [
+      "area:15",
+    ],
   },
   {
     "room": {"north": 19, "east": 11},
     "requires": [
       [],
     ],
-    "receive": ["area:15"],
+    "receive": [
+      "area:15",
+    ],
   },
   {
     "room": {"north": 18, "east": 11},
     "requires": [
       [],
     ],
-    "receive": ["area:15"],
+    "receive": [
+      "area:15",
+    ],
   },
   {
     "room": {"north": 17, "east": 10},
     "requires": [
       [],
     ],
-    "receive": ["area:15"],
+    "receive": [
+      "area:15",
+    ],
   },
   {
     "room": {"north": 17, "east": 11},
     "requires": [
       [],
     ],
-    "receive": ["area:15"],
+    "receive": [
+      "area:15",
+    ],
   },
   {
     "room": {"north": 16, "east": 11},
     "requires": [
       [],
     ],
-    "receive": ["area:15"],
+    "receive": [
+      "area:15",
+    ],
   },
   {
     "room": {"north": 16, "east": 10},
     "requires": [
       [],
     ],
-    "receive": ["area:15"],
+    "receive": [
+      "area:15",
+    ],
   },
   {
     "room": {"north": 12, "east": 12},
     "requires": [
       [],
     ],
-    "receive": ["area:6"],
+    "receive": [
+      "area:6",
+    ],
   },
   {
     "room": {"north": 11, "east": 12},
     "requires": [
       [],
     ],
-    "receive": ["area:6"],
+    "receive": [
+      "area:6",
+    ],
   },
   {
     "room": {"north": 10, "east": 12},
     "requires": [
       [],
     ],
-    "receive": ["area:6"],
+    "receive": [
+      "area:6",
+    ],
   },
   {
     "room": {"north": 9, "east": 12},
     "requires": [
       [],
     ],
-    "receive": ["area:6"],
+    "receive": [
+      "area:6",
+    ],
   },
   {
     "room": {"north": 8, "east": 12},
     "requires": [
       [],
     ],
-    "receive": ["area:6", "area:str up npc"],
+    "receive": [
+      "area:6",
+      "area:str up npc",
+    ],
   },
   {
     "room": {"north": 7, "east": 12},
     "requires": [
       [],
     ],
-    "receive": ["area:7"],
+    "receive": [
+      "area:7",
+    ],
   },
   {
     "room": {"north": 6, "east": 12},
     "requires": [
       [],
     ],
-    "receive": ["area:7.1"],
+    "receive": [
+      "area:7.1",
+    ],
   },
   {
     "room": {"north": 5, "east": 11},
     "requires": [
       [],
     ],
-    "receive": ["area:7"],
+    "receive": [
+      "area:7",
+    ],
   },
   {
     "room": {"north": 6, "east": 11},
     "requires": [
       [],
     ],
-    "receive": ["area:7"],
+    "receive": [
+      "area:7",
+    ],
   },
   {
     "room": {"north": 7, "east": 11},
     "requires": [
       [],
     ],
-    "receive": ["area:7.1"],
+    "receive": [
+      "area:7.1",
+    ],
   },
   {
     "room": {"north": 8, "east": 11},
     "requires": [
       [],
     ],
-    "receive": ["area:6"],
+    "receive": [
+      "area:6",
+    ],
   },
   {
     "room": {"north": 9, "east": 11},
     "requires": [
       [],
     ],
-    "receive": ["area:6"],
+    "receive": [
+      "area:6",
+    ],
   },
   {
     "room": {"north": 10, "east": 11},
     "requires": [
       [],
     ],
-    "receive": ["area:6"],
+    "receive": [
+      "area:6",
+    ],
   },
   {
     "room": {"north": 11, "east": 11},
     "requires": [
       [],
     ],
-    "receive": ["area:6"],
+    "receive": [
+      "area:6",
+    ],
   },
   {
     "room": {"north": 12, "east": 11},
     "requires": [
       [],
     ],
-    "receive": ["area:6"],
+    "receive": [
+      "area:6",
+    ],
   },
   {
     "room": {"north": 12, "east": 10},
     "requires": [
       [],
     ],
-    "receive": ["area:6"],
+    "receive": [
+      "area:6",
+    ],
   },
   {
     "room": {"north": 11, "east": 10},
     "requires": [
       [],
     ],
-    "receive": ["area:6"],
+    "receive": [
+      "area:6",
+    ],
   },
   {
     "room": {"north": 10, "east": 10},
     "requires": [
       [],
     ],
-    "receive": ["area:6"],
+    "receive": [
+      "area:6",
+    ],
   },
   {
     "room": {"north": 9, "east": 10},
     "requires": [
       [],
     ],
-    "receive": ["area:6"],
+    "receive": [
+      "area:6",
+    ],
   },
   {
     "room": {"north": 8, "east": 10},
     "requires": [
       [],
     ],
-    "receive": ["area:6"],
+    "receive": [
+      "area:6",
+    ],
   },
   {
     "room": {"north": 7, "east": 10},
     "requires": [
       [],
     ],
-    "receive": ["area:7.2"],
+    "receive": [
+      "area:7.2",
+    ],
   },
   {
     "room": {"north": 6, "east": 10},
     "requires": [
       [],
     ],
-    "receive": ["area:7"],
+    "receive": [
+      "area:7",
+    ],
   },
   {
     "room": {"north": 5, "east": 10},
     "requires": [
       [],
     ],
-    "receive": ["area:7"],
+    "receive": [
+      "area:7",
+    ],
   },
   {
     "room": {"north": 5, "east": 9},
     "requires": [
       [],
     ],
-    "receive": ["area:7"],
+    "receive": [
+      "area:7",
+    ],
   },
   {
     "room": {"north": 6, "east": 9},
     "requires": [
       [],
     ],
-    "receive": ["area:7"],
+    "receive": [
+      "area:7",
+    ],
   },
   {
     "room": {"north": 7, "east": 9},
     "requires": [
       [],
     ],
-    "receive": ["area:7.1"],
+    "receive": [
+      "area:7.1",
+    ],
   },
   {
     "room": {"north": 8, "east": 9},
     "requires": [
       [],
     ],
-    "receive": ["area:6"],
+    "receive": [
+      "area:6",
+    ],
   },
   {
     "room": {"north": 9, "east": 9},
     "requires": [
       [],
     ],
-    "receive": ["area:6"],
+    "receive": [
+      "area:6",
+    ],
   },
   {
     "room": {"north": 10, "east": 9},
     "requires": [
       [],
     ],
-    "receive": ["area:6"],
+    "receive": [
+      "area:6",
+    ],
   },
   {
     "room": {"north": 11, "east": 9},
     "requires": [
       [],
     ],
-    "receive": ["area:6.1"],
+    "receive": [
+      "area:6.1",
+    ],
   },
   {
     "room": {"north": 12, "east": 9},
     "requires": [
       [],
     ],
-    "receive": ["area:6.1"],
+    "receive": [
+      "area:6.1",
+    ],
   },
   {
     "room": {"north": 10.1, "east": 21},
     "requires": [
       [],
     ],
-    "receive": ["area:16.1"],
+    "receive": [
+      "area:16.1",
+    ],
   },
   {
     "room": {"north": 17.1, "east": 19},
     "requires": [
       [],
     ],
-    "receive": ["area:3"],
+    "receive": [
+      "area:3",
+    ],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      ["area:str up npc", "loot:bClaw#13"],
+      [
+        "area:str up npc",
+        "loot:bClaw#13",
+      ],
     ],
-    "receive": ["misc:str up npc.1", "flag:str up npc counter.1"],
+    "receive": [
+      "misc:str up npc.1",
+      "flag:str up npc counter.1",
+    ],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      ["area:str up npc", "loot:tBand#15", "flag:str up npc counter.1"],
+      [
+        "area:str up npc",
+        "loot:tBand#15",
+        "flag:str up npc counter.1",
+      ],
     ],
-    "receive": ["misc:str up npc.2", "flag:str up npc counter.2"],
+    "receive": [
+      "misc:str up npc.2",
+      "flag:str up npc counter.2",
+    ],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      ["area:str up npc", "loot:mStaff#12", "flag:str up npc counter.2"],
+      [
+        "area:str up npc",
+        "loot:mStaff#12",
+        "flag:str up npc counter.2",
+      ],
     ],
-    "receive": ["misc:str up npc.3", "flag:str up npc counter.3"],
+    "receive": [
+      "misc:str up npc.3",
+      "flag:str up npc counter.3",
+    ],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      ["area:str up npc", "loot:fBone#10", "flag:str up npc counter.3"],
+      [
+        "area:str up npc",
+        "loot:fBone#10",
+        "flag:str up npc counter.3",
+      ],
     ],
-    "receive": ["misc:str up npc.4", "flag:str up npc counter.4"],
+    "receive": [
+      "misc:str up npc.4",
+      "flag:str up npc counter.4",
+    ],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      ["area:str up npc", "loot:cFang#15", "flag:str up npc counter.4"],
+      [
+        "area:str up npc",
+        "loot:cFang#15",
+        "flag:str up npc counter.4",
+      ],
     ],
-    "receive": ["misc:str up npc.5", "flag:str up npc counter.5"],
+    "receive": [
+      "misc:str up npc.5",
+      "flag:str up npc counter.5",
+    ],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      ["area:str up npc", "loot:oCoin#50", "flag:str up npc counter.5"],
+      [
+        "area:str up npc",
+        "loot:oCoin#50",
+        "flag:str up npc counter.5",
+      ],
     ],
-    "receive": ["misc:str up npc.6", "flag:str up npc counter.6"],
+    "receive": [
+      "misc:str up npc.6",
+      "flag:str up npc counter.6",
+    ],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      ["area:str up npc", "loot:kCrest#10", "flag:str up npc counter.6"],
+      [
+        "area:str up npc",
+        "loot:kCrest#10",
+        "flag:str up npc counter.6",
+      ],
     ],
-    "receive": ["misc:str up npc.7", "flag:str up npc counter.7"],
+    "receive": [
+      "misc:str up npc.7",
+      "flag:str up npc counter.7",
+    ],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      ["area:str up npc", "loot:dScale#10", "flag:str up npc counter.7"],
+      [
+        "area:str up npc",
+        "loot:dScale#10",
+        "flag:str up npc counter.7",
+      ],
     ],
-    "receive": ["misc:str up npc.8", "flag:str up npc counter.8"],
+    "receive": [
+      "misc:str up npc.8",
+      "flag:str up npc counter.8",
+    ],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      ["area:str up npc", "loot:vHorn#20", "flag:str up npc counter.8"],
+      [
+        "area:str up npc",
+        "loot:vHorn#20",
+        "flag:str up npc counter.8",
+      ],
     ],
-    "receive": ["misc:str up npc.9", "flag:str up npc counter.9"],
+    "receive": [
+      "misc:str up npc.9",
+      "flag:str up npc counter.9",
+    ],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      ["area:str up npc", "item:slamstones#10", "flag:str up npc counter.9"],
+      [
+        "area:str up npc",
+        "item:slamstones#10",
+        "flag:str up npc counter.9",
+      ],
     ],
-    "receive": ["misc:str up npc.10", "flag:str up npc counter.10"],
+    "receive": [
+      "misc:str up npc.10",
+      "flag:str up npc counter.10",
+    ],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      ["area:str up npc", "item:shadowCrest#5", "flag:str up npc counter.10"],
+      [
+        "area:str up npc",
+        "item:shadowCrest#5",
+        "flag:str up npc counter.10",
+      ],
     ],
-    "receive": ["misc:str up npc.11", "flag:str up npc counter.11"],
+    "receive": [
+      "misc:str up npc.11",
+      "flag:str up npc counter.11",
+    ],
   },
   {
     "room": {"north": 4, "east": 13},
     "requires": [
       [],
     ],
-    "receive": ["area:magic upgrades"],
+    "receive": [
+      "area:magic upgrades",
+    ],
   },
   {
     "room": {"north": 16, "east": 23},
     "requires": [
       [],
     ],
-    "receive": ["area:magic upgrades"],
+    "receive": [
+      "area:magic upgrades",
+    ],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      ["area:magic upgrades"],
+      [
+        "area:magic upgrades",
+      ],
     ],
-    "receive": ["magic:fire.2"],
+    "receive": [
+      "magic:fire.2",
+    ],
+  },
+  {
+    "room": {"north": 12, "east": 22},
+    "requires": [
+      [
+        "permit:bomb",
+        "food:apple",
+      ],
+    ],
+    "receive": [
+      "quest:curse.1",
+    ],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      [
+        "area:12",
+      ],
+      [
+        "area:9",
+      ],
+      [
+        "area:13",
+      ],
+    ],
+    "receive": [
+      "quest:curse.2",
+    ],
+  },
+  {
+    "room": {"north": 12, "east": 22},
+    "requires": [
+      [
+        "permit:bomb",
+        "quest:curse.2",
+      ],
+    ],
+    "receive": [
+      "quest:curse.3",
+    ],
+  },
+  {
+    "room": {"north": 12, "east": 22},
+    "requires": [
+      [
+        "quest:curse.3",
+      ],
+    ],
+    "receive": [
+      "quest:curse.5",
+    ],
+  },
+  {
+    "room": {"north": 13, "east": 26},
+    "requires": [
+      [
+        "quest:curse.8",
+      ],
+    ],
+    "receive": [
+      "quest:curse.9",
+    ],
+  },
+  {
+    "room": {"north": 9, "east": 26},
+    "requires": [
+      [
+        "quest:curse.6",
+      ],
+    ],
+    "receive": [
+      "quest:curse.7",
+    ],
+  },
+  {
+    "room": {"north": 9, "east": 25},
+    "requires": [
+      [
+        "quest:curse.5",
+      ],
+    ],
+    "receive": [
+      "quest:curse.6",
+    ],
+  },
+  {
+    "room": {"north": 12, "east": 26},
+    "requires": [
+      [
+        "quest:curse.7",
+        "skill:kick",
+        "flag:stomp code",
+      ],
+    ],
+    "receive": [
+      "quest:curse.8",
+    ],
+  },
+  {
+    "room": {"north": 13, "east": 26},
+    "requires": [
+      [
+        "quest:curse.8",
+      ],
+    ],
+    "receive": [
+      "quest:curse.9",
+    ],
+  },
+  {
+    "room": {"north": 13, "east": 26},
+    "requires": [
+      [
+        "flag:three part code part 1",
+        "flag:three part code part 2",
+        "flag:three part code part 3",
+        "quest:curse.9",
+      ],
+    ],
+    "receive": [
+      "quest:curse.10",
+    ],
   },
 ]
