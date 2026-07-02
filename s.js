@@ -266,7 +266,7 @@ try {
     else if (occurrences === 1) {
       // Use a global regular expression to replace every plain "skill:dig" with "20_20 - skill:dig"
       fileContent = fileContent.replaceAll(`newItem("${shortKey}")`, `newItem("${fullKey}")`);
-      fileContent = fileContent.replaceAll('"'+shortKey+'": ()', '"'+fullKey+'": ()');
+      fileContent = fileContent.replaceAll('"'+shortKey+'": ()', '"'+ fullKey+'": ()');
 
       console.log(`✅ Replaced all instances of "${shortKey}" with "${fullKey}" (newItem matched exactly once).`);
       totalReplacements++;
