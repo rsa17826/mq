@@ -14,7 +14,7 @@
               newItem("300_300 - food:elixir")
               newItem("100_100 - food:strawberry")
               newItem("11_13 - food:blueberries")
-              newItem("21_20 - food:orange")
+              newItem("100_100 - food:orange")
               newItem("100_100 - food:gingerBread")
               newItem("13_18 - food:gingerBread")
               newItem("13_18 - food:banana")
