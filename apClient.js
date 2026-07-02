@@ -239,13 +239,13 @@ class ArchipelagoClient {
       const globalIndex = packet.index + offset
 
       if (this.itemCount > window.lastRecivedItem) {
+        var coloredName = itemName.split(":")
+        coloredName = `@${itemColors[coloredName[0]]}!@console!${coloredName[0]}:@!@${itemColors[coloredName[0]]}!${coloredName[1]}@!`
+        apLog(
+          `@purple![Item Received]@! @console!ID: ${item.item} (@!${coloredName}@console!) ${this.itemCount - 1 === window.lastRecivedItem ? "" : " - @orange! already recived@!"}`,
+          item,
+        )
         if (this.itemCount - 1 === window.lastRecivedItem) {
-          var coloredName = itemName.split(":")
-          coloredName = `@${itemColors[coloredName[0]]}!@console!${coloredName[0]}:@!@${itemColors[coloredName[0]]}!${coloredName[1]}@!`
-          apLog(
-            `@purple![Item Received]@! @console!ID: ${item.item} (@!${coloredName}@console!)`,
-            item,
-          )
           if (itemList[itemName]) {
             itemList[itemName]()
           } else if (tryGiveLoot(itemName)) {
@@ -265,13 +265,6 @@ class ArchipelagoClient {
             this.itemCount,
           )
         }
-      } else {
-        var coloredName = itemName.split(":")
-        coloredName = `@${itemColors[coloredName[0]]}!${coloredName[0]}@!${coloredName[1]}`
-        apLog(
-          `@red![Item Received]@! @console!ID: ${item.item} @!(${coloredName}) - @orange! already recived@!`,
-          item,
-        )
       }
       window.lastRecivedItem = this.itemCount
       this.lastProcessedIndex = globalIndex + 1
