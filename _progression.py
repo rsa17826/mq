@@ -471,7 +471,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 7, "east": 25},
     "requires": [
       [
-        "magic:fire.2",
+        "flag:magic:fire.2",
       ],
     ],
     "receive": [
@@ -482,7 +482,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 8, "east": 21},
     "requires": [
       [
-        "magic:fire.2",
+        "flag:magic:fire.2",
       ],
     ],
     "receive": [
@@ -997,19 +997,19 @@ manager.correct - manager.wrong > 800 = halo
       "weapon:baneBlade",
     ],
   },
+  # {
+  #   "room": {"north": 17, "east": 10},
+  #   "requires": [
+  #     [
+  #       "loot:vAsh#6",
+  #     ],
+  #   ],
+  #   "receive": [
+  #     "food:gummyBears#5",
+  #   ],
+  # },
   {
-    "room": {"north": 17, "east": 10},
-    "requires": [
-      [
-        "loot:vAsh#6",
-      ],
-    ],
-    "receive": [
-      "food:gummyBears#5",
-    ],
-  },
-  {
-    "room": {"north": 4, "east": 13},
+    "room": {"north": 100, "east": 100},
     "requires": [
       [
         "loot:sTooth#5",
@@ -4667,7 +4667,7 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 14, "east": 18},
     "receive": [
-      "item:pup",
+      "misc:misc",
     ],
   },
   {
@@ -7620,7 +7620,8 @@ MathQuest.js:42550 add listeners""",
       ],
     ],
     "receive": [
-      "magic:fire.2",
+      # TODO don't think this should be a check
+      "flag:magic:fire.2",
     ],
   },
   {
