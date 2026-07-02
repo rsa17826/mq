@@ -1,5 +1,5 @@
-for img in map/*.jpg; do
-    magick "$img" -gravity NorthEast -chop 0x4 "${img%.jpg}.crop.jpg"
+for img in t1/map/*.jpg; do
+    magick "$img" -gravity SouthWest -chop 26x105 "t2/${img%.jpg}.jpg"
 done
 
 for file in map/*.jpg; do
@@ -12,4 +12,4 @@ for f in map/*.jpg; do
     magick "$f" -resize 10% "mapSmall/$(basename "$f")"
 done
 
-magick map/100,100.jpg -gravity NorthEast -chop 5x0 "map/a.crop.jpg"
+magick t1/map/100,100.jpg -gravity SouthWest -chop 5x0 "map/a.crop.jpg"
