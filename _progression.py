@@ -595,7 +595,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "food:gummyBears#10",
-      "item:diamonds#50 - chest",
+      "item:diamonds - chest#50",
     ],
   },
   {
@@ -693,7 +693,7 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "item:diamonds#2 - dig",
+      "item:diamonds - dig#2",
     ],
   },
   {
@@ -1118,7 +1118,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "quest:dig.3",
-      "item:gold#25 - dig3",
+      "item:gold - dig2#25",
     ],
   },
   {
@@ -1223,7 +1223,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "quest:pam.3",
-      "item:gold#20 -  - pam2",
+      "item:gold - pam2#20",
     ],
   },
   {
@@ -1247,7 +1247,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "quest:pam.5",
-      "food:gingerBread#10 - pam4",
+      "food:gingerBread - pam4#10",
     ],
   },
   {
@@ -1930,7 +1930,7 @@ MathQuest.js:42550 add listeners""",
     "receive": [
       "quest:seeds.4",
       "food:orange#10",
-      "food:peppers#3 - seeds3",
+      "food:peppers - seeds3#3",
     ],
   },
   {
@@ -2782,7 +2782,7 @@ MathQuest.js:42550 add listeners""",
     ],
     "receive": [
       "item:gold#300",
-      "item:diamonds#2 - chest",
+      "item:diamonds - chest#2",
     ],
   },
   {

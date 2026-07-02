@@ -7584,6 +7584,28 @@
       ]
     },
     {
+      "room": "20_20",
+      "requires": [
+        [
+          "area:12"
+        ]
+      ],
+      "receive": [
+        "weapon:pitchfork"
+      ]
+    },
+    {
+      "room": "20_20",
+      "requires": [
+        [
+          "area:8"
+        ]
+      ],
+      "receive": [
+        "weapon:orcBlade"
+      ]
+    },
+    {
       "room": "13_25",
       "requires": [
         [
@@ -7818,7 +7840,7 @@
       "room": "12_9",
       "requires": [
         [
-          "item:gold"
+          "item:gold#1000"
         ]
       ],
       "receive": [
@@ -7829,7 +7851,7 @@
       "room": "12_9",
       "requires": [
         [
-          "item:gold"
+          "item:gold#1600"
         ]
       ],
       "receive": [
@@ -8083,6 +8105,19 @@
       ]
     },
     {
+      "room": "100_100",
+      "requires": [
+        [
+          "loot:oArm#5",
+          "loot:sTooth#5",
+          "loot:vHorn#5"
+        ]
+      ],
+      "receive": [
+        "craft:newtonApple"
+      ]
+    },
+    {
       "room": "11_22",
       "requires": [
         [
@@ -8098,13 +8133,12 @@
       "room": "12_25",
       "requires": [
         [
-          "loot:sTooth#10",
-          "skill:craft"
+          "misc:blue crystal"
         ]
       ],
       "receive": [
         "food:gummyBears#10",
-        "item:diamonds#50"
+        "item:diamonds - chest#50"
       ]
     },
     {
@@ -8179,7 +8213,7 @@
         ]
       ],
       "receive": [
-        "item:diamonds#2"
+        "item:diamonds - dig#2"
       ]
     },
     {
@@ -8192,7 +8226,7 @@
         ]
       ],
       "receive": [
-        "craft:ring of gold"
+        "craft:ringGold"
       ]
     },
     {
@@ -8602,7 +8636,7 @@
       ],
       "receive": [
         "quest:dig.3",
-        "item:gold#25"
+        "item:gold - dig3#25"
       ]
     },
     {
@@ -8705,7 +8739,7 @@
       ],
       "receive": [
         "quest:pam.3",
-        "item:gold#20"
+        "item:gold - pam2#20"
       ]
     },
     {
@@ -8728,7 +8762,7 @@
       ],
       "receive": [
         "quest:pam.5",
-        "food:gingerBread#10"
+        "food:gingerBread - pam4#10"
       ]
     },
     {
@@ -9368,7 +9402,7 @@
       "receive": [
         "quest:seeds.4",
         "food:orange#10",
-        "food:peppers#3"
+        "food:peppers - seeds3#3"
       ]
     },
     {
@@ -9798,6 +9832,17 @@
       ]
     },
     {
+      "room": "19_20",
+      "requires": [
+        [
+          "quest:pam.16"
+        ]
+      ],
+      "receive": [
+        "food:gingerBread - pam16"
+      ]
+    },
+    {
       "room": "14_15",
       "requires": [
         [
@@ -10191,7 +10236,7 @@
       ],
       "receive": [
         "item:gold#300",
-        "item:diamonds#2"
+        "item:diamonds - chest#2"
       ]
     },
     {
@@ -10864,6 +10909,17 @@
       "room": "100_100",
       "requires": [
         [
+          "item:gold#10"
+        ]
+      ],
+      "receive": [
+        "food:gingerBread"
+      ]
+    },
+    {
+      "room": "100_100",
+      "requires": [
+        [
           "item:gold#100"
         ]
       ],
@@ -10950,6 +11006,18 @@
       ],
       "receive": [
         "quest:isles.15"
+      ]
+    },
+    {
+      "room": "300_300",
+      "requires": [
+        [
+          "item:gold#1000",
+          "loot:oCoin#10"
+        ]
+      ],
+      "receive": [
+        "food:elixir"
       ]
     },
     {
@@ -11968,6 +12036,23 @@
       "receive": [
         "skill:tough",
         "quest:isles.23"
+      ]
+    },
+    {
+      "room": "20_18",
+      "requires": [
+        [
+          "loot:dScale#3"
+        ],
+        [
+          "loot:sFrag#5"
+        ],
+        [
+          "loot:fBone#10"
+        ]
+      ],
+      "receive": [
+        "item:ring of skill"
       ]
     },
     {
@@ -15061,6 +15146,18 @@
         "raw": "loot:bClaw"
       }
     ],
+    "weapon:pitchfork": [
+      {
+        "room": "20_20",
+        "raw": "weapon:pitchfork"
+      }
+    ],
+    "weapon:orcBlade": [
+      {
+        "room": "20_20",
+        "raw": "weapon:orcBlade"
+      }
+    ],
     "flag:loot:mHat": [
       {
         "room": "13_25",
@@ -15237,16 +15334,8 @@
         "raw": "item:gold#20"
       },
       {
-        "room": "19_21",
-        "raw": "item:gold#25"
-      },
-      {
         "room": "21_20",
         "raw": "item:gold#50"
-      },
-      {
-        "room": "19_20",
-        "raw": "item:gold#20"
       },
       {
         "room": "14_18",
@@ -15761,10 +15850,6 @@
         "raw": "food:peppers#30"
       },
       {
-        "room": "9_22",
-        "raw": "food:peppers#3"
-      },
-      {
         "room": "19_20",
         "raw": "food:peppers#5"
       }
@@ -15779,6 +15864,12 @@
       {
         "room": "10_25",
         "raw": "misc:headstoneSwitch3"
+      }
+    ],
+    "flag:craft:newtonApple": [
+      {
+        "room": "100_100",
+        "raw": "craft:newtonApple"
       }
     ],
     "flag:craft:emerald": [
@@ -15805,50 +15896,14 @@
         "raw": "food:gummyBears#12"
       }
     ],
-    "item:diamonds": [
+    "item:diamonds - chest": [
       {
         "room": "12_25",
-        "raw": "item:diamonds#50"
+        "raw": "item:diamonds - chest#50"
       },
       {
         "room": "21_23",
-        "raw": "item:diamonds#2"
-      },
-      {
-        "room": "21_18",
-        "raw": "item:diamonds#Enum.Craft.emerald"
-      },
-      {
-        "room": "12_11",
-        "raw": "item:diamonds#1"
-      },
-      {
-        "room": "17_16",
-        "raw": "item:diamonds#5"
-      },
-      {
-        "room": "23_10",
-        "raw": "item:diamonds#5"
-      },
-      {
-        "room": "10_13",
-        "raw": "item:diamonds#1"
-      },
-      {
-        "room": "12_21",
-        "raw": "item:diamonds#Enum.Craft.emerald"
-      },
-      {
-        "room": "17_22",
-        "raw": "item:diamonds#20"
-      },
-      {
-        "room": "21_23",
-        "raw": "item:diamonds#2"
-      },
-      {
-        "room": "16_25",
-        "raw": "item:diamonds#5"
+        "raw": "item:diamonds - chest#2"
       }
     ],
     "flag:loot:aScepter#1": [
@@ -15885,12 +15940,12 @@
         "raw": "food:gingerBread"
       },
       {
-        "room": "19_20",
-        "raw": "food:gingerBread#10"
-      },
-      {
         "room": "17_15",
         "raw": "food:gingerBread#50"
+      },
+      {
+        "room": "100_100",
+        "raw": "food:gingerBread"
       },
       {
         "room": "100_100",
@@ -15917,10 +15972,16 @@
         "raw": "misc:headstoneSwitch4"
       }
     ],
-    "flag:craft:ring of gold": [
+    "item:diamonds - dig": [
+      {
+        "room": "21_23",
+        "raw": "item:diamonds - dig#2"
+      }
+    ],
+    "flag:craft:ringGold": [
       {
         "room": "21_22",
-        "raw": "craft:ring of gold"
+        "raw": "craft:ringGold"
       }
     ],
     "item:rubies": [
@@ -16109,6 +16170,40 @@
       {
         "room": "18_12",
         "raw": "quest:rings.17"
+      }
+    ],
+    "item:diamonds": [
+      {
+        "room": "21_18",
+        "raw": "item:diamonds#Enum.Craft.emerald"
+      },
+      {
+        "room": "12_11",
+        "raw": "item:diamonds#1"
+      },
+      {
+        "room": "17_16",
+        "raw": "item:diamonds#5"
+      },
+      {
+        "room": "23_10",
+        "raw": "item:diamonds#5"
+      },
+      {
+        "room": "10_13",
+        "raw": "item:diamonds#1"
+      },
+      {
+        "room": "12_21",
+        "raw": "item:diamonds#Enum.Craft.emerald"
+      },
+      {
+        "room": "17_22",
+        "raw": "item:diamonds#20"
+      },
+      {
+        "room": "16_25",
+        "raw": "item:diamonds#5"
       }
     ],
     "skill:hint": [
@@ -16349,10 +16444,28 @@
         "raw": "quest:dig.3"
       }
     ],
+    "item:gold - dig3": [
+      {
+        "room": "19_21",
+        "raw": "item:gold - dig3#25"
+      }
+    ],
     "magic:crush": [
       {
         "room": "21_20",
         "raw": "magic:crush"
+      }
+    ],
+    "item:gold - pam2": [
+      {
+        "room": "19_20",
+        "raw": "item:gold - pam2#20"
+      }
+    ],
+    "food:gingerBread - pam4": [
+      {
+        "room": "19_20",
+        "raw": "food:gingerBread - pam4#10"
       }
     ],
     "quest:oMan": [
@@ -16603,6 +16716,12 @@
         "raw": "permit:volcano"
       }
     ],
+    "food:peppers - seeds3": [
+      {
+        "room": "9_22",
+        "raw": "food:peppers - seeds3#3"
+      }
+    ],
     "item:ring of poison": [
       {
         "room": "11_11",
@@ -16681,6 +16800,12 @@
         "raw": "armor:diamondArmor"
       }
     ],
+    "food:gingerBread - pam16": [
+      {
+        "room": "19_20",
+        "raw": "food:gingerBread - pam16"
+      }
+    ],
     "armor:phantomCoat": [
       {
         "room": "9_15",
@@ -16723,6 +16848,10 @@
       {
         "room": "3_26",
         "raw": "food:elixir#1"
+      },
+      {
+        "room": "300_300",
+        "raw": "food:elixir"
       },
       {
         "room": "9_25",
@@ -17231,6 +17360,12 @@
       {
         "room": "18_25",
         "raw": "skill:medic.6"
+      }
+    ],
+    "item:ring of skill": [
+      {
+        "room": "20_18",
+        "raw": "item:ring of skill"
       }
     ],
     "weapon:creeperCrusher": [
