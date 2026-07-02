@@ -5,3 +5,5 @@ __pycache__
 .direnv
 **/node_modules
 .ruff_cache
+*.7z
+*.zip
