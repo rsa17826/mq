@@ -241,7 +241,7 @@ class ArchipelagoClient {
       var coloredName = itemName.split(":")
       coloredName = `@${itemColors[coloredName[0]]}!@console!${coloredName[0]}:@!@${itemColors[coloredName[0]]}!${coloredName[1]}@!`
       apLog(
-        `@purple![Item Received]@! @console!ID: ${item.item} (@!${coloredName}@console!) ${this.itemCount > window.lastRecivedItem ? "" : " - @orange! already recived@!"}`,
+        `@${this.itemCount > window.lastRecivedItem ? "purple" : "orange"}![Item Received]@! @console!ID: ${item.item} (@!${coloredName}@console!)@!${this.itemCount > window.lastRecivedItem ? "" : " - @orange! already recived@!"}@console!`,
         item,
       )
       if (this.itemCount > window.lastRecivedItem) {
