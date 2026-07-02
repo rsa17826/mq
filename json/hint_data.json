@@ -7684,15 +7684,13 @@
         "skill:swap",
         "flag:magic only resist bypass",
         "skill:firewall",
-        "skill:firewall.1",
         "skill:halo",
-        "item:aurastones",
         "item:gold",
         "loot:dScale",
-        "item:shadowCrest",
+        "loot:shadowCrest",
         "loot:oCoin",
         "item:blue crystal",
-        "item:key#999",
+        "loot:key#999",
         "item:gold#999"
       ]
     },
@@ -7704,16 +7702,13 @@
       "receive": [
         "loot:bTusk",
         "loot:cFang",
-        "item:emeralds",
-        "misc:fire crystal",
+        "loot:emeralds",
         "loot:fBone",
         "loot:gSkin",
         "loot:gFeather",
         "loot:mHat",
         "loot:mHorn",
-        "item:ring of evasion",
         "loot:sClaw",
-        "item:slamstones",
         "loot:sFrag",
         "loot:oArm",
         "loot:tBand",
@@ -7740,7 +7735,7 @@
         ]
       ],
       "receive": [
-        "food:orange#1"
+        "food:orange - #1"
       ]
     },
     {
@@ -7759,7 +7754,7 @@
       "room": "13_16",
       "requires": [
         [
-          "item:key#1",
+          "loot:key#1",
           "entrance.west0"
         ]
       ],
@@ -7982,7 +7977,7 @@
       "room": "11_17",
       "requires": [
         [
-          "item:key#1",
+          "loot:key#1",
           "permit:bomb"
         ]
       ],
@@ -7995,7 +7990,7 @@
       "room": "7_18",
       "requires": [
         [
-          "item:slamstones#1",
+          "loot:slamstones#1",
           "skill:reveal"
         ]
       ],
@@ -8011,14 +8006,14 @@
         ]
       ],
       "receive": [
-        "item:slamstones"
+        "loot:slamstones"
       ]
     },
     {
       "room": "7_25",
       "requires": [
         [
-          "magic:fire.2"
+          "flag:magic:fire.2"
         ]
       ],
       "receive": [
@@ -8029,7 +8024,7 @@
       "room": "8_21",
       "requires": [
         [
-          "magic:fire.2"
+          "flag:magic:fire.2"
         ]
       ],
       "receive": [
@@ -8311,7 +8306,7 @@
       "room": "21_18",
       "requires": [
         [
-          "item:emeralds#1"
+          "loot:emeralds#1"
         ]
       ],
       "receive": [
@@ -8323,7 +8318,6 @@
       "room": "21_17",
       "requires": [
         [
-          "item:aurastones#1",
           "item:gold#500"
         ]
       ],
@@ -8335,117 +8329,125 @@
       "room": "20_15",
       "requires": [
         [
-          "skill:firewall",
           "loot:dScale#5",
           "loot:medallions#3"
         ]
       ],
       "receive": [
-        "skill:firewall.2"
+        "skill:firewall.2",
+        "flag:skill.firewall checked.2"
       ]
     },
     {
       "room": "20_15",
       "requires": [
         [
-          "skill:firewall.2",
           "loot:dScale#10",
+          "flag:skill.firewall checked.2",
           "loot:medallions#6"
         ]
       ],
       "receive": [
-        "skill:firewall.3"
+        "skill:firewall.3",
+        "flag:skill.firewall checked.3"
       ]
     },
     {
       "room": "20_15",
       "requires": [
         [
-          "skill:firewall.3",
+          "flag:skill.firewall checked.3",
           "loot:dScale#15",
           "loot:medallions#9"
         ]
       ],
       "receive": [
-        "skill:firewall.4"
+        "skill:firewall.4",
+        "flag:skill.firewall checked.4"
       ]
     },
     {
       "room": "20_15",
       "requires": [
         [
-          "skill:firewall.4",
+          "flag:skill.firewall checked.4",
           "loot:dScale#20",
           "loot:medallions#12"
         ]
       ],
       "receive": [
-        "skill:firewall.5"
+        "skill:firewall.5",
+        "flag:skill.firewall checked.5"
       ]
     },
     {
       "room": "20_15",
       "requires": [
         [
-          "skill:firewall.5",
+          "flag:skill.firewall checked.5",
           "loot:dScale#25",
           "loot:medallions#15"
         ]
       ],
       "receive": [
-        "skill:firewall.6"
+        "skill:firewall.6",
+        "flag:skill.firewall checked.6"
       ]
     },
     {
       "room": "20_15",
       "requires": [
         [
-          "skill:firewall.6",
+          "flag:skill.firewall checked.6",
           "loot:dScale#30",
           "loot:medallions#18"
         ]
       ],
       "receive": [
-        "skill:firewall.7"
+        "skill:firewall.7",
+        "flag:skill.firewall checked.7"
       ]
     },
     {
       "room": "20_15",
       "requires": [
         [
-          "skill:firewall.7",
+          "flag:skill.firewall checked.7",
           "loot:dScale#35",
           "loot:medallions#21"
         ]
       ],
       "receive": [
-        "skill:firewall.8"
+        "skill:firewall.8",
+        "flag:skill.firewall checked.8"
       ]
     },
     {
       "room": "20_15",
       "requires": [
         [
-          "skill:firewall.8",
+          "flag:skill.firewall checked.8",
           "loot:dScale#40",
           "loot:medallions#24"
         ]
       ],
       "receive": [
-        "skill:firewall.9"
+        "skill:firewall.9",
+        "flag:skill.firewall checked.9"
       ]
     },
     {
       "room": "20_15",
       "requires": [
         [
-          "skill:firewall.9",
+          "flag:skill.firewall checked.9",
           "loot:dScale#45",
           "loot:medallions#27"
         ]
       ],
       "receive": [
-        "skill:firewall.10"
+        "skill:firewall.10",
+        "flag:skill.firewall checked.10"
       ]
     },
     {
@@ -8497,7 +8499,7 @@
       "requires": [
         [
           "loot:cThread#10",
-          "item:shadowCrest#5",
+          "loot:shadowCrest#5",
           "skill:reveal"
         ]
       ],
@@ -8509,7 +8511,7 @@
       "room": "24_11",
       "requires": [
         [
-          "item:key#1",
+          "loot:key#1",
           "permit:bomb"
         ]
       ],
@@ -8518,51 +8520,7 @@
       ]
     },
     {
-      "room": "17_10",
-      "requires": [
-        [
-          "loot:vAsh#6"
-        ]
-      ],
-      "receive": [
-        "food:gummyBears#5"
-      ]
-    },
-    {
-      "room": "4_13",
-      "requires": [
-        [
-          "item:gold"
-        ]
-      ],
-      "receive": [
-        "food:orange"
-      ]
-    },
-    {
-      "room": "4_13",
-      "requires": [
-        [
-          "item:gold"
-        ]
-      ],
-      "receive": [
-        "food:gingerBread"
-      ]
-    },
-    {
-      "room": "4_13",
-      "requires": [
-        [
-          "item:gold"
-        ]
-      ],
-      "receive": [
-        "food:strawberry"
-      ]
-    },
-    {
-      "room": "4_13",
+      "room": "100_100",
       "requires": [
         [
           "loot:sTooth#5",
@@ -8636,7 +8594,7 @@
       ],
       "receive": [
         "quest:dig.3",
-        "item:gold - dig3#25"
+        "item:gold - dig2#25"
       ]
     },
     {
@@ -9614,7 +9572,7 @@
       "room": "18_20",
       "requires": [
         [
-          "item:key"
+          "loot:key"
         ]
       ],
       "receive": [
@@ -9625,7 +9583,7 @@
       "room": "18_19",
       "requires": [
         [
-          "item:emeralds#1"
+          "loot:emeralds#1"
         ]
       ],
       "receive": [
@@ -9636,7 +9594,7 @@
       "room": "17_20",
       "requires": [
         [
-          "item:key#1"
+          "loot:key#1"
         ]
       ],
       "receive": [
@@ -9660,7 +9618,7 @@
       "room": "15_19",
       "requires": [
         [
-          "item:key#1",
+          "loot:key#1",
           "permit:bomb"
         ]
       ],
@@ -9674,7 +9632,7 @@
       "room": "14_19",
       "requires": [
         [
-          "item:key#1",
+          "loot:key#1",
           "entrance.south0"
         ]
       ],
@@ -9686,7 +9644,7 @@
       "room": "11_19",
       "requires": [
         [
-          "item:key#1",
+          "loot:key#1",
           "entrance.east2"
         ]
       ],
@@ -9699,7 +9657,7 @@
       "room": "8_18",
       "requires": [
         [
-          "item:emeralds#1",
+          "loot:emeralds#1",
           "entrance.north0"
         ]
       ],
@@ -9712,7 +9670,7 @@
       "room": "11_18",
       "requires": [
         [
-          "item:key#1"
+          "loot:key#1"
         ]
       ],
       "receive": [
@@ -9764,7 +9722,7 @@
       "room": "18_17",
       "requires": [
         [
-          "item:key#1",
+          "loot:key#1",
           "entrance.north1"
         ]
       ],
@@ -9776,7 +9734,7 @@
       "room": "13_16",
       "requires": [
         [
-          "item:key#1",
+          "loot:key#1",
           "entrance.south0"
         ]
       ],
@@ -9788,7 +9746,7 @@
       "room": "17_16",
       "requires": [
         [
-          "item:key#1"
+          "loot:key#1"
         ]
       ],
       "receive": [
@@ -9810,7 +9768,7 @@
       "room": "17_15",
       "requires": [
         [
-          "item:emeralds#1"
+          "loot:emeralds#1"
         ]
       ],
       "receive": [
@@ -9846,7 +9804,7 @@
       "room": "14_15",
       "requires": [
         [
-          "item:key#1"
+          "loot:key#1"
         ]
       ],
       "receive": [
@@ -9858,7 +9816,7 @@
       "room": "9_15",
       "requires": [
         [
-          "item:key#1"
+          "loot:key#1"
         ]
       ],
       "receive": [
@@ -9891,11 +9849,11 @@
       "room": "15_14",
       "requires": [
         [
-          "item:key#1",
+          "loot:key#1",
           "entrance.east0"
         ],
         [
-          "item:key#1",
+          "loot:key#1",
           "permit:bomb"
         ]
       ],
@@ -9907,7 +9865,7 @@
       "room": "23_10",
       "requires": [
         [
-          "item:emeralds#1"
+          "loot:emeralds#1"
         ]
       ],
       "receive": [
@@ -9918,7 +9876,7 @@
       "room": "23_10",
       "requires": [
         [
-          "item:key#1"
+          "loot:key#1"
         ]
       ],
       "receive": [
@@ -9930,7 +9888,7 @@
       "room": "21_11",
       "requires": [
         [
-          "item:key#1",
+          "loot:key#1",
           "entrance.north0"
         ]
       ],
@@ -9953,7 +9911,7 @@
       "room": "24_14",
       "requires": [
         [
-          "item:key#1"
+          "loot:key#1"
         ]
       ],
       "receive": [
@@ -9977,14 +9935,14 @@
       "room": "10_13",
       "requires": [
         [
-          "item:emeralds#1"
+          "loot:emeralds#1"
         ]
       ],
       "receive": [
         "item:gold#1",
         "item:diamonds#1",
         "item:aurastones#1",
-        "item:slamstones#1",
+        "loot:slamstones#1",
         "food:elixir#1",
         "food:holyWater#1"
       ]
@@ -9993,7 +9951,7 @@
       "room": "9_13",
       "requires": [
         [
-          "item:key#1"
+          "loot:key#1"
         ]
       ],
       "receive": [
@@ -10015,7 +9973,7 @@
       "room": "6_13",
       "requires": [
         [
-          "item:key#1"
+          "loot:key#1"
         ]
       ],
       "receive": [
@@ -10027,7 +9985,7 @@
       "room": "6_12",
       "requires": [
         [
-          "item:key#1"
+          "loot:key#1"
         ]
       ],
       "receive": [
@@ -10074,15 +10032,15 @@
       "room": "8_10",
       "requires": [
         [
-          "item:emeralds#1",
+          "loot:emeralds#1",
           "entrance.north1"
         ],
         [
-          "item:emeralds#1",
+          "loot:emeralds#1",
           "entrance.east1"
         ],
         [
-          "item:emeralds#1",
+          "loot:emeralds#1",
           "entrance.east2"
         ]
       ],
@@ -10095,7 +10053,7 @@
       "room": "9_10",
       "requires": [
         [
-          "item:key#1",
+          "loot:key#1",
           "permit:bomb"
         ]
       ],
@@ -10107,7 +10065,7 @@
       "room": "10_9",
       "requires": [
         [
-          "item:key#1",
+          "loot:key#1",
           "permit:bomb.2"
         ]
       ],
@@ -10119,7 +10077,7 @@
       "room": "6_10",
       "requires": [
         [
-          "item:key#1",
+          "loot:key#1",
           "permit:bomb"
         ]
       ],
@@ -10131,7 +10089,7 @@
       "room": "18_21",
       "requires": [
         [
-          "item:key#1"
+          "loot:key#1"
         ]
       ],
       "receive": [
@@ -10142,7 +10100,7 @@
       "room": "15_21",
       "requires": [
         [
-          "item:key#1",
+          "loot:key#1",
           "entrance.south0"
         ]
       ],
@@ -10155,11 +10113,11 @@
       "room": "14_21",
       "requires": [
         [
-          "item:key#1",
+          "loot:key#1",
           "entrance.north0"
         ],
         [
-          "item:key#1",
+          "loot:key#1",
           "permit:bomb"
         ]
       ],
@@ -10173,7 +10131,7 @@
       "room": "12_21",
       "requires": [
         [
-          "item:emeralds#1",
+          "loot:emeralds#1",
           "permit:bomb"
         ]
       ],
@@ -10186,7 +10144,7 @@
       "room": "11_21",
       "requires": [
         [
-          "item:key#1"
+          "loot:key#1"
         ]
       ],
       "receive": [
@@ -10197,7 +10155,7 @@
       "room": "9_22",
       "requires": [
         [
-          "item:key#1",
+          "loot:key#1",
           "entrance.north0"
         ]
       ],
@@ -10209,7 +10167,7 @@
       "room": "16_22",
       "requires": [
         [
-          "item:key#1"
+          "loot:key#1"
         ]
       ],
       "receive": [
@@ -10231,7 +10189,7 @@
       "room": "21_23",
       "requires": [
         [
-          "item:key#1"
+          "loot:key#1"
         ]
       ],
       "receive": [
@@ -10243,7 +10201,7 @@
       "room": "19_23",
       "requires": [
         [
-          "item:key#1"
+          "loot:key#1"
         ]
       ],
       "receive": [
@@ -10255,7 +10213,7 @@
       "requires": [
         [
           "permit:bomb",
-          "item:key#1"
+          "loot:key#1"
         ]
       ],
       "receive": [
@@ -10266,7 +10224,7 @@
       "room": "9_23",
       "requires": [
         [
-          "item:key#1",
+          "loot:key#1",
           "permit:bomb"
         ]
       ],
@@ -10278,7 +10236,7 @@
       "room": "4_24",
       "requires": [
         [
-          "item:key#1",
+          "loot:key#1",
           "entrance.east0"
         ]
       ],
@@ -10301,7 +10259,7 @@
       "room": "15_24",
       "requires": [
         [
-          "item:key#1",
+          "loot:key#1",
           "entrance.north0"
         ]
       ],
@@ -10367,17 +10325,17 @@
         [
           "permit:bomb",
           "entrance.south3",
-          "item:key#1"
+          "loot:key#1"
         ],
         [
           "permit:bomb",
           "entrance.south1",
-          "item:key#1"
+          "loot:key#1"
         ],
         [
           "permit:bomb",
           "entrance.south0",
-          "item:key#1"
+          "loot:key#1"
         ]
       ],
       "receive": [
@@ -10388,7 +10346,7 @@
       "room": "9_26",
       "requires": [
         [
-          "item:key#1"
+          "loot:key#1"
         ]
       ],
       "receive": [
@@ -11990,7 +11948,7 @@
       "room": "18_21",
       "requires": [
         [
-          "item:key#1"
+          "loot:key#1"
         ]
       ],
       "receive": [
@@ -12008,7 +11966,7 @@
       "room": "9_25",
       "requires": [
         [
-          "item:emeralds"
+          "loot:emeralds"
         ]
       ],
       "receive": [
@@ -12070,7 +12028,7 @@
       "room": "14_18",
       "requires": [],
       "receive": [
-        "item:pup"
+        "misc:misc"
       ]
     },
     {
@@ -14968,7 +14926,7 @@
       "requires": [
         [
           "area:str up npc",
-          "item:slamstones#10",
+          "loot:slamstones#10",
           "flag:str up npc counter.9"
         ]
       ],
@@ -14982,7 +14940,7 @@
       "requires": [
         [
           "area:str up npc",
-          "item:shadowCrest#5",
+          "loot:shadowCrest#5",
           "flag:str up npc counter.10"
         ]
       ],
@@ -14992,7 +14950,7 @@
       ]
     },
     {
-      "room": "4_13",
+      "room": "14_13",
       "requires": [
         []
       ],
@@ -15017,7 +14975,7 @@
         ]
       ],
       "receive": [
-        "magic:fire.2"
+        "flag:magic:fire.2"
       ]
     },
     {
@@ -15248,10 +15206,6 @@
         "raw": "skill:firewall"
       },
       {
-        "room": "20_20",
-        "raw": "skill:firewall.1"
-      },
-      {
         "room": "20_15",
         "raw": "skill:firewall.2"
       },
@@ -15292,16 +15246,6 @@
       {
         "room": "20_20",
         "raw": "skill:halo"
-      }
-    ],
-    "item:aurastones": [
-      {
-        "room": "20_20",
-        "raw": "item:aurastones"
-      },
-      {
-        "room": "10_13",
-        "raw": "item:aurastones#1"
       }
     ],
     "item:gold": [
@@ -15416,10 +15360,10 @@
         "raw": "loot:dScale"
       }
     ],
-    "item:shadowCrest": [
+    "flag:loot:shadowCrest": [
       {
         "room": "20_20",
-        "raw": "item:shadowCrest"
+        "raw": "loot:shadowCrest"
       }
     ],
     "flag:loot:oCoin": [
@@ -15434,10 +15378,10 @@
         "raw": "item:blue crystal"
       }
     ],
-    "item:key": [
+    "flag:loot:key#999": [
       {
         "room": "20_20",
-        "raw": "item:key#999"
+        "raw": "loot:key#999"
       }
     ],
     "flag:loot:bTusk": [
@@ -15452,20 +15396,10 @@
         "raw": "loot:cFang"
       }
     ],
-    "item:emeralds": [
+    "flag:loot:emeralds": [
       {
         "room": "20_20",
-        "raw": "item:emeralds"
-      }
-    ],
-    "misc:fire crystal": [
-      {
-        "room": "20_20",
-        "raw": "misc:fire crystal"
-      },
-      {
-        "room": "12_9",
-        "raw": "misc:fire crystal"
+        "raw": "loot:emeralds"
       }
     ],
     "flag:loot:fBone": [
@@ -15492,34 +15426,10 @@
         "raw": "loot:mHorn"
       }
     ],
-    "item:ring of evasion": [
-      {
-        "room": "20_20",
-        "raw": "item:ring of evasion"
-      },
-      {
-        "room": "13_16",
-        "raw": "item:ring of evasion"
-      }
-    ],
     "flag:loot:sClaw": [
       {
         "room": "20_20",
         "raw": "loot:sClaw"
-      }
-    ],
-    "item:slamstones": [
-      {
-        "room": "20_20",
-        "raw": "item:slamstones"
-      },
-      {
-        "room": "20_20",
-        "raw": "item:slamstones"
-      },
-      {
-        "room": "10_13",
-        "raw": "item:slamstones#1"
       }
     ],
     "flag:loot:sFrag": [
@@ -15570,34 +15480,10 @@
         "raw": "food:banana"
       }
     ],
-    "food:orange": [
+    "food:orange - ": [
       {
         "room": "21_20",
-        "raw": "food:orange#1"
-      },
-      {
-        "room": "12_9",
-        "raw": "food:orange"
-      },
-      {
-        "room": "4_13",
-        "raw": "food:orange"
-      },
-      {
-        "room": "9_22",
-        "raw": "food:orange#10"
-      },
-      {
-        "room": "19_20",
-        "raw": "food:orange#20"
-      },
-      {
-        "room": "14_15",
-        "raw": "food:orange#12"
-      },
-      {
-        "room": "100_100",
-        "raw": "food:orange"
+        "raw": "food:orange - #1"
       }
     ],
     "flag:loot:aClub#1": [
@@ -15694,6 +15580,28 @@
         "raw": "weapon:sunSword"
       }
     ],
+    "food:orange": [
+      {
+        "room": "12_9",
+        "raw": "food:orange"
+      },
+      {
+        "room": "9_22",
+        "raw": "food:orange#10"
+      },
+      {
+        "room": "19_20",
+        "raw": "food:orange#20"
+      },
+      {
+        "room": "14_15",
+        "raw": "food:orange#12"
+      },
+      {
+        "room": "100_100",
+        "raw": "food:orange"
+      }
+    ],
     "magic:weak": [
       {
         "room": "11_9",
@@ -15786,6 +15694,12 @@
       {
         "room": "19_22",
         "raw": "skill:reveal"
+      }
+    ],
+    "flag:loot:slamstones": [
+      {
+        "room": "20_20",
+        "raw": "loot:slamstones"
       }
     ],
     "flag:flag:lit torch 2": [
@@ -15884,10 +15798,6 @@
         "raw": "food:gummyBears#10"
       },
       {
-        "room": "17_10",
-        "raw": "food:gummyBears#5"
-      },
-      {
         "room": "21_11",
         "raw": "food:gummyBears#5"
       },
@@ -15934,10 +15844,6 @@
       {
         "room": "13_26",
         "raw": "food:gingerBread#99"
-      },
-      {
-        "room": "4_13",
-        "raw": "food:gingerBread"
       },
       {
         "room": "17_15",
@@ -16206,6 +16112,60 @@
         "raw": "item:diamonds#5"
       }
     ],
+    "flag:flag:skill.firewall checked.2": [
+      {
+        "room": "20_15",
+        "raw": "flag:skill.firewall checked.2"
+      }
+    ],
+    "flag:flag:skill.firewall checked.3": [
+      {
+        "room": "20_15",
+        "raw": "flag:skill.firewall checked.3"
+      }
+    ],
+    "flag:flag:skill.firewall checked.4": [
+      {
+        "room": "20_15",
+        "raw": "flag:skill.firewall checked.4"
+      }
+    ],
+    "flag:flag:skill.firewall checked.5": [
+      {
+        "room": "20_15",
+        "raw": "flag:skill.firewall checked.5"
+      }
+    ],
+    "flag:flag:skill.firewall checked.6": [
+      {
+        "room": "20_15",
+        "raw": "flag:skill.firewall checked.6"
+      }
+    ],
+    "flag:flag:skill.firewall checked.7": [
+      {
+        "room": "20_15",
+        "raw": "flag:skill.firewall checked.7"
+      }
+    ],
+    "flag:flag:skill.firewall checked.8": [
+      {
+        "room": "20_15",
+        "raw": "flag:skill.firewall checked.8"
+      }
+    ],
+    "flag:flag:skill.firewall checked.9": [
+      {
+        "room": "20_15",
+        "raw": "flag:skill.firewall checked.9"
+      }
+    ],
+    "flag:flag:skill.firewall checked.10": [
+      {
+        "room": "20_15",
+        "raw": "flag:skill.firewall checked.10"
+      }
+    ],
     "skill:hint": [
       {
         "room": "19_15",
@@ -16236,27 +16196,9 @@
         "raw": "weapon:baneBlade"
       }
     ],
-    "food:strawberry": [
-      {
-        "room": "4_13",
-        "raw": "food:strawberry"
-      },
-      {
-        "room": "11_19",
-        "raw": "food:strawberry#1"
-      },
-      {
-        "room": "6_13",
-        "raw": "food:strawberry#1"
-      },
-      {
-        "room": "100_100",
-        "raw": "food:strawberry"
-      }
-    ],
     "flag:craft:newtonsApple": [
       {
-        "room": "4_13",
+        "room": "100_100",
         "raw": "craft:newtonsApple"
       }
     ],
@@ -16444,10 +16386,10 @@
         "raw": "quest:dig.3"
       }
     ],
-    "item:gold - dig3": [
+    "item:gold - dig2": [
       {
         "room": "19_21",
-        "raw": "item:gold - dig3#25"
+        "raw": "item:gold - dig2#25"
       }
     ],
     "magic:crush": [
@@ -16602,6 +16544,12 @@
         "raw": "craft:bomb"
       }
     ],
+    "misc:fire crystal": [
+      {
+        "room": "12_9",
+        "raw": "misc:fire crystal"
+      }
+    ],
     "quest:warp": [
       {
         "room": "11_9",
@@ -16704,6 +16652,12 @@
         "raw": "item:ring of health"
       }
     ],
+    "item:ring of evasion": [
+      {
+        "room": "13_16",
+        "raw": "item:ring of evasion"
+      }
+    ],
     "skill:warp": [
       {
         "room": "11_9",
@@ -16774,6 +16728,20 @@
         "raw": "armor:regenArmor"
       }
     ],
+    "food:strawberry": [
+      {
+        "room": "11_19",
+        "raw": "food:strawberry#1"
+      },
+      {
+        "room": "6_13",
+        "raw": "food:strawberry#1"
+      },
+      {
+        "room": "100_100",
+        "raw": "food:strawberry"
+      }
+    ],
     "magic:refresh": [
       {
         "room": "11_18",
@@ -16838,6 +16806,18 @@
       {
         "room": "10_13",
         "raw": "misc:ninja"
+      }
+    ],
+    "item:aurastones": [
+      {
+        "room": "10_13",
+        "raw": "item:aurastones#1"
+      }
+    ],
+    "flag:loot:slamstones#1": [
+      {
+        "room": "10_13",
+        "raw": "loot:slamstones#1"
       }
     ],
     "food:elixir": [
@@ -16906,10 +16886,6 @@
       {
         "room": "19_23",
         "raw": "magic:fire"
-      },
-      {
-        "room": "20_20",
-        "raw": "magic:fire.2"
       }
     ],
     "magic:drain": [
@@ -17374,10 +17350,10 @@
         "raw": "weapon:creeperCrusher"
       }
     ],
-    "item:pup": [
+    "misc:misc": [
       {
         "room": "14_18",
-        "raw": "item:pup"
+        "raw": "misc:misc"
       }
     ],
     "armor:nobleArmor": [
@@ -18802,12 +18778,18 @@
     ],
     "flag:area:magic upgrades": [
       {
-        "room": "4_13",
+        "room": "14_13",
         "raw": "area:magic upgrades"
       },
       {
         "room": "16_23",
         "raw": "area:magic upgrades"
+      }
+    ],
+    "flag:flag:magic:fire.2": [
+      {
+        "room": "20_20",
+        "raw": "flag:magic:fire.2"
       }
     ],
     "quest:curse": [

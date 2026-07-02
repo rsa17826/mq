@@ -124,14 +124,13 @@ PROG: list[ProgressionNode] = [
       "skill:swap",
       "flag:magic only resist bypass",
       "skill:firewall",
-      "skill:firewall.1",
       "skill:halo",
       "item:gold",
       "loot:dScale",
       "loot:shadowCrest",
       "loot:oCoin",
       "item:blue crystal",
-      # "item:key#999",
+      "loot:key#999",
       "item:gold#999",
     ],
     "info": """can be got anywhere
@@ -158,7 +157,6 @@ manager.correct - manager.wrong > 800 = halo
       "loot:gFeather",
       "loot:mHat",
       "loot:mHorn",
-      "item:ring of evasion",
       "loot:sClaw",
       "loot:sFrag",
       "loot:oArm",
@@ -189,7 +187,7 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "food:orange#1",
+      "food:orange - #1",
     ],
   },
   # {"room": {"north": 18, "east": 20}, "info": "warp skill warp point",},
@@ -210,7 +208,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 13, "east": 16},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
         "entrance.west0",
       ],
     ],
@@ -435,7 +433,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 11, "east": 17},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
         "permit:bomb",
       ],
     ],
@@ -814,117 +812,131 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 20, "east": 15},
     "requires": [
       [
-        "skill:firewall",
+        # "skill:firewall",
         "loot:dScale#5",
         "loot:medallions#3",
       ],
     ],
     "receive": [
       "skill:firewall.2",
+      "flag:skill.firewall checked.2",
     ],
   },
   {
     "room": {"north": 20, "east": 15},
     "requires": [
       [
-        "skill:firewall.2",
         "loot:dScale#10",
+        "flag:skill.firewall checked.2",
         "loot:medallions#6",
       ],
     ],
     "receive": [
       "skill:firewall.3",
+      "flag:skill.firewall checked.3",
     ],
   },
   {
     "room": {"north": 20, "east": 15},
     "requires": [
       [
-        "skill:firewall.3",
+        "flag:skill.firewall checked.3",
         "loot:dScale#15",
         "loot:medallions#9",
       ],
     ],
     "receive": [
       "skill:firewall.4",
+      "flag:skill.firewall checked.4",
     ],
   },
   {
     "room": {"north": 20, "east": 15},
     "requires": [
       [
-        "skill:firewall.4",
+        "flag:skill.firewall checked.4",
         "loot:dScale#20",
         "loot:medallions#12",
       ],
     ],
     "receive": [
       "skill:firewall.5",
+      "flag:skill.firewall checked.5",
     ],
   },
   {
     "room": {"north": 20, "east": 15},
     "requires": [
       [
-        "skill:firewall.5",
+        "flag:skill.firewall checked.5",
+        # "skill:firewall.5",
         "loot:dScale#25",
         "loot:medallions#15",
       ],
     ],
     "receive": [
       "skill:firewall.6",
+      "flag:skill.firewall checked.6",
     ],
   },
   {
     "room": {"north": 20, "east": 15},
     "requires": [
       [
-        "skill:firewall.6",
+        "flag:skill.firewall checked.6",
+        # "skill:firewall.6",
         "loot:dScale#30",
         "loot:medallions#18",
       ],
     ],
     "receive": [
       "skill:firewall.7",
+      "flag:skill.firewall checked.7",
     ],
   },
   {
     "room": {"north": 20, "east": 15},
     "requires": [
       [
-        "skill:firewall.7",
+        "flag:skill.firewall checked.7",
+        # "skill:firewall.7",
         "loot:dScale#35",
         "loot:medallions#21",
       ],
     ],
     "receive": [
       "skill:firewall.8",
+      "flag:skill.firewall checked.8",
     ],
   },
   {
     "room": {"north": 20, "east": 15},
     "requires": [
       [
-        "skill:firewall.8",
+        "flag:skill.firewall checked.8",
+        # "skill:firewall.8",
         "loot:dScale#40",
         "loot:medallions#24",
       ],
     ],
     "receive": [
       "skill:firewall.9",
+      "flag:skill.firewall checked.9",
     ],
   },
   {
     "room": {"north": 20, "east": 15},
     "requires": [
       [
-        "skill:firewall.9",
+        "flag:skill.firewall checked.9",
+        # "skill:firewall.9",
         "loot:dScale#45",
         "loot:medallions#27",
       ],
     ],
     "receive": [
       "skill:firewall.10",
+      "flag:skill.firewall checked.10",
     ],
   },
   {
@@ -989,7 +1001,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 24, "east": 11},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
         "permit:bomb",
       ],
     ],
@@ -2121,7 +2133,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 18, "east": 20},
     "requires": [
       [
-        "item:key",
+        "loot:key",
       ],
     ],
     "receive": [
@@ -2144,7 +2156,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 17, "east": 20},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
       ],
     ],
     "receive": [
@@ -2168,7 +2180,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 15, "east": 19},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
         "permit:bomb",
       ],
     ],
@@ -2182,7 +2194,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 14, "east": 19},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
         "entrance.south0",
       ],
     ],
@@ -2194,7 +2206,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 11, "east": 19},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
         "entrance.east2",
       ],
     ],
@@ -2220,7 +2232,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 11, "east": 18},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
       ],
     ],
     "receive": [
@@ -2272,7 +2284,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 18, "east": 17},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
         "entrance.north1",
       ],
     ],
@@ -2284,7 +2296,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 13, "east": 16},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
         "entrance.south0",
       ],
     ],
@@ -2296,7 +2308,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 17, "east": 16},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
       ],
     ],
     "receive": [
@@ -2355,7 +2367,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 14, "east": 15},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
       ],
     ],
     "receive": [
@@ -2367,7 +2379,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 9, "east": 15},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
       ],
     ],
     "receive": [
@@ -2400,11 +2412,11 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 15, "east": 14},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
         "entrance.east0",
       ],
       [
-        "item:key#1",
+        "loot:key#1",
         "permit:bomb",
       ],
     ],
@@ -2427,7 +2439,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 23, "east": 10},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
       ],
     ],
     "receive": [
@@ -2440,7 +2452,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 21, "east": 11},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
         "entrance.north0",
       ],
     ],
@@ -2463,7 +2475,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 24, "east": 14},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
       ],
     ],
     "receive": [
@@ -2503,7 +2515,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 9, "east": 13},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
       ],
     ],
     "receive": [
@@ -2526,7 +2538,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 6, "east": 13},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
       ],
     ],
     "receive": [
@@ -2538,7 +2550,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 6, "east": 12},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
       ],
     ],
     "receive": [
@@ -2606,7 +2618,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 9, "east": 10},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
         "permit:bomb",
       ],
     ],
@@ -2618,7 +2630,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 10, "east": 9},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
         "permit:bomb.2",
       ],
     ],
@@ -2630,7 +2642,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 6, "east": 10},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
         "permit:bomb",
       ],
     ],
@@ -2642,7 +2654,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 18, "east": 21},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
       ],
     ],
     "receive": [
@@ -2653,7 +2665,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 15, "east": 21},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
         "entrance.south0",
       ],
     ],
@@ -2666,11 +2678,11 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 14, "east": 21},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
         "entrance.north0",
       ],
       [
-        "item:key#1",
+        "loot:key#1",
         "permit:bomb",
       ],
     ],
@@ -2697,7 +2709,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 11, "east": 21},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
       ],
     ],
     "receive": [
@@ -2708,7 +2720,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 9, "east": 22},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
         "entrance.north0",
       ],
     ],
@@ -2720,7 +2732,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 16, "east": 22},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
       ],
     ],
     "receive": [
@@ -2742,7 +2754,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 21, "east": 23},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
       ],
     ],
     "receive": [
@@ -2754,7 +2766,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 19, "east": 23},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
       ],
     ],
     "receive": [
@@ -2766,7 +2778,7 @@ MathQuest.js:42550 add listeners""",
     "requires": [
       [
         "permit:bomb",
-        "item:key#1",
+        "loot:key#1",
       ],
     ],
     "receive": [
@@ -2777,7 +2789,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 9, "east": 23},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
         "permit:bomb",
       ],
     ],
@@ -2789,7 +2801,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 4, "east": 24},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
         "entrance.east0",
       ],
     ],
@@ -2812,7 +2824,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 15, "east": 24},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
         "entrance.north0",
       ],
     ],
@@ -2878,17 +2890,17 @@ MathQuest.js:42550 add listeners""",
       [
         "permit:bomb",
         "entrance.south3",
-        "item:key#1",
+        "loot:key#1",
       ],
       [
         "permit:bomb",
         "entrance.south1",
-        "item:key#1",
+        "loot:key#1",
       ],
       [
         "permit:bomb",
         "entrance.south0",
-        "item:key#1",
+        "loot:key#1",
       ],
     ],
     "receive": [
@@ -2899,7 +2911,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 9, "east": 26},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
       ],
     ],
     "receive": [
@@ -4588,7 +4600,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 18, "east": 21},
     "requires": [
       [
-        "item:key#1",
+        "loot:key#1",
       ],
     ],
     "receive": [
