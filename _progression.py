@@ -8,9 +8,9 @@ class RoomCoordinates(TypedDict):
 
 class ProgressionNode(TypedDict):
   room: RoomCoordinates
-  receive: NotRequired[list[str],]
-  # requires: NotRequired[list[list[str],],]
-  requires: list[list[str],]
+  receive: NotRequired[list[str]]
+  # requires: NotRequired[list[list[str]]]
+  requires: list[list[str]]
   info: NotRequired[str]
 
 
@@ -154,7 +154,7 @@ manager.correct - manager.wrong > 800 = halo
     "info": """add to correct locations later
 """,
   },
-  # {"room": {"north": 20, "east": 20}, "receive": ["spawnpoint",],},
+  # {"room": {"north": 20, "east": 20}, "receive": ["spawnpoint"],},
   {
     "room": {"north": 15, "east": 21},
     "requires": [
@@ -263,7 +263,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
   },
   # {"room": {"north": 10, "east": 12}, "info": "warp skill warp point",},
-  # {"room": {"north": 12, "east": 9}, "receive": ["spawnpoint",],},
+  # {"room": {"north": 12, "east": 9}, "receive": ["spawnpoint"],},
   {
     "room": {"north": 12, "east": 9},
     "requires": [
@@ -619,30 +619,30 @@ manager.correct - manager.wrong > 800 = halo
   },
   # {
   #   "room": {"north": 18, "east": 25},
-  #   "requires": [["skill:medic.1", "loot:cFang#5",],],
-  #   "receive": ["skill:medic.2",],
+  #   "requires": [["skill:medic.1", "loot:cFang#5"],],
+  #   "receive": ["skill:medic.2"],
   # },
   # {
   #   "room": {"north": 18, "east": 25},
-  #   "requires": [["skill:medic.2", "loot:oCoin#20", "loot:mStaff#10",],],
-  #   "receive": ["skill:medic.3",],
+  #   "requires": [["skill:medic.2", "loot:oCoin#20", "loot:mStaff#10"],],
+  #   "receive": ["skill:medic.3"],
   # },
   # {
   #   "room": {"north": 18, "east": 25},
-  #   "requires": [["skill:medic.3", "loot:dScale#10", "loot:gSkin#10",],],
-  #   "receive": ["skill:medic.4",],
+  #   "requires": [["skill:medic.3", "loot:dScale#10", "loot:gSkin#10"],],
+  #   "receive": ["skill:medic.4"],
   # },
   # {
   #   "room": {"north": 18, "east": 25},
-  #   "requires": [["skill:medic.4", "loot:kCrest#10", "item:alpha axe#5",],],
-  #   "receive": ["skill:medic.5",],
+  #   "requires": [["skill:medic.4", "loot:kCrest#10", "item:alpha axe#5"],],
+  #   "receive": ["skill:medic.5"],
   # },
   # {
   #   "room": {"north": 18, "east": 25},
   #   "requires": [
-  #     ["skill:medic.5", "loot:gFeather#3", "loot:aScepter#5",]
+  #     ["skill:medic.5", "loot:gFeather#3", "loot:aScepter#5"]
   #   ],
-  #   "receive": ["skill:medic.6",],
+  #   "receive": ["skill:medic.6"],
   # },
   {
     "room": {"north": 18, "east": 24},
@@ -1586,7 +1586,7 @@ MathQuest.js:42550 add listeners""",
   },
   {
     "room": {"north": 24, "east": 9},
-    # "requires": [["quest:gTree.454565",],],
+    # "requires": [["quest:gTree.454565"],],
     # TODO gen should fail to win like this
     "requires": [
       [
@@ -1635,13 +1635,13 @@ MathQuest.js:42550 add listeners""",
   },
   # {
   #   "room": {"north": 14, "east": 18},
-  #   "requires": [["quest:aSword.1", "weapon:baneBlade",],],
-  #   "receive": ["quest:aSword.2",],
+  #   "requires": [["quest:aSword.1", "weapon:baneBlade"],],
+  #   "receive": ["quest:aSword.2"],
   # },
   # {
   #   "room": {"north": 500, "east": 501},
-  #   "requires": [["quest:aSword.2", "skill:reveal",],],
-  #   "receive": ["quest:aSword.3",],
+  #   "requires": [["quest:aSword.2", "skill:reveal"],],
+  #   "receive": ["quest:aSword.3"],
   # },
   {
     "room": {"north": 15, "east": 24},
@@ -2116,10 +2116,10 @@ MathQuest.js:42550 add listeners""",
   # {
   #   "room": {"north": 13, "east": 14},
   #   "requires": [
-  #     ["magic:fire.1", "quest:?", "entrance.east0",],
-  #     ["magic:fire.1", "quest:?", "entrance.north0", "permit:bomb",],
+  #     ["magic:fire.1", "quest:?", "entrance.east0"],
+  #     ["magic:fire.1", "quest:?", "entrance.north0", "permit:bomb"],
   #   ],
-  #   "receive": ["???",],
+  #   "receive": ["???"],
   # },
   # TODO start of all chests remove dupes when done
   {
@@ -3763,62 +3763,62 @@ MathQuest.js:42550 add listeners""",
   # {
   #   "room": {"north": 500, "east": 501},
   #   "requires": [[],],
-  #   "receive": ["quest:aSword.1",],
+  #   "receive": ["quest:aSword.1"],
   # },
   # {
   #   "room": {"north": 500, "east": 501},
-  #   "requires": [["quest:aSword.12",],],
-  #   "receive": ["quest:aSword.13",],
+  #   "requires": [["quest:aSword.12"],],
+  #   "receive": ["quest:aSword.13"],
   # },
   # {
   #   "room": {"north": 500, "east": 501},
-  #   "requires": [["quest:aSword.6",],],
-  #   "receive": ["quest:aSword.7",],
+  #   "requires": [["quest:aSword.6"],],
+  #   "receive": ["quest:aSword.7"],
   # },
   # {
   #   "room": {"north": 500, "east": 501},
-  #   "requires": [["quest:aSword.4",],],
-  #   "receive": ["quest:aSword.5",],
+  #   "requires": [["quest:aSword.4"],],
+  #   "receive": ["quest:aSword.5"],
   # },
   # {
   #   "room": {"north": 19, "east": 16},
-  #   "requires": [["quest:aSword.3",],],
-  #   "receive": ["quest:aSword.4",],
+  #   "requires": [["quest:aSword.3"],],
+  #   "receive": ["quest:aSword.4"],
   # },
   # {
   #   "room": {"north": 20, "east": 17},
-  #   "requires": [["quest:aSword.5",],],
-  #   "receive": ["quest:aSword.6",],
+  #   "requires": [["quest:aSword.5"],],
+  #   "receive": ["quest:aSword.6"],
   # },
   # {
   #   "room": {"north": 500, "east": 501},
-  #   "requires": [["quest:aSword.7",],],
-  #   "receive": ["quest:aSword.11",],
+  #   "requires": [["quest:aSword.7"],],
+  #   "receive": ["quest:aSword.11"],
   # },
   # {
   #   "room": {"north": 500, "east": 501},
-  #   "requires": [["quest:aSword.57",],],
-  #   "receive": ["quest:aSword.58",],
+  #   "requires": [["quest:aSword.57"],],
+  #   "receive": ["quest:aSword.58"],
   # },
   # {
   #   "room": {"north": 500, "east": 501},
-  #   "requires": [["quest:aSword.51",],],
-  #   "receive": ["quest:aSword.52",],
+  #   "requires": [["quest:aSword.51"],],
+  #   "receive": ["quest:aSword.52"],
   # },
   # {
   #   "room": {"north": 500, "east": 501},
-  #   "requires": [["quest:aSword.45",],],
-  #   "receive": ["quest:aSword.46",],
+  #   "requires": [["quest:aSword.45"],],
+  #   "receive": ["quest:aSword.46"],
   # },
   # {
   #   "room": {"north": 500, "east": 501},
-  #   "requires": [["quest:aSword.39",],],
-  #   "receive": ["quest:aSword.40",],
+  #   "requires": [["quest:aSword.39"],],
+  #   "receive": ["quest:aSword.40"],
   # },
   # {
   #   "room": {"north": 500, "east": 501},
-  #   "requires": [["quest:aSword.23",],],
-  #   "receive": ["quest:aSword.24",],
+  #   "requires": [["quest:aSword.23"],],
+  #   "receive": ["quest:aSword.24"],
   # },
   {
     "room": {"north": 15, "east": 25},
@@ -4350,11 +4350,11 @@ MathQuest.js:42550 add listeners""",
   # 159 items extracted
   # {
   #   "room": {"north": "?", "east": "?",},
-  #   "receive": ["food:steak",],
+  #   "receive": ["food:steak"],
   # },
   # {
   #   "room": {"north": "?", "east": "?",},
-  #   "receive": ["food:peppers",],
+  #   "receive": ["food:peppers"],
   # },
   {
     "room": {"north": 20, "east": 20},
@@ -4370,8 +4370,8 @@ MathQuest.js:42550 add listeners""",
   # TODO
   # {
   #   "room": {"north": 500, "east": 501},
-  #   "requires": [["weapon:baneBlade",],],
-  #   "receive": ["weapon:aSword",],
+  #   "requires": [["weapon:baneBlade"],],
+  #   "receive": ["weapon:aSword"],
   # },
   {
     "room": {"north": 200, "east": 200},
@@ -4596,8 +4596,8 @@ MathQuest.js:42550 add listeners""",
   },
   # {
   #   "room": {"north": "?", "east": "?",},
-  #   "requires": [["loot:sClaw#7",], ["loot:cFang#5",],],
-  #   "receive": ["misc:fire crystal",],
+  #   "requires": [["loot:sClaw#7"], ["loot:cFang#5"],],
+  #   "receive": ["misc:fire crystal"],
   # },
   {
     "room": {"north": 4, "east": 26},
@@ -4613,12 +4613,12 @@ MathQuest.js:42550 add listeners""",
   },
   # {
   #   "room": {"north": "?", "east": "?",},
-  #   "requires": [["loot:dScale#3",], ["loot:sFrag#5",], ["loot:fBone#10",],],
-  #   "receive": ["item:ring of skill",],
+  #   "requires": [["loot:dScale#3"], ["loot:sFrag#5"], ["loot:fBone#10"],],
+  #   "receive": ["item:ring of skill"],
   # },
   # {
   #   "room": {"north": "?", "east": "?",},
-  #   "receive": ["item:ring of evasion",],
+  #   "receive": ["item:ring of evasion"],
   # },
   {
     "room": {"north": 14, "east": 18},
@@ -4650,7 +4650,7 @@ MathQuest.js:42550 add listeners""",
   },
   # {
   #   "room": {"north": "?", "east": "?",},
-  #   "receive": ["misc:bobbisPendant",],
+  #   "receive": ["misc:bobbisPendant"],
   # },
   {
     "room": {"north": 19, "east": 16},
@@ -5954,7 +5954,7 @@ MathQuest.js:42550 add listeners""",
     ],
   },
   # NOTE these grapes say 30gp but are only 15gp as they are the same ones as at 20 20
-  # {"room": {"north": 13, "east": 18}, "requires": [["item:gold#30",],], "receive": ["food:grapes",],},
+  # {"room": {"north": 13, "east": 18}, "requires": [["item:gold#30"],], "receive": ["food:grapes"],},
   {
     "room": {"north": 13, "east": 18},
     "requires": [
@@ -7640,17 +7640,6 @@ MathQuest.js:42550 add listeners""",
     ],
     "receive": [
       "quest:curse.5",
-    ],
-  },
-  {
-    "room": {"north": 13, "east": 26},
-    "requires": [
-      [
-        "quest:curse.8",
-      ],
-    ],
-    "receive": [
-      "quest:curse.9",
     ],
   },
   {
