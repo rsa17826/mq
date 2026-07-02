@@ -1,7 +1,8 @@
+import hashlib
 import os
 import re
-import hashlib
-from http.server import HTTPServer, CGIHTTPRequestHandler
+from http.server import CGIHTTPRequestHandler, HTTPServer
+
 from PIL import Image, ImageDraw
 
 PORT = 1533

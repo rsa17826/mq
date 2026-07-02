@@ -27,6 +27,7 @@
                 ps: with ps; [
                   pillow
                   watchdog
+                  pywebview
                 ]
               ))
             ];

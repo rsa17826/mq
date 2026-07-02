@@ -127,9 +127,11 @@ html_start = f"""<!DOCTYPE html>
             position: absolute;
             width: {TILE_WIDTH}px;
             height: {TILE_HEIGHT}px;
-            background-color: #222;
+            background-color: #2220;
             box-sizing: border-box;
             z-index: 5;
+            contain: strict; 
+    will-change: transform;
         }}
         .grid-item {{
             display: block;
@@ -138,6 +140,7 @@ html_start = f"""<!DOCTYPE html>
             opacity: 0.85;
             image-rendering: pixelated;
             image-rendering: crisp-edges;
+            transform: translateZ(0);
         }}
         .grid-item.loading {{
             filter: blur(2px);
@@ -195,6 +198,7 @@ html_start = f"""<!DOCTYPE html>
     <div id="info-panel">Hover over a room to view details.</div>
     <div id="pan-layer">
         <div id="grid">
+        <canvas id="map-bg-canvas" style="position: absolute; top: 0; left: 0; z-index: 1; pointer-events: none;"></canvas>
 """
 
 html_end = r"""    </div>
@@ -362,7 +366,84 @@ function requestUpdate() {
     })
   }
 }
+const bgCanvas = document.getElementById("map-bg-canvas");
+const bgCtx = bgCanvas?.getContext("2d");
 
+const imageCache = new Map();
+let lastLoadedResolution = null;
+let isFirstRender = true;
+
+function initCanvasSize() {
+  if (!bgCanvas) return;
+  bgCanvas.width = grid.offsetWidth;
+  bgCanvas.height = grid.offsetHeight;
+}
+
+function renderMapImagesToCanvas() {
+  if (!bgCtx || !TILES_DATA) return;
+
+  // 1. Determine target resolution based on zoom
+  const targetResolution = scale > 0.8 ? 'highres' : 'highres';
+  
+  // 2. Only perform a full redraw if resolution flipped OR it's the initial boot-up
+  if (lastLoadedResolution === targetResolution && !isFirstRender) return;
+  lastLoadedResolution = targetResolution;
+  isFirstRender = false;
+
+  // 3. Clear the canvas safely so Skia handles the context properly
+  bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
+
+  TILES_DATA.forEach(tile => {
+    const cacheKey = `${tile.left}_${tile.top}_${targetResolution}`;
+    
+    if (imageCache.has(cacheKey)) {
+      const cachedImg = imageCache.get(cacheKey);
+      bgCtx.drawImage(cachedImg, tile.left, tile.top, 710, 560);
+    } else {
+      const img = new Image();
+      img.src = tile[targetResolution];
+      img.onload = () => {
+        imageCache.set(cacheKey, img);
+        // Only paint if the target resolution hasn't changed while downloading
+        if (lastLoadedResolution === targetResolution) {
+          bgCtx.drawImage(img, tile.left, tile.top, 710, 560);
+        }
+      };
+    }
+  });
+}
+
+// Hook it into your startup event
+document.addEventListener("DOMContentLoaded", () => {
+    initCanvasSize();
+    renderMapImagesToCanvas();
+    resizeCanvas();
+});
+
+// Update your requestUpdate frame loops
+function requestUpdate() {
+  if (!needsUpdate) {
+    needsUpdate = true;
+    requestAnimationFrame(() => {
+      updateTransform();
+      // NOTE: We only call this here if the scale changes! 
+      // If panned, canvas graphics automatically move with the #grid element.
+      redrawCanvas();
+    });
+  }
+}
+
+// Inject the canvas drawing command into your requestUpdate frame loops
+function requestUpdate() {
+  if (!needsUpdate) {
+    needsUpdate = true
+    requestAnimationFrame(() => {
+      updateTransform()
+      renderMapImagesToCanvas() // Re-draws/checks scaling thresholds per frame movement
+      redrawCanvas()
+    })
+  }
+}
 // --- MOUSE PANNING ---
 viewport.addEventListener("mousedown", (e) => {
   if (e.button === 2) {
@@ -406,7 +487,8 @@ viewport.addEventListener("wheel", (e) => {
       lastX = e.clientX
       lastY = e.clientY
     }
-    requestUpdate()
+    renderMapImagesToCanvas(); 
+    requestUpdate();
 }, { passive: false })
 
 viewport.addEventListener("contextmenu", (e) => {
@@ -704,6 +786,7 @@ def main():
         if room_key in js_routes_db:
             js_routes_db[room_key].append({"d": [arrow_src_x, arrow_src_y, ctrl_x, ctrl_y, arrow_dest_x, arrow_dest_y], "color": color})
 
+    canvas_tiles_data=[]
     html_elements = []
     for north, east, filename in parsed_tiles:
         track_col = east_to_track[east]
@@ -835,16 +918,19 @@ def main():
             icon_src = os.path.join(PROGRESSION_ICON_PATH, icon_filename).replace("\\", "/")
             icon_html += f'\n            <img src="{icon_src}" class="progression-icon" alt="{item}">'
         icon_html += "</span>"
-
         overlay_content = "\n".join(squares_html)
-
-        wrapper_tag = f"""        <div class="tile-wrapper" data-room="{room_key}" style="left: {pixel_left:.1f}px; top: {pixel_top:.1f}px;" data-info="{info_json_str}">
-            <img data-src="{highres_img_path}" src="{placeholder_img_path}" style="background-image: url('{placeholder_img_path}'); background-size: cover;" class="grid-item loading" alt="Tile {north},{east}">{icon_html}
+        wrapper_tag = f"""        <div class="tile-wrapper" data-room="{room_key}" style="left: {pixel_left:.1f}px; top: {pixel_top:.1f}px;" data-info="{info_json_str}">{icon_html}
             <div class="overlay-layer">
 {overlay_content}
             </div>
         </div>"""
         html_elements.append(wrapper_tag)
+        canvas_tiles_data.append({
+            "left": pixel_left,
+            "top": pixel_top,
+            "highres": highres_img_path,
+            "placeholder": placeholder_img_path
+        })
 
     total_svg_width = 40 + (cols * TILE_WIDTH)
     total_svg_height = 40 + (rows * TILE_HEIGHT)
@@ -856,6 +942,7 @@ def main():
     <script>
         const ROUTES_DATA = {json.dumps(js_routes_db, indent=2)};
         const EXITS_DATA = {json.dumps(js_exits_db, indent=2)};
+        const TILES_DATA = {json.dumps(canvas_tiles_data)};
     </script>
     """
 
