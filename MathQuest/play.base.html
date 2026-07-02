@@ -29,8 +29,9 @@
 
   function _apRenderEntry(entry) {
     var el = document.createElement("div")
+    el.innerHTML =
+      "<span>[" + htmlesc(entry.time) + "] </span>" + entry.msg
     el.className = "ap-chat-entry ap-chat-" + entry.type
-    el.textContent = "[" + entry.time + "] " + entry.msg
     window._apChatLogEl.appendChild(el)
     while (window._apChatLogEl.children.length > 200) {
       window._apChatLogEl.removeChild(window._apChatLogEl.firstChild)
@@ -38,7 +39,138 @@
     window._apChatLogEl.scrollTop = window._apChatLogEl.scrollHeight
   }
 
-  window.apChatLog = function (msg, type) {
+  function htmlesc(str) {
+    return str.replaceAll("&", "&amp;").replaceAll("<", "&gt;")
+  }
+  function parseatts(str, type) {
+    const regex = /(@\w*!)/g
+    const result = str.split(regex).filter(Boolean)
+
+    let html = "<span>"
+    let inspan = false
+    let inconsole = false
+
+    // Variables for console styling
+    let consoleLogStr = ""
+    let consoleStyles = []
+    let currentConsoleColor = "color: inherit" // Default fallback color
+
+    for (var part of result) {
+      switch (part) {
+        case "@red!":
+          if (inspan) html += "</span>"
+          html += '<span style="color:red">'
+          inspan = true
+
+          // Track style for console
+          currentConsoleColor = "color: red"
+          consoleLogStr += "%c"
+          consoleStyles.push(currentConsoleColor)
+          break
+
+        case "@blue!":
+          if (inspan) html += "</span>"
+          html += '<span style="color:skyblue">'
+          inspan = true
+
+          currentConsoleColor = "color: skyblue"
+          consoleLogStr += "%c"
+          consoleStyles.push(currentConsoleColor)
+          break
+        case "@green!":
+          if (inspan) html += "</span>"
+          html += '<span style="color:lightgreen">'
+          inspan = true
+
+          currentConsoleColor = "color: lightgreen"
+          consoleLogStr += "%c"
+          consoleStyles.push(currentConsoleColor)
+          break
+        case "@orange!":
+          if (inspan) html += "</span>"
+          html += '<span style="color:orange">'
+          inspan = true
+
+          currentConsoleColor = "color: orange"
+          consoleLogStr += "%c"
+          consoleStyles.push(currentConsoleColor)
+          break
+
+        case "@yellow!":
+          if (inspan) html += "</span>"
+          html += '<span style="color:yellow">'
+          inspan = true
+
+          currentConsoleColor = "color: yellow"
+          consoleLogStr += "%c"
+          consoleStyles.push(currentConsoleColor)
+          break
+        case "@pink!":
+          if (inspan) html += "</span>"
+          html += '<span style="color:pink">'
+          inspan = true
+
+          currentConsoleColor = "color: pink"
+          consoleLogStr += "%c"
+          consoleStyles.push(currentConsoleColor)
+          break
+        case "@purple!":
+          if (inspan) html += "</span>"
+          html += '<span style="color:purple">'
+          inspan = true
+
+          currentConsoleColor = "color: purple"
+          consoleLogStr += "%c"
+          consoleStyles.push(currentConsoleColor)
+          break
+        case "@console!":
+          inconsole = true
+          break
+        case "@!":
+          if (inspan) html += "</span>"
+          inspan = false
+          inconsole = false
+
+          // Reset console color back to normal
+          currentConsoleColor = "color: inherit"
+          consoleLogStr += "%c"
+          consoleStyles.push(currentConsoleColor)
+          break
+
+        default:
+          if (!inconsole) html += htmlesc(part)
+          consoleLogStr += part
+      }
+    }
+
+    html += "</span>"
+
+    // Use the spread operator (...) to pass the styles array as individual arguments
+    console[type](consoleLogStr, ...consoleStyles)
+
+    return html
+  }
+
+  window.apLog = function apLog(...args) {
+    apChatLogRaw(
+      parseatts(args.map(_apStringify).join(" "), "log"),
+      "log",
+    )
+  }
+  window.apWarn = function apWarn(...args) {
+    apChatLogRaw(
+      parseatts(args.map(_apStringify).join(" "), "warn"),
+      "warn",
+    )
+  }
+  window.apError = function apError(...args) {
+    apChatLogRaw(
+      parseatts(args.map(_apStringify).join(" "), "error"),
+      "error",
+    )
+  }
+
+  function apChatLogRaw(msg, type) {
     var entry = {
       msg: String(msg),
       type: type || "log",
@@ -49,63 +181,6 @@
       window._apChatBuffer.shift()
     if (window._apChatLogEl) _apRenderEntry(entry)
   }
-
-  var _apOrigLog = console.log.bind(console)
-  var _apOrigWarn = console.warn.bind(console)
-  var _apOrigError = console.error.bind(console)
-
-  window.log = function (...args) {
-    _apOrigLog(...args)
-    window.apChatLog(args.map(_apStringify).join(" "), "log")
-  }
-  window.warn = function (...args) {
-    _apOrigWarn(...args)
-    window.apChatLog(args.map(_apStringify).join(" "), "warn")
-  }
-  window.error = function (...args) {
-    _apOrigError(...args)
-    window.apChatLog(args.map(_apStringify).join(" "), "error")
-  }
-  // -------------------------------------------------------------------------
-  // const oldXMLHttpRequest = window.XMLHttpRequest
-  // const oldDocumentXMLHttpRequest = document.XMLHttpRequest
-
-  // window.XMLHttpRequest = function () {
-  //   const xhr = new oldXMLHttpRequest()
-  //   const originalOpen = xhr.open
-  //   const originalSend = xhr.send
-
-  //   xhr.open = function (method, url, async, user, password) {
-  //     if (url.includes("MQFiles/createChar.php")) {
-  //       console.log(url)
-  //     }
-  //     if (url.includes("MQFiles/saveChar.php")) {
-  //       console.log(url)
-  //     }
-  //     if (url.includes("MQFiles/loadChar.php")) {
-  //       console.log(url)
-  //     }
-  //     return originalOpen.call(xhr, method, url, async, user, password)
-  //   }
-
-  //   xhr.send = function (data) {
-  //     return originalSend.call(xhr, data)
-  //   }
-
-  //   return xhr
-  // }
-
-  // document.XMLHttpRequest = function (...args) {
-  //   return new oldDocumentXMLHttpRequest(...args)
-  // }
-
-  // if (oldXMLHttpRequest) {
-  //   Object.setPrototypeOf(window.XMLHttpRequest, oldXMLHttpRequest)
-  // }
-
-  // if (oldDocumentXMLHttpRequest) {
-  //   Object.setPrototypeOf(document.XMLHttpRequest, oldDocumentXMLHttpRequest)
-  // }
 </script>
 <html>
   <head>
@@ -142,7 +217,7 @@
       type="text/javascript"
       src="/java/button-effect.js"
     ></script>
-    <script type="text/javascript" src="/apClient.js"></script>
+    <script type="text/javascript" src="/apClient.js" defer></script>
     <script type="text/javascript" src="/java/homescroll.js"></script>
 
     <script>
@@ -227,7 +302,7 @@
         z-index: 6;
         font-family: "Consolas", "Menlo", monospace;
         font-size: 12px;
-        background: rgba(0, 0, 0, 0.72);
+        background: rgba(0, 0, 0, 0.797);
         border-left: 1px solid #444;
         border-bottom: 1px solid #444;
         display: flex;

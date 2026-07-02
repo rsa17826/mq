@@ -7665,6 +7665,50 @@
       "room": "20_20",
       "requires": [
         [
+          "area:12"
+        ]
+      ],
+      "receive": [
+        "loot:dScale"
+      ]
+    },
+    {
+      "room": "20_20",
+      "requires": [
+        [
+          "area:8"
+        ]
+      ],
+      "receive": [
+        "loot:oCoin"
+      ]
+    },
+    {
+      "room": "20_20",
+      "requires": [
+        [
+          "area:15"
+        ]
+      ],
+      "receive": [
+        "loot:shadowCrest"
+      ]
+    },
+    {
+      "room": "20_20",
+      "requires": [
+        [
+          "area:1"
+        ]
+      ],
+      "receive": [
+        "loot:bTusk"
+      ]
+    },
+    {
+      "room": "20_20",
+      "requires": [
+        [
           "area:11"
         ]
       ],
@@ -7686,12 +7730,7 @@
         "skill:firewall",
         "skill:halo",
         "item:gold",
-        "loot:dScale",
-        "loot:shadowCrest",
-        "loot:oCoin",
-        "item:blue crystal",
-        "loot:key#999",
-        "item:gold#999"
+        "loot:key#999"
       ]
     },
     {
@@ -7700,7 +7739,6 @@
         []
       ],
       "receive": [
-        "loot:bTusk",
         "loot:cFang",
         "loot:emeralds",
         "loot:fBone",
@@ -9695,7 +9733,7 @@
       "room": "19_18",
       "requires": [
         [
-          "item:blue crystal#1"
+          "misc:blue crystal"
         ]
       ],
       "receive": [
@@ -11745,24 +11783,6 @@
       ],
       "receive": [
         "armor:speedVest"
-      ]
-    },
-    {
-      "room": "19_20",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "skill:dig"
-      ]
-    },
-    {
-      "room": "19_20",
-      "requires": [
-        []
-      ],
-      "receive": [
-        "skill:kick"
       ]
     },
     {
@@ -15156,6 +15176,30 @@
         "raw": "loot:cThread"
       }
     ],
+    "flag:loot:dScale": [
+      {
+        "room": "20_20",
+        "raw": "loot:dScale"
+      }
+    ],
+    "flag:loot:oCoin": [
+      {
+        "room": "20_20",
+        "raw": "loot:oCoin"
+      }
+    ],
+    "flag:loot:shadowCrest": [
+      {
+        "room": "20_20",
+        "raw": "loot:shadowCrest"
+      }
+    ],
+    "flag:loot:bTusk": [
+      {
+        "room": "20_20",
+        "raw": "loot:bTusk"
+      }
+    ],
     "flag:loot:kCrest": [
       {
         "room": "20_20",
@@ -15166,19 +15210,11 @@
       {
         "room": "20_20",
         "raw": "skill:dig"
-      },
-      {
-        "room": "19_20",
-        "raw": "skill:dig"
       }
     ],
     "skill:kick": [
       {
         "room": "20_20",
-        "raw": "skill:kick"
-      },
-      {
-        "room": "19_20",
         "raw": "skill:kick"
       }
     ],
@@ -15252,10 +15288,6 @@
       {
         "room": "20_20",
         "raw": "item:gold"
-      },
-      {
-        "room": "20_20",
-        "raw": "item:gold#999"
       },
       {
         "room": "11_9",
@@ -15354,40 +15386,10 @@
         "raw": "item:gold#Enum.Craft.emerald"
       }
     ],
-    "flag:loot:dScale": [
-      {
-        "room": "20_20",
-        "raw": "loot:dScale"
-      }
-    ],
-    "flag:loot:shadowCrest": [
-      {
-        "room": "20_20",
-        "raw": "loot:shadowCrest"
-      }
-    ],
-    "flag:loot:oCoin": [
-      {
-        "room": "20_20",
-        "raw": "loot:oCoin"
-      }
-    ],
-    "item:blue crystal": [
-      {
-        "room": "20_20",
-        "raw": "item:blue crystal"
-      }
-    ],
     "flag:loot:key#999": [
       {
         "room": "20_20",
         "raw": "loot:key#999"
-      }
-    ],
-    "flag:loot:bTusk": [
-      {
-        "room": "20_20",
-        "raw": "loot:bTusk"
       }
     ],
     "flag:loot:cFang": [

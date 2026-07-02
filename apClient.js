@@ -1,3 +1,10 @@
+const itemColors = {
+  food: "green",
+  loot: "brown",
+  misc: "purple",
+  skill: "yellow",
+  magic: "purple",
+}
 /**
  * A native JavaScript implementation of the Archipelago Network Protocol.
  */
@@ -20,8 +27,8 @@ class ArchipelagoClient {
     this.socket = new WebSocket(this.url)
 
     this.socket.onopen = () => {
-      log(
-        "WebSocket connection established. Awaiting 'RoomInfo' from server...",
+      apLog(
+        "WebSocket connection established. Awaiting '@green!RoomInfo@!' from server...",
       )
     }
 
@@ -33,16 +40,18 @@ class ArchipelagoClient {
           this.handlePacket(packet)
         }
       } catch (err) {
-        error("Failed to parse incoming JSON payload:", err)
+        apError("Failed to parse incoming JSON payload:", err)
       }
     }
 
     this.socket.onclose = (event) => {
-      log(`Disconnected from Archipelago server. Code: ${event.code}`)
+      apLog(
+        `[WARNING] Disconnected from Archipelago server. Code: ${event.code}`,
+      )
     }
 
     this.socket.onerror = (error) => {
-      error("WebSocket network error:", error)
+      apError("WebSocket network error:", error)
     }
   }
 
@@ -54,7 +63,7 @@ class ArchipelagoClient {
     if (this.socket && this.socket.readyState === WebSocket.OPEN) {
       this.socket.send(JSON.stringify(packetsArray))
     } else {
-      error("Cannot send packet; WebSocket connection is closed.")
+      apError("Cannot send packet; WebSocket connection is closed.")
     }
   }
 
@@ -82,18 +91,18 @@ class ArchipelagoClient {
         this.onRoomUpdate(packet)
         break
       case "InvalidPacket":
-        error("❌ Archipelago Server rejected payload:", {
+        apError("❌ Archipelago Server rejected payload:", {
           type: packet.type,
           reason: packet.text,
           originalCommand: packet.original_cmd,
         })
         break
       default:
-        log(`Received unhandled protocol command: ${packet.cmd}`)
+        apLog(`Received unhandled protocol command: ${packet.cmd}`)
     }
   }
   onRoomUpdate(packet) {
-    log("[Archipelago] Room state updated by server.")
+    apLog("@blue![Archipelago]@! Room state updated by server.")
 
     // If other locations were checked (e.g. by a co-op partner in your slot)
     if (packet.checked_locations) {
@@ -118,7 +127,9 @@ class ArchipelagoClient {
    */
   onRoomInfo(packet) {
     window.seed = packet.seed_name
-    log(`RoomInfo received. Multiworld Seed: ${packet.seed_name}`)
+    apLog(
+      `RoomInfo received. Multiworld Seed: @green!${packet.seed_name}@!`,
+    )
 
     // const connectPayload = {
     //   cmd: "Connect",
@@ -145,7 +156,7 @@ class ArchipelagoClient {
       slot_data: true,
     }
 
-    log("Authenticating with server...")
+    apLog("Authenticating with server...")
     this.sendPackets([connectPayload])
   }
 
@@ -153,8 +164,8 @@ class ArchipelagoClient {
    * Handshake Step 6 (Success): Server accepts client authentication.
    */
   onConnected(packet) {
-    log(
-      `Successfully connected! Team: ${packet.team}, Slot ID: ${packet.slot}`,
+    apLog(
+      `@green!Successfully connected!@! Team: @green!${packet.team}@!, Slot ID: @green!${packet.slot}@!`,
     )
 
     // 1. Mark the client as ready for gameplay packets
@@ -170,7 +181,10 @@ class ArchipelagoClient {
    * Handshake Step 6 (Failure): Server rejects connection credentials.
    */
   onConnectionRefused(packet) {
-    error("Authentication rejected by server. Errors:", packet.errors)
+    apError(
+      "Authentication rejected by server. Errors:",
+      packet.errors,
+    )
   }
   /**
    * Scout locations to see what item they contain, optionally creating a hint.
@@ -179,7 +193,9 @@ class ArchipelagoClient {
    */
   sendLocationScouts(locationIds, createAsHint = 1) {
     if (!this.isAuthenticated) {
-      error("Cannot scout locations yet. Waiting for authentication.")
+      apError(
+        "Cannot scout locations yet. Waiting for authentication.",
+      )
       return
     }
 
@@ -196,7 +212,7 @@ class ArchipelagoClient {
    */
   requestItemHint(searchString) {
     if (!this.isAuthenticated) {
-      error("Cannot request hint yet. Waiting for authentication.")
+      apError("Cannot request hint yet. Waiting for authentication.")
       return
     }
 
@@ -213,7 +229,6 @@ class ArchipelagoClient {
   onReceivedItems(packet) {
     log(`Received packet containing ${packet.items.length} items.`)
     if (!window.playerLoaded) {
-      log(window.playerLoaded)
       window.waitingPackets.push(packet)
       return
     }
@@ -225,32 +240,36 @@ class ArchipelagoClient {
 
       if (this.itemCount > window.lastRecivedItem) {
         if (this.itemCount - 1 === window.lastRecivedItem) {
-          log(`[Item Received] ID: ${item.item} (${itemName})`, item)
+          var coloredName = itemName.split(":")
+          coloredName = `@${itemColors[coloredName[0]]}!@console!${coloredName[0]}:@!@${itemColors[coloredName[0]]}!${coloredName[1]}@!`
+          apLog(
+            `@purple![Item Received]@! @console!ID: ${item.item} (@!${coloredName}@console!)`,
+            item,
+          )
           if (itemList[itemName]) {
             itemList[itemName]()
           } else if (tryGiveLoot(itemName)) {
           } else {
-            error("failed to give", itemName)
+            apError("failed to give", itemName)
           }
-          // if (!window.giveItem(itemName)) {
-          //   error("failed to give", itemName)
-          // }
           if (manager.mess.__visible) {
             var oldtext = manager.mess.get_text() ?? ""
             manager.mess.set_text(
-              `[Item Received] ID: ${item.item} (${itemName})\n${oldtext}`,
+              `[Item Received] ${itemName}\n${oldtext}`,
             )
           }
         } else {
-          warn(
+          apWarn(
             "somthing went wrong with sending items!!",
             window.lastRecivedItem,
             this.itemCount,
           )
         }
       } else {
-        log(
-          `[Item Received] ID: ${item.item} (${itemName}) - already recived`,
+        var coloredName = itemName.split(":")
+        coloredName = `@${itemColors[coloredName[0]]}!${coloredName[0]}@!${coloredName[1]}`
+        apLog(
+          `@red![Item Received]@! @console!ID: ${item.item} @!(${coloredName}) - @orange! already recived@!`,
           item,
         )
       }
@@ -267,7 +286,14 @@ class ArchipelagoClient {
     const messageText = packet.data
       .map((part) => part.text || "")
       .join("")
-    log(`[Archipelago] ${messageText}`)
+    apLog(
+      `@blue![Archipelago]@! ${messageText
+        .replace(
+          /(^[^(]+) \((Team #\d+)\) playing (.*) has joined/,
+          "@green!$1@blue! (@green!$2@blue!) @!playing @green!$3@! has joined",
+        )
+        .replace(/[/!]help/g, "@green!$&@!")}`,
+    )
   }
 
   /**
@@ -275,7 +301,7 @@ class ArchipelagoClient {
    */
   sendLocationChecks(locationIds) {
     if (!this.isAuthenticated) {
-      error(
+      apError(
         "Cannot send checks yet. Waiting for server authentication handshake to complete.",
       )
       return
@@ -315,7 +341,7 @@ if (location.search) {
     if ((data = await get(`/MQFiles/loadChar_${window.seed}.php`))) {
       var newdata = Number(data.split(" ")[265] ?? "0")
       if (isNaN(newdata)) {
-        warn("newdata was nan")
+        apWarn("newdata was nan")
         newdata = 0
       }
       log(newdata, "newdata")

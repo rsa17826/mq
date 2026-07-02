@@ -105,6 +105,50 @@ PROG: list[ProgressionNode] = [
     "room": {"north": 20, "east": 20},
     "requires": [
       [
+        "area:12",
+      ],
+    ],
+    "receive": [
+      "loot:dScale",
+    ],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      [
+        "area:8",
+      ],
+    ],
+    "receive": [
+      "loot:oCoin",
+    ],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      [
+        "area:15",
+      ],
+    ],
+    "receive": [
+      "loot:shadowCrest",
+    ],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      [
+        "area:1",
+      ],
+    ],
+    "receive": [
+      "loot:bTusk",
+    ],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      [
         "area:11",
       ],
     ],
@@ -126,12 +170,7 @@ PROG: list[ProgressionNode] = [
       "skill:firewall",
       "skill:halo",
       "item:gold",
-      "loot:dScale",
-      "loot:shadowCrest",
-      "loot:oCoin",
-      "item:blue crystal",
       "loot:key#999",
-      "item:gold#999",
     ],
     "info": """can be got anywhere
 manager.correct - manager.wrong > 9 = dig
@@ -149,7 +188,6 @@ manager.correct - manager.wrong > 800 = halo
       [],
     ],
     "receive": [
-      "loot:bTusk",
       "loot:cFang",
       "loot:emeralds",
       "loot:fBone",
@@ -2257,7 +2295,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 19, "east": 18},
     "requires": [
       [
-        "item:blue crystal#1",
+        "misc:blue crystal",
       ],
     ],
     "receive": [
@@ -4367,24 +4405,6 @@ MathQuest.js:42550 add listeners""",
     ],
     "receive": [
       "armor:speedVest",
-    ],
-  },
-  {
-    "room": {"north": 19, "east": 20},
-    "requires": [
-      [],
-    ],
-    "receive": [
-      "skill:dig",
-    ],
-  },
-  {
-    "room": {"north": 19, "east": 20},
-    "requires": [
-      [],
-    ],
-    "receive": [
-      "skill:kick",
     ],
   },
   # Auto-generated from MathQuest_base.js newItem() calls
