@@ -238,13 +238,13 @@ class ArchipelagoClient {
       const itemName = AP_ITEM_IDS[item.item]
       const globalIndex = packet.index + offset
 
+      var coloredName = itemName.split(":")
+      coloredName = `@${itemColors[coloredName[0]]}!@console!${coloredName[0]}:@!@${itemColors[coloredName[0]]}!${coloredName[1]}@!`
+      apLog(
+        `@purple![Item Received]@! @console!ID: ${item.item} (@!${coloredName}@console!) ${this.itemCount > window.lastRecivedItem ? "" : " - @orange! already recived@!"}`,
+        item,
+      )
       if (this.itemCount > window.lastRecivedItem) {
-        var coloredName = itemName.split(":")
-        coloredName = `@${itemColors[coloredName[0]]}!@console!${coloredName[0]}:@!@${itemColors[coloredName[0]]}!${coloredName[1]}@!`
-        apLog(
-          `@purple![Item Received]@! @console!ID: ${item.item} (@!${coloredName}@console!) ${this.itemCount - 1 === window.lastRecivedItem ? "" : " - @orange! already recived@!"}`,
-          item,
-        )
         if (this.itemCount - 1 === window.lastRecivedItem) {
           if (itemList[itemName]) {
             itemList[itemName]()
