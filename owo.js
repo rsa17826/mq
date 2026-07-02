@@ -13,6 +13,16 @@
 // @updateURL https://update.greasyfork.org/scripts/555951/owowify%20website.meta.js
 // ==/UserScript==
 
+// disable owo with owo=nowo if desired
+
+/**
+ * @param {String} s
+ * @returns {String}
+ */
+function nowo(s) {
+  return s
+}
+
 /**
  * wincesed undew GNYU! GPL vewsion 3.0 -w-
  */
@@ -33,19 +43,19 @@ function owo(inputText) {
   // OwO emote
   result = result.replace(
     reg`/(i(?:'|)m(?:\s+|\s+so+\s+)bored)${endSentencePattern}/gi`,
-    subOwoEmote("-w-")
+    subOwoEmote("-w-"),
   )
   result = result.replace(
     reg`/(love\s+(?:you|him|her|them))${endSentencePattern}/gi`,
-    subOwoEmote("uwu")
+    subOwoEmote("uwu"),
   )
   result = result.replace(
     reg`/(i\s+don(?:'|)t\s+care|i\s*d\s*c)${endSentencePattern}/gi`,
-    subOwoEmote("0w0")
+    subOwoEmote("0w0"),
   )
   // world substitution
   result = result.replace(reg`/l[ou]ve?/gi`, ($0) =>
-    subSameCase($0, "luv")
+    subSameCase($0, "luv"),
   )
   // OwO translation
   // /*result = result replace all "r" to "w", no exception! */
@@ -58,35 +68,35 @@ function owo(inputText) {
   // url -> uwl instead of uww
   result = result.replace(
     reg`/(?<!([wl]${vowel}*))l(?!([wl]))/gi`,
-    ($0) => subSameCase($0, "w")
+    ($0) => subSameCase($0, "w"),
   )
   /* na -> nya, nu -> nyu, no -> nyo, ne -> nye */
   // completionInfo -> compwetionInfo instead of compwetionYInfo
   result = result.replace(reg`/[nN](${vowelNoE}+)/g`, ($0, $vowel) =>
-    subSameCase($0 + $vowel, `ny${$vowel}`)
+    subSameCase($0 + $vowel, `ny${$vowel}`),
   )
   result = result.replace(
     reg`/N(${vowelNoE.toUpperCase()}+)/g`,
-    ($0, $vowel) => subSameCase($0 + $vowel, `ny${$vowel}`)
+    ($0, $vowel) => subSameCase($0 + $vowel, `ny${$vowel}`),
   )
   /* ma -> mya, mu -> myu, mo -> myo */
   result = result.replace(
     reg`/[mM](${vowelNoIE}+)(?!w*${zackqyWord})/g`,
-    ($0, $vowel) => subSameCase($0 + $vowel, `my${$vowel}`)
+    ($0, $vowel) => subSameCase($0 + $vowel, `my${$vowel}`),
   )
   result = result.replace(
     reg`/M(${vowelNoE.toUpperCase()}+)(?!w*${zackqyWord})/g`,
-    ($0, $vowel) => subSameCase($0 + $vowel, `my${$vowel}`)
+    ($0, $vowel) => subSameCase($0 + $vowel, `my${$vowel}`),
   )
   /* pa -> pwa, pu -> pwu, po -> pwo */
   // AhkStopAlt -> AhkStopAwt instead of AhkStopWAwt
   result = result.replace(
     reg`/[pP](${vowelNoIE}+)(?!w*${zackqyWord})/g`,
-    ($0, $vowel) => subSameCase($0 + $vowel, `pw${$vowel}`)
+    ($0, $vowel) => subSameCase($0 + $vowel, `pw${$vowel}`),
   )
   result = result.replace(
     reg`/P(${vowelNoIE.toUpperCase()}+)(?!w*${zackqyWord})/g`,
-    ($0, $vowel) => subSameCase($0 + $vowel, `pw${$vowel}`)
+    ($0, $vowel) => subSameCase($0 + $vowel, `pw${$vowel}`),
   )
 
   return result
@@ -135,7 +145,7 @@ function reg(...templateArgs) {
   const pattern = rawString.substring(1, rawString.lastIndexOf("/"))
   const flags = rawString.substring(
     rawString.lastIndexOf("/") + 1,
-    rawString.length
+    rawString.length,
   )
 
   return new RegExp(pattern, flags)
