@@ -33,7 +33,7 @@ class ArchipelagoClient {
           this.handlePacket(packet)
         }
       } catch (err) {
-        console.error("Failed to parse incoming JSON payload:", err)
+        error("Failed to parse incoming JSON payload:", err)
       }
     }
 
@@ -42,7 +42,7 @@ class ArchipelagoClient {
     }
 
     this.socket.onerror = (error) => {
-      console.error("WebSocket network error:", error)
+      error("WebSocket network error:", error)
     }
   }
 
@@ -54,9 +54,7 @@ class ArchipelagoClient {
     if (this.socket && this.socket.readyState === WebSocket.OPEN) {
       this.socket.send(JSON.stringify(packetsArray))
     } else {
-      console.error(
-        "Cannot send packet; WebSocket connection is closed.",
-      )
+      error("Cannot send packet; WebSocket connection is closed.")
     }
   }
 
@@ -84,7 +82,7 @@ class ArchipelagoClient {
         this.onRoomUpdate(packet)
         break
       case "InvalidPacket":
-        console.error("❌ Archipelago Server rejected payload:", {
+        error("❌ Archipelago Server rejected payload:", {
           type: packet.type,
           reason: packet.text,
           originalCommand: packet.original_cmd,
@@ -172,10 +170,7 @@ class ArchipelagoClient {
    * Handshake Step 6 (Failure): Server rejects connection credentials.
    */
   onConnectionRefused(packet) {
-    console.error(
-      "Authentication rejected by server. Errors:",
-      packet.errors,
-    )
+    error("Authentication rejected by server. Errors:", packet.errors)
   }
   /**
    * Scout locations to see what item they contain, optionally creating a hint.
@@ -184,9 +179,7 @@ class ArchipelagoClient {
    */
   sendLocationScouts(locationIds, createAsHint = 1) {
     if (!this.isAuthenticated) {
-      console.error(
-        "Cannot scout locations yet. Waiting for authentication.",
-      )
+      error("Cannot scout locations yet. Waiting for authentication.")
       return
     }
 
@@ -203,9 +196,7 @@ class ArchipelagoClient {
    */
   requestItemHint(searchString) {
     if (!this.isAuthenticated) {
-      console.error(
-        "Cannot request hint yet. Waiting for authentication.",
-      )
+      error("Cannot request hint yet. Waiting for authentication.")
       return
     }
 
@@ -284,7 +275,7 @@ class ArchipelagoClient {
    */
   sendLocationChecks(locationIds) {
     if (!this.isAuthenticated) {
-      console.error(
+      error(
         "Cannot send checks yet. Waiting for server authentication handshake to complete.",
       )
       return

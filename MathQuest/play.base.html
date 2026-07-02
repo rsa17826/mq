@@ -8,6 +8,65 @@
 <script src="/archipelago_manifest.js"></script>
 <script>
   Object.assign(window, console)
+
+  // ---- Archipelago chat/log overlay -------------------------------------
+  // Buffers entries until the DOM element exists, then renders live.
+  // Wraps log/warn/error (which apClient.js already calls for every
+  // connection, item, and chat event) so nothing in apClient.js needs to
+  // change - everything it logs to the console also shows in the overlay.
+  window._apChatBuffer = []
+  window._apChatLogEl = null
+
+  function _apStringify(a) {
+    if (typeof a === "string") return a
+    if (a instanceof Error) return a.message
+    try {
+      return JSON.stringify(a)
+    } catch (e) {
+      return String(a)
+    }
+  }
+
+  function _apRenderEntry(entry) {
+    var el = document.createElement("div")
+    el.className = "ap-chat-entry ap-chat-" + entry.type
+    el.textContent = "[" + entry.time + "] " + entry.msg
+    window._apChatLogEl.appendChild(el)
+    while (window._apChatLogEl.children.length > 200) {
+      window._apChatLogEl.removeChild(window._apChatLogEl.firstChild)
+    }
+    window._apChatLogEl.scrollTop = window._apChatLogEl.scrollHeight
+  }
+
+  window.apChatLog = function (msg, type) {
+    var entry = {
+      msg: String(msg),
+      type: type || "log",
+      time: new Date().toLocaleTimeString(),
+    }
+    window._apChatBuffer.push(entry)
+    if (window._apChatBuffer.length > 200)
+      window._apChatBuffer.shift()
+    if (window._apChatLogEl) _apRenderEntry(entry)
+  }
+
+  var _apOrigLog = console.log.bind(console)
+  var _apOrigWarn = console.warn.bind(console)
+  var _apOrigError = console.error.bind(console)
+
+  window.log = function (...args) {
+    _apOrigLog(...args)
+    window.apChatLog(args.map(_apStringify).join(" "), "log")
+  }
+  window.warn = function (...args) {
+    _apOrigWarn(...args)
+    window.apChatLog(args.map(_apStringify).join(" "), "warn")
+  }
+  window.error = function (...args) {
+    _apOrigError(...args)
+    window.apChatLog(args.map(_apStringify).join(" "), "error")
+  }
+  // -------------------------------------------------------------------------
   // const oldXMLHttpRequest = window.XMLHttpRequest
   // const oldDocumentXMLHttpRequest = document.XMLHttpRequest
 
@@ -83,10 +142,7 @@
       type="text/javascript"
       src="/java/button-effect.js"
     ></script>
-    <script
-      type="text/javascript"
-      src="/apClient.js"
-    ></script>
+    <script type="text/javascript" src="/apClient.js"></script>
     <script type="text/javascript" src="/java/homescroll.js"></script>
 
     <script>
@@ -161,6 +217,70 @@
       /* Explicit class handling for when the iframe is pulled forward */
       #map.in-front {
         z-index: 10 !important;
+      }
+      #apChatLogContainer {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 340px;
+        max-width: 90vw;
+        z-index: 6;
+        font-family: "Consolas", "Menlo", monospace;
+        font-size: 12px;
+        background: rgba(0, 0, 0, 0.72);
+        border-left: 1px solid #444;
+        border-bottom: 1px solid #444;
+        display: flex;
+        flex-direction: column;
+        pointer-events: auto;
+      }
+      #apChatLogHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 4px 8px;
+        background: rgba(20, 20, 20, 0.9);
+        color: #ddd;
+        font-weight: bold;
+        cursor: pointer;
+        user-select: none;
+        border-bottom: 1px solid #444;
+      }
+      #apChatLogToggle {
+        color: #aaa;
+        font-size: 11px;
+      }
+      #apChatLog {
+        max-height: 260px;
+        overflow-y: auto;
+        padding: 4px 8px;
+        color: #ddd;
+      }
+      #apChatLogContainer.collapsed #apChatLog {
+        display: none;
+      }
+      .ap-chat-entry {
+        white-space: pre-wrap;
+        word-break: break-word;
+        line-height: 1.35;
+        padding: 1px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .ap-chat-log {
+        color: #ddd;
+      }
+      .ap-chat-warn {
+        color: #ffcc66;
+      }
+      .ap-chat-error {
+        color: #ff6b6b;
+      }
+      #apChatLog::-webkit-scrollbar {
+        width: 8px;
+      }
+      #apChatLog::-webkit-scrollbar-thumb {
+        background: #555;
+        border-radius: 4px;
       }
       @font-face {
         font-family: "Booter - Zero Zero";
@@ -283,6 +403,33 @@
   </head>
 
   <body>
+    <div id="apChatLogContainer">
+      <div
+        id="apChatLogHeader"
+        onclick="
+          document
+            .getElementById('apChatLogContainer')
+            .classList.toggle('collapsed')
+          document.getElementById('apChatLogToggle').textContent =
+            (
+              document
+                .getElementById('apChatLogContainer')
+                .classList.contains('collapsed')
+            ) ?
+              '▸'
+            : '▾'
+        "
+      >
+        <span>Archipelago Log</span>
+        <span id="apChatLogToggle">▾</span>
+      </div>
+      <div id="apChatLog"></div>
+    </div>
+    <script>
+      window._apChatLogEl = document.getElementById("apChatLog")
+      window._apChatBuffer.forEach(_apRenderEntry)
+    </script>
+
     <div id="gameFocus" align="center">
       <noscript
         >This webpage makes extensive use of JavaScript. Please enable
@@ -602,7 +749,7 @@
               (allText.length - 1 - i) * lineHeight
 
             overlayCtx.strokeStyle = "#000"
-            overlayCtx.lineJoin = 'round';
+            overlayCtx.lineJoin = "round"
             overlayCtx.lineWidth = 3 // Controls the thickness of the outline
             overlayCtx.strokeText(text, x, y)
             overlayCtx.fillStyle = "#ddd"
