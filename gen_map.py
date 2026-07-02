@@ -93,7 +93,6 @@ html_start = f"""<!DOCTYPE html>
         .info-line {{
             margin: 6px 0;
         }}
-        /* Prevents item name and icon from breaking apart across lines */
         .info-item-token {{
             white-space: nowrap;
             display: inline-flex;
@@ -115,35 +114,22 @@ html_start = f"""<!DOCTYPE html>
             position: absolute;
             top: 0;
             left: 0;
-            will-change: transform;
             z-index: 1;
         }}
         #grid {{
             position: relative;
-            will-change: transform;
             transform-origin: 0 0;
         }}
         .tile-wrapper {{
             position: absolute;
             width: {TILE_WIDTH}px;
             height: {TILE_HEIGHT}px;
-            background-color: #2220;
             box-sizing: border-box;
             z-index: 5;
-            contain: strict; 
-    will-change: transform;
-        }}
-        .grid-item {{
-            display: block;
-            width: 100%;
-            height: 100%;
-            opacity: 0.85;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
             image-rendering: pixelated;
             image-rendering: crisp-edges;
-            transform: translateZ(0);
-        }}
-        .grid-item.loading {{
-            filter: blur(2px);
         }}
         .fr {{
             display: flex;
@@ -189,7 +175,6 @@ html_start = f"""<!DOCTYPE html>
             height: 100%;
             pointer-events: none;
             z-index: 999999;
-            transform: translateZ(0); 
         }}
     </style>
 </head>
@@ -198,7 +183,6 @@ html_start = f"""<!DOCTYPE html>
     <div id="info-panel">Hover over a room to view details.</div>
     <div id="pan-layer">
         <div id="grid">
-        <canvas id="map-bg-canvas" style="position: absolute; top: 0; left: 0; z-index: 1; pointer-events: none;"></canvas>
 """
 
 html_end = r"""    </div>
@@ -224,6 +208,8 @@ let lastX = 0
 let lastY = 0
 let needsUpdate = false
 
+let lastLoadedResolution = null;
+
 function resizeCanvas() {
   canvas.width = viewport.clientWidth
   canvas.height = viewport.clientHeight
@@ -231,8 +217,34 @@ function resizeCanvas() {
 }
 window.addEventListener("resize", resizeCanvas)
 
+// Smooth memory resolution toggler
+function updateTileBackgrounds() {
+  if (typeof TILES_DATA === 'undefined' || !TILES_DATA) return;
+
+  const targetResolution = scale > 0.189 ? 'highres' : 'placeholder';
+  if (lastLoadedResolution === targetResolution) return;
+  lastLoadedResolution = targetResolution;
+
+  TILES_DATA.forEach(tile => {
+    const wrapper = document.querySelector(`.tile-wrapper[data-room="${tile.roomKey}"]`);
+    if (!wrapper) return;
+    
+    const imgUrl = tile[targetResolution];
+    
+    // Preload smoothly in memory to eliminate sudden black flashes
+    const img = new Image();
+    img.src = imgUrl;
+    img.onload = () => {
+      if (lastLoadedResolution === targetResolution) {
+        wrapper.style.backgroundImage = `url('${imgUrl}')`;
+      }
+    };
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     resizeCanvas()
+    updateTileBackgrounds()
     
     document.querySelectorAll(".tile-wrapper").forEach((tile) => {
       tile.addEventListener("mouseenter", function () {
@@ -277,19 +289,6 @@ document.addEventListener("DOMContentLoaded", () => {
         requestUpdate()
       })
     })
-    
-    // --- STABLE ASYNC IMAGE LOADER ---
-    document.querySelectorAll('.grid-item').forEach(img => {
-        const targetSrc = img.getAttribute('data-src');
-        if (targetSrc) {
-            const tempLoader = new Image();
-            tempLoader.src = targetSrc;
-            tempLoader.onload = () => {
-                img.src = targetSrc;
-                img.classList.remove('loading');
-            };
-        }
-    });
 })
 
 function worldToScreen(x, y) {
@@ -366,84 +365,7 @@ function requestUpdate() {
     })
   }
 }
-const bgCanvas = document.getElementById("map-bg-canvas");
-const bgCtx = bgCanvas?.getContext("2d");
 
-const imageCache = new Map();
-let lastLoadedResolution = null;
-let isFirstRender = true;
-
-function initCanvasSize() {
-  if (!bgCanvas) return;
-  bgCanvas.width = grid.offsetWidth;
-  bgCanvas.height = grid.offsetHeight;
-}
-
-function renderMapImagesToCanvas() {
-  if (!bgCtx || !TILES_DATA) return;
-
-  // 1. Determine target resolution based on zoom
-  const targetResolution = scale > 0.8 ? 'highres' : 'highres';
-  
-  // 2. Only perform a full redraw if resolution flipped OR it's the initial boot-up
-  if (lastLoadedResolution === targetResolution && !isFirstRender) return;
-  lastLoadedResolution = targetResolution;
-  isFirstRender = false;
-
-  // 3. Clear the canvas safely so Skia handles the context properly
-  bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
-
-  TILES_DATA.forEach(tile => {
-    const cacheKey = `${tile.left}_${tile.top}_${targetResolution}`;
-    
-    if (imageCache.has(cacheKey)) {
-      const cachedImg = imageCache.get(cacheKey);
-      bgCtx.drawImage(cachedImg, tile.left, tile.top, 710, 560);
-    } else {
-      const img = new Image();
-      img.src = tile[targetResolution];
-      img.onload = () => {
-        imageCache.set(cacheKey, img);
-        // Only paint if the target resolution hasn't changed while downloading
-        if (lastLoadedResolution === targetResolution) {
-          bgCtx.drawImage(img, tile.left, tile.top, 710, 560);
-        }
-      };
-    }
-  });
-}
-
-// Hook it into your startup event
-document.addEventListener("DOMContentLoaded", () => {
-    initCanvasSize();
-    renderMapImagesToCanvas();
-    resizeCanvas();
-});
-
-// Update your requestUpdate frame loops
-function requestUpdate() {
-  if (!needsUpdate) {
-    needsUpdate = true;
-    requestAnimationFrame(() => {
-      updateTransform();
-      // NOTE: We only call this here if the scale changes! 
-      // If panned, canvas graphics automatically move with the #grid element.
-      redrawCanvas();
-    });
-  }
-}
-
-// Inject the canvas drawing command into your requestUpdate frame loops
-function requestUpdate() {
-  if (!needsUpdate) {
-    needsUpdate = true
-    requestAnimationFrame(() => {
-      updateTransform()
-      renderMapImagesToCanvas() // Re-draws/checks scaling thresholds per frame movement
-      redrawCanvas()
-    })
-  }
-}
 // --- MOUSE PANNING ---
 viewport.addEventListener("mousedown", (e) => {
   if (e.button === 2) {
@@ -487,8 +409,8 @@ viewport.addEventListener("wheel", (e) => {
       lastX = e.clientX
       lastY = e.clientY
     }
-    renderMapImagesToCanvas(); 
-    requestUpdate();
+    updateTileBackgrounds()
+    requestUpdate()
 }, { passive: false })
 
 viewport.addEventListener("contextmenu", (e) => {
@@ -497,26 +419,29 @@ viewport.addEventListener("contextmenu", (e) => {
   e.stopImmediatePropagation()
 }, true)
 
-
 function centerMap() {
   originX = (viewport.clientWidth - grid.offsetWidth * scale) / 2
   originY = (viewport.clientHeight - grid.offsetHeight * scale) / 2
   requestUpdate()
 }
-window.addEventListener("DOMContentLoaded", ()=>{centerMap()
-viewport.addEventListener("dblclick", (e) => {
-e.preventDefault()
-  e.stopPropagation()
-  e.stopImmediatePropagation()
-  if (e.target.classList.contains("tile-wrapper")){
-    let [an,ae] = e.target.dataset.room.split("_")
-    if (window.player){
-    window.player.realnorth = an
-    window.player.realeast = ae
-    test.newScreen()
+
+window.addEventListener("DOMContentLoaded", () => {
+  centerMap()
+  updateTileBackgrounds()
+  viewport.addEventListener("dblclick", (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    e.stopImmediatePropagation()
+    if (e.target.classList.contains("tile-wrapper")){
+      let [an,ae] = e.target.dataset.room.split("_")
+      if (window.player){
+        window.player.realnorth = an
+        window.player.realeast = ae
+        test.newScreen()
+      }
     }
-  }
-}, true)})
+  }, true)
+})
 
 setInterval(() => {
   if (currentRoom) {
@@ -919,15 +844,15 @@ def main():
             icon_html += f'\n            <img src="{icon_src}" class="progression-icon" alt="{item}">'
         icon_html += "</span>"
         overlay_content = "\n".join(squares_html)
-        wrapper_tag = f"""        <div class="tile-wrapper" data-room="{room_key}" style="left: {pixel_left:.1f}px; top: {pixel_top:.1f}px;" data-info="{info_json_str}">{icon_html}
-            <div class="overlay-layer">
+        wrapper_tag = f"""        <div class="tile-wrapper" data-room="{room_key}" style="left: {pixel_left:.1f}px; top: {pixel_top:.1f}px; background-image: url('{placeholder_img_path}');" data-info="{info_json_str}">{icon_html}
+            <div class="overlay-layer" style="z-index: 6; position: absolute; top:0; left:0; width:100%; height:100%;">
 {overlay_content}
             </div>
         </div>"""
         html_elements.append(wrapper_tag)
+        
         canvas_tiles_data.append({
-            "left": pixel_left,
-            "top": pixel_top,
+            "roomKey": room_key,
             "highres": highres_img_path,
             "placeholder": placeholder_img_path
         })
