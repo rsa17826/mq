@@ -327,7 +327,8 @@ const allpos = [
   [501, 500],
   [501, 501],
 ]
-
+// NOTE use when screenshotting
+// player.realeast=player.realnorth=20;player.food.fill(99);player.skills.fill(1000);player.skillPoints+=999999;console.log=log=warn=error=_apOrigLog=window.apChatLog=()=>{};manager.revealIcon.set_x(-999);manager.tBoxUsed.fill(0);manager.quest.fill(9999)
 // Helper for delaying execution to let the game render frames
 const sleep = (ms) =>
   new Promise((resolve) => setTimeout(resolve, ms))
