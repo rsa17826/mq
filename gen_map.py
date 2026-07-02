@@ -1,13 +1,12 @@
 # @noregex
+import json
 import os
 import re
-import json
 
 # make warp colors same color on each side!!!
 # make warps show correct dest not vinela dest!!!!!!!!!!!1
 
 # Target folder pointing to the downsized versions
-IMAGE_FOLDER = "mapSmall"
 FULL_IMAGE_FOLDER = "map"
 
 OUTPUT_FILE = "randomized_index.html"
@@ -221,17 +220,29 @@ window.addEventListener("resize", resizeCanvas)
 function updateTileBackgrounds() {
   if (typeof TILES_DATA === 'undefined' || !TILES_DATA) return;
 
-  const targetResolution = scale > 0.189 ? 'highres' : 'placeholder';
+  // Determine target bucket path based on the current viewport layout zoom scale
+  let targetResolution = 'map_07';
+  if (scale >= 3) {
+    targetResolution = 'map';
+  } else if (scale >= 0.55) {
+    targetResolution = 'map_80';
+  } else if (scale >= 0.25) {
+    targetResolution = 'map_30';
+  } else if (scale >= 0.13) {
+    targetResolution = 'map_20';
+  }
+    targetResolution = 'map_30';
+
   if (lastLoadedResolution === targetResolution) return;
   lastLoadedResolution = targetResolution;
 
   TILES_DATA.forEach(tile => {
     const wrapper = document.querySelector(`.tile-wrapper[data-room="${tile.roomKey}"]`);
     if (!wrapper) return;
-    
+
     const imgUrl = tile[targetResolution];
-    
-    // Preload smoothly in memory to eliminate sudden black flashes
+
+    // Preload smoothly in background cache space to prevent hard screen flashes
     const img = new Image();
     img.src = imgUrl;
     img.onload = () => {
@@ -245,7 +256,7 @@ function updateTileBackgrounds() {
 document.addEventListener("DOMContentLoaded", () => {
     resizeCanvas()
     updateTileBackgrounds()
-    
+
     document.querySelectorAll(".tile-wrapper").forEach((tile) => {
       tile.addEventListener("mouseenter", function () {
         currentRoom = this.getAttribute("data-room")
@@ -254,7 +265,7 @@ document.addEventListener("DOMContentLoaded", () => {
             try {
                 const infoObj = JSON.parse(rawInfo)
                 let htmlContent = `<div class="info-header">Position: ${infoObj.north}, ${infoObj.east}</div>`
-                
+
                 if (infoObj.entries && infoObj.entries.length > 0) {
                     infoObj.entries.forEach((entry, idx) => {
                         if (idx > 0) {
@@ -451,419 +462,459 @@ setInterval(() => {
 </script>
 """
 
+
 def djb2_color_hash(id_a, id_b):
-    sorted_ids = sorted([str(id_a), str(id_b)])
-    combined_str = f"{sorted_ids[0]}<->{sorted_ids[1]}"
-    hash_val = 5381
-    for char in combined_str:
-        hash_val = ((hash_val << 5) + hash_val) + ord(char)
-        hash_val &= 0xFFFFFFFF
-    return f"hsla({hash_val % 360}, 90%, 50%, 60%)"
+  sorted_ids = sorted([str(id_a), str(id_b)])
+  combined_str = f"{sorted_ids[0]}<->{sorted_ids[1]}"
+  hash_val = 5381
+  for char in combined_str:
+    hash_val = ((hash_val << 5) + hash_val) + ord(char)
+    hash_val &= 0xFFFFFFFF
+  return f"hsla({hash_val % 360}, 90%, 50%, 60%)"
+
 
 def load_connections():
-    if not os.path.exists(CONNECTIONS_JSON_PATH):
-        print(f"[-] Error: {CONNECTIONS_JSON_PATH} required.")
-        return []
-    with open(CONNECTIONS_JSON_PATH, "r", encoding="utf-8") as f:
-        return json.load(f).get("connections", [])
+  if not os.path.exists(CONNECTIONS_JSON_PATH):
+    print(f"[-] Error: {CONNECTIONS_JSON_PATH} required.")
+    return []
+  with open(CONNECTIONS_JSON_PATH, "r", encoding="utf-8") as f:
+    return json.load(f).get("connections", [])
+
 
 def load_doors():
-    from _exits import EXITS
-    return EXITS['doors']
+  from _exits import EXITS
+
+  return EXITS["doors"]
+
 
 def load_geometry_map():
-    from _room_geometry import GEOM
-    geom_db = {}
-    for room in GEOM:
-        if "north" in room and "east" in room:
-            n = int(float(room["north"]))
-            e = int(float(room["east"]))
-            key = f"{n}_{e}"
-            geom_db[key] = room.get("exits", {})
-    return geom_db
+  from _room_geometry import GEOM
+
+  geom_db = {}
+  for room in GEOM:
+    if "north" in room and "east" in room:
+      n = int(float(room["north"]))
+      e = int(float(room["east"]))
+      key = f"{n}_{e}"
+      geom_db[key] = room.get("exits", {})
+  return geom_db
+
 
 def load_progression_map():
-    prog_db = {}
-    try:
-        from _progression import PROG as data
-        for loc in data:
-            room_coord = loc.get("room")
-            if room_coord and "north" in room_coord and "east" in room_coord:
-                n = int(room_coord["north"])
-                e = int(room_coord["east"])
-                key = f"{n}_{e}"
-                if key not in prog_db:
-                    prog_db[key] = []
-                prog_db[key].append(loc)
-    except Exception as err:
-        print(f"[-] Failed to read progression config details: {err}")
-    return prog_db
+  prog_db = {}
+  try:
+    from _progression import PROG as data
+
+    for loc in data:
+      room_coord = loc.get("room")
+      if room_coord and "north" in room_coord and "east" in room_coord:
+        n = int(room_coord["north"])
+        e = int(room_coord["east"])
+        key = f"{n}_{e}"
+        if key not in prog_db:
+          prog_db[key] = []
+        prog_db[key].append(loc)
+  except Exception as err:
+    print(f"[-] Failed to read progression config details: {err}")
+  return prog_db
+
 
 def get_item_token_html(item_name):
-    """Generates an HTML token where item name and icon are kept unbroken together."""
-    sanitized_name = re.sub(r"[:#?]", "_", re.sub(r"[#?].+$", "", item_name))
-    icon_filename = f"{sanitized_name}.png"
-    icon_src = os.path.join(PROGRESSION_ICON_PATH, icon_filename).replace("\\", "/")
-    return f'<span class="info-item-token"><img src="{icon_src}" class="info-inline-icon" alt="{item_name}">{item_name}</span>'
+  """Generates an HTML token where item name and icon are kept unbroken together."""
+  sanitized_name = re.sub(r"[:#?]", "_", re.sub(r"[#?].+$", "", item_name))
+  icon_filename = f"{sanitized_name}.png"
+  icon_src = os.path.join(PROGRESSION_ICON_PATH, icon_filename).replace("\\", "/")
+  return (
+    f'<span class="info-item-token"><img src="{icon_src}" class="info-inline-icon" alt="{item_name}">{item_name}</span>'
+  )
+
 
 def build_room_info_json(north, east, prog_entries):
-    info_data = {
-        "north": north,
-        "east": east,
-        "entries": []
-    }
-    for entry in prog_entries:
-        parsed_entry = {}
-        if "info" in entry:
-            parsed_entry["info"] = entry["info"]
-            
-        # Omit 'Requires' section entirely if empty or only contains empty groups
-        if "requires" in entry and len(entry['requires']) > 0 and any(group for group in entry['requires']):
-            req_groups = []
-            for group in entry["requires"]:
-                item_htmls = [get_item_token_html(item) for item in group if item]
-                if item_htmls:
-                    req_groups.append(" AND ".join(item_htmls))
-            if req_groups:
-                parsed_entry["requiresHtml"] = " OR ".join(f"({r})" for r in req_groups) if len(req_groups) > 1 else req_groups[0]
-                
-        if "receive" in entry and len(entry["receive"]) > 0:
-            rec_htmls = [get_item_token_html(item) for item in entry["receive"] if item]
-            if rec_htmls:
-                parsed_entry["receiveHtml"] = ", ".join(rec_htmls)
-                
-        info_data["entries"].append(parsed_entry)
-    return json.dumps(info_data).replace('"', '&quot;')
+  info_data = {"north": north, "east": east, "entries": []}
+  for entry in prog_entries:
+    parsed_entry = {}
+    if "info" in entry:
+      parsed_entry["info"] = entry["info"]
+
+    # Omit 'Requires' section entirely if empty or only contains empty groups
+    if "requires" in entry and len(entry["requires"]) > 0 and any(group for group in entry["requires"]):
+      req_groups = []
+      for group in entry["requires"]:
+        item_htmls = [get_item_token_html(item) for item in group if item]
+        if item_htmls:
+          req_groups.append(" AND ".join(item_htmls))
+      if req_groups:
+        parsed_entry["requiresHtml"] = (
+          " OR ".join(f"({r})" for r in req_groups) if len(req_groups) > 1 else req_groups[0]
+        )
+
+    if "receive" in entry and len(entry["receive"]) > 0:
+      rec_htmls = [get_item_token_html(item) for item in entry["receive"] if item]
+      if rec_htmls:
+        parsed_entry["receiveHtml"] = ", ".join(rec_htmls)
+
+    info_data["entries"].append(parsed_entry)
+  return json.dumps(info_data).replace('"', "&quot;")
+
 
 def main():
-    if not os.path.exists(IMAGE_FOLDER):
-        print(f"[-] Error: '{IMAGE_FOLDER}' folder not found.")
-        return
+  connections = load_connections()
+  doors = load_doors()
+  geom_index = load_geometry_map()
+  exit_lookup = {}
 
-    connections = load_connections()
-    doors = load_doors()
-    geom_index = load_geometry_map()
-    exit_lookup = {}
-
-    for room_key, exits in geom_index.items():
-        exit_lookup[room_key] = {}
-        for side, bounds_list in exits.items():
-            if not bounds_list: continue
-            if not isinstance(bounds_list, list): bounds_list = [bounds_list]
-            processed = []
-            for b in bounds_list:
-                if not isinstance(b, dict): continue
-                if side in ["west", "east"]:
-                    start = int(float(b["top"]))
-                    end = int(float(b["bottom"]))
-                    center_block = (start + end) / 2
-                    processed.append({"side": side, "block": center_block})
-                else:
-                    start = int(float(b["left"]))
-                    end = int(float(b["right"]))
-                    center_block = (start + end) / 2
-                    processed.append({"side": side, "block": center_block})
-            exit_lookup[room_key][side] = processed
-
-    prog_index = load_progression_map()
-    conn_override_index = {str(c["fromExitId"]): c for c in connections if "fromExitId" in c}
-    door_ids = {str(d["id"]) for d in doors}
-
-    files = os.listdir(IMAGE_FOLDER)
-    parsed_tiles = []
-    for filename in files:
-        match = re.match(r"^(\d+)[,\-](\d+)", filename)
-        if match:
-            north = int(match.group(1))
-            east = int(match.group(2))
-            parsed_tiles.append((north, east, filename))
-
-    if not parsed_tiles:
-        print("[-] No valid tiles found in image folder.")
-        return
-
-    unique_norths = sorted(list(set(t[0] for t in parsed_tiles)), reverse=True)
-    unique_easts = sorted(list(set(t[1] for t in parsed_tiles)))
-
-    north_to_track = {n: idx for idx, n in enumerate(unique_norths)}
-    east_to_track = {e: idx for idx, e in enumerate(unique_easts)}
-
-    cols = len(unique_easts)
-    rows = len(unique_norths)
-
-    js_routes_db = {f"{north}_{east}": [] for north, east, _ in parsed_tiles}
-    js_exits_db = {f"{north}_{east}": [] for north, east, _ in parsed_tiles}
-
-    scale_x_conn = TILE_WIDTH / ROOM_INTERNAL_WIDTH
-    scale_y_conn = TILE_HEIGHT / ROOM_INTERNAL_HEIGHT
-    scale_x_room = TILE_WIDTH / ROOM_INTERNAL_WIDTH
-    scale_y_room = TILE_HEIGHT / ROOM_INTERNAL_HEIGHT
-
-    half_block_x_room_scaled = (ROOM_INTERNAL_WIDTH / (2 * BLOCKS_X)) * scale_x_room
-    half_block_y_room_scaled = (ROOM_INTERNAL_HEIGHT / (2 * BLOCKS_Y)) * scale_y_room
-
-    for conn in connections:
-        o_n, o_e = int(conn["originNorth"]), int(conn["originEast"])
-        room_key = f"{o_n}_{o_e}"
-        if o_n not in north_to_track or o_e not in east_to_track: continue
-
-        direction = conn.get("direction")
-        if str(conn.get("fromExitId")) in door_ids or direction == "warp": continue
-
-        src_coord = conn.get("srcCoord")
-        if not direction or src_coord is None: continue
-
-        src_coord_scaled = float(src_coord) * (scale_x_conn if direction in ["north", "south"] else scale_y_conn)
-
-        track_col = east_to_track[o_e]
-        track_row = north_to_track[o_n]
-        base_x = track_col * TILE_WIDTH
-        base_y = track_row * TILE_HEIGHT
-        halfTileWidth = (TILE_WIDTH / BLOCKS_X)/2
-        halfTileHeight = (TILE_HEIGHT / BLOCKS_Y)/2
-
-        dest_o_n, dest_o_e = int(conn["newDestNorth"]), int(conn["newDestEast"])
-        dest_track_col = east_to_track.get(dest_o_e, track_col)
-        dest_track_row = north_to_track.get(dest_o_n, track_row)
-
-        dest_base_x = dest_track_col * TILE_WIDTH
-        dest_base_y = dest_track_row * TILE_HEIGHT
-
-        new_x, new_y = conn.get("newX"), conn.get("newY")
-        float_new_x = float(new_x) if new_x is not None else ROOM_INTERNAL_WIDTH / 2
-        float_new_y = float(new_y) if new_y is not None else ROOM_INTERNAL_HEIGHT / 2
-        
-        raw_dest_x = dest_base_x + (float_new_x * scale_x_conn)
-        raw_dest_y = dest_base_y + (float_new_y * scale_y_conn)
-
-        if direction == "west":
-            arrow_src_x, arrow_src_y = base_x + halfTileWidth, base_y + src_coord_scaled
-            arrow_dest_x, arrow_dest_y = raw_dest_x + (halfTileWidth*2), raw_dest_y
-        elif direction == "east":
-            arrow_src_x, arrow_src_y = base_x + TILE_WIDTH - halfTileWidth, base_y + src_coord_scaled
-            arrow_dest_x, arrow_dest_y = raw_dest_x - (halfTileWidth*2), raw_dest_y
-        elif direction == "north":
-            arrow_src_x, arrow_src_y = base_x + src_coord_scaled, base_y + halfTileHeight
-            arrow_dest_x, arrow_dest_y = raw_dest_x, raw_dest_y + (halfTileHeight*2)
-        elif direction == "south":
-            arrow_src_x, arrow_src_y = base_x + src_coord_scaled, base_y + TILE_HEIGHT - halfTileHeight
-            arrow_dest_x, arrow_dest_y = raw_dest_x, raw_dest_y - (halfTileHeight*2)
-
-        mid_x, mid_y = (arrow_src_x + arrow_dest_x) / 2, (arrow_src_y + arrow_dest_y) / 2
-        if direction in ["west", "east"]:
-            ctrl_x, ctrl_y = (mid_x + (25 if direction == "east" else -25), mid_y)
+  for room_key, exits in geom_index.items():
+    exit_lookup[room_key] = {}
+    for side, bounds_list in exits.items():
+      if not bounds_list:
+        continue
+      if not isinstance(bounds_list, list):
+        bounds_list = [bounds_list]
+      processed = []
+      for b in bounds_list:
+        if not isinstance(b, dict):
+          continue
+        if side in ["west", "east"]:
+          start = int(float(b["top"]))
+          end = int(float(b["bottom"]))
+          center_block = (start + end) / 2
+          processed.append({"side": side, "block": center_block})
         else:
-            ctrl_x, ctrl_y = (mid_x, mid_y + (25 if direction == "south" else -25))
-        color = djb2_color_hash(conn["fromExitId"], conn["toExitId"])
+          start = int(float(b["left"]))
+          end = int(float(b["right"]))
+          center_block = (start + end) / 2
+          processed.append({"side": side, "block": center_block})
+      exit_lookup[room_key][side] = processed
 
-        if room_key in js_routes_db:
-            js_routes_db[room_key].append({"d": [arrow_src_x, arrow_src_y, ctrl_x, ctrl_y, arrow_dest_x, arrow_dest_y], "color": color})
-            
-    room_doors_index = {}
-    for d in doors:
-        o_n, o_e = int(d["origin"]["north"]), int(d["origin"]["east"])
-        d_n, d_e = int(d["dest"]["north"]), int(d["dest"]["east"])
-        room_doors_index[f"{o_n}_{o_e}->{d_n}_{d_e}"] = d
+  prog_index = load_progression_map()
+  conn_override_index = {str(c["fromExitId"]): c for c in connections if "fromExitId" in c}
+  door_ids = {str(d["id"]) for d in doors}
 
-    for d in doors:
-        o_n, o_e = int(d["origin"]["north"]), int(d["origin"]["east"])
-        v_dest_n, v_dest_e = int(d["dest"]["north"]), int(d["dest"]["east"])
-        door_id_str = str(d["id"])
+  files = os.listdir(FULL_IMAGE_FOLDER)
+  parsed_tiles = []
+  for filename in files:
+    match = re.match(r"^(\d+)[,\-](\d+)", filename)
+    if match:
+      north = int(match.group(1))
+      east = int(match.group(2))
+      parsed_tiles.append((north, east, filename))
 
-        src_x_local, src_y_local = snapToGrid(d["dest_x"], d["dest_y"])
-        override = conn_override_index.get(door_id_str)
-        if override:
-            d_n, d_e = int(override["newDestNorth"]), int(override["newDestEast"])
-            ov_x, ov_y = override.get("newX"), override.get("newY")
-            if ov_x is not None and ov_y is not None:
-                dest_x_local, dest_y_local = snapToGrid(float(ov_x), float(ov_y))
-            else:
-                dest_x_local = ROOM_INTERNAL_WIDTH / 2
-                dest_y_local = ROOM_INTERNAL_HEIGHT / 2
-            to_exit_id = override.get("toExitId", "warp_gate")
-            color = djb2_color_hash(d["id"], to_exit_id)
-        else:
-            d_n, d_e = int(d["dest"]["north"]), int(d["dest"]["east"])
-            reverse_door = room_doors_index.get(f"{d_n}_{d_e}->{o_n}_{o_e}")
-            if reverse_door:
-                dest_x_local, dest_y_local = snapToGrid(reverse_door["dest_x"], reverse_door["dest_y"])
-                color = djb2_color_hash(d["id"], reverse_door["id"])
-            else:
-                dest_x_local = ROOM_INTERNAL_WIDTH / 2
-                dest_y_local = ROOM_INTERNAL_HEIGHT / 2
-                color = djb2_color_hash(d["id"], "warp_gate")
+  if not parsed_tiles:
+    print("[-] No valid tiles found in image folder.")
+    return
 
-        room_key = f"{o_n}_{o_e}"
-        if o_n not in north_to_track or o_e not in east_to_track: continue
-        if d_n not in north_to_track or d_e not in east_to_track: continue
+  unique_norths = sorted(list(set(t[0] for t in parsed_tiles)), reverse=True)
+  unique_easts = sorted(list(set(t[1] for t in parsed_tiles)))
 
-        orig_col, orig_row = east_to_track[o_e], north_to_track[o_n]
-        dest_col, dest_row = east_to_track[d_e], north_to_track[d_n]
+  north_to_track = {n: idx for idx, n in enumerate(unique_norths)}
+  east_to_track = {e: idx for idx, e in enumerate(unique_easts)}
 
-        arrow_src_x = orig_col * TILE_WIDTH + (src_x_local * scale_x_room) + half_block_x_room_scaled
-        arrow_src_y = orig_row * TILE_HEIGHT + (src_y_local * scale_y_room) + half_block_y_room_scaled
-        arrow_dest_x = dest_col * TILE_WIDTH + (dest_x_local * scale_x_room) + half_block_x_room_scaled
-        arrow_dest_y = dest_row * TILE_HEIGHT + (dest_y_local * scale_y_room) + half_block_y_room_scaled
+  cols = len(unique_easts)
+  rows = len(unique_norths)
 
-        m_x, m_y = (arrow_src_x + arrow_dest_x) / 2, (arrow_src_y + arrow_dest_y) / 2
-        ctrl_x, ctrl_y = m_x, m_y - 45
+  js_routes_db = {f"{north}_{east}": [] for north, east, _ in parsed_tiles}
+  js_exits_db = {f"{north}_{east}": [] for north, east, _ in parsed_tiles}
 
-        if room_key in js_routes_db:
-            js_routes_db[room_key].append({"d": [arrow_src_x, arrow_src_y, ctrl_x, ctrl_y, arrow_dest_x, arrow_dest_y], "color": color})
+  scale_x_conn = TILE_WIDTH / ROOM_INTERNAL_WIDTH
+  scale_y_conn = TILE_HEIGHT / ROOM_INTERNAL_HEIGHT
+  scale_x_room = TILE_WIDTH / ROOM_INTERNAL_WIDTH
+  scale_y_room = TILE_HEIGHT / ROOM_INTERNAL_HEIGHT
 
-    canvas_tiles_data=[]
-    html_elements = []
-    for north, east, filename in parsed_tiles:
-        track_col = east_to_track[east]
-        track_row = north_to_track[north]
+  half_block_x_room_scaled = (ROOM_INTERNAL_WIDTH / (2 * BLOCKS_X)) * scale_x_room
+  half_block_y_room_scaled = (ROOM_INTERNAL_HEIGHT / (2 * BLOCKS_Y)) * scale_y_room
 
-        pixel_left = track_col * TILE_WIDTH
-        pixel_top = track_row * TILE_HEIGHT
-        room_key = f"{north}_{east}"
+  for conn in connections:
+    o_n, o_e = int(conn["originNorth"]), int(conn["originEast"])
+    room_key = f"{o_n}_{o_e}"
+    if o_n not in north_to_track or o_e not in east_to_track:
+      continue
 
-        placeholder_img_path = f"/{IMAGE_FOLDER}/{filename}"
-        highres_img_path = f"/{FULL_IMAGE_FOLDER}/{filename}"
+    direction = conn.get("direction")
+    if str(conn.get("fromExitId")) in door_ids or direction == "warp":
+      continue
 
-        tile_exits = geom_index.get(room_key, {})
-        squares_html = []
+    src_coord = conn.get("srcCoord")
+    if not direction or src_coord is None:
+      continue
 
-        active_connections = [
-            c for c in connections
-            if int(c["originNorth"]) == north and int(c["originEast"]) == east
+    src_coord_scaled = float(src_coord) * (scale_x_conn if direction in ["north", "south"] else scale_y_conn)
+
+    track_col = east_to_track[o_e]
+    track_row = north_to_track[o_n]
+    base_x = track_col * TILE_WIDTH
+    base_y = track_row * TILE_HEIGHT
+    halfTileWidth = (TILE_WIDTH / BLOCKS_X) / 2
+    halfTileHeight = (TILE_HEIGHT / BLOCKS_Y) / 2
+
+    dest_o_n, dest_o_e = int(conn["newDestNorth"]), int(conn["newDestEast"])
+    dest_track_col = east_to_track.get(dest_o_e, track_col)
+    dest_track_row = north_to_track.get(dest_o_n, track_row)
+
+    dest_base_x = dest_track_col * TILE_WIDTH
+    dest_base_y = dest_track_row * TILE_HEIGHT
+
+    new_x, new_y = conn.get("newX"), conn.get("newY")
+    float_new_x = float(new_x) if new_x is not None else ROOM_INTERNAL_WIDTH / 2
+    float_new_y = float(new_y) if new_y is not None else ROOM_INTERNAL_HEIGHT / 2
+
+    raw_dest_x = dest_base_x + (float_new_x * scale_x_conn)
+    raw_dest_y = dest_base_y + (float_new_y * scale_y_conn)
+
+    if direction == "west":
+      arrow_src_x, arrow_src_y = base_x + halfTileWidth, base_y + src_coord_scaled
+      arrow_dest_x, arrow_dest_y = raw_dest_x + (halfTileWidth * 2), raw_dest_y
+    elif direction == "east":
+      arrow_src_x, arrow_src_y = base_x + TILE_WIDTH - halfTileWidth, base_y + src_coord_scaled
+      arrow_dest_x, arrow_dest_y = raw_dest_x - (halfTileWidth * 2), raw_dest_y
+    elif direction == "north":
+      arrow_src_x, arrow_src_y = base_x + src_coord_scaled, base_y + halfTileHeight
+      arrow_dest_x, arrow_dest_y = raw_dest_x, raw_dest_y + (halfTileHeight * 2)
+    elif direction == "south":
+      arrow_src_x, arrow_src_y = base_x + src_coord_scaled, base_y + TILE_HEIGHT - halfTileHeight
+      arrow_dest_x, arrow_dest_y = raw_dest_x, raw_dest_y - (halfTileHeight * 2)
+
+    mid_x, mid_y = (arrow_src_x + arrow_dest_x) / 2, (arrow_src_y + arrow_dest_y) / 2
+    if direction in ["west", "east"]:
+      ctrl_x, ctrl_y = (mid_x + (25 if direction == "east" else -25), mid_y)
+    else:
+      ctrl_x, ctrl_y = (mid_x, mid_y + (25 if direction == "south" else -25))
+    color = djb2_color_hash(conn["fromExitId"], conn["toExitId"])
+
+    if room_key in js_routes_db:
+      js_routes_db[room_key].append(
+        {"d": [arrow_src_x, arrow_src_y, ctrl_x, ctrl_y, arrow_dest_x, arrow_dest_y], "color": color}
+      )
+
+  room_doors_index = {}
+  for d in doors:
+    o_n, o_e = int(d["origin"]["north"]), int(d["origin"]["east"])
+    d_n, d_e = int(d["dest"]["north"]), int(d["dest"]["east"])
+    room_doors_index[f"{o_n}_{o_e}->{d_n}_{d_e}"] = d
+
+  for d in doors:
+    o_n, o_e = int(d["origin"]["north"]), int(d["origin"]["east"])
+    v_dest_n, v_dest_e = int(d["dest"]["north"]), int(d["dest"]["east"])
+    door_id_str = str(d["id"])
+
+    src_x_local, src_y_local = snapToGrid(d["dest_x"], d["dest_y"])
+    override = conn_override_index.get(door_id_str)
+    if override:
+      d_n, d_e = int(override["newDestNorth"]), int(override["newDestEast"])
+      ov_x, ov_y = override.get("newX"), override.get("newY")
+      if ov_x is not None and ov_y is not None:
+        dest_x_local, dest_y_local = snapToGrid(float(ov_x), float(ov_y))
+      else:
+        dest_x_local = ROOM_INTERNAL_WIDTH / 2
+        dest_y_local = ROOM_INTERNAL_HEIGHT / 2
+      to_exit_id = override.get("toExitId", "warp_gate")
+      color = djb2_color_hash(d["id"], to_exit_id)
+    else:
+      d_n, d_e = int(d["dest"]["north"]), int(d["dest"]["east"])
+      reverse_door = room_doors_index.get(f"{d_n}_{d_e}->{o_n}_{o_e}")
+      if reverse_door:
+        dest_x_local, dest_y_local = snapToGrid(reverse_door["dest_x"], reverse_door["dest_y"])
+        color = djb2_color_hash(d["id"], reverse_door["id"])
+      else:
+        dest_x_local = ROOM_INTERNAL_WIDTH / 2
+        dest_y_local = ROOM_INTERNAL_HEIGHT / 2
+        color = djb2_color_hash(d["id"], "warp_gate")
+
+    room_key = f"{o_n}_{o_e}"
+    if o_n not in north_to_track or o_e not in east_to_track:
+      continue
+    if d_n not in north_to_track or d_e not in east_to_track:
+      continue
+
+    orig_col, orig_row = east_to_track[o_e], north_to_track[o_n]
+    dest_col, dest_row = east_to_track[d_e], north_to_track[d_n]
+
+    arrow_src_x = orig_col * TILE_WIDTH + (src_x_local * scale_x_room) + half_block_x_room_scaled
+    arrow_src_y = orig_row * TILE_HEIGHT + (src_y_local * scale_y_room) + half_block_y_room_scaled
+    arrow_dest_x = dest_col * TILE_WIDTH + (dest_x_local * scale_x_room) + half_block_x_room_scaled
+    arrow_dest_y = dest_row * TILE_HEIGHT + (dest_y_local * scale_y_room) + half_block_y_room_scaled
+
+    m_x, m_y = (arrow_src_x + arrow_dest_x) / 2, (arrow_src_y + arrow_dest_y) / 2
+    ctrl_x, ctrl_y = m_x, m_y - 45
+
+    if room_key in js_routes_db:
+      js_routes_db[room_key].append(
+        {"d": [arrow_src_x, arrow_src_y, ctrl_x, ctrl_y, arrow_dest_x, arrow_dest_y], "color": color}
+      )
+
+  canvas_tiles_data = []
+  html_elements = []
+  for north, east, filename in parsed_tiles:
+    track_col = east_to_track[east]
+    track_row = north_to_track[north]
+
+    pixel_left = track_col * TILE_WIDTH
+    pixel_top = track_row * TILE_HEIGHT
+    room_key = f"{north}_{east}"
+
+    placeholder_img_path = f"/map_07/{filename}"
+    highres_img_path = f"/{FULL_IMAGE_FOLDER}/{filename}"
+
+    tile_exits = geom_index.get(room_key, {})
+    squares_html = []
+
+    active_connections = [c for c in connections if int(c["originNorth"]) == north and int(c["originEast"]) == east]
+
+    if tile_exits and isinstance(tile_exits, dict):
+      for side, bounds_list in tile_exits.items():
+        if not bounds_list:
+          continue
+        if not isinstance(bounds_list, list):
+          bounds_list = [bounds_list]
+
+        side_connections = [
+          c for c in active_connections if c.get("direction") == side and c.get("srcCoord") is not None
         ]
+        side_connections.sort(key=lambda c: float(c["srcCoord"]))
 
-        if tile_exits and isinstance(tile_exits, dict):
-            for side, bounds_list in tile_exits.items():
-                if not bounds_list: continue
-                if not isinstance(bounds_list, list): bounds_list = [bounds_list]
+        if side in ["west", "east"]:
+          sorted_bounds = sorted(bounds_list, key=lambda b: int(float(b.get("top", 0))))
+        else:
+          sorted_bounds = sorted(bounds_list, key=lambda b: int(float(b.get("left", 0))))
 
-                side_connections = [
-                    c for c in active_connections
-                    if c.get("direction") == side and c.get("srcCoord") is not None
-                ]
-                side_connections.sort(key=lambda c: float(c["srcCoord"]))
+        for idx, bounds in enumerate(sorted_bounds):
+          if not bounds or not isinstance(bounds, dict):
+            continue
 
-                if side in ["west", "east"]:
-                    sorted_bounds = sorted(bounds_list, key=lambda b: int(float(b.get("top", 0))))
-                else:
-                    sorted_bounds = sorted(bounds_list, key=lambda b: int(float(b.get("left", 0))))
+          matched_color = "rgba(255,255,255,0.5)"
+          connection_id = None
+          if idx < len(side_connections):
+            conn = side_connections[idx]
+            matched_color = djb2_color_hash(conn["fromExitId"], conn["toExitId"])
+            connection_id = conn["fromExitId"]
 
-                for idx, bounds in enumerate(sorted_bounds):
-                    if not bounds or not isinstance(bounds, dict): continue
+          if side in ["west", "east"]:
+            if bounds.get("top") is None or bounds.get("bottom") is None:
+              continue
+            start_val = int(float(bounds["top"]))
+            end_val = int(float(bounds["bottom"]))
 
-                    matched_color = "rgba(255,255,255,0.5)"
-                    connection_id = None
-                    if idx < len(side_connections):
-                        conn = side_connections[idx]
-                        matched_color = djb2_color_hash(conn["fromExitId"], conn["toExitId"])
-                        connection_id = conn["fromExitId"]
+            x_pos = 0 if side == "west" else 100 - BLOCK_WIDTH_PCT
+            y_pos = start_val * BLOCK_HEIGHT_PCT
+            w_size = BLOCK_WIDTH_PCT
+            h_size = ((end_val - start_val) + 1) * BLOCK_HEIGHT_PCT
 
-                    if side in ["west", "east"]:
-                        if bounds.get("top") is None or bounds.get("bottom") is None: continue
-                        start_val = int(float(bounds["top"]))
-                        end_val = int(float(bounds["bottom"]))
+            squares_html.append(
+              f'<div class="exit-square" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%; background-color:{matched_color};"></div>'
+            )
+            js_exits_db[room_key].append(
+              {
+                "side": side,
+                "top": start_val,
+                "bottom": end_val,
+                "color": matched_color,
+                "connectionId": connection_id,
+              }
+            )
 
-                        x_pos = 0 if side == "west" else 100 - BLOCK_WIDTH_PCT
-                        y_pos = start_val * BLOCK_HEIGHT_PCT
-                        w_size = BLOCK_WIDTH_PCT
-                        h_size = ((end_val - start_val) + 1) * BLOCK_HEIGHT_PCT
+          elif side in ["north", "south"]:
+            if bounds.get("left") is None or bounds.get("right") is None:
+              continue
+            start_val = int(float(bounds["left"]))
+            end_val = int(float(bounds["right"]))
 
-                        squares_html.append(
-                            f'<div class="exit-square" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%; background-color:{matched_color};"></div>'
-                        )
-                        js_exits_db[room_key].append({
-                            "side": side, "top": start_val, "bottom": end_val, "color": matched_color, "connectionId": connection_id,
-                        })
+            x_pos = start_val * BLOCK_WIDTH_PCT
+            y_pos = 0 if side == "north" else 100 - BLOCK_HEIGHT_PCT
+            w_size = ((end_val - start_val) + 1) * BLOCK_WIDTH_PCT
+            h_size = BLOCK_HEIGHT_PCT
 
-                    elif side in ["north", "south"]:
-                        if bounds.get("left") is None or bounds.get("right") is None: continue
-                        start_val = int(float(bounds["left"]))
-                        end_val = int(float(bounds["right"]))
+            squares_html.append(
+              f'<div class="exit-square" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%; background-color:{matched_color};"></div>'
+            )
+            js_exits_db[room_key].append(
+              {
+                "side": side,
+                "left": start_val,
+                "right": end_val,
+                "color": matched_color,
+                "connectionId": connection_id,
+              }
+            )
 
-                        x_pos = start_val * BLOCK_WIDTH_PCT
-                        y_pos = 0 if side == "north" else 100 - BLOCK_HEIGHT_PCT
-                        w_size = ((end_val - start_val) + 1) * BLOCK_WIDTH_PCT
-                        h_size = BLOCK_HEIGHT_PCT
+    for d in doors:
+      o_n, o_e = int(d["origin"]["north"]), int(d["origin"]["east"])
+      v_dest_n, v_dest_e = int(d["dest"]["north"]), int(d["dest"]["east"])
 
-                        squares_html.append(
-                            f'<div class="exit-square" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%; background-color:{matched_color};"></div>'
-                        )
-                        js_exits_db[room_key].append({
-                            "side": side, "left": start_val, "right": end_val, "color": matched_color, "connectionId": connection_id,
-                        })
+      door_id_str = str(d["id"])
+      if door_id_str in conn_override_index:
+        override = conn_override_index[door_id_str]
+        d_n, d_e = int(override["newDestNorth"]), int(override["newDestEast"])
+        if override.get("newX") is not None and override.get("newY") is not None:
+          dest_x_local = float(override["newX"])
+          dest_y_local = float(override["newY"])
+        else:
+          dest_x_local = float(d["dest_x"])
+          dest_y_local = float(d["dest_y"])
+      else:
+        d_n, d_e = int(d["dest"]["north"]), int(d["dest"]["east"])
+        dest_x_local = float(d["dest_x"])
+        dest_y_local = float(d["dest_y"])
 
-        for d in doors:
-            o_n, o_e = int(d["origin"]["north"]), int(d["origin"]["east"])
-            v_dest_n, v_dest_e = int(d["dest"]["north"]), int(d["dest"]["east"])
+      if d_n == north and d_e == east:
+        x_pos_local, y_pos_local = snapToGrid(dest_x_local, dest_y_local)
+        x_pos_pct = (x_pos_local / ROOM_INTERNAL_WIDTH) * 100
+        y_pos_pct = (y_pos_local / ROOM_INTERNAL_HEIGHT) * 100
 
-            door_id_str = str(d["id"])
-            if door_id_str in conn_override_index:
-                override = conn_override_index[door_id_str]
-                d_n, d_e = int(override["newDestNorth"]), int(override["newDestEast"])
-                if override.get("newX") is not None and override.get("newY") is not None:
-                    dest_x_local = float(override["newX"])
-                    dest_y_local = float(override["newY"])
-                else:
-                    dest_x_local = float(d["dest_x"])
-                    dest_y_local = float(d["dest_y"])
-            else:
-                d_n, d_e = int(d["dest"]["north"]), int(d["dest"]["east"])
-                dest_x_local = float(d["dest_x"])
-                dest_y_local = float(d["dest_y"])
+        squares_html.append(
+          f'<div class="warp-square" style="left:{x_pos_pct:.2f}%; top:{y_pos_pct:.2f}%; width:{BLOCK_WIDTH_PCT:.2f}%; height:{BLOCK_HEIGHT_PCT:.2f}%;"></div>'
+        )
+        js_exits_db[room_key].append(
+          {
+            "side": "warp",
+            "x": round(x_pos_local * BLOCKS_X / ROOM_INTERNAL_WIDTH),
+            "y": 11 - round(y_pos_local * BLOCKS_Y / ROOM_INTERNAL_HEIGHT),
+            "color": "#1157",
+          }
+        )
 
-            if d_n == north and d_e == east:
-                x_pos_local, y_pos_local = snapToGrid(dest_x_local, dest_y_local)
-                x_pos_pct = (x_pos_local / ROOM_INTERNAL_WIDTH) * 100
-                y_pos_pct = (y_pos_local / ROOM_INTERNAL_HEIGHT) * 100
+    room_prog_data = prog_index.get(room_key, [])
+    info_json_str = build_room_info_json(north, east, room_prog_data)
 
-                squares_html.append(
-                    f'<div class="warp-square" style="left:{x_pos_pct:.2f}%; top:{y_pos_pct:.2f}%; width:{BLOCK_WIDTH_PCT:.2f}%; height:{BLOCK_HEIGHT_PCT:.2f}%;"></div>'
-                )
-                js_exits_db[room_key].append({
-                    "side": "warp",
-                    "x": round(x_pos_local*BLOCKS_X/ROOM_INTERNAL_WIDTH),
-                    "y": 11-round(y_pos_local*BLOCKS_Y/ROOM_INTERNAL_HEIGHT),
-                    "color": "#1157",
-                })
-  
-        room_prog_data = prog_index.get(room_key, [])
-        info_json_str = build_room_info_json(north, east, room_prog_data)
+    unique_receives = set()
+    for entry in room_prog_data:
+      receive_list = entry.get("receive")
+      if receive_list and isinstance(receive_list, list):
+        for item in receive_list:
+          if item:
+            unique_receives.add(item)
 
-        unique_receives = set()
-        for entry in room_prog_data:
-            receive_list = entry.get("receive")
-            if receive_list and isinstance(receive_list, list):
-                for item in receive_list:
-                    if item: unique_receives.add(item)
-
-        icon_html = "<span class=fr>"
-        for item in sorted(unique_receives):
-            sanitized_name = re.sub(r"[:#?]", "_", re.sub(r"[#?].+$", "", item))
-            icon_filename = f"{sanitized_name}.png"
-            icon_src = os.path.join(PROGRESSION_ICON_PATH, icon_filename).replace("\\", "/")
-            icon_html += f'\n            <img src="{icon_src}" class="progression-icon" alt="{item}">'
-        icon_html += "</span>"
-        overlay_content = "\n".join(squares_html)
-        wrapper_tag = f"""        <div class="tile-wrapper" data-room="{room_key}" style="left: {pixel_left:.1f}px; top: {pixel_top:.1f}px; background-image: url('{placeholder_img_path}');" data-info="{info_json_str}">{icon_html}
+    icon_html = "<span class=fr>"
+    for item in sorted(unique_receives):
+      sanitized_name = re.sub(r"[:#?]", "_", re.sub(r"[#?].+$", "", item))
+      icon_filename = f"{sanitized_name}.png"
+      icon_src = os.path.join(PROGRESSION_ICON_PATH, icon_filename).replace("\\", "/")
+      icon_html += f'\n            <img src="{icon_src}" class="progression-icon" alt="{item}">'
+    icon_html += "</span>"
+    overlay_content = "\n".join(squares_html)
+    wrapper_tag = f"""        <div class="tile-wrapper" data-room="{room_key}" style="left: {pixel_left:.1f}px; top: {pixel_top:.1f}px; background-image: url('{placeholder_img_path}');" data-info="{info_json_str}">{icon_html}
             <div class="overlay-layer" style="z-index: 6; position: absolute; top:0; left:0; width:100%; height:100%;">
 {overlay_content}
             </div>
         </div>"""
-        html_elements.append(wrapper_tag)
-        
-        canvas_tiles_data.append({
-            "roomKey": room_key,
-            "highres": highres_img_path,
-            "placeholder": placeholder_img_path
-        })
+    html_elements.append(wrapper_tag)
 
-    total_svg_width = 40 + (cols * TILE_WIDTH)
-    total_svg_height = 40 + (rows * TILE_HEIGHT)
+    canvas_tiles_data.append(
+      {
+        "roomKey": room_key,
+        "map": highres_img_path,
+        "map_80": f"/map_80/{filename}",
+        "map_30": f"/map_30/{filename}",
+        "map_20": f"/map_20/{filename}",
+        "map_07": f"/map_07/{filename}",
+      }
+    )
 
-    container_style = f'id="grid" style="width: {total_svg_width}px; height: {total_svg_height}px;"'
-    dynamic_html_start = html_start.replace('id="grid"', container_style)
+  total_svg_width = 40 + (cols * TILE_WIDTH)
+  total_svg_height = 40 + (rows * TILE_HEIGHT)
 
-    script_payload = f"""
+  container_style = f'id="grid" style="width: {total_svg_width}px; height: {total_svg_height}px;"'
+  dynamic_html_start = html_start.replace('id="grid"', container_style)
+
+  script_payload = f"""
     <script>
         const ROUTES_DATA = {json.dumps(js_routes_db, indent=2)};
         const EXITS_DATA = {json.dumps(js_exits_db, indent=2)};
@@ -871,30 +922,32 @@ def main():
     </script>
     """
 
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        f.write(dynamic_html_start)
-        f.write("\n".join(html_elements))
-        f.write(script_payload)
-        f.write("\n" + html_end)
-        
-    with open("./MathQuest/play.base.html", "r", encoding="utf-8") as ff:
-      with open("./MathQuest/play.html", "w", encoding="utf-8") as f:
-        oldData = ff.read().split('<map id="map"></map>')
-        f.write(oldData[0])
-        f.write('<map id="map">')
-        f.write(dynamic_html_start)
-        f.write("\n".join(html_elements))
-        f.write(script_payload)
-        f.write("\n" + html_end)
-        f.write('</map>')
-        f.write(oldData[1])
+  with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+    f.write(dynamic_html_start)
+    f.write("\n".join(html_elements))
+    f.write(script_payload)
+    f.write("\n" + html_end)
+
+  with open("./MathQuest/play.base.html", "r", encoding="utf-8") as ff:
+    with open("./MathQuest/play.html", "w", encoding="utf-8") as f:
+      oldData = ff.read().split('<map id="map"></map>')
+      f.write(oldData[0])
+      f.write('<map id="map">')
+      f.write(dynamic_html_start)
+      f.write("\n".join(html_elements))
+      f.write(script_payload)
+      f.write("\n" + html_end)
+      f.write("</map>")
+      f.write(oldData[1])
+
 
 def snapToGrid(x, y):
-    block_width = float(ROOM_INTERNAL_WIDTH) / BLOCKS_X
-    block_height = float(ROOM_INTERNAL_HEIGHT) / BLOCKS_Y
-    snapped_x = round(float(x) / block_width) * block_width
-    snapped_y = round(float(y) / block_height) * block_height
-    return snapped_x, snapped_y
+  block_width = float(ROOM_INTERNAL_WIDTH) / BLOCKS_X
+  block_height = float(ROOM_INTERNAL_HEIGHT) / BLOCKS_Y
+  snapped_x = round(float(x) / block_width) * block_width
+  snapped_y = round(float(y) / block_height) * block_height
+  return snapped_x, snapped_y
+
 
 if __name__ == "__main__":
-    main()
+  main()
