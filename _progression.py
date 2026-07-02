@@ -126,13 +126,12 @@ PROG: list[ProgressionNode] = [
       "skill:firewall",
       "skill:firewall.1",
       "skill:halo",
-      "item:aurastones",
       "item:gold",
       "loot:dScale",
-      "item:shadowCrest",
+      "loot:shadowCrest",
       "loot:oCoin",
       "item:blue crystal",
-      "item:key#999",
+      # "item:key#999",
       "item:gold#999",
     ],
     "info": """can be got anywhere
@@ -153,8 +152,7 @@ manager.correct - manager.wrong > 800 = halo
     "receive": [
       "loot:bTusk",
       "loot:cFang",
-      "item:emeralds",
-      "misc:fire crystal",
+      "loot:emeralds",
       "loot:fBone",
       "loot:gSkin",
       "loot:gFeather",
@@ -162,7 +160,6 @@ manager.correct - manager.wrong > 800 = halo
       "loot:mHorn",
       "item:ring of evasion",
       "loot:sClaw",
-      "item:slamstones",
       "loot:sFrag",
       "loot:oArm",
       "loot:tBand",
@@ -451,7 +448,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 7, "east": 18},
     "requires": [
       [
-        "item:slamstones#1",
+        "loot:slamstones#1",
         "skill:reveal",
       ],
     ],
@@ -467,7 +464,7 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "item:slamstones",
+      "loot:slamstones",
     ],
   },
   {
@@ -791,7 +788,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 21, "east": 18},
     "requires": [
       [
-        "item:emeralds#1",
+        "loot:emeralds#1",
       ],
     ],
     "receive": [
@@ -804,7 +801,8 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 21, "east": 17},
     "requires": [
       [
-        "item:aurastones#1",
+        # NOTE
+        # "item:aurastones#1",
         "item:gold#500",
       ],
     ],
@@ -978,7 +976,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "loot:cThread#10",
-        "item:shadowCrest#5",
+        "loot:shadowCrest#5",
         "skill:reveal",
       ],
     ],
@@ -1008,39 +1006,6 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "food:gummyBears#5",
-    ],
-  },
-  {
-    "room": {"north": 4, "east": 13},
-    "requires": [
-      [
-        "item:gold",
-      ],
-    ],
-    "receive": [
-      "food:orange",
-    ],
-  },
-  {
-    "room": {"north": 4, "east": 13},
-    "requires": [
-      [
-        "item:gold",
-      ],
-    ],
-    "receive": [
-      "food:gingerBread",
-    ],
-  },
-  {
-    "room": {"north": 4, "east": 13},
-    "requires": [
-      [
-        "item:gold",
-      ],
-    ],
-    "receive": [
-      "food:strawberry",
     ],
   },
   {
@@ -2167,7 +2132,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 18, "east": 19},
     "requires": [
       [
-        "item:emeralds#1",
+        "loot:emeralds#1",
       ],
     ],
     "receive": [
@@ -2242,7 +2207,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 8, "east": 18},
     "requires": [
       [
-        "item:emeralds#1",
+        "loot:emeralds#1",
         "entrance.north0",
       ],
     ],
@@ -2354,7 +2319,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 17, "east": 15},
     "requires": [
       [
-        "item:emeralds#1",
+        "loot:emeralds#1",
       ],
     ],
     "receive": [
@@ -2451,7 +2416,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 23, "east": 10},
     "requires": [
       [
-        "item:emeralds#1",
+        "loot:emeralds#1",
       ],
     ],
     "receive": [
@@ -2522,14 +2487,14 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 10, "east": 13},
     "requires": [
       [
-        "item:emeralds#1",
+        "loot:emeralds#1",
       ],
     ],
     "receive": [
       "item:gold#1",
       "item:diamonds#1",
       "item:aurastones#1",
-      "item:slamstones#1",
+      "loot:slamstones#1",
       "food:elixir#1",
       "food:holyWater#1",
     ],
@@ -2620,15 +2585,15 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 8, "east": 10},
     "requires": [
       [
-        "item:emeralds#1",
+        "loot:emeralds#1",
         "entrance.north1",
       ],
       [
-        "item:emeralds#1",
+        "loot:emeralds#1",
         "entrance.east1",
       ],
       [
-        "item:emeralds#1",
+        "loot:emeralds#1",
         "entrance.east2",
       ],
     ],
@@ -2719,7 +2684,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 12, "east": 21},
     "requires": [
       [
-        "item:emeralds#1",
+        "loot:emeralds#1",
         "permit:bomb",
       ],
     ],
@@ -4640,7 +4605,7 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 9, "east": 25},
     "requires": [
       [
-        "item:emeralds",
+        "loot:emeralds",
       ],
     ],
     "receive": [
@@ -7606,7 +7571,7 @@ MathQuest.js:42550 add listeners""",
     "requires": [
       [
         "area:str up npc",
-        "item:slamstones#10",
+        "loot:slamstones#10",
         "flag:str up npc counter.9",
       ],
     ],
@@ -7620,7 +7585,7 @@ MathQuest.js:42550 add listeners""",
     "requires": [
       [
         "area:str up npc",
-        "item:shadowCrest#5",
+        "loot:shadowCrest#5",
         "flag:str up npc counter.10",
       ],
     ],
@@ -7630,7 +7595,7 @@ MathQuest.js:42550 add listeners""",
     ],
   },
   {
-    "room": {"north": 4, "east": 13},
+    "room": {"north": 14, "east": 13},
     "requires": [
       [],
     ],
