@@ -28,6 +28,24 @@ PROG: list[ProgressionNode] = [
     ],
   },
   {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      [
+        "area:12",
+      ],
+    ],
+    "receive": ["weapon:pitchfork"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      [
+        "area:8",
+      ],
+    ],
+    "receive": ["weapon:orcBlade"],
+  },
+  {
     "room": {"north": 13, "east": 25},
     "requires": [
       [
@@ -279,7 +297,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 12, "east": 9},
     "requires": [
       [
-        "item:gold",
+        "item:gold#1000",
       ],
     ],
     "receive": [
@@ -290,7 +308,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 12, "east": 9},
     "requires": [
       [
-        "item:gold",
+        "item:gold#1600",
       ],
     ],
     "receive": [
@@ -542,6 +560,19 @@ manager.correct - manager.wrong > 800 = halo
       "misc:headstoneSwitch3",
     ],
   },
+  {
+    "room": {"north": 100, "east": 100},
+    "requires": [
+      [
+        "loot:oArm#5",
+        "loot:sTooth#5",
+        "loot:vHorn#5",
+      ],
+    ],
+    "receive": [
+      "craft:newtonApple",
+    ],
+  },
   # {"room": {"north": 11, "east": 24}, "info": "warp skill warp point",},
   {
     "room": {"north": 11, "east": 22},
@@ -559,13 +590,12 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 12, "east": 25},
     "requires": [
       [
-        "loot:sTooth#10",
-        "skill:craft",
+        "misc:blue crystal",
       ],
     ],
     "receive": [
       "food:gummyBears#10",
-      "item:diamonds#50",
+      "item:diamonds#50 - chest",
     ],
   },
   {
@@ -663,7 +693,7 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "item:diamonds#2",
+      "item:diamonds#2 - dig",
     ],
   },
   {
@@ -676,7 +706,7 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "craft:ring of gold",
+      "craft:ringGold",
     ],
   },
   {
@@ -1217,7 +1247,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "quest:pam.5",
-      "food:gingerBread#10",
+      "food:gingerBread#10 - pam4",
     ],
   },
   {
@@ -2346,6 +2376,17 @@ MathQuest.js:42550 add listeners""",
     ],
   },
   {
+    "room": {"north": 19, "east": 20},
+    "requires": [
+      [
+        "quest:pam.16",
+      ],
+    ],
+    "receive": [
+      "food:gingerBread - pam16",
+    ],
+  },
+  {
     "room": {"north": 14, "east": 15},
     "requires": [
       [
@@ -2741,7 +2782,7 @@ MathQuest.js:42550 add listeners""",
     ],
     "receive": [
       "item:gold#300",
-      "item:diamonds#2",
+      "item:diamonds#2 - chest",
     ],
   },
   {
@@ -3412,6 +3453,17 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 100, "east": 100},
     "requires": [
       [
+        "item:gold#10",
+      ],
+    ],
+    "receive": [
+      "food:gingerBread",
+    ],
+  },
+  {
+    "room": {"north": 100, "east": 100},
+    "requires": [
+      [
         "item:gold#100",
       ],
     ],
@@ -3498,6 +3550,18 @@ MathQuest.js:42550 add listeners""",
     ],
     "receive": [
       "quest:isles.15",
+    ],
+  },
+  {
+    "room": {"north": 300, "east": 300},
+    "requires": [
+      [
+        "item:gold#1000",
+        "loot:oCoin#10",
+      ],
+    ],
+    "receive": [
+      "food:elixir",
     ],
   },
   {
@@ -4611,11 +4675,15 @@ MathQuest.js:42550 add listeners""",
       "quest:isles.23",
     ],
   },
-  # {
-  #   "room": {"north": "?", "east": "?",},
-  #   "requires": [["loot:dScale#3"], ["loot:sFrag#5"], ["loot:fBone#10"],],
-  #   "receive": ["item:ring of skill"],
-  # },
+  {
+    "room": {"north": 20, "east": 18},
+    "requires": [
+      ["loot:dScale#3"],
+      ["loot:sFrag#5"],
+      ["loot:fBone#10"],
+    ],
+    "receive": ["item:ring of skill"],
+  },
   # {
   #   "room": {"north": "?", "east": "?",},
   #   "receive": ["item:ring of evasion"],
