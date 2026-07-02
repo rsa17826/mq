@@ -4,3 +4,4 @@ __pycache__
 **/__pycache__/**
 .direnv
 **/node_modules
+.ruff_cache
