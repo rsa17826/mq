@@ -227,6 +227,12 @@ def init(src):
                   conn.newX = 13 * BLOCK_W
                   conn.newY = midBlockY * BLOCK_H
                 }}
+                if (destSpan.newX!==undefined){{
+                  conn.newX = destSpan.newX
+                }}
+                if (destSpan.newY!==undefined){{
+                  conn.newY = destSpan.newY
+                }}
               }} else {{
                 console.log("[ER DEBUG] No destination entrance span found for", conn.newNorth, conn.newEast, conn.exitSide, conn.exitIdx)
               }}
