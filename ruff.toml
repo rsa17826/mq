@@ -1,4 +1,4 @@
-line-length = 120
+line-length = 1200
 indent-width = 2
 target-version = "py313"
 

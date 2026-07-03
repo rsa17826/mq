@@ -41,12 +41,8 @@ def init(src):
 
   PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
     ;(function () {{
-      var ROOM_WIDTH = 710.0;
-      var ROOM_HEIGHT = 560.0;
-      var BLOCKS_X = 14;
-      var BLOCKS_Y = 11;
-      var BLOCK_W = ROOM_WIDTH / BLOCKS_X;
-      var BLOCK_H = ROOM_HEIGHT / BLOCKS_Y;
+      var BLOCK_W = ROOM_INTERNAL_WIDTH / BLOCKS_X;
+      var BLOCK_H = ROOM_INTERNAL_HEIGHT / BLOCKS_Y;
 
       var ER_TABLE = [{table_js}]
       var ER_MAP = new Map()
@@ -238,20 +234,36 @@ def init(src):
                 // 5. Query matching logic data tracking table entry using direction and index configurations
                 if (matchedExitIndex !== -1) {{
                   var specificTarget = conns.find(function(c) {{
-                    return c.origSide === direction && c.origIdx === matchedExitIndex;
+                    return c.origSide === direction && String(c.origIdx) === String(matchedExitIndex);
                   }});
 
                   if (specificTarget) {{
                     conn = specificTarget;
-                    var targetCoords = spans[matchedExitIndex];
-                    conn.newX = targetCoords.newX;
-                    conn.newY = targetCoords.newY;
                   }}
                 }}
               }}
             }}
 
-            console.log("[ER DEBUG] Redirecting to:", conn.newNorth + "," + conn.newEast, "Placing at:", conn.newX + "," + conn.newY, conn);
+            // 6. newX/newY describe where to land when ENTERING a room, so pull them from
+            // the destination room's entrance span (keyed by exitSide/exitIdx), not the
+            // source room's exit span.
+            if (conn) {{
+              var destRoomData = AP_ENTRANCE_IDS.find(function(r) {{
+                return r.north === conn.newNorth && r.east === conn.newEast;
+              }});
+              var destSpan = null;
+              if (destRoomData && destRoomData.exits && destRoomData.exits[conn.exitSide]) {{
+                destSpan = destRoomData.exits[conn.exitSide][Number(conn.exitIdx)];
+              }}
+              if (destSpan) {{
+                conn.newX = destSpan.newX;
+                conn.newY = destSpan.newY;
+              }} else {{
+                console.log("[ER DEBUG] No destination entrance span found for", conn.newNorth, conn.newEast, conn.exitSide, conn.exitIdx);
+              }}
+            }}
+
+            console.log("[ER DEBUG] Redirecting to:", conn.newNorth + "," + conn.newEast, "Placing at:", conn.newX + "," + conn.newY, 'from', conn, 'to', destRoomData, destSpan);
 
             erUpdatingInternal = true
             try {{
