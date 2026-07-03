@@ -7,24 +7,23 @@ Includes detailed telemetry debug logs and setter recursion-lock fixes.
 import json
 import os
 
+
 def init(src):
   OUT_DIR = os.path.dirname(os.path.abspath(__file__))
-  
+
   conn_data = json.load(open(f"{OUT_DIR}/json/connections.json"))
   connections = conn_data["connections"]
   seed = conn_data["seed"]
-  
-  
+
   def fmt_num(n):
     if n is None:
       return "-1"
     if n == int(n):
       return str(int(n))
     return f"{n:.4f}"
-  
-  
+
   DIR_CODES = {"north": 1, "south": 2, "west": 3, "east": 4}
-  
+
   rows = []
   print(connections)
   for c in connections:
@@ -40,30 +39,10 @@ def init(src):
         fmt_num(c["newDestEast"]),
         fmt_num(c["newX"]),
         fmt_num(c["newY"]),
-        fmt_num(c.get("srcCoord")),
-        str(d_code),
-        fmt_num(c.get("xIsEven")),
-        fmt_num(c.get("yIsEven")),
       )
     )
-    #  "originNorth": origin["north"],
-    #   "originEast": origin["east"],
-    #   "vanillaDestNorth": vdest[0],
-    #   "vanillaDestEast": vdest[1],
-    #   "newDestNorth": to_exit["origin"]["north"],
-    #   "newDestEast": to_exit["origin"]["east"],
-    #   "newX": to_exit.get("dest_x", 330),
-    #   "newY": to_exit.get("dest_y", 255),
-    #   "xIsEven": to_exit.get("xIsEven",0),
-    #   "yIsEven": to_exit.get("yIsEven",0),
-    #   "srcCoord": from_exit.get("src_coord"),
-    #   "direction": from_exit.get("direction"),
-    #   "mechanism": from_exit["mechanism"],
-    #   "requires": requires_raw,
-    #   "fromExitId": from_exit["id"],
-    #   "toExitId": to_exit["id"],
   table_js = ",".join(rows)
-  
+
   PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
     ;(function () {{
       var ER_TABLE = [{table_js}]
@@ -80,19 +59,15 @@ def init(src):
           newEast: r[5],
           newX: r[6],
           newY: r[7],
-          srcCoord: r[8],
-          dirCode: r[9],
-          xIsEven: r[10],
-          yIsEven: r[11]
         }})
       }}
-  
+
       var erNorth = manager.north === undefined ? null : manager.north
       var erEast = manager.east === undefined ? null : manager.east
       var erInTransition = false
       var erUpdatingInternal = false // Safety flag to prevent infinite loops from our own writes
       var erOrigin = {{ north: null, east: null, x: null, y: null }}
-  
+
       function erBeginWriteIfNeeded() {{
         if (erUpdatingInternal) return; // Ignore updates performed inside loca()
         if (!erInTransition) {{
@@ -109,7 +84,7 @@ def init(src):
           console.log("[ER DEBUG] Transition initiated. From room:", erOrigin.north + "," + erOrigin.east, "at position X/Y:", erOrigin.x + "," + erOrigin.y);
         }}
       }}
-  
+
       Object.defineProperty(manager, "north", {{
         get: function () {{ return erNorth }},
         set: function (v) {{ erBeginWriteIfNeeded(); erNorth = v }},
@@ -134,7 +109,7 @@ def init(src):
         enumerable: true,
         configurable: true,
       }})
-  
+
       var erOriginalLoca = __createObject.loca
       __createObject.loca = function () {{
         if (erInTransition) {{
@@ -146,15 +121,15 @@ def init(src):
             manager.char[0].set_x(50)
           }}
           console.log("[ER DEBUG] Checking redirection for vanilla move path key:", key);
-          
+
           var conns = ER_MAP.get(key)
           if (conns && conns.length > 0) {{
             var conn = conns[0]
-            
+
             if (conns.length > 1 && erOrigin.x !== null && erOrigin.y !== null) {{
               console.log("[ER DEBUG] Multi-gap overlap discovered! Choices count:", conns.length);
               var warptype = "unknown"
-              
+
                 console.log(manager.char[0].get_y(), manager.char[0].get_x(), manager.north, manager.east)
               if (manager.char[0].get_y() > 550 ||
               manager.char[0].get_y() < 0 ||
@@ -225,7 +200,7 @@ def init(src):
             }}
             // TODO
             console.log("[ER DEBUG] Success! Redirecting room target to:", conn.newNorth + "," + conn.newEast, "Placing character at:", conn.newX + "," + conn.newY, conn.xIsEven, conn.yIsEven, conn);
-            
+
             // Set safety lock flag to prevent our proxy properties from creating bad transition tracking chains
             erUpdatingInternal = true
             try {{
@@ -234,10 +209,6 @@ def init(src):
               if (manager.char && manager.char[0]) {{
                 if (typeof manager.char[0].set_x === 'function') {{
                   manager.char[0].set_x(conn.newX)
-                  // left or right trnasitions move player down .5*blockY to get centered dont know why only l/r needs this
-                  if (conn.dirCode>=3)
-                  manager.char[0].set_y(conn.newY+25.3571)
-                  else
                   manager.char[0].set_y(conn.newY)
                 }} else {{
                   manager.char[0].x = conn.newX
@@ -251,9 +222,6 @@ def init(src):
                 if (manager.char && manager.char[0]) {{
                   if (typeof manager.char[0].set_x === 'function') {{
                     manager.char[0].set_x(conn.newX)
-                    if (conn.dirCode>=3)
-                  manager.char[0].set_y(conn.newY+25.3571)
-                  else
                   manager.char[0].set_y(conn.newY)
                   }} else {{
                     manager.char[0].x = conn.newX
@@ -274,14 +242,12 @@ def init(src):
     }})()
     // === ENTRANCE RANDOMIZER PATCH END ===
   """
-  
+
   ANCHOR = "      manager.north = 20\n      manager.east = 20\n"
-  assert (
-    src.count(ANCHOR) == 1
-  ), f"expected exactly one occurrence of anchor, found {src.count(ANCHOR)}"
-  
+  assert src.count(ANCHOR) == 1, f"expected exactly one occurrence of anchor, found {src.count(ANCHOR)}"
+
   patched = src.replace(ANCHOR, PATCH + ANCHOR)
-  
+
   print(f"Patched file successfully")
-  
+
   return patched
