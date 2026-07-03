@@ -11,12 +11,14 @@ import os
 def init(src):
   OUT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-  connections = json.load(open(f"{OUT_DIR}/json/connections.json"))
+  connections = json.load(open(f"{OUT_DIR}/json/connections.json"))["connections"]
   seed = "asd"
 
   def fmt_num(n):
     if n is None:
       return "-1"
+    if isinstance(n, str):
+      return f'"{n}"'
     if n == int(n):
       return str(int(n))
     return f"{n:.4f}"
@@ -29,14 +31,15 @@ def init(src):
     print("")
     print(c)
     rows.append(
-      "[%s,%s,%s,%s,%s,%s]"
-      % (
-        f'"{c["id"]}"',
-        fmt_num(c["newX"]),
-        fmt_num(c["newY"]),
-        fmt_num(c["srcCoord"]),
-        f'"{c["direction"]}"',
+      "[{},{},{},{},{},{},{},{}]".format(
+        fmt_num(c["north"]),
+        fmt_num(c["east"]),
+        fmt_num(c["side"]),
         fmt_num(c["idx"]),
+        fmt_num(c["exitNorth"]),
+        fmt_num(c["exitEast"]),
+        fmt_num(c["exitSide"]),
+        fmt_num(c["exitIdx"]),
       )
     )
   table_js = ",".join(rows)

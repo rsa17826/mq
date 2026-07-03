@@ -478,7 +478,7 @@ def load_connections():
     print(f"[-] Error: {CONNECTIONS_JSON_PATH} required.")
     return []
   with open(CONNECTIONS_JSON_PATH, "r", encoding="utf-8") as f:
-    return json.load(f)
+    return json.load(f)['connections']
 
 
 def load_doors():
@@ -624,7 +624,7 @@ def main():
   half_block_y_room_scaled = (ROOM_INTERNAL_HEIGHT / (2 * BLOCKS_Y)) * scale_y_room
 
   for conn in connections:
-    o_n, o_e = int(conn["id"].split("_")[0]), int(conn["id"].split("_")[1])
+    o_n, o_e = int(conn["north"]), int(conn["east"])
     room_key = f"{o_n}_{o_e}"
     if o_n not in north_to_track or o_e not in east_to_track:
       continue
@@ -768,7 +768,7 @@ def main():
     squares_html = []
 
     active_connections = [
-      c for c in connections if int(c["id"].split("_")[0]) == north and int(c["id"].split("_")[1]) == east
+      c for c in connections if int(c["north"]) == north and int(c["east"]) == east
     ]
 
     if tile_exits and isinstance(tile_exits, dict):
