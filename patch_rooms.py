@@ -14,58 +14,8 @@ def init(src):
   connections = json.load(open(f"{OUT_DIR}/json/connections.json"))["connections"]
   seed = "asd"
 
-  def fmt_num(n):
-    if n is None:
-      return "-1"
-    if isinstance(n, str):
-      return f'"{n}"'
-    if n == int(n):
-      return str(int(n))
-    return f"{n:.4f}"
-
-  rows = []
-  for c in connections:
-    rows.append(
-      "[{},{},{},{},{},{},{},{}]".format(
-        fmt_num(c["north"]),
-        fmt_num(c["east"]),
-        fmt_num(c["side"]),
-        fmt_num(c["idx"]),
-        fmt_num(c["exitNorth"]),
-        fmt_num(c["exitEast"]),
-        fmt_num(c["exitSide"]),
-        fmt_num(c["exitIdx"]),
-      )
-    )
-  table_js = ",".join(rows)
-
   PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
     ;(function () {{
-      var BLOCK_W = ROOM_INTERNAL_WIDTH / BLOCKS_X
-      var BLOCK_H = ROOM_INTERNAL_HEIGHT / BLOCKS_Y
-
-      var ER_TABLE = [{table_js}]
-      var ER_MAP = new Map()
-      window.ER_MAP=ER_MAP
-      window.ER_TABLE=ER_TABLE
-
-      for (var i = 0; i < ER_TABLE.length; i++) {{
-        var r = ER_TABLE[i]
-        // Key by origin room: "north_east"
-        var key = r[0] + "_" + r[1]
-        if (!ER_MAP.has(key)) {{
-          ER_MAP.set(key, [])
-        }}
-        ER_MAP.get(key).push({{
-          origSide: r[2],
-          origIdx: r[3],
-          newNorth: r[4],
-          newEast: r[5],
-          exitSide: r[6],
-          exitIdx: r[7]
-        }})
-      }}
-
       var erNorth = manager.north === undefined ? null : manager.north
       var erEast = manager.east === undefined ? null : manager.east
       var erInTransition = false
@@ -118,13 +68,16 @@ def init(src):
         if (erInTransition) {{
           var key = erOrigin.north + "_" + erOrigin.east
           var direction = null
-          if (erNorth>erOrigin.north){{
+          const n = erNorth-erOrigin.north
+          const e = erEast-erOrigin.east
+          log(n, e)
+          if (e===0&&n==1){{
             direction="north"
-          }} else if (erNorth<erOrigin.north){{
+          }} else if (e===0&&n==-1){{
             direction="south"
-          }} else if (erEast>erOrigin.east){{
+          }} else if (n===0&&e==1){{
             direction="east"
-          }} else if (erEast<erOrigin.east){{
+          }} else if (n===0&&e==-1){{
             direction="west"
           }}
           if (key=="9_22_10.1_21"){{
