@@ -41,8 +41,8 @@ def init(src):
 
   PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
     ;(function () {{
-      var BLOCK_W = ROOM_INTERNAL_WIDTH / BLOCKS_X;
-      var BLOCK_H = ROOM_INTERNAL_HEIGHT / BLOCKS_Y;
+      var BLOCK_W = ROOM_INTERNAL_WIDTH / BLOCKS_X
+      var BLOCK_H = ROOM_INTERNAL_HEIGHT / BLOCKS_Y
 
       var ER_TABLE = [{table_js}]
       var ER_MAP = new Map()
@@ -73,7 +73,7 @@ def init(src):
       var erOrigin = {{ north: null, east: null, x: null, y: null }}
 
       function erBeginWriteIfNeeded() {{
-        if (erUpdatingInternal) return;
+        if (erUpdatingInternal) return
         if (!erInTransition) {{
           erOrigin.north = erNorth
           erOrigin.east = erEast
@@ -133,7 +133,7 @@ def init(src):
           if (erOrigin.north ==21 && erOrigin.east==21 && manager.char[0].get_x()==-1){{
             manager.char[0].set_x(50)
           }}
-          console.log("[ER DEBUG] Checking redirection for vanilla move path key:", key, erOrigin.north + "_" + erOrigin.east + "_" + erNorth + "_" + erEast, direction);
+          console.log("[ER DEBUG] Checking redirection for vanilla move path key:", key, erOrigin.north + "_" + erOrigin.east + "_" + erNorth + "_" + erEast, direction)
           var conns = (ER_MAP.get(key) || []).filter(e=>e.origSide==direction)
 
           if (conns?.length > 0) {{
@@ -201,32 +201,32 @@ def init(src):
 
             if (direction && erOrigin.x !== null && erOrigin.y !== null) {{
               // 2. Calculate coordinates relative to tile layout block grids
-              var blockX = Math.floor(erOrigin.x / BLOCK_W);
-              var blockY = Math.floor(erOrigin.y / BLOCK_H);
-              if (blockX < 0) blockX = 0; if (blockX >= BLOCKS_X) blockX = BLOCKS_X - 1;
-              if (blockY < 0) blockY = 0; if (blockY >= BLOCKS_Y) blockY = BLOCKS_Y - 1;
+              var blockX = Math.floor(erOrigin.x / BLOCK_W)
+              var blockY = Math.floor(erOrigin.y / BLOCK_H)
+              if (blockX < 0) blockX = 0; if (blockX >= BLOCKS_X) blockX = BLOCKS_X - 1
+              if (blockY < 0) blockY = 0; if (blockY >= BLOCKS_Y) blockY = BLOCKS_Y - 1
 
               // 3. Extract correct visual layout bounds via AP_ENTRANCE_IDS configuration matching
               var roomData = AP_ENTRANCE_IDS.find(function(r) {{
-                return r.north === erOrigin.north && r.east === erOrigin.east;
-              }});
+                return r.north === erOrigin.north && r.east === erOrigin.east
+              }})
 
               if (roomData && roomData.exits && roomData.exits[direction]) {{
-                var spans = roomData.exits[direction];
-                var matchedExitIndex = -1;
+                var spans = roomData.exits[direction]
+                var matchedExitIndex = -1
 
                 // 4. Bounds assessment check matching player position coordinates to active exit span
                 for (var s = 0; s < spans.length; s++) {{
-                  var span = spans[s];
+                  var span = spans[s]
                   if (direction === "west" || direction === "east") {{
                     if (blockY >= span.top && blockY <= span.bottom) {{
-                      matchedExitIndex = s;
-                      break;
+                      matchedExitIndex = s
+                      break
                     }}
                   }} else if (direction === "north" || direction === "south") {{
                     if (blockX >= span.left && blockX <= span.right) {{
-                      matchedExitIndex = s;
-                      break;
+                      matchedExitIndex = s
+                      break
                     }}
                   }}
                 }}
@@ -234,11 +234,11 @@ def init(src):
                 // 5. Query matching logic data tracking table entry using direction and index configurations
                 if (matchedExitIndex !== -1) {{
                   var specificTarget = conns.find(function(c) {{
-                    return c.origSide === direction && String(c.origIdx) === String(matchedExitIndex);
-                  }});
+                    return c.origSide === direction && String(c.origIdx) === String(matchedExitIndex)
+                  }})
 
                   if (specificTarget) {{
-                    conn = specificTarget;
+                    conn = specificTarget
                   }}
                 }}
               }}
@@ -249,21 +249,37 @@ def init(src):
             // source room's exit span.
             if (conn) {{
               var destRoomData = AP_ENTRANCE_IDS.find(function(r) {{
-                return r.north === conn.newNorth && r.east === conn.newEast;
-              }});
-              var destSpan = null;
+                return r.north === conn.newNorth && r.east === conn.newEast
+              }})
+              var destSpan = null
               if (destRoomData && destRoomData.exits && destRoomData.exits[conn.exitSide]) {{
-                destSpan = destRoomData.exits[conn.exitSide][Number(conn.exitIdx)];
+                destSpan = destRoomData.exits[conn.exitSide][Number(conn.exitIdx)]
               }}
               if (destSpan) {{
-                conn.newX = destSpan.newX;
-                conn.newY = destSpan.newY;
+                var midBlock = (destSpan.left + destSpan.right) / 2
+                var midBlockY = (destSpan.top + destSpan.bottom) / 2
+                if (conn.exitSide=="north"){{
+                  conn.newX = midBlock * BLOCK_W
+                  conn.newY = 0
+                }}
+                if (conn.exitSide=="south"){{
+                  conn.newX = midBlock * BLOCK_W
+                  conn.newY = 10 * BLOCK_H
+                }}
+                if (conn.exitSide=="west"){{
+                  conn.newX = 0
+                  conn.newY = midBlockY * BLOCK_H
+                }}
+                if (conn.exitSide=="east"){{
+                  conn.newX = 13 * BLOCK_W
+                  conn.newY = midBlockY * BLOCK_H
+                }}
               }} else {{
-                console.log("[ER DEBUG] No destination entrance span found for", conn.newNorth, conn.newEast, conn.exitSide, conn.exitIdx);
+                console.log("[ER DEBUG] No destination entrance span found for", conn.newNorth, conn.newEast, conn.exitSide, conn.exitIdx)
               }}
             }}
 
-            console.log("[ER DEBUG] Redirecting to:", conn.newNorth + "," + conn.newEast, "Placing at:", conn.newX + "," + conn.newY, 'from', conn, 'to', destRoomData, destSpan);
+            console.log("[ER DEBUG] Redirecting to:", conn.newNorth + "," + conn.newEast, "Placing at:", conn.newX + "," + conn.newY, 'from', conn, 'to', destRoomData, destSpan)
 
             erUpdatingInternal = true
             try {{
@@ -280,14 +296,14 @@ def init(src):
                     manager.char[0].y = conn.newY
                   }}
                 }}
-              }};
+              }}
 
-              setCoords();
+              setCoords()
               setTimeout(function() {{
                 if (window.test && typeof window.test.newScreen === 'function') {{
                   test.newScreen()
                 }}
-                setCoords();
+                setCoords()
               }})
             }} finally {{
               erUpdatingInternal = false
