@@ -72,8 +72,8 @@ def init(src):
 
       var erNorth = manager.north === undefined ? null : manager.north
       var erEast = manager.east === undefined ? null : manager.east
-      var erInTransition = False
-      var erUpdatingInternal = False
+      var erInTransition = false
+      var erUpdatingInternal = false
       var erOrigin = {{ north: null, east: null, x: null, y: null }}
 
       function erBeginWriteIfNeeded() {{
@@ -88,49 +88,47 @@ def init(src):
             erOrigin.x = null
             erOrigin.y = null
           }}
-          erInTransition = True
+          erInTransition = true
         }}
       }}
 
       Object.defineProperty(manager, "north", {{
         get: function () {{ return erNorth }},
         set: function (v) {{ erBeginWriteIfNeeded(); erNorth = v }},
-        enumerable: True,
-        configurable: True,
+        enumerable: true,
+        configurable: true,
       }})
       Object.defineProperty(manager, "east", {{
         get: function () {{ return erEast }},
-        set: function (v) {{ erEast = v }},
-        enumerable: True,
-        configurable: True,
+        set: function (v) {{ erBeginWriteIfNeeded(); erEast = v }},
+        enumerable: true,
+        configurable: true,
       }})
       Object.defineProperty(manager, "realnorth", {{
         get: function () {{ return erNorth }},
         set: function (v) {{ erNorth = v }},
-        enumerable: True,
-        configurable: True,
+        enumerable: true,
+        configurable: true,
       }})
       Object.defineProperty(manager, "realeast", {{
         get: function () {{ return erEast }},
         set: function (v) {{ erEast = v }},
-        enumerable: True,
-        configurable: True,
+        enumerable: true,
+        configurable: true,
       }})
 
       var erOriginalLoca = __createObject.loca
       __createObject.loca = function () {{
         if (erInTransition) {{
           var key = erOrigin.north + "_" + erOrigin.east
+          var direction = null
           if (erNorth>erOrigin.north){{
             direction="north"
-          }}
-          if (erNorth<erOrigin.north){{
+          }} else if (erNorth<erOrigin.north){{
             direction="south"
-          }}
-          if (erEast>erOrigin.east){{
+          }} else if (erEast>erOrigin.east){{
             direction="east"
-          }}
-          if (erEast<erOrigin.east){{
+          }} else if (erEast<erOrigin.east){{
             direction="west"
           }}
           if (key=="9_22_10.1_21"){{
@@ -140,7 +138,7 @@ def init(src):
             manager.char[0].set_x(50)
           }}
           console.log("[ER DEBUG] Checking redirection for vanilla move path key:", key, erOrigin.north + "_" + erOrigin.east + "_" + erNorth + "_" + erEast, direction);
-          var conns = ER_MAP.get(key).filter(e=>e.direction==direction)
+          var conns = (ER_MAP.get(key) || []).filter(e=>e.origSide==direction)
 
           if (conns?.length > 0) {{
             log(erOrigin, "erOrigin")
@@ -199,18 +197,18 @@ def init(src):
                 // manager.temple.get_visible() == 1) {{
               // warptype = "temple"
               // }}
-              console.log("warptype", warptype, conns)
+              console.log("[ER DEBUG] candidate conns for", direction, conns)
             function colliding(c){{
-
+              return true
             }}
-            var conn = conns.find(colliding)
+            var conn = conns.find(colliding) || conns[0]
 
             if (direction && erOrigin.x !== null && erOrigin.y !== null) {{
               // 2. Calculate coordinates relative to tile layout block grids
               var blockX = Math.floor(erOrigin.x / BLOCK_W);
               var blockY = Math.floor(erOrigin.y / BLOCK_H);
-              if (blockX < 0) blockX = 0; if (blockX >= BLOCKS_X) blockX = BLOCKS_X - 1;:
-                                if (blockY < 0) blockY = 0; if (blockY >= BLOCKS_Y) blockY = BLOCKS_Y - 1;
+              if (blockX < 0) blockX = 0; if (blockX >= BLOCKS_X) blockX = BLOCKS_X - 1;
+              if (blockY < 0) blockY = 0; if (blockY >= BLOCKS_Y) blockY = BLOCKS_Y - 1;
 
               // 3. Extract correct visual layout bounds via AP_ENTRANCE_IDS configuration matching
               var roomData = AP_ENTRANCE_IDS.find(function(r) {{
@@ -255,7 +253,7 @@ def init(src):
 
             console.log("[ER DEBUG] Redirecting to:", conn.newNorth + "," + conn.newEast, "Placing at:", conn.newX + "," + conn.newY, conn);
 
-            erUpdatingInternal = True
+            erUpdatingInternal = true
             try {{
               manager.north = conn.newNorth
               manager.east = conn.newEast
@@ -280,11 +278,11 @@ def init(src):
                 setCoords();
               }})
             }} finally {{
-              erUpdatingInternal = False
+              erUpdatingInternal = false
               debugger
             }}
           }}
-          erInTransition = False
+          erInTransition = false
         }}
         return erOriginalLoca.apply(this, arguments)
       }}
