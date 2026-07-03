@@ -3,12 +3,11 @@ import os
 
 import gen_map
 import patch_rooms
-
-# import shuffle_exits
+import gen_exit_data
 
 # playercouldhave, edge_reached, door_reached, warp_reached, all_rooms = shuffle_exits.init()
 
-# shuffle_items.init()
+gen_exit_data.init()
 OUT_DIR = os.path.dirname(os.path.abspath(__file__))
 SRC_PATH = os.path.join(OUT_DIR, "MathQuest/MathQuest.base.js")
 OUT_PATH = os.path.join(OUT_DIR, "MathQuest/MathQuest.js")

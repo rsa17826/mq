@@ -94,13 +94,12 @@ def listcolors():
     print_six(row, bg)
     print()
 
+
 import re
 from functools import partial as bind
 
 
-def logfile(
-  type, *data, sep: str | None = " ", end: str | None = "\n", format: bool = True
-):
+def logfile(type, *data, sep: str | None = " ", end: str | None = "\n", format: bool = True):
   return
 
 
@@ -172,14 +171,14 @@ class print:
     if not cls.showdebug:
       return
     logfile(
-      f"{getcolor("BLUE")}{getcolor("BOLD")}[DEBUG]{getcolor("END")}",
+      f"{getcolor('BLUE')}{getcolor('BOLD')}[DEBUG]{getcolor('END')}",
       *a,
       sep=sep,
       end=end,
     )
 
     prevprint(
-      f"{print.c("BLUE")}{print.c("BOLD")}[DEBUG]{print.c("END")}",
+      f"{print.c('BLUE')}{print.c('BOLD')}[DEBUG]{print.c('END')}",
       *map(bind(formatitem, nocolor=False), a),
       print.c("END"),
       sep=sep,
@@ -200,14 +199,14 @@ class print:
     if not cls.showinfo:
       return
     logfile(
-      f"{getcolor("bright blue")}{getcolor("BOLD")}[INFO]{getcolor("END")}",
+      f"{getcolor('bright blue')}{getcolor('BOLD')}[INFO]{getcolor('END')}",
       *a,
       sep=sep,
       end=end,
     )
 
     prevprint(
-      f"{print.c("bright blue")}{print.c("BOLD")}[INFO]{print.c("END")}",
+      f"{print.c('bright blue')}{print.c('BOLD')}[INFO]{print.c('END')}",
       *map(bind(formatitem, nocolor=False), a),
       print.c("END"),
       sep=sep,
@@ -225,14 +224,14 @@ class print:
     flush=False,
   ):
     logfile(
-      f"{getcolor("YELLOW")}{getcolor("BOLD")}[WARNING]{getcolor("END")}",
+      f"{getcolor('YELLOW')}{getcolor('BOLD')}[WARNING]{getcolor('END')}",
       *a,
       sep=sep,
       end=end,
     )
 
     prevprint(
-      f"{print.c("YELLOW")}{print.c("BOLD")}[WARNING]{print.c("END")}",
+      f"{print.c('YELLOW')}{print.c('BOLD')}[WARNING]{print.c('END')}",
       *map(bind(formatitem, nocolor=False), a),
       print.c("END"),
       sep=sep,
@@ -250,14 +249,14 @@ class print:
     flush=False,
   ):
     logfile(
-      f"{getcolor("RED")}{getcolor("BOLD")}[ERROR]{getcolor("END")}",
+      f"{getcolor('RED')}{getcolor('BOLD')}[ERROR]{getcolor('END')}",
       *a,
       sep=sep,
       end=end,
     )
 
     prevprint(
-      f"{print.c("RED")}{print.c("BOLD")}[ERROR]{print.c("END")}",
+      f"{print.c('RED')}{print.c('BOLD')}[ERROR]{print.c('END')}",
       *map(bind(formatitem, nocolor=False), a),
       print.c("END"),
       sep=sep,
@@ -275,13 +274,13 @@ class print:
     flush=False,
   ):
     logfile(
-      f"{getcolor("GREEN")}{getcolor("BOLD")}[SUCCESS]{getcolor("END")}",
+      f"{getcolor('GREEN')}{getcolor('BOLD')}[SUCCESS]{getcolor('END')}",
       *a,
       sep=sep,
       end=end,
     )
     prevprint(
-      f"{print.c("GREEN")}{print.c("BOLD")}[SUCCESS]{print.c("END")}",
+      f"{print.c('GREEN')}{print.c('BOLD')}[SUCCESS]{print.c('END')}",
       *map(bind(formatitem, nocolor=False), a),
       print.c("END"),
       sep=sep,
@@ -335,35 +334,23 @@ def formatitem(item, tab=-2, isarrafterdict=False, nocolor=False):
     if item == False and type(item) == type(False):
       return "False"
     if type(item) in [type(_class), type(_func)]:
-      return f"{c("RED")}<{"class" if type(item)==type(_class) else "function"} {c("BOLD")}{c("BLUE")}{item.__name__}{c("END")}{c("RED")}>{c("END")}" # type: ignore
+      return f"{c('RED')}<{'class' if type(item) == type(_class) else 'function'} {c('BOLD')}{c('BLUE')}{item.__name__}{c('END')}{c('RED')}>{c('END')}" # type: ignore
     if isinstance(item, str):
-      return (
-        c("purple")
-        + '"'
-        + str(item).replace("\\", "\\\\").replace('"', '\\"')
-        + '"'
-        + c("END")
-      )
+      return c("purple") + '"' + str(item).replace("\\", "\\\\").replace('"', '\\"') + '"' + c("END")
     if isinstance(item, int) or isinstance(item, float):
       item = str(item)
       reg = [r"(?<=\d)(\d{3}(?=(?:\d{3})*(?:$|\.)))", r",\g<0>"]
       if "." in item:
-        return (
-          c("GREEN")
-          + re.sub(reg[0], reg[1], item.split(".")[0])
-          + "."
-          + item.split(".")[1]
-          + c("END")
-        )
+        return c("GREEN") + re.sub(reg[0], reg[1], item.split(".")[0]) + "." + item.split(".")[1] + c("END")
       return c("GREEN") + re.sub(reg[0], reg[1], item) + c("END")
       # Σ╘╬╧╨╤╥╙╘╒╓╖╕╔╛╙╜╝╚╞╟╠╡╢╣╤╥╦╧╨╩╪╫╬╭╮╯╰╱╲╳╴╵╶╷╸╹╺╻╼╽╾╿
 
     def name(item):
       try:
-        return f'{c("pink")}╟{item.__name__}╣{c("END")}'
+        return f"{c('pink')}╟{item.__name__}╣{c('END')}"
         # return f'{c("pink")}╟{item.__name__}╿{item.__class__.__name__}╣{c("END")}'
       except:
-        return f'{c("pink")}╟{item.__class__.__name__}╣{c("END")}'
+        return f"{c('pink')}╟{item.__class__.__name__}╣{c('END')}"
 
     # TYPENAME=name(item)
 
@@ -390,7 +377,7 @@ def formatitem(item, tab=-2, isarrafterdict=False, nocolor=False):
       except Exception as e:
         pass
       if not len(item):
-        return f"{c("orange")}{'{}'}{c("END")}"
+        return f"{c('orange')}{'{}'}{c('END')}"
       if strlen + tab < wrapat:
         return (
           TYPENAME
@@ -400,8 +387,8 @@ def formatitem(item, tab=-2, isarrafterdict=False, nocolor=False):
           + "{ "
           + c("END")
           + (
-            f"{c("orange")},{c("END")} ".join(
-              f"{c("purple")+(f'"{k}"' if isinstance(k, str) else formatitem(k, 0))+c("END")}{c("orange")}:{c("END")} {formatitem(v, 0, True)}"
+            f"{c('orange')},{c('END')} ".join(
+              f"{c('purple') + (f'"{k}"' if isinstance(k, str) else formatitem(k, 0)) + c('END')}{c('orange')}:{c('END')} {formatitem(v, 0, True)}"
               for k, v in item.items()
             )
           )
@@ -419,8 +406,8 @@ def formatitem(item, tab=-2, isarrafterdict=False, nocolor=False):
           + c("END")
           + "\n  "
           + (
-            f"{c("orange")},{c("END")}\n  ".join(
-              f"{c("purple")+(" "*tab)+(f'"{k}"' if isinstance(k, str) else formatitem(k, tab))+c("END")}{c("orange")}:{c("END")} {formatitem(v, tab, True)}"
+            f"{c('orange')},{c('END')}\n  ".join(
+              f"{c('purple') + (' ' * tab) + (f'"{k}"' if isinstance(k, str) else formatitem(k, tab)) + c('END')}{c('orange')}:{c('END')} {formatitem(v, tab, True)}"
               for k, v in item.items()
             )
           )
@@ -437,7 +424,7 @@ def formatitem(item, tab=-2, isarrafterdict=False, nocolor=False):
       except Exception as e:
         pass
       if not len(item):
-        return f'{c("orange")}[]{c("END")}'
+        return f"{c('orange')}[]{c('END')}"
       if strlen + tab < wrapat:
         return (
           TYPENAME
@@ -446,7 +433,7 @@ def formatitem(item, tab=-2, isarrafterdict=False, nocolor=False):
           + "[ "
           + c("END")
           + (
-            f"{c("orange")},{c("END")} ".join(
+            f"{c('orange')},{c('END')} ".join(
               map(
                 lambda newitem: formatitem(newitem, -2),
                 item,
@@ -465,16 +452,16 @@ def formatitem(item, tab=-2, isarrafterdict=False, nocolor=False):
           + "[\n"
           + c("END")
           + (
-            f"{c("orange")},{c("END")}\n".join(
+            f"{c('orange')},{c('END')}\n".join(
               map(
                 lambda newitem: (
-                  "  " + " " * tab
-                  if isinstance(newitem, str)
-                  or isinstance(newitem, int)
-                  or isinstance(newitem, float)
-                  else ""
-                )
-                + formatitem(newitem, tab),
+                  (
+                    "  " + " " * tab
+                    if isinstance(newitem, str) or isinstance(newitem, int) or isinstance(newitem, float)
+                    else ""
+                  )
+                  + formatitem(newitem, tab)
+                ),
                 item,
               )
             )
@@ -489,7 +476,7 @@ def formatitem(item, tab=-2, isarrafterdict=False, nocolor=False):
     return " " * tab + name(item) + '"' + str(item).replace('"', '\\"') + '"'
   except Exception as e:
     print.plain(e)
-    return " " * tab + f"{c("red")}{repr(item)}{c("end")}"
+    return " " * tab + f"{c('red')}{repr(item)}{c('end')}"
 
 
 logfile(f"{fg(30)}---PROGRAM STARTED---{fg()}")
@@ -502,7 +489,6 @@ Includes dead-end protection and safer inner-screen padding offsets.
 
 import json
 import os
-import random
 import sys
 
 
@@ -510,9 +496,6 @@ def init():
   OUT_DIR = os.path.dirname(os.path.abspath(__file__))
 
   # Check for the --no-shuffle flag and strip it out to avoid breaking seed parsing
-  NO_SHUFFLE = "--no-shuffle" in sys.argv
-  clean_args = [arg for arg in sys.argv if arg != "--no-shuffle"]
-  SEED = int(clean_args[1]) if len(clean_args) > 1 else 12345
 
   OPPOSITE = {"north": "south", "south": "north", "east": "west", "west": "east"}
 
@@ -528,196 +511,31 @@ def init():
       (room-internal connectivity scenarios -- a room with no entry here
       has no internal gating data, treated as a single open floor plan)
     """
-    # path = os.path.join(OUT_DIR, "json/room_geometry.json")
-    # if not os.path.exists(path):
-    #   print(f"NOTE: no json/room_geometry.json found at {path} -- using fallback behavior.")
-    #   return {}, {}
-    # raw = json.load(open(path))
-    from _room_geometry import GEOM as raw
+    from _room_geometry import GEOM
 
     geo = {}
     room_areas = {}
-    if isinstance(raw, list):
-      for rec in raw:
-        room = (float(rec["north"]), float(rec["east"]))
-        geo[room] = rec["exits"]
-        if rec.get("areas"):
-          scenarios = []
-          for sc in rec["areas"]:
-            groups = [[(g["side"], g["idx"]) for g in group] for group in sc["areas"]]
-            scenarios.append(
-              {
-                "requires": parse_requires(sc.get("reqs")),
-                "groups": groups,
-              }
-            )
-          room_areas[room] = scenarios
-    # elif isinstance(raw, dict):
-    #   for k, v in raw.items():
-    #     n_str, e_str = k.split("_")
-    #     room = (float(n_str), float(e_str))
-    #     geo[room] = v.get("exits", v)
-    #     if v.get("areas"):
-    #       scenarios = []
-    #       for sc in v["areas"]:
-    #         groups = [[(g["side"], g["idx"]) for g in group] for group in sc["areas"]]
-    #         scenarios.append({"requires": parse_requires(sc.get("reqs")), "groups": groups})
-    #       room_areas[room] = scenarios
-    else:
-      raise ValueError("json/room_geometry.json must be a list or dict")
+    for rec in GEOM:
+      room = (float(rec["north"]), float(rec["east"]))
+      geo[room] = rec["exits"]
+      if rec.get("areas"):
+        scenarios = []
+        for sc in rec["areas"]:
+          groups = [[(g["side"], g["idx"]) for g in group] for group in sc["areas"]]
+          scenarios.append(
+            {
+              "groups": groups,
+            }
+          )
+        room_areas[room] = scenarios
     return geo, room_areas
 
-  REQUIREMENT_PREFIXES = {
-    "entrance",
-    "item",
-    "skill",
-    "permit",
-    "quest",
-    "weapon",
-    "armor",
-    "ring",
-    "magic",
-    "food",
-    "drop",
-    "misc",
-  }
-
-  def parse_requirement_token(tok):
-    """Parse one requirement token into a structured dict."""
-    if tok.strip("?") == "":
-      return {"raw": tok, "type": "flag", "name": tok, "placeholder": True}
-
-    if tok.startswith("entrance."):
-      return {"raw": tok, "type": "entrance", "value": tok[len("entrance.") :]}
-
-    if ":" in tok:
-      prefix, rest = tok.split(":", 1)
-      if prefix in REQUIREMENT_PREFIXES:
-        result = {"raw": tok, "type": prefix}
-        placeholder = "?" in rest
-        if placeholder:
-          rest = rest[:-1]
-          result["placeholder"] = True
-        if "#" in rest:
-          name, count_str = rest.rsplit("#", 1)
-          result["name"] = name
-          if count_str.lower() in ("inf", "infinite"):
-            result["count"] = 999999999999
-            result["is_infinite"] = True
-          else:
-            try:
-              result["count"] = int(count_str)
-            except ValueError:
-              result["count"] = None
-              if not placeholder:
-                result["parse_warning"] = f"could not parse count from {tok!r}"
-        elif "." in rest:
-          name, tier_str = rest.rsplit(".", 1)
-          result["name"] = name
-          if tier_str.lower() in ("inf", "infinite"):
-            result["tier"] = float("inf")
-            result["is_infinite"] = True
-          else:
-            try:
-              result["tier"] = int(tier_str)
-            except ValueError:
-              result["tier"] = None
-              if not placeholder:
-                result["parse_warning"] = f"could not parse tier from {tok!r}"
-        else:
-          result["name"] = rest
-          result["count"] = 1
-        return result
-    if "?" in tok:
-      return {"raw": tok, "type": "flag", "name": tok, "placeholder": True}
-    return {"raw": tok, "type": "flag", "name": tok}
-
-  def parse_requires(requires):
-    if not requires:
-      return []
-    return [[parse_requirement_token(t) for t in group] for group in requires]
-
-  def load_progression():
-    # path = os.path.join(OUT_DIR, "json/progression.json")
-    # if not os.path.exists(path):
-    #   print(f"NOTE: no json/progression.json found at {path} -- no item/skill gating loaded.")
-    #   return {"locations": [], "gates": [], "warps": []}
-    # raw = json.load(open(path))
-    from _progression import PROG as raw
-
-    locations = []
-    for loc in raw:
-      # for loc in raw["locations"]:
-      locations.append(
-        {
-          "room": (loc["room"]["north"], loc["room"]["east"]),
-          "receive": loc.get("receive", []),
-          "requires": parse_requires(loc.get("requires")),
-          "raw": loc,
-        }
-      )
-
-    # gates = []
-    # for g in raw["gates"]:
-    #   gates.append(
-    #     {
-    #       "room": (g["room"]["north"], g["room"]["east"]),
-    #       "from": g["from"],
-    #       "to": g["to"],
-    #       "bidirectional": g.get("bidirectional", True),
-    #       "requires": parse_requires(g.get("requires")),
-    #       "raw": g,
-    #     }
-    #   )
-
-    # warps = []
-    # for w in raw.get("warps", []):
-    #   rooms = [(r["north"], r["east"]) for r in w["rooms"]]
-    #   warps.append(
-    #     {
-    #       "id": w.get("id", f"warp:{rooms[0][0]}_{rooms[0][1]}:{rooms[1][0]}_{rooms[1][1]}"),
-    #       "rooms": rooms,
-    #       "bidirectional": w.get("bidirectional", True),
-    #       "requires": parse_requires(w.get("requires")),
-    #       "raw": w,
-    #     }
-    #   )
-
-    warnings = []
-    flags_seen = set()
-    placeholders_seen = set()
-    # for entry in locations + gates + warps:
-    for entry in locations:
-      for group in entry["requires"]:
-        for tok in group:
-          if tok.get("placeholder"):
-            placeholders_seen.add(tok["raw"])
-            continue
-          if "parse_warning" in tok:
-            warnings.append(
-              (
-                entry.get("room", entry.get("rooms")),
-                tok["raw"],
-                tok["parse_warning"],
-              )
-            )
-          if tok["type"] == "flag":
-            flags_seen.add(tok["raw"])
-
-    print(f"Loaded json/progression.json: {len(locations)} locations")
-    # print(f"Loaded json/progression.json: {len(locations)} locations, {len(gates)} gates, {len(warps)} warps")
-    with_req = sum(1 for l in locations if l["requires"])
-    print(f"  locations with requirements: {with_req} / {len(locations)}")
-    return {"locations": locations}
-    # return {"locations": locations, "gates": gates, "warps": warps}
-
-  from _exits import EXITS as exits_data
+  from _exits import EXITS
 
   geometry, room_areas = load_room_geometry()
-  progression = load_progression()
 
   edges_by_room_dir = {}
-  for e in exits_data["edges"]:
+  for e in EXITS["edges"]:
     if e.get("gated") or e.get("needs_review"):
       continue
     org = (e["origin"]["north"], e["origin"]["east"])
@@ -730,10 +548,7 @@ def init():
     geo_room = geometry.get(org)
     if geo_room is not None:
       gaps = geo_room.get(direction, [])
-      if gaps is None:
-        gaps = []
-      elif isinstance(gaps, dict):
-        gaps = [gaps]
+      print(gaps)
 
       if not gaps:
         geometry_dropped += len(edge_list)
@@ -778,20 +593,12 @@ def init():
           new_e["dest_y"] = gap.get("newY")
         if "newX" in gap:
           new_e["dest_x"] = gap.get("newX")
+        new_e["idx"] = i
         all_exits_raw.append(new_e)
     else:
       for e in edge_list:
         e = dict(e)
-        e.setdefault("gap_index", 0)
         all_exits_raw.append(e)
-
-  for d in exits_data["doors"]:
-    if d.get("gated") or d.get("needs_review"):
-      continue
-    all_exits_raw.append(d)
-
-  WARP_FALLBACK_X = 710 / 2
-  WARP_FALLBACK_Y = 560 / 2
 
   # for w in progression["warps"]:
   #   rooms = w["rooms"]
@@ -822,14 +629,7 @@ def init():
     org = (e["origin"]["north"], e["origin"]["east"])
     total_exits_per_room[org] = total_exits_per_room.get(org, 0) + 1
 
-  rng = random.Random(SEED)
   edge_exits = [e for e in all_exits if e["mechanism"] == "edge"]
-  warp_exits = [e for e in all_exits if e["mechanism"] == "warp"]
-  door_exits = [e for e in all_exits if e["mechanism"] not in ("edge", "warp")]
-
-  locations_by_room = {}
-  for loc in progression["locations"]:
-    locations_by_room.setdefault(loc["room"], []).append(loc)
 
   def fmt_coord(n):
     return str(int(n)) if n == int(n) else str(n)
@@ -837,101 +637,6 @@ def init():
   def entrance_key(room, entrance_value):
     return f"{fmt_coord(room[0])}.{fmt_coord(room[1])}.entrance.{entrance_value}"
 
-  def token_satisfied(tok, have, room):
-    if tok.get("placeholder"):
-      return True
-    if tok["type"] == "entrance":
-      return have.get(entrance_key(room, tok["value"]), 0) >= 1
-    key = (tok["type"], tok.get("name"))
-    needed = tok.get("count") or tok.get("tier") or 1
-    return have.get(key, 0) >= needed
-
-  def group_satisfied(group, have, room):
-    return all(token_satisfied(tok, have, room) for tok in group)
-
-  def requires_satisfied(requires_groups, have, room):
-    if not requires_groups:
-      return True
-    return any(group_satisfied(g, have, room) for g in requires_groups)
-
-  def token_key(tok):
-    return (tok["type"], tok.get("name"))
-
-  def resolved_key(tok, room):
-    if tok["type"] == "entrance":
-      return entrance_key(room, tok["value"])
-    return token_key(tok)
-
-  def apply_gives(receive_raw, have):
-    updated = []
-    for raw_tok in receive_raw:
-      tok = parse_requirement_token(raw_tok)
-      key = token_key(tok)
-      amount = tok.get("count") or tok.get("tier") or 1
-      if amount > have.get(key, 0):
-        have[key] = amount
-        updated.append(key)
-    return updated
-
-  pending = {}
-  location_pending_keys = {}
-
-  def missing_token_keys(requires_groups, have, room):
-    missing = set()
-    for group in requires_groups:
-      for tok in group:
-        if not token_satisfied(tok, have, room):
-          missing.add(resolved_key(tok, room))
-    return missing
-
-  def try_grant_location(loc, have):
-    room = loc["room"]
-    if requires_satisfied(loc["requires"], have, room):
-      updated = apply_gives(loc.get("receive", []), have)
-      regs = location_pending_keys.pop(id(loc), None)
-      if regs:
-        for k in regs:
-          lst = pending.get(k)
-          if lst and loc in lst:
-            lst.remove(loc)
-            if not lst:
-              del pending[k]
-      return updated
-    else:
-      missing = missing_token_keys(loc["requires"], have, room)
-      location_pending_keys[id(loc)] = missing
-      for k in missing:
-        bucket = pending.setdefault(k, [])
-        if loc not in bucket:
-          bucket.append(loc)
-      return None
-
-  def propagate(updated_keys, have):
-    worklist = list(updated_keys)
-    while worklist:
-      key = worklist.pop()
-      for loc in list(pending.get(key, [])):
-        result = try_grant_location(loc, have)
-        if result:
-          worklist.extend(result)
-
-  def mark_reached(room, reached_set, have):
-    is_new = room not in reached_set
-    reached_set.add(room)
-    if is_new:
-      for loc in locations_by_room.get(room, []):
-        result = try_grant_location(loc, have)
-        if result:
-          propagate(result, have)
-
-  def mark_entrance_used(exit_obj, have):
-    if exit_obj["mechanism"] != "edge":
-      return
-    room = (exit_obj["origin"]["north"], exit_obj["origin"]["east"])
-    key = entrance_key(room, f"{exit_obj['direction']}{exit_obj.get('gap_index', 0)}")
-    if have.get(key, 0) < 1:
-      have[key] = 1
-      propagate([key], have)
 
   known_room_exits = {}
   for room, sides in geometry.items():
@@ -959,14 +664,6 @@ def init():
       if rp != rq:
         parent[rp] = rq
 
-    for sc in scenarios:
-      if not requires_satisfied(sc["requires"], have, room):
-        continue
-      for group in sc["groups"]:
-        for p in group:
-          parent.setdefault(p, p)
-        for p in group[1:]:
-          union(group[0], p)
     return find(target)
 
   def room_reachable_internally(exit_obj, have):
@@ -1077,156 +774,62 @@ def init():
     requires_groups = from_exit.get("requires") or []
     requires_raw = [[tok for tok in group] for group in requires_groups]
     return {
-      "originNorth": origin["north"],
-      "originEast": origin["east"],
-      "vanillaDestNorth": vdest[0],
-      "vanillaDestEast": vdest[1],
-      "newDestNorth": to_exit["origin"]["north"],
-      "newDestEast": to_exit["origin"]["east"],
+      "id": f"{origin['north']}_{origin['east']}_{vdest[0]}_{vdest[1]}",
       "newX": to_exit.get("dest_x", 330),
       "newY": to_exit.get("dest_y", 255),
-      "xIsEven": to_exit.get("xIsEven", 0),
-      "yIsEven": to_exit.get("yIsEven", 0),
       "srcCoord": from_exit.get("src_coord"),
       "direction": from_exit.get("direction"),
-      "mechanism": from_exit["mechanism"],
-      "requires": requires_raw,
-      "fromExitId": from_exit["id"],
-      "toExitId": to_exit["id"],
+      "idx": from_exit.get("idx"),
     }
 
   # --- Connection Logic Split ---
-  if NO_SHUFFLE:
-    print("Vanilla mode requested: mapping exits directly to original layout targets.")
-    all_rooms = {(e["origin"]["north"], e["origin"]["east"]) for e in all_exits}
-    edge_reached = all_rooms
-    door_reached = all_rooms
-    warp_reached = all_rooms
-
-    # Pre-populate state for validation logs
-    for e in all_exits:
-      r = (e["origin"]["north"], e["origin"]["east"])
-      mark_reached(r, edge_reached, playercouldhave)
-      mark_entrance_used(e, playercouldhave)
-
-    for a in all_exits:
-      partner = None
-      candidates = []
-      for b in all_exits:
-        if b["id"] == a["id"]:
-          continue
-        if b["origin"]["north"] == a["dest"]["north"] and b["origin"]["east"] == a["dest"]["east"]:
-          if a["mechanism"] == "edge" and b["mechanism"] == "edge":
-            if b["direction"] == OPPOSITE[a["direction"]]:
-              candidates.append(b)
-          elif a["mechanism"] != "edge" and b["mechanism"] != "edge":
-            if b["dest"]["north"] == a["origin"]["north"] and b["dest"]["east"] == a["origin"]["east"]:
-              candidates.append(b)
-
-      if candidates:
-        if a["mechanism"] == "edge":
-          # Match by the closest physical coordinate along the room border to prevent side-exit mixups
-          # lastcandidates = [*candidates]
-          candidates.sort(key=lambda x: abs(x.get("src_coord", 0) - a.get("src_coord", 0)))
-          # if lastcandidates!=candidates:
-          #   print("\n\n\n\n\n\n\n\nerrerrerrerrerrerrerrerrerrerrerrerr", lastcandidates, candidates, e)
-          partner = candidates[0]
-        else:
-          # For doors/warps, default to the matching target candidate
-          partner = candidates[0]
-
-      if partner:
-        connections.append(make_connection(a, partner))
-      else:
-        connections.append(
-          {
-            "originNorth": a["origin"]["north"],
-            "originEast": a["origin"]["east"],
-            "vanillaDestNorth": a["dest"]["north"],
-            "vanillaDestEast": a["dest"]["east"],
-            "newDestNorth": a["dest"]["north"],
-            "newDestEast": a["dest"]["east"],
-            "newX": a.get("dest_x", 330),
-            "newY": a.get("dest_y", 255),
-            "xIsEven": a.get("xIsEven", 0),
-            "yIsEven": a.get("yIsEven", 0),
-            "srcCoord": a.get("src_coord"),
-            "direction": a.get("direction"),
-            "mechanism": a["mechanism"],
-            "requires": a.get("requires", []),
-            "fromExitId": a["id"],
-            "toExitId": a["id"],
-          }
-        )
-  else:
-    edge_pairs, edge_unpaired, edge_reached = build_spanning_tree(edge_exits, edge_partner_finder, "edges")
-    door_pairs, door_unpaired, door_reached = build_spanning_tree(
-      door_exits, door_partner_finder, "doors", seed_reached=edge_reached
-    )
-    warp_pairs, warp_unpaired, warp_reached = build_spanning_tree(
-      warp_exits, door_partner_finder, "warps", seed_reached=edge_reached
-    )
-
-    all_pairs = edge_pairs + door_pairs + warp_pairs
-    all_unpaired = edge_unpaired + door_unpaired + warp_unpaired
-
-    for a, b in all_pairs:
-      connections.append(make_connection(a, b))
-      connections.append(make_connection(b, a))
-
-    for a in all_unpaired:
-      connections.append(make_connection(a, a))
-
-  print(
-    f"playercouldhave (final, accumulated across all pools): {len(playercouldhave)} distinct items/skills/permits tracked"
-  )
-
-  all_reached = edge_reached | door_reached | warp_reached
+  print("Vanilla mode requested: mapping exits directly to original layout targets.")
   all_rooms = {(e["origin"]["north"], e["origin"]["east"]) for e in all_exits}
-  unreached_rooms = all_rooms - all_reached
-  if unreached_rooms:
-    print(f"  {len(unreached_rooms)} room(s) never reached: {sorted(unreached_rooms)[:10]}")
 
-  out = {
-    "seed": SEED if not NO_SHUFFLE else "vanilla",
-    "connections": connections,
-  }
+  for a in all_exits:
+    partner = None
+    candidates = []
+    for b in all_exits:
+      if b["id"] == a["id"]:
+        continue
+      if b["origin"]["north"] == a["dest"]["north"] and b["origin"]["east"] == a["dest"]["east"]:
+        if a["mechanism"] == "edge" and b["mechanism"] == "edge":
+          if b["direction"] == OPPOSITE[a["direction"]]:
+            candidates.append(b)
+        elif a["mechanism"] != "edge" and b["mechanism"] != "edge":
+          if b["dest"]["north"] == a["origin"]["north"] and b["dest"]["east"] == a["origin"]["east"]:
+            candidates.append(b)
+
+    if candidates:
+      if a["mechanism"] == "edge":
+        # Match by the closest physical coordinate along the room border to prevent side-exit mixups
+        # lastcandidates = [*candidates]
+        candidates.sort(key=lambda x: abs(x.get("src_coord", 0) - a.get("src_coord", 0)))
+        # if lastcandidates!=candidates:
+        #   print("\n\n\n\n\n\n\n\nerrerrerrerrerrerrerrerrerrerrerrerr", lastcandidates, candidates, e)
+        partner = candidates[0]
+      else:
+        # For doors/warps, default to the matching target candidate
+        partner = candidates[0]
+
+    if partner:
+      connections.append(make_connection(a, partner))
+    else:
+      # TODO
+      connections.append(
+        make_connection(a, {**a})
+      )
+
+  all_rooms = {(e["origin"]["north"], e["origin"]["east"]) for e in all_exits}
+
   with open(f"{OUT_DIR}/json/connections.json", "w") as f:
-    json.dump(out, f, indent=2)
-
-  print(f"Wrote json/connections.json")
+    json.dump(connections, f, indent=2)
 
   def room_key_str(room):
     return f"{fmt_coord(room[0])}_{fmt_coord(room[1])}"
 
   def have_key_str(k):
     return f"{k[0]}:{k[1]}" if isinstance(k, tuple) else k
-
-  graph = {}
-  for c in connections:
-    room_str = f"{fmt_coord(c['originNorth'])}_{fmt_coord(c['originEast'])}"
-    graph.setdefault(room_str, []).append(
-      {
-        "toRoom": f"{fmt_coord(c['newDestNorth'])}_{fmt_coord(c['newDestEast'])}",
-        "exitId": c["fromExitId"],
-        "viaExitId": c["toExitId"],
-        "mechanism": c["mechanism"],
-        "direction": c.get("direction"),
-        "requires": c["requires"],
-      }
-    )
-
-  locations_out = []
-  item_give_index = {}
-  for loc in progression["locations"]:
-    room_str = room_key_str(loc["room"])
-    requires_raw = [[tok["raw"] for tok in group] for group in loc["requires"]]
-    receive_raw = loc.get("receive", [])
-    locations_out.append({"room": room_str, "requires": requires_raw, "receive": receive_raw})
-    for raw_tok in receive_raw:
-      tok = parse_requirement_token(raw_tok)
-      key_str = have_key_str(token_key(tok))
-      item_give_index.setdefault(key_str, []).append({"room": room_str, "raw": raw_tok})
 
   entrance_index = {}
   for e in edge_exits:
@@ -1240,30 +843,8 @@ def init():
       "gapIndex": e.get("gap_index", 0),
     }
 
-  final_have = {have_key_str(k): v for k, v in playercouldhave.items()}
-  pending_out = {have_key_str(k): [room_key_str(loc["room"]) for loc in locs] for k, locs in pending.items()}
-
-  hint_data = {
-    "seed": SEED if not NO_SHUFFLE else "vanilla",
-    "graph": graph,
-    "locations": locations_out,
-    "itemGiveIndex": item_give_index,
-    "entranceIndex": entrance_index,
-    "finalState": {
-      "playercouldhave": final_have,
-      "unresolvedPending": pending_out,
-    },
-  }
-  with open(f"{OUT_DIR}/json/hint_data.json", "w") as f:
-    json.dump(hint_data, f, indent=2)
-
   print("total distinct rooms across all exit pools:", len(all_rooms))
-  filtered_keys = [k for k in playercouldhave.keys() if "entrance" not in k]
-  sorted_keys = sorted(filtered_keys, key=lambda x: x[0])
-  print("edge_reached:", len(edge_reached))
-  print("door_reached:", len(door_reached))
-  print("warp_reached:", len(warp_reached))
-  return (playercouldhave, edge_reached, door_reached, warp_reached, all_rooms)
+  return (playercouldhave, all_rooms)
 
 
 if __name__ == "__main__":

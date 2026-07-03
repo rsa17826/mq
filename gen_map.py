@@ -478,7 +478,7 @@ def load_connections():
     print(f"[-] Error: {CONNECTIONS_JSON_PATH} required.")
     return []
   with open(CONNECTIONS_JSON_PATH, "r", encoding="utf-8") as f:
-    return json.load(f).get("connections", [])
+    return json.load(f)
 
 
 def load_doors():
@@ -624,7 +624,7 @@ def main():
   half_block_y_room_scaled = (ROOM_INTERNAL_HEIGHT / (2 * BLOCKS_Y)) * scale_y_room
 
   for conn in connections:
-    o_n, o_e = int(conn["originNorth"]), int(conn["originEast"])
+    o_n, o_e = int(conn["id"].split("_")[0]), int(conn["id"].split("_")[1])
     room_key = f"{o_n}_{o_e}"
     if o_n not in north_to_track or o_e not in east_to_track:
       continue
@@ -646,7 +646,7 @@ def main():
     halfTileWidth = (TILE_WIDTH / BLOCKS_X) / 2
     halfTileHeight = (TILE_HEIGHT / BLOCKS_Y) / 2
 
-    dest_o_n, dest_o_e = int(conn["newDestNorth"]), int(conn["newDestEast"])
+    dest_o_n, dest_o_e = int(conn["id"].split("_")[2]), int(conn["id"].split("_")[3])
     dest_track_col = east_to_track.get(dest_o_e, track_col)
     dest_track_row = north_to_track.get(dest_o_n, track_row)
 
@@ -678,7 +678,17 @@ def main():
       ctrl_x, ctrl_y = (mid_x + (25 if direction == "east" else -25), mid_y)
     else:
       ctrl_x, ctrl_y = (mid_x, mid_y + (25 if direction == "south" else -25))
-    color = djb2_color_hash(conn["fromExitId"], conn["toExitId"])
+    newid = [*map(float, conn["id"].split("_"))]
+    match conn["direction"]:
+      case "north":
+        newid[2] += 1
+      case "south":
+        newid[2] -= 1
+      case "east":
+        newid[3] += 1
+      case "west":
+        newid[3] -= 1
+    color = djb2_color_hash(conn["id"], "_".join(map(str, newid)))
 
     if room_key in js_routes_db:
       js_routes_db[room_key].append(
@@ -699,7 +709,7 @@ def main():
     src_x_local, src_y_local = snapToGrid(d["dest_x"], d["dest_y"])
     override = conn_override_index.get(door_id_str)
     if override:
-      d_n, d_e = int(override["newDestNorth"]), int(override["newDestEast"])
+      d_n, d_e = int(override["id"].split("_")[2]), int(override["id"].split("_")[3])
       ov_x, ov_y = override.get("newX"), override.get("newY")
       if ov_x is not None and ov_y is not None:
         dest_x_local, dest_y_local = snapToGrid(float(ov_x), float(ov_y))
@@ -757,7 +767,9 @@ def main():
     tile_exits = geom_index.get(room_key, {})
     squares_html = []
 
-    active_connections = [c for c in connections if int(c["originNorth"]) == north and int(c["originEast"]) == east]
+    active_connections = [
+      c for c in connections if int(c["id"].split("_")[0]) == north and int(c["id"].split("_")[1]) == east
+    ]
 
     if tile_exits and isinstance(tile_exits, dict):
       for side, bounds_list in tile_exits.items():
@@ -784,8 +796,19 @@ def main():
           connection_id = None
           if idx < len(side_connections):
             conn = side_connections[idx]
-            matched_color = djb2_color_hash(conn["fromExitId"], conn["toExitId"])
-            connection_id = conn["fromExitId"]
+            newid = [*map(float, conn["id"].split("_"))]
+            match conn["direction"]:
+              case "north":
+                newid[2] += 1
+              case "south":
+                newid[2] -= 1
+              case "east":
+                newid[3] += 1
+              case "west":
+                newid[3] -= 1
+
+            matched_color = djb2_color_hash(conn["id"], "_".join(map(str, newid)))
+            connection_id = "_".join(map(str, newid))
 
           if side in ["west", "east"]:
             if bounds.get("top") is None or bounds.get("bottom") is None:
@@ -842,7 +865,7 @@ def main():
       door_id_str = str(d["id"])
       if door_id_str in conn_override_index:
         override = conn_override_index[door_id_str]
-        d_n, d_e = int(override["newDestNorth"]), int(override["newDestEast"])
+        d_n, d_e = int(override["id"].split("_")[2]), int(override["id"].split("_")[3])
         if override.get("newX") is not None and override.get("newY") is not None:
           dest_x_local = float(override["newX"])
           dest_y_local = float(override["newY"])

@@ -11,9 +11,8 @@ import os
 def init(src):
   OUT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-  conn_data = json.load(open(f"{OUT_DIR}/json/connections.json"))
-  connections = conn_data["connections"]
-  seed = conn_data["seed"]
+  connections = json.load(open(f"{OUT_DIR}/json/connections.json"))
+  seed = "asd"
 
   def fmt_num(n):
     if n is None:
@@ -22,54 +21,62 @@ def init(src):
       return str(int(n))
     return f"{n:.4f}"
 
-  DIR_CODES = {"north": 1, "south": 2, "west": 3, "east": 4}
-
   rows = []
   print(connections)
   for c in connections:
-    d_code = DIR_CODES.get(c.get("direction"), 0)
+    print("")
+    print("")
+    print("")
+    print(c)
     rows.append(
-      "[%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s]"
+      "[%s,%s,%s,%s,%s,%s]"
       % (
-        fmt_num(c["originNorth"]),
-        fmt_num(c["originEast"]),
-        fmt_num(c["vanillaDestNorth"]),
-        fmt_num(c["vanillaDestEast"]),
-        fmt_num(c["newDestNorth"]),
-        fmt_num(c["newDestEast"]),
+        f'"{c["id"]}"',
         fmt_num(c["newX"]),
         fmt_num(c["newY"]),
+        fmt_num(c["srcCoord"]),
+        f'"{c["direction"]}"',
+        fmt_num(c["idx"]),
       )
     )
   table_js = ",".join(rows)
 
+  # Hardcoded layout specs matching your requirements
   PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
     ;(function () {{
+      var ROOM_WIDTH = 710.0;
+      var ROOM_HEIGHT = 560.0;
+      var BLOCKS_X = 14;
+      var BLOCKS_Y = 11;
+      var BLOCK_W = ROOM_WIDTH / BLOCKS_X;
+      var BLOCK_H = ROOM_HEIGHT / BLOCKS_Y;
+
       var ER_TABLE = [{table_js}]
       var ER_MAP = new Map()
       window.ER_MAP=ER_MAP
+      window.ER_TABLE=ER_TABLE
       for (var i = 0; i < ER_TABLE.length; i++) {{
         var r = ER_TABLE[i]
-        var key = r[0] + "_" + r[1] + "_" + r[2] + "_" + r[3]
-        if (!ER_MAP.has(key)) {{
-          ER_MAP.set(key, [])
+        if (!ER_MAP.has(r[0])) {{
+          ER_MAP.set(r[0], [])
         }}
-        ER_MAP.get(key).push({{
-          newNorth: r[4],
-          newEast: r[5],
-          newX: r[6],
-          newY: r[7],
+        ER_MAP.get(r[0]).push({{
+          newX: r[1],
+          newY: r[2],
+          srcCoord: r[3],
+          direction: r[4],
+          idx: r[5]
         }})
       }}
 
       var erNorth = manager.north === undefined ? null : manager.north
       var erEast = manager.east === undefined ? null : manager.east
       var erInTransition = false
-      var erUpdatingInternal = false // Safety flag to prevent infinite loops from our own writes
+      var erUpdatingInternal = false 
       var erOrigin = {{ north: null, east: null, x: null, y: null }}
 
       function erBeginWriteIfNeeded() {{
-        if (erUpdatingInternal) return; // Ignore updates performed inside loca()
+        if (erUpdatingInternal) return; 
         if (!erInTransition) {{
           erOrigin.north = erNorth
           erOrigin.east = erEast
@@ -93,7 +100,7 @@ def init(src):
       }})
       Object.defineProperty(manager, "east", {{
         get: function () {{ return erEast }},
-        set: function (v) {{ erBeginWriteIfNeeded(); erEast = v }},
+        set: function (v) {{ erEast = v }},
         enumerable: true,
         configurable: true,
       }})
@@ -117,7 +124,7 @@ def init(src):
           if (key=="9_22_10.1_21"){{
             key = "9_22_9_21"
           }}
-          if (erOrigin.north ==21&& erOrigin.east==21&&manager.char[0].get_x()==-1){{
+          if (erOrigin.north ==21 && erOrigin.east==21 && manager.char[0].get_x()==-1){{
             manager.char[0].set_x(50)
           }}
           console.log("[ER DEBUG] Checking redirection for vanilla move path key:", key);
@@ -126,82 +133,59 @@ def init(src):
           if (conns && conns.length > 0) {{
             var conn = conns[0]
 
+            // Spatial block evaluation handles multiple structural exit conflicts
             if (conns.length > 1 && erOrigin.x !== null && erOrigin.y !== null) {{
-              console.log("[ER DEBUG] Multi-gap overlap discovered! Choices count:", conns.length);
-              var warptype = "unknown"
+              console.log("[ER DEBUG] Multi-gap overlap discovered! Checking tile-block ranges. Choices:", conns.length);
+              
+              // Determine player block position
+              var blockX = Math.floor(erOrigin.x / BLOCK_W);
+              var blockY = Math.floor(erOrigin.y / BLOCK_H);
+              
+              // Clamp values to valid block bounds
+              if (blockX < 0) blockX = 0;
+              if (blockX >= BLOCKS_X) blockX = BLOCKS_X - 1;
+              if (blockY < 0) blockY = 0;
+              if (blockY >= BLOCKS_Y) blockY = BLOCKS_Y - 1;
 
-                console.log(manager.char[0].get_y(), manager.char[0].get_x(), manager.north, manager.east)
-              if (manager.char[0].get_y() > 550 ||
-              manager.char[0].get_y() < 0 ||
-              manager.char[0].get_x() < 0 ||
-              manager.char[0].get_x() > 660) {{
-                warptype = "edge"
-              }}
-              else if (manager.charBottom[0].hitTestObject(
-                manager.stairsDown,
-              ) &&
-              manager.stairsDown.get_visible() == 1) {{
-            warptype = "stairsDown"
-              }}
-              else if (manager.charBottom[0].hitTestObject(
-                manager.stairsUp2,
-              ) &&
-              manager.stairsUp2.get_visible() == 1) {{
-            warptype = "stairsUp2"
-              }}
-              else if (manager.charBottom[0].hitTestObject(
-                manager.stairsUp,
-              ) &&
-              manager.stairsUp.get_visible() == 1) {{
-            warptype = "stairsUp"
-              }}
-              else if (manager.charBottom[0].hitTestObject(
-                manager.grimsbane,
-              ) &&
-              manager.grimsbane.get_visible() == 1) {{
-            warptype = "grimsbane"
-              }}
-              else if (manager.charBottom[0].hitTestObject(
-                manager.castleDoors,
-              ) &&
-              manager.castleDoors.get_visible() == 1) {{
-            warptype = "castleDoors"
-              }}
-              else if (manager.charBottom[0].hitTestObject(manager.isle1) &&
-                manager.isle1.get_visible() == 1) {{
-              warptype = "isle1"
-              }}
-              else if (manager.charBottom[0].hitTestObject(manager.isle2) &&
-                manager.isle2.get_visible() == 1) {{
-              warptype = "isle2"
-              }}
-              else if (manager.charBottom[0].hitTestObject(manager.isle3) &&
-                manager.isle3.get_visible() == 1) {{
-              warptype = "isle3"
-              }}
-              else if (manager.charBottom[0].hitTestObject(manager.temple) &&
-                manager.temple.get_visible() == 1) {{
-              warptype = "temple"
-              }}
-              console.log("warptype", warptype, conns)
-              var minDiff = Infinity
-              for (var j = 0; j < conns.length; j++) {{
-                var c = conns[j]
-                if (c.dirCode > 0 && c.srcCoord !== -1) {{
-                  var pCoord = (c.dirCode === 1 || c.dirCode === 2) ? erOrigin.x : erOrigin.y
-                  var diff = Math.abs(pCoord - c.srcCoord)
-                  console.log(" -> Match Check candidate [" + j + "]: dir=" + c.dirCode + " expectedCoord=" + c.srcCoord + " distance=" + diff);
-                  if (diff < minDiff) {{
-                    minDiff = diff
-                    conn = c
+              var roomData = AP_ENTRANCE_IDS[erOrigin.north + "_" + erOrigin.east];
+              if (roomData) {{
+                // Identify transition direction based on vanilla destination coordinates relative to origin
+                var direction = null;
+                if (erNorth < erOrigin.north) direction = "north";
+                else if (erNorth > erOrigin.north) direction = "south";
+                else if (erEast < erOrigin.east) direction = "west";
+                else if (erEast > erOrigin.east) direction = "east";
+
+                if (direction && roomData[direction]) {{
+                  var spans = roomData[direction];
+                  var matchedExitIndex = -1;
+
+                  for (var s = 0; s < spans.length; s++) {{
+                    var span = spans[s];
+                    if (direction === "west" || direction === "east") {{
+                      if (blockY >= span.top && blockY <= span.bottom) {{
+                        matchedExitIndex = s;
+                        break;
+                      }}
+                    }} else if (direction === "north" || direction === "south") {{
+                      if (blockX >= span.left && blockX <= span.right) {{
+                        matchedExitIndex = s;
+                        break;
+                      }}
+                    }}
+                  }}
+
+                  // If we found a block-range match, map it safely to our candidate array
+                  if (matchedExitIndex !== -1 && matchedExitIndex < conns.length) {{
+                    conn = conns[matchedExitIndex];
+                    console.log("[ER DEBUG] Block match successful! Target selected via index:", matchedExitIndex);
                   }}
                 }}
               }}
             }}
-            // TODO
-            console.log("[ER DEBUG] Success! Redirecting room target to:", conn.newNorth + "," + conn.newEast, "Placing character at:", conn.newX + "," + conn.newY, conn.xIsEven, conn.yIsEven, conn);
 
-            // Set safety lock flag to prevent our proxy properties from creating bad transition tracking chains
+            console.log("[ER DEBUG] Success! Redirecting room target to:", conn.newNorth + "," + conn.newEast, "Placing character at:", conn.newX + "," + conn.newY, conn);
+
             erUpdatingInternal = true
             try {{
               manager.north = conn.newNorth
@@ -216,13 +200,11 @@ def init(src):
                 }}
               }}
               setTimeout(()=>{{
-                // prevents duplicate stairs appearing from the orig room in the new random room
                 test.newScreen()
-                // prevents warp rings from moving player to wrong position
                 if (manager.char && manager.char[0]) {{
                   if (typeof manager.char[0].set_x === 'function') {{
                     manager.char[0].set_x(conn.newX)
-                  manager.char[0].set_y(conn.newY)
+                    manager.char[0].set_y(conn.newY)
                   }} else {{
                     manager.char[0].x = conn.newX
                     manager.char[0].y = conn.newY
@@ -247,7 +229,6 @@ def init(src):
   assert src.count(ANCHOR) == 1, f"expected exactly one occurrence of anchor, found {src.count(ANCHOR)}"
 
   patched = src.replace(ANCHOR, PATCH + ANCHOR)
-
   print(f"Patched file successfully")
 
   return patched
