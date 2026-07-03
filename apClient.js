@@ -48,8 +48,8 @@ class ArchipelagoClient {
     }
 
     this.socket.onclose = (event) => {
-      apLog(
-        `[WARNING] Disconnected from Archipelago server. Code: ${event.code}`,
+      apWarn(
+        `[WARNING] Disconnected from Archipelago server. Code: @orange!${event.code}@!`,
       )
     }
 
