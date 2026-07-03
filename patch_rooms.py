@@ -26,6 +26,7 @@ def init(src):
   DIR_CODES = {"north": 1, "south": 2, "west": 3, "east": 4}
   
   rows = []
+  print(connections)
   for c in connections:
     d_code = DIR_CODES.get(c.get("direction"), 0)
     rows.append(
@@ -98,8 +99,8 @@ def init(src):
           erOrigin.north = erNorth
           erOrigin.east = erEast
           if (manager.char && manager.char[0]) {{
-            erOrigin.x = typeof manager.char[0].get_x === 'function' ? manager.char[0].get_x() : manager.char[0].x
-            erOrigin.y = typeof manager.char[0].get_y === 'function' ? manager.char[0].get_y() : manager.char[0].y
+            erOrigin.x = manager.char[0].get_x()
+            erOrigin.y = manager.char[0].get_y()
           }} else {{
             erOrigin.x = null
             erOrigin.y = null

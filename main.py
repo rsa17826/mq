@@ -1,10 +1,12 @@
 # import map.genGrid as _
-import shuffle_exits
-import gen_map
-import patch_rooms
 import os
 
-playercouldhave, edge_reached, door_reached, warp_reached, all_rooms = shuffle_exits.init()
+import gen_map
+import patch_rooms
+
+# import shuffle_exits
+
+# playercouldhave, edge_reached, door_reached, warp_reached, all_rooms = shuffle_exits.init()
 
 # shuffle_items.init()
 OUT_DIR = os.path.dirname(os.path.abspath(__file__))
