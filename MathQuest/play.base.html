@@ -40,7 +40,7 @@
   }
 
   function htmlesc(str) {
-    return str.replaceAll("&", "&amp;").replaceAll("<", "&gt;")
+    return str.replaceAll("&", "&amp;").replaceAll("<", "&lt;")
   }
   function parseatts(str, type) {
     const regex = /(@\w*!)/g
@@ -86,12 +86,57 @@
           consoleLogStr += "%c"
           consoleStyles.push(currentConsoleColor)
           break
+        case "@darkgrey!":
+          if (inspan) html += "</span>"
+          html += '<span style="color:darkgrey">'
+          inspan = true
+
+          currentConsoleColor = "color: darkgrey"
+          consoleLogStr += "%c"
+          consoleStyles.push(currentConsoleColor)
+          break
+        case "@lightgrey!":
+          if (inspan) html += "</span>"
+          html += '<span style="color:lightgrey">'
+          inspan = true
+
+          currentConsoleColor = "color: lightgrey"
+          consoleLogStr += "%c"
+          consoleStyles.push(currentConsoleColor)
+          break
+        case "@darkorange!":
+          if (inspan) html += "</span>"
+          html += '<span style="color:darkorange">'
+          inspan = true
+
+          currentConsoleColor = "color: darkorange"
+          consoleLogStr += "%c"
+          consoleStyles.push(currentConsoleColor)
+          break
         case "@orange!":
           if (inspan) html += "</span>"
           html += '<span style="color:orange">'
           inspan = true
 
           currentConsoleColor = "color: orange"
+          consoleLogStr += "%c"
+          consoleStyles.push(currentConsoleColor)
+          break
+        case "@hotpink!":
+          if (inspan) html += "</span>"
+          html += '<span style="color:hotpink">'
+          inspan = true
+
+          currentConsoleColor = "color: hotpink"
+          consoleLogStr += "%c"
+          consoleStyles.push(currentConsoleColor)
+          break
+        case "@cyan!":
+          if (inspan) html += "</span>"
+          html += '<span style="color:cyan">'
+          inspan = true
+
+          currentConsoleColor = "color: cyan"
           consoleLogStr += "%c"
           consoleStyles.push(currentConsoleColor)
           break
@@ -248,7 +293,11 @@
           }
 
           // Existing space/arrow key protection
-          if ([37, 38, 39, 40, 32, 8].indexOf(e.keyCode) > -1) {
+          if (
+            [37, 38, 39, 40, 32, 8].indexOf(e.keyCode) > -1 &&
+            document.activeElement.nodeName != "INPUT"&&
+            document.activeElement.nodeName != "TEXTAREA"
+          ) {
             e.preventDefault()
           }
         },
@@ -297,7 +346,7 @@
         position: fixed;
         top: 0;
         right: 0;
-        width: 340px;
+        width: 540px;
         max-width: 90vw;
         z-index: 6;
         font-family: "Consolas", "Menlo", monospace;
@@ -326,7 +375,7 @@
         font-size: 11px;
       }
       #apChatLog {
-        max-height: 260px;
+        max-height: 660px;
         overflow-y: auto;
         padding: 4px 8px;
         color: #ddd;
@@ -355,7 +404,37 @@
       }
       #apChatLog::-webkit-scrollbar-thumb {
         background: #555;
-        border-radius: 4px;
+      }
+      #apChatSayRow {
+        display: flex;
+        border-top: 1px solid #444;
+      }
+      #apChatLogContainer.collapsed #apChatSayRow {
+        display: none;
+      }
+      #apChatSayInput {
+        flex: 1;
+        min-width: 0;
+        background: rgba(0, 0, 0, 0.5);
+        border: none;
+        outline: none;
+        color: #ddd;
+        font-family: "Consolas", "Menlo", monospace;
+        font-size: 12px;
+        padding: 5px 8px;
+      }
+      #apChatSaySend {
+        background: rgba(20, 20, 20, 0.9);
+        color: #ddd;
+        border: none;
+        border-left: 1px solid #444;
+        cursor: pointer;
+        font-family: "Consolas", "Menlo", monospace;
+        font-size: 12px;
+        padding: 5px 10px;
+      }
+      #apChatSaySend:hover {
+        background: rgba(40, 40, 40, 0.9);
       }
       @font-face {
         font-family: "Booter - Zero Zero";
@@ -499,10 +578,49 @@
         <span id="apChatLogToggle">▾</span>
       </div>
       <div id="apChatLog"></div>
+      <div id="apChatSayRow">
+        <input
+          type="text"
+          id="apChatSayInput"
+          placeholder="Say something..."
+          maxlength="300"
+        />
+        <button id="apChatSaySend">Send</button>
+      </div>
     </div>
     <script>
       window._apChatLogEl = document.getElementById("apChatLog")
       window._apChatBuffer.forEach(_apRenderEntry)
+
+      function apSendSayFromInput() {
+        var input = document.getElementById("apChatSayInput")
+        var text = input.value.trim()
+        if (!text) return
+        if (!window.ap || !window.ap.isAuthenticated) {
+          apWarn("Cannot send Say; not connected/authenticated yet.")
+          return
+        }
+        window.ap.sendPackets([
+          {
+            cmd: "Say",
+            text: text,
+          },
+        ])
+        input.value = ""
+      }
+
+      document
+        .getElementById("apChatSaySend")
+        .addEventListener("click", apSendSayFromInput)
+
+      document
+        .getElementById("apChatSayInput")
+        .addEventListener("keydown", function (e) {
+          if (e.key === "Enter") {
+            e.preventDefault()
+            apSendSayFromInput()
+          }
+        })
     </script>
 
     <div id="gameFocus" align="center">

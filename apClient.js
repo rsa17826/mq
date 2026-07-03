@@ -4,6 +4,9 @@ const itemColors = {
   misc: "purple",
   skill: "yellow",
   magic: "purple",
+  weapon: "darkgrey",
+  armor: "lightgrey",
+  permit: "darkorange",
 }
 /**
  * A native JavaScript implementation of the Archipelago Network Protocol.
@@ -241,7 +244,7 @@ class ArchipelagoClient {
       var coloredName = itemName.split(":")
       coloredName = `@${itemColors[coloredName[0]]}!@console!${coloredName[0]}:@!@${itemColors[coloredName[0]]}!${coloredName[1]}@!`
       apLog(
-        `@${this.itemCount > window.lastRecivedItem ? "purple" : "orange"}![Item Received]@! @console!ID: ${item.item} (@!${coloredName}@console!)@!${this.itemCount > window.lastRecivedItem ? "" : " - @orange! already recived@!"}@console!`,
+        `@${this.itemCount > window.lastRecivedItem ? "purple" : "orange"}![Item Received]@! @console!ID: ${item.item} (@!${coloredName}@console!)@!${this.itemCount > window.lastRecivedItem ? "" : " - @orange!already recived@!"}@console!`,
         item,
       )
       if (this.itemCount > window.lastRecivedItem) {
@@ -280,12 +283,55 @@ class ArchipelagoClient {
       .map((part) => part.text || "")
       .join("")
     apLog(
-      `@blue![Archipelago]@! ${messageText
-        .replace(
-          /(^[^(]+) \((Team #\d+)\) playing (.*) has joined/,
-          "@green!$1@blue! (@green!$2@blue!) @!playing @green!$3@! has joined",
-        )
-        .replace(/[/!]help/g, "@green!$&@!")}`,
+      `@blue![Archipelago]@! ${
+        messageText
+          // 1. Original join message formatting
+          .replace(
+            /(^[^(]+) \((Team #\d+)\) playing (.*) has joined/,
+            "@green!$1@blue! (@green!$2@blue!) @!playing @green!$3@! has joined",
+          )
+          // 2. Highlight any command starting with ! or / (e.g., !help, /release)
+          .replace(/(^|\s)([!/][a-zA-Z_0-9]+)/g, "$1@green!$2@!")
+
+          // 3. Highlight player messages formatted like "Player (Alias): message" or "Player: message"
+          // Captures the names/aliases and makes them yellow
+          .replace(
+            /(^|\]\s)([^:\n]+)\s*\(([^)]+)\):/,
+            (_, a, s, d) =>
+              `${a}@${d == ap.playerName ? "hotpink" : "yellow"}!${s}(${d})@!:`,
+          )
+          .replace(
+            /(^|\]\s)([^:\n\s]+):(?!\/\/)/,
+            (_, a, s) =>
+              `${a}@${s == ap.playerName ? "hotpink" : "yellow"}!${s}@!:`,
+          )
+
+          // 4. Highlight server options configurations (e.g., "Option hint_cost is set to 10")
+          // Colors the option name cyan and the value green
+          .replace(
+            /(Option\s)([_a-zA-Z0-9]+)(\sis\sset\sto\s)(.*)/g,
+            "$1@cyan!$2@!$3@green!$4@!",
+          )
+
+          .replace(
+            /(Didn't find something that closely matches) '([^']+)' did you mean '([^']+)'\? \((\d+)% sure\)/gm,
+            "@red!$1@!",
+          )
+          .replace(
+            new RegExp(
+              `'(${Object.keys(itemColors).join("|")}):(\\S+)'`,
+              "gm",
+            ),
+            (_, type, name) =>
+              `'@${itemColors[type]}!${type}:${name}@!'`,
+          )
+          // 5. Highlight common error/denial prefixes (e.g., "Sorry, ...", "Didn't find ...")
+          .replace(
+            /((?:^|@!) *(?:Sorry|Didn't find|You can't afford)[\w\s\d,]*[.?!]?)/gm,
+            "@red!$1@!",
+          )
+        //
+      }`,
     )
   }
 
