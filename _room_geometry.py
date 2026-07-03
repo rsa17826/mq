@@ -58,14 +58,14 @@ GEOM: list[ExitBase] = [
     "east": 16,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 9},
+        {"top": 0, "bottom": 9, "newX": 659, "newY": 229},
       ],
       "south": [],
       "east": [
-        {"top": 0, "bottom": 9},
+        {"top": 0, "bottom": 9, "newX": 0, "newY": 229},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -74,14 +74,14 @@ GEOM: list[ExitBase] = [
     "east": 19,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 9},
+        {"top": 0, "bottom": 9, "newX": 659, "newY": 229},
       ],
       "south": [],
       "east": [
-        {"top": 0, "bottom": 9},
+        {"top": 0, "bottom": 9, "newX": 0, "newY": 229},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -90,14 +90,14 @@ GEOM: list[ExitBase] = [
     "east": 20,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 9},
+        {"top": 0, "bottom": 9, "newX": 659, "newY": 229},
       ],
       "south": [],
       "east": [
-        {"top": 0, "bottom": 9},
+        {"top": 0, "bottom": 9, "newX": 0, "newY": 229},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -108,10 +108,10 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 9, "bottom": 9},
+        {"top": 9, "bottom": 9, "newX": 0, "newY": 458},
       ],
       "north": [
-        {"left": 6, "right": 8},
+        {"left": 6, "right": 8, "newX": 355, "newY": 509},
       ],
     },
   },
@@ -127,12 +127,24 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "east", "idx": 0},
-            {"side": "north", "idx": 0},
+            {
+              "side": "east",
+              "idx": 0,
+            },
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "east", "idx": 1},
-            {"side": "west", "idx": 0},
+            {
+              "side": "east",
+              "idx": 1,
+            },
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
         ],
       },
@@ -142,31 +154,48 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "west", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "east", "idx": 1},
+            {
+              "side": "east",
+              "idx": 1,
+            },
           ],
           [
-            {"side": "east", "idx": 0},
+            {
+              "side": "east",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "north", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
         ],
       },
     ],
     "exits": {
       "west": [
-        {"top": 9, "bottom": 9},
+        {"top": 9, "bottom": 9, "newX": 659, "newY": 458},
       ],
       "south": [],
       "east": [
-        {"top": 5, "bottom": 6},
-        {"top": 9, "bottom": 9},
+        {"top": 5, "bottom": 6, "newX": 0, "newY": 280},
+        {"top": 9, "bottom": 9, "newX": 0, "newY": 458},
       ],
       "north": [
-        {"left": 6, "right": 7, "newY": 89},
+        {
+          "left": 6,
+          "right": 7,
+          "newX": 355,
+          "newY": 89,
+        },
       ],
     },
   },
@@ -182,12 +211,24 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "west", "idx": 1},
-            {"side": "east", "idx": 0},
+            {
+              "side": "west",
+              "idx": 1,
+            },
+            {
+              "side": "east",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "west", "idx": 0},
-            {"side": "north", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
         ],
       },
@@ -197,29 +238,41 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "west", "idx": 1},
-            {"side": "east", "idx": 0},
+            {
+              "side": "west",
+              "idx": 1,
+            },
+            {
+              "side": "east",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "west", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "north", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
         ],
       },
     ],
     "exits": {
       "west": [
-        {"top": 5, "bottom": 6},
-        {"top": 9, "bottom": 9},
+        {"top": 5, "bottom": 6, "newX": 659, "newY": 458},
+        {"top": 9, "bottom": 9, "newX": 659, "newY": 280},
       ],
       "south": [],
       "east": [
-        {"top": 9, "bottom": 9},
+        {"top": 9, "bottom": 9, "newX": 0, "newY": 458},
       ],
       "north": [
-        {"left": 11, "right": 12},
+        {"left": 11, "right": 12, "newX": 583, "newY": 509},
       ],
     },
   },
@@ -228,16 +281,16 @@ GEOM: list[ExitBase] = [
     "east": 26,
     "exits": {
       "west": [
-        {"top": 9, "bottom": 9},
+        {"top": 9, "bottom": 9, "newX": 659, "newY": 458},
       ],
       "south": [],
       "east": [],
       "north": [
-        {"left": 4, "right": 4},
-        {"left": 6, "right": 6},
-        {"left": 8, "right": 8},
-        {"left": 10, "right": 10},
-        {"left": 12, "right": 12},
+        {"left": 4, "right": 4, "newX": 202, "newY": 509},
+        {"left": 6, "right": 6, "newX": 304, "newY": 509},
+        {"left": 8, "right": 8, "newX": 405, "newY": 509},
+        {"left": 10, "right": 10, "newX": 507, "newY": 509},
+        {"left": 12, "right": 12, "newX": 608, "newY": 509},
       ],
     },
   },
@@ -247,13 +300,13 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 1, "right": 13},
+        {"left": 1, "right": 13, "newX": 355, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 1, "right": 13},
+        {"left": 1, "right": 13, "newX": 355, "newY": 509},
       ],
     },
   },
@@ -262,16 +315,16 @@ GEOM: list[ExitBase] = [
     "east": 14,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -280,16 +333,16 @@ GEOM: list[ExitBase] = [
     "east": 15,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -298,16 +351,19 @@ GEOM: list[ExitBase] = [
     "east": 17,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {
+          "top": 0,
+          "bottom": 10,
+        },
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -316,16 +372,16 @@ GEOM: list[ExitBase] = [
     "east": 19,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -341,9 +397,18 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 0},
-            {"side": "east", "idx": 0},
-            {"side": "north", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
+            {
+              "side": "east",
+              "idx": 0,
+            },
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
         ],
       },
@@ -353,11 +418,20 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "east", "idx": 0},
-            {"side": "north", "idx": 0},
+            {
+              "side": "east",
+              "idx": 0,
+            },
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
         ],
       },
@@ -365,13 +439,13 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 6, "right": 8},
+        {"left": 6, "right": 8, "newX": 355, "newY": 0},
       ],
       "east": [
-        {"top": 5, "bottom": 6},
+        {"top": 5, "bottom": 6, "newX": 0, "newY": 280},
       ],
       "north": [
-        {"left": 6, "right": 8},
+        {"left": 6, "right": 8, "newX": 355, "newY": 509},
       ],
     },
   },
@@ -387,14 +461,26 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 0},
-            {"side": "north", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "east", "idx": 0},
+            {
+              "side": "east",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "west", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
         ],
       },
@@ -404,32 +490,49 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "east", "idx": 0},
+            {
+              "side": "east",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "south", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "north", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "west", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
         ],
       },
     ],
     "exits": {
       "west": [
-        {"top": 5, "bottom": 6},
+        {"top": 5, "bottom": 6, "newX": 659, "newY": 280},
       ],
       "south": [
-        {"left": 7, "right": 7},
+        {"left": 7, "right": 7, "newX": 329, "newY": 89},
       ],
       "east": [
-        {"top": 5, "bottom": 6},
+        {"top": 5, "bottom": 6, "newX": 0, "newY": 280},
       ],
       "north": [
-        {"left": 11, "right": 11, "newY": 88},
+        {
+          "left": 11,
+          "right": 11,
+          "newY": 88,
+          "newX": 557,
+        },
       ],
     },
   },
@@ -438,13 +541,13 @@ GEOM: list[ExitBase] = [
     "east": 25,
     "exits": {
       "west": [
-        {"top": 5, "bottom": 6},
+        {"top": 5, "bottom": 6, "newX": 659, "newY": 280},
       ],
       "south": [
-        {"left": 11, "right": 12},
+        {"left": 11, "right": 12, "newX": 583, "newY": 0},
       ],
       "east": [
-        {"top": 9, "bottom": 9},
+        {"top": 9, "bottom": 9, "newX": 0, "newY": 458},
       ],
       "north": [],
     },
@@ -461,16 +564,34 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 0},
-            {"side": "south", "idx": 1},
-            {"side": "south", "idx": 3},
+            {
+              "side": "south",
+              "idx": 0,
+            },
+            {
+              "side": "south",
+              "idx": 1,
+            },
+            {
+              "side": "south",
+              "idx": 3,
+            },
           ],
           [
-            {"side": "south", "idx": 2},
+            {
+              "side": "south",
+              "idx": 2,
+            },
           ],
           [
-            {"side": "west", "idx": 0},
-            {"side": "south", "idx": 4},
+            {
+              "side": "west",
+              "idx": 0,
+            },
+            {
+              "side": "south",
+              "idx": 4,
+            },
           ],
         ],
       },
@@ -480,34 +601,52 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 2},
+            {
+              "side": "south",
+              "idx": 2,
+            },
           ],
           [
-            {"side": "south", "idx": 3},
+            {
+              "side": "south",
+              "idx": 3,
+            },
           ],
           [
-            {"side": "south", "idx": 4},
+            {
+              "side": "south",
+              "idx": 4,
+            },
           ],
           [
-            {"side": "south", "idx": 0},
-            {"side": "south", "idx": 1},
+            {
+              "side": "south",
+              "idx": 0,
+            },
+            {
+              "side": "south",
+              "idx": 1,
+            },
           ],
           [
-            {"side": "west", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
         ],
       },
     ],
     "exits": {
       "west": [
-        {"top": 9, "bottom": 9},
+        {"top": 9, "bottom": 9, "newX": 659, "newY": 458},
       ],
       "south": [
-        {"left": 4, "right": 4},
-        {"left": 6, "right": 6},
-        {"left": 8, "right": 8},
-        {"left": 10, "right": 10},
-        {"left": 12, "right": 12},
+        {"left": 4, "right": 4, "newX": 202, "newY": 0},
+        {"left": 6, "right": 6, "newX": 304, "newY": 0},
+        {"left": 8, "right": 8, "newX": 405, "newY": 0},
+        {"left": 10, "right": 10, "newX": 507, "newY": 0},
+        {"left": 12, "right": 12, "newX": 608, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -523,12 +662,24 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "north", "idx": 0},
-            {"side": "east", "idx": 2},
+            {
+              "side": "north",
+              "idx": 0,
+            },
+            {
+              "side": "east",
+              "idx": 2,
+            },
           ],
           [
-            {"side": "east", "idx": 0},
-            {"side": "east", "idx": 1},
+            {
+              "side": "east",
+              "idx": 0,
+            },
+            {
+              "side": "east",
+              "idx": 1,
+            },
           ],
         ],
       }
@@ -537,12 +688,12 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 1, "bottom": 2},
-        {"top": 4, "bottom": 5},
-        {"top": 7, "bottom": 8},
+        {"top": 1, "bottom": 2, "newX": 0, "newY": 76},
+        {"top": 4, "bottom": 5, "newX": 0, "newY": 229},
+        {"top": 7, "bottom": 8, "newX": 0, "newY": 381},
       ],
       "north": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -558,16 +709,34 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "west", "idx": 0},
-            {"side": "east", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
+            {
+              "side": "east",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "east", "idx": 1},
-            {"side": "west", "idx": 1},
+            {
+              "side": "east",
+              "idx": 1,
+            },
+            {
+              "side": "west",
+              "idx": 1,
+            },
           ],
           [
-            {"side": "west", "idx": 2},
-            {"side": "east", "idx": 2},
+            {
+              "side": "west",
+              "idx": 2,
+            },
+            {
+              "side": "east",
+              "idx": 2,
+            },
           ],
         ],
       },
@@ -577,33 +746,51 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "west", "idx": 2},
-            {"side": "east", "idx": 2},
+            {
+              "side": "west",
+              "idx": 2,
+            },
+            {
+              "side": "east",
+              "idx": 2,
+            },
           ],
           [
-            {"side": "east", "idx": 1},
-            {"side": "west", "idx": 1},
+            {
+              "side": "east",
+              "idx": 1,
+            },
+            {
+              "side": "west",
+              "idx": 1,
+            },
           ],
           [
-            {"side": "west", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "east", "idx": 0},
+            {
+              "side": "east",
+              "idx": 0,
+            },
           ],
         ],
       },
     ],
     "exits": {
       "west": [
-        {"top": 1, "bottom": 2},
-        {"top": 4, "bottom": 5},
-        {"top": 7, "bottom": 8},
+        {"top": 1, "bottom": 2, "newX": 659, "newY": 76},
+        {"top": 4, "bottom": 5, "newX": 659, "newY": 229},
+        {"top": 7, "bottom": 8, "newX": 659, "newY": 381},
       ],
       "south": [],
       "east": [
-        {"top": 1, "bottom": 2},
-        {"top": 4, "bottom": 5},
-        {"top": 7, "bottom": 8},
+        {"top": 1, "bottom": 2, "newX": 0, "newY": 76},
+        {"top": 4, "bottom": 5, "newX": 0, "newY": 229},
+        {"top": 7, "bottom": 8, "newX": 0, "newY": 381},
       ],
       "north": [],
     },
@@ -620,12 +807,24 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "west", "idx": 1},
-            {"side": "west", "idx": 2},
+            {
+              "side": "west",
+              "idx": 1,
+            },
+            {
+              "side": "west",
+              "idx": 2,
+            },
           ],
           [
-            {"side": "west", "idx": 0},
-            {"side": "north", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
         ],
       },
@@ -635,28 +834,40 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "west", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "west", "idx": 1},
-            {"side": "west", "idx": 2},
+            {
+              "side": "west",
+              "idx": 1,
+            },
+            {
+              "side": "west",
+              "idx": 2,
+            },
           ],
           [
-            {"side": "north", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
         ],
       },
     ],
     "exits": {
       "west": [
-        {"top": 1, "bottom": 2},
-        {"top": 4, "bottom": 5},
-        {"top": 7, "bottom": 8},
+        {"top": 1, "bottom": 2, "newX": 659, "newY": 76},
+        {"top": 4, "bottom": 5, "newX": 659, "newY": 229},
+        {"top": 7, "bottom": 8, "newX": 659, "newY": 381},
       ],
       "south": [],
       "east": [],
       "north": [
-        {"left": 10, "right": 11},
+        {"left": 10, "right": 11, "newX": 532, "newY": 509},
       ],
     },
   },
@@ -665,16 +876,16 @@ GEOM: list[ExitBase] = [
     "east": 15,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -683,16 +894,16 @@ GEOM: list[ExitBase] = [
     "east": 20,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -702,7 +913,7 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 6, "right": 8},
+        {"left": 6, "right": 8, "newX": 355, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -714,7 +925,7 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 11, "right": 11},
+        {"left": 11, "right": 11, "newX": 557, "newY": 88},
       ],
       "east": [],
       "north": [],
@@ -726,13 +937,13 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 5, "bottom": 6},
+        {"top": 5, "bottom": 6, "newX": 0, "newY": 280},
       ],
       "north": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -741,7 +952,7 @@ GEOM: list[ExitBase] = [
     "east": 10,
     "exits": {
       "west": [
-        {"top": 5, "bottom": 6},
+        {"top": 5, "bottom": 6, "newX": 659, "newY": 280},
       ],
       "south": [],
       "east": [],
@@ -754,11 +965,16 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 10, "right": 11},
+        {"left": 10, "right": 11, "newX": 532, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 6, "right": 7, "newY": 94},
+        {
+          "left": 6,
+          "right": 7,
+          "newX": 329,
+          "newY": 94,
+        },
       ],
     },
   },
@@ -770,7 +986,7 @@ GEOM: list[ExitBase] = [
       "south": [],
       "east": [],
       "north": [
-        {"left": 6, "right": 6},
+        {"left": 6, "right": 6, "newX": 304, "newY": 509},
       ],
     },
   },
@@ -780,13 +996,13 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 1, "right": 13},
+        {"left": 1, "right": 13, "newX": 355, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 1, "right": 13},
+        {"left": 1, "right": 13, "newX": 355, "newY": 509},
       ],
     },
   },
@@ -795,16 +1011,16 @@ GEOM: list[ExitBase] = [
     "east": 16,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -813,16 +1029,16 @@ GEOM: list[ExitBase] = [
     "east": 18,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -831,16 +1047,16 @@ GEOM: list[ExitBase] = [
     "east": 19,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -849,14 +1065,14 @@ GEOM: list[ExitBase] = [
     "east": 21,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 0, "right": 12},
+        {"left": 0, "right": 12, "newX": 304, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 0, "right": 12},
+        {"left": 0, "right": 12, "newX": 304, "newY": 509},
       ],
     },
   },
@@ -867,10 +1083,10 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 0, "bottom": 9},
+        {"top": 0, "bottom": 9, "newX": 0, "newY": 229},
       ],
       "north": [
-        {"left": 8, "right": 13},
+        {"left": 8, "right": 13, "newX": 532, "newY": 509},
       ],
     },
   },
@@ -879,12 +1095,12 @@ GEOM: list[ExitBase] = [
     "east": 24,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 9},
+        {"top": 0, "bottom": 9, "newX": 659, "newY": 229},
       ],
       "south": [],
       "east": [],
       "north": [
-        {"left": 0, "right": 8},
+        {"left": 0, "right": 8, "newX": 202, "newY": 509},
       ],
     },
   },
@@ -894,7 +1110,7 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -907,7 +1123,7 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 5, "bottom": 6},
+        {"top": 5, "bottom": 6, "newX": 0, "newY": 280},
       ],
       "north": [],
     },
@@ -917,10 +1133,10 @@ GEOM: list[ExitBase] = [
     "east": 11,
     "exits": {
       "west": [
-        {"top": 5, "bottom": 6},
+        {"top": 5, "bottom": 6, "newX": 659, "newY": 280},
       ],
       "south": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 94},
       ],
       "east": [],
       "north": [],
@@ -932,7 +1148,7 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 6, "right": 6},
+        {"left": 6, "right": 6, "newX": 304, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -944,13 +1160,13 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 1, "right": 13},
+        {"left": 1, "right": 13, "newX": 355, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 1, "right": 13},
+        {"left": 1, "right": 13, "newX": 355, "newY": 509},
       ],
     },
   },
@@ -959,16 +1175,16 @@ GEOM: list[ExitBase] = [
     "east": 15,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -977,16 +1193,16 @@ GEOM: list[ExitBase] = [
     "east": 16,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 1, "bottom": 10},
+        {"top": 1, "bottom": 10, "newX": 0, "newY": 280},
       ],
       "north": [
-        {"left": 0, "right": 12},
+        {"left": 0, "right": 12, "newX": 304, "newY": 509},
       ],
     },
   },
@@ -995,13 +1211,13 @@ GEOM: list[ExitBase] = [
     "east": 18,
     "exits": {
       "west": [
-        {"top": 1, "bottom": 10},
+        {"top": 1, "bottom": 10, "newX": 659, "newY": 280},
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 1, "bottom": 10},
+        {"top": 1, "bottom": 10, "newX": 0, "newY": 280},
       ],
       "north": [],
     },
@@ -1011,16 +1227,16 @@ GEOM: list[ExitBase] = [
     "east": 20,
     "exits": {
       "west": [
-        {"top": 1, "bottom": 10},
+        {"top": 1, "bottom": 10, "newX": 659, "newY": 280},
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 1, "bottom": 10},
+        {"top": 1, "bottom": 10, "newX": 0, "newY": 280},
       ],
       "north": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -1029,13 +1245,13 @@ GEOM: list[ExitBase] = [
     "east": 21,
     "exits": {
       "west": [
-        {"top": 1, "bottom": 10},
+        {"top": 1, "bottom": 10, "newX": 659, "newY": 280},
       ],
       "south": [
-        {"left": 0, "right": 12},
+        {"left": 0, "right": 12, "newX": 304, "newY": 0},
       ],
       "east": [
-        {"top": 1, "bottom": 9},
+        {"top": 1, "bottom": 9, "newX": 0, "newY": 254},
       ],
       "north": [],
     },
@@ -1047,9 +1263,18 @@ GEOM: list[ExitBase] = [
       {
         "areas": [
           [
-            {"side": "west", "idx": 0},
-            {"side": "east", "idx": 0},
-            {"side": "north", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
+            {
+              "side": "east",
+              "idx": 0,
+            },
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ]
         ],
         "reqs": [
@@ -1061,11 +1286,20 @@ GEOM: list[ExitBase] = [
       {
         "areas": [
           [
-            {"side": "west", "idx": 0},
-            {"side": "north", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "east", "idx": 0},
+            {
+              "side": "east",
+              "idx": 0,
+            },
           ],
         ],
         "reqs": [
@@ -1075,14 +1309,14 @@ GEOM: list[ExitBase] = [
     ],
     "exits": {
       "west": [
-        {"top": 1, "bottom": 9},
+        {"top": 1, "bottom": 9, "newX": 659, "newY": 254},
       ],
       "south": [],
       "east": [
-        {"top": 0, "bottom": 9},
+        {"top": 0, "bottom": 9, "newX": 0, "newY": 229},
       ],
       "north": [
-        {"left": 3, "right": 13},
+        {"left": 3, "right": 13, "newX": 405, "newY": 509},
       ],
     },
   },
@@ -1091,16 +1325,19 @@ GEOM: list[ExitBase] = [
     "east": 23,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 9},
+        {"top": 0, "bottom": 9, "newX": 659, "newY": 229},
       ],
       "south": [
-        {"left": 8, "right": 13},
+        {"left": 8, "right": 13, "newX": 532, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {
+          "left": 0,
+          "right": 13,
+        },
       ],
     },
   },
@@ -1109,16 +1346,16 @@ GEOM: list[ExitBase] = [
     "east": 24,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 0, "right": 8},
+        {"left": 0, "right": 8, "newX": 202, "newY": 0},
       ],
       "east": [
-        {"top": 4, "bottom": 5},
+        {"top": 4, "bottom": 5, "newX": 0, "newY": 229},
       ],
       "north": [
-        {"left": 0, "right": 8},
+        {"left": 0, "right": 8, "newX": 202, "newY": 509},
       ],
     },
   },
@@ -1127,7 +1364,7 @@ GEOM: list[ExitBase] = [
     "east": 25,
     "exits": {
       "west": [
-        {"top": 4, "bottom": 5},
+        {"top": 4, "bottom": 5, "newX": 659, "newY": 229},
       ],
       "south": [],
       "east": [],
@@ -1141,10 +1378,10 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 0, "bottom": 9},
+        {"top": 0, "bottom": 9, "newX": 0, "newY": 229},
       ],
       "north": [
-        {"left": 1, "right": 13},
+        {"left": 1, "right": 13, "newX": 355, "newY": 509},
       ],
     },
   },
@@ -1158,31 +1395,49 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "east", "idx": 0},
-            {"side": "east", "idx": 1},
-            {"side": "north", "idx": 0},
+            {
+              "side": "east",
+              "idx": 0,
+            },
+            {
+              "side": "east",
+              "idx": 1,
+            },
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "east", "idx": 2},
-            {"side": "north", "idx": 0},
-            {"side": "west", "idx": 0},
+            {
+              "side": "east",
+              "idx": 2,
+            },
+            {
+              "side": "north",
+              "idx": 0,
+            },
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
         ],
       }
     ],
     "exits": {
       "west": [
-        {"top": 0, "bottom": 9},
+        {"top": 0, "bottom": 9, "newX": 659, "newY": 229},
       ],
       "south": [],
       "east": [
-        {"top": 0, "bottom": 3},
-        {"top": 5, "bottom": 5},
-        {"top": 7, "bottom": 9},
+        {"top": 0, "bottom": 3, "newX": 0, "newY": 76},
+        {"top": 5, "bottom": 5, "newX": 0, "newY": 254},
+        {"top": 7, "bottom": 9, "newX": 0, "newY": 407},
       ],
       "north": [
-        {"left": 0, "right": 9},
-        {"left": 11, "right": 13},
+        {"left": 0, "right": 9, "newX": 228, "newY": 509},
+        {"left": 11, "right": 13, "newX": 608, "newY": 509},
       ],
     },
   },
@@ -1196,35 +1451,56 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "north", "idx": 2},
-            {"side": "east", "idx": 0},
-            {"side": "west", "idx": 2},
+            {
+              "side": "north",
+              "idx": 2,
+            },
+            {
+              "side": "east",
+              "idx": 0,
+            },
+            {
+              "side": "west",
+              "idx": 2,
+            },
           ],
           [
-            {"side": "west", "idx": 0},
-            {"side": "north", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "north", "idx": 1},
-            {"side": "west", "idx": 1},
+            {
+              "side": "north",
+              "idx": 1,
+            },
+            {
+              "side": "west",
+              "idx": 1,
+            },
           ],
         ],
       }
     ],
     "exits": {
       "west": [
-        {"top": 0, "bottom": 3},
-        {"top": 5, "bottom": 5},
-        {"top": 7, "bottom": 9},
+        {"top": 0, "bottom": 3, "newX": 659, "newY": 76},
+        {"top": 5, "bottom": 5, "newX": 659, "newY": 254},
+        {"top": 7, "bottom": 9, "newX": 659, "newY": 407},
       ],
       "south": [],
       "east": [
-        {"top": 0, "bottom": 9},
+        {"top": 0, "bottom": 9, "newX": 0, "newY": 229},
       ],
       "north": [
-        {"left": 0, "right": 2},
-        {"left": 4, "right": 5},
-        {"left": 7, "right": 13},
+        {"left": 0, "right": 2, "newX": 50, "newY": 509},
+        {"left": 4, "right": 5, "newX": 228, "newY": 509},
+        {"left": 7, "right": 13, "newX": 507, "newY": 509},
       ],
     },
   },
@@ -1233,14 +1509,14 @@ GEOM: list[ExitBase] = [
     "east": 12,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 9},
+        {"top": 0, "bottom": 9, "newX": 659, "newY": 229},
       ],
       "south": [],
       "east": [
-        {"top": 3, "bottom": 5},
+        {"top": 3, "bottom": 5, "newX": 0, "newY": 203},
       ],
       "north": [
-        {"left": 0, "right": 12},
+        {"left": 0, "right": 12, "newX": 304, "newY": 509},
       ],
     },
   },
@@ -1249,13 +1525,13 @@ GEOM: list[ExitBase] = [
     "east": 13,
     "exits": {
       "west": [
-        {"top": 3, "bottom": 5},
+        {"top": 3, "bottom": 5, "newX": 659, "newY": 203},
       ],
       "south": [
-        {"left": 1, "right": 13},
+        {"left": 1, "right": 13, "newX": 355, "newY": 0},
       ],
       "east": [
-        {"top": 1, "bottom": 10},
+        {"top": 1, "bottom": 10, "newX": 0, "newY": 280},
       ],
       "north": [],
     },
@@ -1265,13 +1541,13 @@ GEOM: list[ExitBase] = [
     "east": 14,
     "exits": {
       "west": [
-        {"top": 1, "bottom": 10},
+        {"top": 1, "bottom": 10, "newX": 659, "newY": 280},
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 4, "bottom": 10},
+        {"top": 4, "bottom": 10, "newX": 0, "newY": 356},
       ],
       "north": [],
     },
@@ -1281,16 +1557,16 @@ GEOM: list[ExitBase] = [
     "east": 15,
     "exits": {
       "west": [
-        {"top": 4, "bottom": 10},
+        {"top": 4, "bottom": 10, "newX": 659, "newY": 356},
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 1, "bottom": 10},
+        {"top": 1, "bottom": 10, "newX": 0, "newY": 280},
       ],
       "north": [
-        {"left": 1, "right": 4},
+        {"left": 1, "right": 4, "newX": 126, "newY": 509},
       ],
     },
   },
@@ -1299,10 +1575,10 @@ GEOM: list[ExitBase] = [
     "east": 16,
     "exits": {
       "west": [
-        {"top": 1, "bottom": 10},
+        {"top": 1, "bottom": 10, "newX": 659, "newY": 280},
       ],
       "south": [
-        {"left": 0, "right": 12},
+        {"left": 0, "right": 12, "newX": 304, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -1318,11 +1594,20 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "east", "idx": 0},
-            {"side": "north", "idx": 0},
+            {
+              "side": "east",
+              "idx": 0,
+            },
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "north", "idx": 1},
+            {
+              "side": "north",
+              "idx": 1,
+            },
           ],
         ],
       }
@@ -1331,11 +1616,11 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 8, "bottom": 9},
+        {"top": 8, "bottom": 9, "newX": 0, "newY": 432},
       ],
       "north": [
-        {"left": 1, "right": 2},
-        {"left": 11, "right": 12},
+        {"left": 1, "right": 2, "newX": 76, "newY": 509},
+        {"left": 11, "right": 12, "newX": 583, "newY": 509},
       ],
     },
   },
@@ -1351,12 +1636,24 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "east", "idx": 0},
-            {"side": "north", "idx": 1},
-            {"side": "west", "idx": 0},
+            {
+              "side": "east",
+              "idx": 0,
+            },
+            {
+              "side": "north",
+              "idx": 1,
+            },
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "north", "idx": 1},
+            {
+              "side": "north",
+              "idx": 1,
+            },
           ],
         ],
       },
@@ -1366,29 +1663,41 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "north", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "north", "idx": 1},
+            {
+              "side": "north",
+              "idx": 1,
+            },
           ],
           [
-            {"side": "east", "idx": 0},
-            {"side": "west", "idx": 0},
+            {
+              "side": "east",
+              "idx": 0,
+            },
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
         ],
       },
     ],
     "exits": {
       "west": [
-        {"top": 8, "bottom": 9},
+        {"top": 8, "bottom": 9, "newX": 659, "newY": 432},
       ],
       "south": [],
       "east": [
-        {"top": 8, "bottom": 9},
+        {"top": 8, "bottom": 9, "newX": 0, "newY": 432},
       ],
       "north": [
-        {"left": 6, "right": 7},
-        {"left": 10, "right": 12},
+        {"left": 6, "right": 7, "newX": 329, "newY": 509},
+        {"left": 10, "right": 12, "newX": 557, "newY": 509},
       ],
     },
   },
@@ -1397,12 +1706,12 @@ GEOM: list[ExitBase] = [
     "east": 19,
     "exits": {
       "west": [
-        {"top": 8, "bottom": 9},
+        {"top": 8, "bottom": 9, "newX": 659, "newY": 432},
       ],
       "south": [],
       "east": [],
       "north": [
-        {"left": 12, "right": 12},
+        {"left": 12, "right": 12, "newX": 608, "newY": 509},
       ],
     },
   },
@@ -1412,11 +1721,16 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 8, "right": 8, "newY": 144},
+        {
+          "left": 8,
+          "right": 8,
+          "newX": 380,
+          "newY": 144,
+        },
       ],
     },
   },
@@ -1427,7 +1741,7 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 6, "bottom": 7},
+        {"top": 6, "bottom": 7, "newX": 0, "newY": 330},
       ],
       "north": [],
     },
@@ -1437,16 +1751,16 @@ GEOM: list[ExitBase] = [
     "east": 22,
     "exits": {
       "west": [
-        {"top": 6, "bottom": 7},
+        {"top": 6, "bottom": 7, "newX": 659, "newY": 330},
       ],
       "south": [
-        {"left": 3, "right": 13},
+        {"left": 3, "right": 13, "newX": 405, "newY": 0},
       ],
       "east": [
-        {"top": 3, "bottom": 10},
+        {"top": 3, "bottom": 10, "newX": 0, "newY": 330},
       ],
       "north": [
-        {"left": 7, "right": 9},
+        {"left": 7, "right": 9, "newX": 405, "newY": 509},
       ],
     },
   },
@@ -1455,16 +1769,16 @@ GEOM: list[ExitBase] = [
     "east": 23,
     "exits": {
       "west": [
-        {"top": 3, "bottom": 10},
+        {"top": 3, "bottom": 10, "newX": 659, "newY": 330},
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 1, "right": 13},
+        {"left": 1, "right": 13, "newX": 355, "newY": 509},
       ],
     },
   },
@@ -1473,12 +1787,12 @@ GEOM: list[ExitBase] = [
     "east": 25,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 9},
+        {"top": 0, "bottom": 9, "newX": 659, "newY": 229},
       ],
       "south": [],
       "east": [],
       "north": [
-        {"left": 0, "right": 12},
+        {"left": 0, "right": 12, "newX": 304, "newY": 509},
       ],
     },
   },
@@ -1488,13 +1802,13 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 1, "right": 13},
+        {"left": 1, "right": 13, "newX": 355, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 1, "right": 13},
+        {"left": 1, "right": 13, "newX": 355, "newY": 509},
       ],
     },
   },
@@ -1503,17 +1817,17 @@ GEOM: list[ExitBase] = [
     "east": 10,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 0, "right": 9},
-        {"left": 11, "right": 13},
+        {"left": 0, "right": 9, "newX": 228, "newY": 0},
+        {"left": 11, "right": 13, "newX": 608, "newY": 0},
       ],
       "east": [
-        {"top": 7, "bottom": 10},
+        {"top": 7, "bottom": 10, "newX": 0, "newY": 432},
       ],
       "north": [
-        {"left": 0, "right": 12},
+        {"left": 0, "right": 12, "newX": 304, "newY": 509},
       ],
     },
   },
@@ -1527,40 +1841,64 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "west", "idx": 0},
-            {"side": "south", "idx": 0},
-            {"side": "north", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
+            {
+              "side": "south",
+              "idx": 0,
+            },
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "north", "idx": 1},
+            {
+              "side": "north",
+              "idx": 1,
+            },
           ],
           [
-            {"side": "south", "idx": 1},
+            {
+              "side": "south",
+              "idx": 1,
+            },
           ],
           [
-            {"side": "north", "idx": 2},
-            {"side": "east", "idx": 0},
-            {"side": "south", "idx": 2},
+            {
+              "side": "north",
+              "idx": 2,
+            },
+            {
+              "side": "east",
+              "idx": 0,
+            },
+            {
+              "side": "south",
+              "idx": 2,
+            },
           ],
         ],
       }
     ],
     "exits": {
       "west": [
-        {"top": 7, "bottom": 10},
+        {"top": 7, "bottom": 10, "newX": 659, "newY": 432},
       ],
       "south": [
-        {"left": 0, "right": 2},
-        {"left": 4, "right": 5},
-        {"left": 7, "right": 13},
+        {"left": 0, "right": 2, "newX": 50, "newY": 0},
+        {"left": 4, "right": 5, "newX": 228, "newY": 0},
+        {"left": 7, "right": 13, "newX": 507, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 1, "right": 2},
-        {"left": 4, "right": 5},
-        {"left": 7, "right": 13},
+        {"left": 1, "right": 2, "newX": 76, "newY": 509},
+        {"left": 4, "right": 5, "newX": 228, "newY": 509},
+        {"left": 7, "right": 13, "newX": 507, "newY": 509},
       ],
     },
   },
@@ -1580,13 +1918,13 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 1, "right": 4},
+        {"left": 1, "right": 4, "newX": 126, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 9},
+        {"top": 0, "bottom": 9, "newX": 0, "newY": 229},
       ],
       "north": [
-        {"left": 1, "right": 13},
+        {"left": 1, "right": 13, "newX": 355, "newY": 509},
       ],
     },
   },
@@ -1595,12 +1933,12 @@ GEOM: list[ExitBase] = [
     "east": 16,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 9},
+        {"top": 0, "bottom": 9, "newX": 659, "newY": 229},
       ],
       "south": [],
       "east": [],
       "north": [
-        {"left": 0, "right": 12},
+        {"left": 0, "right": 12, "newX": 304, "newY": 509},
       ],
     },
   },
@@ -1614,31 +1952,46 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "west", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "west", "idx": 1},
-            {"side": "south", "idx": 0},
+            {
+              "side": "west",
+              "idx": 1,
+            },
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "north", "idx": 0},
-            {"side": "south", "idx": 1},
+            {
+              "side": "north",
+              "idx": 0,
+            },
+            {
+              "side": "south",
+              "idx": 1,
+            },
           ],
         ],
       }
     ],
     "exits": {
       "west": [
-        {"top": 4, "bottom": 4},
-        {"top": 6, "bottom": 6},
+        {"top": 4, "bottom": 4, "newX": 659, "newY": 203},
+        {"top": 6, "bottom": 6, "newX": 659, "newY": 305},
       ],
       "south": [
-        {"left": 6, "right": 7},
-        {"left": 10, "right": 12},
+        {"left": 6, "right": 7, "newX": 329, "newY": 0},
+        {"left": 10, "right": 12, "newX": 557, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 10, "right": 12},
+        {"left": 10, "right": 12, "newX": 557, "newY": 509},
       ],
     },
   },
@@ -1652,10 +2005,16 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "north", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
         ],
       },
@@ -1667,8 +2026,14 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 0},
-            {"side": "north", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
         ],
       },
@@ -1676,11 +2041,11 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 12, "right": 12},
+        {"left": 12, "right": 12, "newX": 608, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -1690,11 +2055,11 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 6, "right": 9},
+        {"left": 6, "right": 9, "newX": 405, "newY": 144},
       ],
       "east": [],
       "north": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -1718,13 +2083,22 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "north", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "north", "idx": 1},
+            {
+              "side": "north",
+              "idx": 1,
+            },
           ],
           [
-            {"side": "south", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
         ],
       }
@@ -1732,12 +2106,12 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 7, "right": 9},
+        {"left": 7, "right": 9, "newX": 405, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 1, "right": 5},
-        {"left": 7, "right": 9},
+        {"left": 1, "right": 5, "newX": 152, "newY": 509},
+        {"left": 7, "right": 9, "newX": 405, "newY": 509},
       ],
     },
   },
@@ -1747,10 +2121,10 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 1, "right": 13},
+        {"left": 1, "right": 13, "newX": 355, "newY": 0},
       ],
       "east": [
-        {"top": 2, "bottom": 10},
+        {"top": 2, "bottom": 10, "newX": 0, "newY": 305},
       ],
       "north": [],
     },
@@ -1760,16 +2134,16 @@ GEOM: list[ExitBase] = [
     "east": 24,
     "exits": {
       "west": [
-        {"top": 2, "bottom": 10},
+        {"top": 2, "bottom": 10, "newX": 659, "newY": 305},
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 2, "bottom": 10},
+        {"top": 2, "bottom": 10, "newX": 0, "newY": 305},
       ],
       "north": [
-        {"left": 1, "right": 12},
+        {"left": 1, "right": 12, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -1785,9 +2159,18 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "west", "idx": 0},
-            {"side": "south", "idx": 0},
-            {"side": "east", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
+            {
+              "side": "south",
+              "idx": 0,
+            },
+            {
+              "side": "east",
+              "idx": 0,
+            },
           ]
         ],
       },
@@ -1797,24 +2180,33 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 0},
-            {"side": "west", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "east", "idx": 0},
+            {
+              "side": "east",
+              "idx": 0,
+            },
           ],
         ],
       },
     ],
     "exits": {
       "west": [
-        {"top": 2, "bottom": 10},
+        {"top": 2, "bottom": 10, "newX": 659, "newY": 305},
       ],
       "south": [
-        {"left": 0, "right": 12},
+        {"left": 0, "right": 12, "newX": 304, "newY": 0},
       ],
       "east": [
-        {"top": 4, "bottom": 6},
+        {"top": 4, "bottom": 6, "newX": 0, "newY": 254},
       ],
       "north": [],
     },
@@ -1824,12 +2216,17 @@ GEOM: list[ExitBase] = [
     "east": 26,
     "exits": {
       "west": [
-        {"top": 4, "bottom": 6},
+        {"top": 4, "bottom": 6, "newX": 659, "newY": 254},
       ],
       "south": [],
       "east": [],
       "north": [
-        {"left": 6, "right": 7, "newY": 148},
+        {
+          "left": 6,
+          "right": 7,
+          "newX": 329,
+          "newY": 148,
+        },
       ],
     },
   },
@@ -1839,14 +2236,14 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 1, "right": 13},
+        {"left": 1, "right": 13, "newX": 355, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 5},
-        {"top": 7, "bottom": 10},
+        {"top": 0, "bottom": 5, "newX": 0, "newY": 127},
+        {"top": 7, "bottom": 10, "newX": 0, "newY": 432},
       ],
       "north": [
-        {"left": 1, "right": 13},
+        {"left": 1, "right": 13, "newX": 355, "newY": 509},
       ],
     },
   },
@@ -1860,15 +2257,36 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "east", "idx": 0},
-            {"side": "south", "idx": 2},
-            {"side": "north", "idx": 2},
-            {"side": "north", "idx": 1},
-            {"side": "south", "idx": 1},
+            {
+              "side": "east",
+              "idx": 0,
+            },
+            {
+              "side": "south",
+              "idx": 2,
+            },
+            {
+              "side": "north",
+              "idx": 2,
+            },
+            {
+              "side": "north",
+              "idx": 1,
+            },
+            {
+              "side": "south",
+              "idx": 1,
+            },
           ],
           [
-            {"side": "north", "idx": 0},
-            {"side": "south", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
         ],
       }
@@ -1876,17 +2294,17 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 1, "right": 2},
-        {"left": 4, "right": 5},
-        {"left": 7, "right": 13},
+        {"left": 1, "right": 2, "newX": 76, "newY": 0},
+        {"left": 4, "right": 5, "newX": 228, "newY": 0},
+        {"left": 7, "right": 13, "newX": 507, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 1, "right": 2},
-        {"left": 4, "right": 5},
-        {"left": 7, "right": 13},
+        {"left": 1, "right": 2, "newX": 228, "newY": 509},
+        {"left": 4, "right": 5, "newX": 76, "newY": 509},
+        {"left": 7, "right": 13, "newX": 507, "newY": 509},
       ],
     },
   },
@@ -1895,14 +2313,14 @@ GEOM: list[ExitBase] = [
     "east": 12,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 0, "right": 12},
+        {"left": 0, "right": 12, "newX": 304, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 0, "right": 12},
+        {"left": 0, "right": 12, "newX": 304, "newY": 509},
       ],
     },
   },
@@ -1924,7 +2342,7 @@ GEOM: list[ExitBase] = [
       "south": [],
       "east": [],
       "north": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -1934,13 +2352,13 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 1, "right": 13},
+        {"left": 1, "right": 13, "newX": 355, "newY": 0},
       ],
       "east": [
-        {"top": 4, "bottom": 10},
+        {"top": 4, "bottom": 10, "newX": 0, "newY": 330},
       ],
       "north": [
-        {"left": 4, "right": 5},
+        {"left": 4, "right": 5, "newX": 228, "newY": 509},
       ],
     },
   },
@@ -1949,10 +2367,10 @@ GEOM: list[ExitBase] = [
     "east": 16,
     "exits": {
       "west": [
-        {"top": 3, "bottom": 10},
+        {"top": 3, "bottom": 10, "newX": 659, "newY": 356},
       ],
       "south": [
-        {"left": 0, "right": 12},
+        {"left": 0, "right": 12, "newX": 304, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -1964,11 +2382,11 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -1978,11 +2396,11 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 10, "right": 12},
+        {"left": 10, "right": 12, "newX": 557, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 10, "right": 12},
+        {"left": 10, "right": 12, "newX": 557, "newY": 509},
       ],
     },
   },
@@ -1992,7 +2410,7 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -2010,10 +2428,22 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 0},
-            {"side": "north", "idx": 1},
-            {"side": "north", "idx": 0},
-            {"side": "east", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
+            {
+              "side": "north",
+              "idx": 1,
+            },
+            {
+              "side": "north",
+              "idx": 0,
+            },
+            {
+              "side": "east",
+              "idx": 0,
+            },
           ]
         ],
       },
@@ -2023,12 +2453,24 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "east", "idx": 0},
+            {
+              "side": "east",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "north", "idx": 0},
-            {"side": "south", "idx": 0},
-            {"side": "north", "idx": 1},
+            {
+              "side": "north",
+              "idx": 0,
+            },
+            {
+              "side": "south",
+              "idx": 0,
+            },
+            {
+              "side": "north",
+              "idx": 1,
+            },
           ],
         ],
       },
@@ -2036,14 +2478,14 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 8, "bottom": 9},
+        {"top": 8, "bottom": 9, "newX": 0, "newY": 432},
       ],
       "north": [
-        {"left": 3, "right": 4},
-        {"left": 11, "right": 12},
+        {"left": 3, "right": 4, "newX": 177, "newY": 509},
+        {"left": 11, "right": 12, "newX": 583, "newY": 509},
       ],
     },
   },
@@ -2059,8 +2501,14 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 1},
-            {"side": "south", "idx": 0},
+            {
+              "side": "south",
+              "idx": 1,
+            },
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ]
         ],
       },
@@ -2070,10 +2518,16 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "south", "idx": 1},
+            {
+              "side": "south",
+              "idx": 1,
+            },
           ],
         ],
       },
@@ -2081,8 +2535,8 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 1, "right": 5},
-        {"left": 7, "right": 9},
+        {"left": 1, "right": 5, "newX": 152, "newY": 0},
+        {"left": 7, "right": 9, "newX": 405, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -2096,7 +2550,7 @@ GEOM: list[ExitBase] = [
       "south": [],
       "east": [],
       "north": [
-        {"left": 7, "right": 11},
+        {"left": 7, "right": 11, "newX": 456, "newY": 509},
       ],
     },
   },
@@ -2106,11 +2560,11 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 1, "right": 12},
+        {"left": 1, "right": 12, "newX": 329, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 3, "right": 4},
+        {"left": 3, "right": 4, "newX": 177, "newY": 509},
       ],
     },
   },
@@ -2122,7 +2576,7 @@ GEOM: list[ExitBase] = [
       "south": [],
       "east": [],
       "north": [
-        {"left": 1, "right": 2},
+        {"left": 1, "right": 2, "newX": 76, "newY": 509},
       ],
     },
   },
@@ -2132,11 +2586,11 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 148},
       ],
       "east": [],
       "north": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -2145,7 +2599,7 @@ GEOM: list[ExitBase] = [
     "east": 21,
     "exits": {
       "west": [
-        {"top": 8, "bottom": 9},
+        {"top": 8, "bottom": 9, "newX": 659, "newY": 432},
       ],
       "south": [],
       "east": [],
@@ -2162,12 +2616,24 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "north", "idx": 0},
-            {"side": "east", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
+            {
+              "side": "east",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "east", "idx": 1},
-            {"side": "south", "idx": 0},
+            {
+              "side": "east",
+              "idx": 1,
+            },
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
         ],
       }
@@ -2175,14 +2641,14 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 1, "right": 13},
+        {"left": 1, "right": 13, "newX": 355, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 3},
-        {"top": 5, "bottom": 10},
+        {"top": 0, "bottom": 3, "newX": 0, "newY": 76},
+        {"top": 5, "bottom": 10, "newX": 0, "newY": 381},
       ],
       "north": [
-        {"left": 1, "right": 13},
+        {"left": 1, "right": 13, "newX": 355, "newY": 509},
       ],
     },
   },
@@ -2198,11 +2664,26 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 0},
-            {"side": "west", "idx": 1},
-            {"side": "west", "idx": 0},
-            {"side": "north", "idx": 0},
-            {"side": "east", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
+            {
+              "side": "west",
+              "idx": 1,
+            },
+            {
+              "side": "west",
+              "idx": 0,
+            },
+            {
+              "side": "north",
+              "idx": 0,
+            },
+            {
+              "side": "east",
+              "idx": 0,
+            },
           ]
         ],
       },
@@ -2212,30 +2693,45 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "west", "idx": 1},
-            {"side": "south", "idx": 0},
+            {
+              "side": "west",
+              "idx": 1,
+            },
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "west", "idx": 0},
-            {"side": "north", "idx": 0},
-            {"side": "east", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
+            {
+              "side": "north",
+              "idx": 0,
+            },
+            {
+              "side": "east",
+              "idx": 0,
+            },
           ],
         ],
       },
     ],
     "exits": {
       "west": [
-        {"top": 0, "bottom": 3},
-        {"top": 5, "bottom": 10},
+        {"top": 0, "bottom": 3, "newX": 659, "newY": 76},
+        {"top": 5, "bottom": 10, "newX": 659, "newY": 381},
       ],
       "south": [
-        {"left": 0, "right": 12},
+        {"left": 0, "right": 12, "newX": 304, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 3},
+        {"top": 0, "bottom": 3, "newX": 0, "newY": 76},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -2249,40 +2745,64 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "north", "idx": 0},
-            {"side": "west", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "north", "idx": 1},
-            {"side": "south", "idx": 0},
+            {
+              "side": "north",
+              "idx": 1,
+            },
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "south", "idx": 1},
+            {
+              "side": "south",
+              "idx": 1,
+            },
           ],
           [
-            {"side": "south", "idx": 2},
-            {"side": "east", "idx": 0},
-            {"side": "north", "idx": 2},
+            {
+              "side": "south",
+              "idx": 2,
+            },
+            {
+              "side": "east",
+              "idx": 0,
+            },
+            {
+              "side": "north",
+              "idx": 2,
+            },
           ],
         ],
       }
     ],
     "exits": {
       "west": [
-        {"top": 0, "bottom": 3},
+        {"top": 0, "bottom": 3, "newX": 659, "newY": 76},
       ],
       "south": [
-        {"left": 1, "right": 2},
-        {"left": 4, "right": 5},
-        {"left": 7, "right": 13},
+        {"left": 1, "right": 2, "newX": 76, "newY": 0},
+        {"left": 4, "right": 5, "newX": 228, "newY": 0},
+        {"left": 7, "right": 13, "newX": 507, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 0, "right": 5},
-        {"left": 7, "right": 8},
-        {"left": 10, "right": 13},
+        {"left": 0, "right": 5, "newX": 126, "newY": 509},
+        {"left": 7, "right": 8, "newX": 380, "newY": 509},
+        {"left": 10, "right": 13, "newX": 583, "newY": 509},
       ],
     },
   },
@@ -2291,16 +2811,16 @@ GEOM: list[ExitBase] = [
     "east": 12,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 0, "right": 12},
+        {"left": 0, "right": 12, "newX": 304, "newY": 0},
       ],
       "east": [
-        {"top": 9, "bottom": 9},
+        {"top": 9, "bottom": 9, "newX": 0, "newY": 432},
       ],
       "north": [
-        {"left": 0, "right": 12},
+        {"left": 0, "right": 12, "newX": 304, "newY": 509},
       ],
     },
   },
@@ -2309,12 +2829,12 @@ GEOM: list[ExitBase] = [
     "east": 13,
     "exits": {
       "west": [
-        {"top": 8, "bottom": 9},
+        {"top": 8, "bottom": 9, "newX": 659, "newY": 458},
       ],
       "south": [],
       "east": [],
       "north": [
-        {"left": 1, "right": 1},
+        {"left": 1, "right": 1, "newX": 50, "newY": 509},
       ],
     },
   },
@@ -2330,8 +2850,14 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 0},
-            {"side": "north", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ]
         ],
       },
@@ -2341,10 +2867,16 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "north", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
         ],
       },
@@ -2352,11 +2884,11 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 8, "right": 9},
+        {"left": 8, "right": 9, "newX": 431, "newY": 509},
       ],
     },
   },
@@ -2372,8 +2904,14 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 0},
-            {"side": "north", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ]
         ],
       },
@@ -2383,10 +2921,16 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "north", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
         ],
       },
@@ -2394,11 +2938,11 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 4, "right": 5},
+        {"left": 4, "right": 5, "newX": 228, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 4, "right": 5},
+        {"left": 4, "right": 5, "newX": 228, "newY": 509},
       ],
     },
   },
@@ -2408,10 +2952,10 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 509},
       ],
       "east": [
-        {"top": 5, "bottom": 6},
+        {"top": 5, "bottom": 6, "newX": 0, "newY": 280},
       ],
       "north": [],
     },
@@ -2428,9 +2972,18 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 0},
-            {"side": "east", "idx": 0},
-            {"side": "west", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
+            {
+              "side": "east",
+              "idx": 0,
+            },
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ]
         ],
       },
@@ -2440,24 +2993,33 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 0},
-            {"side": "west", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "east", "idx": 0},
+            {
+              "side": "east",
+              "idx": 0,
+            },
           ],
         ],
       },
     ],
     "exits": {
       "west": [
-        {"top": 5, "bottom": 6},
+        {"top": 5, "bottom": 6, "newX": 659, "newY": 280},
       ],
       "south": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 4, "bottom": 6},
+        {"top": 4, "bottom": 6, "newX": 0, "newY": 254},
       ],
       "north": [],
     },
@@ -2472,20 +3034,26 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "west", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "south", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
         ],
       }
     ],
     "exits": {
       "west": [
-        {"top": 4, "bottom": 6},
+        {"top": 4, "bottom": 6, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 10, "right": 12},
+        {"left": 10, "right": 12, "newX": 557, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -2503,11 +3071,20 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "east", "idx": 0},
-            {"side": "east", "idx": 1},
+            {
+              "side": "east",
+              "idx": 0,
+            },
+            {
+              "side": "east",
+              "idx": 1,
+            },
           ],
           [
-            {"side": "east", "idx": 2},
+            {
+              "side": "east",
+              "idx": 2,
+            },
           ],
         ],
       },
@@ -2517,13 +3094,22 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "east", "idx": 0},
+            {
+              "side": "east",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "east", "idx": 1},
+            {
+              "side": "east",
+              "idx": 1,
+            },
           ],
           [
-            {"side": "east", "idx": 2},
+            {
+              "side": "east",
+              "idx": 2,
+            },
           ],
         ],
       },
@@ -2532,9 +3118,9 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 2, "bottom": 3},
-        {"top": 5, "bottom": 6},
-        {"top": 8, "bottom": 9},
+        {"top": 2, "bottom": 3, "newX": 0, "newY": 127},
+        {"top": 5, "bottom": 6, "newX": 0, "newY": 280},
+        {"top": 8, "bottom": 9, "newX": 0, "newY": 432},
       ],
       "north": [],
     },
@@ -2549,26 +3135,41 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "west", "idx": 2},
-            {"side": "south", "idx": 0},
+            {
+              "side": "west",
+              "idx": 2,
+            },
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "west", "idx": 1},
-            {"side": "west", "idx": 0},
-            {"side": "south", "idx": 1},
+            {
+              "side": "west",
+              "idx": 1,
+            },
+            {
+              "side": "west",
+              "idx": 0,
+            },
+            {
+              "side": "south",
+              "idx": 1,
+            },
           ],
         ],
       }
     ],
     "exits": {
       "west": [
-        {"top": 2, "bottom": 3},
-        {"top": 5, "bottom": 6},
-        {"top": 8, "bottom": 9},
+        {"top": 2, "bottom": 3, "newX": 659, "newY": 127},
+        {"top": 5, "bottom": 6, "newX": 659, "newY": 280},
+        {"top": 8, "bottom": 9, "newX": 659, "newY": 432},
       ],
       "south": [
-        {"left": 3, "right": 4},
-        {"left": 11, "right": 12},
+        {"left": 3, "right": 4, "newX": 177, "newY": 0},
+        {"left": 11, "right": 12, "newX": 583, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -2591,7 +3192,7 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 4, "bottom": 6},
+        {"top": 4, "bottom": 6, "newX": 0, "newY": 254},
       ],
       "north": [],
     },
@@ -2601,14 +3202,14 @@ GEOM: list[ExitBase] = [
     "east": 23,
     "exits": {
       "west": [
-        {"top": 4, "bottom": 6},
+        {"top": 4, "bottom": 6, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 7, "right": 11},
+        {"left": 7, "right": 11, "newX": 456, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 1, "right": 4},
+        {"left": 1, "right": 4, "newX": 126, "newY": 509},
       ],
     },
   },
@@ -2619,9 +3220,18 @@ GEOM: list[ExitBase] = [
       {
         "areas": [
           [
-            {"side": "south", "idx": 0},
-            {"side": "north", "idx": 0},
-            {"side": "east", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
+            {
+              "side": "north",
+              "idx": 0,
+            },
+            {
+              "side": "east",
+              "idx": 0,
+            },
           ]
         ],
         "reqs": [
@@ -2636,11 +3246,20 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "north", "idx": 0},
-            {"side": "east", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
+            {
+              "side": "east",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "south", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
         ],
       },
@@ -2648,13 +3267,16 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 3, "right": 4},
+        {"left": 3, "right": 4, "newX": 177, "newY": 0},
       ],
       "east": [
-        {"top": 6, "bottom": 7},
+        {
+          "top": 6,
+          "bottom": 7,
+        },
       ],
       "north": [
-        {"left": 3, "right": 4},
+        {"left": 3, "right": 4, "newX": 177, "newY": 509},
       ],
     },
   },
@@ -2673,10 +3295,10 @@ GEOM: list[ExitBase] = [
     "east": 25,
     "exits": {
       "west": [
-        {"top": 6, "bottom": 7},
+        {"top": 6, "bottom": 7, "newX": 659, "newY": 330},
       ],
       "south": [
-        {"left": 1, "right": 2},
+        {"left": 1, "right": 2, "newX": 76, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -2688,11 +3310,11 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -2702,10 +3324,10 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 1, "right": 13},
+        {"left": 1, "right": 13, "newX": 355, "newY": 0},
       ],
       "east": [
-        {"top": 1, "bottom": 10},
+        {"top": 1, "bottom": 10, "newX": 0, "newY": 280},
       ],
       "north": [],
     },
@@ -2720,32 +3342,50 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 2},
-            {"side": "east", "idx": 1},
+            {
+              "side": "south",
+              "idx": 2,
+            },
+            {
+              "side": "east",
+              "idx": 1,
+            },
           ],
           [
-            {"side": "east", "idx": 0},
-            {"side": "south", "idx": 1},
+            {
+              "side": "east",
+              "idx": 0,
+            },
+            {
+              "side": "south",
+              "idx": 1,
+            },
           ],
           [
-            {"side": "south", "idx": 0},
-            {"side": "west", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
         ],
       }
     ],
     "exits": {
       "west": [
-        {"top": 1, "bottom": 10},
+        {"top": 1, "bottom": 10, "newX": 659, "newY": 280},
       ],
       "south": [
-        {"left": 0, "right": 5},
-        {"left": 7, "right": 8},
-        {"left": 10, "right": 13},
+        {"left": 0, "right": 5, "newX": 126, "newY": 0},
+        {"left": 7, "right": 8, "newX": 380, "newY": 0},
+        {"left": 10, "right": 13, "newX": 583, "newY": 0},
       ],
       "east": [
-        {"top": 1, "bottom": 4},
-        {"top": 6, "bottom": 10},
+        {"top": 1, "bottom": 4, "newX": 0, "newY": 127},
+        {"top": 6, "bottom": 10, "newX": 0, "newY": 407},
       ],
       "north": [],
     },
@@ -2760,22 +3400,31 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "west", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "west", "idx": 1},
-            {"side": "south", "idx": 0},
+            {
+              "side": "west",
+              "idx": 1,
+            },
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
         ],
       }
     ],
     "exits": {
       "west": [
-        {"top": 1, "bottom": 4},
-        {"top": 6, "bottom": 10},
+        {"top": 1, "bottom": 4, "newX": 659, "newY": 127},
+        {"top": 6, "bottom": 10, "newX": 659, "newY": 407},
       ],
       "south": [
-        {"left": 0, "right": 12},
+        {"left": 0, "right": 12, "newX": 304, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -2787,7 +3436,7 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 8, "right": 9},
+        {"left": 8, "right": 9, "newX": 431, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -2803,27 +3452,39 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "east", "idx": 0},
-            {"side": "north", "idx": 0},
+            {
+              "side": "east",
+              "idx": 0,
+            },
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "east", "idx": 1},
-            {"side": "west", "idx": 0},
+            {
+              "side": "east",
+              "idx": 1,
+            },
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
         ],
       }
     ],
     "exits": {
       "west": [
-        {"top": 1, "bottom": 9},
+        {"top": 1, "bottom": 9, "newX": 659, "newY": 254},
       ],
       "south": [],
       "east": [
-        {"top": 1, "bottom": 1},
-        {"top": 5, "bottom": 9},
+        {"top": 1, "bottom": 1, "newX": 0, "newY": 50},
+        {"top": 5, "bottom": 9, "newX": 0, "newY": 356},
       ],
       "north": [
-        {"left": 11, "right": 11},
+        {"left": 11, "right": 11, "newX": 557, "newY": 509},
       ],
     },
   },
@@ -2832,12 +3493,12 @@ GEOM: list[ExitBase] = [
     "east": 17,
     "exits": {
       "west": [
-        {"top": 1, "bottom": 1},
-        {"top": 5, "bottom": 9},
+        {"top": 1, "bottom": 1, "newX": 659, "newY": 50},
+        {"top": 5, "bottom": 9, "newX": 659, "newY": 356},
       ],
       "south": [],
       "east": [
-        {"top": 8, "bottom": 8},
+        {"top": 8, "bottom": 8, "newX": 0, "newY": 407},
       ],
       "north": [],
     },
@@ -2847,14 +3508,14 @@ GEOM: list[ExitBase] = [
     "east": 18,
     "exits": {
       "west": [
-        {"top": 8, "bottom": 8},
+        {"top": 8, "bottom": 8, "newX": 659, "newY": 407},
       ],
       "south": [],
       "east": [
-        {"top": 8, "bottom": 8},
+        {"top": 8, "bottom": 8, "newX": 0, "newY": 407},
       ],
       "north": [
-        {"left": 5, "right": 7},
+        {"left": 5, "right": 7, "newX": 304, "newY": 509},
       ],
     },
   },
@@ -2863,11 +3524,11 @@ GEOM: list[ExitBase] = [
     "east": 19,
     "exits": {
       "west": [
-        {"top": 8, "bottom": 8},
+        {"top": 8, "bottom": 8, "newX": 659, "newY": 407},
       ],
       "south": [],
       "east": [
-        {"top": 8, "bottom": 8},
+        {"top": 8, "bottom": 8, "newX": 0, "newY": 407},
       ],
       "north": [],
     },
@@ -2877,14 +3538,18 @@ GEOM: list[ExitBase] = [
     "east": 20,
     "exits": {
       "west": [
-        {"top": 8, "bottom": 8},
+        {"top": 8, "bottom": 8, "newX": 659, "newY": 407},
       ],
       "south": [],
       "east": [
-        {"top": 2, "bottom": 3},
+        {"top": 2, "bottom": 3, "newX": 0, "newY": 127},
       ],
       "north": [
-        {"left": 10, "right": 10, "newY": 129},
+        {
+          "left": 10,
+          "right": 10,
+          "newY": 129,
+        },
       ],
     },
   },
@@ -2893,12 +3558,17 @@ GEOM: list[ExitBase] = [
     "east": 21,
     "exits": {
       "west": [
-        {"top": 2, "bottom": 3},
+        {"top": 2, "bottom": 3, "newX": 659, "newY": 127},
       ],
       "south": [],
       "east": [],
       "north": [
-        {"left": 11, "right": 11, "newY": 107},
+        {
+          "left": 11,
+          "right": 11,
+          "newX": 557,
+          "newY": 107,
+        },
       ],
     },
   },
@@ -2910,7 +3580,7 @@ GEOM: list[ExitBase] = [
       "south": [],
       "east": [],
       "north": [
-        {"left": 5, "right": 6},
+        {"left": 5, "right": 6, "newX": 278, "newY": 509},
       ],
     },
   },
@@ -2920,13 +3590,13 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 1, "right": 4},
+        {"left": 1, "right": 4, "newX": 126, "newY": 0},
       ],
       "east": [
-        {"top": 5, "bottom": 6},
+        {"top": 5, "bottom": 6, "newX": 0, "newY": 280},
       ],
       "north": [
-        {"left": 10, "right": 11},
+        {"left": 10, "right": 11, "newX": 532, "newY": 509},
       ],
     },
   },
@@ -2935,10 +3605,10 @@ GEOM: list[ExitBase] = [
     "east": 24,
     "exits": {
       "west": [
-        {"top": 5, "bottom": 6},
+        {"top": 5, "bottom": 6, "newX": 659, "newY": 280},
       ],
       "south": [
-        {"left": 3, "right": 4},
+        {"left": 3, "right": 4, "newX": 177, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -2951,10 +3621,10 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 2, "bottom": 3},
+        {"top": 2, "bottom": 3, "newX": 0, "newY": 127},
       ],
       "north": [
-        {"left": 5, "right": 8},
+        {"left": 5, "right": 8, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -2968,10 +3638,16 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "west", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
         ],
       },
@@ -2983,18 +3659,24 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 0},
-            {"side": "west", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ]
         ],
       },
     ],
     "exits": {
       "west": [
-        {"top": 2, "bottom": 3},
+        {"top": 2, "bottom": 3, "newX": 659, "newY": 127},
       ],
       "south": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -3006,10 +3688,10 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 3, "right": 6},
+        {"left": 3, "right": 6, "newX": 228, "newY": 0},
       ],
       "east": [
-        {"top": 5, "bottom": 6},
+        {"top": 5, "bottom": 6, "newX": 0, "newY": 280},
       ],
       "north": [],
     },
@@ -3026,8 +3708,14 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "north", "idx": 0},
-            {"side": "west", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ]
         ],
       },
@@ -3037,22 +3725,28 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "north", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "west", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
         ],
       },
     ],
     "exits": {
       "west": [
-        {"top": 5, "bottom": 6},
+        {"top": 5, "bottom": 6, "newX": 659, "newY": 280},
       ],
       "south": [],
       "east": [],
       "north": [
-        {"left": 9, "right": 10},
+        {"left": 9, "right": 10, "newX": 481, "newY": 509},
       ],
     },
   },
@@ -3062,13 +3756,13 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 5, "right": 5},
+        {"left": 5, "right": 5, "newX": 253, "newY": 0},
       ],
       "east": [
-        {"top": 2, "bottom": 2},
+        {"top": 2, "bottom": 2, "newX": 0, "newY": 101},
       ],
       "north": [
-        {"left": 2, "right": 2},
+        {"left": 2, "right": 2, "newX": 101, "newY": 509},
       ],
     },
   },
@@ -3082,20 +3776,26 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "west", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "south", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
         ],
       }
     ],
     "exits": {
       "west": [
-        {"top": 2, "bottom": 2},
+        {"top": 2, "bottom": 2, "newX": 659, "newY": 101},
       ],
       "south": [
-        {"left": 11, "right": 11},
+        {"left": 11, "right": 11, "newX": 557, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -3108,10 +3808,10 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 6, "bottom": 7},
+        {"top": 6, "bottom": 7, "newX": 0, "newY": 330},
       ],
       "north": [
-        {"left": 5, "right": 7},
+        {"left": 5, "right": 7, "newX": 304, "newY": 509},
       ],
     },
   },
@@ -3120,14 +3820,14 @@ GEOM: list[ExitBase] = [
     "east": 18,
     "exits": {
       "west": [
-        {"top": 6, "bottom": 7},
+        {"top": 6, "bottom": 7, "newX": 659, "newY": 330},
       ],
       "south": [
-        {"left": 5, "right": 7},
+        {"left": 5, "right": 7, "newX": 304, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -3138,10 +3838,10 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 5, "bottom": 6},
+        {"top": 5, "bottom": 6, "newX": 0, "newY": 280},
       ],
       "north": [
-        {"left": 4, "right": 5},
+        {"left": 4, "right": 5, "newX": 228, "newY": 509},
       ],
     },
   },
@@ -3150,14 +3850,14 @@ GEOM: list[ExitBase] = [
     "east": 20,
     "exits": {
       "west": [
-        {"top": 5, "bottom": 6},
+        {"top": 5, "bottom": 6, "newX": 659, "newY": 280},
       ],
       "south": [
-        {"left": 4, "right": 5},
+        {"left": 4, "right": 5, "newX": 507, "newY": 129},
       ],
       "east": [],
       "north": [
-        {"left": 4, "right": 5},
+        {"left": 4, "right": 5, "newX": 228, "newY": 509},
       ],
     },
   },
@@ -3173,8 +3873,14 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "north", "idx": 0},
-            {"side": "south", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ]
         ],
       },
@@ -3184,10 +3890,16 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "north", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
         ],
       },
@@ -3195,11 +3907,11 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 11, "right": 11},
+        {"left": 11, "right": 11, "newX": 557, "newY": 107},
       ],
       "east": [],
       "north": [
-        {"left": 10, "right": 10},
+        {"left": 10, "right": 10, "newX": 507, "newY": 509},
       ],
     },
   },
@@ -3209,7 +3921,7 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 5, "right": 6},
+        {"left": 5, "right": 6, "newX": 278, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -3221,11 +3933,11 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 10, "right": 11},
+        {"left": 10, "right": 11, "newX": 532, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 10, "right": 11},
+        {"left": 10, "right": 11, "newX": 532, "newY": 509},
       ],
     },
   },
@@ -3236,10 +3948,10 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 4, "bottom": 6},
+        {"top": 4, "bottom": 6, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 1, "right": 9},
+        {"left": 1, "right": 9, "newX": 253, "newY": 509},
       ],
     },
   },
@@ -3248,16 +3960,16 @@ GEOM: list[ExitBase] = [
     "east": 25,
     "exits": {
       "west": [
-        {"top": 4, "bottom": 6},
+        {"top": 4, "bottom": 6, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 5, "right": 8},
+        {"left": 5, "right": 8, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 4, "bottom": 6},
+        {"top": 4, "bottom": 6, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 5, "right": 8},
+        {"left": 5, "right": 8, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -3266,7 +3978,7 @@ GEOM: list[ExitBase] = [
     "east": 26,
     "exits": {
       "west": [
-        {"top": 4, "bottom": 6},
+        {"top": 4, "bottom": 6, "newX": 659, "newY": 254},
       ],
       "south": [],
       "east": [],
@@ -3278,16 +3990,16 @@ GEOM: list[ExitBase] = [
     "east": 14,
     "exits": {
       "west": [
-        {"top": 2, "bottom": 9},
+        {"top": 2, "bottom": 9, "newX": 659, "newY": 305},
       ],
       "south": [
-        {"left": 9, "right": 10},
+        {"left": 9, "right": 10, "newX": 481, "newY": 0},
       ],
       "east": [
-        {"top": 2, "bottom": 2},
+        {"top": 2, "bottom": 2, "newX": 0, "newY": 101},
       ],
       "north": [
-        {"left": 5, "right": 5},
+        {"left": 5, "right": 5, "newX": 253, "newY": 509},
       ],
     },
   },
@@ -3296,13 +4008,13 @@ GEOM: list[ExitBase] = [
     "east": 15,
     "exits": {
       "west": [
-        {"top": 2, "bottom": 2},
+        {"top": 2, "bottom": 2, "newX": 659, "newY": 101},
       ],
       "south": [
-        {"left": 2, "right": 2},
+        {"left": 2, "right": 2, "newX": 101, "newY": 0},
       ],
       "east": [
-        {"top": 7, "bottom": 7},
+        {"top": 7, "bottom": 7, "newX": 0, "newY": 356},
       ],
       "north": [],
     },
@@ -3312,12 +4024,12 @@ GEOM: list[ExitBase] = [
     "east": 16,
     "exits": {
       "west": [
-        {"top": 7, "bottom": 7},
+        {"top": 7, "bottom": 7, "newX": 659, "newY": 356},
       ],
       "south": [],
       "east": [],
       "north": [
-        {"left": 5, "right": 5},
+        {"left": 5, "right": 5, "newX": 253, "newY": 509},
       ],
     },
   },
@@ -3327,11 +4039,11 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 5, "right": 7},
+        {"left": 5, "right": 7, "newX": 304, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 4, "right": 9},
+        {"left": 4, "right": 9, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -3342,8 +4054,14 @@ GEOM: list[ExitBase] = [
       {
         "areas": [
           [
-            {"side": "north", "idx": 0},
-            {"side": "south", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ]
         ],
         "reqs": [
@@ -3358,10 +4076,16 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "north", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
         ],
       },
@@ -3369,11 +4093,11 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 8, "right": 8},
+        {"left": 8, "right": 8, "newX": 405, "newY": 509},
       ],
     },
   },
@@ -3387,10 +4111,16 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "north", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "south", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
         ],
       }
@@ -3398,11 +4128,11 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 4, "right": 5},
+        {"left": 4, "right": 5, "newX": 228, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 10, "right": 10},
+        {"left": 10, "right": 10, "newX": 507, "newY": 509},
       ],
     },
   },
@@ -3412,11 +4142,11 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 4, "right": 5},
+        {"left": 4, "right": 5, "newX": 228, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 4, "right": 5},
+        {"left": 4, "right": 5, "newX": 228, "newY": 509},
       ],
     },
   },
@@ -3432,8 +4162,14 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 0},
-            {"side": "north", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ]
         ],
       },
@@ -3443,10 +4179,16 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "north", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
         ],
       },
@@ -3454,11 +4196,11 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 10, "right": 10},
+        {"left": 10, "right": 10, "newX": 507, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 12, "right": 12},
+        {"left": 12, "right": 12, "newX": 608, "newY": 509},
       ],
     },
   },
@@ -3469,7 +4211,7 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 7, "bottom": 9},
+        {"top": 7, "bottom": 9, "newX": 0, "newY": 407},
       ],
       "north": [],
     },
@@ -3479,16 +4221,16 @@ GEOM: list[ExitBase] = [
     "east": 23,
     "exits": {
       "west": [
-        {"top": 7, "bottom": 9},
+        {"top": 7, "bottom": 9, "newX": 659, "newY": 407},
       ],
       "south": [
-        {"left": 10, "right": 11},
+        {"left": 10, "right": 11, "newX": 532, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 4, "right": 4},
-        {"left": 6, "right": 7},
-        {"left": 10, "right": 10},
+        {"left": 4, "right": 4, "newX": 202, "newY": 509},
+        {"left": 6, "right": 7, "newX": 329, "newY": 509},
+        {"left": 10, "right": 10, "newX": 507, "newY": 509},
       ],
     },
   },
@@ -3498,14 +4240,14 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 1, "right": 9},
+        {"left": 1, "right": 9, "newX": 253, "newY": 0},
       ],
       "east": [
-        {"top": 1, "bottom": 1},
-        {"top": 3, "bottom": 3},
-        {"top": 5, "bottom": 5},
-        {"top": 7, "bottom": 7},
-        {"top": 9, "bottom": 9},
+        {"top": 1, "bottom": 1, "newX": 0, "newY": 50},
+        {"top": 3, "bottom": 3, "newX": 0, "newY": 152},
+        {"top": 5, "bottom": 5, "newX": 0, "newY": 254},
+        {"top": 7, "bottom": 7, "newX": 0, "newY": 356},
+        {"top": 9, "bottom": 9, "newX": 0, "newY": 458},
       ],
       "north": [],
     },
@@ -3520,30 +4262,48 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "west", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "west", "idx": 1},
-            {"side": "west", "idx": 2},
-            {"side": "west", "idx": 3},
-            {"side": "south", "idx": 0},
+            {
+              "side": "west",
+              "idx": 1,
+            },
+            {
+              "side": "west",
+              "idx": 2,
+            },
+            {
+              "side": "west",
+              "idx": 3,
+            },
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "west", "idx": 4},
+            {
+              "side": "west",
+              "idx": 4,
+            },
           ],
         ],
       }
     ],
     "exits": {
       "west": [
-        {"top": 1, "bottom": 1},
-        {"top": 3, "bottom": 3},
-        {"top": 5, "bottom": 5},
-        {"top": 7, "bottom": 7},
-        {"top": 9, "bottom": 9},
+        {"top": 1, "bottom": 1, "newX": 659, "newY": 50},
+        {"top": 3, "bottom": 3, "newX": 659, "newY": 152},
+        {"top": 5, "bottom": 5, "newX": 659, "newY": 254},
+        {"top": 7, "bottom": 7, "newX": 659, "newY": 356},
+        {"top": 9, "bottom": 9, "newX": 659, "newY": 458},
       ],
       "south": [
-        {"left": 5, "right": 8},
+        {"left": 5, "right": 8, "newX": 329, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -3561,9 +4321,18 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "east", "idx": 0},
-            {"side": "south", "idx": 0},
-            {"side": "north", "idx": 0},
+            {
+              "side": "east",
+              "idx": 0,
+            },
+            {
+              "side": "south",
+              "idx": 0,
+            },
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ]
         ],
       },
@@ -3573,11 +4342,20 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "east", "idx": 0},
+            {
+              "side": "east",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "south", "idx": 0},
-            {"side": "north", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
         ],
       },
@@ -3585,13 +4363,13 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 5, "right": 5},
+        {"left": 5, "right": 5, "newX": 253, "newY": 0},
       ],
       "east": [
-        {"top": 3, "bottom": 6},
+        {"top": 3, "bottom": 6, "newX": 0, "newY": 229},
       ],
       "north": [
-        {"left": 2, "right": 2},
+        {"left": 2, "right": 2, "newX": 101, "newY": 509},
       ],
     },
   },
@@ -3600,14 +4378,14 @@ GEOM: list[ExitBase] = [
     "east": 15,
     "exits": {
       "west": [
-        {"top": 3, "bottom": 6},
+        {"top": 3, "bottom": 6, "newX": 659, "newY": 229},
       ],
       "south": [],
       "east": [
-        {"top": 4, "bottom": 4},
+        {"top": 4, "bottom": 4, "newX": 0, "newY": 203},
       ],
       "north": [
-        {"left": 4, "right": 4},
+        {"left": 4, "right": 4, "newX": 202, "newY": 509},
       ],
     },
   },
@@ -3623,9 +4401,18 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "west", "idx": 0},
-            {"side": "south", "idx": 0},
-            {"side": "north", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
+            {
+              "side": "south",
+              "idx": 0,
+            },
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ]
         ],
       },
@@ -3635,25 +4422,34 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 0},
-            {"side": "west", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "north", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
         ],
       },
     ],
     "exits": {
       "west": [
-        {"top": 4, "bottom": 4},
+        {"top": 4, "bottom": 4, "newX": 659, "newY": 203},
       ],
       "south": [
-        {"left": 5, "right": 5},
+        {"left": 5, "right": 5, "newX": 253, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 12, "right": 12},
+        {"left": 12, "right": 12, "newX": 608, "newY": 509},
       ],
     },
   },
@@ -3663,7 +4459,7 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 4, "right": 9},
+        {"left": 4, "right": 9, "newX": 329, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -3675,7 +4471,7 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 8, "right": 8},
+        {"left": 8, "right": 8, "newX": 405, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -3687,11 +4483,11 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 10, "right": 10},
+        {"left": 10, "right": 10, "newX": 507, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 2, "right": 2},
+        {"left": 2, "right": 2, "newX": 101, "newY": 509},
       ],
     },
   },
@@ -3701,13 +4497,13 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 4, "right": 5},
+        {"left": 4, "right": 5, "newX": 228, "newY": 0},
       ],
       "east": [
-        {"top": 8, "bottom": 9},
+        {"top": 8, "bottom": 9, "newX": 0, "newY": 432},
       ],
       "north": [
-        {"left": 4, "right": 5},
+        {"left": 4, "right": 5, "newX": 228, "newY": 509},
       ],
     },
   },
@@ -3721,20 +4517,26 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "west", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "south", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
         ],
       }
     ],
     "exits": {
       "west": [
-        {"top": 8, "bottom": 9},
+        {"top": 8, "bottom": 9, "newX": 659, "newY": 432},
       ],
       "south": [
-        {"left": 12, "right": 12},
+        {"left": 12, "right": 12, "newX": 608, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -3747,10 +4549,15 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 4, "bottom": 5},
+        {"top": 4, "bottom": 5, "newX": 0, "newY": 229},
       ],
       "north": [
-        {"left": 2, "right": 2, "newY": 129},
+        {
+          "left": 2,
+          "right": 2,
+          "newX": 329,
+          "newY": 129,
+        },
       ],
     },
   },
@@ -3759,18 +4566,18 @@ GEOM: list[ExitBase] = [
     "east": 23,
     "exits": {
       "west": [
-        {"top": 4, "bottom": 5},
+        {"top": 4, "bottom": 5, "newX": 659, "newY": 229},
       ],
       "south": [
-        {"left": 4, "right": 4},
-        {"left": 6, "right": 7},
-        {"left": 10, "right": 10},
+        {"left": 4, "right": 4, "newX": 202, "newY": 0},
+        {"left": 6, "right": 7, "newX": 329, "newY": 0},
+        {"left": 10, "right": 10, "newX": 507, "newY": 0},
       ],
       "east": [
-        {"top": 1, "bottom": 2},
+        {"top": 1, "bottom": 2, "newX": 0, "newY": 76},
       ],
       "north": [
-        {"left": 1, "right": 1},
+        {"left": 1, "right": 1, "newX": 50, "newY": 509},
       ],
     },
   },
@@ -3779,13 +4586,13 @@ GEOM: list[ExitBase] = [
     "east": 24,
     "exits": {
       "west": [
-        {"top": 1, "bottom": 2},
+        {"top": 1, "bottom": 2, "newX": 659, "newY": 76},
       ],
       "south": [],
       "east": [],
       "north": [
-        {"left": 1, "right": 1},
-        {"left": 9, "right": 12},
+        {"left": 1, "right": 1, "newX": 50, "newY": 509},
+        {"left": 9, "right": 12, "newX": 532, "newY": 509},
       ],
     },
   },
@@ -3797,8 +4604,8 @@ GEOM: list[ExitBase] = [
       "south": [],
       "east": [],
       "north": [
-        {"left": 5, "right": 6},
-        {"left": 8, "right": 9},
+        {"left": 5, "right": 6, "newX": 278, "newY": 509},
+        {"left": 8, "right": 9, "newX": 431, "newY": 509},
       ],
     },
   },
@@ -3809,7 +4616,7 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 6, "bottom": 8},
+        {"top": 6, "bottom": 8, "newX": 0, "newY": 356},
       ],
       "north": [],
     },
@@ -3819,12 +4626,12 @@ GEOM: list[ExitBase] = [
     "east": 11,
     "exits": {
       "west": [
-        {"top": 6, "bottom": 8},
+        {"top": 6, "bottom": 8, "newX": 659, "newY": 356},
       ],
       "south": [],
       "east": [],
       "north": [
-        {"left": 3, "right": 4},
+        {"left": 3, "right": 4, "newX": 177, "newY": 509},
       ],
     },
   },
@@ -3834,11 +4641,16 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 2, "right": 2},
+        {"left": 2, "right": 2, "newX": 101, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 3, "right": 4, "newY": 125},
+        {
+          "left": 3,
+          "right": 4,
+          "newX": 329,
+          "newY": 125,
+        },
       ],
     },
   },
@@ -3848,11 +4660,11 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 4, "right": 4},
+        {"left": 4, "right": 4, "newX": 202, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 7, "right": 8},
+        {"left": 7, "right": 8, "newX": 380, "newY": 509},
       ],
     },
   },
@@ -3862,10 +4674,10 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 12, "right": 12},
+        {"left": 12, "right": 12, "newX": 608, "newY": 0},
       ],
       "east": [
-        {"top": 5, "bottom": 7},
+        {"top": 5, "bottom": 7, "newX": 0, "newY": 305},
       ],
       "north": [],
     },
@@ -3875,12 +4687,12 @@ GEOM: list[ExitBase] = [
     "east": 17,
     "exits": {
       "west": [
-        {"top": 5, "bottom": 7},
+        {"top": 5, "bottom": 7, "newX": 659, "newY": 305},
       ],
       "south": [],
       "east": [],
       "north": [
-        {"left": 10, "right": 10},
+        {"left": 10, "right": 10, "newX": 507, "newY": 509},
       ],
     },
   },
@@ -3891,10 +4703,10 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 1, "bottom": 1},
+        {"top": 1, "bottom": 1, "newX": 0, "newY": 50},
       ],
       "north": [
-        {"left": 1, "right": 1},
+        {"left": 1, "right": 1, "newX": 50, "newY": 509},
       ],
     },
   },
@@ -3908,11 +4720,20 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "east", "idx": 0},
-            {"side": "south", "idx": 0},
+            {
+              "side": "east",
+              "idx": 0,
+            },
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "west", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
         ],
       },
@@ -3924,22 +4745,31 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 0},
-            {"side": "west", "idx": 0},
-            {"side": "east", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
+            {
+              "side": "west",
+              "idx": 0,
+            },
+            {
+              "side": "east",
+              "idx": 0,
+            },
           ]
         ],
       },
     ],
     "exits": {
       "west": [
-        {"top": 1, "bottom": 1},
+        {"top": 1, "bottom": 1, "newX": 659, "newY": 50},
       ],
       "south": [
-        {"left": 2, "right": 2},
+        {"left": 2, "right": 2, "newX": 101, "newY": 0},
       ],
       "east": [
-        {"top": 8, "bottom": 9},
+        {"top": 8, "bottom": 9, "newX": 0, "newY": 432},
       ],
       "north": [],
     },
@@ -3949,13 +4779,13 @@ GEOM: list[ExitBase] = [
     "east": 20,
     "exits": {
       "west": [
-        {"top": 8, "bottom": 9},
+        {"top": 8, "bottom": 9, "newX": 659, "newY": 432},
       ],
       "south": [
-        {"left": 4, "right": 5},
+        {"left": 4, "right": 5, "newX": 228, "newY": 0},
       ],
       "east": [
-        {"top": 8, "bottom": 9},
+        {"top": 8, "bottom": 9, "newX": 0, "newY": 432},
       ],
       "north": [],
     },
@@ -3965,11 +4795,11 @@ GEOM: list[ExitBase] = [
     "east": 21,
     "exits": {
       "west": [
-        {"top": 8, "bottom": 9},
+        {"top": 8, "bottom": 9, "newX": 659, "newY": 432},
       ],
       "south": [],
       "east": [
-        {"top": 2, "bottom": 3},
+        {"top": 2, "bottom": 3, "newX": 0, "newY": 127},
       ],
       "north": [],
     },
@@ -3979,14 +4809,14 @@ GEOM: list[ExitBase] = [
     "east": 22,
     "exits": {
       "west": [
-        {"top": 2, "bottom": 3},
+        {"top": 2, "bottom": 3, "newX": 659, "newY": 127},
       ],
       "south": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 101, "newY": 129},
       ],
       "east": [],
       "north": [
-        {"left": 10, "right": 11},
+        {"left": 10, "right": 11, "newX": 532, "newY": 509},
       ],
     },
   },
@@ -3996,11 +4826,11 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 1, "right": 1},
+        {"left": 1, "right": 1, "newX": 50, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 1, "right": 1},
+        {"left": 1, "right": 1, "newX": 50, "newY": 509},
       ],
     },
   },
@@ -4014,15 +4844,30 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "east", "idx": 0},
-            {"side": "south", "idx": 1},
+            {
+              "side": "east",
+              "idx": 0,
+            },
+            {
+              "side": "south",
+              "idx": 1,
+            },
           ],
           [
-            {"side": "north", "idx": 1},
-            {"side": "south", "idx": 0},
+            {
+              "side": "north",
+              "idx": 1,
+            },
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "north", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
         ],
       }
@@ -4030,15 +4875,15 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 1, "right": 1},
-        {"left": 9, "right": 12},
+        {"left": 1, "right": 1, "newX": 50, "newY": 0},
+        {"left": 9, "right": 12, "newX": 532, "newY": 0},
       ],
       "east": [
-        {"top": 3, "bottom": 6},
+        {"top": 3, "bottom": 6, "newX": 0, "newY": 229},
       ],
       "north": [
-        {"left": 1, "right": 3},
-        {"left": 5, "right": 6},
+        {"left": 1, "right": 3, "newX": 101, "newY": 509},
+        {"left": 5, "right": 6, "newX": 278, "newY": 509},
       ],
     },
   },
@@ -4052,27 +4897,39 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 1},
-            {"side": "north", "idx": 0},
+            {
+              "side": "south",
+              "idx": 1,
+            },
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "south", "idx": 0},
-            {"side": "west", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
         ],
       }
     ],
     "exits": {
       "west": [
-        {"top": 3, "bottom": 6},
+        {"top": 3, "bottom": 6, "newX": 659, "newY": 229},
       ],
       "south": [
-        {"left": 5, "right": 6},
-        {"left": 8, "right": 9},
+        {"left": 5, "right": 6, "newX": 278, "newY": 0},
+        {"left": 8, "right": 9, "newX": 431, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 8, "right": 9},
+        {"left": 8, "right": 9, "newX": 431, "newY": 509},
       ],
     },
   },
@@ -4083,7 +4940,7 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 4, "bottom": 4},
+        {"top": 4, "bottom": 4, "newX": 0, "newY": 203},
       ],
       "north": [],
     },
@@ -4093,15 +4950,15 @@ GEOM: list[ExitBase] = [
     "east": 11,
     "exits": {
       "west": [
-        {"top": 4, "bottom": 4},
+        {"top": 4, "bottom": 4, "newX": 659, "newY": 203},
       ],
       "south": [
-        {"left": 3, "right": 4},
+        {"left": 3, "right": 4, "newX": 177, "newY": 509},
       ],
       "east": [],
-      # "east": [{"top": 4, "bottom": 4},],
+      # "east": [{"top": 4, "bottom": 4,},],
       "north": [
-        {"left": 3, "right": 4},
+        {"left": 3, "right": 4, "newX": 177, "newY": 509},
       ],
     },
   },
@@ -4111,7 +4968,7 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 177, "newY": 125},
       ],
       "east": [],
       "north": [],
@@ -4123,12 +4980,12 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 7, "right": 8},
+        {"left": 7, "right": 8, "newX": 380, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 3, "right": 7},
-        {"left": 9, "right": 11},
+        {"left": 3, "right": 7, "newX": 253, "newY": 509},
+        {"left": 9, "right": 11, "newX": 507, "newY": 509},
       ],
     },
   },
@@ -4139,10 +4996,10 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 1, "bottom": 2},
+        {"top": 1, "bottom": 2, "newX": 0, "newY": 76},
       ],
       "north": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -4151,10 +5008,10 @@ GEOM: list[ExitBase] = [
     "east": 17,
     "exits": {
       "west": [
-        {"top": 1, "bottom": 2},
+        {"top": 1, "bottom": 2, "newX": 659, "newY": 76},
       ],
       "south": [
-        {"left": 10, "right": 10},
+        {"left": 10, "right": 10, "newX": 507, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -4166,7 +5023,7 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 1, "right": 1},
+        {"left": 1, "right": 1, "newX": 50, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -4179,7 +5036,7 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 3, "bottom": 6},
+        {"top": 3, "bottom": 6, "newX": 0, "newY": 229},
       ],
       "north": [],
     },
@@ -4189,12 +5046,12 @@ GEOM: list[ExitBase] = [
     "east": 20,
     "exits": {
       "west": [
-        {"top": 3, "bottom": 6},
+        {"top": 3, "bottom": 6, "newX": 659, "newY": 229},
       ],
       "south": [],
       "east": [],
       "north": [
-        {"left": 5, "right": 6},
+        {"left": 5, "right": 6, "newX": 278, "newY": 509},
       ],
     },
   },
@@ -4205,7 +5062,7 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 5, "bottom": 6},
+        {"top": 5, "bottom": 6, "newX": 0, "newY": 280},
       ],
       "north": [],
     },
@@ -4215,10 +5072,10 @@ GEOM: list[ExitBase] = [
     "east": 22,
     "exits": {
       "west": [
-        {"top": 5, "bottom": 6},
+        {"top": 5, "bottom": 6, "newX": 659, "newY": 280},
       ],
       "south": [
-        {"left": 10, "right": 11},
+        {"left": 10, "right": 11, "newX": 532, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -4230,11 +5087,11 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 1, "right": 1},
+        {"left": 1, "right": 1, "newX": 50, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 9, "right": 10},
+        {"left": 9, "right": 10, "newX": 481, "newY": 509},
       ],
     },
   },
@@ -4244,13 +5101,13 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 1, "right": 3},
-        {"left": 5, "right": 6},
+        {"left": 1, "right": 3, "newX": 101, "newY": 0},
+        {"left": 5, "right": 6, "newX": 278, "newY": 0},
       ],
       "east": [
-        {"top": 1, "bottom": 2},
-        {"top": 5, "bottom": 6},
-        {"top": 8, "bottom": 9},
+        {"top": 1, "bottom": 2, "newX": 0, "newY": 76},
+        {"top": 5, "bottom": 6, "newX": 0, "newY": 280},
+        {"top": 8, "bottom": 9, "newX": 0, "newY": 432},
       ],
       "north": [],
     },
@@ -4265,29 +5122,44 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "west", "idx": 2},
+            {
+              "side": "west",
+              "idx": 2,
+            },
           ],
           [
-            {"side": "west", "idx": 1},
-            {"side": "south", "idx": 0},
-            {"side": "north", "idx": 0},
-            {"side": "west", "idx": 0},
+            {
+              "side": "west",
+              "idx": 1,
+            },
+            {
+              "side": "south",
+              "idx": 0,
+            },
+            {
+              "side": "north",
+              "idx": 0,
+            },
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
         ],
       }
     ],
     "exits": {
       "west": [
-        {"top": 1, "bottom": 2},
-        {"top": 5, "bottom": 6},
-        {"top": 8, "bottom": 9},
+        {"top": 1, "bottom": 2, "newX": 659, "newY": 76},
+        {"top": 5, "bottom": 6, "newX": 659, "newY": 280},
+        {"top": 8, "bottom": 9, "newX": 659, "newY": 432},
       ],
       "south": [
-        {"left": 8, "right": 9},
+        {"left": 8, "right": 9, "newX": 431, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 11, "right": 12},
+        {"left": 11, "right": 12, "newX": 583, "newY": 509},
       ],
     },
   },
@@ -4298,10 +5170,10 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 8, "bottom": 8},
+        {"top": 8, "bottom": 8, "newX": 0, "newY": 407},
       ],
       "north": [
-        {"left": 1, "right": 2},
+        {"left": 1, "right": 2, "newX": 76, "newY": 509},
       ],
     },
   },
@@ -4310,10 +5182,10 @@ GEOM: list[ExitBase] = [
     "east": 11,
     "exits": {
       "west": [
-        {"top": 8, "bottom": 8},
+        {"top": 8, "bottom": 8, "newX": 659, "newY": 407},
       ],
       "south": [
-        {"left": 3, "right": 4},
+        {"left": 3, "right": 4, "newX": 177, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -4327,7 +5199,7 @@ GEOM: list[ExitBase] = [
       "south": [],
       "east": [],
       "north": [
-        {"left": 8, "right": 8},
+        {"left": 8, "right": 8, "newX": 405, "newY": 509},
       ],
     },
   },
@@ -4339,7 +5211,7 @@ GEOM: list[ExitBase] = [
       "south": [],
       "east": [],
       "north": [
-        {"left": 6, "right": 6},
+        {"left": 6, "right": 6, "newX": 304, "newY": 509},
       ],
     },
   },
@@ -4351,7 +5223,7 @@ GEOM: list[ExitBase] = [
       "south": [],
       "east": [],
       "north": [
-        {"left": 6, "right": 6},
+        {"left": 6, "right": 6, "newX": 304, "newY": 509},
       ],
     },
   },
@@ -4361,8 +5233,8 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 3, "right": 7},
-        {"left": 9, "right": 11},
+        {"left": 3, "right": 7, "newX": 253, "newY": 0},
+        {"left": 9, "right": 11, "newX": 507, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -4374,7 +5246,7 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -4390,12 +5262,24 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "north", "idx": 1},
+            {
+              "side": "north",
+              "idx": 1,
+            },
           ],
           [
-            {"side": "north", "idx": 0},
-            {"side": "south", "idx": 0},
-            {"side": "east", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
+            {
+              "side": "south",
+              "idx": 0,
+            },
+            {
+              "side": "east",
+              "idx": 0,
+            },
           ],
         ],
       }
@@ -4403,14 +5287,19 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 6, "right": 7, "newY": 309},
+        {
+          "left": 6,
+          "right": 7,
+          "newX": 329,
+          "newY": 309,
+        },
       ],
       "east": [
-        {"top": 4, "bottom": 4},
+        {"top": 4, "bottom": 4, "newX": 0, "newY": 203},
       ],
       "north": [
-        {"left": 4, "right": 5},
-        {"left": 7, "right": 8},
+        {"left": 4, "right": 5, "newX": 228, "newY": 509},
+        {"left": 7, "right": 8, "newX": 380, "newY": 509},
       ],
     },
   },
@@ -4419,13 +5308,13 @@ GEOM: list[ExitBase] = [
     "east": 18,
     "exits": {
       "west": [
-        {"top": 4, "bottom": 4},
+        {"top": 4, "bottom": 4, "newX": 659, "newY": 203},
       ],
       "south": [],
       "east": [],
       "north": [
-        {"left": 1, "right": 1},
-        {"left": 11, "right": 11},
+        {"left": 1, "right": 1, "newX": 50, "newY": 509},
+        {"left": 11, "right": 11, "newX": 557, "newY": 509},
       ],
     },
   },
@@ -4436,7 +5325,7 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 8, "bottom": 9},
+        {"top": 8, "bottom": 9, "newX": 0, "newY": 432},
       ],
       "north": [],
     },
@@ -4446,16 +5335,16 @@ GEOM: list[ExitBase] = [
     "east": 20,
     "exits": {
       "west": [
-        {"top": 8, "bottom": 9},
+        {"top": 8, "bottom": 9, "newX": 659, "newY": 432},
       ],
       "south": [
-        {"left": 5, "right": 6},
+        {"left": 5, "right": 6, "newX": 278, "newY": 0},
       ],
       "east": [
-        {"top": 9, "bottom": 9},
+        {"top": 9, "bottom": 9, "newX": 0, "newY": 458},
       ],
       "north": [
-        {"left": 1, "right": 12},
+        {"left": 1, "right": 12, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -4464,15 +5353,15 @@ GEOM: list[ExitBase] = [
     "east": 21,
     "exits": {
       "west": [
-        {"top": 9, "bottom": 9},
+        {"top": 9, "bottom": 9, "newX": 659, "newY": 458},
       ],
       "south": [],
       "east": [
-        {"top": 4, "bottom": 4},
+        {"top": 4, "bottom": 4, "newX": 0, "newY": 203},
       ],
       "north": [
-        {"left": 3, "right": 3},
-        {"left": 8, "right": 8},
+        {"left": 3, "right": 3, "newX": 152, "newY": 509},
+        {"left": 8, "right": 8, "newX": 405, "newY": 509},
       ],
     },
   },
@@ -4483,8 +5372,14 @@ GEOM: list[ExitBase] = [
       {
         "areas": [
           [
-            {"side": "west", "idx": 0},
-            {"side": "east", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
+            {
+              "side": "east",
+              "idx": 0,
+            },
           ]
         ],
         "reqs": [
@@ -4496,10 +5391,16 @@ GEOM: list[ExitBase] = [
       {
         "areas": [
           [
-            {"side": "west", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "east", "idx": 0},
+            {
+              "side": "east",
+              "idx": 0,
+            },
           ],
         ],
         "reqs": [
@@ -4509,11 +5410,11 @@ GEOM: list[ExitBase] = [
     ],
     "exits": {
       "west": [
-        {"top": 4, "bottom": 4},
+        {"top": 4, "bottom": 4, "newX": 659, "newY": 203},
       ],
       "south": [],
       "east": [
-        {"top": 1, "bottom": 9},
+        {"top": 1, "bottom": 9, "newX": 0, "newY": 254},
       ],
       "north": [],
     },
@@ -4523,16 +5424,16 @@ GEOM: list[ExitBase] = [
     "east": 23,
     "exits": {
       "west": [
-        {"top": 1, "bottom": 9},
+        {"top": 1, "bottom": 9, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 9, "right": 10},
+        {"left": 9, "right": 10, "newX": 481, "newY": 0},
       ],
       "east": [
-        {"top": 7, "bottom": 8},
+        {"top": 7, "bottom": 8, "newX": 0, "newY": 381},
       ],
       "north": [
-        {"left": 5, "right": 6},
+        {"left": 5, "right": 6, "newX": 278, "newY": 509},
       ],
     },
   },
@@ -4541,7 +5442,7 @@ GEOM: list[ExitBase] = [
     "east": 24,
     "exits": {
       "west": [
-        {"top": 7, "bottom": 8},
+        {"top": 7, "bottom": 8, "newX": 659, "newY": 381},
       ],
       "south": [],
       "east": [],
@@ -4554,7 +5455,7 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 11, "right": 12},
+        {"left": 11, "right": 12, "newX": 583, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -4566,10 +5467,10 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 1, "right": 2},
+        {"left": 1, "right": 2, "newX": 76, "newY": 0},
       ],
       "east": [
-        {"top": 2, "bottom": 3},
+        {"top": 2, "bottom": 3, "newX": 0, "newY": 127},
       ],
       "north": [],
     },
@@ -4579,7 +5480,7 @@ GEOM: list[ExitBase] = [
     "east": 11,
     "exits": {
       "west": [
-        {"top": 2, "bottom": 3},
+        {"top": 2, "bottom": 3, "newX": 659, "newY": 127},
       ],
       "south": [],
       "east": [],
@@ -4592,13 +5493,13 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 8, "right": 8},
+        {"left": 8, "right": 8, "newX": 405, "newY": 0},
       ],
       "east": [
-        {"top": 3, "bottom": 7},
+        {"top": 3, "bottom": 7, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 3, "right": 9},
+        {"left": 3, "right": 9, "newX": 304, "newY": 509},
       ],
     },
   },
@@ -4607,13 +5508,21 @@ GEOM: list[ExitBase] = [
     "east": 13,
     "exits": {
       "west": [
-        {"top": 3, "bottom": 7},
+        {
+          "top": 3,
+          "bottom": 7,
+        },
       ],
       "south": [
-        {"left": 6, "right": 6},
+        {"left": 6, "right": 6, "newX": 304, "newY": 0},
       ],
       "east": [
-        {"top": 5, "bottom": 5, "newX": 600},
+        {
+          "top": 5,
+          "bottom": 5,
+          "newY": 305,
+          "newX": 600,
+        },
       ],
       "north": [],
     },
@@ -4627,7 +5536,7 @@ GEOM: list[ExitBase] = [
       "south": [],
       "east": [],
       "north": [
-        {"left": 5, "right": 6},
+        {"left": 5, "right": 6, "newX": 278, "newY": 509},
       ],
     },
   },
@@ -4637,7 +5546,12 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 6, "right": 7, "newY": 200},
+        {
+          "left": 6,
+          "right": 7,
+          "newX": 329,
+          "newY": 200,
+        },
       ],
       "east": [],
       "north": [],
@@ -4653,12 +5567,24 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 0},
-            {"side": "north", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "south", "idx": 1},
-            {"side": "east", "idx": 0},
+            {
+              "side": "south",
+              "idx": 1,
+            },
+            {
+              "side": "east",
+              "idx": 0,
+            },
           ],
         ],
       }
@@ -4666,14 +5592,14 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 4, "right": 5},
-        {"left": 7, "right": 8},
+        {"left": 4, "right": 5, "newX": 228, "newY": 0},
+        {"left": 7, "right": 8, "newX": 380, "newY": 0},
       ],
       "east": [
-        {"top": 3, "bottom": 3},
+        {"top": 3, "bottom": 3, "newX": 0, "newY": 152},
       ],
       "north": [
-        {"left": 1, "right": 8},
+        {"left": 1, "right": 8, "newX": 228, "newY": 509},
       ],
     },
   },
@@ -4689,12 +5615,24 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "north", "idx": 0},
-            {"side": "west", "idx": 0},
-            {"side": "south", "idx": 1},
+            {
+              "side": "north",
+              "idx": 0,
+            },
+            {
+              "side": "west",
+              "idx": 0,
+            },
+            {
+              "side": "south",
+              "idx": 1,
+            },
           ],
           [
-            {"side": "south", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
         ],
       },
@@ -4704,29 +5642,47 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "south", "idx": 1},
-            {"side": "west", "idx": 0},
+            {
+              "side": "south",
+              "idx": 1,
+            },
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "north", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
         ],
       },
     ],
     "exits": {
       "west": [
-        {"top": 3, "bottom": 3},
+        {
+          "top": 3,
+          "bottom": 3,
+        },
       ],
       "south": [
-        {"left": 1, "right": 1},
-        {"left": 11, "right": 11},
+        {"left": 1, "right": 1, "newX": 50, "newY": 0},
+        {"left": 11, "right": 11, "newX": 557, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 8, "right": 12},
+        {
+          "left": 8,
+          "right": 12,
+        },
       ],
     },
   },
@@ -4736,11 +5692,11 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 1, "right": 12},
+        {"left": 1, "right": 12, "newX": 329, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -4750,8 +5706,8 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 3, "right": 3},
-        {"left": 8, "right": 8},
+        {"left": 3, "right": 3, "newX": 152, "newY": 0},
+        {"left": 8, "right": 8, "newX": 405, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -4773,13 +5729,13 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 5, "right": 6},
+        {"left": 5, "right": 6, "newX": 278, "newY": 0},
       ],
       "east": [
-        {"top": 4, "bottom": 5},
+        {"top": 4, "bottom": 5, "newX": 0, "newY": 229},
       ],
       "north": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -4788,7 +5744,7 @@ GEOM: list[ExitBase] = [
     "east": 24,
     "exits": {
       "west": [
-        {"top": 4, "bottom": 5},
+        {"top": 4, "bottom": 5, "newX": 659, "newY": 229},
       ],
       "south": [],
       "east": [],
@@ -4801,7 +5757,7 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 3, "right": 9},
+        {"left": 3, "right": 9, "newX": 304, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -4813,7 +5769,7 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 5, "right": 6},
+        {"left": 5, "right": 6, "newX": 278, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -4831,7 +5787,7 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 1, "right": 8},
+        {"left": 1, "right": 8, "newX": 228, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -4843,13 +5799,13 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 8, "right": 12},
+        {"left": 8, "right": 12, "newX": 507, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 6, "right": 6},
-        {"left": 8, "right": 8},
-        {"left": 10, "right": 10},
+        {"left": 6, "right": 6, "newX": 304, "newY": 509},
+        {"left": 8, "right": 8, "newX": 405, "newY": 509},
+        {"left": 10, "right": 10, "newX": 507, "newY": 509},
       ],
     },
   },
@@ -4859,11 +5815,11 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -4889,8 +5845,14 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "east", "idx": 0},
-            {"side": "north", "idx": 0},
+            {
+              "side": "east",
+              "idx": 0,
+            },
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ]
         ],
       },
@@ -4900,10 +5862,16 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "east", "idx": 0},
+            {
+              "side": "east",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "north", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
         ],
       },
@@ -4912,10 +5880,10 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 2, "bottom": 3},
+        {"top": 2, "bottom": 3, "newX": 0, "newY": 127},
       ],
       "north": [
-        {"left": 8, "right": 9},
+        {"left": 8, "right": 9, "newX": 431, "newY": 509},
       ],
     },
   },
@@ -4931,11 +5899,20 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 0},
-            {"side": "north", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "west", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
         ],
       },
@@ -4945,27 +5922,36 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "north", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "south", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "west", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
         ],
       },
     ],
     "exits": {
       "west": [
-        {"top": 2, "bottom": 3},
+        {"top": 2, "bottom": 3, "newX": 659, "newY": 127},
       ],
       "south": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 10, "right": 11},
+        {"left": 10, "right": 11, "newX": 532, "newY": 509},
       ],
     },
   },
@@ -4977,7 +5963,7 @@ GEOM: list[ExitBase] = [
       "south": [],
       "east": [],
       "north": [
-        {"left": 5, "right": 7},
+        {"left": 5, "right": 7, "newX": 304, "newY": 509},
       ],
     },
   },
@@ -4991,23 +5977,32 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "north", "idx": 0},
-            {"side": "west", "idx": 0},
-            {"side": "east", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
+            {
+              "side": "west",
+              "idx": 0,
+            },
+            {
+              "side": "east",
+              "idx": 0,
+            },
           ]
         ],
       }
     ],
     "exits": {
       "west": [
-        {"top": 4, "bottom": 6},
+        {"top": 4, "bottom": 6, "newX": 659, "newY": 254},
       ],
       "south": [],
       "east": [
-        {"top": 4, "bottom": 6},
+        {"top": 4, "bottom": 6, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -5016,13 +6011,18 @@ GEOM: list[ExitBase] = [
     "east": 12,
     "exits": {
       "west": [
-        {"top": 4, "bottom": 6},
+        {"top": 4, "bottom": 6, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 6, "right": 7, "newY": 172, "newX": 308},
+        {
+          "left": 6,
+          "right": 7,
+          "newY": 172,
+          "newX": 308,
+        },
       ],
       "east": [
-        {"top": 4, "bottom": 6},
+        {"top": 4, "bottom": 6, "newX": 0, "newY": 254},
       ],
       "north": [],
     },
@@ -5037,23 +6037,32 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "east", "idx": 0},
+            {
+              "side": "east",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "east", "idx": 1},
-            {"side": "west", "idx": 0},
+            {
+              "side": "east",
+              "idx": 1,
+            },
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
         ],
       }
     ],
     "exits": {
       "west": [
-        {"top": 4, "bottom": 6},
+        {"top": 4, "bottom": 6, "newX": 659, "newY": 254},
       ],
       "south": [],
       "east": [
-        {"top": 2, "bottom": 5},
-        {"top": 7, "bottom": 8},
+        {"top": 2, "bottom": 5, "newX": 0, "newY": 178},
+        {"top": 7, "bottom": 8, "newX": 0, "newY": 381},
       ],
       "north": [],
     },
@@ -5063,13 +6072,13 @@ GEOM: list[ExitBase] = [
     "east": 14,
     "exits": {
       "west": [
-        {"top": 2, "bottom": 5},
-        {"top": 7, "bottom": 8},
+        {"top": 2, "bottom": 5, "newX": 659, "newY": 178},
+        {"top": 7, "bottom": 8, "newX": 659, "newY": 381},
       ],
       "south": [],
       "east": [],
       "north": [
-        {"left": 11, "right": 12},
+        {"left": 11, "right": 12, "newX": 583, "newY": 509},
       ],
     },
   },
@@ -5080,7 +6089,7 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 1, "bottom": 1},
+        {"top": 1, "bottom": 1, "newX": 0, "newY": 50},
       ],
       "north": [],
     },
@@ -5090,12 +6099,12 @@ GEOM: list[ExitBase] = [
     "east": 18,
     "exits": {
       "west": [
-        {"top": 1, "bottom": 1},
+        {"top": 1, "bottom": 1, "newX": 659, "newY": 50},
       ],
       "south": [
-        {"left": 6, "right": 6},
-        {"left": 8, "right": 8},
-        {"left": 10, "right": 10},
+        {"left": 6, "right": 6, "newX": 304, "newY": 0},
+        {"left": 8, "right": 8, "newX": 405, "newY": 0},
+        {"left": 10, "right": 10, "newX": 507, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -5107,10 +6116,10 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 9, "bottom": 9},
+        {"top": 9, "bottom": 9, "newX": 0, "newY": 458},
       ],
       "north": [],
     },
@@ -5125,21 +6134,27 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "east", "idx": 0},
+            {
+              "side": "east",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "west", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
         ],
       }
     ],
     "exits": {
       "west": [
-        {"top": 9, "bottom": 9},
+        {"top": 9, "bottom": 9, "newX": 659, "newY": 458},
       ],
       "south": [],
       "east": [
-        {"top": 1, "bottom": 2},
+        {"top": 1, "bottom": 2, "newX": 0, "newY": 76},
       ],
       "north": [],
     },
@@ -5149,10 +6164,10 @@ GEOM: list[ExitBase] = [
     "east": 23,
     "exits": {
       "west": [
-        {"top": 4, "bottom": 5},
+        {"top": 4, "bottom": 5, "newX": 659, "newY": 229},
       ],
       "south": [
-        {"left": 10, "right": 11},
+        {"left": 10, "right": 11, "newX": 532, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -5164,11 +6179,11 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 5, "right": 7},
+        {"left": 5, "right": 7, "newX": 304, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 5, "right": 7},
+        {"left": 5, "right": 7, "newX": 304, "newY": 509},
       ],
     },
   },
@@ -5178,7 +6193,7 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -5190,11 +6205,11 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 6, "right": 6},
+        {"left": 6, "right": 6, "newX": 304, "newY": 509},
       ],
     },
   },
@@ -5206,7 +6221,7 @@ GEOM: list[ExitBase] = [
       "south": [],
       "east": [],
       "north": [
-        {"left": 6, "right": 6},
+        {"left": 6, "right": 6, "newX": 304, "newY": 509},
       ],
     },
   },
@@ -5217,10 +6232,10 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 4, "bottom": 6},
+        {"top": 4, "bottom": 6, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 6, "right": 6},
+        {"left": 6, "right": 6, "newX": 304, "newY": 509},
       ],
     },
   },
@@ -5229,10 +6244,10 @@ GEOM: list[ExitBase] = [
     "east": 14,
     "exits": {
       "west": [
-        {"top": 4, "bottom": 6},
+        {"top": 4, "bottom": 6, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 11, "right": 12},
+        {"left": 11, "right": 12, "newX": 583, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -5244,11 +6259,11 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 5, "right": 7},
+        {"left": 5, "right": 7, "newX": 304, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 5, "right": 7},
+        {"left": 5, "right": 7, "newX": 304, "newY": 509},
       ],
     },
   },
@@ -5268,13 +6283,13 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 6, "right": 6},
+        {"left": 6, "right": 6, "newX": 304, "newY": 0},
       ],
       "east": [
-        {"top": 4, "bottom": 6},
+        {"top": 4, "bottom": 6, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 5, "right": 7},
+        {"left": 5, "right": 7, "newX": 304, "newY": 509},
       ],
     },
   },
@@ -5283,14 +6298,14 @@ GEOM: list[ExitBase] = [
     "east": 12,
     "exits": {
       "west": [
-        {"top": 4, "bottom": 6},
+        {"top": 4, "bottom": 6, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 6, "right": 6},
+        {"left": 6, "right": 6, "newX": 304, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 5, "right": 7},
+        {"left": 5, "right": 7, "newX": 304, "newY": 509},
       ],
     },
   },
@@ -5300,11 +6315,11 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 6, "right": 6},
+        {"left": 6, "right": 6, "newX": 304, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 6, "right": 6},
+        {"left": 6, "right": 6, "newX": 304, "newY": 509},
       ],
     },
   },
@@ -5316,7 +6331,7 @@ GEOM: list[ExitBase] = [
       "south": [],
       "east": [],
       "north": [
-        {"left": 6, "right": 6},
+        {"left": 6, "right": 6, "newX": 304, "newY": 509},
       ],
     },
   },
@@ -5326,7 +6341,7 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 5, "right": 7},
+        {"left": 5, "right": 7, "newX": 304, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -5339,7 +6354,7 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 1, "bottom": 2},
+        {"top": 1, "bottom": 2, "newX": 0, "newY": 76},
       ],
       "north": [],
     },
@@ -5356,8 +6371,14 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "west", "idx": 0},
-            {"side": "south", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ]
         ],
       },
@@ -5367,20 +6388,26 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "west", "idx": 0},
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
         ],
       },
     ],
     "exits": {
       "west": [
-        {"top": 1, "bottom": 2},
+        {"top": 1, "bottom": 2, "newX": 659, "newY": 76},
       ],
       "south": [
-        {"left": 5, "right": 7},
+        {"left": 5, "right": 7, "newX": 304, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -5392,10 +6419,10 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 5, "right": 7},
+        {"left": 5, "right": 7, "newX": 304, "newY": 0},
       ],
       "east": [
-        {"top": 2, "bottom": 4},
+        {"top": 2, "bottom": 4, "newX": 0, "newY": 152},
       ],
       "north": [],
     },
@@ -5405,10 +6432,10 @@ GEOM: list[ExitBase] = [
     "east": 13,
     "exits": {
       "west": [
-        {"top": 2, "bottom": 4},
+        {"top": 2, "bottom": 4, "newX": 659, "newY": 152},
       ],
       "south": [
-        {"left": 6, "right": 6},
+        {"left": 6, "right": 6, "newX": 304, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -5420,7 +6447,7 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 6, "right": 6},
+        {"left": 6, "right": 6, "newX": 304, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -5432,7 +6459,12 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 1, "right": 12, "newX": 260, "newY": 315},
+        {
+          "left": 1,
+          "right": 12,
+          "newX": 260,
+          "newY": 315,
+        },
       ],
       "east": [],
       "north": [],
@@ -5446,7 +6478,7 @@ GEOM: list[ExitBase] = [
       "south": [],
       "east": [],
       "north": [
-        {"left": 4, "right": 9, "newY": 204},
+        {"left": 4, "right": 9, "newX": 329, "newY": 204},
       ],
     },
   },
@@ -5476,7 +6508,12 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 1, "right": 12, "newX": 337, "newY": 132},
+        {
+          "left": 1,
+          "right": 12,
+          "newX": 337,
+          "newY": 132,
+        },
       ],
       "east": [],
       "north": [],
@@ -5490,7 +6527,7 @@ GEOM: list[ExitBase] = [
       "south": [],
       "east": [],
       "north": [
-        {"left": 8, "right": 10},
+        {"left": 8, "right": 10, "newX": 456, "newY": 509},
       ],
     },
   },
@@ -5502,7 +6539,7 @@ GEOM: list[ExitBase] = [
       "south": [],
       "east": [],
       "north": [
-        {"left": 5, "right": 6},
+        {"left": 5, "right": 6, "newX": 278, "newY": 509},
       ],
     },
   },
@@ -5512,10 +6549,10 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 8, "right": 10},
+        {"left": 8, "right": 10, "newX": 456, "newY": 0},
       ],
       "east": [
-        {"top": 1, "bottom": 4},
+        {"top": 1, "bottom": 4, "newX": 0, "newY": 127},
       ],
       "north": [],
     },
@@ -5525,10 +6562,10 @@ GEOM: list[ExitBase] = [
     "east": 501,
     "exits": {
       "west": [
-        {"top": 1, "bottom": 4},
+        {"top": 1, "bottom": 4, "newX": 659, "newY": 127},
       ],
       "south": [
-        {"left": 5, "right": 6},
+        {"left": 5, "right": 6, "newX": 278, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -5539,14 +6576,14 @@ GEOM: list[ExitBase] = [
     "east": 21,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 0, "right": 12},
+        {"left": 0, "right": 12, "newX": 304, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 0, "right": 12},
+        {"left": 0, "right": 12, "newX": 304, "newY": 509},
       ],
     },
   },
@@ -5555,14 +6592,14 @@ GEOM: list[ExitBase] = [
     "east": 21,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 0, "right": 12},
+        {"left": 0, "right": 12, "newX": 304, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 0, "right": 12},
+        {"left": 0, "right": 12, "newX": 304, "newY": 509},
       ],
     },
   },
@@ -5571,12 +6608,12 @@ GEOM: list[ExitBase] = [
     "east": 21,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 9},
+        {"top": 0, "bottom": 9, "newX": 659, "newY": 229},
       ],
       "south": [],
       "east": [],
       "north": [
-        {"left": 0, "right": 12},
+        {"left": 0, "right": 12, "newX": 304, "newY": 509},
       ],
     },
   },
@@ -5585,16 +6622,19 @@ GEOM: list[ExitBase] = [
     "east": 20,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {
+          "top": 0,
+          "bottom": 10,
+        },
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -5603,16 +6643,19 @@ GEOM: list[ExitBase] = [
     "east": 19,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {
+          "top": 0,
+          "bottom": 10,
+        },
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -5621,16 +6664,16 @@ GEOM: list[ExitBase] = [
     "east": 18,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -5639,16 +6682,16 @@ GEOM: list[ExitBase] = [
     "east": 18,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -5657,16 +6700,16 @@ GEOM: list[ExitBase] = [
     "east": 17,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -5675,16 +6718,19 @@ GEOM: list[ExitBase] = [
     "east": 16,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {
+          "top": 0,
+          "bottom": 10,
+        },
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -5693,16 +6739,16 @@ GEOM: list[ExitBase] = [
     "east": 16,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -5711,14 +6757,14 @@ GEOM: list[ExitBase] = [
     "east": 17,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 9},
+        {"top": 0, "bottom": 9, "newX": 659, "newY": 229},
       ],
       "south": [],
       "east": [
-        {"top": 0, "bottom": 9},
+        {"top": 0, "bottom": 9, "newX": 0, "newY": 229},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -5727,14 +6773,14 @@ GEOM: list[ExitBase] = [
     "east": 18,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 9},
+        {"top": 0, "bottom": 9, "newX": 659, "newY": 229},
       ],
       "south": [],
       "east": [
-        {"top": 0, "bottom": 9},
+        {"top": 0, "bottom": 9, "newX": 0, "newY": 229},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -5743,16 +6789,22 @@ GEOM: list[ExitBase] = [
     "east": 17,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {
+          "left": 0,
+          "right": 13,
+        },
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {
+          "top": 0,
+          "bottom": 10,
+        },
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -5761,13 +6813,13 @@ GEOM: list[ExitBase] = [
     "east": 17,
     "exits": {
       "west": [
-        {"top": 1, "bottom": 10},
+        {"top": 1, "bottom": 10, "newX": 659, "newY": 280},
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 1, "bottom": 10},
+        {"top": 1, "bottom": 10, "newX": 0, "newY": 280},
       ],
       "north": [],
     },
@@ -5777,16 +6829,16 @@ GEOM: list[ExitBase] = [
     "east": 15,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -5795,16 +6847,16 @@ GEOM: list[ExitBase] = [
     "east": 14,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -5813,16 +6865,16 @@ GEOM: list[ExitBase] = [
     "east": 14,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -5831,16 +6883,16 @@ GEOM: list[ExitBase] = [
     "east": 14,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -5850,13 +6902,13 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 1, "right": 13},
+        {"left": 1, "right": 13, "newX": 355, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 1, "right": 13},
+        {"left": 1, "right": 13, "newX": 355, "newY": 509},
       ],
     },
   },
@@ -5865,14 +6917,14 @@ GEOM: list[ExitBase] = [
     "east": 15,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 9},
+        {"top": 0, "bottom": 9, "newX": 659, "newY": 229},
       ],
       "south": [],
       "east": [
-        {"top": 0, "bottom": 9},
+        {"top": 0, "bottom": 9, "newX": 0, "newY": 229},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -5881,14 +6933,17 @@ GEOM: list[ExitBase] = [
     "east": 14,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 9},
+        {
+          "top": 0,
+          "bottom": 9,
+        },
       ],
       "south": [],
       "east": [
-        {"top": 0, "bottom": 9},
+        {"top": 0, "bottom": 9, "newX": 0, "newY": 229},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -5899,10 +6954,10 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 0, "bottom": 9},
+        {"top": 0, "bottom": 9, "newX": 0, "newY": 229},
       ],
       "north": [
-        {"left": 1, "right": 13},
+        {"left": 1, "right": 13, "newX": 355, "newY": 509},
       ],
     },
   },
@@ -5911,13 +6966,13 @@ GEOM: list[ExitBase] = [
     "east": 19,
     "exits": {
       "west": [
-        {"top": 1, "bottom": 10},
+        {"top": 1, "bottom": 10, "newX": 659, "newY": 280},
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 1, "bottom": 10},
+        {"top": 1, "bottom": 10, "newX": 0, "newY": 280},
       ],
       "north": [],
     },
@@ -5927,16 +6982,16 @@ GEOM: list[ExitBase] = [
     "east": 20,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -5946,15 +7001,15 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 1, "right": 2},
-        {"left": 11, "right": 12},
+        {"left": 1, "right": 2, "newX": 76, "newY": 0},
+        {"left": 11, "right": 12, "newX": 583, "newY": 0},
       ],
       "east": [
-        {"top": 4, "bottom": 4},
-        {"top": 6, "bottom": 6},
+        {"top": 4, "bottom": 4, "newX": 0, "newY": 203},
+        {"top": 6, "bottom": 6, "newX": 0, "newY": 305},
       ],
       "north": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -5963,16 +7018,16 @@ GEOM: list[ExitBase] = [
     "east": 24,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 0, "right": 8},
+        {"left": 0, "right": 8, "newX": 202, "newY": 0},
       ],
       "east": [
-        {"top": 0, "bottom": 9},
+        {"top": 0, "bottom": 9, "newX": 0, "newY": 229},
       ],
       "north": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -5981,13 +7036,13 @@ GEOM: list[ExitBase] = [
     "east": 22,
     "exits": {
       "west": [
-        {"top": 1, "bottom": 2},
+        {"top": 1, "bottom": 2, "newX": 659, "newY": 76},
       ],
       "south": [
-        {"left": 8, "right": 9},
+        {"left": 8, "right": 9, "newX": 431, "newY": 0},
       ],
       "east": [
-        {"top": 4, "bottom": 5},
+        {"top": 4, "bottom": 5, "newX": 0, "newY": 229},
       ],
       "north": [],
     },
@@ -5997,10 +7052,10 @@ GEOM: list[ExitBase] = [
     "east": 14,
     "exits": {
       "west": [
-        {"top": 6, "bottom": 6},
+        {"top": 6, "bottom": 6, "newX": 600, "newY": 254},
       ],
       "south": [
-        {"left": 6, "right": 6},
+        {"left": 6, "right": 6, "newX": 304, "newY": 0},
       ],
       "east": [],
       "north": [],
@@ -6012,14 +7067,14 @@ GEOM: list[ExitBase] = [
     "east": 12,
     "exits": {
       "west": [
-        {"top": 0, "bottom": 10},
+        {"top": 0, "bottom": 10, "newX": 659, "newY": 254},
       ],
       "south": [
-        {"left": 0, "right": 12},
+        {"left": 0, "right": 12, "newX": 304, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 0, "right": 12},
+        {"left": 0, "right": 12, "newX": 304, "newY": 509},
       ],
     },
   },
@@ -6028,13 +7083,13 @@ GEOM: list[ExitBase] = [
     "east": 10,
     "exits": {
       "west": [
-        {"top": 1, "bottom": 10},
+        {"top": 1, "bottom": 10, "newX": 659, "newY": 280},
       ],
       "south": [
-        {"left": 0, "right": 13},
+        {"left": 0, "right": 13, "newX": 329, "newY": 0},
       ],
       "east": [
-        {"top": 1, "bottom": 10},
+        {"top": 1, "bottom": 10, "newX": 0, "newY": 280},
       ],
       "north": [],
     },
@@ -6049,27 +7104,39 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "north", "idx": 0},
-            {"side": "west", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
+            {
+              "side": "west",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "west", "idx": 1},
-            {"side": "south", "idx": 0},
+            {
+              "side": "west",
+              "idx": 1,
+            },
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
         ],
       }
     ],
     "exits": {
       "west": [
-        {"top": 0, "bottom": 5},
-        {"top": 7, "bottom": 10},
+        {"top": 0, "bottom": 5, "newX": 659, "newY": 127},
+        {"top": 7, "bottom": 10, "newX": 659, "newY": 432},
       ],
       "south": [
-        {"left": 0, "right": 12},
+        {"left": 0, "right": 12, "newX": 304, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 0, "right": 12},
+        {"left": 0, "right": 12, "newX": 304, "newY": 509},
       ],
     },
   },
@@ -6080,10 +7147,10 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 4, "bottom": 6},
+        {"top": 4, "bottom": 6, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 6, "right": 7},
+        {"left": 6, "right": 7, "newX": 329, "newY": 509},
       ],
     },
   },
@@ -6099,8 +7166,14 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "north", "idx": 0},
-            {"side": "south", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ]
         ],
       },
@@ -6110,10 +7183,16 @@ GEOM: list[ExitBase] = [
         ],
         "areas": [
           [
-            {"side": "south", "idx": 0},
+            {
+              "side": "south",
+              "idx": 0,
+            },
           ],
           [
-            {"side": "north", "idx": 0},
+            {
+              "side": "north",
+              "idx": 0,
+            },
           ],
         ],
       },
@@ -6121,11 +7200,11 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 1, "right": 1},
+        {"left": 1, "right": 1, "newX": 50, "newY": 0},
       ],
       "east": [],
       "north": [
-        {"left": 3, "right": 6},
+        {"left": 3, "right": 6, "newX": 228, "newY": 509},
       ],
     },
   },
@@ -6135,13 +7214,13 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 4, "right": 5},
+        {"left": 4, "right": 5, "newX": 228, "newY": 0},
       ],
       "east": [
-        {"top": 1, "bottom": 9},
+        {"top": 1, "bottom": 9, "newX": 0, "newY": 254},
       ],
       "north": [
-        {"left": 5, "right": 5},
+        {"left": 5, "right": 5, "newX": 253, "newY": 509},
       ],
     },
   },
@@ -6152,7 +7231,12 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 2, "bottom": 10},
+        {
+          "top": 2,
+          "bottom": 10,
+          "newX": 0,
+          "newY": 280,
+        },
       ],
       "north": [],
     },

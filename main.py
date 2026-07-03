@@ -1,9 +1,9 @@
 # import map.genGrid as _
 import os
 
+import gen_exit_data
 import gen_map
 import patch_rooms
-import gen_exit_data
 
 # playercouldhave, edge_reached, door_reached, warp_reached, all_rooms = shuffle_exits.init()
 

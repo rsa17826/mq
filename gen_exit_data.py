@@ -1,487 +1,6 @@
-import sys
-
-# COLORPRINT
-
-prevprint = print
-
-
-def fg(color=None):
-  """returns ascii escape for foreground colors
-
-  Args:
-    color (str, optional): the number of the collor to get. Defaults to None - if none return the remove color sequence instead.
-
-  Returns (str): ascii escape for foreground colors
-  """
-  return "\33[38;5;" + str(color) + "m" if color else "\u001b[0m"
-
-
-def bg(color=None):
-  """returns ascii escape for background colors
-
-  Args:
-    color (str, optional): the number of the collor to get. Defaults to None - if none return the remove color sequence instead.
-
-  Returns (str): ascii escape for background colors
-  """
-  return "\33[48;5;" + str(color) + "m" if color else "\u001b[0m"
-
-
-def getcolor(color):
-  """will make better later
-
-  Args:
-    color (string): one of the set colors
-
-  Raises (ValueError): if color is not a valid color
-
-  Returns (str): an ascii escape sequence of the color
-  """
-  # if plainprint:
-  #     return ""
-  match color.lower():
-    case "end":
-      return "\x1b[0m"
-    case "nc":
-      return "\x1b[0m"
-    case "red":
-      return fg(1) or "\033[0m"
-    case "purple":
-      return fg(92)
-    case "blue":
-      return fg(19)
-    case "green":
-      return fg(28)
-    case "magenta":
-      return fg(90)
-    case "bright blue":
-      return fg(27)
-    case "yellow":
-      return fg(3)
-    case "bold":
-      return "\033[1m"
-    case "underline":
-      return "\033[4m"
-    case "white":
-      return fg(15)
-    case "cyan":
-      return fg(45) or "\033[96m"
-    case "orange":
-      return fg(208)
-    case "pink":
-      return fg(213)
-    case _:
-      raise ValueError(f"{color} is not a valid color")
-
-
-def listcolors():
-  """
-  Print a table of colors.
-  """
-  for row in range(-1, 42):
-
-    def print_six(row, format):
-      for col in range(6):
-        color = row * 6 + col + 4
-        if color >= 0:
-          text = "{:3d}".format(color)
-          print(format(color) + text + getcolor("END"), end=" ")
-        else:
-          print("   ", end=" ")
-
-    print_six(row, fg)
-    print("", end=" ")
-    print_six(row, bg)
-    print()
-
-
 import re
 from functools import partial as bind
 
-
-def logfile(type, *data, sep: str | None = " ", end: str | None = "\n", format: bool = True):
-  return
-
-
-# re.sub(r"\[\d+m", "", data)
-
-
-class print:
-  c = getcolor
-  showdebug = True
-  showinfo = False
-  defaultiscolor = True
-
-  @staticmethod
-  def plain(
-    *a,
-    sep: str | None = " ",
-    end: str | None = "\n",
-    file=None,
-    flush=False,
-  ):
-    logfile(f"{fg(213)}[plain]", *a, sep=sep, end=end)
-    prevprint(*map(str, a), sep=sep, end=end, file=file, flush=flush)
-
-  @staticmethod
-  def color(
-    *a,
-    sep: str | None = " ",
-    end: str | None = "\n",
-    file=None,
-    flush=False,
-  ):
-    logfile(f"{fg(213)}[color]", *a, sep=sep, end=end)
-    prevprint(
-      *map(bind(formatitem, nocolor=False), a),
-      print.c("END"),
-      sep=sep,
-      end=end,
-    )
-
-  @staticmethod
-  def __init__(
-    *a,
-    sep: str | None = " ",
-    end: str | None = "\n",
-    file=None,
-    flush=False,
-  ):
-    logfile("[default]", *a, sep=sep, end=end, format=print.defaultiscolor)
-
-    if print.defaultiscolor:
-      prevprint(
-        *map(bind(formatitem, nocolor=False), a),
-        print.c("END"),
-        sep=sep,
-        end=end,
-      )
-    else:
-      prevprint(*a, sep=sep, end=end)
-
-  @classmethod
-  def debug(
-    cls,
-    *a,
-    sep: str | None = " ",
-    end: str | None = "\n",
-    file=None,
-    flush=False,
-  ):
-    if not cls.showdebug:
-      return
-    logfile(
-      f"{getcolor('BLUE')}{getcolor('BOLD')}[DEBUG]{getcolor('END')}",
-      *a,
-      sep=sep,
-      end=end,
-    )
-
-    prevprint(
-      f"{print.c('BLUE')}{print.c('BOLD')}[DEBUG]{print.c('END')}",
-      *map(bind(formatitem, nocolor=False), a),
-      print.c("END"),
-      sep=sep,
-      end=end,
-      file=file,
-      flush=flush,
-    )
-
-  @classmethod
-  def info(
-    cls,
-    *a,
-    sep: str | None = " ",
-    end: str | None = "\n",
-    file=None,
-    flush=False,
-  ):
-    if not cls.showinfo:
-      return
-    logfile(
-      f"{getcolor('bright blue')}{getcolor('BOLD')}[INFO]{getcolor('END')}",
-      *a,
-      sep=sep,
-      end=end,
-    )
-
-    prevprint(
-      f"{print.c('bright blue')}{print.c('BOLD')}[INFO]{print.c('END')}",
-      *map(bind(formatitem, nocolor=False), a),
-      print.c("END"),
-      sep=sep,
-      end=end,
-      file=file,
-      flush=flush,
-    )
-
-  @staticmethod
-  def warn(
-    *a,
-    sep: str | None = " ",
-    end: str | None = "\n",
-    file=None,
-    flush=False,
-  ):
-    logfile(
-      f"{getcolor('YELLOW')}{getcolor('BOLD')}[WARNING]{getcolor('END')}",
-      *a,
-      sep=sep,
-      end=end,
-    )
-
-    prevprint(
-      f"{print.c('YELLOW')}{print.c('BOLD')}[WARNING]{print.c('END')}",
-      *map(bind(formatitem, nocolor=False), a),
-      print.c("END"),
-      sep=sep,
-      end=end,
-      file=file,
-      flush=flush,
-    )
-
-  @staticmethod
-  def error(
-    *a,
-    sep: str | None = " ",
-    end: str | None = "\n",
-    file=None,
-    flush=False,
-  ):
-    logfile(
-      f"{getcolor('RED')}{getcolor('BOLD')}[ERROR]{getcolor('END')}",
-      *a,
-      sep=sep,
-      end=end,
-    )
-
-    prevprint(
-      f"{print.c('RED')}{print.c('BOLD')}[ERROR]{print.c('END')}",
-      *map(bind(formatitem, nocolor=False), a),
-      print.c("END"),
-      sep=sep,
-      end=end,
-      file=file,
-      flush=flush,
-    )
-
-  @staticmethod
-  def success(
-    *a,
-    sep: str | None = " ",
-    end: str | None = "\n",
-    file=None,
-    flush=False,
-  ):
-    logfile(
-      f"{getcolor('GREEN')}{getcolor('BOLD')}[SUCCESS]{getcolor('END')}",
-      *a,
-      sep=sep,
-      end=end,
-    )
-    prevprint(
-      f"{print.c('GREEN')}{print.c('BOLD')}[SUCCESS]{print.c('END')}",
-      *map(bind(formatitem, nocolor=False), a),
-      print.c("END"),
-      sep=sep,
-      end=end,
-      file=file,
-      flush=flush,
-    )
-
-
-def formatitem(item, tab=-2, isarrafterdict=False, nocolor=False):
-  """formats data into a string
-
-  Args:
-    item (any): the item to format
-    tab (): - DONT SET MANUALLY
-    isarrafterdict (): - DONT SET MANUALLY
-
-  Returns (str): the formatted string
-  """
-
-  class _class:
-    pass
-
-  def _func():
-    pass
-
-  def stringify(obj):
-    def replace_unstringables(value):
-
-      if type(value) in [type(_func), type(_class)]:
-        return f"<{value.__name__}>"
-      return value
-
-    def convert(obj):
-      if isinstance(obj, dict):
-        return {k: convert(v) for k, v in obj.items()}
-      if isinstance(obj, list):
-        return [convert(v) for v in obj]
-      return replace_unstringables(obj)
-
-    return oldjson.dumps(convert(obj))
-
-  wrapat = 80
-  tab += 2
-  TYPENAME = ""
-  c = (lambda x: "") if nocolor else getcolor
-  try:
-    # print.plain(item, tab)
-    if item == True and type(item) == type(True):
-      return "True"
-    if item == False and type(item) == type(False):
-      return "False"
-    if type(item) in [type(_class), type(_func)]:
-      return f"{c('RED')}<{'class' if type(item) == type(_class) else 'function'} {c('BOLD')}{c('BLUE')}{item.__name__}{c('END')}{c('RED')}>{c('END')}" # type: ignore
-    if isinstance(item, str):
-      return c("purple") + '"' + str(item).replace("\\", "\\\\").replace('"', '\\"') + '"' + c("END")
-    if isinstance(item, int) or isinstance(item, float):
-      item = str(item)
-      reg = [r"(?<=\d)(\d{3}(?=(?:\d{3})*(?:$|\.)))", r",\g<0>"]
-      if "." in item:
-        return c("GREEN") + re.sub(reg[0], reg[1], item.split(".")[0]) + "." + item.split(".")[1] + c("END")
-      return c("GREEN") + re.sub(reg[0], reg[1], item) + c("END")
-      # Σ╘╬╧╨╤╥╙╘╒╓╖╕╔╛╙╜╝╚╞╟╠╡╢╣╤╥╦╧╨╩╪╫╬╭╮╯╰╱╲╳╴╵╶╷╸╹╺╻╼╽╾╿
-
-    def name(item):
-      try:
-        return f"{c('pink')}╟{item.__name__}╣{c('END')}"
-        # return f'{c("pink")}╟{item.__name__}╿{item.__class__.__name__}╣{c("END")}'
-      except:
-        return f"{c('pink')}╟{item.__class__.__name__}╣{c('END')}"
-
-    # TYPENAME=name(item)
-
-    if not (isinstance(item, dict) or isinstance(item, list)):
-      if isinstance(item, tuple):
-        TYPENAME = name(item)
-      else:
-        try:
-          temp = [*item]
-          TYPENAME = name(item)
-          item = temp
-        except:
-          try:
-            temp = {**item}
-            TYPENAME = name(item)
-            item = temp
-          except:
-            pass
-
-    if isinstance(item, dict):
-      strlen = 9999999
-      try:
-        strlen = len(stringify(item))
-      except Exception as e:
-        pass
-      if not len(item):
-        return f"{c('orange')}{'{}'}{c('END')}"
-      if strlen + tab < wrapat:
-        return (
-          TYPENAME
-          + c("orange")
-          # + "\n"
-          + (" " * tab if not isarrafterdict else "")
-          + "{ "
-          + c("END")
-          + (
-            f"{c('orange')},{c('END')} ".join(
-              f"{c('purple') + (f'"{k}"' if isinstance(k, str) else formatitem(k, 0)) + c('END')}{c('orange')}:{c('END')} {formatitem(v, 0, True)}"
-              for k, v in item.items()
-            )
-          )
-          + c("orange")
-          + " }"
-          + c("END")
-        )
-      else:
-        return (
-          TYPENAME
-          + c("orange")
-          # + "\n"
-          + (" " * tab if not isarrafterdict else "")
-          + "{"
-          + c("END")
-          + "\n  "
-          + (
-            f"{c('orange')},{c('END')}\n  ".join(
-              f"{c('purple') + (' ' * tab) + (f'"{k}"' if isinstance(k, str) else formatitem(k, tab)) + c('END')}{c('orange')}:{c('END')} {formatitem(v, tab, True)}"
-              for k, v in item.items()
-            )
-          )
-          + "\n"
-          + c("orange")
-          + " " * tab
-          + "}"
-          + c("END")
-        )
-    if isinstance(item, list):
-      strlen = 9999999
-      try:
-        strlen = len(stringify(item))
-      except Exception as e:
-        pass
-      if not len(item):
-        return f"{c('orange')}[]{c('END')}"
-      if strlen + tab < wrapat:
-        return (
-          TYPENAME
-          + c("orange")
-          + ("" if isarrafterdict else " " * tab)
-          + "[ "
-          + c("END")
-          + (
-            f"{c('orange')},{c('END')} ".join(
-              map(
-                lambda newitem: formatitem(newitem, -2),
-                item,
-              )
-            )
-          )
-          + c("orange")
-          + " ]"
-          + c("END")
-        )
-      else:
-        return (
-          TYPENAME
-          + c("orange")
-          + ("" if isarrafterdict else " " * tab)
-          + "[\n"
-          + c("END")
-          + (
-            f"{c('orange')},{c('END')}\n".join(
-              map(
-                lambda newitem: (
-                  (
-                    "  " + " " * tab
-                    if isinstance(newitem, str) or isinstance(newitem, int) or isinstance(newitem, float)
-                    else ""
-                  )
-                  + formatitem(newitem, tab)
-                ),
-                item,
-              )
-            )
-          )
-          + c("orange")
-          + "\n"
-          + " " * tab
-          + "]"
-          + c("END")
-        )
-
-    return " " * tab + name(item) + '"' + str(item).replace('"', '\\"') + '"'
-  except Exception as e:
-    print.plain(e)
-    return " " * tab + f"{c('red')}{repr(item)}{c('end')}"
-
-
-logfile(f"{fg(30)}---PROGRAM STARTED---{fg()}")
-logfile(f"{fg(30)}[ARGS]{fg()}", sys.argv)
-# END
 """
 Coupled entrance-rando shuffle over json/exits.json with multi-gap support.
 Includes dead-end protection and safer inner-screen padding offsets.
@@ -548,7 +67,6 @@ def init():
     geo_room = geometry.get(org)
     if geo_room is not None:
       gaps = geo_room.get(direction, [])
-      print(gaps)
 
       if not gaps:
         geometry_dropped += len(edge_list)
@@ -622,8 +140,6 @@ def init():
     seen[e["id"]] = e
   all_exits = list(seen.values())
 
-  print(f"Total shufflable exits: {len(all_exits)}")
-
   total_exits_per_room = {}
   for e in all_exits:
     org = (e["origin"]["north"], e["origin"]["east"])
@@ -636,7 +152,6 @@ def init():
 
   def entrance_key(room, entrance_value):
     return f"{fmt_coord(room[0])}.{fmt_coord(room[1])}.entrance.{entrance_value}"
-
 
   known_room_exits = {}
   for room, sides in geometry.items():
@@ -770,20 +285,16 @@ def init():
 
   def make_connection(from_exit, to_exit):
     origin = from_exit["origin"]
-    vdest = vanilla_dest_key(from_exit)
-    requires_groups = from_exit.get("requires") or []
-    requires_raw = [[tok for tok in group] for group in requires_groups]
-    return {
-      "id": f"{origin['north']}_{origin['east']}_{vdest[0]}_{vdest[1]}",
-      "newX": to_exit.get("dest_x", 330),
-      "newY": to_exit.get("dest_y", 255),
-      "srcCoord": from_exit.get("src_coord"),
-      "direction": from_exit.get("direction"),
-      "idx": from_exit.get("idx"),
-    }
+    print(f'"north": {origin["north"]},\\n.*"east": {origin["east"]},[\\s\\S]*?"exits":[\\s\\S]*?{from_exit.get("direction")}')
+    print(from_exit.get("idx"), from_exit.get("direction"))
+    print(
+      {
+        "newX": int(to_exit.get("dest_x", 330)),
+        "newY": int(to_exit.get("dest_y", 255)),
+      }
+    )
 
   # --- Connection Logic Split ---
-  print("Vanilla mode requested: mapping exits directly to original layout targets.")
   all_rooms = {(e["origin"]["north"], e["origin"]["east"]) for e in all_exits}
 
   for a in all_exits:
@@ -806,7 +317,6 @@ def init():
         # lastcandidates = [*candidates]
         candidates.sort(key=lambda x: abs(x.get("src_coord", 0) - a.get("src_coord", 0)))
         # if lastcandidates!=candidates:
-        #   print("\n\n\n\n\n\n\n\nerrerrerrerrerrerrerrerrerrerrerrerr", lastcandidates, candidates, e)
         partner = candidates[0]
       else:
         # For doors/warps, default to the matching target candidate
@@ -816,9 +326,7 @@ def init():
       connections.append(make_connection(a, partner))
     else:
       # TODO
-      connections.append(
-        make_connection(a, {**a})
-      )
+      connections.append(make_connection(a, {**a}))
 
   all_rooms = {(e["origin"]["north"], e["origin"]["east"]) for e in all_exits}
 
@@ -836,14 +344,14 @@ def init():
     room = (e["origin"]["north"], e["origin"]["east"])
     ent_value = f"{e['direction']}{e.get('gap_index', 0)}"
     key = entrance_key(room, ent_value)
+
     entrance_index[key] = {
-      "exitId": e["id"],
+      "exitId": f'"north": {e["id"].split("_")[0]},\n.*"east": {e["id"].split("_")[1]},',
       "room": room_key_str(room),
       "direction": e["direction"],
       "gapIndex": e.get("gap_index", 0),
     }
 
-  print("total distinct rooms across all exit pools:", len(all_rooms))
   return (playercouldhave, all_rooms)
 
 
