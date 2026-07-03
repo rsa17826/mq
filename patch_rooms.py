@@ -24,12 +24,7 @@ def init(src):
     return f"{n:.4f}"
 
   rows = []
-  print(connections)
   for c in connections:
-    print("")
-    print("")
-    print("")
-    print(c)
     rows.append(
       "[{},{},{},{},{},{},{},{}]".format(
         fmt_num(c["north"]),
@@ -44,7 +39,6 @@ def init(src):
     )
   table_js = ",".join(rows)
 
-  # Hardcoded layout specs matching your requirements
   PATCH = f"""      // === ENTRANCE RANDOMIZER PATCH START (seed {seed}) ===
     ;(function () {{
       var ROOM_WIDTH = 710.0;
@@ -58,28 +52,32 @@ def init(src):
       var ER_MAP = new Map()
       window.ER_MAP=ER_MAP
       window.ER_TABLE=ER_TABLE
+
       for (var i = 0; i < ER_TABLE.length; i++) {{
         var r = ER_TABLE[i]
-        if (!ER_MAP.has(r[0])) {{
-          ER_MAP.set(r[0], [])
+        // Key by origin room: "north_east"
+        var key = r[0] + "_" + r[1]
+        if (!ER_MAP.has(key)) {{
+          ER_MAP.set(key, [])
         }}
-        ER_MAP.get(r[0]).push({{
-          newX: r[1],
-          newY: r[2],
-          srcCoord: r[3],
-          direction: r[4],
-          idx: r[5]
+        ER_MAP.get(key).push({{
+          origSide: r[2],
+          origIdx: r[3],
+          newNorth: r[4],
+          newEast: r[5],
+          exitSide: r[6],
+          exitIdx: r[7]
         }})
       }}
 
       var erNorth = manager.north === undefined ? null : manager.north
       var erEast = manager.east === undefined ? null : manager.east
-      var erInTransition = false
-      var erUpdatingInternal = false 
+      var erInTransition = False
+      var erUpdatingInternal = False
       var erOrigin = {{ north: null, east: null, x: null, y: null }}
 
       function erBeginWriteIfNeeded() {{
-        if (erUpdatingInternal) return; 
+        if (erUpdatingInternal) return;
         if (!erInTransition) {{
           erOrigin.north = erNorth
           erOrigin.east = erEast
@@ -90,120 +88,179 @@ def init(src):
             erOrigin.x = null
             erOrigin.y = null
           }}
-          erInTransition = true
-          console.log("[ER DEBUG] Transition initiated. From room:", erOrigin.north + "," + erOrigin.east, "at position X/Y:", erOrigin.x + "," + erOrigin.y);
+          erInTransition = True
         }}
       }}
 
       Object.defineProperty(manager, "north", {{
         get: function () {{ return erNorth }},
         set: function (v) {{ erBeginWriteIfNeeded(); erNorth = v }},
-        enumerable: true,
-        configurable: true,
+        enumerable: True,
+        configurable: True,
       }})
       Object.defineProperty(manager, "east", {{
         get: function () {{ return erEast }},
         set: function (v) {{ erEast = v }},
-        enumerable: true,
-        configurable: true,
+        enumerable: True,
+        configurable: True,
       }})
       Object.defineProperty(manager, "realnorth", {{
         get: function () {{ return erNorth }},
         set: function (v) {{ erNorth = v }},
-        enumerable: true,
-        configurable: true,
+        enumerable: True,
+        configurable: True,
       }})
       Object.defineProperty(manager, "realeast", {{
         get: function () {{ return erEast }},
         set: function (v) {{ erEast = v }},
-        enumerable: true,
-        configurable: true,
+        enumerable: True,
+        configurable: True,
       }})
 
       var erOriginalLoca = __createObject.loca
       __createObject.loca = function () {{
         if (erInTransition) {{
-          var key = erOrigin.north + "_" + erOrigin.east + "_" + erNorth + "_" + erEast
+          var key = erOrigin.north + "_" + erOrigin.east
+          if (erNorth>erOrigin.north){{
+            direction="north"
+          }}
+          if (erNorth<erOrigin.north){{
+            direction="south"
+          }}
+          if (erEast>erOrigin.east){{
+            direction="east"
+          }}
+          if (erEast<erOrigin.east){{
+            direction="west"
+          }}
           if (key=="9_22_10.1_21"){{
             key = "9_22_9_21"
           }}
           if (erOrigin.north ==21 && erOrigin.east==21 && manager.char[0].get_x()==-1){{
             manager.char[0].set_x(50)
           }}
-          console.log("[ER DEBUG] Checking redirection for vanilla move path key:", key);
+          console.log("[ER DEBUG] Checking redirection for vanilla move path key:", key, erOrigin.north + "_" + erOrigin.east + "_" + erNorth + "_" + erEast, direction);
+          var conns = ER_MAP.get(key).filter(e=>e.direction==direction)
 
-          var conns = ER_MAP.get(key)
-          if (conns && conns.length > 0) {{
-            var conn = conns[0]
-
-            // Spatial block evaluation handles multiple structural exit conflicts
-            if (conns.length > 1 && erOrigin.x !== null && erOrigin.y !== null) {{
-              console.log("[ER DEBUG] Multi-gap overlap discovered! Checking tile-block ranges. Choices:", conns.length);
+          if (conns?.length > 0) {{
+            log(erOrigin, "erOrigin")
+            // var warptype = "unknown"
               
-              // Determine player block position
+                // console.log(manager.char[0].get_y(), manager.char[0].get_x(), manager.north, manager.east)
+              // if (manager.char[0].get_y() > 550 ||
+              // manager.char[0].get_y() < 0 ||
+              // manager.char[0].get_x() < 0 ||
+              // manager.char[0].get_x() > 660) {{
+                // warptype = "edge"
+              // }}
+              // else if (manager.charBottom[0].hitTestObject(
+                // manager.stairsDown,
+              // ) &&
+              // manager.stairsDown.get_visible() == 1) {{
+            // warptype = "stairsDown"
+              // }}
+              // else if (manager.charBottom[0].hitTestObject(
+                // manager.stairsUp2,
+              // ) &&
+              // manager.stairsUp2.get_visible() == 1) {{
+            // warptype = "stairsUp2"
+              // }}
+              // else if (manager.charBottom[0].hitTestObject(
+                // manager.stairsUp,
+              // ) &&
+              // manager.stairsUp.get_visible() == 1) {{
+            // warptype = "stairsUp"
+              // }}
+              // else if (manager.charBottom[0].hitTestObject(
+                // manager.grimsbane,
+              // ) &&
+              // manager.grimsbane.get_visible() == 1) {{
+            // warptype = "grimsbane"
+              // }}
+              // else if (manager.charBottom[0].hitTestObject(
+                // manager.castleDoors,
+              // ) &&
+              // manager.castleDoors.get_visible() == 1) {{
+            // warptype = "castleDoors"
+              // }}
+              // else if (manager.charBottom[0].hitTestObject(manager.isle1) &&
+                // manager.isle1.get_visible() == 1) {{
+              // warptype = "isle1"
+              // }}
+              // else if (manager.charBottom[0].hitTestObject(manager.isle2) &&
+                // manager.isle2.get_visible() == 1) {{
+              // warptype = "isle2"
+              // }}
+              // else if (manager.charBottom[0].hitTestObject(manager.isle3) &&
+                // manager.isle3.get_visible() == 1) {{
+              // warptype = "isle3"
+              // }}
+              // else if (manager.charBottom[0].hitTestObject(manager.temple) &&
+                // manager.temple.get_visible() == 1) {{
+              // warptype = "temple"
+              // }}
+              console.log("warptype", warptype, conns)
+            function colliding(c){{
+
+            }}
+            var conn = conns.find(colliding)
+
+            if (direction && erOrigin.x !== null && erOrigin.y !== null) {{
+              // 2. Calculate coordinates relative to tile layout block grids
               var blockX = Math.floor(erOrigin.x / BLOCK_W);
               var blockY = Math.floor(erOrigin.y / BLOCK_H);
-              
-              // Clamp values to valid block bounds
-              if (blockX < 0) blockX = 0;
-              if (blockX >= BLOCKS_X) blockX = BLOCKS_X - 1;
-              if (blockY < 0) blockY = 0;
-              if (blockY >= BLOCKS_Y) blockY = BLOCKS_Y - 1;
+              if (blockX < 0) blockX = 0; if (blockX >= BLOCKS_X) blockX = BLOCKS_X - 1;:
+                                if (blockY < 0) blockY = 0; if (blockY >= BLOCKS_Y) blockY = BLOCKS_Y - 1;
 
-              var roomData = AP_ENTRANCE_IDS[erOrigin.north + "_" + erOrigin.east];
-              if (roomData) {{
-                // Identify transition direction based on vanilla destination coordinates relative to origin
-                var direction = null;
-                if (erNorth < erOrigin.north) direction = "north";
-                else if (erNorth > erOrigin.north) direction = "south";
-                else if (erEast < erOrigin.east) direction = "west";
-                else if (erEast > erOrigin.east) direction = "east";
+              // 3. Extract correct visual layout bounds via AP_ENTRANCE_IDS configuration matching
+              var roomData = AP_ENTRANCE_IDS.find(function(r) {{
+                return r.north === erOrigin.north && r.east === erOrigin.east;
+              }});
 
-                if (direction && roomData[direction]) {{
-                  var spans = roomData[direction];
-                  var matchedExitIndex = -1;
+              if (roomData && roomData.exits && roomData.exits[direction]) {{
+                var spans = roomData.exits[direction];
+                var matchedExitIndex = -1;
 
-                  for (var s = 0; s < spans.length; s++) {{
-                    var span = spans[s];
-                    if (direction === "west" || direction === "east") {{
-                      if (blockY >= span.top && blockY <= span.bottom) {{
-                        matchedExitIndex = s;
-                        break;
-                      }}
-                    }} else if (direction === "north" || direction === "south") {{
-                      if (blockX >= span.left && blockX <= span.right) {{
-                        matchedExitIndex = s;
-                        break;
-                      }}
+                // 4. Bounds assessment check matching player position coordinates to active exit span
+                for (var s = 0; s < spans.length; s++) {{
+                  var span = spans[s];
+                  if (direction === "west" || direction === "east") {{
+                    if (blockY >= span.top && blockY <= span.bottom) {{
+                      matchedExitIndex = s;
+                      break;
+                    }}
+                  }} else if (direction === "north" || direction === "south") {{
+                    if (blockX >= span.left && blockX <= span.right) {{
+                      matchedExitIndex = s;
+                      break;
                     }}
                   }}
+                }}
 
-                  // If we found a block-range match, map it safely to our candidate array
-                  if (matchedExitIndex !== -1 && matchedExitIndex < conns.length) {{
-                    conn = conns[matchedExitIndex];
-                    console.log("[ER DEBUG] Block match successful! Target selected via index:", matchedExitIndex);
+                // 5. Query matching logic data tracking table entry using direction and index configurations
+                if (matchedExitIndex !== -1) {{
+                  var specificTarget = conns.find(function(c) {{
+                    return c.origSide === direction && c.origIdx === matchedExitIndex;
+                  }});
+
+                  if (specificTarget) {{
+                    conn = specificTarget;
+                    var targetCoords = spans[matchedExitIndex];
+                    conn.newX = targetCoords.newX;
+                    conn.newY = targetCoords.newY;
                   }}
                 }}
               }}
             }}
 
-            console.log("[ER DEBUG] Success! Redirecting room target to:", conn.newNorth + "," + conn.newEast, "Placing character at:", conn.newX + "," + conn.newY, conn);
+            console.log("[ER DEBUG] Redirecting to:", conn.newNorth + "," + conn.newEast, "Placing at:", conn.newX + "," + conn.newY, conn);
 
-            erUpdatingInternal = true
+            erUpdatingInternal = True
             try {{
               manager.north = conn.newNorth
               manager.east = conn.newEast
-              if (manager.char && manager.char[0]) {{
-                if (typeof manager.char[0].set_x === 'function') {{
-                  manager.char[0].set_x(conn.newX)
-                  manager.char[0].set_y(conn.newY)
-                }} else {{
-                  manager.char[0].x = conn.newX
-                  manager.char[0].y = conn.newY
-                }}
-              }}
-              setTimeout(()=>{{
-                test.newScreen()
+
+              var setCoords = function() {{
                 if (manager.char && manager.char[0]) {{
                   if (typeof manager.char[0].set_x === 'function') {{
                     manager.char[0].set_x(conn.newX)
@@ -213,14 +270,21 @@ def init(src):
                     manager.char[0].y = conn.newY
                   }}
                 }}
+              }};
+
+              setCoords();
+              setTimeout(function() {{
+                if (window.test && typeof window.test.newScreen === 'function') {{
+                  test.newScreen()
+                }}
+                setCoords();
               }})
             }} finally {{
-              erUpdatingInternal = false
+              erUpdatingInternal = False
+              debugger
             }}
-          }} else {{
-            console.log("[ER DEBUG] No randomizer override entry for key [" + key + "]. Retaining game defaults.");
           }}
-          erInTransition = false
+          erInTransition = False
         }}
         return erOriginalLoca.apply(this, arguments)
       }}
