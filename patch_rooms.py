@@ -209,14 +209,14 @@ def init(src):
                 destSpan = destRoomData.exits[conn.exitSide][Number(conn.exitIdx)]
               }}
               if (destSpan) {{
-                var midBlock = (destSpan.left + destSpan.right) / 2
+                var midBlockX = (destSpan.left + destSpan.right) / 2
                 var midBlockY = (destSpan.top + destSpan.bottom) / 2
                 if (conn.exitSide=="north"){{
-                  conn.newX = midBlock * BLOCK_W
+                  conn.newX = midBlockX * BLOCK_W
                   conn.newY = 0
                 }}
                 if (conn.exitSide=="south"){{
-                  conn.newX = midBlock * BLOCK_W
+                  conn.newX = midBlockX * BLOCK_W
                   conn.newY = 10 * BLOCK_H
                 }}
                 if (conn.exitSide=="west"){{
