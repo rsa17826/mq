@@ -44,7 +44,9 @@
 
     const haveReal = new Set() // real items actually received over the network
     window.haveReal = haveReal
+    // NOTE temp
     haveReal.add("item:gold")
+
     function baseTok(tok) {
       return tok.split("#")[0]
     }
@@ -223,8 +225,8 @@
 
     const origOnReceivedItems = ap.onReceivedItems.bind(ap)
     ap.onReceivedItems = function (packet) {
-      if (!window.playerLoaded) return
       origOnReceivedItems(packet)
+      if (!window.playerLoaded) return
       packet.items.forEach((item) => {
         const name = AP_ITEM_IDS[item.item]
         if (name) haveReal.add(name)

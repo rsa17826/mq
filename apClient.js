@@ -107,11 +107,15 @@ class ArchipelagoClient {
     }
   }
   onRoomUpdate(packet) {
+    if (!window.playerLoaded) {
+      window.waitingPackets ??= []
+      window.waitingPackets.push(packet)
+      return
+    }
     apLog("@blue![Archipelago]@! Room state updated by server.")
-
     // If other locations were checked (e.g. by a co-op partner in your slot)
     if (packet.checked_locations) {
-      if (!this.checkedLocations) this.checkedLocations = []
+      this.checkedLocations ??= []
 
       packet.checked_locations.forEach((loc) => {
         if (!this.checkedLocations.includes(loc)) {
@@ -234,6 +238,7 @@ class ArchipelagoClient {
   onReceivedItems(packet) {
     log(`Received packet containing ${packet.items.length} items.`)
     if (!window.playerLoaded) {
+      window.waitingPackets ??= []
       window.waitingPackets.push(packet)
       return
     }
@@ -415,7 +420,7 @@ if (location.search) {
   }
   window.ap.connect()
 }
-window.waitingPackets = []
+window.waitingPackets ??= []
 async function get(url) {
   try {
     var resp = await fetch(url)
