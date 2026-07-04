@@ -149,6 +149,15 @@
           consoleLogStr += "%c"
           consoleStyles.push(currentConsoleColor)
           break
+        case "@brown!":
+          if (inspan) html += "</span>"
+          html += '<span style="color:brown">'
+          inspan = true
+
+          currentConsoleColor = "color: brown"
+          consoleLogStr += "%c"
+          consoleStyles.push(currentConsoleColor)
+          break
         case "@pink!":
           if (inspan) html += "</span>"
           html += '<span style="color:pink">'

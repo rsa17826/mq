@@ -154,7 +154,7 @@ const AP_LOCATION_IDS = {
   "9_10 - item:gold": 149,
   "10_9 - food:steak": 150,
   "6_10 - food:chocolate": 151,
-  "18_21 - item:gingerBread": 152,
+  "18_21 - food:gingerBread": 152,
   "15_21 - item:gold": 153,
   "15_21 - item:bombs": 154,
   "14_21 - item:gold": 155,

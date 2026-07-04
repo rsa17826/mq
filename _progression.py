@@ -603,7 +603,7 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "craft:newtonApple",
+      "craft:newtonsApple",
     ],
   },
   # {"room": {"north": 11, "east": 24}, "info": "warp skill warp point",},
@@ -2398,7 +2398,7 @@ MathQuest.js:42550 add listeners""",
       ],
     ],
     "receive": [
-      "food:gingerBread - pam16",
+      "food:gingerBread - pam16#10",
     ],
   },
   {
@@ -2696,7 +2696,7 @@ MathQuest.js:42550 add listeners""",
       ],
     ],
     "receive": [
-      "item:gingerBread#5",
+      "food:gingerBread#5",
     ],
   },
   {
