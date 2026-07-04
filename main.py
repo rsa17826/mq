@@ -3,6 +3,8 @@ import os
 
 import gen_exit_data
 import gen_map
+import progression_to_json # noqa: F401
+
 # import patch_rooms
 
 # playercouldhave, edge_reached, door_reached, warp_reached, all_rooms = shuffle_exits.init()
