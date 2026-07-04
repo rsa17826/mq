@@ -166,6 +166,12 @@ html_start = f"""<!DOCTYPE html>
             z-index: 12;
             filter: drop-shadow(0px 1px 2px rgba(0,0,0,0.8));
         }}
+        .progression-icon.checked {{
+            filter: grayscale(1) brightness(0.55) drop-shadow(0px 1px 2px rgba(0,0,0,0.8));
+            outline: 2px solid #2ecc71;
+            outline-offset: 1px;
+            border-radius: 4px;
+        }}
         #arrow-canvas-2d {{
             position: absolute;
             top: 0;
@@ -460,6 +466,7 @@ setInterval(() => {
   }
 }, 30);
 </script>
+<script src="/tracker.js"></script>
 """
 
 
@@ -910,7 +917,14 @@ def main():
       sanitized_name = re.sub(r"[:#?]", "_", re.sub(r"[#?].+$", "", item))
       icon_filename = f"{sanitized_name}.png"
       icon_src = os.path.join(PROGRESSION_ICON_PATH, icon_filename).replace("\\", "/")
-      icon_html += f'\n            <img src="{icon_src}" class="progression-icon" alt="{item}">'
+      # match the exact key format used when AP_LOCATION_IDS was generated:
+      # f"{north}_{east} - {itemInfo.split('#')[0]}"
+      base_item_name = item.split("#")[0]
+      location_key = f"{room_key} - {base_item_name}".replace('"', "&quot;")
+      icon_html += (
+          f'\n            <img src="{icon_src}" class="progression-icon" '
+          f'alt="{item}" data-location="{location_key}">'
+      )
     icon_html += "</span>"
     overlay_content = "\n".join(squares_html)
     wrapper_tag = f"""        <div class="tile-wrapper" data-room="{room_key}" style="left: {pixel_left:.1f}px; top: {pixel_top:.1f}px; background-image: url('{placeholder_img_path}');" data-info="{info_json_str}">{icon_html}
