@@ -95,12 +95,12 @@
           consoleLogStr += "%c"
           consoleStyles.push(currentConsoleColor)
           break
-        case "@lightgrey!":
+        case "@grey!":
           if (inspan) html += "</span>"
-          html += '<span style="color:lightgrey">'
+          html += '<span style="color:grey">'
           inspan = true
 
-          currentConsoleColor = "color: lightgrey"
+          currentConsoleColor = "color: grey"
           consoleLogStr += "%c"
           consoleStyles.push(currentConsoleColor)
           break

@@ -8,7 +8,7 @@ const itemColors = {
   trap: "red",
   magic: "purple",
   weapon: "darkgrey",
-  armor: "lightgrey",
+  armor: "grey",
   permit: "darkorange",
 }
 /**
