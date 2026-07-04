@@ -4,11 +4,7 @@
 
 ;(function () {
   function init() {
-    if (
-      typeof PROG_DATA === "undefined" ||
-      typeof AP_ITEM_IDS === "undefined" ||
-      !window.ap
-    ) {
+    if (!window.ap) {
       setTimeout(init, 250)
       return
     }
@@ -81,13 +77,7 @@
           continue
         }
         if (tok.startsWith("quest:")) {
-          if (
-            !(
-              typeof QuestState !== "undefined" &&
-              QuestState.satisfied(tok)
-            )
-          )
-            return "false"
+          if (!QuestState.satisfied(tok)) return "false"
           continue
         }
         if (!have.has(tok)) return "false"
@@ -113,15 +103,12 @@
     }
 
     function recompute() {
-      if (typeof QuestState !== "undefined") QuestState.seedFromGame()
+      QuestState.seedFromGame()
       const have = new Set(haveReal)
-      const roomGraph =
-        (
-          typeof RoomGraph !== "undefined" &&
-          typeof AP_ENTRANCE_IDS !== "undefined"
-        ) ?
-          RoomGraph.computeReachability(haveReal, "20_20")
-        : null
+      const roomGraph = RoomGraph.computeReachability(
+        haveReal,
+        "20_20",
+      )
 
       const status = new Array(PROG_DATA.length).fill("false")
       let changed = true
@@ -171,10 +158,7 @@
           const els = iconsByLocation[key]
           if (!els) continue
           const isQuest = tok.startsWith("quest:")
-          const questDone =
-            isQuest &&
-            typeof QuestState !== "undefined" &&
-            QuestState.satisfied(tok)
+          const questDone = isQuest && QuestState.satisfied(tok)
           const alreadyChecked =
             els.some((el) => el.classList.contains("checked")) ||
             questDone

@@ -41,8 +41,7 @@ const QuestState = (function () {
 
 // The game calls this whenever a quest value changes.
 window.onQuestChanged = function (prop, value) {
-  QuestState.set(prop, value)
-  if (typeof window.__trackerRecompute === "function") {
-    window.__trackerRecompute()
-  }
+  // does nothing as the values get repulled
+  // QuestState.set(prop, value)
+  window.__trackerRecompute()
 }

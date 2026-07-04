@@ -4,15 +4,11 @@
 // and that window.ap is (or will be) the connected ArchipelagoClient.
 
 ;(function () {
-  let hooked = false
-
   function init() {
-    if (hooked) return
-    if (typeof AP_LOCATION_IDS === "undefined" || !window.ap) {
+    if (!window.ap) {
       setTimeout(init, 250)
       return
     }
-    hooked = true
 
     // id -> "north_east - item" location key
     const ID_TO_LOCATION = {}
