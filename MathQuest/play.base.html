@@ -269,6 +269,19 @@
             ", user-scalable=no",
         )
       }
+      function toggleCollapse(on) {
+        document
+          .getElementById("apChatLogContainer")
+          .classList.toggle("collapsed", on)
+        document.getElementById("apChatLogToggle").textContent =
+          (
+            document
+              .getElementById("apChatLogContainer")
+              .classList.contains("collapsed")
+          ) ?
+            "▸"
+          : "▾"
+      }
       window.addEventListener(
         "keydown",
         function (e) {
@@ -292,9 +305,18 @@
           }
           if (e.key == "`") {
             e.preventDefault()
-            document.querySelector("#apChatLogHeader").onclick()
             if (document.activeElement.id != "apChatSayInput") {
+              toggleCollapse(false)
               document.querySelector("#apChatSayInput").focus()
+            } else {
+              toggleCollapse(true)
+            }
+          }
+          log(e.key, e.key == "Escape")
+          if (e.key == "Escape") {
+            e.preventDefault()
+            if (document.activeElement.id == "apChatSayInput") {
+              document.activeElement.blur()
             }
           }
         },
@@ -846,22 +868,7 @@
 
   <body>
     <div id="apChatLogContainer">
-      <div
-        id="apChatLogHeader"
-        onclick="
-          document
-            .getElementById('apChatLogContainer')
-            .classList.toggle('collapsed')
-          document.getElementById('apChatLogToggle').textContent =
-            (
-              document
-                .getElementById('apChatLogContainer')
-                .classList.contains('collapsed')
-            ) ?
-              '▸'
-            : '▾'
-        "
-      >
+      <div id="apChatLogHeader" onclick="toggleCollapse()">
         <span>Archipelago Log</span>
         <span id="apChatLogToggle">▾</span>
       </div>
