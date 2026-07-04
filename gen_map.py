@@ -130,22 +130,13 @@ html_start = f"""<!DOCTYPE html>
             image-rendering: pixelated;
             image-rendering: crisp-edges;
         }}
-        .fc {{
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            align-items:right;
-            position: absolute;
-            bottom: calc(3px + {BLOCK_HEIGHT_PCT}%);
-            right: calc(3px + {BLOCK_WIDTH_PCT}%);
-            pointer-events: none;
-            z-index: 9999999999;
-        }}
         .fr {{
             display: flex;
             flex-direction: row;
             gap: 4px;
-            margin-left: auto;
+            position: absolute;
+            bottom: calc(3px + {BLOCK_HEIGHT_PCT}%);
+            right: calc(3px + {BLOCK_WIDTH_PCT}%);
             pointer-events: none;
             z-index: 9999999999;
         }}
@@ -240,7 +231,7 @@ def load_connections():
     print(f"[-] Error: {CONNECTIONS_JSON_PATH} required.")
     return []
   with open(CONNECTIONS_JSON_PATH, "r", encoding="utf-8") as f:
-    return json.load(f)["connections"]
+    return json.load(f)['connections']
 
 
 def load_doors():
@@ -286,7 +277,9 @@ def get_item_token_html(item_name):
   sanitized_name = re.sub(r"[:#?]", "_", re.sub(r"[#?].+$", "", item_name))
   icon_filename = f"{sanitized_name}.png"
   icon_src = os.path.join(PROGRESSION_ICON_PATH, icon_filename).replace("\\", "/")
-  return f'<span class="info-item-token"><img src="{icon_src}" class="info-inline-icon" alt="{item_name}">{item_name}</span>'
+  return (
+    f'<span class="info-item-token"><img src="{icon_src}" class="info-inline-icon" alt="{item_name}">{item_name}</span>'
+  )
 
 
 def build_room_info_json(north, east, prog_entries):
@@ -304,7 +297,9 @@ def build_room_info_json(north, east, prog_entries):
         if item_htmls:
           req_groups.append(" AND ".join(item_htmls))
       if req_groups:
-        parsed_entry["requiresHtml"] = " OR ".join(f"({r})" for r in req_groups) if len(req_groups) > 1 else req_groups[0]
+        parsed_entry["requiresHtml"] = (
+          " OR ".join(f"({r})" for r in req_groups) if len(req_groups) > 1 else req_groups[0]
+        )
 
     if "receive" in entry and len(entry["receive"]) > 0:
       rec_htmls = [get_item_token_html(item) for item in entry["receive"] if item]
@@ -449,7 +444,9 @@ def main():
     color = djb2_color_hash(conn["id"], "_".join(map(str, newid)))
 
     if room_key in js_routes_db:
-      js_routes_db[room_key].append({"d": [arrow_src_x, arrow_src_y, ctrl_x, ctrl_y, arrow_dest_x, arrow_dest_y], "color": color})
+      js_routes_db[room_key].append(
+        {"d": [arrow_src_x, arrow_src_y, ctrl_x, ctrl_y, arrow_dest_x, arrow_dest_y], "color": color}
+      )
 
   room_doors_index = {}
   for d in doors:
@@ -503,7 +500,9 @@ def main():
     ctrl_x, ctrl_y = m_x, m_y - 45
 
     if room_key in js_routes_db:
-      js_routes_db[room_key].append({"d": [arrow_src_x, arrow_src_y, ctrl_x, ctrl_y, arrow_dest_x, arrow_dest_y], "color": color})
+      js_routes_db[room_key].append(
+        {"d": [arrow_src_x, arrow_src_y, ctrl_x, ctrl_y, arrow_dest_x, arrow_dest_y], "color": color}
+      )
 
   canvas_tiles_data = []
   html_elements = []
@@ -521,7 +520,9 @@ def main():
     tile_exits = geom_index.get(room_key, {})
     squares_html = []
 
-    active_connections = [c for c in connections if int(c["north"]) == north and int(c["east"]) == east]
+    active_connections = [
+      c for c in connections if int(c["north"]) == north and int(c["east"]) == east
+    ]
 
     if tile_exits and isinstance(tile_exits, dict):
       for side, bounds_list in tile_exits.items():
@@ -530,7 +531,9 @@ def main():
         if not isinstance(bounds_list, list):
           bounds_list = [bounds_list]
 
-        side_connections = [c for c in active_connections if c.get("direction") == side and c.get("srcCoord") is not None]
+        side_connections = [
+          c for c in active_connections if c.get("direction") == side and c.get("srcCoord") is not None
+        ]
         side_connections.sort(key=lambda c: float(c["srcCoord"]))
 
         if side in ["west", "east"]:
@@ -571,7 +574,9 @@ def main():
             w_size = BLOCK_WIDTH_PCT
             h_size = ((end_val - start_val) + 1) * BLOCK_HEIGHT_PCT
 
-            squares_html.append(f'<div class="exit-square" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%; background-color:{matched_color};"></div>')
+            squares_html.append(
+              f'<div class="exit-square" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%; background-color:{matched_color};"></div>'
+            )
             js_exits_db[room_key].append(
               {
                 "side": side,
@@ -593,7 +598,9 @@ def main():
             w_size = ((end_val - start_val) + 1) * BLOCK_WIDTH_PCT
             h_size = BLOCK_HEIGHT_PCT
 
-            squares_html.append(f'<div class="exit-square" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%; background-color:{matched_color};"></div>')
+            squares_html.append(
+              f'<div class="exit-square" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%; background-color:{matched_color};"></div>'
+            )
             js_exits_db[room_key].append(
               {
                 "side": side,
@@ -628,7 +635,9 @@ def main():
         x_pos_pct = (x_pos_local / ROOM_INTERNAL_WIDTH) * 100
         y_pos_pct = (y_pos_local / ROOM_INTERNAL_HEIGHT) * 100
 
-        squares_html.append(f'<div class="warp-square" style="left:{x_pos_pct:.2f}%; top:{y_pos_pct:.2f}%; width:{BLOCK_WIDTH_PCT:.2f}%; height:{BLOCK_HEIGHT_PCT:.2f}%;"></div>')
+        squares_html.append(
+          f'<div class="warp-square" style="left:{x_pos_pct:.2f}%; top:{y_pos_pct:.2f}%; width:{BLOCK_WIDTH_PCT:.2f}%; height:{BLOCK_HEIGHT_PCT:.2f}%;"></div>'
+        )
         js_exits_db[room_key].append(
           {
             "side": "warp",
@@ -649,57 +658,19 @@ def main():
           if item:
             unique_receives.add(item)
 
-    icon_html = "<span class=fc>"
-    icon_html += "<span class=fr>"
-    ITEM_NAMES = (
-      "magic:",
-      "weapon:",
-      # "flag:final boss dead",
-      "permit:",
-      "misc:fire crystal",
-      "loot:key",
-      "item:gold",
-      "item:",
-      "skill:",
-      "food:",
-      "flag:magic only resist bypass",
-      "misc:blue crystal",
-      "misc:headstoneSwitch1",
-      "misc:headstoneSwitch2",
-      "misc:headstoneSwitch3",
-      "misc:headstoneSwitch4",
-      # "entrance.",
-      "armor:",
-      # "quest:",
-      # "area:",
-      "item:ring",
-      "item:aurastones",
-      "misc:",
-      "craft:",
-    )
+    icon_html = "<span class=fr>"
     for item in sorted(unique_receives):
-      if item.startswith(ITEM_NAMES):
-        sanitized_name = re.sub(r"[:#?]", "_", re.sub(r"[#?].+$", "", item))
-        icon_filename = f"{sanitized_name}.png"
-        icon_src = os.path.join(PROGRESSION_ICON_PATH, icon_filename).replace("\\", "/")
-        # match the exact key format used when AP_LOCATION_IDS was generated:
-        # f"{north}_{east} - {itemInfo.split('#')[0]}"
-        base_item_name = item.split("#")[0]
-        location_key = f"{room_key} - {base_item_name}".replace('"', "&quot;")
-        icon_html += f'\n            <img src="{icon_src}" class="progression-icon" alt="{item}" data-location="{location_key}">'
-    icon_html += "</span>"
-    icon_html += "<span class=fr>"
-    for item in sorted(unique_receives):
-      if not item.startswith(ITEM_NAMES):
-        sanitized_name = re.sub(r"[:#?]", "_", re.sub(r"[#?].+$", "", item))
-        icon_filename = f"{sanitized_name}.png"
-        icon_src = os.path.join(PROGRESSION_ICON_PATH, icon_filename).replace("\\", "/")
-        # match the exact key format used when AP_LOCATION_IDS was generated:
-        # f"{north}_{east} - {itemInfo.split('#')[0]}"
-        base_item_name = item.split("#")[0]
-        location_key = f"{room_key} - {base_item_name}".replace('"', "&quot;")
-        icon_html += f'\n            <img src="{icon_src}" class="progression-icon" alt="{item}" data-location="{location_key}">'
-    icon_html += "</span>"
+      sanitized_name = re.sub(r"[:#?]", "_", re.sub(r"[#?].+$", "", item))
+      icon_filename = f"{sanitized_name}.png"
+      icon_src = os.path.join(PROGRESSION_ICON_PATH, icon_filename).replace("\\", "/")
+      # match the exact key format used when AP_LOCATION_IDS was generated:
+      # f"{north}_{east} - {itemInfo.split('#')[0]}"
+      base_item_name = item.split("#")[0]
+      location_key = f"{room_key} - {base_item_name}".replace('"', "&quot;")
+      icon_html += (
+          f'\n            <img src="{icon_src}" class="progression-icon" '
+          f'alt="{item}" data-location="{location_key}">'
+      )
     icon_html += "</span>"
     overlay_content = "\n".join(squares_html)
     wrapper_tag = f"""        <div class="tile-wrapper" data-room="{room_key}" style="left: {pixel_left:.1f}px; top: {pixel_top:.1f}px; background-image: url('{placeholder_img_path}');" data-info="{info_json_str}">{icon_html}

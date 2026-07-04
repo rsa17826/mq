@@ -51,6 +51,10 @@
           if (!roomGraph.isEntranceReachable(roomKey, parsed.side, parsed.idx)) return "false";
           continue;
         }
+        if (tok.startsWith("quest:")) {
+          if (!(typeof QuestState !== "undefined" && QuestState.satisfied(tok))) return "false";
+          continue;
+        }
         if (!have.has(tok)) return "false";
       }
       return "true";
@@ -68,6 +72,7 @@
     }
 
     function recompute() {
+      if (typeof QuestState !== "undefined") QuestState.seedFromGame();
       const have = new Set(haveReal);
       const roomGraph = (typeof RoomGraph !== "undefined" && typeof AP_ENTRANCE_IDS !== "undefined")
         ? RoomGraph.computeReachability(haveReal, "20_20")
@@ -146,6 +151,7 @@
     };
 
     recompute();
+    window.__trackerRecompute = recompute;
     console.log(`[logic] reachability engine ready: ${PROG_DATA.length} entries`);
   }
 

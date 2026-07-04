@@ -27,7 +27,11 @@ const RoomGraph = (function () {
   function reqsSatisfied(reqGroups, have) {
     if (!reqGroups || reqGroups.length === 0) return true;
     return reqGroups.some((group) =>
-      group.every((tok) => tok.startsWith("entrance.") ? true : have.has(tok))
+      group.every((tok) => {
+        if (tok.startsWith("entrance.")) return true;
+        if (tok.startsWith("quest:")) return typeof QuestState !== "undefined" && QuestState.satisfied(tok);
+        return have.has(tok);
+      })
     );
   }
 
@@ -111,6 +115,7 @@ const RoomGraph = (function () {
   //   isEntranceReachable(room, side, idx): bool
   function computeReachability(haveReal, startRoom) {
     if (!roomIndex) buildRoomIndex();
+    if (typeof QuestState !== "undefined") QuestState.seedFromGame();
 
     const reachableExits = new Set();
     const roomExitCounts = {};
