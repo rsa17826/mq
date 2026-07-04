@@ -68,7 +68,6 @@
           consoleLogStr += "%c"
           consoleStyles.push(currentConsoleColor)
           break
-
         case "@blue!":
           if (inspan) html += "</span>"
           html += '<span style="color:skyblue">'
@@ -141,7 +140,6 @@
           consoleLogStr += "%c"
           consoleStyles.push(currentConsoleColor)
           break
-
         case "@yellow!":
           if (inspan) html += "</span>"
           html += '<span style="color:yellow">'
@@ -182,7 +180,6 @@
           consoleLogStr += "%c"
           consoleStyles.push(currentConsoleColor)
           break
-
         default:
           if (!inconsole) html += htmlesc(part)
           consoleLogStr += part
@@ -293,6 +290,12 @@
             document.activeElement.nodeName != "TEXTAREA"
           ) {
             e.preventDefault()
+          }
+          if (e.key == "`") {
+            e.preventDefault()
+            document.querySelector("#apChatLogHeader").onclick()
+            if (document.activeElement.id == "apChatSayInput") {
+            }
           }
         },
         false,
