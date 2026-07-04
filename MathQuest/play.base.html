@@ -33,6 +33,7 @@
     el.innerHTML =
       "<span>[" + htmlesc(entry.time) + "] </span>" + entry.msg
     el.className = "ap-chat-entry ap-chat-" + entry.type
+    entry.el = el // kept so the collapsed "toast" fade loop can update it
     window._apChatLogEl.appendChild(el)
     while (window._apChatLogEl.children.length > 200) {
       window._apChatLogEl.removeChild(window._apChatLogEl.firstChild)
@@ -227,12 +228,70 @@
       msg: String(msg),
       type: type || "log",
       time: new Date().toLocaleTimeString(),
+      createdAt: Date.now(), // used for the collapsed "toast" fade timing
     }
     window._apChatBuffer.push(entry)
     if (window._apChatBuffer.length > 200)
       window._apChatBuffer.shift()
     if (window._apChatLogEl) _apRenderEntry(entry)
+    _apUpdateToastOpacities()
   }
+
+  // ---- Collapsed "toast" behavior ----------------------------------------
+  // While the log is collapsed, recent messages (< 5s old) still show,
+  // fading out linearly over their last 1s of life, instead of the log
+  // being fully hidden. The say/input row stays hidden regardless.
+  var AP_TOAST_LIFETIME_MS = 5000
+  var AP_TOAST_FADE_MS = 1000
+
+  function _apUpdateToastOpacities() {
+    var container = document.getElementById("apChatLogContainer")
+    if (!container) return
+    var now = Date.now()
+    var fadeStart = AP_TOAST_LIFETIME_MS - AP_TOAST_FADE_MS
+    var oneVisible = false
+    window._apChatBuffer.forEach(function (entry) {
+      if (!entry.el) return
+      if (!container.classList.contains("collapsed")) {
+        entry.el.style.display = "block"
+        return
+      }
+      var age = now - entry.createdAt
+      if (age >= AP_TOAST_LIFETIME_MS) {
+        entry.el.style.display = "none"
+      } else {
+        entry.el.style.display = "block"
+        oneVisible = true
+        entry.el.style.opacity =
+          age <= fadeStart ? "1" : (
+            String(1 - (age - fadeStart) / AP_TOAST_FADE_MS)
+          )
+      }
+    })
+    if (oneVisible) {
+      setTimeout(_apUpdateToastOpacities, 100)
+    }
+    document.querySelector("#apChatLog").style.display =
+      oneVisible || !container.classList.contains("collapsed") ?
+        "block"
+      : "none"
+  }
+
+  function _apResetEntryStyles() {
+    window._apChatBuffer.forEach(function (entry) {
+      if (!entry.el) return
+      entry.el.style.display = ""
+      entry.el.style.opacity = ""
+    })
+    // _apUpdateToastOpacities can leave #apChatLog itself pinned to
+    // display:none (when collapsed with nothing currently visible) -
+    // clear that too, or expanding the log later shows nothing.
+    var logEl = document.getElementById("apChatLog")
+    if (logEl) logEl.style.display = ""
+  }
+
+  window._apUpdateToastOpacities = _apUpdateToastOpacities
+  window._apResetEntryStyles = _apResetEntryStyles
 </script>
 <html>
   <head>
@@ -295,6 +354,19 @@
           .classList.contains("collapsed")
         window._apChatLogEl.scrollTop =
           window._apChatLogEl.scrollHeight
+
+        // Sync the toast fade state immediately so there's no one-frame
+        // flash of every entry (collapsing) or of stale opacity/display
+        // (expanding) before the interval next ticks.
+        if (
+          document
+            .getElementById("apChatLogContainer")
+            .classList.contains("collapsed")
+        ) {
+          window._apUpdateToastOpacities()
+        } else {
+          window._apResetEntryStyles()
+        }
       }
       window.addEventListener(
         "keydown",
@@ -710,9 +782,6 @@
         overflow-y: auto;
         padding: 4px 8px;
         color: #ddd;
-      }
-      #apChatLogContainer.collapsed #apChatLog {
-        display: none;
       }
       .ap-chat-entry {
         white-space: pre-wrap;

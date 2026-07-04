@@ -2,7 +2,7 @@ const itemColors = {
   food: "green",
   item: "brown",
   loot: "brown",
-  misc: "purple",
+  misc: "pink",
   skill: "yellow",
   craft: "orange",
   trap: "red",
@@ -250,10 +250,10 @@ class ArchipelagoClient {
    * Falls back to "Unknown Item (id)" if we don't have data for that
    * game yet (e.g. DataPackage hasn't arrived, or slot_info is missing).
    */
-  getItemName(itemId, sendingSlot) {
+  getItemName(itemId, sendingSlot, format = false) {
     const game = this.slotInfo?.[sendingSlot]?.game
     const name = game && this.itemIdToName?.[game]?.[itemId]
-    if (game == "MathQuest" && name) {
+    if (format && game == "MathQuest" && name) {
       return formatItemName(name)
     }
     return name ?? `Unknown Item (${itemId})`
@@ -353,10 +353,8 @@ class ArchipelagoClient {
         AP_ITEM_IDS[item.item]
       const globalIndex = packet.index + offset
 
-      var coloredName = itemName.split(":")
-      coloredName = `@${itemColors[coloredName[0]]}!@console!${coloredName[0]}:@!@${itemColors[coloredName[0]]}!${coloredName[1]}@!`
       apLog(
-        `@${this.itemCount > window.lastRecivedItem ? "purple" : "orange"}![Item Received]@! @console!ID: ${item.item} (@!${coloredName}@console!)@!${this.itemCount > window.lastRecivedItem ? "" : " - @orange!already recived@!"}@console!`,
+        `@${this.itemCount > window.lastRecivedItem ? "purple" : "orange"}![Item Received]@! @console!ID: ${item.item} (@!${formatItemName(itemName)}${this.itemCount > window.lastRecivedItem ? "" : " - @orange!already recived@!"}@console!`,
         item,
         this.itemCount,
         window.lastRecivedItem,
