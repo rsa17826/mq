@@ -172,6 +172,16 @@ html_start = f"""<!DOCTYPE html>
             outline-offset: 1px;
             border-radius: 4px;
         }}
+        .progression-icon.in-logic {{
+            outline: 2px solid #f1c40f;
+            outline-offset: 1px;
+            border-radius: 4px;
+        }}
+        .progression-icon.route-unknown {{
+            outline: 2px dashed #e67e22;
+            outline-offset: 1px;
+            border-radius: 4px;
+        }}
         #arrow-canvas-2d {{
             position: absolute;
             top: 0;
