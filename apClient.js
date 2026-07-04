@@ -248,6 +248,8 @@ class ArchipelagoClient {
       apLog(
         `@${this.itemCount > window.lastRecivedItem ? "purple" : "orange"}![Item Received]@! @console!ID: ${item.item} (@!${coloredName}@console!)@!${this.itemCount > window.lastRecivedItem ? "" : " - @orange!already recived@!"}@console!`,
         item,
+        this.itemCount,
+        window.lastRecivedItem,
       )
       if (this.itemCount > window.lastRecivedItem) {
         if (this.itemCount - 1 === window.lastRecivedItem) {
@@ -270,8 +272,8 @@ class ArchipelagoClient {
             this.itemCount,
           )
         }
+        window.lastRecivedItem = this.itemCount
       }
-      window.lastRecivedItem = this.itemCount
       this.lastProcessedIndex = globalIndex + 1
     })
   }
@@ -425,37 +427,3 @@ async function get(url) {
     return false
   }
 }
-// Object.defineProperty(window, "connect", {
-//   get() {
-//     window.cdata = []
-//     window.cint = 0
-//     window.__np = new Proxy(
-//       {},
-//       {
-//         get(_target, k) {
-//           window.cdata.push(k)
-//           if (window.cint) {
-//             clearTimeout(window.cint)
-//           }
-//           window.cint = setTimeout(() => {
-//             var pname = window.cdata.pop()
-//             var port = window.cdata.pop()
-//             if (!window.cdata.length) {
-//               window.cdata = ["127.0.0.1"]
-//             }
-//             window.ap = new ArchipelagoClient({
-//               hostname: window.cdata.join("."),
-//               port: port,
-//               game: "MathQuest",
-//               playerName: pname,
-//             })
-//             window.ap.connect()
-//             window.cdata = []
-//           })
-//           return __np
-//         },
-//       },
-//     )
-//     return __np
-//   },
-// })

@@ -90,7 +90,7 @@ async function main() {
       // 2. Extract variables from the browser page context
       const pageData = await page.evaluate(() => {
         return {
-          playerLoaded:window.playerLoaded,
+          playerLoaded: window.playerLoaded,
           north: window.manager ? window.manager.north : null,
           east: window.manager ? window.manager.east : null,
           accessList: window.accessList || {},

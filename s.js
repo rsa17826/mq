@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs")
+const path = require("path")
 
 // Your dictionary mapping full location strings to IDs
 const AP_LOCATION_IDS = {
@@ -234,55 +234,69 @@ const AP_LOCATION_IDS = {
   "14_18 - weapon:creeperCrusher": 229,
   "14_18 - item:pup": 230,
   "13_17 - armor:nobleArmor": 231,
-  "20_20 - misc:str up npc": 232
-};
+  "20_20 - misc:str up npc": 232,
+}
 
-const filePath = path.join(__dirname, 'MathQuest', 'MathQuest.base.js');
+const filePath = path.join(
+  __dirname,
+  "MathQuest",
+  "MathQuest.base.js",
+)
 
 try {
   // 1. Read the target file content
-  let fileContent = fs.readFileSync(filePath, 'utf8');
-  let totalReplacements = 0;
+  let fileContent = fs.readFileSync(filePath, "utf8")
+  let totalReplacements = 0
 
   // 2. Loop through each key in your object
   for (const fullKey of Object.keys(AP_LOCATION_IDS)) {
     // Extract the shorthand part (e.g., "skill:dig" from "20_20 - skill:dig")
     // This splits by the " - " divider
-    const parts = fullKey.split(' - ');
-    if (parts.length < 2) continue;
+    const parts = fullKey.split(" - ")
+    if (parts.length < 2) continue
 
-    const shortKey = parts[1];
+    const shortKey = parts[1]
 
     // Create a dynamic regex to find exactly `newItem("shortKey")`
     // Escapes special characters if any exist in your keys
-    const searchStr = `newItem("${shortKey}")`;
+    const searchStr = `newItem("${shortKey}")`
 
     // Count how many times this exact newItem string appears in the file
-    const occurrences = fileContent.split(searchStr).length - 1;
+    const occurrences = fileContent.split(searchStr).length - 1
 
     // 3. If it occurs exactly once, replace ALL instances of the shortKey globaly
     if (occurrences === 0) {
-    }
-    else if (occurrences === 1) {
+    } else if (occurrences === 1) {
       // Use a global regular expression to replace every plain "skill:dig" with "20_20 - skill:dig"
-      fileContent = fileContent.replaceAll(`newItem("${shortKey}")`, `newItem("${fullKey}")`);
-      fileContent = fileContent.replaceAll('"'+shortKey+'": ()', '"'+ fullKey+'": ()');
+      fileContent = fileContent.replaceAll(
+        `newItem("${shortKey}")`,
+        `newItem("${fullKey}")`,
+      )
+      fileContent = fileContent.replaceAll(
+        '"' + shortKey + '": ()',
+        '"' + fullKey + '": ()',
+      )
 
-      console.log(`✅ Replaced all instances of "${shortKey}" with "${fullKey}" (newItem matched exactly once).`);
-      totalReplacements++;
+      console.log(
+        `✅ Replaced all instances of "${shortKey}" with "${fullKey}" (newItem matched exactly once).`,
+      )
+      totalReplacements++
     } else {
-      console.log(`⚠️ Skipped "${shortKey}": Found ${occurrences} matches for ${searchStr} (Expected exactly 1).`);
+      console.log(
+        `⚠️ Skipped "${shortKey}": Found ${occurrences} matches for ${searchStr} (Expected exactly 1).`,
+      )
     }
   }
 
   // 4. Save the updated content back to the file if changes were made
   if (totalReplacements > 0) {
-    fs.writeFileSync(filePath, fileContent, 'utf8');
-    console.log(`\n🎉 Done! Successfully updated ${totalReplacements} keys.`);
+    fs.writeFileSync(filePath, fileContent, "utf8")
+    console.log(
+      `\n🎉 Done! Successfully updated ${totalReplacements} keys.`,
+    )
   } else {
-    console.log('\n❌ No changes made to the file.');
+    console.log("\n❌ No changes made to the file.")
   }
-
 } catch (error) {
-  console.error('An error occurred:', error.message);
+  console.error("An error occurred:", error.message)
 }

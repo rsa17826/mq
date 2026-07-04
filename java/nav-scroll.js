@@ -68,184 +68,184 @@
 //
 ////////////////////////
 
-var gPositionScroll_priorScroll = 0;
+var gPositionScroll_priorScroll = 0
 
-function positionStickyElements(){
+function positionStickyElements() {
+  var viewportWidth = parseInt($(window).width())
+  var scrollTop = parseInt($(window).scrollTop())
+  var headerElement = $("#stickyHeader")
+  var headerHeight = parseInt(headerElement.height())
+  var $mover = $("#stickyMover")
+  var moverHeight = parseInt($mover.height())
+  var windowHeight = parseInt($(window).height())
 
-    var viewportWidth = parseInt( $( window ).width() );
-    var scrollTop = parseInt($(window).scrollTop());
-    var headerElement = $('#stickyHeader');
-    var headerHeight = parseInt(  headerElement.height() );    
-	var $mover = $('#stickyMover');
-    var moverHeight = parseInt( $mover.height() )
-    var windowHeight = parseInt($(window).height())
+  // find the left edge of the outer container
 
-	// find the left edge of the outer container
+  var stickyContainer = $("#stickyContainer")
+  var stickyContainerOffset = stickyContainer.offset()
+  var stickyContainerPosition = stickyContainer.position()
+  var scrollLeft = parseInt($(window).scrollLeft())
 
-	var stickyContainer = $('#stickyContainer');
-	var stickyContainerOffset = stickyContainer.offset();
-	var stickyContainerPosition = stickyContainer.position();
-	var scrollLeft = parseInt($(window).scrollLeft());
+  var leftEdge = $("#rightMenuPage").offset().left - scrollLeft
 
-	var leftEdge = $('#rightMenuPage').offset().left - scrollLeft
+  // see if it all fits...
 
-	// see if it all fits...
+  var stickyContainerHeight = stickyContainer.height()
+  var totalContentHeight = headerHeight + moverHeight
+  var $rightSideBarContent = $("#rightMenuContent")
 
-	var stickyContainerHeight = stickyContainer.height();
-	var totalContentHeight = headerHeight + moverHeight;
-	var $rightSideBarContent = $('#rightMenuContent');
+  //console.log( "totalContentHeight="+totalContentHeight+"  windowHeight="+windowHeight )
 
-    //console.log( "totalContentHeight="+totalContentHeight+"  windowHeight="+windowHeight )
+  if (totalContentHeight < windowHeight) {
+    //console.log( "  totalContentHeight < windowHeight" )
 
-	if ( totalContentHeight < windowHeight )
-		{
-    	//console.log( "  totalContentHeight < windowHeight" )
+    // undo any weird positioning of the mover in case we jumped here because of
+    // a window resize...
 
-		// undo any weird positioning of the mover in case we jumped here because of
-		// a window resize...
+    if ($mover.css("position") != "static") {
+      headerElement.css({ visibility: "visible" })
 
-		if ( $mover.css('position') != "static" )
-        	{
-            headerElement.css( {visibility:"visible" } );
+      $mover.css({ transition: "0s linear", position: "static" })
+    }
 
-			$mover.css( {transition: "0s linear", position:"static" } );
-
-		   	}
-
-		$rightSideBarContent.css( {transition: "0s linear", position:"fixed", top: "0px", left: leftEdge +"px" } );
-		return;
-		}
-	else
-		{
-		if ( $rightSideBarContent.css('position') != "static" )
-			{
-	    	//console.log( "  totalContentHeight >= windowHeight  --> setting static from " + $rightSideBarContent.css('position')  )
-            headerElement.css( {visibility:"visible" } );
-            $rightSideBarContent.css( {transition: "0s linear", position:"static" } );
-
-			}
-		}
+    $rightSideBarContent.css({
+      transition: "0s linear",
+      position: "fixed",
+      top: "0px",
+      left: leftEdge + "px",
+    })
+    return
+  } else {
+    if ($rightSideBarContent.css("position") != "static") {
+      //console.log( "  totalContentHeight >= windowHeight  --> setting static from " + $rightSideBarContent.css('position')  )
+      headerElement.css({ visibility: "visible" })
+      $rightSideBarContent.css({
+        transition: "0s linear",
+        position: "static",
+      })
+    }
+  }
 
   // Handle the sticky scrolling ads in the right column
 
-    adDivs = $('#stickyContainer .stickyAdDiv')
-    var adCount = adDivs.length;
+  adDivs = $("#stickyContainer .stickyAdDiv")
+  var adCount = adDivs.length
 
-    if ( ( adDivs.length > 0 ) && (viewportWidth > 600 ) && headerElement.length )
-        {
+  if (
+    adDivs.length > 0 &&
+    viewportWidth > 600 &&
+    headerElement.length
+  ) {
+    //console.log( "scrollTop="+scrollTop+"  headerHeight="+headerHeight )
 
-        //console.log( "scrollTop="+scrollTop+"  headerHeight="+headerHeight )
+    if (scrollTop <= headerHeight / 3) {
+      // Header's still visible, use position:static for everything.
+      $mover.css({ transition: "0s linear", position: "static" })
+      headerElement.css({ visibility: "visible" })
+    } else {
+      headerElement.css({ visibility: "hidden" })
 
-        if ( scrollTop <= ( headerHeight / 3 ) )
-            {
-            // Header's still visible, use position:static for everything.
-            $mover.css( {transition: "0s linear", position:"static" } );
-            headerElement.css( {visibility:"visible" } );
-            }
-        else
-            {
-            headerElement.css( {visibility:"hidden" } );
+      // Get some stuff we need to know for later...
 
-            // Get some stuff we need to know for later...
+      var someMargin = 10
 
-            var someMargin = 10;
+      var adHeights = []
+      $(adDivs.get()).each(function () {
+        var m1 = (someMargin = parseInt($(this).css("marginBottom")))
+        var h = parseInt($(this).height())
+        adHeights.push(m1 + h)
+      })
 
-            var adHeights = [];
-            $( adDivs.get() ).each(function()
-                {
-                var m1 = someMargin = parseInt( $(this).css("marginBottom") )
-                var h = parseInt( $(this).height() )
-                adHeights.push( m1 + h );
-                });
+      // build an array that and use that to figure out which ad should
+      // be at the top of the display based on any given scroll percentage
 
-            // build an array that and use that to figure out which ad should
-            // be at the top of the display based on any given scroll percentage
+      var adAtTop = []
+      var chunksOfAds = 100 / adCount
 
-            var adAtTop = [];
-            var chunksOfAds = 100 / adCount;
+      for (adIndex = 0; adIndex < adCount; adIndex++)
+        for (i = 0; i < chunksOfAds; i++) adAtTop.push(adIndex)
 
-            for (adIndex = 0; adIndex < adCount; adIndex++)
-                for (i = 0; i < chunksOfAds; i++)
-                    adAtTop.push( adIndex );
+      while (adAtTop.length < 100) adAtTop.push(adCount - 1)
 
-            while( adAtTop.length < 100 )
-                adAtTop.push( adCount - 1 );
+      // now figure out the scroll percentage...
 
-            // now figure out the scroll percentage...
+      var documentHeight = parseInt($(document).height())
+      var yDelta = documentHeight - windowHeight
+      if (yDelta < 1) {
+        scrollTop = 0
+        yDelta = 1
+      }
 
-            var documentHeight = parseInt($(document).height())
-            var yDelta = documentHeight - windowHeight;
-            if (yDelta < 1)
-                {
-                scrollTop = 0;
-                yDelta = 1;
-                }
+      var scrollPercent = Math.min(
+        100,
+        Math.max(0, Math.floor((100 * scrollTop) / yDelta)),
+      )
 
-            var scrollPercent = Math.min( 100, Math.max( 0, Math.floor( 100 * scrollTop / yDelta ) ) );
+      // Now it's easy figure out which ad we want at the top...
 
-            // Now it's easy figure out which ad we want at the top...
+      if (moverHeight <= windowHeight)
+        // if it all fits, just pin it under the header
+        scrollPercent = 0
 
-            if ( moverHeight <= windowHeight )      // if it all fits, just pin it under the header
-                scrollPercent = 0;
+      var adIndexAtTopOfPage = adAtTop[scrollPercent]
 
-            var adIndexAtTopOfPage = adAtTop[ scrollPercent ];
+      // ...and calculate how far down the we need to shift everything to put this ad at the top
 
-            // ...and calculate how far down the we need to shift everything to put this ad at the top
+      var displacementForTopAd = 0
+      for (adIndex = 0; adIndex < adIndexAtTopOfPage; adIndex++)
+        displacementForTopAd -= adHeights[adIndex]
 
-            var displacementForTopAd = 0;
-            for (adIndex = 0; adIndex < adIndexAtTopOfPage; adIndex++)
-                displacementForTopAd -= adHeights[adIndex];
+      //console.log( "scrollPercent="+scrollPercent+"  adIndexAtTopOfPage="+adIndexAtTopOfPage+"  displacementForTopAd="+displacementForTopAd )
 
-            //console.log( "scrollPercent="+scrollPercent+"  adIndexAtTopOfPage="+adIndexAtTopOfPage+"  displacementForTopAd="+displacementForTopAd )
+      // Let's also make sure we're tight against the footer, and not overlapping it...
 
-            // Let's also make sure we're tight against the footer, and not overlapping it...
+      var thisTransitionDelay = 0.2
+      var footerElement = $("#stickyFooter")
+      var footerVisibleTop = 9999999
+      if (footerElement.length)
+        footerVisibleTop = footerElement.offset().top - scrollTop
 
-            var thisTransitionDelay = 0.2;
-            var footerElement = $("#stickyFooter")
-            var footerVisibleTop = 9999999;
-            if (footerElement.length)
-                footerVisibleTop = footerElement.offset().top - scrollTop;
+      var adVisBottom =
+        displacementForTopAd + moverHeight + someMargin
 
-            var adVisBottom = displacementForTopAd + moverHeight + someMargin;
+      //    console.log( "footerVisibleTop="+footerVisibleTop+"  adVisBottom="+adVisBottom+"  moverHeight="+moverHeight )
 
-            //    console.log( "footerVisibleTop="+footerVisibleTop+"  adVisBottom="+adVisBottom+"  moverHeight="+moverHeight )
+      var lowestSpot = windowHeight
+      if (footerVisibleTop < windowHeight) {
+        var delta = windowHeight - footerVisibleTop
+        lowestSpot -= delta
+      }
 
-            var lowestSpot = windowHeight;
-            if ( footerVisibleTop < windowHeight )
-                {
-                var delta = windowHeight - footerVisibleTop;
-                lowestSpot -= delta;
-                }
+      if (adVisBottom > footerVisibleTop) {
+        var delta = adVisBottom - footerVisibleTop
+        displacementForTopAd -= delta
+        thisTransitionDelay = 0
+        //    console.log( "   ===> SHIFT UP to avoid footer overlap delta="+delta )
+      } else if (adVisBottom < lowestSpot && adIndexAtTopOfPage > 0) {
+        var delta = lowestSpot - adVisBottom
+        displacementForTopAd += delta
+        thisTransitionDelay = 0
+        //    console.log( "   ===> SHIFT DOWN to use available whitespace delta="+delta )
+      }
 
-            if ( (adVisBottom > footerVisibleTop ) )
-                {
-                var delta = adVisBottom - footerVisibleTop;
-                displacementForTopAd -= delta;
-                thisTransitionDelay = 0;
-            //    console.log( "   ===> SHIFT UP to avoid footer overlap delta="+delta )
-                }
-            else if ( ( adVisBottom < lowestSpot ) && (adIndexAtTopOfPage > 0 ) )
-                {
-                var delta = lowestSpot - adVisBottom;
-                displacementForTopAd += delta;
-                thisTransitionDelay = 0;
-            //    console.log( "   ===> SHIFT DOWN to use available whitespace delta="+delta )
-                }
+      // Finally, move it...
 
+      var curTop = parseInt($mover.css("top"))
+      var movePixels = Math.abs(displacementForTopAd - curTop)
+      var pixelsPerSecond = 1000.0
+      var delay = (movePixels * thisTransitionDelay) / pixelsPerSecond
 
-            // Finally, move it...
+      //console.log( "final  displacementForTopAd="+displacementForTopAd + "    curTop="+curTop + "    delay="+delay)
 
-            var curTop = parseInt( $mover.css("top") );
-            var movePixels = Math.abs( displacementForTopAd - curTop);
-            var pixelsPerSecond = 1000.0;
-            var delay = movePixels * thisTransitionDelay / pixelsPerSecond;
-
-            //console.log( "final  displacementForTopAd="+displacementForTopAd + "    curTop="+curTop + "    delay="+delay)
-
-            $mover.css( {transition: delay.toFixed(2) + "s linear", position:"fixed", top: displacementForTopAd +"px", left: leftEdge +"px" } );
-            }
-        }
+      $mover.css({
+        transition: delay.toFixed(2) + "s linear",
+        position: "fixed",
+        top: displacementForTopAd + "px",
+        left: leftEdge + "px",
+      })
+    }
   }
+}
 
-$(window).scroll( positionStickyElements );
-$(window).resize( positionStickyElements );
+$(window).scroll(positionStickyElements)
+$(window).resize(positionStickyElements)

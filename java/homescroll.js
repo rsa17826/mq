@@ -71,11 +71,10 @@
 // var gPositionScroll_priorScroll = 0;
 
 // function positionStickyElements(){
-
 //     var viewportWidth = parseInt( $( window ).width() );
 //     var scrollTop = parseInt($(window).scrollTop());
 //     var headerElement = $('#stickyHeader');
-//     var headerHeight = parseInt(  headerElement.height() );    
+//     var headerHeight = parseInt(  headerElement.height() );
 // 	var $mover = $('#stickyMover');
 //     var moverHeight = parseInt( $mover.height() )
 //     var windowHeight = parseInt($(window).height())
@@ -133,7 +132,6 @@
 
 //     if ( ( adDivs.length > 0 ) && (viewportWidth > 600 ) && headerElement.length )
 //         {
-
 //         //console.log( "scrollTop="+scrollTop+"  headerHeight="+headerHeight )
 
 //         if ( scrollTop <= ( headerHeight / 3 ) )
@@ -231,7 +229,6 @@
 //                 thisTransitionDelay = 0;
 //             //    console.log( "   ===> SHIFT DOWN to use available whitespace delta="+delta )
 //                 }
-
 
 //             // Finally, move it...
 

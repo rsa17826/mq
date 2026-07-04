@@ -37,16 +37,16 @@ VM13603:14 Inbound Entrance -> Lands Here from Vanilla Path [8_22_9_22]: {newNor
 VM13603:10 Outbound Exit -> Vanilla Path: [9_22_10_22] (2) [{…}, {…}]
 VM13603:10 Outbound Exit -> Vanilla Path: [9_22_10.1_21] [{…}]0: dirCode: 0newEast: 22newNorth: 9newX: 454newY: 64srcCoord: -1xIsEven: 0yIsEven: 0[[Prototype]]: Objectlength: 1[[Prototype]]: Array(0)
 [
-    {
-        "newNorth": 9,
-        "newEast": 22,
-        "newX": 454,
-        "newY": 64,
-        "srcCoord": -1,
-        "dirCode": 0,
-        "xIsEven": 0,
-        "yIsEven": 0
-    }
+  {
+      "newNorth": 9,
+      "newEast": 22,
+      "newX": 454,
+      "newY": 64,
+      "srcCoord": -1,
+      "dirCode": 0,
+      "xIsEven": 0,
+      "yIsEven": 0
+  }
 ]
 VM13603:14 Inbound Entrance -> Lands Here from Vanilla Path [9_22_10.1_21]: {newNorth: 9, newEast: 22, newX: 454, newY: 64, srcCoord: -1, …}
 undefined

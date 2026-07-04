@@ -7,6 +7,7 @@ import json
 import random
 import sys, os
 
+
 def init():
   OUT_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -16,8 +17,18 @@ def init():
   SEED = int(clean_args[1]) if len(clean_args) > 1 else 12345
 
   REQUIREMENT_PREFIXES = {
-    "entrance", "item", "skill", "permit", "quest", "weapon", "armor",
-    "ring", "magic", "food", "drop", "misc",
+    "entrance",
+    "item",
+    "skill",
+    "permit",
+    "quest",
+    "weapon",
+    "armor",
+    "ring",
+    "magic",
+    "food",
+    "drop",
+    "misc",
   }
 
   def parse_requirement_token(tok):
@@ -26,7 +37,7 @@ def init():
       return {"raw": tok, "type": "flag", "name": tok, "placeholder": True}
 
     if tok.startswith("entrance."):
-      return {"raw": tok, "type": "entrance", "value": tok[len("entrance."):]}
+      return {"raw": tok, "type": "entrance", "value": tok[len("entrance.") :]}
 
     if ":" in tok:
       prefix, rest = tok.split(":", 1)
@@ -67,7 +78,7 @@ def init():
           result["count"] = 1
         return result
     if "?" in tok:
-      return {"raw": tok, "type": "flag", "name": tok, "placeholder":True}
+      return {"raw": tok, "type": "flag", "name": tok, "placeholder": True}
     return {"raw": tok, "type": "flag", "name": tok}
 
   def parse_requires(requires):
@@ -204,13 +215,7 @@ def init():
   # --- Export formatting ---
   output_placements = []
   for loc in locations:
-    output_placements.append({
-      "locationId": loc["id"],
-      "roomNorth": loc["room"][0],
-      "roomEast": loc["room"][1],
-      "originalItems": loc["original_receive"],
-      "shuffledItems": placements.get(loc["id"], [])
-    })
+    output_placements.append({"locationId": loc["id"], "roomNorth": loc["room"][0], "roomEast": loc["room"][1], "originalItems": loc["original_receive"], "shuffledItems": placements.get(loc["id"], [])})
 
   out = {
     "seed": SEED if not NO_SHUFFLE else "vanilla",
@@ -228,10 +233,7 @@ def init():
     for item in p["shuffledItems"]:
       tok = parse_requirement_token(item)
       key_str = f"{tok['type']}:{tok.get('name')}"
-      item_to_loc_index.setdefault(key_str, []).append({
-        "locationId": p["locationId"],
-        "room": room_str
-      })
+      item_to_loc_index.setdefault(key_str, []).append({"locationId": p["locationId"], "room": room_str})
 
   hint_data = {
     "seed": SEED if not NO_SHUFFLE else "vanilla",
@@ -241,6 +243,7 @@ def init():
   with open(f"{OUT_DIR}/json/item_hint_data.json", "w") as f:
     json.dump(hint_data, f, indent=2)
   print("Wrote json/item_hint_data.json")
+
 
 if __name__ == "__main__":
   init()

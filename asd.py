@@ -1,5 +1,6 @@
 from _room_geometry import GEOM, ExitBase
 
+
 def find_unsorted_exits(rooms: ExitBase):
   for idx, room in enumerate(rooms):
     pos_str = f"Room {idx} (north: {room.get('north')}, east: {room.get('east')})"

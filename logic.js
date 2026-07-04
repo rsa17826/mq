@@ -2,99 +2,130 @@
 // Requires PROG_DATA (prog.js), AP_ITEM_IDS (game globals), and tracker.js's
 // data-location markers to already be present on the page.
 
-(function () {
+;(function () {
   function init() {
-    if (typeof PROG_DATA === "undefined" || typeof AP_ITEM_IDS === "undefined" || !window.ap) {
-      setTimeout(init, 250);
-      return;
+    if (
+      typeof PROG_DATA === "undefined" ||
+      typeof AP_ITEM_IDS === "undefined" ||
+      !window.ap
+    ) {
+      setTimeout(init, 250)
+      return
     }
 
     // Ground truth for "is this token a real network item" (vs a free/virtual
     // flag like area:/quest:, or an unresolvable entrance.* token).
-    const REAL_ITEM_NAMES = new Set(Object.values(AP_ITEM_IDS));
+    const REAL_ITEM_NAMES = new Set(Object.values(AP_ITEM_IDS))
 
     function isEntranceToken(tok) {
-      return tok.startsWith("entrance.");
+      return tok.startsWith("entrance.")
     }
 
     function parseEntranceToken(tok) {
-      const m = tok.match(/^entrance\.(north|south|east|west)(\d+)$/);
-      if (!m) return null;
-      return { side: m[1], idx: Number(m[2]) };
+      const m = tok.match(/^entrance\.(north|south|east|west)(\d+)$/)
+      if (!m) return null
+      return { side: m[1], idx: Number(m[2]) }
     }
 
     // Cache icon elements by their "room - item" location key.
-    const iconsByLocation = {};
-    document.querySelectorAll(".progression-icon[data-location]").forEach((el) => {
-      (iconsByLocation[el.dataset.location] ||= []).push(el);
-    });
+    const iconsByLocation = {}
+    document
+      .querySelectorAll(".progression-icon[data-location]")
+      .forEach((el) => {
+        ;(iconsByLocation[el.dataset.location] ||= []).push(el)
+      })
 
-    const roomEls = {};
-    document.querySelectorAll(".tile-wrapper[data-room]").forEach((el) => {
-      roomEls[el.dataset.room] = el;
-    });
+    const roomEls = {}
+    document
+      .querySelectorAll(".tile-wrapper[data-room]")
+      .forEach((el) => {
+        roomEls[el.dataset.room] = el
+      })
 
-    const haveReal = new Set(); // real items actually received over the network
+    const haveReal = new Set() // real items actually received over the network
 
     // Evaluate one AND-group given a room context (for resolving entrance.*
     // tokens against the room graph). Returns 'true' / 'false' / 'unknown'
     // ('unknown' only happens if we have no entrance data for that room at all).
     function evalGroup(group, have, roomKey, roomGraph) {
-      if (group.length === 0) return "true";
+      if (group.length === 0) return "true"
       for (const tok of group) {
         if (isEntranceToken(tok)) {
-          const parsed = parseEntranceToken(tok);
-          if (!parsed || !roomGraph) return "unknown";
-          if (!roomGraph.reachableExits) return "unknown";
-          const known = roomGraph.roomExitCounts[roomKey] !== undefined || roomGraph.isEntranceReachable(roomKey, parsed.side, parsed.idx);
-          if (!known) return "unknown";
-          if (!roomGraph.isEntranceReachable(roomKey, parsed.side, parsed.idx)) return "false";
-          continue;
+          const parsed = parseEntranceToken(tok)
+          if (!parsed || !roomGraph) return "unknown"
+          if (!roomGraph.reachableExits) return "unknown"
+          const known =
+            roomGraph.roomExitCounts[roomKey] !== undefined ||
+            roomGraph.isEntranceReachable(
+              roomKey,
+              parsed.side,
+              parsed.idx,
+            )
+          if (!known) return "unknown"
+          if (
+            !roomGraph.isEntranceReachable(
+              roomKey,
+              parsed.side,
+              parsed.idx,
+            )
+          )
+            return "false"
+          continue
         }
         if (tok.startsWith("quest:")) {
-          if (!(typeof QuestState !== "undefined" && QuestState.satisfied(tok))) return "false";
-          continue;
+          if (
+            !(
+              typeof QuestState !== "undefined" &&
+              QuestState.satisfied(tok)
+            )
+          )
+            return "false"
+          continue
         }
-        if (!have.has(tok)) return "false";
+        if (!have.has(tok)) return "false"
       }
-      return "true";
+      return "true"
     }
 
     // Evaluate an entry: best result across its OR-groups.
     function evalEntry(entry, have, roomGraph) {
-      let best = "false";
+      let best = "false"
       for (const group of entry.requires || []) {
-        const r = evalGroup(group, have, entry.room, roomGraph);
-        if (r === "true") return "true";
-        if (r === "unknown") best = "unknown";
+        const r = evalGroup(group, have, entry.room, roomGraph)
+        if (r === "true") return "true"
+        if (r === "unknown") best = "unknown"
       }
-      return best;
+      return best
     }
 
     function recompute() {
-      if (typeof QuestState !== "undefined") QuestState.seedFromGame();
-      const have = new Set(haveReal);
-      const roomGraph = (typeof RoomGraph !== "undefined" && typeof AP_ENTRANCE_IDS !== "undefined")
-        ? RoomGraph.computeReachability(haveReal, "20_20")
-        : null;
+      if (typeof QuestState !== "undefined") QuestState.seedFromGame()
+      const have = new Set(haveReal)
+      const roomGraph =
+        (
+          typeof RoomGraph !== "undefined" &&
+          typeof AP_ENTRANCE_IDS !== "undefined"
+        ) ?
+          RoomGraph.computeReachability(haveReal, "20_20")
+        : null
 
-      const status = new Array(PROG_DATA.length).fill("false");
-      let changed = true;
+      const status = new Array(PROG_DATA.length).fill("false")
+      let changed = true
 
       while (changed) {
-        changed = false;
+        changed = false
         for (let i = 0; i < PROG_DATA.length; i++) {
-          if (status[i] === "true") continue; // already fully resolved
-          const entry = PROG_DATA[i];
-          const r = evalEntry(entry, have, roomGraph);
-          status[i] = r;
+          if (status[i] === "true") continue // already fully resolved
+          const entry = PROG_DATA[i]
+          const r = evalEntry(entry, have, roomGraph)
+          status[i] = r
           if (r === "true") {
             for (const tok of entry.receive) {
               // only virtual/free tokens auto-propagate; real items only
               // enter `have` via actual ReceivedItems packets
               if (!REAL_ITEM_NAMES.has(tok) && !have.has(tok)) {
-                have.add(tok);
-                changed = true;
+                have.add(tok)
+                changed = true
               }
             }
           }
@@ -103,57 +134,68 @@
 
       // Clear old logic markers, but never touch .checked (that's ground truth)
       document
-        .querySelectorAll(".progression-icon.in-logic, .progression-icon.route-unknown, .progression-icon.out-of-logic")
-        .forEach((el) => el.classList.remove("in-logic", "route-unknown", "out-of-logic"));
+        .querySelectorAll(
+          ".progression-icon.in-logic, .progression-icon.route-unknown, .progression-icon.out-of-logic",
+        )
+        .forEach((el) =>
+          el.classList.remove(
+            "in-logic",
+            "route-unknown",
+            "out-of-logic",
+          ),
+        )
 
       PROG_DATA.forEach((entry, i) => {
-        const r = status[i];
+        const r = status[i]
         for (const tok of entry.receive) {
-          if (!REAL_ITEM_NAMES.has(tok)) continue; // virtual flag, no map marker
-          const key = `${entry.room} - ${tok}`;
-          const els = iconsByLocation[key];
-          if (!els) continue;
+          if (!REAL_ITEM_NAMES.has(tok)) continue // virtual flag, no map marker
+          const key = `${entry.room} - ${tok}`
+          const els = iconsByLocation[key]
+          if (!els) continue
           els.forEach((el) => {
-            if (el.classList.contains("checked")) return; // already collected, leave alone
-            if (r === "true") el.classList.add("in-logic");
-            else if (r === "unknown") el.classList.add("route-unknown");
-            else el.classList.add("out-of-logic");
-          });
+            if (el.classList.contains("checked")) return // already collected, leave alone
+            if (r === "true") el.classList.add("in-logic")
+            else if (r === "unknown")
+              el.classList.add("route-unknown")
+            else el.classList.add("out-of-logic")
+          })
         }
-      });
+      })
 
       // Room-level grey overlay based on physical reachability
       if (roomGraph) {
         for (const roomKey of Object.keys(roomEls)) {
-          const el = roomEls[roomKey];
-          el.classList.remove("room-unreachable", "room-partial");
-          const st = roomGraph.roomStatus(roomKey);
-          if (st === "none") el.classList.add("room-unreachable");
-          else if (st === "partial") el.classList.add("room-partial");
+          const el = roomEls[roomKey]
+          el.classList.remove("room-unreachable", "room-partial")
+          const st = roomGraph.roomStatus(roomKey)
+          if (st === "none") el.classList.add("room-unreachable")
+          else if (st === "partial") el.classList.add("room-partial")
         }
       }
     }
 
-    const origOnReceivedItems = ap.onReceivedItems.bind(ap);
+    const origOnReceivedItems = ap.onReceivedItems.bind(ap)
     ap.onReceivedItems = function (packet) {
-      origOnReceivedItems(packet);
+      origOnReceivedItems(packet)
       packet.items.forEach((item) => {
-        const name = AP_ITEM_IDS[item.item];
-        if (name) haveReal.add(name);
-      });
-      recompute();
-    };
+        const name = AP_ITEM_IDS[item.item]
+        if (name) haveReal.add(name)
+      })
+      recompute()
+    }
 
-    const origOnConnected = ap.onConnected.bind(ap);
+    const origOnConnected = ap.onConnected.bind(ap)
     ap.onConnected = function (packet) {
-      origOnConnected(packet);
-      recompute();
-    };
+      origOnConnected(packet)
+      recompute()
+    }
 
-    recompute();
-    window.__trackerRecompute = recompute;
-    console.log(`[logic] reachability engine ready: ${PROG_DATA.length} entries`);
+    recompute()
+    window.__trackerRecompute = recompute
+    console.log(
+      `[logic] reachability engine ready: ${PROG_DATA.length} entries`,
+    )
   }
 
-  init();
-})();
+  init()
+})()

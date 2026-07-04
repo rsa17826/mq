@@ -1,8 +1,10 @@
-var x = [player.north,player.east]
+var x = [player.north, player.east]
 if (typeof ER_MAP !== "undefined" || window.ER_MAP) {
   const mapInstance =
     typeof ER_MAP !== "undefined" ? ER_MAP : window.ER_MAP
-  console.log(`=== Active Randomizer Routes for Room ${x.join(',')} ===`)
+  console.log(
+    `=== Active Randomizer Routes for Room ${x.join(",")} ===`,
+  )
 
   mapInstance.forEach((conns, key) => {
     // Correct order: 13 (North) and 26 (East)
