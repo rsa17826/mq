@@ -3,6 +3,8 @@ const itemColors = {
   loot: "brown",
   misc: "purple",
   skill: "yellow",
+  craft: "orange",
+  trap: "red",
   magic: "purple",
   weapon: "darkgrey",
   armor: "lightgrey",
