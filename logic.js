@@ -17,35 +17,50 @@
       return tok.startsWith("entrance.");
     }
 
+    function parseEntranceToken(tok) {
+      const m = tok.match(/^entrance\.(north|south|east|west)(\d+)$/);
+      if (!m) return null;
+      return { side: m[1], idx: Number(m[2]) };
+    }
+
     // Cache icon elements by their "room - item" location key.
     const iconsByLocation = {};
     document.querySelectorAll(".progression-icon[data-location]").forEach((el) => {
       (iconsByLocation[el.dataset.location] ||= []).push(el);
     });
 
+    const roomEls = {};
+    document.querySelectorAll(".tile-wrapper[data-room]").forEach((el) => {
+      roomEls[el.dataset.room] = el;
+    });
+
     const haveReal = new Set(); // real items actually received over the network
 
-    // Evaluate one AND-group: 'true' (satisfied), 'false' (missing something
-    // real), or 'unknown' (would be satisfied but gated behind a specific
-    // room entrance/route we can't verify).
-    function evalGroup(group, have) {
+    // Evaluate one AND-group given a room context (for resolving entrance.*
+    // tokens against the room graph). Returns 'true' / 'false' / 'unknown'
+    // ('unknown' only happens if we have no entrance data for that room at all).
+    function evalGroup(group, have, roomKey, roomGraph) {
       if (group.length === 0) return "true";
-      let hasEntrance = false;
       for (const tok of group) {
         if (isEntranceToken(tok)) {
-          hasEntrance = true;
+          const parsed = parseEntranceToken(tok);
+          if (!parsed || !roomGraph) return "unknown";
+          if (!roomGraph.reachableExits) return "unknown";
+          const known = roomGraph.roomExitCounts[roomKey] !== undefined || roomGraph.isEntranceReachable(roomKey, parsed.side, parsed.idx);
+          if (!known) return "unknown";
+          if (!roomGraph.isEntranceReachable(roomKey, parsed.side, parsed.idx)) return "false";
           continue;
         }
         if (!have.has(tok)) return "false";
       }
-      return hasEntrance ? "unknown" : "true";
+      return "true";
     }
 
     // Evaluate an entry: best result across its OR-groups.
-    function evalEntry(entry, have) {
+    function evalEntry(entry, have, roomGraph) {
       let best = "false";
       for (const group of entry.requires || []) {
-        const r = evalGroup(group, have);
+        const r = evalGroup(group, have, entry.room, roomGraph);
         if (r === "true") return "true";
         if (r === "unknown") best = "unknown";
       }
@@ -54,6 +69,10 @@
 
     function recompute() {
       const have = new Set(haveReal);
+      const roomGraph = (typeof RoomGraph !== "undefined" && typeof AP_ENTRANCE_IDS !== "undefined")
+        ? RoomGraph.computeReachability(haveReal, "20_20")
+        : null;
+
       const status = new Array(PROG_DATA.length).fill("false");
       let changed = true;
 
@@ -62,7 +81,7 @@
         for (let i = 0; i < PROG_DATA.length; i++) {
           if (status[i] === "true") continue; // already fully resolved
           const entry = PROG_DATA[i];
-          const r = evalEntry(entry, have);
+          const r = evalEntry(entry, have, roomGraph);
           status[i] = r;
           if (r === "true") {
             for (const tok of entry.receive) {
@@ -79,12 +98,11 @@
 
       // Clear old logic markers, but never touch .checked (that's ground truth)
       document
-        .querySelectorAll(".progression-icon.in-logic, .progression-icon.route-unknown")
-        .forEach((el) => el.classList.remove("in-logic", "route-unknown"));
+        .querySelectorAll(".progression-icon.in-logic, .progression-icon.route-unknown, .progression-icon.out-of-logic")
+        .forEach((el) => el.classList.remove("in-logic", "route-unknown", "out-of-logic"));
 
       PROG_DATA.forEach((entry, i) => {
         const r = status[i];
-        if (r === "false") return;
         for (const tok of entry.receive) {
           if (!REAL_ITEM_NAMES.has(tok)) continue; // virtual flag, no map marker
           const key = `${entry.room} - ${tok}`;
@@ -92,10 +110,23 @@
           if (!els) continue;
           els.forEach((el) => {
             if (el.classList.contains("checked")) return; // already collected, leave alone
-            el.classList.add(r === "true" ? "in-logic" : "route-unknown");
+            if (r === "true") el.classList.add("in-logic");
+            else if (r === "unknown") el.classList.add("route-unknown");
+            else el.classList.add("out-of-logic");
           });
         }
       });
+
+      // Room-level grey overlay based on physical reachability
+      if (roomGraph) {
+        for (const roomKey of Object.keys(roomEls)) {
+          const el = roomEls[roomKey];
+          el.classList.remove("room-unreachable", "room-partial");
+          const st = roomGraph.roomStatus(roomKey);
+          if (st === "none") el.classList.add("room-unreachable");
+          else if (st === "partial") el.classList.add("room-partial");
+        }
+      }
     }
 
     const origOnReceivedItems = ap.onReceivedItems.bind(ap);

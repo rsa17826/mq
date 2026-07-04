@@ -182,6 +182,15 @@ html_start = f"""<!DOCTYPE html>
             outline-offset: 1px;
             border-radius: 4px;
         }}
+        .progression-icon.out-of-logic {{
+            filter: grayscale(1) opacity(0.35);
+        }}
+        .tile-wrapper.room-partial {{
+            filter: grayscale(0.5) brightness(0.75);
+        }}
+        .tile-wrapper.room-unreachable {{
+            filter: grayscale(1) brightness(0.45);
+        }}
         #arrow-canvas-2d {{
             position: absolute;
             top: 0;
