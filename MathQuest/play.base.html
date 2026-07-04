@@ -294,7 +294,8 @@
           if (e.key == "`") {
             e.preventDefault()
             document.querySelector("#apChatLogHeader").onclick()
-            if (document.activeElement.id == "apChatSayInput") {
+            if (document.activeElement.id != "apChatSayInput") {
+              document.querySelector("#apChatSayInput").focus()
             }
           }
         },
