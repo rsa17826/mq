@@ -3060,7 +3060,9 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 14, "east": 17},
     "requires": [
-      [],
+      [
+        "quest:bBomb.3",
+      ],
     ],
     "receive": [
       "quest:mChal.1",

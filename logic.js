@@ -145,15 +145,36 @@
           ),
         )
 
+      const roomsWithAvailableItems = new Set()
+      const roomsWithAvailableQuests = new Set()
+
       PROG_DATA.forEach((entry, i) => {
         const r = status[i]
         for (const tok of entry.receive) {
-          if (!REAL_ITEM_NAMES.has(tok)) continue // virtual flag, no map marker
           const key = `${entry.room} - ${tok}`
           const els = iconsByLocation[key]
           if (!els) continue
+          const isQuest = tok.startsWith("quest:")
+          const questDone =
+            isQuest &&
+            typeof QuestState !== "undefined" &&
+            QuestState.satisfied(tok)
+          const alreadyChecked =
+            els.some((el) => el.classList.contains("checked")) ||
+            questDone
+
+          if (r === "true" && !alreadyChecked) {
+            if (REAL_ITEM_NAMES.has(tok))
+              roomsWithAvailableItems.add(entry.room)
+            if (isQuest) roomsWithAvailableQuests.add(entry.room)
+          }
+
           els.forEach((el) => {
             if (el.classList.contains("checked")) return // already collected, leave alone
+            if (questDone) {
+              el.classList.add("checked")
+              return
+            }
             if (r === "true") el.classList.add("in-logic")
             else if (r === "unknown")
               el.classList.add("route-unknown")
@@ -161,6 +182,18 @@
           })
         }
       })
+
+      for (const roomKey of Object.keys(roomEls)) {
+        roomEls[roomKey].classList.toggle(
+          "room-has-available-item",
+          roomsWithAvailableItems.has(roomKey),
+        )
+        roomEls[roomKey].classList.toggle(
+          "room-has-available-quest",
+          roomsWithAvailableQuests.has(roomKey) &&
+            !roomsWithAvailableItems.has(roomKey),
+        )
+      }
 
       // Room-level grey overlay based on physical reachability
       if (roomGraph) {

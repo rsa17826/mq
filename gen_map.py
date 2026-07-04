@@ -175,6 +175,16 @@ html_start = f"""<!DOCTYPE html>
             z-index: 12;
             filter: drop-shadow(0px 1px 2px rgba(0,0,0,0.8));
         }}
+        .tile-wrapper.room-has-available-item {{
+            outline: 10px solid #2ecc71;
+            outline-offset: -10px;
+            z-index: 20;
+        }}
+        .tile-wrapper.room-has-available-quest {{
+            outline: 10px solid #f1c40f;
+            outline-offset: -10px;
+            z-index: 20;
+        }}
         .progression-icon.checked {{
             filter: grayscale(1) brightness(0.55) drop-shadow(0px 1px 2px rgba(0,0,0,0.8));
             outline: 2px solid #2ecc71;
