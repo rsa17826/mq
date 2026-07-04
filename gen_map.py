@@ -693,7 +693,7 @@ def main():
     )
     for item in sorted(unique_receives):
       if item.startswith(ITEM_NAMES):
-        sanitized_name = re.sub(r"[:#?]", "_", item.split(" - ", 1)[0].split(".", 1)[0].split("#", 1)[0])
+        sanitized_name = re.sub(r"[:#? ]", "_", item.split(" - ", 1)[0].split(".", 1)[0].split("#", 1)[0])
         icon_filename = f"{sanitized_name}.png"
         icon_src = os.path.join(PROGRESSION_ICON_PATH, icon_filename).replace("\\", "/")
         # match the exact key format used when AP_LOCATION_IDS was generated:
@@ -705,7 +705,7 @@ def main():
     icon_html += "<span class=fr>"
     for item in sorted(unique_receives):
       if not item.startswith(ITEM_NAMES) and not item.startswith(("loot:",)):
-        sanitized_name = re.sub(r"[:#?]", "_", item.split(" - ", 1)[0].split(".", 1)[0].split("#", 1)[0])
+        sanitized_name = re.sub(r"[:#? ]", "_", item.split(" - ", 1)[0].split(".", 1)[0].split("#", 1)[0])
         icon_filename = f"{sanitized_name}.png"
         icon_src = os.path.join(PROGRESSION_ICON_PATH, icon_filename).replace("\\", "/")
         # match the exact key format used when AP_LOCATION_IDS was generated:
