@@ -154,8 +154,8 @@ def init(src):
 
             if (direction && erOrigin.x !== null && erOrigin.y !== null) {{
               // 2. Calculate coordinates relative to tile layout block grids
-              var blockX = Math.floor(erOrigin.x / BLOCK_W)
-              var blockY = Math.floor(erOrigin.y / BLOCK_H)
+              var blockX = Math.round(erOrigin.x / BLOCK_W)
+              var blockY = Math.round(erOrigin.y / BLOCK_H)
               if (blockX < 0) blockX = 0; if (blockX >= BLOCKS_X) blockX = BLOCKS_X - 1
               if (blockY < 0) blockY = 0; if (blockY >= BLOCKS_Y) blockY = BLOCKS_Y - 1
 
@@ -169,22 +169,27 @@ def init(src):
                 var matchedExitIndex = -1
 
                 // 4. Bounds assessment check matching player position coordinates to active exit span
-                for (var s = 0; s < spans.length; s++) {{
-                  var span = spans[s]
+                for (var i = 0; i < spans.length; i++) {{
+                  var span = spans[i]
                   if (direction === "west" || direction === "east") {{
                     if (blockY >= span.top && blockY <= span.bottom) {{
-                      matchedExitIndex = s
+                      matchedExitIndex = i
                       break
                     }}
                   }} else if (direction === "north" || direction === "south") {{
+                    log(blockX, span.left, span.right)
                     if (blockX >= span.left && blockX <= span.right) {{
-                      matchedExitIndex = s
+                      matchedExitIndex = i
                       break
                     }}
                   }}
                 }}
 
                 // 5. Query matching logic data tracking table entry using direction and index configurations
+                log("matchedExitIndex", matchedExitIndex)
+                if (matchedExitIndex===-1){{
+                  apError("can't find where player left the screen at!")
+                }}
                 if (matchedExitIndex !== -1) {{
                   var specificTarget = conns.find(function(c) {{
                     return c.origSide === direction && String(c.origIdx) === String(matchedExitIndex)
@@ -249,7 +254,7 @@ def init(src):
                 if (manager.char && manager.char[0]) {{
                   if (typeof manager.char[0].set_x === 'function') {{
                     manager.char[0].set_x(conn.newX)
-                    manager.char[0].set_y(conn.newY)
+                    manager.char[0].set_y(conn.newY+(BLOCK_H/2))
                   }} else {{
                     manager.char[0].x = conn.newX
                     manager.char[0].y = conn.newY
