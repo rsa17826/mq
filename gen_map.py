@@ -176,29 +176,29 @@ html_start = f"""<!DOCTYPE html>
             filter: drop-shadow(0px 1px 2px rgba(0,0,0,0.8));
         }}
         .tile-wrapper.room-has-available-item {{
-            outline: 10px solid #2ecc71;
-            outline-offset: -10px;
+            outline: 10px solid #2020aa;
+            outline-offset: -11px;
             z-index: 20;
         }}
         .tile-wrapper.room-has-available-quest {{
             outline: 10px solid #f1c40f;
-            outline-offset: -10px;
+            outline-offset: -11px;
             z-index: 20;
         }}
         .progression-icon.checked {{
-            filter: grayscale(1) brightness(0.55) drop-shadow(0px 1px 2px rgba(0,0,0,0.8));
-            outline: 2px solid #2ecc71;
-            outline-offset: 1px;
+            filter: grayscale(1) brightness(0.55);
+            outline: 5px solid #20aa20;
+            outline-offset: -4px;
             border-radius: 4px;
         }}
         .progression-icon.in-logic {{
-            outline: 2px solid #f1c40f;
-            outline-offset: 1px;
+            outline: 5px solid #f1c40f;
+            outline-offset: -4px;
             border-radius: 4px;
         }}
         .progression-icon.route-unknown {{
-            outline: 2px dashed #e67e22;
-            outline-offset: 1px;
+            outline: 5px dashed #e67e22;
+            outline-offset: -4px;
             border-radius: 4px;
         }}
         .progression-icon.out-of-logic {{

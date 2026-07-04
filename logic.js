@@ -43,13 +43,19 @@
       })
 
     const haveReal = new Set() // real items actually received over the network
+    window.haveReal = haveReal
+    haveReal.add("item:gold")
+    function baseTok(tok) {
+      return tok.split("#")[0]
+    }
 
     // Evaluate one AND-group given a room context (for resolving entrance.*
     // tokens against the room graph). Returns 'true' / 'false' / 'unknown'
     // ('unknown' only happens if we have no entrance data for that room at all).
     function evalGroup(group, have, roomKey, roomGraph) {
       if (group.length === 0) return "true"
-      for (const tok of group) {
+      for (const rawTok of group) {
+        const tok = baseTok(rawTok)
         if (isEntranceToken(tok)) {
           const parsed = parseEntranceToken(tok)
           if (!parsed || !roomGraph) return "unknown"
@@ -87,8 +93,14 @@
       return "true"
     }
 
-    // Evaluate an entry: best result across its OR-groups.
+    // Evaluate an entry: best result across its OR-groups. An entry can only
+    // ever resolve true if its own room is physically reachable at all --
+    // otherwise "requires: [[]]" would trivially grant its receive tokens
+    // regardless of whether the player can ever stand in that room.
     function evalEntry(entry, have, roomGraph) {
+      if (roomGraph && roomGraph.roomStatus(entry.room) === "none") {
+        return "false"
+      }
       let best = "false"
       for (const group of entry.requires || []) {
         const r = evalGroup(group, have, entry.room, roomGraph)
@@ -120,7 +132,8 @@
           const r = evalEntry(entry, have, roomGraph)
           status[i] = r
           if (r === "true") {
-            for (const tok of entry.receive) {
+            for (const rawTok of entry.receive) {
+              const tok = baseTok(rawTok)
               // only virtual/free tokens auto-propagate; real items only
               // enter `have` via actual ReceivedItems packets
               if (!REAL_ITEM_NAMES.has(tok) && !have.has(tok)) {
@@ -150,7 +163,8 @@
 
       PROG_DATA.forEach((entry, i) => {
         const r = status[i]
-        for (const tok of entry.receive) {
+        for (const rawTok of entry.receive) {
+          const tok = baseTok(rawTok)
           const key = `${entry.room} - ${tok}`
           const els = iconsByLocation[key]
           if (!els) continue
@@ -209,6 +223,7 @@
 
     const origOnReceivedItems = ap.onReceivedItems.bind(ap)
     ap.onReceivedItems = function (packet) {
+      if (!window.playerLoaded) return
       origOnReceivedItems(packet)
       packet.items.forEach((item) => {
         const name = AP_ITEM_IDS[item.item]

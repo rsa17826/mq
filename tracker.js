@@ -46,7 +46,13 @@
     const origOnConnected = ap.onConnected.bind(ap)
     ap.onConnected = function (packet) {
       origOnConnected(packet)
-      syncCheckedLocations(packet.checked_locations)
+      if (window.playerLoaded) {
+        syncCheckedLocations(ap.checkedLocations)
+      } else {
+        window.onPlayerLoaded.push(() => {
+          syncCheckedLocations(ap.checkedLocations)
+        })
+      }
     }
 
     const origOnRoomUpdate = ap.onRoomUpdate.bind(ap)

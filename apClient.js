@@ -395,12 +395,12 @@ if (location.search) {
         }
         waitingPackets = []
       } else {
-        window.onPlayerLoaded = function () {
+        window.onPlayerLoaded.push(function () {
           for (var packet of window.waitingPackets) {
             ap.handlePacket(packet)
           }
           waitingPackets = []
-        }
+        })
       }
     } else {
       get(
