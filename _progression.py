@@ -225,7 +225,7 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "food:orange - #1",
+      "food:orange#1",
     ],
   },
   # {"room": {"north": 18, "east": 20}, "info": "warp skill warp point",},
