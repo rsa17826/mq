@@ -193,7 +193,7 @@
             newItem("19_20 - food:orange")
             newItem("5_24 - food:holyWater")
                   newItem("19_20 - food:gingerBread - pam16")
-              newItem("20_20 - item:blue crystal")
+              newItem("20_20 - misc:blue crystal")
             newItem("19_21 - item:gold - dig2")
             newItem("12_11 - item:diamonds")
               newItem("13_13 - craft:upgradeAAHP")

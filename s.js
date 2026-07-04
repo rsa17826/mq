@@ -14,7 +14,7 @@ const AP_LOCATION_IDS = {
   "20_20 - item:aurastones": 9,
   "20_20 - item:gold": 10,
   "20_20 - item:shadowCrest": 11,
-  "20_20 - item:blue crystal": 12,
+  "20_20 - misc:blue crystal": 12,
   "20_20 - item:key": 13,
   "20_20 - item:emeralds": 14,
   "20_20 - misc:fire crystal": 15,
