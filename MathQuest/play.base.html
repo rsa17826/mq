@@ -190,8 +190,8 @@
           consoleStyles.push(currentConsoleColor)
           break
         default:
-          if (!inconsole) html += htmlesc(part)
-          consoleLogStr += part
+          if (!inconsole) html += htmlesc(owo(part))
+          consoleLogStr += owo(part)
       }
     }
 
@@ -290,6 +290,9 @@
           ) ?
             "▸"
           : "▾"
+        localStorage.apLogVisible = !document
+          .getElementById("apChatLogContainer")
+          .classList.contains("collapsed")
       }
       window.addEventListener(
         "keydown",
@@ -312,6 +315,7 @@
           ) {
             e.preventDefault()
           }
+          log(e.key)
           if (e.key == "`") {
             e.preventDefault()
             if (document.activeElement.id != "apChatSayInput") {
@@ -340,7 +344,7 @@
       const panLayer = document.getElementById("pan-layer")
       const infoPanel = document.getElementById("info-panel")
 
-      let scale = 0.286
+      let scale = Number(localStorage.scale ?? 0.286)
       let originX = 0
       let originY = 0
       let currentRoom = null
@@ -397,6 +401,7 @@
       }
 
       document.addEventListener("DOMContentLoaded", () => {
+        toggleCollapse(localStorage.apLogVisible !== "true")
         resizeCanvas()
         updateTileBackgrounds()
 
@@ -535,6 +540,8 @@
         if (!isPanning) return
         originX += e.clientX - lastX
         originY += e.clientY - lastY
+        localStorage.originX = originX
+        localStorage.originY = originY
         lastX = e.clientX
         lastY = e.clientY
         requestUpdate()
@@ -558,7 +565,7 @@
           const prevScale = scale
           scale += -e.deltaY * zoomIntensity
           scale = Math.min(Math.max(0.07, scale), 4)
-
+          localStorage.scale = scale
           originX -= (mouseX - originX) * (scale / prevScale - 1)
           originY -= (mouseY - originY) * (scale / prevScale - 1)
 
@@ -583,10 +590,14 @@
       )
 
       function centerMap() {
-        originX =
-          (viewport.clientWidth - grid.offsetWidth * scale) / 2
-        originY =
-          (viewport.clientHeight - grid.offsetHeight * scale) / 2
+        originX = Number(
+          localStorage.originX ??
+            (viewport.clientWidth - grid.offsetWidth * scale) / 2,
+        )
+        originY = Number(
+          localStorage.originY ??
+            (viewport.clientHeight - grid.offsetHeight * scale) / 2,
+        )
         requestUpdate()
       }
 

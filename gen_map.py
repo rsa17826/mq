@@ -676,7 +676,6 @@ def main():
       "item:",
       "skill:",
       "food:",
-      "flag:magic only resist bypass",
       "misc:blue crystal",
       "misc:headstoneSwitch1",
       "misc:headstoneSwitch2",
@@ -704,7 +703,7 @@ def main():
     icon_html += "</span>"
     icon_html += "<span class=fr>"
     for item in sorted(unique_receives):
-      if not item.startswith(ITEM_NAMES):# and not item.startswith(("loot:",)):
+      if not item.startswith(ITEM_NAMES) and not item.startswith(("loot:",)):
         sanitized_name = re.sub(r"[:#? ]", "_", item.split(" - ", 1)[0].split(".", 1)[0].split("#", 1)[0])
         icon_filename = f"{sanitized_name}.png"
         icon_src = os.path.join(PROGRESSION_ICON_PATH, icon_filename).replace("\\", "/")

@@ -29,7 +29,7 @@
       .querySelectorAll(".progression-icon[data-location]")
       .forEach((el) => {
         // ANCHOR exclude some icons from prog checks
-        if (el.alt.startsWith("area:")) {
+        if (["area:", "flag:"].find((e) => el.alt.startsWith(e))) {
           return
         }
         ;(iconsByLocation[el.dataset.location] ||= []).push(el)
