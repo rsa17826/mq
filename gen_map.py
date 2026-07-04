@@ -134,7 +134,8 @@ html_start = f"""<!DOCTYPE html>
             display: flex;
             flex-direction: column;
             gap: 4px;
-            align-items:right;
+            align-items: flex-end;
+            flex-wrap: wrap;
             position: absolute;
             bottom: calc(3px + {BLOCK_HEIGHT_PCT}%);
             right: calc(3px + {BLOCK_WIDTH_PCT}%);
@@ -147,7 +148,10 @@ html_start = f"""<!DOCTYPE html>
             gap: 4px;
             margin-left: auto;
             pointer-events: none;
+            align-items: flex-end;
+            flex-wrap: wrap;
             z-index: 9999999999;
+            max-width: {TILE_WIDTH / BLOCKS_X * (BLOCKS_X - 2)}px;
         }}
         .overlay-layer {{
             position: absolute;
@@ -667,7 +671,7 @@ def main():
       # "flag:final boss dead",
       "permit:",
       "misc:fire crystal",
-      "loot:key",
+      # "loot:key",
       "item:gold",
       "item:",
       "skill:",
@@ -689,7 +693,7 @@ def main():
     )
     for item in sorted(unique_receives):
       if item.startswith(ITEM_NAMES):
-        sanitized_name = re.sub(r"[:#?]", "_", re.sub(r"[#?].+$", "", item))
+        sanitized_name = re.sub(r"[:#?]", "_", item.split(" - ", 1)[0].split(".", 1)[0].split("#", 1)[0])
         icon_filename = f"{sanitized_name}.png"
         icon_src = os.path.join(PROGRESSION_ICON_PATH, icon_filename).replace("\\", "/")
         # match the exact key format used when AP_LOCATION_IDS was generated:
@@ -700,8 +704,8 @@ def main():
     icon_html += "</span>"
     icon_html += "<span class=fr>"
     for item in sorted(unique_receives):
-      if not item.startswith(ITEM_NAMES):
-        sanitized_name = re.sub(r"[:#?]", "_", re.sub(r"[#?].+$", "", item))
+      if not item.startswith(ITEM_NAMES) and not item.startswith(("loot:",)):
+        sanitized_name = re.sub(r"[:#?]", "_", item.split(" - ", 1)[0].split(".", 1)[0].split("#", 1)[0])
         icon_filename = f"{sanitized_name}.png"
         icon_src = os.path.join(PROGRESSION_ICON_PATH, icon_filename).replace("\\", "/")
         # match the exact key format used when AP_LOCATION_IDS was generated:

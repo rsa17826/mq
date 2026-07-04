@@ -28,6 +28,10 @@
     document
       .querySelectorAll(".progression-icon[data-location]")
       .forEach((el) => {
+        // ANCHOR exclude some icons from prog checks
+        if (el.alt.startsWith("area:")) {
+          return
+        }
         ;(iconsByLocation[el.dataset.location] ||= []).push(el)
       })
 
