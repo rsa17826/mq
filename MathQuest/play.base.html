@@ -293,6 +293,8 @@
         localStorage.apLogVisible = !document
           .getElementById("apChatLogContainer")
           .classList.contains("collapsed")
+        window._apChatLogEl.scrollTop =
+          window._apChatLogEl.scrollHeight
       }
       window.addEventListener(
         "keydown",

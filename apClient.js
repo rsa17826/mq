@@ -11,10 +11,37 @@ const itemColors = {
   armor: "grey",
   permit: "darkorange",
 }
+
+/**
+ * @typedef {Object} Packet
+ * @property {string} cmd
+ * @property {any} type
+ * @property {string} text
+ * @property {string} original_cmd
+ * @property {string} seed_name
+ * @property {string} games
+ * @property {string} errors
+ * @property {{games:{location_name_to_id:string}}} data
+ */
+
+/**
+ * @param {string} name
+ * @returns string
+ */
+function formatItemName(name) {
+  var coloredName = name.split(":")
+  // @ts-ignore
+  coloredName = `@${itemColors[coloredName[0]]}!@console!${coloredName[0]}:@!@${itemColors[coloredName[0]]}!${coloredName[1]}@!`
+  return coloredName
+}
 /**
  * A native JavaScript implementation of the Archipelago Network Protocol.
  */
 class ArchipelagoClient {
+  /**
+   *
+   * @param {{hostname:string,port:number,game:string,playerName:string,password: string}} param0
+   */
   constructor({ hostname, port, game, playerName, password = "" }) {
     this.url = `ws://${hostname}:${port}`
     this.game = game
@@ -23,6 +50,8 @@ class ArchipelagoClient {
     this.socket = null
     this.lastProcessedIndex = 0 // Tracks received items to maintain sync
     this.itemCount = 0 // Tracks received items to maintain sync
+    this.itemIdToName = {}
+    this.locationIdToName = {}
   }
 
   /**
@@ -75,6 +104,7 @@ class ArchipelagoClient {
 
   /**
    * Routes inbound packets to their respective protocol handlers based on 'cmd'
+   * @param {Packet} packet
    */
   handlePacket(packet) {
     switch (packet.cmd) {
@@ -83,6 +113,9 @@ class ArchipelagoClient {
         break
       case "Connected":
         this.onConnected(packet)
+        break
+      case "DataPackage":
+        this.onDataPackage(packet)
         break
       case "ConnectionRefused":
         this.onConnectionRefused(packet)
@@ -107,6 +140,11 @@ class ArchipelagoClient {
         apLog(`Received unhandled protocol command: ${packet.cmd}`)
     }
   }
+
+  /**
+   * @param {Packet} packet
+   * @returns {void}
+   */
   onRoomUpdate(packet) {
     if (!window.playerLoaded) {
       window.waitingPackets ??= []
@@ -134,6 +172,7 @@ class ArchipelagoClient {
   /**
    * Handshake Step 2: Server sends RoomInfo.
    * Handshake Step 5: Client replies with authentication credentials (Connect).
+   * @param {Packet} packet
    */
   onRoomInfo(packet) {
     window.seed = packet.seed_name
@@ -167,7 +206,57 @@ class ArchipelagoClient {
     }
 
     apLog("Authenticating with server...")
-    this.sendPackets([connectPayload])
+
+    // Ask the server for the item/location name tables for every game in
+    // the room, not just our own — this is what lets us resolve items
+    // that come from other players' games.
+    this.sendPackets([
+      { cmd: "GetDataPackage", games: packet.games },
+      connectPayload,
+    ])
+  }
+
+  /**
+   * Server reply to GetDataPackage: per-game item_name_to_id /
+   * location_name_to_id tables. We invert them so we can look up a name
+   * from an id, keyed by game.
+   * @param {Packet} packet
+   */
+  onDataPackage(packet) {
+    for (const [game, gameData] of Object.entries(
+      packet.data.games,
+    )) {
+      this.itemIdToName[game] = {}
+      for (const [name, id] of Object.entries(
+        gameData.item_name_to_id,
+      )) {
+        this.itemIdToName[game][id] = name
+      }
+
+      this.locationIdToName[game] = {}
+      for (const [name, id] of Object.entries(
+        gameData.location_name_to_id,
+      )) {
+        this.locationIdToName[game][id] = name
+      }
+    }
+    apLog(
+      `@blue![Archipelago]@! Received DataPackage for games: ${Object.keys(packet.data.games).join(", ")}`,
+    )
+  }
+
+  /**
+   * Resolve an item id to its display name, given which slot sent it.
+   * Falls back to "Unknown Item (id)" if we don't have data for that
+   * game yet (e.g. DataPackage hasn't arrived, or slot_info is missing).
+   */
+  getItemName(itemId, sendingSlot) {
+    const game = this.slotInfo?.[sendingSlot]?.game
+    const name = game && this.itemIdToName?.[game]?.[itemId]
+    if (game == "MathQuest" && name) {
+      return formatItemName(name)
+    }
+    return name ?? `Unknown Item (${itemId})`
   }
 
   /**
@@ -185,10 +274,18 @@ class ArchipelagoClient {
     this.slot = packet.slot
     this.missingLocations = packet.missing_locations
     this.checkedLocations = packet.checked_locations
+    // Maps slot number -> { name, game, type, group_members }
+    // This is how we know which game an item with a given sending
+    // slot/player number belongs to.
+    this.slotInfo = packet.slot_info
+    // List of { team, slot, alias, name } - needed to turn "player_id"
+    // message parts into readable names.
+    this.players = packet.players
   }
 
   /**
    * Handshake Step 6 (Failure): Server rejects connection credentials.
+   * @param {Packet} packet
    */
   onConnectionRefused(packet) {
     apError(
@@ -216,7 +313,8 @@ class ArchipelagoClient {
     }
 
     this.sendPackets([scoutPayload])
-  } /**
+  }
+  /**
    * Requests a hint from the server using the in-game text command system.
    * @param {string} searchString - The name of the item or location you want a hint for.
    */
@@ -235,6 +333,7 @@ class ArchipelagoClient {
   }
   /**
    * Handshake Step 7 / Syncing: Server delivers items assigned to this player.
+   * @param {Packet} packet
    */
   onReceivedItems(packet) {
     log(`Received packet containing ${packet.items.length} items.`)
@@ -246,7 +345,12 @@ class ArchipelagoClient {
 
     packet.items.forEach((item, offset) => {
       this.itemCount += 1
-      const itemName = AP_ITEM_IDS[item.item]
+      // item.player is the slot number that SENT this item (the source
+      // world), which may be a different game than our own — so we
+      // resolve the name via that slot's game, not our own AP_ITEM_IDS.
+      const itemName =
+        this.getItemName(item.item, item.player) ??
+        AP_ITEM_IDS[item.item]
       const globalIndex = packet.index + offset
 
       var coloredName = itemName.split(":")
@@ -285,12 +389,50 @@ class ArchipelagoClient {
   }
 
   /**
+   * Turns a single JSONMessagePart into displayable text. This is where
+   * raw numeric ids get resolved into real names.
+   *
+   * Per the AP protocol, `part.player` tells us which slot's *game* the
+   * id belongs to (item ids and location ids are only meaningful within
+   * a specific game's namespace) — so we look up that slot's game via
+   * slot_info, then look up the id in that game's DataPackage tables.
+   */
+  resolveMessagePart(part) {
+    switch (part.type) {
+      case "player_id": {
+        const player = this.players?.find(
+          (p) => String(p.slot) === String(part.text),
+        )
+        return player ?
+            player.alias || player.name
+          : `Player ${part.text}`
+      }
+      case "item_id": {
+        const game = this.slotInfo?.[part.player]?.game
+        const name = game && this.itemIdToName?.[game]?.[part.text]
+        return name ?? `Item #${part.text}`
+      }
+      case "location_id": {
+        const game = this.slotInfo?.[part.player]?.game
+        const name =
+          game && this.locationIdToName?.[game]?.[part.text]
+        return name ?? `Location #${part.text}`
+      }
+      // "player_name", "item_name", "location_name", "entrance_name",
+      // "text", and anything unknown already arrive as plain text.
+      default:
+        return part.text || ""
+    }
+  }
+
+  /**
    * Handshake Step 8 / Live Chat: Displays broad multiworld chat notifications.
    */
   onPrintJSON(packet) {
-    // Combine text parts into a single string
+    // Combine text parts into a single string, resolving any id-based
+    // parts (player_id / item_id / location_id) to names along the way.
     const messageText = packet.data
-      .map((part) => part.text || "")
+      .map((part) => this.resolveMessagePart(part))
       .join("")
     apLog(
       `@blue![Archipelago]@! ${
@@ -347,6 +489,7 @@ class ArchipelagoClient {
 
   /**
    * Application Action: Send items checked inside the game client to the multiworld server.
+   * @param {[number]} locationIds
    */
   sendLocationChecks(locationIds) {
     if (!this.isAuthenticated) {
