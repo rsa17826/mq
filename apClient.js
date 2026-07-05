@@ -348,19 +348,19 @@ class ArchipelagoClient {
         flags,
       }
 
-      apLog(
-        `@blue![Archipelago]@! Scouted location ${locationName}: ${itemName}`,
-      )
+      // apLog(
+      //   `@blue![Archipelago]@! Scouted location ${locationName}: ${itemName}`,
+      // )
 
-      if (typeof window.onLocationScouted === "function") {
-        window.onLocationScouted(
-          location,
-          locationName,
-          itemName,
-          player,
-          flags,
-        )
-      }
+      // if (typeof window.onLocationScouted === "function") {
+      //   window.onLocationScouted(
+      //     location,
+      //     locationName,
+      //     itemName,
+      //     player,
+      //     flags,
+      //   )
+      // }
     }
   }
   /**
