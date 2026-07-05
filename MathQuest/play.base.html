@@ -399,6 +399,27 @@
               toggleCollapse(true)
             }
           }
+          if (e.key == "/") {
+            if (document.activeElement.id != "apChatSayInput") {
+              e.preventDefault()
+              var col = document
+                .getElementById("apChatLogContainer")
+                .classList.contains("collapsed")
+              if (col) {
+                toggleCollapse(false)
+              }
+              document.querySelector("#apChatSayInput").focus()
+              document.querySelector("#apChatSayInput").value = "/"
+              if (col) {
+                document.querySelector("#apChatSayInput").onblur =
+                  () => {
+                    document.querySelector("#apChatSayInput").onblur =
+                      null
+                    toggleCollapse(true)
+                  }
+              }
+            }
+          }
           if (e.key == "Escape") {
             e.preventDefault()
             if (document.activeElement.id == "apChatSayInput") {
@@ -987,7 +1008,7 @@
               var logtext =
                 "@purple!===============@! @pink!COMMAND LIST@! @purple!===============@!\n"
               for (var [k, v] of Object.entries(options)) {
-                logtext += `                  @green!${k}@!`
+                logtext += `                  @green!/${k}@!`
                 for (var arg of v.args ?? []) {
                   logtext += ` @blue!<@!@green!${arg[0]}${arg[1] ? `@!@blue!=@!@green!${arg[1]}` : ""}@!@blue!>@!`
                 }
@@ -1017,7 +1038,8 @@
               ["name"],
               ["password"],
             ],
-            func(host, name, password) {
+            func(host = "127.0.0.1:38281", name, password = "") {
+              log(host, name, password)
               location.search = `?connect=${host}&name=${name}&password=${password}`
               if (window.playerLoaded && !window.ap) {
                 location.reload()
@@ -1028,17 +1050,19 @@
           },
         }
         log(text)
+        var args = (
+          text.match(/[^\s"']+|"([^"]*)"|'([^']*)'/g) ?? []
+        ).map((arg) => arg.replace(/^['"]|['"]$/g, ""))
+        document.querySelector("#apChatSayInput").onblur?.()
+        if (!text) return
         for (var [k, v] of Object.entries(options)) {
-          if (text == "/" + k || owo(text) == "/" + k) {
-            v.func(
-              ...(
-                text.match(/[^\s"']+|"([^"]*)"|'([^']*)'/g) ?? []
-              ).map((arg) => arg.replace(/^['"]|['"]$/g, "")),
-            )
+          if (args[0] == "/" + k || owo(args[0]) == "/" + k) {
+            args.shift()
+            v.func(...args)
+            input.value = ""
             return
           }
         }
-        if (!text) return
         if (!window.ap || !window.ap.isAuthenticated) {
           apWarn("Cannot send Say; not connected/authenticated yet.")
           return
