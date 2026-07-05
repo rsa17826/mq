@@ -1007,6 +1007,16 @@
         var input = document.getElementById("apChatSayInput")
         var text = input.value.trim()
         const options = {
+          autoCloseBattleMessages: {
+            desc: "don't wait for enter prompt on battle end messages",
+            args: [["on", "true/false"]],
+            func(on) {
+              localStorage.autoCloseBattleMessages = [
+                "1",
+                "true",
+              ].includes(on)
+            },
+          },
           help: {
             alias: ["?"],
             desc: "shows available commands",
@@ -1089,9 +1099,13 @@
         ).map((arg) => arg.replace(/^['"]|['"]$/g, ""))
         document.querySelector("#apChatSayInput").onblur?.()
         if (!text) return
+        args[0] = args[0].toLowerCase()
         for (var [k, v] of Object.entries(options)) {
           for (var kk of [...(v.alias ?? []), k])
-            if (args[0] == "/" + kk || owo(args[0]) == "/" + kk) {
+            if (
+              args[0] == "/" + kk.toLowerCase() ||
+              owo(args[0]) == "/" + kk.toLowerCase()
+            ) {
               args.shift()
               v.func(...args)
               input.value = ""
