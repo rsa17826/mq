@@ -52,6 +52,7 @@ class ArchipelagoClient {
     this.itemCount = 0 // Tracks received items to maintain sync
     this.itemIdToName = {}
     this.locationIdToName = {}
+    this.scoutedItems = {}
   }
 
   /**
@@ -128,6 +129,9 @@ class ArchipelagoClient {
         break
       case "RoomUpdate":
         this.onRoomUpdate(packet)
+        break
+      case "LocationInfo":
+        this.onLocationInfo(packet)
         break
       case "InvalidPacket":
         apError("❌ Archipelago Server rejected payload:", {
@@ -313,6 +317,47 @@ class ArchipelagoClient {
     }
 
     this.sendPackets([scoutPayload])
+  }
+
+  /**
+   * Server reply to LocationScouts: tells us what item (and whose) actually
+   * sits at each scouted location. Resolves both the item name and this
+   * player's own location name, caches the result, and notifies any
+   * listener (e.g. the map/game code swapping in real icons) via
+   * window.onLocationScouted.
+   * @param {Packet} packet
+   */
+  onLocationInfo(packet) {
+    const myGame = this.slotInfo?.[this.slot]?.game
+
+    for (const entry of packet.locations || []) {
+      const { location, item, player, flags } = entry
+      const itemName = this.getItemName(item, player)
+      const locationName =
+        (myGame && this.locationIdToName?.[myGame]?.[location]) ??
+        `Unknown Location (${location})`
+
+      this.scoutedItems[location] = {
+        itemName,
+        itemPlayer: player,
+        locationName,
+        flags,
+      }
+
+      apLog(
+        `@blue![Archipelago]@! Scouted location ${locationName}: ${itemName}`,
+      )
+
+      if (typeof window.onLocationScouted === "function") {
+        window.onLocationScouted(
+          location,
+          locationName,
+          itemName,
+          player,
+          flags,
+        )
+      }
+    }
   }
   /**
    * Requests a hint from the server using the in-game text command system.
@@ -559,6 +604,8 @@ if (location.search) {
           Math.random(),
       )
     }
+    // TODO
+    ap.sendLocationScouts(new Array(Object.keys(AP_LOCATION_IDS).length).fill(null).map((_,i)=>i+1), 0)
   }
   window.ap.connect()
 }
