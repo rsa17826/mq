@@ -1024,6 +1024,18 @@
               localStorage.owo = true
             },
           },
+          reconnect: {
+            desc: "reconnects to ap for if disconnected",
+            func() {
+              if (!window.ap) {
+                apError(
+                  "ap not connected, use @green!/connect@! to connect for the first time",
+                )
+                return
+              }
+              ap.connect()
+            },
+          },
           nowo: {
             desc: "disables owo mode",
             func() {
