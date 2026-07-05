@@ -1,7 +1,6 @@
 # import map.genGrid as _
 import os
 
-import gen_exit_data
 import gen_map
 import progression_to_json # noqa: F401
 
