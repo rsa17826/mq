@@ -1030,7 +1030,11 @@
         log(text)
         for (var [k, v] of Object.entries(options)) {
           if (text == "/" + k || owo(text) == "/" + k) {
-            v.func(...text.split(" "))
+            v.func(
+              ...(
+                text.match(/[^\s"']+|"([^"]*)"|'([^']*)'/g) ?? []
+              ).map((arg) => arg.replace(/^['"]|['"]$/g, "")),
+            )
             return
           }
         }
