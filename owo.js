@@ -28,10 +28,18 @@ function nowo(s) {
  */
 
 /**
+ * @param {String} s
+ * @returns {String}
+ */
+function owo(s) {
+  return _owo(s)
+}
+
+/**
  * @param {String} inputText
  * @returns {String}
  */
-function owo(inputText) {
+function _owo(inputText) {
   const endSentencePattern = String.raw`([\w ,.!?]+)?` // endSentencePattern
   // const endSentencePattern1 = String.raw`([\w ,.?]+)?`; // endSentencePattern without "!" sign
   // const endSentencePattern2 = String.raw`([\w ,.]+)?`; // endSentencePattern without "!" and "?" sign
@@ -149,4 +157,8 @@ function reg(...templateArgs) {
   )
 
   return new RegExp(pattern, flags)
+}
+if (localStorage.owo == "false") {
+  // @ts-ignore
+  owo = nowo
 }

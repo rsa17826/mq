@@ -41,7 +41,8 @@ def convert(src_path: str, out_path: str) -> None:
   print(f"Wrote {len(out)} entries to {out_path}")
 
 
-# if len(sys.argv) != 3:
-#     print(__doc__)
-#     sys.exit(1)
-convert("./_progression.py", "prog.js")
+if __name__ == "__main__":
+  # if len(sys.argv) != 3:
+  #     print(__doc__)
+  #     sys.exit(1)
+  convert("./_progression.py", "prog.js")

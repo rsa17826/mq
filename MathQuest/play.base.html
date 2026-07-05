@@ -980,6 +980,60 @@
       function apSendSayFromInput() {
         var input = document.getElementById("apChatSayInput")
         var text = input.value.trim()
+        const options = {
+          help: {
+            desc: "shows available commands",
+            func() {
+              var logtext =
+                "@purple!===============@! @pink!COMMAND LIST@! @purple!===============@!\n"
+              for (var [k, v] of Object.entries(options)) {
+                logtext += `                  @green!${k}@!`
+                for (var arg of v.args ?? []) {
+                  logtext += ` @blue!<@!@green!${arg[0]}${arg[1] ? `@!@blue!=@!@green!${arg[1]}` : ""}@!@blue!>@!`
+                }
+                logtext += `                  \n                      ${v.desc}\n`
+              }
+              apLog(logtext.trimEnd())
+            },
+          },
+          owo: {
+            desc: "enables owo mode",
+            func() {
+              owo = _owo
+              localStorage.owo = true
+            },
+          },
+          nowo: {
+            desc: "disables owo mode",
+            func() {
+              owo = nowo
+              localStorage.owo = false
+            },
+          },
+          connect: {
+            desc: "connect to ap",
+            args: [
+              ["host", "127.0.0.1:38281"],
+              ["name"],
+              ["password"],
+            ],
+            func(host, name, password) {
+              location.search = `?connect=${host}&name=${name}&password=${password}`
+              if (window.playerLoaded && !window.ap) {
+                location.reload()
+              } else {
+                apTryConnect()
+              }
+            },
+          },
+        }
+        log(text)
+        for (var [k, v] of Object.entries(options)) {
+          if (text == "/" + k || owo(text) == "/" + k) {
+            v.func(...text.split(" "))
+            return
+          }
+        }
         if (!text) return
         if (!window.ap || !window.ap.isAuthenticated) {
           apWarn("Cannot send Say; not connected/authenticated yet.")
