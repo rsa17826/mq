@@ -227,7 +227,12 @@
     var entry = {
       msg: String(msg),
       type: type || "log",
-      time: new Date().toLocaleTimeString(),
+      time:
+        localStorage.timeFormat ?
+          new Date().toLocaleTimeString(undefined, {
+            hour12: localStorage.timeFormat == "12",
+          })
+        : new Date().toLocaleTimeString(),
       createdAt: Date.now(), // used for the collapsed "toast" fade timing
     }
     window._apChatBuffer.push(entry)
@@ -1003,12 +1008,15 @@
         var text = input.value.trim()
         const options = {
           help: {
+            alias: ["?"],
             desc: "shows available commands",
             func() {
               var logtext =
                 "@purple!===============@! @pink!COMMAND LIST@! @purple!===============@!\n"
               for (var [k, v] of Object.entries(options)) {
                 logtext += `                  @green!/${k}@!`
+                for (var alias of v.alias ?? [])
+                  logtext += ` @green!/${alias}@!`
                 for (var arg of v.args ?? []) {
                   logtext += ` @blue!<@!@green!${arg[0]}${arg[1] ? `@!@blue!=@!@green!${arg[1]}` : ""}@!@blue!>@!`
                 }
@@ -1034,6 +1042,20 @@
                 return
               }
               ap.connect()
+            },
+          },
+          time: {
+            args: [["format", "12/24"]],
+            desc: "changes time mode",
+            func(format) {
+              localStorage.timeFormat = format
+            },
+          },
+          clear: {
+            alias: ["c"],
+            desc: "clears chat log",
+            func(format) {
+              window._apChatBuffer.forEach((e) => e.el.remove())
             },
           },
           nowo: {
@@ -1068,12 +1090,13 @@
         document.querySelector("#apChatSayInput").onblur?.()
         if (!text) return
         for (var [k, v] of Object.entries(options)) {
-          if (args[0] == "/" + k || owo(args[0]) == "/" + k) {
-            args.shift()
-            v.func(...args)
-            input.value = ""
-            return
-          }
+          for (var kk of [...(v.alias ?? []), k])
+            if (args[0] == "/" + kk || owo(args[0]) == "/" + kk) {
+              args.shift()
+              v.func(...args)
+              input.value = ""
+              return
+            }
         }
         if (!window.ap || !window.ap.isAuthenticated) {
           apWarn("Cannot send Say; not connected/authenticated yet.")
