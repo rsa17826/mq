@@ -1,16 +1,18 @@
-## installation
+## running the game
 
 ```sh
 git clone https://github.com/rsa17826/mq.git
 cd mq
 direnv allow
 ./generate_map_scales.sh
+
 python desktop_app.py
 ```
 
 ## images
 
 <!-- ![](./gh_images/screenshot_20260706_193750_391.png) -->
+
 ![](./gh_images/screenshot_20260706_193756_529.png)
 ![](./gh_images/screenshot_20260706_193500_442.png)
 ![](./gh_images/screenshot_20260706_193455_244.png)
