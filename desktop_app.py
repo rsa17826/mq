@@ -29,7 +29,7 @@ class ServerApp:
     # A transparent window uses the alpha channel of your desktop compositor.
     # This prevents the window manager from filling it with a default white template!
     window = webview.create_window(
-      "Server App",
+      "MathQuest",
       SERVER_URL,
       width=1100,
       height=750,
