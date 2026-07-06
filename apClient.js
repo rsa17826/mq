@@ -293,6 +293,9 @@ class ArchipelagoClient {
     // List of { team, slot, alias, name } - needed to turn "player_id"
     // message parts into readable names.
     this.players = packet.players
+    // Per-player options baked in at generation time from their YAML file
+    // (via the world's fill_slot_data), e.g. { difficulty: "hard", ... }.
+    this.slotData = packet.slot_data ?? {}
   }
 
   /**
@@ -376,15 +379,7 @@ class ArchipelagoClient {
   sendDeathLink(cause) {
     if (!this.deathLinkEnabled) return
 
-    // Guard against re-broadcasting a death we just received (which would
-    // otherwise ping-pong between clients forever).
-    if (this._suppressNextDeathLinkSend) {
-      this._suppressNextDeathLinkSend = false
-      return
-    }
-
     const time = Date.now() / 1000
-    this._lastDeathLinkSentTime = time
 
     this.sendPackets([
       {
@@ -421,8 +416,6 @@ class ArchipelagoClient {
 
     // Prevents the local death handler from immediately sending its own
     // DeathLink back out when it kills the player below.
-    this._suppressNextDeathLinkSend = true
-
     if (typeof window.onDeathLinkReceived === "function") {
       window.onDeathLinkReceived(cause, source)
     }
@@ -635,7 +628,22 @@ function apTryConnect() {
       password: "",
     }
     for (var [k, v] of data) {
-      obj[k] = v
+      // Map 'name' from the URL to 'playerName'
+      if (k === "name") {
+        obj.playerName = decodeURIComponent(v)
+      }
+      // Split 'connect' into 'hostname' and 'port'
+      else if (k === "connect") {
+        let parts = v.split(":")
+        obj.hostname = parts[0]
+        if (parts[1]) {
+          obj.port = parts[1]
+        }
+      }
+      // Handle everything else normally
+      else {
+        obj[k] = decodeURIComponent(v)
+      }
     }
     window.ap = new ArchipelagoClient(obj)
     let a = ap.onRoomInfo.bind(ap)
