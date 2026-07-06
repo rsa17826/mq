@@ -416,11 +416,11 @@ class ArchipelagoClient {
     var { time, cause, source, coloredCause } = packet.data || {}
 
     // Ignore our own death bouncing back to us.
-    if (source === this.playerName) return
+    // if (source === this.playerName) return
     // Ignore stale duplicates (can happen on reconnect/replay).
     if (this._lastDeathLinkReceivedTime === time) return
     this._lastDeathLinkReceivedTime = time
-    if (coloredCause == undefined) {
+    if (coloredCause == undefined && cause != undefined) {
       coloredCause = cause
       for (var { name } of ap.slotInfo) {
         coloredCause = coloredCause.replace(
@@ -430,7 +430,9 @@ class ArchipelagoClient {
         coloredCause = coloredCause.replace("killed", "@red!killed@!")
       }
     }
-    apLog(`@red![DeathLink]@! ${source}: ${cause || "died"}`)
+    apLog(
+      `@red![DeathLink]@! ${coloredCause ? coloredCause : `@pink!${source}@! @red!died@! mysteriously`}`,
+    )
 
     window.onDeathLinkReceived(coloredCause, source)
   }
