@@ -304,6 +304,7 @@ class ArchipelagoClient {
     // Per-player options baked in at generation time from their YAML file
     // (via the world's fill_slot_data), e.g. { difficulty: "hard", ... }.
     this.slotData = packet.slot_data ?? {}
+    window.onRoomDataLoaded()
   }
 
   /**
