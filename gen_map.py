@@ -330,7 +330,8 @@ def build_room_info_json(north, east, prog_entries):
 
 
 def main():
-  connections = load_connections()
+  # TODO make do in js
+  connections = []  # load_connections()
   doors = load_doors()
   geom_index = load_geometry_map()
   exit_lookup = {}

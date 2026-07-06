@@ -1122,15 +1122,17 @@
         document.querySelector("#apChatSayInput").onblur?.()
         cmd = cmd.toLowerCase()
         for (var [k, v] of Object.entries(options)) {
-          for (var kk of [...(v.alias ?? []), k])
+          for (var kk of [...(v.alias ?? []), k]) {
             if (
               cmd == "/" + kk.toLowerCase() ||
+              cmd == "/" + owo(kk).toLowerCase() ||
               owo(cmd) == "/" + kk.toLowerCase()
             ) {
               v.func(...args)
               input.value = ""
               return
             }
+          }
         }
         if (!window.ap || !window.ap.isAuthenticated) {
           apWarn("Cannot send Say; not connected/authenticated yet.")
