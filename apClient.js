@@ -167,7 +167,7 @@ class ArchipelagoClient {
       window.waitingPackets.push(packet)
       return
     }
-    apLog(
+    log(
       "@console!onRoomUpdate@!@blue![Archipelago]@! Room state updated by server.",
     )
     // If other locations were checked (e.g. by a co-op partner in your slot)

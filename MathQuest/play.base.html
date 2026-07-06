@@ -1042,6 +1042,27 @@
               localStorage.owo = true
             },
           },
+          showPlayerPos: {
+            desc: "toggle showing player position information in the bottom right of the game",
+            func(on = true) {
+              localStorage.showPlayerPos = ["1", "true"].includes(on)
+            },
+          },
+          renderExits: {
+            desc: "toggle showing each rooms exit regions ingame",
+            func(on = true) {
+              localStorage.renderExits = ["1", "true"].includes(on)
+            },
+          },
+          renderCheckerboard: {
+            desc: "toggle rendering a checkerboard over each tile ingame",
+            func(on = true) {
+              localStorage.renderCheckerboard = [
+                "1",
+                "true",
+              ].includes(on)
+            },
+          },
           reconnect: {
             desc: "reconnects to ap for if disconnected",
             func() {
@@ -1094,19 +1115,18 @@
           },
         }
         log(text)
-        var args = (
-          text.match(/[^\s"']+|"([^"]*)"|'([^']*)'/g) ?? []
+        if (!text) return
+        var [cmd, ...args] = (
+          text.match(/[^\s"']+|"([^"]*)"|'([^']*)'/g) ?? [text]
         ).map((arg) => arg.replace(/^['"]|['"]$/g, ""))
         document.querySelector("#apChatSayInput").onblur?.()
-        if (!text) return
-        args[0] = args[0].toLowerCase()
+        cmd = cmd.toLowerCase()
         for (var [k, v] of Object.entries(options)) {
           for (var kk of [...(v.alias ?? []), k])
             if (
-              args[0] == "/" + kk.toLowerCase() ||
-              owo(args[0]) == "/" + kk.toLowerCase()
+              cmd == "/" + kk.toLowerCase() ||
+              owo(cmd) == "/" + kk.toLowerCase()
             ) {
-              args.shift()
               v.func(...args)
               input.value = ""
               return
@@ -1371,19 +1391,24 @@
             for (var row = 0; row < 11; row++) {
               for (var col = 0; col < 14; col++) {
                 // Check if this tile is an exit
-                var exitColor = getExitColor(room, col, row)
+                var exitColor = null
+                if (localStorage.renderExits == "true")
+                  exitColor = mix(
+                    exitColor,
+                    getExitColor(room, col, row),
+                  )
 
-                if (exitColor) {
-                  overlayCtx.fillStyle = exitColor // Render with the designated exit color
-                } else {
-                  // continue
-                  // Alternate checkerboard background colors for standard non-exit tiles
+                if (localStorage.renderCheckerboard == "true")
                   if ((row + col) % 2 === 0) {
-                    overlayCtx.fillStyle = "#FFFFFF10" // Light overlay instead of skipping entirely
+                    // Alternate checkerboard background colors for standard non-exit tiles
+                    exitColor = mix(exitColor, "#FFFFFF10") // Light overlay instead of skipping entirely
                   } else {
-                    overlayCtx.fillStyle = "#00000050" // Transparent black tile
+                    exitColor = mix(exitColor, "#00000050") // Transparent black tile
                   }
+                if (!exitColor) {
+                  continue
                 }
+                overlayCtx.fillStyle = exitColor // Render with the designated exit color
 
                 // Calculate X coordinate (normal math going right)
                 var x = col * tileSize
@@ -1399,41 +1424,23 @@
           }
           // Sample multi-line coordinate text setup
           var coordString = ""
-          with (window.player) {
-            drawExits(EXITS_DATA[`${north}_${east}`] || [])
+          if (
+            localStorage.renderExits == "true" ||
+            localStorage.renderCheckerboard == "true"
+          )
+            drawExits(
+              EXITS_DATA[
+                `${window.player.north}_${window.player.east}`
+              ] || [],
+            )
 
-            coordString = `
-            SCREEN: ${north}_${east}
-            POS: ${Math.round(x)} ${Math.round(y)}
-            QUEST: ${quest
-              .map((e, i) => {
-                return (
-                  {
-                    12: "access",
-                    17: "aSword",
-                    1: "bBomb",
-                    7: "canteen",
-                    9: "curse",
-                    3: "dig",
-                    10: "dream",
-                    8: "geo",
-                    0: "gTree",
-                    14: "hWater",
-                    16: "isles",
-                    4: "mChal",
-                    15: "oMan",
-                    6: "pam",
-                    13: "rings",
-                    5: "seeds",
-                    2: "warp",
-                  }[i] +
-                  ": " +
-                  e
-                )
-              })
-              .join("\n")}
+          coordString =
+            localStorage.showPlayerPos == "true" ?
+              `
+            SCREEN: ${window.player.north}_${window.player.east}
+            POS: ${Math.round(window.player.x)} ${Math.round(window.player.y)}
             `
-          }
+            : ""
 
           overlayCtx.font = "bold 20px sans-serif"
 

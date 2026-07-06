@@ -9,6 +9,8 @@ from watchdog.observers import Observer
 
 import main
 
+main.main()
+
 PORT = 1533
 DIRECTORY = "."
 WATCH_FILE = os.path.normpath("MathQuest/play.base.html")
@@ -113,7 +115,6 @@ class HTMLChangeHandler(FileSystemEventHandler):
       self.execute_on_change()
 
   def execute_on_change(self):
-
     main.main()
 
 
