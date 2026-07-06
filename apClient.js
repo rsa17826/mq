@@ -21,7 +21,8 @@ const itemColors = {
  * @property {string} seed_name
  * @property {string} games
  * @property {string} errors
- * @property {{games:{location_name_to_id:string}}} data
+ * @property {string[]} tags
+ * @property {{games:{location_name_to_id:string},time:any, cause:string|undefined, source:string, coloredCause:string|undefined}} data
  */
 
 /**
@@ -434,7 +435,7 @@ class ArchipelagoClient {
       `@red![DeathLink]@! ${coloredCause ? coloredCause : `@pink!${source}@! @red!died@! mysteriously`}`,
     )
 
-    window.onDeathLinkReceived(coloredCause, source)
+    killPlayer()
   }
   /**
    * Requests a hint from the server using the in-game text command system.
