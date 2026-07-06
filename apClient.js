@@ -167,7 +167,9 @@ class ArchipelagoClient {
       window.waitingPackets.push(packet)
       return
     }
-    apLog("@blue![Archipelago]@! Room state updated by server.")
+    apLog(
+      "@console!onRoomUpdate@!@blue![Archipelago]@! Room state updated by server.",
+    )
     // If other locations were checked (e.g. by a co-op partner in your slot)
     if (packet.checked_locations) {
       this.checkedLocations ??= []
@@ -261,7 +263,7 @@ class ArchipelagoClient {
       }
     }
     apLog(
-      `@blue![Archipelago]@! Received DataPackage for games: ${Object.keys(packet.data.games).join(", ")}`,
+      `@console!onDataPackage@!@blue![Archipelago]@! Received DataPackage for games: ${Object.keys(packet.data.games).join(", ")}`,
     )
   }
 
@@ -424,7 +426,7 @@ class ArchipelagoClient {
     this._lastDeathLinkReceivedTime = time
     if (coloredCause == undefined && cause != undefined) {
       coloredCause = cause
-      for (var { name } of ap.slotInfo) {
+      for (var { name } of Object.values(this.slotInfo)) {
         coloredCause = coloredCause.replace(
           new RegExp(`(?<!\\w)${RegExp.escape(name)}(?!\\w)`),
           `@pink!${name}@!`,
@@ -472,9 +474,7 @@ class ArchipelagoClient {
       // item.player is the slot number that SENT this item (the source
       // world), which may be a different game than our own — so we
       // resolve the name via that slot's game, not our own AP_ITEM_IDS.
-      const itemName =
-        this.getItemName(item.item, item.player) ??
-        AP_ITEM_IDS[item.item]
+      const itemName = this.getItemName(item.item, item.player)
       const globalIndex = packet.index + offset
 
       apLog(
@@ -556,54 +556,72 @@ class ArchipelagoClient {
     const messageText = packet.data
       .map((part) => this.resolveMessagePart(part))
       .join("")
+    var mt = messageText
+      // 1. Original join message formatting
+      .replace(
+        /(^[^(]+) \((Team #\d+)\) playing (.*) has joined/,
+        "@green!$1@blue! (@green!$2@blue!) @!playing @green!$3@! has joined",
+      )
+      // 2. Highlight any command starting with ! or / (e.g., !help, /release)
+      .replace(/(^|\s)([!/][a-zA-Z_0-9]+)/g, "$1@green!$2@!")
+
+      // 3. Highlight player messages formatted like "Player (Alias): message" or "Player: message"
+      // Captures the names/aliases and makes them yellow
+      .replace(
+        /(^|\]\s)([^:\n]+)\s*\(([^)]+)\):/,
+        (_, a, s, d) =>
+          `${a}@${d == ap.playerName ? "hotpink" : "yellow"}!${s}(${d})@!:`,
+      )
+      .replace(
+        /(^|\]\s)([^:\n\s]+):(?!\/\/)/,
+        (_, a, s) =>
+          `${a}@${s == ap.playerName ? "hotpink" : "yellow"}!${s}@!:`,
+      )
+
+      // 4. Highlight server options configurations (e.g., "Option hint_cost is set to 10")
+      // Colors the option name cyan and the value green
+      .replace(
+        /(Option\s)([_a-zA-Z0-9]+)(\sis\sset\sto\s)(.*)/g,
+        "$1@cyan!$2@!$3@green!$4@!",
+      )
+
+      .replace(
+        /(Didn't find something that closely matches) '([^']+)' did you mean '([^']+)'\? \((\d+)% sure\)/gm,
+        "@red!$1@!",
+      )
+      .replace(
+        new RegExp(
+          `'(${Object.keys(itemColors).join("|")}):(\\S+)'`,
+          "gm",
+        ),
+        (_, type, name) => `'@${itemColors[type]}!${type}:${name}@!'`,
+      )
+      // 5. Highlight common error/denial prefixes (e.g., "Sorry, ...", "Didn't find ...")
+      .replace(
+        /((?:^|@!) *(?:Sorry|Didn't find|You can't afford)[\w\s\d,]*[.?!]?)/gm,
+        "@red!$1@!",
+      )
+    for (var { name } of Object.values(this.slotInfo)) {
+      mt = mt.replace(
+        new RegExp(`(?<!\\w)${RegExp.escape(name)}(?!\\w)`),
+        `@pink!${name}@!`,
+      )
+    }
+    mt = mt.replace(
+      new RegExp(
+        `(?<!\\w)(${Object.keys(itemColors).join("|")}):([\\w.#]+)(?!\\w)`,
+        "g",
+      ),
+      (name) => formatItemName(name),
+    )
+    mt = mt.replace(
+      /\((\d+)_(\d+) - ([^\)]+)\)/g,
+      `@blue!(@!@green!$1_$2@!@blue! - @!$3@blue!)@!`,
+    )
+
     apLog(
-      `@blue![Archipelago]@! ${
-        messageText
-          // 1. Original join message formatting
-          .replace(
-            /(^[^(]+) \((Team #\d+)\) playing (.*) has joined/,
-            "@green!$1@blue! (@green!$2@blue!) @!playing @green!$3@! has joined",
-          )
-          // 2. Highlight any command starting with ! or / (e.g., !help, /release)
-          .replace(/(^|\s)([!/][a-zA-Z_0-9]+)/g, "$1@green!$2@!")
-
-          // 3. Highlight player messages formatted like "Player (Alias): message" or "Player: message"
-          // Captures the names/aliases and makes them yellow
-          .replace(
-            /(^|\]\s)([^:\n]+)\s*\(([^)]+)\):/,
-            (_, a, s, d) =>
-              `${a}@${d == ap.playerName ? "hotpink" : "yellow"}!${s}(${d})@!:`,
-          )
-          .replace(
-            /(^|\]\s)([^:\n\s]+):(?!\/\/)/,
-            (_, a, s) =>
-              `${a}@${s == ap.playerName ? "hotpink" : "yellow"}!${s}@!:`,
-          )
-
-          // 4. Highlight server options configurations (e.g., "Option hint_cost is set to 10")
-          // Colors the option name cyan and the value green
-          .replace(
-            /(Option\s)([_a-zA-Z0-9]+)(\sis\sset\sto\s)(.*)/g,
-            "$1@cyan!$2@!$3@green!$4@!",
-          )
-
-          .replace(
-            /(Didn't find something that closely matches) '([^']+)' did you mean '([^']+)'\? \((\d+)% sure\)/gm,
-            "@red!$1@!",
-          )
-          .replace(
-            new RegExp(
-              `'(${Object.keys(itemColors).join("|")}):(\\S+)'`,
-              "gm",
-            ),
-            (_, type, name) =>
-              `'@${itemColors[type]}!${type}:${name}@!'`,
-          )
-          // 5. Highlight common error/denial prefixes (e.g., "Sorry, ...", "Didn't find ...")
-          .replace(
-            /((?:^|@!) *(?:Sorry|Didn't find|You can't afford)[\w\s\d,]*[.?!]?)/gm,
-            "@red!$1@!",
-          )
+      `@console!onPrintJSON@!@blue![Archipelago]@! ${
+        mt
         //
       }`,
     )
