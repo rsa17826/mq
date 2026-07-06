@@ -25,6 +25,13 @@ const itemColors = {
  */
 
 /**
+ * @param {string} str
+ */
+function removeColors(str) {
+  return str.replace(/@[a-z]*!/g, "")
+}
+
+/**
  * @param {string} name
  * @returns string
  */
@@ -376,7 +383,8 @@ class ArchipelagoClient {
    * Call this when the local player dies, only if deathLinkEnabled.
    * @param {string} cause - human-readable death message, e.g. "Alex fell into lava"
    */
-  sendDeathLink(cause) {
+  sendDeathLink(coloredCause) {
+    warn(coloredCause, "cause")
     if (!this.deathLinkEnabled) return
 
     const time = Date.now() / 1000
@@ -387,7 +395,8 @@ class ArchipelagoClient {
         tags: ["DeathLink"],
         data: {
           time,
-          cause,
+          cause: removeColors(coloredCause),
+          coloredCause,
           source: this.playerName,
         },
       },
@@ -404,21 +413,26 @@ class ArchipelagoClient {
     if (!packet.tags || !packet.tags.includes("DeathLink")) return
     if (!this.deathLinkEnabled) return
 
-    const { time, cause, source } = packet.data || {}
+    var { time, cause, source, coloredCause } = packet.data || {}
 
     // Ignore our own death bouncing back to us.
     if (source === this.playerName) return
     // Ignore stale duplicates (can happen on reconnect/replay).
     if (this._lastDeathLinkReceivedTime === time) return
     this._lastDeathLinkReceivedTime = time
-
+    if (coloredCause == undefined) {
+      coloredCause = cause
+      for (var { name } of ap.slotInfo) {
+        coloredCause = coloredCause.replace(
+          new RegExp(`(?<!\\w)${RegExp.escape(name)}(?!\\w)`),
+          `@pink!${name}@!`,
+        )
+        coloredCause = coloredCause.replace("killed", "@red!killed@!")
+      }
+    }
     apLog(`@red![DeathLink]@! ${source}: ${cause || "died"}`)
 
-    // Prevents the local death handler from immediately sending its own
-    // DeathLink back out when it kills the player below.
-    if (typeof window.onDeathLinkReceived === "function") {
-      window.onDeathLinkReceived(cause, source)
-    }
+    window.onDeathLinkReceived(coloredCause, source)
   }
   /**
    * Requests a hint from the server using the in-game text command system.
