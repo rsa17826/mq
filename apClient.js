@@ -53,6 +53,7 @@ class ArchipelagoClient {
     this.itemIdToName = {}
     this.locationIdToName = {}
     this.scoutedItems = {}
+    this.deathLinkEnabled = true
   }
 
   /**
@@ -133,6 +134,9 @@ class ArchipelagoClient {
       case "LocationInfo":
         this.onLocationInfo(packet)
         break
+      case "Bounced":
+        this.onBounced(packet)
+        break
       case "InvalidPacket":
         apError("❌ Archipelago Server rejected payload:", {
           type: packet.type,
@@ -209,7 +213,7 @@ class ArchipelagoClient {
       uuid: this.generateUUID(),
       version: { major: 0, minor: 6, build: 2, class: "Version" },
       items_handling: 7,
-      tags: [], // 🔑 Change this to an empty array (or ["TextOnly"])
+      tags: this.deathLinkEnabled ? ["DeathLink"] : [],
       slot_data: true,
     }
 
@@ -361,6 +365,66 @@ class ArchipelagoClient {
       //     flags,
       //   )
       // }
+    }
+  }
+
+  /**
+   * Sends a DeathLink to every other connected client that opted in.
+   * Call this when the local player dies, only if deathLinkEnabled.
+   * @param {string} cause - human-readable death message, e.g. "Alex fell into lava"
+   */
+  sendDeathLink(cause) {
+    if (!this.deathLinkEnabled) return
+
+    // Guard against re-broadcasting a death we just received (which would
+    // otherwise ping-pong between clients forever).
+    if (this._suppressNextDeathLinkSend) {
+      this._suppressNextDeathLinkSend = false
+      return
+    }
+
+    const time = Date.now() / 1000
+    this._lastDeathLinkSentTime = time
+
+    this.sendPackets([
+      {
+        cmd: "Bounce",
+        tags: ["DeathLink"],
+        data: {
+          time,
+          cause,
+          source: this.playerName,
+        },
+      },
+    ])
+  }
+
+  /**
+   * Server reply/relay for Bounce packets. Only cares about ones tagged
+   * DeathLink; everything else is ignored (Bounce is a general-purpose
+   * relay channel, other tags may be used by other trackers/mods).
+   * @param {Packet} packet
+   */
+  onBounced(packet) {
+    if (!packet.tags || !packet.tags.includes("DeathLink")) return
+    if (!this.deathLinkEnabled) return
+
+    const { time, cause, source } = packet.data || {}
+
+    // Ignore our own death bouncing back to us.
+    if (source === this.playerName) return
+    // Ignore stale duplicates (can happen on reconnect/replay).
+    if (this._lastDeathLinkReceivedTime === time) return
+    this._lastDeathLinkReceivedTime = time
+
+    apLog(`@red![DeathLink]@! ${source}: ${cause || "died"}`)
+
+    // Prevents the local death handler from immediately sending its own
+    // DeathLink back out when it kills the player below.
+    this._suppressNextDeathLinkSend = true
+
+    if (typeof window.onDeathLinkReceived === "function") {
+      window.onDeathLinkReceived(cause, source)
     }
   }
   /**
