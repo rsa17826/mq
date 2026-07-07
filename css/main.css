@@ -136,13 +136,7 @@
 }
 @font-face {
   font-family: "Booter - Zero Zero";
-  src:
-    url("/MathQuest/fonts/BOOTERZZ.eot?#iefix")
-      format("embedded-opentype"),
-    url("/MathQuest/fonts/BOOTERZZ.woff") format("woff"),
-    url("/MathQuest/fonts/BOOTERZZ.ttf") format("truetype"),
-    url("/MathQuest/fonts/BOOTERZZ.svg#Booter%20-%20Zero%20Zero")
-      format("svg");
+  src: url("/MathQuest/fonts/BOOTERZZ.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
