@@ -42,7 +42,6 @@ html_start = f"""<!DOCTYPE html>
             margin: 0;
             background-color: #111;
             color: #fff;
-            font-family: sans-serif;
             scrollbar-width: none;
             -ms-overflow-style: none;
         }}
