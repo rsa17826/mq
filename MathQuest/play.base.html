@@ -357,8 +357,6 @@
         localStorage.apLogVisible = !document
           .getElementById("apChatLogContainer")
           .classList.contains("collapsed")
-        window._apChatLogEl.scrollTop =
-          window._apChatLogEl.scrollHeight
 
         // Sync the toast fade state immediately so there's no one-frame
         // flash of every entry (collapsing) or of stale opacity/display
@@ -372,6 +370,8 @@
         } else {
           window._apResetEntryStyles()
         }
+        window._apChatLogEl.scrollTop =
+          window._apChatLogEl.scrollHeight
       }
       window.addEventListener(
         "keydown",
@@ -1007,6 +1007,24 @@
         var input = document.getElementById("apChatSayInput")
         var text = input.value.trim()
         const options = {
+          help: {
+            alias: ["?"],
+            desc: "shows available commands",
+            func() {
+              var logtext =
+                "@purple!===============@! @pink!COMMAND LIST@! @purple!===============@!\n"
+              for (var [k, v] of Object.entries(options)) {
+                logtext += `@green!/${k}@!`
+                for (var alias of v.alias ?? [])
+                  logtext += ` @green!/${alias}@!`
+                for (var arg of v.args ?? []) {
+                  logtext += ` @blue!<@!@green!${arg[0]}${arg[1] ? `@!@blue!=@!@green!${arg[1]}` : ""}@!@blue!>@!`
+                }
+                logtext += `\n    ${v.desc}\n`
+              }
+              apLog(logtext.trimEnd())
+            },
+          },
           autoCloseBattleMessages: {
             desc: "don't wait for enter prompt on battle end messages",
             args: [["on", "true/false"]],
@@ -1015,24 +1033,6 @@
                 "1",
                 "true",
               ].includes(on)
-            },
-          },
-          help: {
-            alias: ["?"],
-            desc: "shows available commands",
-            func() {
-              var logtext =
-                "@purple!===============@! @pink!COMMAND LIST@! @purple!===============@!\n"
-              for (var [k, v] of Object.entries(options)) {
-                logtext += `                  @green!/${k}@!`
-                for (var alias of v.alias ?? [])
-                  logtext += ` @green!/${alias}@!`
-                for (var arg of v.args ?? []) {
-                  logtext += ` @blue!<@!@green!${arg[0]}${arg[1] ? `@!@blue!=@!@green!${arg[1]}` : ""}@!@blue!>@!`
-                }
-                logtext += `                  \n                      ${v.desc}\n`
-              }
-              apLog(logtext.trimEnd())
             },
           },
           owo: {
@@ -1061,6 +1061,14 @@
                 "1",
                 "true",
               ].includes(on)
+            },
+          },
+          showVinellaItems: {
+            desc: "if enabled will always show the vanilla item and not the one that has been randomized to that spot",
+            func(on = true) {
+              localStorage.showVanillaItems = ["1", "true"].includes(
+                on,
+              )
             },
           },
           reconnect: {

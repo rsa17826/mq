@@ -38,6 +38,9 @@ function removeColors(str) {
  */
 function formatItemName(name) {
   var coloredName = name.split(":")
+  if (coloredName[1].includes(".")) {
+    coloredName[1] = "progressive " + coloredName[1].split(".")[0]
+  }
   // @ts-ignore
   coloredName = `@${itemColors[coloredName[0]]}!@console!${coloredName[0]}:@!@${itemColors[coloredName[0]]}!${coloredName[1]}@!`
   return coloredName
