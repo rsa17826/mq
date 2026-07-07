@@ -722,13 +722,6 @@ function apTryConnect() {
             Math.random(),
         )
       }
-      // TODO
-      ap.sendLocationScouts(
-        new Array(Object.keys(ap.slotData.AP_LOCATION_IDS).length)
-          .fill(null)
-          .map((_, i) => i + 1),
-        0,
-      )
     }
     window.ap.connect()
   }
