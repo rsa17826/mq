@@ -721,7 +721,7 @@ function apTryConnect() {
       }
       // TODO
       ap.sendLocationScouts(
-        new Array(Object.keys(AP_LOCATION_IDS).length)
+        new Array(Object.keys(ap.slotData.AP_LOCATION_IDS).length)
           .fill(null)
           .map((_, i) => i + 1),
         0,

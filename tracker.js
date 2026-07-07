@@ -1,19 +1,19 @@
 // Basic Archipelago map tracking.
 // Assumes this script loads AFTER apClient.js and the game's
-// AP_LOCATION_IDS / AP_ITEM_IDS globals are defined on the page,
+// ap.slotData.AP_LOCATION_IDS / ap.slotData.AP_ITEM_IDS globals are defined on the page,
 // and that window.ap is (or will be) the connected ArchipelagoClient.
 
 ;(function () {
   function init() {
-    if (!window.ap) {
+    if (!window.ap?.slotData?.AP_LOCATION_IDS) {
       setTimeout(init, 250)
       return
     }
 
     // id -> "north_east - item" location key
     const ID_TO_LOCATION = {}
-    for (const key in AP_LOCATION_IDS) {
-      ID_TO_LOCATION[AP_LOCATION_IDS[key]] = key
+    for (const key in ap.slotData.AP_LOCATION_IDS) {
+      ID_TO_LOCATION[ap.slotData.AP_LOCATION_IDS[key]] = key
     }
 
     // Cache icon elements by location key for fast lookups
@@ -102,7 +102,7 @@
       origOnReceivedItems(packet)
       if (window.playerLoaded) {
         packet.items.forEach((item) => {
-          const name = AP_ITEM_IDS[item.item] || `#${item.item}`
+          const name = ap.slotData.AP_ITEM_IDS[item.item] || `#${item.item}`
           itemCounts[name] = (itemCounts[name] || 0) + 1
         })
         renderItemPanel()

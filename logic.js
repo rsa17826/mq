@@ -1,17 +1,17 @@
 // Reachability / logic engine.
-// Requires PROG_DATA (prog.js), AP_ITEM_IDS (game globals), and tracker.js's
+// Requires PROG_DATA (prog.js), ap.slotData.AP_ITEM_IDS (game globals), and tracker.js's
 // data-location markers to already be present on the page.
 
 ;(function () {
   function init() {
-    if (!window.ap) {
+    if (!window.ap?.slotData?.AP_LOCATION_IDS) {
       setTimeout(init, 250)
       return
     }
 
     // Ground truth for "is this token a real network item" (vs a free/virtual
     // flag like area:/quest:, or an unresolvable entrance.* token).
-    const REAL_ITEM_NAMES = new Set(Object.values(AP_ITEM_IDS))
+    const REAL_ITEM_NAMES = new Set(Object.values(ap.slotData.AP_ITEM_IDS))
 
     function isEntranceToken(tok) {
       return tok.startsWith("entrance.")
@@ -216,7 +216,7 @@
       origOnReceivedItems(packet)
       if (!window.playerLoaded) return
       packet.items.forEach((item) => {
-        const name = AP_ITEM_IDS[item.item]
+        const name = ap.slotData.AP_ITEM_IDS[item.item]
         if (name) haveReal.add(name)
       })
       recompute()

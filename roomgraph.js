@@ -16,7 +16,7 @@ const RoomGraph = (function () {
 
   function buildRoomIndex() {
     roomIndex = {}
-    for (const r of AP_ENTRANCE_IDS) {
+    for (const r of ap.slotData.AP_ENTRANCE_IDS) {
       roomIndex[`${r.north}_${r.east}`] = r
     }
   }
