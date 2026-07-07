@@ -3373,7 +3373,7 @@ GEOM: list[ExitBase] = [
       ],
       "east": [],
       "north": [
-        {"left": 8, "right": 8},
+        {"left": 8, "right": 8, "newY": 85},
       ],
     },
   },
