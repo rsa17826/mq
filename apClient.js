@@ -224,7 +224,7 @@ class ArchipelagoClient {
       game: this.game,
       name: this.playerName,
       uuid: this.generateUUID(),
-      version: { major: 0, minor: 6, build: 2, class: "Version" },
+      version: { major: 0, minor: 6, build: 8, class: "Version" },
       items_handling: 7,
       tags: this.deathLinkEnabled ? ["DeathLink"] : [],
       slot_data: true,
