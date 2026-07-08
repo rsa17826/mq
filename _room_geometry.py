@@ -3831,6 +3831,34 @@ GEOM: list[ExitBase] = [
   {
     "north": 16,
     "east": 14,
+    "areas": [
+      {
+        "reqs": [
+          [],
+        ],
+        "areas": [
+          [
+            {"side": "south", "idx": 0},
+          ],
+          [
+            {"side": "north", "idx": 0},
+          ],
+        ],
+      },
+      {
+        "reqs": [
+          [
+            "quest:gTree.22",
+          ],
+        ],
+        "areas": [
+          [
+            {"side": "south", "idx": 0},
+            {"side": "north", "idx": 0},
+          ]
+        ],
+      },
+    ],
     "exits": {
       "west": [],
       "south": [

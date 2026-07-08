@@ -1657,11 +1657,9 @@ MathQuest.js:42550 add listeners""",
         "flag:7_11 boss dead",
       ],
     ],
-    # TODO
     "receive": [
       "quest:gTree.17",
     ],
-    "info": "forgot to add permit:bomb to above, do so later",
   },
   {
     "room": {"north": 15, "east": 18},
