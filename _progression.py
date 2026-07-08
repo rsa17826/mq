@@ -308,13 +308,14 @@ manager.correct - manager.wrong > 800 = halo
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      [],
+      [
+        "skill:craft",
+        "craft:emerald",
+      ],
     ],
     "receive": [
       "loot:emeralds",
     ],
-    "info": """add to correct locations later
-""",
   },
   # {"room": {"north": 20, "east": 20}, "receive": ["spawnpoint"],},
   {
@@ -999,95 +1000,96 @@ manager.correct - manager.wrong > 800 = halo
       "flag:skill.firewall checked.4",
     ],
   },
-  {
-    "room": {"north": 20, "east": 15},
-    "requires": [
-      [
-        "flag:skill.firewall checked.4",
-        "loot:dScale#20",
-        "loot:medallions#12",
-      ],
-    ],
-    "receive": [
-      "skill:firewall.5",
-      "flag:skill.firewall checked.5",
-    ],
-  },
-  {
-    "room": {"north": 20, "east": 15},
-    "requires": [
-      [
-        "flag:skill.firewall checked.5",
-        # "skill:firewall.5",
-        "loot:dScale#25",
-        "loot:medallions#15",
-      ],
-    ],
-    "receive": [
-      "skill:firewall.6",
-      "flag:skill.firewall checked.6",
-    ],
-  },
-  {
-    "room": {"north": 20, "east": 15},
-    "requires": [
-      [
-        "flag:skill.firewall checked.6",
-        # "skill:firewall.6",
-        "loot:dScale#30",
-        "loot:medallions#18",
-      ],
-    ],
-    "receive": [
-      "skill:firewall.7",
-      "flag:skill.firewall checked.7",
-    ],
-  },
-  {
-    "room": {"north": 20, "east": 15},
-    "requires": [
-      [
-        "flag:skill.firewall checked.7",
-        # "skill:firewall.7",
-        "loot:dScale#35",
-        "loot:medallions#21",
-      ],
-    ],
-    "receive": [
-      "skill:firewall.8",
-      "flag:skill.firewall checked.8",
-    ],
-  },
-  {
-    "room": {"north": 20, "east": 15},
-    "requires": [
-      [
-        "flag:skill.firewall checked.8",
-        # "skill:firewall.8",
-        "loot:dScale#40",
-        "loot:medallions#24",
-      ],
-    ],
-    "receive": [
-      "skill:firewall.9",
-      "flag:skill.firewall checked.9",
-    ],
-  },
-  {
-    "room": {"north": 20, "east": 15},
-    "requires": [
-      [
-        "flag:skill.firewall checked.9",
-        # "skill:firewall.9",
-        "loot:dScale#45",
-        "loot:medallions#27",
-      ],
-    ],
-    "receive": [
-      "skill:firewall.10",
-      "flag:skill.firewall checked.10",
-    ],
-  },
+  # NOTE don't need this many, lv4 is enough
+  # {
+  #   "room": {"north": 20, "east": 15},
+  #   "requires": [
+  #     [
+  #       "flag:skill.firewall checked.4",
+  #       "loot:dScale#20",
+  #       "loot:medallions#12",
+  #     ],
+  #   ],
+  #   "receive": [
+  #     "skill:firewall.5",
+  #     "flag:skill.firewall checked.5",
+  #   ],
+  # },
+  # {
+  #   "room": {"north": 20, "east": 15},
+  #   "requires": [
+  #     [
+  #       "flag:skill.firewall checked.5",
+  #       # "skill:firewall.5",
+  #       "loot:dScale#25",
+  #       "loot:medallions#15",
+  #     ],
+  #   ],
+  #   "receive": [
+  #     "skill:firewall.6",
+  #     "flag:skill.firewall checked.6",
+  #   ],
+  # },
+  # {
+  #   "room": {"north": 20, "east": 15},
+  #   "requires": [
+  #     [
+  #       "flag:skill.firewall checked.6",
+  #       # "skill:firewall.6",
+  #       "loot:dScale#30",
+  #       "loot:medallions#18",
+  #     ],
+  #   ],
+  #   "receive": [
+  #     "skill:firewall.7",
+  #     "flag:skill.firewall checked.7",
+  #   ],
+  # },
+  # {
+  #   "room": {"north": 20, "east": 15},
+  #   "requires": [
+  #     [
+  #       "flag:skill.firewall checked.7",
+  #       # "skill:firewall.7",
+  #       "loot:dScale#35",
+  #       "loot:medallions#21",
+  #     ],
+  #   ],
+  #   "receive": [
+  #     "skill:firewall.8",
+  #     "flag:skill.firewall checked.8",
+  #   ],
+  # },
+  # {
+  #   "room": {"north": 20, "east": 15},
+  #   "requires": [
+  #     [
+  #       "flag:skill.firewall checked.8",
+  #       # "skill:firewall.8",
+  #       "loot:dScale#40",
+  #       "loot:medallions#24",
+  #     ],
+  #   ],
+  #   "receive": [
+  #     "skill:firewall.9",
+  #     "flag:skill.firewall checked.9",
+  #   ],
+  # },
+  # {
+  #   "room": {"north": 20, "east": 15},
+  #   "requires": [
+  #     [
+  #       "flag:skill.firewall checked.9",
+  #       # "skill:firewall.9",
+  #       "loot:dScale#45",
+  #       "loot:medallions#27",
+  #     ],
+  #   ],
+  #   "receive": [
+  #     "skill:firewall.10",
+  #     "flag:skill.firewall checked.10",
+  #   ],
+  # },
   {
     "room": {"north": 19, "east": 15},
     "requires": [
@@ -1379,9 +1381,7 @@ manager.correct - manager.wrong > 800 = halo
   {
     "room": {"north": 14, "east": 18},
     "requires": [
-      [
-        "quest:gTree.7",
-      ],
+      [],
     ],
     "receive": [
       "quest:gTree.8",
@@ -2307,6 +2307,7 @@ MathQuest.js:42550 add listeners""",
     "requires": [
       [
         "loot:key",
+        "permit:bomb",
       ],
     ],
     "receive": [

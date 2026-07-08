@@ -278,9 +278,9 @@ def load_geometry_map():
 def load_progression_map():
   prog_db = {}
   try:
-    from _progression import PROG as data
+    from _progression import PROG
 
-    for loc in data:
+    for loc in PROG:
       room_coord = loc.get("room")
       if room_coord and "north" in room_coord and "east" in room_coord:
         n = int(room_coord["north"])

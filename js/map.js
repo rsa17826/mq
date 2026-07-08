@@ -1,3 +1,4 @@
+// @ts-nocheck
 const canvas = document.getElementById("arrow-canvas-2d")
 const ctx = canvas.getContext("2d")
 const viewport = document.getElementById("viewport")
