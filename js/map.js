@@ -268,6 +268,7 @@ window.addEventListener("DOMContentLoaded", () => {
   viewport.addEventListener(
     "dblclick",
     (e) => {
+      if (localStorage.debug != "true") return
       e.preventDefault()
       e.stopPropagation()
       e.stopImmediatePropagation()
