@@ -347,6 +347,7 @@ manager.correct - manager.wrong > 800 = halo
       [
         "loot:tBand",
         "entrance.north0",
+        # "power:220",
       ],
     ],
     "receive": [
@@ -520,10 +521,12 @@ manager.correct - manager.wrong > 800 = halo
       [
         "loot:mHorn",
         "entrance.north0",
+        # "power:300",
       ],
       [
         "loot:mHorn",
         "entrance.east2",
+        # "power:300",
       ],
     ],
     "receive": [
@@ -1324,6 +1327,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "quest:gTree.6",
+        # "power:15",
       ],
     ],
     "receive": [
@@ -1481,19 +1485,6 @@ manager.correct - manager.wrong > 800 = halo
       "permit:bomb",
       "craft:bomb",
     ],
-    "info": """bomb active here so find ui update code here
-[ACCESS SET] Key: quest"1" was set to: 4 from 3 bBomb Error
-at Object.set (http://127.0.0.1:1533/MathQuest/MathQuest.js:19993:15)
-at V.dialogueMess (http://127.0.0.1:1533/MathQuest/MathQuest.js:59689:47)
-at _createObject.dialogue (http://127.0.0.1:1533/MathQuest/MathQuest.js:31370:13)
-at _createObject.messEnter (http://127.0.0.1:1533/MathQuest/MathQuest.js:31788:18)
-at Qr.cllosureHandler [as callback] (http://127.0.0.1:1533/MathQuest/MathQuest.js:257:43)
-at Jh.__dispatchEvent (http://127.0.0.1:1533/MathQuest/MathQuest.js:1617:37)
-at Jh.__dispatch (http://127.0.0.1:1533/MathQuest/MathQuest.js:2275:55)
-at Jh.__dispatchStack (http://127.0.0.1:1533/MathQuest/MathQuest.js:99926:26)
-at Jh.__onKey (http://127.0.0.1:1533/MathQuest/MathQuest.js:100517:18)
-at Jh.onKeyDown (http://127.0.0.1:1533/MathQuest/MathQuest.js:99147:18)
-""",
   },
   {
     "room": {"north": 10, "east": 17},
@@ -1640,6 +1631,7 @@ MathQuest.js:42550 add listeners""",
     "requires": [
       [
         "quest:gTree.15",
+        # "power:30",
       ],
     ],
     "receive": [
@@ -1698,6 +1690,7 @@ MathQuest.js:42550 add listeners""",
     "requires": [
       [
         "quest:gTree.18",
+        # "power:200",
       ],
     ],
     "receive": [
@@ -1737,15 +1730,13 @@ MathQuest.js:42550 add listeners""",
     "receive": [
       "quest:gTree.22",
     ],
-    "info": "passage up now available",
   },
   {
     "room": {"north": 24, "east": 9},
-    # "requires": [["quest:gTree.454565"],],
-    # TODO gen should fail to win like this
     "requires": [
       [
         "quest:gTree.22",
+        # "power:700",
       ],
     ],
     "receive": [

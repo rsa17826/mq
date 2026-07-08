@@ -3409,6 +3409,34 @@ GEOM: list[ExitBase] = [
   {
     "north": 14,
     "east": 20,
+    "areas": [
+      {
+        "reqs": [
+          [
+            "power:15",
+          ],
+        ],
+        "areas": [
+          [
+            {"side": "north", "idx": 0},
+            {"side": "south", "idx": 0},
+          ],
+        ],
+      },
+      {
+        "reqs": [
+          [],
+        ],
+        "areas": [
+          [
+            {"side": "north", "idx": 0},
+          ],
+          [
+            {"side": "south", "idx": 0},
+          ],
+        ],
+      },
+    ],
     "exits": {
       "west": [],
       "south": [
