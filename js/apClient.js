@@ -690,9 +690,9 @@ function apTryConnect() {
       a(...s)
       let data
       if (
-        (data = await get(`/MQFiles/loadChar_${window.seed}.php`))
+        (data = await get(`/MQFiles/loadChar_${window.seed}.json`))
       ) {
-        var newdata = Number(data.split(" ")[265] ?? "0")
+        var newdata = data['lastRecivedItem']
         if (isNaN(newdata)) {
           apWarn("newdata was nan")
           newdata = 0
@@ -732,7 +732,7 @@ async function get(url) {
   try {
     var resp = await fetch(url)
     if (String(resp.status)[0] == "2") {
-      return await resp.text()
+      return await resp.json()
     }
     return false
   } catch (e) {

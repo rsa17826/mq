@@ -1,23 +1,34 @@
 #!/usr/bin/env python3.13
 import os
-import re
-from urllib.parse import parse_qs
+import sys
+import json
 
-reg = re.compile("&stat\\d+=(-?\\d+(?:\\.\\d+)?)")
-
+# Print required CGI header first
+print("Content-Type: text/plain\n")
 
 try:
-  query_string = os.environ.get("QUERY_STRING", "")
-  parsed_params = parse_qs(query_string)
-  saveFile = parsed_params.get("saveFile", ["nonAP"])[0]
-  with open(
-    os.path.join(os.path.dirname(__file__), f"../MQFiles/loadChar_{saveFile}.php"),
-    "w",
-  ) as file:
-    newstr = re.findall(reg, os.environ.get("QUERY_STRING", ""))
-    file.write(" ".join(newstr))
-    # with open("C:\\Users\\User\\Desktop\\mq\\cgi-bin\\saves.txt", "w") as file:
-    #     file.write(os.environ.get('QUERY_STRING', ''))
+  # 1. Read the Content-Length to know how many bytes to read from stdin
+  content_length = int(os.environ.get("CONTENT_LENGTH", 0))
+
+  if content_length > 0:
+    # 2. Read and parse the JSON data
+    data = json.loads(sys.stdin.read(content_length))
+
+    # 3. Extract your variables safely
+    saveFile = data.get("saveFile", "nonAP")
+    my_var_data = data.get("myVar", "{}")
+
+    # 4. Define your file path safely
+    target_dir = os.path.join(os.path.dirname(__file__), "../MQFiles")
+    file_path = os.path.join(target_dir, f"loadChar_{saveFile}.json")
+
+    # Ensure directory exists if needed, then write the data
+    with open(file_path, "w") as file:
+      json.dump(my_var_data, file, indent=2)
+
     print("go")
+  else:
+    print("stop No data received")
+
 except Exception as e:
   print("stop", e)
