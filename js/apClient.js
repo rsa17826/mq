@@ -187,6 +187,15 @@ class ArchipelagoClient {
             (m) => m !== loc,
           )
         }
+        // Also clear it from the in-flight queue: the server has
+        // acknowledged this location as checked, whether or not it
+        // ends up granting us an item (e.g. it's someone else's item).
+        if (window.checksInFlight) {
+          const inFlightIdx = window.checksInFlight.indexOf(loc)
+          if (inFlightIdx !== -1) {
+            window.checksInFlight.splice(inFlightIdx, 1)
+          }
+        }
       })
     }
   }
@@ -692,7 +701,7 @@ function apTryConnect() {
       if (
         (data = await get(`/MQFiles/loadChar_${window.seed}.json`))
       ) {
-        var newdata = data['lastRecivedItem']
+        var newdata = data["lastRecivedItem"]
         if (isNaN(newdata)) {
           apWarn("newdata was nan")
           newdata = 0
