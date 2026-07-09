@@ -313,6 +313,15 @@ function apSendSayFromInput() {
         apLog(logtext.trimEnd())
       },
     },
+    autoCloseDialogueBoxes: {
+      desc: "don't wait for enter prompt on non battle end messages",
+      args: [["on", "true/false"]],
+      func(on) {
+        localStorage.autoCloseDialogueBoxes = ["1", "true"].includes(
+          on,
+        )
+      },
+    },
     autoCloseBattleMessages: {
       desc: "don't wait for enter prompt on battle end messages",
       args: [["on", "true/false"]],
