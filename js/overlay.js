@@ -1,3 +1,6 @@
+function rerange(val, low1, high1, low2, high2) {
+  return ((val - low1) / (high1 - low1)) * (high2 - low2) + low2
+}
 const overlayCanvas = document.querySelector("#overlayCanvas")
 var overlayCtx = overlayCanvas.getContext("2d")
 
@@ -246,16 +249,22 @@ function customDrawLoop() {
             `
       : ""
 
-    overlayCtx.font = "bold 20px sans-serif"
+    overlayCtx.font = '36px "Booter - Zero Zero"'
 
     // Clean the text array up
     var allText = coordString.trim().split("\n")
+    if (coordString.trim() === "") allText = [] // Handle empty text gracefully
 
     // 3. Define layout parameters
-    var lineHeight = 24 // Distance between your rows of text
+    var lineHeight = 30 // Distance between your rows of text
     var baseBottomPadding = 20 // Margin from the bottom boundary line
 
+    // --- PROGRESS BAR CONFIGURATION ---
+    // Change these values or bind them to your player stats (e.g., window.player.hp / window.player.maxHp)
+
     // 4. Draw lines calculating offsets dynamically
+    var totalTextHeight = allText.length * lineHeight
+
     for (var i = 0; i < allText.length; i++) {
       var text = allText[i].trim()
 
@@ -274,6 +283,59 @@ function customDrawLoop() {
       overlayCtx.strokeText(text, x, y)
       overlayCtx.fillStyle = "#ddd"
       overlayCtx.fillText(text, x, y)
+    }
+    var progressValue = 0
+    var maxProg = 0
+    if (window.ap?.slotData) {
+      var prog = 0
+      if (ap.slotData.final_boss) {
+        maxProg += 22
+        prog += Math.min(manager.quest[Enum.Quest.gTree], 22)
+      }
+      if (ap.slotData?.all_quests_maxed) {
+        prog += Object.entries(ap.slotData.maxQuests).reduce(
+          (a, [k, v]) =>
+            a + Math.min(v, manager.quest[Enum.Quest[k]]),
+          0,
+        )
+        maxProg += Object.values(ap.slotData.maxQuests).reduce(
+          (a, v) => a + v,
+          0,
+        )
+      }
+      progressValue = rerange(prog, 0, maxProg, 0, 1)
+    }
+    newBar(progressValue, 155, 12, 10)
+    newBar(progressValue, 100, 12, 10)
+    function newBar(progressValue, barWidth, barHeight, barPadding) {
+      // Position the bar relative to the top of the text block
+      var barX = overlayCanvas.width - barWidth - 20
+      var barY =
+        overlayCanvas.height -
+        baseBottomPadding -
+        totalTextHeight -
+        barPadding
+
+      // Draw Background / Border Outline
+      overlayCtx.fillStyle = "#000"
+      overlayCtx.fillRect(
+        barX - 2,
+        barY - 2,
+        barWidth + 4,
+        barHeight + 4,
+      ) // Outer black border
+
+      overlayCtx.fillStyle = "#444"
+      overlayCtx.fillRect(barX, barY, barWidth, barHeight) // Dark background fill
+
+      // Draw Foreground (The actual progress)
+      overlayCtx.fillStyle = "#00ffcc" // Cyan/Green progress color
+      overlayCtx.fillRect(
+        barX,
+        barY,
+        barWidth * progressValue,
+        barHeight,
+      )
     }
   } catch (e) {
     error(e)
