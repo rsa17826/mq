@@ -209,7 +209,6 @@ function customDrawLoop() {
 
           if (localStorage.renderCheckerboard == "true")
             if ((row + col) % 2 === 0) {
-              // Alternate checkerboard background colors for standard non-exit tiles
               exitColor = mix(exitColor, "#FFFFFF10") // Light overlay instead of skipping entirely
             } else {
               exitColor = mix(exitColor, "#00000050") // Transparent black tile
@@ -284,6 +283,7 @@ function customDrawLoop() {
       overlayCtx.fillStyle = "#ddd"
       overlayCtx.fillText(text, x, y)
     }
+    var currentOffsetY = totalTextHeight - 10
     var progressValue = 0
     var maxProg = 0
     if (window.ap?.slotData) {
@@ -304,38 +304,111 @@ function customDrawLoop() {
         )
       }
       progressValue = rerange(prog, 0, maxProg, 0, 1)
+      newBar(
+        progressValue,
+        155 + 30,
+        12,
+        10,
+        `progress: ${Math.floor(progressValue * 100)}%`,
+      )
     }
-    newBar(progressValue, 155, 12, 10)
-    newBar(progressValue, 100, 12, 10)
-    function newBar(progressValue, barWidth, barHeight, barPadding) {
-      // Position the bar relative to the top of the text block
-      var barX = overlayCanvas.width - barWidth - 20
+    var progressValue = 0
+    var maxProg = 0
+    if (window.ap?.slotData) {
+      progressValue = rerange(
+        ap.checkedLocations.length,
+        0,
+        ap.missingLocations.length + ap.checkedLocations.length,
+        0,
+        1,
+      )
+      newBar(
+        progressValue,
+        155 + 30,
+        12,
+        10,
+        `checks: ${Math.floor(progressValue * 100)}%`,
+      )
+    }
+
+    function newBar(
+      progressValue,
+      barWidth,
+      barHeight,
+      barPadding,
+      barText,
+    ) {
+      // Add padding first
+      currentOffsetY += barPadding
+
+      // Base coordinates for the entire component container
+      var containerX = overlayCanvas.width - barWidth - 5
       var barY =
         overlayCanvas.height -
         baseBottomPadding -
-        totalTextHeight -
-        barPadding
+        currentOffsetY -
+        barHeight
 
-      // Draw Background / Border Outline
-      overlayCtx.fillStyle = "#000"
-      overlayCtx.fillRect(
-        barX - 2,
-        barY - 2,
-        barWidth + 4,
-        barHeight + 4,
-      ) // Outer black border
+      var dynamicBarWidth = barWidth
+      var textWidth = 0
 
-      overlayCtx.fillStyle = "#444"
-      overlayCtx.fillRect(barX, barY, barWidth, barHeight) // Dark background fill
+      // If text is provided, measure it and adjust the bar's width
+      if (barText) {
+        overlayCtx.font = '28px "Booter - Zero Zero"' // Font for the bar text
+        textWidth = overlayCtx.measureText(barText).width
+        var textSpacing = 8 // Space between the bar and the text
 
-      // Draw Foreground (The actual progress)
-      overlayCtx.fillStyle = "#00ffcc" // Cyan/Green progress color
-      overlayCtx.fillRect(
-        barX,
-        barY,
-        barWidth * progressValue,
-        barHeight,
-      )
+        // Shrink the bar width to make room for the text and spacing
+        dynamicBarWidth = Math.max(
+          0,
+          barWidth - textWidth - textSpacing,
+        )
+      }
+
+      // 1. Draw Background / Border Outline for the bar
+      if (dynamicBarWidth > 0) {
+        overlayCtx.fillStyle = "#000"
+        overlayCtx.fillRect(
+          containerX - 2,
+          barY - 2,
+          dynamicBarWidth + 4,
+          barHeight + 4,
+        ) // Outer black border
+
+        overlayCtx.fillStyle = "#444"
+        overlayCtx.fillRect(
+          containerX,
+          barY,
+          dynamicBarWidth,
+          barHeight,
+        ) // Dark background fill
+
+        // 2. Draw Foreground (The actual progress)
+        overlayCtx.fillStyle = "#00ffcc" // Cyan/Green progress color
+        overlayCtx.fillRect(
+          containerX,
+          barY,
+          dynamicBarWidth * progressValue,
+          barHeight,
+        )
+      }
+
+      // 3. Draw the text on the far right of the total barWidth area
+      if (barText) {
+        var textX = overlayCanvas.width - textWidth - 5
+        // Vertically center text relative to the bar height
+        var textY = barY + barHeight / 2 + 5
+
+        overlayCtx.strokeStyle = "#000"
+        overlayCtx.lineJoin = "round"
+        overlayCtx.lineWidth = 3
+        overlayCtx.strokeText(barText, textX, textY)
+        overlayCtx.fillStyle = "#ddd"
+        overlayCtx.fillText(barText, textX, textY)
+      }
+
+      // Shift the offset up by the height of this bar so the next bar sits above it
+      currentOffsetY += barHeight
     }
   } catch (e) {
     error(e)
