@@ -322,6 +322,24 @@ function apSendSayFromInput() {
         )
       },
     },
+    instantBattleStarts: {
+      desc: "encounters start instantly instead of waiting for the attacked text",
+      args: [["on", "true/false"]],
+      func(on) {
+        localStorage.instantBattleStarts = ["1", "true"].includes(on)
+        test.attackedTimer.__delay =
+          localStorage.instantBattleStarts == "true" ? 0 : 1e3
+      },
+    },
+    instantBattleEndText: {
+      desc: "each line of loot text at battle end appears instantly",
+      args: [["on", "true/false"]],
+      func(on) {
+        localStorage.instantBattleEndText = ["1", "true"].includes(on)
+        test.batEndTimer.__delay =
+          localStorage.instantBattleEndText == "true" ? 0 : 350
+      },
+    },
     debug: {
       desc: "enable debug/chear mode w/a/s/d moves one screen that dir\nrclick on game sets player tyo that position\ndbclick on map tps player to that screen",
       args: [["on", "true/false"]],
@@ -444,12 +462,56 @@ document
   .getElementById("apChatSaySend")
   .addEventListener("click", apSendSayFromInput)
 
+// 1. Keep track of history and where the user is currently looking
+let history = []
+let historyIndex = -1
+let currentBuffer = "" // Stores what the user was typing before hitting 'Up'
+
 document
   .getElementById("apChatSayInput")
   .addEventListener("keydown", function (e) {
     if (e.key === "Enter") {
+      const text = this.value.trim()
+      if (text) {
+        if (history[history.length - 1] !== text) {
+          history.push(text)
+        }
+        e.preventDefault()
+        apSendSayFromInput()
+      }
+
+      // Reset navigation states for a fresh line
+      historyIndex = -1
+      currentBuffer = ""
+      this.value = ""
+    } else if (e.key === "ArrowUp") {
+      // Prevent cursor from jumping to the beginning of the text box
       e.preventDefault()
-      apSendSayFromInput()
+
+      if (history.length === 0) return
+
+      // If starting navigation, save what the user currently had typed
+      if (historyIndex === -1) {
+        currentBuffer = this.value
+        historyIndex = history.length - 1
+      } else if (historyIndex > 0) {
+        historyIndex--
+      }
+
+      this.value = history[historyIndex]
+    } else if (e.key === "ArrowDown") {
+      e.preventDefault()
+
+      if (historyIndex === -1) return
+
+      if (historyIndex < history.length - 1) {
+        historyIndex++
+        this.value = history[historyIndex]
+      } else {
+        // Reached the bottom, restore what they were originally typing
+        historyIndex = -1
+        this.value = currentBuffer
+      }
     }
   })
 
