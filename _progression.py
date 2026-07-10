@@ -3899,6 +3899,7 @@ MathQuest.js:42550 add listeners""",
   },
   {
     "room": {"north": 11, "east": 23},
+    "requires": [[]],
     "receive": [
       "quest:dream.1",
     ],
