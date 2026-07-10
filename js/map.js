@@ -58,6 +58,26 @@ const PF_DIR_OFFSET = {
 
 const PATH_ARROW_COLOR = "#39ff14"
 let PATH_ROUTES = []
+let selectedPathId = null // identifies whatever room/entrance is currently clicked-on, or null
+
+function pfSelectionId(roomKey, entrance) {
+  return entrance ?
+      `${roomKey}::${entrance.dir}::${entrance.idx}`
+    : roomKey
+}
+
+// Clicking a tile/entrance shows the route to it; clicking the same one
+// again clears the route.
+function selectPathTarget(roomKey, entrance) {
+  const id = pfSelectionId(roomKey, entrance)
+  if (selectedPathId === id) {
+    selectedPathId = null
+    clearPathRoute()
+    return
+  }
+  selectedPathId = id
+  showPathTo(roomKey, entrance)
+}
 
 function pfRoomKey(n, e) {
   return `${n}_${e}`
@@ -425,11 +445,39 @@ function pfFindExitData(roomKey, dir, idx) {
   return sideMatches[idx] || null
 }
 
-// World/grid pixel point for a room's exit in a given direction. Falls
-// back to the middle of that tile edge if exit geometry isn't found.
+// Prefer reading the actual rendered .exit-square element (its inline
+// left/top/width/height are percentages of the tile) so the arrow lands
+// exactly on the square the player sees, not just somewhere along that
+// side of the room.
+function pfExitSquareCenter(roomKey, origin, dir, idx) {
+  const square = document.querySelector(
+    `.exit-square[data-room="${roomKey}"][data-side="${dir}"][data-idx="${idx}"]`,
+  )
+  if (!square) return null
+
+  const left = parseFloat(square.style.left)
+  const top = parseFloat(square.style.top)
+  const width = parseFloat(square.style.width)
+  const height = parseFloat(square.style.height)
+  if ([left, top, width, height].some((n) => Number.isNaN(n)))
+    return null
+
+  return {
+    x: origin.x + ((left + width / 2) / 100) * PF_TILE_WIDTH,
+    y: origin.y + ((top + height / 2) / 100) * PF_TILE_HEIGHT,
+  }
+}
+
+// World/grid pixel point for a room's exit in a given direction: the exact
+// center of that exit's square if it's rendered on the page, otherwise the
+// center of its block-range from EXITS_DATA, otherwise the middle of that
+// whole tile edge as a last resort.
 function pfExitPoint(roomKey, dir, idx) {
   const origin = pfTileOrigin(roomKey)
   if (!origin) return null
+
+  const squareCenter = pfExitSquareCenter(roomKey, origin, dir, idx)
+  if (squareCenter) return squareCenter
 
   const exit = pfFindExitData(roomKey, dir, idx)
 
@@ -527,7 +575,7 @@ document.addEventListener("DOMContentLoaded", () => {
   updateTileBackgrounds()
 
   document.querySelectorAll(".tile-wrapper").forEach((tile) => {
-    tile.addEventListener("click", function () {
+    tile.addEventListener("mouseenter", function () {
       currentRoom = this.getAttribute("data-room")
       const rawInfo = this.getAttribute("data-info")
       if (infoPanel && rawInfo) {
@@ -559,20 +607,21 @@ document.addEventListener("DOMContentLoaded", () => {
           infoPanel.innerText = rawInfo
         }
       }
-      showPathTo(currentRoom)
       requestUpdate()
     })
-    // tile.addEventListener("mouseleave", function () {
-    //   currentRoom = null
-    //   if (infoPanel) {
-    //     infoPanel.innerHTML = "Hover over a room to view details."
-    //   }
-    //   // clearPathRoute()
-    //   requestUpdate()
-    // })
+    tile.addEventListener("mouseleave", function () {
+      currentRoom = null
+      if (infoPanel) {
+        infoPanel.innerHTML = "Hover over a room to view details."
+      }
+      requestUpdate()
+    })
+    tile.addEventListener("click", function (e) {
+      selectPathTarget(this.getAttribute("data-room"))
+    })
   })
 
-  // Hovering a specific entrance/exit square shows the route to that exact
+  // Clicking a specific entrance/exit square shows the route to that exact
   // entrance instead of just "somewhere in this room". Requires gen_map.py
   // to have been regenerated with data-room/data-side/data-idx attributes
   // on .exit-square elements.
@@ -584,17 +633,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const roomKey = this.getAttribute("data-room")
         const dir = this.getAttribute("data-side")
         const idx = Number(this.getAttribute("data-idx"))
-        showPathTo(roomKey, { dir, idx })
+        selectPathTarget(roomKey, { dir, idx })
       })
-      // square.addEventListener("mouseleave", function (e) {
-      //   e.stopPropagation()
-      //   const roomKey = this.getAttribute("data-room")
-      //   if (roomKey) {
-      //     showPathTo(roomKey)
-      //   } else {
-      //     // clearPathRoute()
-      //   }
-      // })
     })
 })
 
@@ -761,8 +801,10 @@ window.addEventListener("DOMContentLoaded", () => {
       e.preventDefault()
       e.stopPropagation()
       e.stopImmediatePropagation()
-      if (e.target.classList.contains("tile-wrapper")) {
-        let [an, ae] = e.target.dataset.room.split("_")
+      if (
+        e.target?.parentElement?.classList?.contains?.("tile-wrapper")
+      ) {
+        let [an, ae] = e.target.parentElement.dataset.room.split("_")
         if (window.player) {
           window.player.realnorth = an
           window.player.realeast = ae
