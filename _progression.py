@@ -546,10 +546,10 @@ manager.correct - manager.wrong > 800 = halo
       "skill:tough.+1",
     ],
   },
-  {
-    "room": {"north": 10, "east": 16},
-    "info": "warp skill warp point",
-  },
+  # {
+  #   "room": {"north": 10, "east": 16},
+  #   "info": "warp skill warp point",
+  # },
   {
     "room": {"north": 9, "east": 16},
     "requires": [
@@ -760,18 +760,21 @@ manager.correct - manager.wrong > 800 = halo
   },
   {
     "room": {"north": 14, "east": 25},
+    "requires": [[]],
     "receive": [
       "flag:three part code part 1",
     ],
   },
   {
     "room": {"north": 14, "east": 24},
+    "requires": [[]],
     "receive": [
       "flag:three part code part 2",
     ],
   },
   {
     "room": {"north": 13, "east": 24},
+    "requires": [[]],
     "receive": [
       "flag:three part code part 3",
     ],
@@ -791,6 +794,7 @@ manager.correct - manager.wrong > 800 = halo
   },
   {
     "room": {"north": 11, "east": 26},
+    "requires": [[]],
     "receive": [
       "flag:stomp code",
     ],
@@ -3182,6 +3186,15 @@ MathQuest.js:42550 add listeners""",
     ],
   },
   {
+    "room": {"north": 13, "east": 14},
+    "requires": [
+      [
+        "quest:mChal.5",
+      ],
+    ],
+    "receive": ["quest:mChal.6", "gold#200"],
+  },
+  {
     "room": {"north": 11, "east": 23},
     "requires": [
       [
@@ -3238,6 +3251,7 @@ MathQuest.js:42550 add listeners""",
   },
   {
     "room": {"north": 15, "east": 17},
+    "requires": [["skill:reveal"]],
     "receive": [
       "quest:hWater.1",
     ],
@@ -3311,6 +3325,7 @@ MathQuest.js:42550 add listeners""",
   },
   {
     "room": {"north": 19, "east": 16},
+    "requires": [[]],
     "receive": [
       "quest:access.1",
     ],
@@ -3542,6 +3557,7 @@ MathQuest.js:42550 add listeners""",
   },
   {
     "room": {"north": 100, "east": 100},
+    "requires": [[]],
     "receive": [
       "quest:isles.1",
     ],
@@ -4715,18 +4731,6 @@ MathQuest.js:42550 add listeners""",
     ],
   },
   {
-    "room": {"north": 4, "east": 24},
-    "receive": [
-      "food:cherries",
-    ],
-  },
-  {
-    "room": {"north": 9, "east": 25},
-    "receive": [
-      "item:gold#Enum.Craft.emerald",
-    ],
-  },
-  {
     "room": {"north": 9, "east": 25},
     "requires": [
       [
@@ -4735,6 +4739,7 @@ MathQuest.js:42550 add listeners""",
     ],
     "receive": [
       "food:elixir",
+      "item:gold#Enum.Craft.emerald",
     ],
   },
   {
