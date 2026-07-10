@@ -43,5 +43,5 @@ const QuestState = (function () {
 window.onQuestChanged = function (prop, value) {
   // does nothing as the values get repulled
   // QuestState.set(prop, value)
-  window.__trackerRecompute()
+  window.__trackerRecompute?.()
 }

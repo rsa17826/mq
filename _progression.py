@@ -29,6 +29,15 @@ PROG: list[ProgressionNode] = [
   {
     "room": {"north": 20, "east": 20},
     "requires": [
+      ["area:4", "quest:mChal.4"],
+    ],
+    "receive": [
+      "quest:mChal.5",
+    ],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
       [
         "area:11",
       ],
@@ -1783,16 +1792,6 @@ MathQuest.js:42550 add listeners""",
       "quest:aSword.1",
     ],
   },
-  # {
-  #   "room": {"north": 14, "east": 18},
-  #   "requires": [["quest:aSword.1", "weapon:baneBlade"],],
-  #   "receive": ["quest:aSword.2"],
-  # },
-  # {
-  #   "room": {"north": 500, "east": 501},
-  #   "requires": [["quest:aSword.2", "skill:reveal"],],
-  #   "receive": ["quest:aSword.3"],
-  # },
   {
     "room": {"north": 15, "east": 24},
     "requires": [
@@ -3177,12 +3176,21 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 13, "east": 14},
     "requires": [
-      [
-        "quest:mChal.1",
-      ],
+      ["quest:mChal.1", "entrance.west0"],
+      ["quest:mChal.1", "permit:bomb"],
     ],
     "receive": [
       "quest:mChal.2",
+    ],
+  },
+  {
+    "room": {"north": 13, "east": 14},
+    "requires": [
+      ["quest:mChal.3", "entrance.west0"],
+      ["quest:mChal.3", "permit:bomb"],
+    ],
+    "receive": [
+      "quest:mChal.4",
     ],
   },
   {
@@ -3192,7 +3200,7 @@ MathQuest.js:42550 add listeners""",
         "quest:mChal.5",
       ],
     ],
-    "receive": ["quest:mChal.6", "gold#200"],
+    "receive": ["quest:mChal.6", "item:gold#200"],
   },
   {
     "room": {"north": 11, "east": 23},
@@ -3471,17 +3479,6 @@ MathQuest.js:42550 add listeners""",
     ],
     "receive": [
       "quest:oMan.18",
-    ],
-  },
-  {
-    "room": {"north": 13, "east": 14},
-    "requires": [
-      [
-        "quest:mChal.3",
-      ],
-    ],
-    "receive": [
-      "quest:mChal.4",
     ],
   },
   {
@@ -3960,10 +3957,582 @@ MathQuest.js:42550 add listeners""",
       "quest:dream.15",
     ],
   },
+  {
+    "room": {"north": 14, "east": 18},
+    "requires": [["weapon:baneBlade"]],
+    "receive": ["quest:aSword.1"],
+  },
+  {
+    "room": {"north": 500, "east": 501},
+    "requires": [
+      ["quest:aSword.1", "skill:reveal"],
+    ],
+    "receive": ["quest:aSword.2"],
+  },
+  {
+    "room": {"north": 500, "east": 501},
+    "requires": [
+      ["quest:aSword.2", "skill:reveal"],
+    ],
+    "receive": ["quest:aSword.3"],
+  },
+  {
+    "room": {"north": 19, "east": 16},
+    "requires": [
+      ["quest:aSword.3", "weapon:baneBlade"],
+    ],
+    "receive": ["quest:aSword.4"],
+  },
+  {
+    "room": {"north": 500, "east": 501},
+    "requires": [
+      ["quest:aSword.4", "skill:reveal"],
+    ],
+    "receive": ["quest:aSword.5"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.5", "area:12", "weapon:baneBlade", "armor:grimGear"],
+    ],
+    "receive": ["quest:aSword.6"],
+  },
+  {
+    "room": {"north": 500, "east": 501},
+    "requires": [
+      ["quest:aSword.6", "weapon:baneBlade", "skill:reveal"],
+    ],
+    "receive": ["quest:aSword.7", "weapon:aSword"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.7", "weapon:aSword", "area:1.19"],
+    ],
+    "receive": ["quest:aSword.8"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.7", "weapon:aSword", "area:1.19"],
+    ],
+    "receive": ["quest:aSword.8"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.8", "weapon:aSword", "area:1.19"],
+    ],
+    "receive": ["quest:aSword.9"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.9", "weapon:aSword", "area:1.19"],
+    ],
+    "receive": ["quest:aSword.10"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.10", "weapon:aSword", "area:1.19"],
+    ],
+    "receive": ["quest:aSword.11"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.11", "weapon:aSword", "area:1.19"],
+    ],
+    "receive": ["quest:aSword.12"],
+  },
+  {
+    "room": {"north": 500, "east": 501},
+    "requires": [
+      ["quest:aSword.12", "skill:reveal"],
+    ],
+    "receive": ["quest:aSword.13"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.13", "area:8", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.14"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.14", "area:8", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.15"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.15", "area:8", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.16"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.16", "area:8", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.17"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.17", "area:8", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.18"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.18", "area:8", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.19"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.19", "area:8", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.20"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.20", "area:8", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.21"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.21", "area:8", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.22"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.22", "area:8", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.23"],
+  },
+  {
+    "room": {"north": 500, "east": 501},
+    "requires": [
+      ["quest:aSword.23", "skill:reveal"],
+    ],
+    "receive": ["quest:aSword.24"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.24", "area:6", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.25"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.25", "area:6", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.26"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.26", "area:6", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.27"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.27", "area:6", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.28"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.28", "area:6", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.29"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.29", "area:6", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.30"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.30", "area:6", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.31"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.31", "area:6", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.32"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.32", "area:6", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.33"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.33", "area:6", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.34"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.34", "area:6", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.35"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.35", "area:6", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.36"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.36", "area:6", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.37"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.37", "area:6", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.38"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.38", "area:6", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.39"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.39", "area:6", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.40"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.40", "area:1.water", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.41"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.41", "area:16.water", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.42"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.42", "area:11", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.43"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.43", "area:9", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.44"],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
+      ["quest:aSword.44", "area:15", "weapon:aSword", "item:diamonds"],
+    ],
+    "receive": ["quest:aSword.45"],
+  },
+  {
+    "room": {"north": 500, "east": 501},
+    "requires": [
+      ["quest:aSword.45", "skill:reveal"],
+    ],
+    "receive": ["quest:aSword.46"],
+  },
+  {
+    "room": {"north": 14, "east": 19},
+    "requires": [
+      [
+        "quest:aSword.46",
+        "weapon:aSword",
+        "item:diamonds",
+        "entrance.north0",
+        "loot:tBand",
+      ],
+    ],
+    "receive": ["quest:aSword.47"],
+  },
+  {
+    "room": {"north": 14, "east": 19},
+    "requires": [
+      [
+        "quest:aSword.47",
+        "weapon:aSword",
+        "item:diamonds",
+        "entrance.north0",
+        "loot:tBand",
+      ],
+    ],
+    "receive": ["quest:aSword.48"],
+  },
+  {
+    "room": {"north": 14, "east": 19},
+    "requires": [
+      [
+        "quest:aSword.48",
+        "weapon:aSword",
+        "item:diamonds",
+        "entrance.north0",
+        "loot:tBand",
+      ],
+    ],
+    "receive": ["quest:aSword.49"],
+  },
+  {
+    "room": {"north": 14, "east": 19},
+    "requires": [
+      [
+        "quest:aSword.49",
+        "weapon:aSword",
+        "item:diamonds",
+        "entrance.north0",
+        "loot:tBand",
+      ],
+    ],
+    "receive": ["quest:aSword.50"],
+  },
+  {
+    "room": {"north": 14, "east": 19},
+    "requires": [
+      [
+        "quest:aSword.50",
+        "weapon:aSword",
+        "item:diamonds",
+        "entrance.north0",
+        "loot:tBand",
+      ],
+    ],
+    "receive": ["quest:aSword.51"],
+  },
+  {
+    "room": {"north": 500, "east": 501},
+    "requires": [
+      [
+        "quest:aSword.51",
+        "skill:reveal",
+      ],
+    ],
+    "receive": ["quest:aSword.52"],
+  },
+  {
+    "room": {"north": 5, "east": 9},
+    "requires": [
+      [
+        "quest:aSword.52",
+        "weapon:aSword",
+        "item:diamonds",
+        "entrance.north0",
+        "loot:mHorn",
+      ],
+      [
+        "quest:aSword.52",
+        "weapon:aSword",
+        "item:diamonds",
+        "entrance.east2",
+        "loot:mHorn",
+      ],
+    ],
+    "receive": ["quest:aSword.53"],
+  },
+  {
+    "room": {"north": 5, "east": 9},
+    "requires": [
+      [
+        "quest:aSword.53",
+        "weapon:aSword",
+        "item:diamonds",
+        "entrance.north0",
+        "loot:mHorn",
+      ],
+      [
+        "quest:aSword.53",
+        "weapon:aSword",
+        "item:diamonds",
+        "entrance.east2",
+        "loot:mHorn",
+      ],
+    ],
+    "receive": ["quest:aSword.54"],
+  },
+  {
+    "room": {"north": 5, "east": 9},
+    "requires": [
+      [
+        "quest:aSword.54",
+        "weapon:aSword",
+        "item:diamonds",
+        "entrance.north0",
+        "loot:mHorn",
+      ],
+      [
+        "quest:aSword.54",
+        "weapon:aSword",
+        "item:diamonds",
+        "entrance.east2",
+        "loot:mHorn",
+      ],
+    ],
+    "receive": ["quest:aSword.55"],
+  },
+  {
+    "room": {"north": 5, "east": 9},
+    "requires": [
+      [
+        "quest:aSword.55",
+        "weapon:aSword",
+        "item:diamonds",
+        "entrance.north0",
+        "loot:mHorn",
+      ],
+      [
+        "quest:aSword.55",
+        "weapon:aSword",
+        "item:diamonds",
+        "entrance.east2",
+        "loot:mHorn",
+      ],
+    ],
+    "receive": ["quest:aSword.56"],
+  },
+  {
+    "room": {"north": 5, "east": 9},
+    "requires": [
+      [
+        "quest:aSword.56",
+        "weapon:aSword",
+        "item:diamonds",
+        "entrance.north0",
+        "loot:mHorn",
+      ],
+      [
+        "quest:aSword.56",
+        "weapon:aSword",
+        "item:diamonds",
+        "entrance.east2",
+        "loot:mHorn",
+      ],
+    ],
+    "receive": ["quest:aSword.57"],
+  },
+  {
+    "room": {"north": 500, "east": 501},
+    "requires": [
+      [
+        "quest:aSword.57",
+        "skill:reveal",
+      ],
+    ],
+    "receive": ["quest:aSword.58"],
+  },
+  {
+    "room": {"north": 13, "east": 25},
+    "requires": [
+      [
+        "quest:aSword.58",
+        "loot:mHat",
+      ],
+    ],
+    "receive": ["quest:aSword.59"],
+  },
+  {
+    "room": {"north": 13, "east": 25},
+    "requires": [
+      [
+        "quest:aSword.59",
+        "loot:mHat",
+      ],
+    ],
+    "receive": ["quest:aSword.60"],
+  },
+  {
+    "room": {"north": 13, "east": 25},
+    "requires": [
+      [
+        "quest:aSword.60",
+        "loot:mHat",
+      ],
+    ],
+    "receive": ["quest:aSword.61"],
+  },
+  {
+    "room": {"north": 13, "east": 25},
+    "requires": [
+      [
+        "quest:aSword.61",
+        "loot:mHat",
+      ],
+    ],
+    "receive": ["quest:aSword.62"],
+  },
+  {
+    "room": {"north": 13, "east": 25},
+    "requires": [
+      [
+        "quest:aSword.62",
+        "loot:mHat",
+      ],
+    ],
+    "receive": ["quest:aSword.63"],
+  },
+  {
+    "room": {"north": 500, "east": 501},
+    "requires": [
+      [
+        "quest:aSword.63",
+        "skill:reveal",
+      ],
+    ],
+    "receive": ["quest:aSword.64"],
+  },
   # {
   #   "room": {"north": 500, "east": 501},
-  #   "requires": [[],],
-  #   "receive": ["quest:aSword.1"],
+  #   "requires": [["quest:aSword.13"],],
+  #   "receive": ["quest:aSword.13"],
   # },
   # {
   #   "room": {"north": 500, "east": 501},
@@ -4560,14 +5129,8 @@ MathQuest.js:42550 add listeners""",
     "requires": [
       [
         "loot:vHorn#20",
-      ],
-      [
         "loot:cThread#30",
-      ],
-      [
         "loot:gFeather#5",
-      ],
-      [
         "weapon:orcBlade",
       ],
     ],
@@ -4584,151 +5147,76 @@ MathQuest.js:42550 add listeners""",
     ],
     "receive": [
       "skill:medic.1",
+      "flag:medicNPCUsed.1",
     ],
   },
   {
     "room": {"north": 18, "east": 25},
     "requires": [
       [
-        "loot:tBand#2",
-      ],
-      #
-      [
+        "flag:medicNPCUsed.1",
         "loot:cFang#5",
       ],
     ],
     "receive": [
       "skill:medic.2",
+      "flag:medicNPCUsed.2",
     ],
   },
   {
     "room": {"north": 18, "east": 25},
     "requires": [
       [
-        "loot:tBand#2",
-      ],
-      #
-      [
-        "loot:cFang#5",
-      ],
-      #
-      [
+        "flag:medicNPCUsed.2",
         "loot:mStaff#10",
-      ],
-      [
         "loot:oCoin#20",
       ],
     ],
     "receive": [
       "skill:medic.3",
+      "flag:medicNPCUsed.3",
     ],
   },
   {
     "room": {"north": 18, "east": 25},
     "requires": [
       [
-        "loot:tBand#2",
-      ],
-      #
-      [
-        "loot:cFang#5",
-      ],
-      #
-      [
-        "loot:mStaff#10",
-      ],
-      [
-        "loot:oCoin#20",
-      ],
-      #
-      [
+        "flag:medicNPCUsed.3",
         "loot:gSkin#10",
-      ],
-      [
         "loot:dScale#10",
       ],
     ],
     "receive": [
       "skill:medic.4",
+      "flag:medicNPCUsed.4",
     ],
   },
   {
     "room": {"north": 18, "east": 25},
     "requires": [
       [
-        "loot:tBand#2",
-      ],
-      #
-      [
-        "loot:cFang#5",
-      ],
-      #
-      [
-        "loot:mStaff#10",
-      ],
-      [
-        "loot:oCoin#20",
-      ],
-      #
-      [
-        "loot:gSkin#10",
-      ],
-      [
-        "loot:dScale#10",
-      ],
-      #
-      [
+        "flag:medicNPCUsed.4",
         "loot:aAxe#5",
-      ],
-      [
         "loot:kCrest#10",
       ],
     ],
     "receive": [
       "skill:medic.5",
+      "flag:medicNPCUsed.5",
     ],
   },
   {
     "room": {"north": 18, "east": 25},
     "requires": [
       [
-        "loot:tBand#2",
-      ],
-      #
-      [
-        "loot:cFang#5",
-      ],
-      #
-      [
-        "loot:mStaff#10",
-      ],
-      [
-        "loot:oCoin#20",
-      ],
-      #
-      [
-        "loot:gSkin#10",
-      ],
-      [
-        "loot:dScale#10",
-      ],
-      #
-      [
-        "loot:aAxe#5",
-      ],
-      [
-        "loot:kCrest#10",
-      ],
-      #
-      [
+        "flag:medicNPCUsed.5",
         "loot:gFeather#3",
-      ],
-      [
         "loot:aScepter#5",
       ],
     ],
     "receive": [
       "skill:medic.6",
+      "flag:medicNPCUsed.6",
     ],
   },
   {
