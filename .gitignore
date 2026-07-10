@@ -13,4 +13,4 @@ MathQuest/play.html
 .images
 MQFiles/*
 !MQFiles/MQhsSave.json
-prog.js
+js/prog.js

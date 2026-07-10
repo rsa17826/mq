@@ -1,9 +1,5 @@
 """
 Regenerates prog.js from _progression.py's PROG list.
-Run this any time _progression.py changes, before shipping the map.
-
-Usage:
-    python3 progression_to_json.py path/to/_progression.py path/to/output/prog.js
 """
 
 import ast

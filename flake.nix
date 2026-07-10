@@ -30,6 +30,7 @@
                   pywebview
                 ]
               ))
+              imagemagick
             ];
             shellHook = "";
           };
