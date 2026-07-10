@@ -1055,6 +1055,47 @@ GEOM: list[ExitBase] = [
         "reqs": [
           [
             "permit:shadowsoulEntrance",
+            "weapon:royalSword",
+          ],
+          [
+            "permit:shadowsoulEntrance",
+            "weapon:sunSword",
+          ],
+          [
+            "permit:shadowsoulEntrance",
+            "weapon:shadowStaff",
+          ],
+          [
+            "permit:shadowsoulEntrance",
+            "weapon:refreshStaff",
+          ],
+          [
+            "permit:shadowsoulEntrance",
+            "weapon:orcBlade",
+          ],
+          [
+            "permit:shadowsoulEntrance",
+            "weapon:creeperCrusher",
+          ],
+          [
+            "permit:shadowsoulEntrance",
+            "weapon:twinFury",
+          ],
+          [
+            "permit:shadowsoulEntrance",
+            "weapon:baneBlade",
+          ],
+          [
+            "permit:shadowsoulEntrance",
+            "weapon:axe",
+          ],
+          [
+            "permit:shadowsoulEntrance",
+            "weapon:bombSword",
+          ],
+          [
+            "permit:shadowsoulEntrance",
+            "weapon:soulSword",
           ],
         ],
       },
@@ -1822,6 +1863,34 @@ GEOM: list[ExitBase] = [
   {
     "north": 9,
     "east": 26,
+    "areas": [
+      {
+        "reqs": [
+          [
+            "flag:magic only resist bypass",
+          ],
+        ],
+        "areas": [
+          [
+            {"side": "west", "idx": 0},
+            {"side": "north", "idx": 0},
+          ]
+        ],
+      },
+      {
+        "reqs": [
+          [],
+        ],
+        "areas": [
+          [
+            {"side": "west", "idx": 0},
+          ],
+          [
+            {"side": "north", "idx": 0},
+          ],
+        ],
+      },
+    ],
     "exits": {
       "west": [
         {"top": 4, "bottom": 6},
@@ -2627,6 +2696,47 @@ GEOM: list[ExitBase] = [
         "reqs": [
           [
             "permit:shadowsoulEntrance",
+            "weapon:royalSword",
+          ],
+          [
+            "permit:shadowsoulEntrance",
+            "weapon:sunSword",
+          ],
+          [
+            "permit:shadowsoulEntrance",
+            "weapon:shadowStaff",
+          ],
+          [
+            "permit:shadowsoulEntrance",
+            "weapon:refreshStaff",
+          ],
+          [
+            "permit:shadowsoulEntrance",
+            "weapon:orcBlade",
+          ],
+          [
+            "permit:shadowsoulEntrance",
+            "weapon:creeperCrusher",
+          ],
+          [
+            "permit:shadowsoulEntrance",
+            "weapon:twinFury",
+          ],
+          [
+            "permit:shadowsoulEntrance",
+            "weapon:baneBlade",
+          ],
+          [
+            "permit:shadowsoulEntrance",
+            "weapon:axe",
+          ],
+          [
+            "permit:shadowsoulEntrance",
+            "weapon:bombSword",
+          ],
+          [
+            "permit:shadowsoulEntrance",
+            "weapon:soulSword",
           ],
         ],
       },

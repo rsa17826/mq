@@ -292,6 +292,25 @@ PROG: list[ProgressionNode] = [
   {
     "room": {"north": 20, "east": 20},
     "requires": [
+      [
+        "weapon:bombSword",
+        "permit:bomb",
+      ],
+      [
+        "weapon:creeperCrusher",
+      ],
+      [
+        "weapon:aSword",
+        "quest:aSword.5",
+      ],
+    ],
+    "receive": [
+      "flag:magic only resist bypass",
+    ],
+  },
+  {
+    "room": {"north": 20, "east": 20},
+    "requires": [
       [],
     ],
     "receive": [
@@ -299,7 +318,6 @@ PROG: list[ProgressionNode] = [
       "skill:kick",
       "skill:flee",
       "skill:swap",
-      "flag:magic only resist bypass",
       "skill:firewall",
       "skill:halo",
       "item:gold",
