@@ -758,7 +758,8 @@ viewport.addEventListener(
     localStorage.scale = scale
     originX -= (mouseX - originX) * (scale / prevScale - 1)
     originY -= (mouseY - originY) * (scale / prevScale - 1)
-
+    localStorage.originX = originX
+    localStorage.originY = originY
     if (isPanning) {
       lastX = e.clientX
       lastY = e.clientY
