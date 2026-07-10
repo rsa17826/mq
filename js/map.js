@@ -24,7 +24,14 @@ let lastLoadedResolution = null
 // Draws a route from the player's current room to whichever tile (or
 // specific entrance on a tile) the mouse is hovering over. Uses
 // ap.slotData.roomData when present (handles entrance randomizer),
-// otherwise falls back to plain grid-neighbor connections.
+// otherwise falls back to plain grid-neighbor connections between rooms.
+//
+// Rooms aren't necessarily "walk in any door, walk out any other door":
+// AP_ENTRANCE_IDS[i].areas describes which of a room's exits are freely
+// connected to each other, and what's required (permits/items/etc) to
+// cross between groups. So the graph here is built at the level of
+// individual exits, not whole rooms, and only links two exits within the
+// same room if the player could actually currently walk between them.
 // =====================================================================
 
 // Must match TILE_WIDTH/TILE_HEIGHT/BLOCKS_X/BLOCKS_Y in gen_map.py
@@ -51,85 +58,244 @@ const PF_DIR_OFFSET = {
 
 const PATH_ARROW_COLOR = "#39ff14"
 let PATH_ROUTES = []
-let pathGraph = null
-let pathGraphSourceSlotData = null
 
 function pfRoomKey(n, e) {
   return `${n}_${e}`
 }
 
-function pfAddEdge(graph, from, to, fromDir, fromIdx, toDir, toIdx) {
-  if (!graph[from]) graph[from] = []
-  graph[from].push({
-    from,
-    to,
+// A node is one specific exit of one specific room.
+function pfExitNodeKey(roomKey, side, idx) {
+  return `${roomKey}::${side}::${idx}`
+}
+
+function pfAddEdge(
+  graph,
+  fromNode,
+  toNode,
+  fromRoom,
+  fromDir,
+  fromIdx,
+  toRoom,
+  toDir,
+  toIdx,
+) {
+  if (!graph[fromNode]) graph[fromNode] = []
+  graph[fromNode].push({
+    fromNode,
+    toNode,
+    fromRoom,
     fromDir,
     fromIdx: Number(fromIdx),
+    toRoom,
     toDir,
     toIdx: Number(toIdx),
   })
 }
 
+// --- Requirement checking (permits/items gating room-internal crossings) ---
+
+function pfBaseTok(tok) {
+  return String(tok).split("#")[0]
+}
+
+function pfHasToken(tok, have) {
+  if (tok.startsWith("quest:")) {
+    return !!(window.QuestState && window.QuestState.satisfied(tok))
+  }
+  return have.has(tok)
+}
+
+// reqGroups: array of AND-groups; satisfied if ANY group's tokens are ALL
+// held (OR of ANDs) -- same shape as PROG_DATA's "requires".
+function pfReqsSatisfied(reqGroups, have) {
+  if (!reqGroups || !reqGroups.length) return true
+  return reqGroups.some((group) =>
+    group.every((tok) => pfHasToken(pfBaseTok(tok), have)),
+  )
+}
+
+function pfExitKey(side, idx) {
+  return `${side}::${idx}`
+}
+
+// Union-find over one room's exits. Each area-layer whose reqs are
+// satisfied merges together every exit listed in each of its groups.
+// A layer whose reqs aren't satisfied simply contributes no merges this
+// time around -- reqs only ever ADD connections, they never block one
+// that another (satisfied) layer already made. If the room has no `areas`
+// data at all, every exit is merged into one group (fully connected).
+function pfRoomConnectivity(room, have) {
+  const parent = {}
+  function find(x) {
+    if (parent[x] === undefined) parent[x] = x
+    if (parent[x] !== x) parent[x] = find(parent[x])
+    return parent[x]
+  }
+  function union(a, b) {
+    const ra = find(a)
+    const rb = find(b)
+    if (ra !== rb) parent[ra] = rb
+  }
+
+  const exits = pfRoomExitList(room)
+  exits.forEach(({ side, idx }) => find(pfExitKey(side, idx)))
+
+  if (
+    !room ||
+    !Array.isArray(room.areas) ||
+    room.areas.length === 0
+  ) {
+    if (exits.length > 0) {
+      const anchor = pfExitKey(exits[0].side, exits[0].idx)
+      exits.forEach(({ side, idx }) =>
+        union(pfExitKey(side, idx), anchor),
+      )
+    }
+    return { find }
+  }
+
+  room.areas.forEach((layer) => {
+    if (!pfReqsSatisfied(layer.reqs, have)) return
+    ;(layer.areas || []).forEach((group) => {
+      for (let i = 1; i < group.length; i++) {
+        union(
+          pfExitKey(group[0].side, group[0].idx),
+          pfExitKey(group[i].side, group[i].idx),
+        )
+      }
+    })
+  })
+
+  return { find }
+}
+
+function pfRoomsByKey(slotData) {
+  const map = {}
+  ;(slotData.AP_ENTRANCE_IDS || []).forEach((room) => {
+    if (room && room.north !== undefined && room.east !== undefined) {
+      map[pfRoomKey(room.north, room.east)] = room
+    }
+  })
+  return map
+}
+
+function pfRoomExitList(room) {
+  const list = []
+  if (room && room.exits) {
+    Object.keys(room.exits).forEach((side) => {
+      const sideList = room.exits[side]
+      if (!Array.isArray(sideList)) return
+      sideList.forEach((_, idx) => list.push({ side, idx }))
+    })
+  }
+  return list
+}
+
+// Rebuilt on every path request: cheap (a few hundred rooms), and keeps the
+// intra-room edges honest as the player's inventory (`have`) changes.
 function buildPathGraph(slotData) {
   const graph = {}
+  const roomsByKey = pfRoomsByKey(slotData)
+  const have = window.haveReal || new Set()
 
+  // --- Cross-room edges: the physical doorways between rooms ---
   if (Array.isArray(slotData.roomData) && slotData.roomData.length) {
-    // Entrance-rando-aware: every row is one physical link between two
-    // exits. Traversable both ways.
     slotData.roomData.forEach((row) => {
       const [n1, e1, dir1, idx1, n2, e2, dir2, idx2] = row
       const k1 = pfRoomKey(n1, e1)
       const k2 = pfRoomKey(n2, e2)
-      pfAddEdge(graph, k1, k2, dir1, idx1, dir2, idx2)
-      pfAddEdge(graph, k2, k1, dir2, idx2, dir1, idx1)
+      const node1 = pfExitNodeKey(k1, dir1, idx1)
+      const node2 = pfExitNodeKey(k2, dir2, idx2)
+      pfAddEdge(graph, node1, node2, k1, dir1, idx1, k2, dir2, idx2)
+      pfAddEdge(graph, node2, node1, k2, dir2, idx2, k1, dir1, idx1)
     })
-    return graph
+  } else {
+    // Fallback (vanilla layout): exit N in a direction connects to exit N
+    // (same index) in the opposite direction of the neighboring room.
+    Object.keys(roomsByKey).forEach((fromKey) => {
+      const room = roomsByKey[fromKey]
+      if (!room.exits) return
+      Object.keys(room.exits).forEach((dir) => {
+        const list = room.exits[dir]
+        if (!Array.isArray(list)) return
+        const [dn, de] = PF_DIR_OFFSET[dir] || [0, 0]
+        const toKey = pfRoomKey(room.north + dn, room.east + de)
+        if (!roomsByKey[toKey]) return
+        list.forEach((_, idx) => {
+          const oppDir = PF_OPPOSITE[dir]
+          const node1 = pfExitNodeKey(fromKey, dir, idx)
+          const node2 = pfExitNodeKey(toKey, oppDir, idx)
+          pfAddEdge(
+            graph,
+            node1,
+            node2,
+            fromKey,
+            dir,
+            idx,
+            toKey,
+            oppDir,
+            idx,
+          )
+          pfAddEdge(
+            graph,
+            node2,
+            node1,
+            toKey,
+            oppDir,
+            idx,
+            fromKey,
+            dir,
+            idx,
+          )
+        })
+      })
+    })
   }
 
-  // Fallback (vanilla layout): exit N in a direction connects to exit N
-  // (same index) in the opposite direction of the neighboring room.
-  const rooms = slotData.AP_ENTRANCE_IDS || []
-  const byKey = {}
-  rooms.forEach((room) => {
-    if (room && room.north !== undefined && room.east !== undefined) {
-      byKey[pfRoomKey(room.north, room.east)] = room
+  // --- Intra-room edges: walking between exits inside the same room,
+  //     gated by that room's areas/reqs ---
+  Object.keys(roomsByKey).forEach((roomKey) => {
+    const room = roomsByKey[roomKey]
+    const exits = pfRoomExitList(room)
+    const conn = pfRoomConnectivity(room, have)
+    for (let i = 0; i < exits.length; i++) {
+      for (let j = i + 1; j < exits.length; j++) {
+        const a = exits[i]
+        const b = exits[j]
+        if (
+          conn.find(pfExitKey(a.side, a.idx)) !==
+          conn.find(pfExitKey(b.side, b.idx))
+        )
+          continue
+        const nodeA = pfExitNodeKey(roomKey, a.side, a.idx)
+        const nodeB = pfExitNodeKey(roomKey, b.side, b.idx)
+        pfAddEdge(
+          graph,
+          nodeA,
+          nodeB,
+          roomKey,
+          a.side,
+          a.idx,
+          roomKey,
+          b.side,
+          b.idx,
+        )
+        pfAddEdge(
+          graph,
+          nodeB,
+          nodeA,
+          roomKey,
+          b.side,
+          b.idx,
+          roomKey,
+          a.side,
+          a.idx,
+        )
+      }
     }
   })
 
-  rooms.forEach((room) => {
-    if (!room || !room.exits) return
-    const fromKey = pfRoomKey(room.north, room.east)
-    Object.keys(room.exits).forEach((dir) => {
-      const list = room.exits[dir]
-      if (!Array.isArray(list)) return
-      const [dn, de] = PF_DIR_OFFSET[dir] || [0, 0]
-      const toKey = pfRoomKey(room.north + dn, room.east + de)
-      if (!byKey[toKey]) return
-      list.forEach((_, idx) => {
-        pfAddEdge(
-          graph,
-          fromKey,
-          toKey,
-          dir,
-          idx,
-          PF_OPPOSITE[dir],
-          idx,
-        )
-      })
-    })
-  })
-
-  return graph
-}
-
-function getPathGraph() {
-  const slotData = window.ap && window.ap.slotData
-  if (!slotData) return null
-  if (pathGraph && pathGraphSourceSlotData === slotData)
-    return pathGraph
-  pathGraph = buildPathGraph(slotData)
-  pathGraphSourceSlotData = slotData
-  return pathGraph
+  return { graph, roomsByKey }
 }
 
 // Adjust here if the game exposes the player's current room differently.
@@ -151,24 +317,36 @@ function getCurrentRoomKey() {
   return null
 }
 
-// BFS shortest-path over rooms (one hop = taking an exit).
-function pfBfs(graph, startKey) {
-  const dist = { [startKey]: 0 }
+// BFS over exit-nodes. The player's current room's own exits all start at
+// distance 0 (we don't track exactly where in the room they're standing,
+// so treat the whole current room as already "at hand").
+function pfBfs(graph, roomsByKey, startRoomKey) {
+  const dist = {}
   const bestEdge = {}
   const allIncoming = {}
-  const queue = [startKey]
-  let qi = 0
+  const queue = []
 
+  pfRoomExitList(roomsByKey[startRoomKey]).forEach(
+    ({ side, idx }) => {
+      const node = pfExitNodeKey(startRoomKey, side, idx)
+      if (dist[node] === undefined) {
+        dist[node] = 0
+        queue.push(node)
+      }
+    },
+  )
+
+  let qi = 0
   while (qi < queue.length) {
     const cur = queue[qi++]
     const edges = graph[cur] || []
     for (const edge of edges) {
-      if (!allIncoming[edge.to]) allIncoming[edge.to] = []
-      allIncoming[edge.to].push(edge)
-      if (dist[edge.to] === undefined) {
-        dist[edge.to] = dist[cur] + 1
-        bestEdge[edge.to] = edge
-        queue.push(edge.to)
+      if (!allIncoming[edge.toNode]) allIncoming[edge.toNode] = []
+      allIncoming[edge.toNode].push(edge)
+      if (dist[edge.toNode] === undefined) {
+        dist[edge.toNode] = dist[cur] + 1
+        bestEdge[edge.toNode] = edge
+        queue.push(edge.toNode)
       }
     }
   }
@@ -176,51 +354,56 @@ function pfBfs(graph, startKey) {
   return { dist, bestEdge, allIncoming }
 }
 
-function pfReconstructPath(bestEdge, targetKey) {
+function pfReconstructPath(bestEdge, targetNode) {
   const path = []
-  let cur = targetKey
+  let cur = targetNode
   while (bestEdge[cur]) {
     const edge = bestEdge[cur]
     path.unshift(edge)
-    cur = edge.from
+    cur = edge.fromNode
   }
   return path
 }
 
 // Path from the player's current room to targetKey. If targetEntrance
 // ({dir, idx}) is given, the route ends specifically through that entrance
-// (may be a hop longer than the shortest room-to-room path).
+// (may be a hop longer than the shortest room-to-room path). Returns null
+// if there's genuinely no valid route with what the player currently has.
 function findPathTo(targetKey, targetEntrance) {
-  const graph = getPathGraph()
+  const slotData = window.ap && window.ap.slotData
   const startKey = getCurrentRoomKey()
-  if (!graph || !startKey) return null
+  if (!slotData || !startKey) return null
+
+  const { graph, roomsByKey } = buildPathGraph(slotData)
+  if (!roomsByKey[startKey]) return null
+
   if (startKey === targetKey && !targetEntrance) return []
 
-  const { dist, bestEdge, allIncoming } = pfBfs(graph, startKey)
+  const { dist, bestEdge } = pfBfs(graph, roomsByKey, startKey)
 
-  if (!targetEntrance) {
-    if (dist[targetKey] === undefined) return null
-    return pfReconstructPath(bestEdge, targetKey)
+  if (targetEntrance) {
+    const targetNode = pfExitNodeKey(
+      targetKey,
+      targetEntrance.dir,
+      targetEntrance.idx,
+    )
+    if (dist[targetNode] === undefined) return null
+    return pfReconstructPath(bestEdge, targetNode)
   }
 
-  const candidates = (allIncoming[targetKey] || []).filter(
-    (e) =>
-      e.toDir === targetEntrance.dir &&
-      e.toIdx === targetEntrance.idx,
-  )
-  if (!candidates.length) return null
-
-  candidates.sort(
-    (a, b) => (dist[a.from] ?? Infinity) - (dist[b.from] ?? Infinity),
-  )
-  const finalEdge = candidates[0]
-  if (dist[finalEdge.from] === undefined) return null
-
-  const pathToSource =
-    finalEdge.from === startKey ?
-      []
-    : pfReconstructPath(bestEdge, finalEdge.from)
-  return [...pathToSource, finalEdge]
+  // No specific entrance requested: take the closest exit-node belonging
+  // to that room that's actually reachable.
+  const prefix = `${targetKey}::`
+  let bestNode = null
+  let bestDist = Infinity
+  for (const node of Object.keys(dist)) {
+    if (node.startsWith(prefix) && dist[node] < bestDist) {
+      bestDist = dist[node]
+      bestNode = node
+    }
+  }
+  if (!bestNode) return null
+  return pfReconstructPath(bestEdge, bestNode)
 }
 
 // --- Pixel geometry, read straight off the rendered tiles ---
@@ -269,8 +452,8 @@ function buildPathRoutes(path) {
   if (!path || !path.length) return []
   const routes = []
   for (const edge of path) {
-    const a = pfExitPoint(edge.from, edge.fromDir, edge.fromIdx)
-    const b = pfExitPoint(edge.to, edge.toDir, edge.toIdx)
+    const a = pfExitPoint(edge.fromRoom, edge.fromDir, edge.fromIdx)
+    const b = pfExitPoint(edge.toRoom, edge.toDir, edge.toIdx)
     if (!a || !b) continue
     const midX = (a.x + b.x) / 2
     const midY = (a.y + b.y) / 2
@@ -344,7 +527,7 @@ document.addEventListener("DOMContentLoaded", () => {
   updateTileBackgrounds()
 
   document.querySelectorAll(".tile-wrapper").forEach((tile) => {
-    tile.addEventListener("mouseenter", function () {
+    tile.addEventListener("click", function () {
       currentRoom = this.getAttribute("data-room")
       const rawInfo = this.getAttribute("data-info")
       if (infoPanel && rawInfo) {
@@ -376,16 +559,43 @@ document.addEventListener("DOMContentLoaded", () => {
           infoPanel.innerText = rawInfo
         }
       }
+      showPathTo(currentRoom)
       requestUpdate()
     })
-    tile.addEventListener("mouseleave", function () {
-      currentRoom = null
-      if (infoPanel) {
-        infoPanel.innerHTML = "Hover over a room to view details."
-      }
-      requestUpdate()
-    })
+    // tile.addEventListener("mouseleave", function () {
+    //   currentRoom = null
+    //   if (infoPanel) {
+    //     infoPanel.innerHTML = "Hover over a room to view details."
+    //   }
+    //   // clearPathRoute()
+    //   requestUpdate()
+    // })
   })
+
+  // Hovering a specific entrance/exit square shows the route to that exact
+  // entrance instead of just "somewhere in this room". Requires gen_map.py
+  // to have been regenerated with data-room/data-side/data-idx attributes
+  // on .exit-square elements.
+  document
+    .querySelectorAll(".exit-square[data-side]")
+    .forEach((square) => {
+      square.addEventListener("click", function (e) {
+        e.stopPropagation()
+        const roomKey = this.getAttribute("data-room")
+        const dir = this.getAttribute("data-side")
+        const idx = Number(this.getAttribute("data-idx"))
+        showPathTo(roomKey, { dir, idx })
+      })
+      // square.addEventListener("mouseleave", function (e) {
+      //   e.stopPropagation()
+      //   const roomKey = this.getAttribute("data-room")
+      //   if (roomKey) {
+      //     showPathTo(roomKey)
+      //   } else {
+      //     // clearPathRoute()
+      //   }
+      // })
+    })
 })
 
 function worldToScreen(x, y) {
@@ -402,7 +612,7 @@ function updateTransform() {
   needsUpdate = false
 }
 
-function drawArrow(route) {
+function drawArrow(route, solid) {
   if (!route || !route.d) return
 
   const nums = route.d
@@ -418,8 +628,8 @@ function drawArrow(route) {
   ctx.quadraticCurveTo(b.x, b.y, c.x, c.y)
 
   ctx.strokeStyle = route.color
-  ctx.lineWidth = 4
-  ctx.setLineDash([12, 8])
+  ctx.lineWidth = solid ? 5 : 4
+  ctx.setLineDash(solid ? [] : [12, 8])
   ctx.lineCap = "round"
   ctx.stroke()
 
@@ -444,13 +654,16 @@ function drawArrow(route) {
 
 function redrawCanvas() {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
-  if (!currentRoom) return
 
-  ctx.lineDashOffset = -dashOffset
-  dashOffset += 0.4
+  if (currentRoom) {
+    ctx.lineDashOffset = -dashOffset
+    dashOffset += 0.4
 
-  const routes = ROUTES_DATA[currentRoom] || []
-  routes.forEach(drawArrow)
+    const routes = ROUTES_DATA[currentRoom] || []
+    routes.forEach((route) => drawArrow(route))
+  }
+
+  PATH_ROUTES.forEach((route) => drawArrow(route, true))
 }
 
 function requestUpdate() {

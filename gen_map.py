@@ -158,13 +158,14 @@ html_start = f"""<!DOCTYPE html>
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
             z-index: 6;
         }}
         .exit-square {{
             position: absolute;
             box-sizing: border-box;
             border: 1px solid rgba(255, 255, 255, 0.3);
+            pointer-events: auto;
+            cursor: pointer;
         }}
         .warp-square {{
             position: absolute;
@@ -585,7 +586,7 @@ def main():
             w_size = BLOCK_WIDTH_PCT
             h_size = ((end_val - start_val) + 1) * BLOCK_HEIGHT_PCT
 
-            squares_html.append(f'<div class="exit-square" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%; background-color:{matched_color};"></div>')
+            squares_html.append(f'<div class="exit-square" data-room="{room_key}" data-side="{side}" data-idx="{idx}" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%; background-color:{matched_color};"></div>')
             js_exits_db[room_key].append(
               {
                 "side": side,
@@ -607,7 +608,7 @@ def main():
             w_size = ((end_val - start_val) + 1) * BLOCK_WIDTH_PCT
             h_size = BLOCK_HEIGHT_PCT
 
-            squares_html.append(f'<div class="exit-square" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%; background-color:{matched_color};"></div>')
+            squares_html.append(f'<div class="exit-square" data-room="{room_key}" data-side="{side}" data-idx="{idx}" style="left:{x_pos}%; top:{y_pos}%; width:{w_size}%; height:{h_size}%; background-color:{matched_color};"></div>')
             js_exits_db[room_key].append(
               {
                 "side": side,
