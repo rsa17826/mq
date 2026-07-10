@@ -105,9 +105,10 @@ PROG: list[ProgressionNode] = [
     "room": {"north": 20, "east": 20},
     "requires": [
       [
-        "area:1",
-        # TODO
-        # "area:1.water",
+        "area:1.water",
+      ],
+      [
+        "area:2.water",
       ],
     ],
     "receive": [
@@ -659,6 +660,17 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "food:chocolate",
+    ],
+  },
+  {
+    "room": {"north": 9, "east": 22},
+    "requires": [
+      [
+        "entrance.south0",
+      ],
+    ],
+    "receive": [
+      "area:2.water",
     ],
   },
   {
@@ -1779,17 +1791,6 @@ MathQuest.js:42550 add listeners""",
       "quest:gTree.25",
       "misc:pup#10",
       "item:gold#1000",
-    ],
-  },
-  {
-    "room": {"north": 14, "east": 18},
-    "requires": [
-      [
-        "quest:gTree.25",
-      ],
-    ],
-    "receive": [
-      "quest:aSword.1",
     ],
   },
   {
@@ -2976,6 +2977,17 @@ MathQuest.js:42550 add listeners""",
     ],
   },
   {
+    "room": {"north": 15, "east": 24},
+    "requires": [
+      [
+        "entrance.north0",
+      ],
+    ],
+    "receive": [
+      "area:2.water",
+    ],
+  },
+  {
     "room": {"north": 16, "east": 24},
     "requires": [
       [
@@ -2986,6 +2998,20 @@ MathQuest.js:42550 add listeners""",
     "receive": [
       "item:gold#1000",
       "food:gummyBears#12",
+    ],
+  },
+  {
+    "room": {"north": 16, "east": 24},
+    "requires": [
+      [
+        "entrance.east0",
+      ],
+      [
+        "entrance.south1",
+      ],
+    ],
+    "receive": [
+      "area:2.water",
     ],
   },
   {
@@ -3959,7 +3985,12 @@ MathQuest.js:42550 add listeners""",
   },
   {
     "room": {"north": 14, "east": 18},
-    "requires": [["weapon:baneBlade"]],
+    "requires": [
+      [
+        "weapon:baneBlade",
+        "quest:gTree.25",
+      ]
+    ],
     "receive": ["quest:aSword.1"],
   },
   {
@@ -4003,13 +4034,6 @@ MathQuest.js:42550 add listeners""",
       ["quest:aSword.6", "weapon:baneBlade", "skill:reveal"],
     ],
     "receive": ["quest:aSword.7", "weapon:aSword"],
-  },
-  {
-    "room": {"north": 20, "east": 20},
-    "requires": [
-      ["quest:aSword.7", "weapon:aSword", "area:1.19"],
-    ],
-    "receive": ["quest:aSword.8"],
   },
   {
     "room": {"north": 20, "east": 20},
@@ -4246,13 +4270,14 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 20, "east": 20},
     "requires": [
       ["quest:aSword.40", "area:1.water", "weapon:aSword", "item:diamonds"],
+      ["quest:aSword.40", "area:2.water", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.41"],
   },
   {
     "room": {"north": 20, "east": 20},
     "requires": [
-      ["quest:aSword.41", "area:16.water", "weapon:aSword", "item:diamonds"],
+      ["quest:aSword.41", "area:16", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.42"],
   },
@@ -5656,6 +5681,7 @@ MathQuest.js:42550 add listeners""",
     ],
     "receive": [
       "area:2",
+      "area:2.water",
     ],
   },
   {
@@ -5719,6 +5745,7 @@ MathQuest.js:42550 add listeners""",
     ],
     "receive": [
       "area:2",
+      "area:2.water",
     ],
   },
   {
@@ -5746,8 +5773,11 @@ MathQuest.js:42550 add listeners""",
     ],
     "receive": [
       "area:2",
+      "area:2.water",
     ],
   },
+  # TODO add more water locations later?
+  # "area:2.water",
   {
     "room": {"north": 10, "east": 22},
     "requires": [
@@ -5908,6 +5938,7 @@ MathQuest.js:42550 add listeners""",
     ],
     "receive": [
       "area:2",
+      "area:2.water",
     ],
   },
   {
@@ -5917,6 +5948,7 @@ MathQuest.js:42550 add listeners""",
     ],
     "receive": [
       "area:2",
+      "area:2.water",
     ],
   },
   {
@@ -5926,6 +5958,7 @@ MathQuest.js:42550 add listeners""",
     ],
     "receive": [
       "area:2",
+      "area:2.water",
     ],
   },
   {
@@ -5944,6 +5977,7 @@ MathQuest.js:42550 add listeners""",
     ],
     "receive": [
       "area:2",
+      "area:2.water",
     ],
   },
   {
@@ -6008,6 +6042,7 @@ MathQuest.js:42550 add listeners""",
     ],
     "receive": [
       "area:2",
+      "area:2.water",
     ],
   },
   {
@@ -6017,6 +6052,7 @@ MathQuest.js:42550 add listeners""",
     ],
     "receive": [
       "area:2",
+      "area:2.water",
     ],
   },
   {
@@ -6089,6 +6125,7 @@ MathQuest.js:42550 add listeners""",
     ],
     "receive": [
       "area:2",
+      "area:2.water",
     ],
   },
   {
@@ -6098,6 +6135,7 @@ MathQuest.js:42550 add listeners""",
     ],
     "receive": [
       "area:2",
+      "area:2.water",
     ],
   },
   {
@@ -6189,6 +6227,7 @@ MathQuest.js:42550 add listeners""",
     ],
     "receive": [
       "area:8",
+      "area:2.water",
     ],
   },
   {
@@ -6234,6 +6273,7 @@ MathQuest.js:42550 add listeners""",
     ],
     "receive": [
       "area:2",
+      "area:2.water",
     ],
   },
   {
@@ -6953,6 +6993,7 @@ MathQuest.js:42550 add listeners""",
     ],
     "receive": [
       "area:1",
+      "area:1.water",
     ],
   },
   {
@@ -6962,6 +7003,7 @@ MathQuest.js:42550 add listeners""",
     ],
     "receive": [
       "area:1",
+      "area:1.water",
     ],
   },
   {
@@ -7079,6 +7121,7 @@ MathQuest.js:42550 add listeners""",
     ],
     "receive": [
       "area:1",
+      "area:1.water",
     ],
   },
   {
@@ -7088,6 +7131,7 @@ MathQuest.js:42550 add listeners""",
     ],
     "receive": [
       "area:1",
+      "area:1.water",
     ],
   },
   {
