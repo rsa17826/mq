@@ -3409,34 +3409,79 @@ GEOM: list[ExitBase] = [
   {
     "north": 14,
     "east": 20,
-    # "areas": [
-    #   {
-    #     "reqs": [
-    #       [
-    #         "power:15",
-    #       ],
-    #     ],
-    #     "areas": [
-    #       [
-    #         {"side": "north", "idx": 0},
-    #         {"side": "south", "idx": 0},
-    #       ],
-    #     ],
-    #   },
-    #   {
-    #     "reqs": [
-    #       [],
-    #     ],
-    #     "areas": [
-    #       [
-    #         {"side": "north", "idx": 0},
-    #       ],
-    #       [
-    #         {"side": "south", "idx": 0},
-    #       ],
-    #     ],
-    #   },
-    # ],
+    "areas": [
+      {
+        "reqs": [
+          [
+            "weapon:sword",
+          ],
+          [
+            "weapon:sKnife",
+          ],
+          [
+            "weapon:sKnife",
+          ],
+          [
+            "weapon:sKnife",
+          ],
+          [
+            "weapon:pitchfork",
+          ],
+          [
+            "weapon:royalSword",
+          ],
+          [
+            "weapon:sunSword",
+          ],
+          [
+            "weapon:shadowStaff",
+          ],
+          [
+            "weapon:refreshStaff",
+          ],
+          [
+            "weapon:orcBlade",
+          ],
+          [
+            "weapon:creeperCrusher",
+          ],
+          [
+            "weapon:twinFury",
+          ],
+          [
+            "weapon:baneBlade",
+          ],
+          [
+            "weapon:axe",
+          ],
+          [
+            "weapon:bombSword",
+          ],
+          [
+            "weapon:soulSword",
+          ],
+        ],
+        "areas": [
+          [
+            {"side": "north", "idx": 0},
+            {"side": "south", "idx": 0},
+          ],
+        ],
+      },
+      {
+        "reqs": [
+          [],
+        ],
+        "areas": [
+          [
+            {"side": "north", "idx": 0},
+          ],
+          [
+            {"side": "south", "idx": 0},
+          ],
+        ],
+      },
+    ],
     "exits": {
       "west": [],
       "south": [

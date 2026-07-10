@@ -294,6 +294,7 @@ window._apChatBuffer.forEach(_apRenderEntry)
 function apSendSayFromInput() {
   var input = document.getElementById("apChatSayInput")
   var text = input.value.trim()
+  text = text.replace(/^!giveitem /, "!getitem ")
   const options = {
     help: {
       alias: ["?"],
