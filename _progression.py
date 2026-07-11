@@ -3311,6 +3311,7 @@ MathQuest.js:42550 add listeners""",
     "requires": [
       [
         "quest:dream.3",
+        "magic:slow",
       ],
     ],
     "receive": [
