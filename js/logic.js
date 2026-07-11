@@ -11,7 +11,9 @@
 
     // Ground truth for "is this token a real network item" (vs a free/virtual
     // flag like area:/quest:, or an unresolvable entrance.* token).
-    const REAL_ITEM_NAMES = new Set(Object.values(ap.slotData.AP_ITEM_IDS))
+    const REAL_ITEM_NAMES = new Set(
+      Object.values(ap.slotData.AP_ITEM_IDS),
+    )
 
     function isEntranceToken(tok) {
       return tok.startsWith("entrance.")
@@ -210,14 +212,80 @@
         }
       }
     }
-
+    window.pwcount ??= 0
+    window.pacount ??= 0
+    window.pmcount ??= 0
     const origOnReceivedItems = ap.onReceivedItems.bind(ap)
     ap.onReceivedItems = function (packet) {
       origOnReceivedItems(packet)
       if (!window.playerLoaded) return
       packet.items.forEach((item) => {
-        const name = ap.slotData.AP_ITEM_IDS[item.item]
-        if (name) haveReal.add(name)
+        let name = ap.slotData.AP_ITEM_IDS[item.item]
+        if (name) {
+          switch (name) {
+            case "weapon:progressive weapons":
+              name = [
+                "weapon:aSword",
+                "weapon:club",
+                "weapon:dagger",
+                "weapon:sword",
+                "weapon:sKnife",
+                "weapon:pitchfork",
+                "weapon:warlockStaff",
+                "weapon:royalStaff",
+                "weapon:royalSword",
+                "weapon:sunSword",
+                "weapon:shadowStaff",
+                "weapon:refreshStaff",
+                "weapon:orcBlade",
+                "weapon:creeperCrusher",
+                "weapon:twinFury",
+                "weapon:baneBlade",
+                "weapon:axe",
+                "weapon:bombSword",
+                "weapon:soulSword",
+              ][pwcount++]
+              break
+            case "armor:progressive armor":
+              name = [
+                "armor:alphaArmor",
+                "armor:vest",
+                "armor:regenArmor",
+                "armor:robe",
+                "armor:iron",
+                "armor:mysticCloak",
+                "armor:sunArmor",
+                "armor:royalArmor",
+                "armor:phantomCoat",
+                "armor:speedVest",
+                "armor:soulArmor",
+                "armor:shadowCoat",
+                "armor:grimGear",
+                "armor:nobleArmor",
+                "armor:diamondArmor",
+              ][pacount++]
+              break
+            case "magic:progressive magic":
+              name = [
+                "magic:slow",
+                "magic:crush",
+                "magic:blast",
+                "magic:heal",
+                "magic:fire",
+                "magic:weak",
+                "magic:blessing",
+                "magic:drain",
+                "magic:cloud",
+                "magic:regen",
+                "magic:refresh",
+                "magic:doubleDown",
+                "magic:ice",
+                "magic:lightning",
+              ][pmcount++]
+              break
+          }
+          haveReal.add(name)
+        }
       })
       recompute()
     }
