@@ -413,6 +413,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "armor:alphaArmor",
+        "skill:craft",
       ],
     ],
     "receive": [
