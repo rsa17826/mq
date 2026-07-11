@@ -355,7 +355,7 @@ function customDrawLoop() {
             POS: ${Math.round(window.player.x)} ${Math.round(window.player.y)}
             `
       : ""
-
+    coordString += window.extraData?.() ?? ""
     overlayCtx.font = '36px "Booter - Zero Zero"'
 
     // Clean the text array up

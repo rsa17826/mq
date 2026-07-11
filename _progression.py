@@ -3795,6 +3795,17 @@ MathQuest.js:42550 add listeners""",
     "room": {"north": 300, "east": 300},
     "requires": [
       [
+        "item:gold#50",
+      ],
+    ],
+    "receive": [
+      "food:blueberries",
+    ],
+  },
+  {
+    "room": {"north": 300, "east": 300},
+    "requires": [
+      [
         "quest:isles.1",
       ],
     ],
