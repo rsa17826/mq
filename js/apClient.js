@@ -201,6 +201,7 @@ class ArchipelagoClient {
         }
       })
     }
+    window.__trackerRecompute?.()
   }
   /**
    * Handshake Step 2: Server sends RoomInfo.
@@ -492,7 +493,9 @@ class ArchipelagoClient {
       // world), which may be a different game than our own — so we
       // resolve the name via that slot's game, not our own AP_ITEM_IDS.
       const itemName = this.getItemName(item.item, this.slot)
-      const senderName = this.players?.find(p => String(p.slot) === String(item.player))?.alias
+      const senderName = this.players?.find(
+        (p) => String(p.slot) === String(item.player),
+      )?.alias
       const globalIndex = packet.index + offset
 
       apLog(
@@ -526,6 +529,7 @@ class ArchipelagoClient {
       }
       this.lastProcessedIndex = globalIndex + 1
     })
+    window.__trackerRecompute?.()
   }
 
   /**
