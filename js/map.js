@@ -120,7 +120,7 @@ function pfBaseTok(tok) {
 
 function pfHasToken(tok, have) {
   if (tok.startsWith("quest:")) {
-    return !!(window.QuestState && window.QuestState.satisfied(tok))
+    return QuestState.satisfied(tok)
   }
   return have.has(tok)
 }
