@@ -290,7 +290,7 @@ class ArchipelagoClient {
   getItemName(itemId, sendingSlot, format = false) {
     // log(itemId, this.slotInfo?.[sendingSlot]?.game, format, "itemId, sendingSlot, format")
     const game = this.slotInfo?.[sendingSlot]?.game
-    const name = game && this.itemIdToName?.['MathQuest']?.[itemId]
+    const name = game && this.itemIdToName?.[game]?.[itemId]
     if (format && game == "MathQuest" && name) {
       return formatItemName(name)
     }
@@ -437,7 +437,7 @@ class ArchipelagoClient {
     var { time, cause, source, coloredCause } = packet.data || {}
 
     // Ignore our own death bouncing back to us.
-    if (source === this.playerName) return
+    // if (source === this.playerName) return
     // Ignore stale duplicates (can happen on reconnect/replay).
     if (this._lastDeathLinkReceivedTime === time) return
     this._lastDeathLinkReceivedTime = time
@@ -491,11 +491,12 @@ class ArchipelagoClient {
       // item.player is the slot number that SENT this item (the source
       // world), which may be a different game than our own — so we
       // resolve the name via that slot's game, not our own AP_ITEM_IDS.
-      const itemName = this.getItemName(item.item, item.player)
+      const itemName = this.getItemName(item.item, this.slot)
+      const senderName = this.players?.find(p => String(p.slot) === String(item.player))?.alias
       const globalIndex = packet.index + offset
 
       apLog(
-        `@${this.itemCount > window.lastRecivedItem ? "purple" : "orange"}![Item Received]@! @console!ID: ${item.item} (@!${formatItemName(itemName)}${this.itemCount > window.lastRecivedItem ? "" : " - @orange!already recived@!"}@console!`,
+        `@${this.itemCount > window.lastRecivedItem ? "purple" : "orange"}![Item Received]@! @console!ID: ${item.item} (@!${formatItemName(itemName)}${this.itemCount > window.lastRecivedItem ? "" : " - @orange!already recived@!"} - sent by @blue!${senderName}@!@console!`,
         item,
         this.itemCount,
         window.lastRecivedItem,
