@@ -284,6 +284,7 @@
               ][pmcount++]
               break
           }
+          if (name == "permit:bomb.2") haveReal.add("permit:bomb")
           haveReal.add(name)
         }
       })
