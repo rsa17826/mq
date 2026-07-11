@@ -5,3 +5,7 @@ seeds 1 also breaks in same way
 warp skill - add logic for warping
 
 13_18 orange seller
+
+11 12 sunflower seeds crashes game after getting item
+
+make f to save not collide with f to fill canteen
