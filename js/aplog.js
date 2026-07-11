@@ -589,7 +589,6 @@ window.addEventListener(
     ) {
       e.preventDefault()
     }
-    log(e.key)
     if (e.key == "`") {
       e.preventDefault()
       if (document.activeElement?.id != "apChatSayInput") {
