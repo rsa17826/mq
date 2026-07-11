@@ -515,22 +515,6 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 11, "east": 9},
     "requires": [
       [
-        "item:gold",
-        "entrance.north0",
-      ],
-      [
-        "item:gold",
-        "entrance.east0",
-      ],
-    ],
-    "receive": [
-      "magic:weak",
-    ],
-  },
-  {
-    "room": {"north": 11, "east": 9},
-    "requires": [
-      [
         "loot:wPelt",
         "entrance.north0",
       ],
@@ -5038,10 +5022,15 @@ MathQuest.js:42550 add listeners""",
     ],
   },
   {
-    "room": {"north": 13, "east": 17},
+    "room": {"north": 11, "east": 9},
     "requires": [
       [
         "item:gold#900",
+        "entrance.east0",
+      ],
+      [
+        "item:gold#900",
+        "entrance.north0",
       ],
     ],
     "receive": [
