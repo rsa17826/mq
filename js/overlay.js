@@ -279,9 +279,9 @@ function customDrawLoop() {
       overlayCtx.strokeStyle = "#000"
       overlayCtx.lineJoin = "round"
       overlayCtx.lineWidth = 3 // Controls the thickness of the outline
-      overlayCtx.strokeText(text, x, y)
+      overlayCtx.strokeText(owo(text), x, y)
       overlayCtx.fillStyle = "#ddd"
-      overlayCtx.fillText(text, x, y)
+      overlayCtx.fillText(owo(text), x, y)
     }
     var currentOffsetY = totalTextHeight - 10
     var progressValue = 0
@@ -402,9 +402,9 @@ function customDrawLoop() {
         overlayCtx.strokeStyle = "#000"
         overlayCtx.lineJoin = "round"
         overlayCtx.lineWidth = 3
-        overlayCtx.strokeText(barText, textX, textY)
+        overlayCtx.strokeText(owo(barText), textX, textY)
         overlayCtx.fillStyle = "#ddd"
-        overlayCtx.fillText(barText, textX, textY)
+        overlayCtx.fillText(owo(barText), textX, textY)
       }
 
       // Shift the offset up by the height of this bar so the next bar sits above it
