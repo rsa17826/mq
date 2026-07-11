@@ -46,7 +46,7 @@ function formatItemName(name) {
     coloredName = `@${itemColors[coloredName[0]]}!@console!${coloredName[0]}:@!@${itemColors[coloredName[0]]}!${coloredName[1]}@!`
     return coloredName
   }
-  return `@green!@console!${name}@!`
+  return `@green!${name}@!`
 }
 /**
  * A native JavaScript implementation of the Archipelago Network Protocol.
@@ -288,12 +288,13 @@ class ArchipelagoClient {
    * game yet (e.g. DataPackage hasn't arrived, or slot_info is missing).
    */
   getItemName(itemId, sendingSlot, format = false) {
+    // log(itemId, this.slotInfo?.[sendingSlot]?.game, format, "itemId, sendingSlot, format")
     const game = this.slotInfo?.[sendingSlot]?.game
-    const name = game && this.itemIdToName?.[game]?.[itemId]
+    const name = game && this.itemIdToName?.['MathQuest']?.[itemId]
     if (format && game == "MathQuest" && name) {
       return formatItemName(name)
     }
-    return name ?? `Unknown Item (${itemId})`
+    return name ?? `Unknown Item ${game} - (${itemId})`
   }
 
   /**
