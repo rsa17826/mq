@@ -229,6 +229,112 @@ function customDrawLoop() {
         }
       }
     }
+
+    // Draws the map.js path-to-target arrow (see map.js's PATH_ROUTES),
+    // but reprojected onto this room's slice of the checkerboard instead
+    // of the whole overview map. The checkerboard covers the full 14x11
+    // room grid (tileSize px per block) flush against the bottom of the
+    // canvas, so a point that sits at fraction (fx, fy) across the room's
+    // map tile lands at the *same relative spot* here.
+    var PF_DIR_SCREEN_VECTOR = {
+      north: [0, -1],
+      south: [0, 1],
+      east: [1, 0],
+      west: [-1, 0],
+    }
+
+    function drawOverlayArrow(a, b) {
+      var angle = Math.atan2(b.y - a.y, b.x - a.x)
+      var arrowSize = 14
+
+      overlayCtx.beginPath()
+      overlayCtx.moveTo(a.x, a.y)
+      overlayCtx.lineTo(b.x, b.y)
+      overlayCtx.strokeStyle = "#39ff14"
+      overlayCtx.lineWidth = 5
+      overlayCtx.lineCap = "round"
+      overlayCtx.setLineDash([])
+      overlayCtx.stroke()
+
+      overlayCtx.beginPath()
+      overlayCtx.moveTo(b.x, b.y)
+      overlayCtx.lineTo(
+        b.x - arrowSize * Math.cos(angle - 0.35),
+        b.y - arrowSize * Math.sin(angle - 0.35),
+      )
+      overlayCtx.lineTo(
+        b.x - arrowSize * Math.cos(angle + 0.35),
+        b.y - arrowSize * Math.sin(angle + 0.35),
+      )
+      overlayCtx.closePath()
+      overlayCtx.fillStyle = "#39ff14"
+      overlayCtx.fill()
+    }
+
+    function drawRoomPathArrow() {
+      // map.js exposes these; if it hasn't loaded (or there's no route
+      // selected on the map), there's nothing to draw.
+      if (
+        !window.getCurrentPathRoutes ||
+        !window.pfWorldPointToRoomFraction
+      )
+        return
+      var routes = window.getCurrentPathRoutes()
+      if (!routes || !routes.length) return
+
+      var roomKey = `${window.player.north}_${window.player.east}`
+      var gridWidth = 14 * tileSize
+      var gridHeight = 11 * tileSize
+      var gridTop = overlayCanvas.height - gridHeight
+      var stubLength = tileSize * 0.8
+
+      function toOverlayPoint(point, forRoom) {
+        var frac = window.pfWorldPointToRoomFraction(forRoom, point)
+        if (!frac) return null
+        return {
+          x: frac.fx * gridWidth,
+          y: gridTop + frac.fy * gridHeight,
+        }
+      }
+
+      routes.forEach(function (route) {
+        var fromHere = route.fromRoom === roomKey
+        var toHere = route.toRoom === roomKey
+        if (!fromHere && !toHere) return
+
+        var fromPt =
+          fromHere ? toOverlayPoint(route.fromPoint, roomKey) : null
+        var toPt =
+          toHere ? toOverlayPoint(route.toPoint, roomKey) : null
+
+        if (fromPt && toPt) {
+          // Both ends of this hop are in the room the player is standing
+          // in (an in-room move) -- draw it exactly as it appears on the
+          // overview map, just rescaled to this room's slice of the grid.
+          drawOverlayArrow(fromPt, toPt)
+          return
+        }
+
+        // Only one end of this hop is in the current room -- the other
+        // end is elsewhere on the map, so just point toward the exit.
+        if (fromPt) {
+          var vec = PF_DIR_SCREEN_VECTOR[route.fromDir] || [0, 0]
+          drawOverlayArrow(fromPt, {
+            x: fromPt.x + vec[0] * stubLength,
+            y: fromPt.y + vec[1] * stubLength,
+          })
+        } else if (toPt) {
+          var vec2 = PF_DIR_SCREEN_VECTOR[route.toDir] || [0, 0]
+          drawOverlayArrow(
+            {
+              x: toPt.x - vec2[0] * stubLength,
+              y: toPt.y - vec2[1] * stubLength,
+            },
+            toPt,
+          )
+        }
+      })
+    }
     // Sample multi-line coordinate text setup
     var coordString = ""
     if (
@@ -239,6 +345,8 @@ function customDrawLoop() {
         EXITS_DATA[`${window.player.north}_${window.player.east}`] ||
           [],
       )
+
+    drawRoomPathArrow()
 
     coordString =
       localStorage.showPlayerPos == "true" ?

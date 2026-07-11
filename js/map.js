@@ -496,6 +496,19 @@ function pfExitPoint(roomKey, dir, idx) {
   return { x, y }
 }
 
+// Exposed for overlay.js: convert a world-pixel point into a 0..1 fraction
+// of the given room's tile (fx: 0=west edge, 1=east edge; fy: 0=north edge,
+// 1=south edge). Returns null if that room isn't currently rendered.
+function pfWorldPointToRoomFraction(roomKey, point) {
+  const origin = pfTileOrigin(roomKey)
+  if (!origin) return null
+  return {
+    fx: (point.x - origin.x) / PF_TILE_WIDTH,
+    fy: (point.y - origin.y) / PF_TILE_HEIGHT,
+  }
+}
+window.pfWorldPointToRoomFraction = pfWorldPointToRoomFraction
+
 function buildPathRoutes(path) {
   if (!path || !path.length) return []
   const routes = []
@@ -508,10 +521,22 @@ function buildPathRoutes(path) {
     routes.push({
       d: [a.x, a.y, midX, midY, b.x, b.y],
       color: PATH_ARROW_COLOR,
+      fromRoom: edge.fromRoom,
+      fromDir: edge.fromDir,
+      fromPoint: a,
+      toRoom: edge.toRoom,
+      toDir: edge.toDir,
+      toPoint: b,
     })
   }
   return routes
 }
+
+// Exposed for overlay.js so the in-game overlay can show the same route.
+function getCurrentPathRoutes() {
+  return PATH_ROUTES
+}
+window.getCurrentPathRoutes = getCurrentPathRoutes
 
 // No route found -> PATH_ROUTES ends up empty -> nothing is drawn.
 function showPathTo(targetKey, targetEntrance) {
