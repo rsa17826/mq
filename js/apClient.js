@@ -37,13 +37,16 @@ function removeColors(str) {
  * @returns string
  */
 function formatItemName(name) {
-  var coloredName = name.split(":")
-  if (coloredName[1].includes(".")) {
-    coloredName[1] = "progressive " + coloredName[1].split(".")[0]
+  if (name.includes(":")) {
+    var coloredName = name.split(":")
+    if (coloredName[1].includes(".")) {
+      coloredName[1] = "progressive " + coloredName[1].split(".")[0]
+    }
+    // @ts-ignore
+    coloredName = `@${itemColors[coloredName[0]]}!@console!${coloredName[0]}:@!@${itemColors[coloredName[0]]}!${coloredName[1]}@!`
+    return coloredName
   }
-  // @ts-ignore
-  coloredName = `@${itemColors[coloredName[0]]}!@console!${coloredName[0]}:@!@${itemColors[coloredName[0]]}!${coloredName[1]}@!`
-  return coloredName
+  return `@green!@console!${name}@!`
 }
 /**
  * A native JavaScript implementation of the Archipelago Network Protocol.
@@ -54,7 +57,7 @@ class ArchipelagoClient {
    * @param {{hostname:string,port:number,game:string,playerName:string,password: string}} param0
    */
   constructor({ hostname, port, game, playerName, password = "" }) {
-    this.url = `ws://${hostname}:${port}`
+    this.url = `wss://${hostname}:${port}`
     this.game = game
     this.playerName = playerName
     this.password = password
@@ -426,6 +429,7 @@ class ArchipelagoClient {
    * @param {Packet} packet
    */
   onBounced(packet) {
+    warn(packet.tags, "packet.tags")
     if (!packet.tags || !packet.tags.includes("DeathLink")) return
     if (!this.deathLinkEnabled) return
 
