@@ -3349,7 +3349,12 @@ MathQuest.js:42550 add listeners""",
   },
   {
     "room": {"north": 15, "east": 17},
-    "requires": [["skill:reveal"]],
+    "requires": [
+      [
+        "skill:reveal",
+        "skill:craft",
+      ]
+    ],
     "receive": [
       "quest:hWater.1",
     ],
