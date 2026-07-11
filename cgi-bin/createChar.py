@@ -367,7 +367,6 @@ try:
           "Magic.ice": 0,
           "Magic.refresh": 0,
           "Magic.blessing": 0,
-          "Magic.weak": 0,
           "diamondDig": 0,
           "food:gingerBread - pam16": 0,
           "Craft.upgradeAAHP": 0,
