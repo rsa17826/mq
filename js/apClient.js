@@ -457,6 +457,7 @@ class ArchipelagoClient {
       `@red![DeathLink]@! ${coloredCause ? coloredCause : `@pink!${source}@! @red!died@! mysteriously`}`,
     )
 
+    if (source === this.playerName) return
     killPlayer()
   }
   /**
