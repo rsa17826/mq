@@ -67,8 +67,9 @@ function pfSelectionId(roomKey, entrance) {
 }
 
 // Clicking a tile/entrance shows the route to it; clicking the same one
-// again clears the route.
+// again clears the route. A manual click always wins over quest tracking.
 function selectPathTarget(roomKey, entrance) {
+  trackedQuestName = null
   const id = pfSelectionId(roomKey, entrance)
   if (selectedPathId === id) {
     selectedPathId = null
@@ -549,6 +550,90 @@ function clearPathRoute() {
   PATH_ROUTES = []
   requestUpdate()
 }
+
+// =====================================================================
+// QUEST TRACKING
+//
+// trackQuestPath("gTree") keeps the path arrows pointed at the next
+// not-yet-completed point of that quest (the lowest "quest:gTree.N" that
+// isn't satisfied yet), and keeps it updated as quest state changes or
+// the player moves to a new room.
+// =====================================================================
+
+let trackedQuestName = null
+
+function pfGetProgData() {
+  if (typeof PROG_DATA !== "undefined" && PROG_DATA) return PROG_DATA
+  if (window.PROG_DATA) return window.PROG_DATA
+  return []
+}
+
+// Scans PROG_DATA for the not-yet-satisfied "quest:<questName>.N" token
+// with the lowest N, and returns the room it's granted in.
+function findNextQuestPoint(questName) {
+  const prefix = `quest:${questName}.`
+  let best = null
+
+  pfGetProgData().forEach((entry) => {
+    ;(entry.receive || []).forEach((rawTok) => {
+      const tok = pfBaseTok(rawTok)
+      if (!tok.startsWith(prefix)) return
+      const n = Number(tok.slice(prefix.length))
+      if (Number.isNaN(n)) return
+      const done = QuestState.satisfied(tok)
+      if (done) return
+      if (!best || n < best.n) best = { room: entry.room, tok, n }
+    })
+  })
+
+  return best
+}
+
+// Re-runs the search and re-points the path arrows. Safe to call anytime;
+// it's a no-op unless a quest is actively being tracked.
+function updateTrackedQuestPath() {
+  if (!trackedQuestName) return
+  const next = findNextQuestPoint(trackedQuestName)
+  if (!next) {
+    clearPathRoute()
+    return
+  }
+  showPathTo(next.room)
+}
+
+// Call with a quest key matching ap.slotData.maxQuests / manager.quest[
+// Enum.Quest.<name>] (e.g. "gTree") to start tracking it on the map.
+// Call with no argument (or a falsy value) to stop tracking.
+function trackQuestPath(questName) {
+  trackedQuestName = questName || null
+  selectedPathId = null // a tracked quest supersedes any manual click-selection
+  updateTrackedQuestPath()
+}
+window.trackQuestPath = trackQuestPath
+
+// Attaches `handler` to a game hook that might be an array of callbacks,
+// an existing function (wrapped so both still run), or not set up yet.
+function pfHookEvent(name, handler) {
+  const existing = window[name]
+  if (Array.isArray(existing)) {
+    existing.push(handler)
+    return
+  }
+  if (typeof existing === "function") {
+    window[name] = function (...args) {
+      existing.apply(this, args)
+      handler.apply(this, args)
+    }
+    return
+  }
+  window[name] = handler
+}
+
+pfHookEvent("onQuestChanged", () =>
+  setTimeout(updateTrackedQuestPath),
+)
+pfHookEvent("onQuestChanged", () => window.__trackerRecompute?.())
+pfHookEvent("onNewScreen", () => updateTrackedQuestPath())
 
 function resizeCanvas() {
   canvas.width = viewport.clientWidth

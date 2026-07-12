@@ -39,9 +39,3 @@ const QuestState = (function () {
   return { satisfied, set, seedFromGame, values }
 })()
 
-// The game calls this whenever a quest value changes.
-window.onQuestChanged = function (prop, value) {
-  // does nothing as the values get repulled
-  // QuestState.set(prop, value)
-  window.__trackerRecompute?.()
-}
