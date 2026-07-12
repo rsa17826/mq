@@ -397,8 +397,8 @@ function customDrawLoop() {
     if (window.ap?.slotData) {
       var prog = 0
       if (ap.slotData.final_boss) {
-        maxProg += 22
-        prog += Math.min(manager.quest[Enum.Quest.gTree], 22)
+        maxProg += 23
+        prog += Math.min(manager.quest[Enum.Quest.gTree], 23)
       }
       if (ap.slotData?.all_quests_maxed) {
         prog += Object.entries(ap.slotData.maxQuests).reduce(
