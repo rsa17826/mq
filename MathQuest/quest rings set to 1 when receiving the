@@ -8,3 +8,9 @@ warp skill - add logic for warping
 11 12 sunflower seeds crashes game after getting item
 
 make f to save not collide with f to fill canteen
+
+skill:reveal.+1
+
+crafting causes craft tile position to reset to wrong pos
+
+route-unknown

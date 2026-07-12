@@ -633,7 +633,16 @@ pfHookEvent("onQuestChanged", () =>
   setTimeout(updateTrackedQuestPath),
 )
 pfHookEvent("onQuestChanged", () => window.__trackerRecompute?.())
-pfHookEvent("onNewScreen", () => updateTrackedQuestPath())
+pfHookEvent("onNewScreen", () => {
+  if (
+    PATH_ROUTES.find(
+      (e) => e.toRoom == `${manager.north}_${manager.east}`,
+    )
+  ) {
+    return
+  }
+  updateTrackedQuestPath()
+})
 
 function resizeCanvas() {
   canvas.width = viewport.clientWidth
