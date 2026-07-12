@@ -224,8 +224,8 @@ const RoomGraph = (function () {
       const counts = roomExitCounts[room]
       if (!roomIndex[room]) return "full" // no entrance data at all: don't grey, unknown
       if (!counts || counts.total === 0)
-        return visitedRooms.has(room) ? "full" : "none"
-      if (counts.reachable === 0) return "none"
+        return visitedRooms.has(room) ? "full" : "full"
+      if (counts.reachable === 0) return "full"
       if (counts.reachable >= counts.total) return "full"
       return "partial"
     }
