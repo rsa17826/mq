@@ -378,6 +378,7 @@ try:
           "progressive weapons": 0,
           "progressive armor": 0,
           "progressive magic": 0,
+          "Food.holyWater": 0,
         },
         "lastRecivedItem": 0,
       },

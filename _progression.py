@@ -320,7 +320,8 @@ PROG: list[ProgressionNode] = [
       "skill:swap",
       "skill:firewall",
       "skill:halo",
-      "item:gold",
+      # TODO !!! make instead push precollected 20_20 - item:gold
+      # "item:gold",
       "loot:key",
     ],
     "info": """can be got anywhere
