@@ -202,6 +202,7 @@ class ArchipelagoClient {
       })
     }
     window.__trackerRecompute?.()
+    setTimeout(() => window.__trackerRecompute?.())
   }
   /**
    * Handshake Step 2: Server sends RoomInfo.

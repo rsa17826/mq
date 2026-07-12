@@ -1347,7 +1347,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "quest:gTree.6",
-      "item:gold#50",
+      "item:gold - mayor#50",
     ],
   },
   {
