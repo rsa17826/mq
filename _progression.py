@@ -7036,7 +7036,8 @@ MathQuest.js:42550 add listeners""",
   {
     "room": {"north": 12, "east": 16},
     "requires": [
-      [],
+      ["entrance.east1"],
+      ["entrance.west0"],
     ],
     "receive": [
       "area:1",
