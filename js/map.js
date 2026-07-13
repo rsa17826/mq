@@ -613,7 +613,7 @@ function clearPathRoute() {
 // around trackToken("quest:" + questName).
 // =====================================================================
 
-let trackedToken = null
+let trackedToken = localStorage.trackedToken || null
 
 function pfGetProgData() {
   if (typeof PROG_DATA !== "undefined" && PROG_DATA) return PROG_DATA
@@ -784,7 +784,9 @@ function buildLootExtraData(list) {
     list
       .map(([name, count]) => {
         const have =
-          window.manager?.loot?.[window.Enum?.Loot?.[name]] ?? 0
+          window.Enum?.Loot?.[name] === undefined ?
+            (window.manager?.[name] ?? 0)
+          : (window.manager?.loot?.[window.Enum?.Loot?.[name]] ?? 0)
         return have >= count ? "" : `${name}: ${have}/${count}`
       })
       .filter(Boolean)
@@ -837,10 +839,12 @@ const updateTrackedQuestPath = updateTrackedPath
 // falsy value) to stop tracking.
 function trackToken(token) {
   trackedToken = token || null
+  localStorage.trackedToken = trackedToken
   selectedPathId = null // tracking supersedes any manual click-selection
   updateTrackedPath()
 }
 window.trackToken = trackToken
+trackToken(localStorage.trackedToken)
 
 // Call with a quest key matching ap.slotData.maxQuests / manager.quest[
 // Enum.Quest.<name>] (e.g. "gTree") to start tracking it on the map.
