@@ -1754,14 +1754,6 @@ MathQuest.js:42550 add listeners""",
     ],
   },
   {
-    "room": {"north": 6, "east": 23},
-    "requires": [
-      [],
-    ],
-    "receive": [],
-    "info": "how show the warp requiring this",
-  },
-  {
     "room": {"north": 5, "east": 24},
     "requires": [
       [

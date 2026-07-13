@@ -154,7 +154,8 @@
 
     const filterInput = document.createElement("input")
     filterInput.type = "text"
-    filterInput.placeholder = "Filter by room, requires, or receive..."
+    filterInput.placeholder =
+      "Filter by room, requires, or receive..."
 
     const body = document.createElement("div")
     const list = document.createElement("div")
@@ -185,7 +186,9 @@
         const recStr = fmtReceive(entry.receive)
         if (
           q &&
-          !`${entry.room} ${reqStr} ${recStr}`.toLowerCase().includes(q)
+          !`${entry.room} ${reqStr} ${recStr}`
+            .toLowerCase()
+            .includes(q)
         )
           return
 
@@ -193,6 +196,8 @@
         row.style.cssText =
           "border-bottom:1px solid #333; padding:6px 0; display:flex; flex-direction:column; gap:2px;"
 
+        if (isChecked(entry) || /^area:\d+(?:\.water)$/.test(recStr))
+          return
         if (isChecked(entry)) row.style.opacity = "0.4"
 
         const loc = document.createElement("div")
@@ -209,7 +214,8 @@
         row.appendChild(rec)
 
         const btnRow = document.createElement("div")
-        btnRow.style.cssText = "display:flex; gap:6px; margin-top:4px;"
+        btnRow.style.cssText =
+          "display:flex; gap:6px; margin-top:4px;"
 
         const trackBtn = document.createElement("button")
         trackBtn.textContent = "Track"
