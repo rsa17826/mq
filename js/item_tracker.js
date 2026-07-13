@@ -133,7 +133,7 @@
     panel.style.cssText = `
       position: absolute;
       top: 20px;
-      right: 20px;
+      right: 350px;
       max-height: 70vh;
       width: 380px;
       overflow-y: auto;
@@ -196,7 +196,7 @@
         row.style.cssText =
           "border-bottom:1px solid #333; padding:6px 0; display:flex; flex-direction:column; gap:2px;"
 
-        if (isChecked(entry) || /^area:\d+(?:\.water)$/.test(recStr))
+        if (isChecked(entry) || /^(?:area|loot):/.test(recStr))
           return
         if (isChecked(entry)) row.style.opacity = "0.4"
 

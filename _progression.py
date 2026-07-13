@@ -3392,10 +3392,12 @@ MathQuest.js:42550 add listeners""",
     "requires": [
       [
         "quest:hWater.6",
+        "skill:reveal",
       ],
     ],
     "receive": [
       "quest:hWater.7",
+      "craft:holyWater",
     ],
   },
   {

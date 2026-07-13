@@ -627,6 +627,24 @@ function pfTokenHave(tok) {
   return (window.haveReal || new Set()).has(tok)
 }
 
+// Whether one specific (room, token) location has actually been checked --
+// NOT whether the player happens to hold that item type already. The same
+// receive token can be granted by several different physical locations
+// (e.g. several separate "craft:emerald" checks), and holding one copy in
+// haveReal says nothing about which of those specific checks are done.
+// This mirrors logic.js's own per-token "alreadyChecked" test exactly, so
+// tracking and the reachability overlay always agree on what's left.
+function pfLocationChecked(room, token) {
+  token = pfBaseTok(token)
+  if (token.startsWith("quest:")) return QuestState.satisfied(token)
+  const key = `${room} - ${token}`
+  const els = document.querySelectorAll(
+    `.progression-icon[data-location="${CSS.escape(key)}"]`,
+  )
+  return [...els].some((el) => el.classList.contains("checked"))
+}
+window.pfLocationChecked = pfLocationChecked
+
 // Scans PROG_DATA for the not-yet-satisfied "quest:<questName>.N" token
 // with the lowest N, and returns the room it's granted in.
 function findNextQuestPoint(questName) {
@@ -649,8 +667,12 @@ function findNextQuestPoint(questName) {
 }
 
 // Resolves a tracked token ("quest:<name>" or an exact receive token like
-// "item:earthAmulet") to the PROG_DATA entry that grants the next
-// not-yet-had step of it. Returns null once there's nothing left to chase.
+// "craft:emerald") to the PROG_DATA entry that grants the next
+// not-yet-*checked* instance of it -- checking each (entry.room, token)
+// pairing individually, since several entries (or even one entry with
+// several receive tokens) can share the same token across different
+// physical locations. Returns null once every location granting this token
+// has actually been checked.
 function findTokenEntry(token) {
   if (!token) return null
   if (token.startsWith("quest:")) {
@@ -664,12 +686,13 @@ function findTokenEntry(token) {
       ) || { room: next.room, requires: [], receive: [next.tok] }
     )
   }
-  // if (pfTokenHave(token)) return null
-  return (
-    pfGetProgData().find((e) =>
-      (e.receive || []).some((rawTok) => pfBaseTok(rawTok) === token),
-    ) || null
-  )
+  for (const entry of pfGetProgData()) {
+    if (!(entry.receive || []).some((t) => pfBaseTok(t) === token))
+      continue
+    if (pfLocationChecked(entry.room, token)) continue
+    return entry
+  }
+  return null
 }
 
 // Some entries live in the virtual/no-location room (e.g. "20_20") and are
