@@ -13,11 +13,42 @@ const RoomGraph = (function () {
   }
 
   let roomIndex = null // "north_east" -> room entry from AP_ENTRANCE_IDS
+  let warpIndex = null // "room|side|idx" -> [{ reqs, targets: [{room,side,idx}] }]
 
   function buildRoomIndex() {
     roomIndex = {}
     for (const r of ap.slotData.AP_ENTRANCE_IDS) {
       roomIndex[`${r.north}_${r.east}`] = r
+    }
+  }
+
+  // Indexes _room_geometry.WARPS (emitted as WARPS_DATA by gen_map.py) by
+  // origin exit so the BFS below can fire them off the moment that exit
+  // becomes reachable, same as it does for physical doorways.
+  //
+  // A "root" connection point is enter-only: per WARPS semantics nothing
+  // ever leaves from one (it's just a landing spot inside a room, not a
+  // walkable exit square), so it's skipped as an origin here -- but it's
+  // still a perfectly valid destination (handled in computeReachability).
+  function buildWarpIndex() {
+    warpIndex = {}
+    const warps = (typeof WARPS_DATA !== "undefined" && WARPS_DATA) || []
+    for (const warp of warps) {
+      const reqs = warp.reqs || []
+      const conns = warp.connections || []
+      conns.forEach(([n, e, side, idx], oi) => {
+        if (side === "root") return
+        const originKey = `${n}_${e}|${side}|${idx}`
+        const targets = conns
+          .filter((_, di) => di !== oi)
+          .map(([tn, te, tside, tidx]) => ({
+            room: `${tn}_${te}`,
+            side: tside,
+            idx: tidx,
+          }))
+        if (!warpIndex[originKey]) warpIndex[originKey] = []
+        warpIndex[originKey].push({ reqs, targets })
+      })
     }
   }
 
@@ -125,10 +156,13 @@ const RoomGraph = (function () {
   //   isEntranceReachable(room, side, idx): bool
   function computeReachability(haveReal, startRoom) {
     if (!roomIndex) buildRoomIndex()
+    if (!warpIndex) buildWarpIndex()
     QuestState.seedFromGame()
 
     const reachableExits = new Set()
     const roomExitCounts = {}
+    const visitedRooms = new Set()
+    const queue = []
 
     function totalExitsFor(room) {
       let n = 0
@@ -137,38 +171,91 @@ const RoomGraph = (function () {
       return n
     }
 
-    const queue = []
-    const visitedRooms = new Set()
-
-    // Seed: start room, union ALL satisfied components (not gated by entry side,
-    // since the player begins inside it rather than walking in from an exit).
-    if (roomIndex[startRoom]) {
-      const room = roomIndex[startRoom]
-      const total = totalExitsFor(room)
-      roomExitCounts[startRoom] = { reachable: 0, total }
-      const comps = computeRoomComponents(room, haveReal)
-      for (const key of Object.keys(comps)) {
-        const [side, idxStr] = [
-          key.replace(/\d+$/, ""),
-          key.match(/\d+$/)[0],
-        ]
-        const idx = Number(idxStr)
-        const node = `${startRoom}|${side}|${idx}`
-        if (!reachableExits.has(node)) {
-          reachableExits.add(node)
-          roomExitCounts[startRoom].reachable++
-          queue.push({ room: startRoom, side, idx })
+    function ensureCounts(roomKey, room) {
+      if (!roomExitCounts[roomKey]) {
+        roomExitCounts[roomKey] = {
+          reachable: 0,
+          total: totalExitsFor(room),
         }
       }
-      visitedRooms.add(startRoom)
     }
+
+    // Marks one exit reachable (if it isn't already) and queues it for
+    // further expansion. Every exit that becomes reachable this way also
+    // gets a chance to fire off any warp whose origin is that exact exit.
+    function markExitReachable(roomKey, side, idx) {
+      const node = `${roomKey}|${side}|${idx}`
+      if (reachableExits.has(node)) return
+      const room = roomIndex[roomKey]
+      if (!room) return
+      ensureCounts(roomKey, room)
+      reachableExits.add(node)
+      roomExitCounts[roomKey].reachable++
+      queue.push({ room: roomKey, side, idx })
+    }
+
+    // "Seeds" a room the way actually starting there (or landing via a
+    // "root" warp connection) works: every exit becomes reachable at once,
+    // regardless of area/reqs gating between them, since the player is
+    // simply standing inside the room rather than having walked in through
+    // one specific gated exit.
+    function enterRoomAtRoot(roomKey) {
+      const room = roomIndex[roomKey]
+      if (!room) return
+      visitedRooms.add(roomKey)
+      ensureCounts(roomKey, room)
+      const comps = computeRoomComponents(room, haveReal)
+      for (const key of Object.keys(comps)) {
+        const side = key.replace(/\d+$/, "")
+        const idx = Number(key.match(/\d+$/)[0])
+        markExitReachable(roomKey, side, idx)
+      }
+    }
+
+    // Arriving through one specific exit of a room (a physical doorway, or
+    // a non-root warp landing): that exit becomes reachable, and so does
+    // the rest of its area-component (whatever's walkable from there given
+    // the room's current reqs-gated internal connectivity).
+    function enterRoomViaExit(roomKey, side, idx) {
+      const room = roomIndex[roomKey]
+      if (!room) return
+      visitedRooms.add(roomKey)
+      markExitReachable(roomKey, side, idx)
+      const comps = computeRoomComponents(room, haveReal)
+      const enteredComp = comps[exitKey(side, idx)]
+      if (enteredComp === undefined) return
+      for (const key of Object.keys(comps)) {
+        if (comps[key] !== enteredComp) continue
+        const s = key.replace(/\d+$/, "")
+        const i = Number(key.match(/\d+$/)[0])
+        markExitReachable(roomKey, s, i)
+      }
+    }
+
+    // Fires any WARPS group whose origin is this exact exit, once its reqs
+    // are satisfied: "root" targets seed the whole destination room, other
+    // targets are entered exactly like a physical doorway would be.
+    function fireWarpsFrom(roomKey, side, idx) {
+      const entries = warpIndex[`${roomKey}|${side}|${idx}`]
+      if (!entries) return
+      for (const { reqs, targets } of entries) {
+        if (!reqsSatisfied(reqs, haveReal)) continue
+        for (const t of targets) {
+          if (t.side === "root") enterRoomAtRoot(t.room)
+          else enterRoomViaExit(t.room, t.side, t.idx)
+        }
+      }
+    }
+
+    if (roomIndex[startRoom]) enterRoomAtRoot(startRoom)
 
     while (queue.length > 0) {
       const cur = queue.shift()
       const room = roomIndex[cur.room]
       if (!room) continue
 
-      // step 1: cross to the neighboring room's connecting exit
+      fireWarpsFrom(cur.room, cur.side, cur.idx)
+
       const dest = externalConnection(
         cur.room,
         room,
@@ -176,43 +263,7 @@ const RoomGraph = (function () {
         cur.idx,
       )
       if (dest && roomIndex[dest.room]) {
-        const destRoom = roomIndex[dest.room]
-        if (!roomExitCounts[dest.room]) {
-          roomExitCounts[dest.room] = {
-            reachable: 0,
-            total: totalExitsFor(destRoom),
-          }
-        }
-        const destNode = `${dest.room}|${dest.side}|${dest.idx}`
-        if (!reachableExits.has(destNode)) {
-          reachableExits.add(destNode)
-          roomExitCounts[dest.room].reachable++
-          queue.push({
-            room: dest.room,
-            side: dest.side,
-            idx: dest.idx,
-          })
-        }
-
-        // step 2: from that entry exit, expand to the rest of ITS room's
-        // same-component exits (only reachable via this specific entry side)
-        const comps = computeRoomComponents(destRoom, haveReal)
-        const enteredKey = exitKey(dest.side, dest.idx)
-        const enteredComp = comps[enteredKey]
-        if (enteredComp !== undefined) {
-          for (const key of Object.keys(comps)) {
-            if (comps[key] !== enteredComp) continue
-            const side = key.replace(/\d+$/, "")
-            const idx = Number(key.match(/\d+$/)[0])
-            const node = `${dest.room}|${side}|${idx}`
-            if (!reachableExits.has(node)) {
-              reachableExits.add(node)
-              roomExitCounts[dest.room].reachable++
-              queue.push({ room: dest.room, side, idx })
-            }
-          }
-        }
-        visitedRooms.add(dest.room)
+        enterRoomViaExit(dest.room, dest.side, dest.idx)
       }
     }
 

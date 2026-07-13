@@ -257,10 +257,10 @@ def load_connections():
     return json.load(f)["connections"]
 
 
-def load_doors():
-  from _exits import EXITS
+def load_warps():
+  from _room_geometry import WARPS
 
-  return EXITS["doors"]
+  return list(WARPS)
 
 
 def load_geometry_map():
@@ -274,6 +274,86 @@ def load_geometry_map():
       key = f"{n}_{e}"
       geom_db[key] = room.get("exits", {})
   return geom_db
+
+
+def _resolve_warp_point(n, e, side, idx, geom_index):
+  """Local (unsnapped) pixel position, in ROOM_INTERNAL_WIDTH/HEIGHT space,
+  of one endpoint of a WARPS connection. `side == "root"` means the warp
+  just drops the player somewhere inside the room rather than at one of its
+  drawn exit-squares (roots are enter-only and never have their own exit
+  square), so we place those at the room's center, nudging apart by `idx`
+  if a room happens to have more than one root landing spot.
+  """
+  room_key = f"{int(float(n))}_{int(float(e))}"
+  block_w = ROOM_INTERNAL_WIDTH / BLOCKS_X
+  block_h = ROOM_INTERNAL_HEIGHT / BLOCKS_Y
+
+  if side == "root":
+    return room_key, ROOM_INTERNAL_WIDTH / 2 + idx * 40, ROOM_INTERNAL_HEIGHT / 2
+
+  bounds_list = geom_index.get(room_key, {}).get(side) or []
+  if not isinstance(bounds_list, list):
+    bounds_list = [bounds_list]
+  if idx >= len(bounds_list) or not isinstance(bounds_list[idx], dict):
+    # Geometry doesn't actually have this exit (bad data / virtual room);
+    # fall back to the room center rather than crashing.
+    return room_key, ROOM_INTERNAL_WIDTH / 2, ROOM_INTERNAL_HEIGHT / 2
+
+  b = bounds_list[idx]
+  if side in ("west", "east"):
+    start, end = int(float(b["top"])), int(float(b["bottom"]))
+    y_local = ((start + end + 1) / 2) * block_h
+    x_local = 0.0 if side == "west" else ROOM_INTERNAL_WIDTH
+    return room_key, x_local, y_local
+  else:
+    start, end = int(float(b["left"])), int(float(b["right"]))
+    x_local = ((start + end + 1) / 2) * block_w
+    y_local = 0.0 if side == "north" else ROOM_INTERNAL_HEIGHT
+    return room_key, x_local, y_local
+
+
+def build_doors_from_warps(warps, geom_index):
+  """Turns _room_geometry.WARPS into the same shape gen_map's rendering code
+  already expects from the old hand-authored _exits.py door list: one
+  one-way entry per ordered pair of connections in a warp group.
+
+  A "root" connection point is enter-only (per WARPS semantics -- nothing
+  ever leaves from it, it's a landing spot rather than a walkable exit
+  square), so it's skipped as an origin but is still a valid destination.
+  """
+  doors = []
+  for warp_idx, warp in enumerate(warps):
+    conns = warp.get("connections", ())
+    reqs = warp.get("reqs", [])
+    for oi, (o_n, o_e, o_side, o_idx) in enumerate(conns):
+      if o_side == "root":
+        continue
+      # Virtual/fractional room coordinates (e.g. 17.1) have no rendered
+      # tile at all -- truncating them to int for room-key lookups could
+      # otherwise collide with an unrelated real integer room.
+      if float(o_n) != int(float(o_n)) or float(o_e) != int(float(o_e)):
+        continue
+      o_room, o_x, o_y = _resolve_warp_point(o_n, o_e, o_side, o_idx, geom_index)
+      for di, (d_n, d_e, d_side, d_idx) in enumerate(conns):
+        if di == oi:
+          continue
+        if float(d_n) != int(float(d_n)) or float(d_e) != int(float(d_e)):
+          continue
+        d_room, d_x, d_y = _resolve_warp_point(d_n, d_e, d_side, d_idx, geom_index)
+        doors.append(
+          {
+            "id": f"warp:{warp_idx}:{oi}:{di}:{o_room}->{d_room}",
+            "mechanism": "warp",
+            "trigger_object": "warp",
+            "requires": reqs,
+            "origin": {"north": float(o_n), "east": float(o_e)},
+            "dest": {"north": float(d_n), "east": float(d_e)},
+            "dest_x": d_x,
+            "dest_y": d_y,
+            "one_way": True,
+          }
+        )
+  return doors
 
 
 def load_progression_map():
@@ -332,8 +412,9 @@ def build_room_info_json(north, east, prog_entries):
 def main():
   # TODO make do in js
   connections = []  # load_connections()
-  doors = load_doors()
   geom_index = load_geometry_map()
+  warps = load_warps()
+  doors = build_doors_from_warps(warps, geom_index)
   exit_lookup = {}
 
   for room_key, exits in geom_index.items():
@@ -745,6 +826,7 @@ def main():
         const ROUTES_DATA = {json.dumps(js_routes_db, indent=2)};
         const EXITS_DATA = {json.dumps(js_exits_db, indent=2)};
         const TILES_DATA = {json.dumps(canvas_tiles_data)};
+        const WARPS_DATA = {json.dumps(warps)};
     </script>
     """
 

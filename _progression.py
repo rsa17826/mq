@@ -1123,7 +1123,7 @@ manager.correct - manager.wrong > 800 = halo
   #   ],
   # },
   {
-    "room": {"north": 20, "east": 15},
+    "room": {"north": 19, "east": 15},
     "requires": [
       [
         "loot:medallions#20",

@@ -316,7 +316,64 @@ function buildPathGraph(slotData) {
     }
   })
 
+  // --- Warp edges: teleport-style connections from _room_geometry.WARPS,
+  //     gated by their own reqs (same OR-of-AND shape as everything else) ---
+  pfAddWarpEdges(graph, roomsByKey, have)
+
   return { graph, roomsByKey }
+}
+
+// A "root" connection point is enter-only: nothing ever leaves from one
+// (it's just a landing spot inside a room, not a walkable exit square), so
+// it's skipped as an origin, but it's a valid destination -- landing there
+// connects straight to every one of that room's own exits, same as if the
+// player had simply walked in fresh (no need for its own graph node).
+function pfAddWarpEdges(graph, roomsByKey, have) {
+  const warps = (typeof WARPS_DATA !== "undefined" && WARPS_DATA) || []
+  warps.forEach((warp) => {
+    if (!pfReqsSatisfied(warp.reqs || [], have)) return
+    const conns = warp.connections || []
+    conns.forEach(([n, e, side, idx], oi) => {
+      if (side === "root") return
+      const fromRoom = `${n}_${e}`
+      const fromNode = pfExitNodeKey(fromRoom, side, idx)
+      conns.forEach(([tn, te, tside, tidx], di) => {
+        if (di === oi) return
+        const toRoom = `${tn}_${te}`
+        if (tside === "root") {
+          pfRoomExitList(roomsByKey[toRoom]).forEach(
+            ({ side: s2, idx: i2 }) => {
+              const toNode = pfExitNodeKey(toRoom, s2, i2)
+              pfAddEdge(
+                graph,
+                fromNode,
+                toNode,
+                fromRoom,
+                side,
+                idx,
+                toRoom,
+                s2,
+                i2,
+              )
+            },
+          )
+        } else {
+          const toNode = pfExitNodeKey(toRoom, tside, tidx)
+          pfAddEdge(
+            graph,
+            fromNode,
+            toNode,
+            fromRoom,
+            side,
+            idx,
+            toRoom,
+            tside,
+            tidx,
+          )
+        }
+      })
+    })
+  })
 }
 
 // Adjust here if the game exposes the player's current room differently.

@@ -6431,3 +6431,129 @@ GEOM: list[ExitBase] = [
     },
   },
 ]
+
+
+class Warp(TypedDict):
+  reqs: NotRequired[list[list[str]]]
+  connections: tuple[tuple[float | int, float | int, Literal["north", "south", "west", "east", "root"], int], ...]
+
+
+WARPS: tuple[Warp, ...] = (
+  {
+    "reqs": [["permit:volcano"]],
+    "connections": ((17, 17, "south", 0), (17, 17, "west", 0), (18, 17, "south", 0)),
+  },
+  {
+    "connections": ((4, 13, "root", 0), (100, 100, "south", 0)),
+  },
+  {
+    "connections": ((3, 16, "root", 0), (200, 200, "north", 0)),
+  },
+  {
+    "connections": ((200, 200, "root", 0), (201, 200, "root", 0)),
+  },
+  {
+    "reqs": [["magic:drain", "quest:aSword.1"]],
+    "connections": ((18, 25, "root", 0), (500, 500, "north", 0)),
+  },
+  {
+    "connections": ((6, 21, "root", 0), (300, 300, "south", 0)),
+  },
+  {
+    "connections": ((10, 16, "root", 0), (11, 16, "south", 0)),
+  },
+  {
+    "reqs": [["permit:bomb"]],
+    "connections": ((11, 13, "root", 0), (11, 14, "south", 0)),
+  },
+  {
+    "connections": ((11, 14, "root", 0), (9, 13, "root", 0)),
+  },
+  {
+    "reqs": [["magic:drain"]],
+    "connections": ((9, 13, "root", 0), (10, 13, "root", 0), (9, 14, "root", 0)),
+  },
+  {
+    "reqs": [["magic:drain"]],
+    "connections": ((9, 14, "root", 0), (10, 14, "north", 0)),
+  },
+  {
+    "reqs": [["misc:fire crystal"]],
+    "connections": ((8, 9, "root", 0), (7, 9, "south", 0)),
+  },
+  {
+    "reqs": [["flag:lit torch 2", "flag:lit torch 1"]],
+    "connections": ((6, 23, "root", 0), (5, 23, "south", 0)),
+  },
+  {
+    "connections": ((17, 14, "root", 0), (18, 14, "north", 0)),
+  },
+  {
+    "connections": ((20, 12, "root", 0), (21, 12, "south", 0)),
+  },
+  {
+    "connections": ((22, 10, "root", 0), (22, 13, "east", 0), (22, 13, "north", 0)),
+  },
+  {
+    "connections": ((21, 13, "east", 0), (22, 11, "south", 0), (22, 11, "north", 0)),
+  },
+  {
+    "connections": ((22, 12, "root", 0), (21, 9, "north", 0)),
+  },
+  {
+    "connections": ((18, 12, "root", 0), (18, 11, "west", 0)),
+  },
+  {
+    "reqs": [["permit:bomb"]],
+    "connections": ((10, 12, "root", 0), (7, 12, "south", 0)),
+  },
+  {
+    "reqs": [["permit:bomb"]],
+    "connections": ((12, 21, "root", 0), (11, 21, "root", 0)),
+  },
+  {
+    "connections": ((18, 16, "root", 0), (19, 16, "south", 0)),
+  },
+  {
+    "connections": ((19, 16, "root", 0), (19, 15, "north", 0)),
+  },
+  {
+    "connections": ((9, 22, "north", 0), (9, 21, "root", 0)),
+  },
+  {
+    "reqs": [["permit:bomb.2"]],
+    "connections": ((12, 14, "root", 0), (9, 21, "root", 0)),
+  },
+  {
+    "connections": ((21, 21, "east", 0), (20, 21, "root", 0)),
+  },
+  {
+    "reqs": [["permit:bomb", "magic:lightning"]],
+    "connections": ((20, 21, "root", 0), (19, 22, "root", 0)),
+  },
+  {
+    "reqs": [["permit:bomb.2"]],
+    "connections": ((12, 23, "root", 0), (12, 22, "north", 0)),
+  },
+  {
+    "connections": ((24, 10, "root", 0), (23, 14, "north", 0)),
+  },
+  {
+    "connections": ((24, 13, "root", 0), (23, 10, "root", 0)),
+  },
+  {
+    "reqs": [["quest:gTree.9"]],
+    "connections": ((17, 19, "root", 0), (17.1, 19, "root", 0)),
+  },
+  {
+    "reqs": [["quest:gTree.9"]],
+    "connections": ((15, 17, "root", 0), (17.1, 19, "root", 0)),
+  },
+  {
+    "reqs": [["flag:10.1 code"]],
+    "connections": ((10, 21, "root", 0), (10.1, 21, "root", 0)),
+  },
+  {
+    "connections": ((10.1, 21, "root", 0), (9.11, 20, "root", 0)),
+  },
+)
