@@ -3178,10 +3178,58 @@ MathQuest.js:42550 add listeners""",
     "requires": [
       [
         "quest:hWater.4",
+        "loot:vAsh#6",
       ],
     ],
     "receive": [
       "quest:hWater.5",
+    ],
+  },
+  {
+    "room": {"north": 17, "east": 11},
+    "requires": [
+      [
+        "item:key#1",
+      ],
+    ],
+    "receive": [
+      "food:gummyBears - 1-0-2",
+      "food:blueberries - 1-0-2",
+    ],
+  },
+  {
+    "room": {"north": 17, "east": 11},
+    "requires": [
+      [
+        "item:key#1",
+      ],
+    ],
+    "receive": [
+      "item:gold - 5-0-5",
+      "item:rubies - 5-0-5",
+      "item:diamonds - 5-0-5",
+    ],
+  },
+  {
+    "room": {"north": 17, "east": 11},
+    "requires": [
+      [
+        "item:key#1",
+      ],
+    ],
+    "receive": [
+      "item:gold - 2-2-0",
+    ],
+  },
+  {
+    "room": {"north": 17, "east": 11},
+    "requires": [
+      [
+        "misc:blue crystal",
+      ],
+    ],
+    "receive": [
+      "food:holyWater - 0-7-0",
     ],
   },
   {
