@@ -1686,23 +1686,6 @@ manager.correct - manager.wrong > 800 = halo
     ],
   },
   {
-    "room": {"north": 8, "east": 9},
-    "requires": [
-      [
-        "misc:fire crystal",
-      ],
-    ],
-    "receive": [],
-    "info": """289 374
-MathQuest.js:42502 remove listeners
-MathQuest.js:31398 enterHandlertrue
-MathQuest.js:111001 [ER DEBUG] Transition initiated. From room: 8,9 at position X/Y: 350,300
-MathQuest.js:111037 [ER DEBUG] Checking redirection for vanilla move path key: 8_9_7_9
-MathQuest.js:111157 [ER DEBUG] No randomizer override entry for key [8_9_7_9]. Retaining game defaults.
-MathQuest.js:31309 0 0 0 0
-MathQuest.js:42550 add listeners""",
-  },
-  {
     "room": {"north": 7, "east": 11},
     "requires": [
       [
