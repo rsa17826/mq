@@ -316,61 +316,59 @@ function buildPathGraph(slotData) {
     }
   })
 
+  // --- Root feed: matches regions.py's Pass 1 exactly -- every real exit
+  //     gets a one-way, unconditional edge into its room's single "root"
+  //     node, so anything anchored there (a warp) becomes reachable the
+  //     moment ANY exit of the room is. Root has no edge back out to real
+  //     exits (that's the whole point: the only way out of root is another
+  //     warp anchored there), so it's added once per room, not paired. ---
+  Object.keys(roomsByKey).forEach((roomKey) => {
+    const room = roomsByKey[roomKey]
+    const rootNode = pfExitNodeKey(roomKey, "root", 0)
+    pfRoomExitList(room).forEach(({ side, idx }) => {
+      const exitNode = pfExitNodeKey(roomKey, side, idx)
+      pfAddEdge(graph, exitNode, rootNode, roomKey, side, idx, roomKey, "root", 0)
+    })
+  })
+
   // --- Warp edges: teleport-style connections from _room_geometry.WARPS,
   //     gated by their own reqs (same OR-of-AND shape as everything else) ---
-  pfAddWarpEdges(graph, roomsByKey, have)
+  pfAddWarpEdges(graph, have)
 
   return { graph, roomsByKey }
 }
 
-// A "root" connection point is enter-only: nothing ever leaves from one
-// (it's just a landing spot inside a room, not a walkable exit square), so
-// it's skipped as an origin, but it's a valid destination -- landing there
-// connects straight to every one of that room's own exits, same as if the
-// player had simply walked in fresh (no need for its own graph node).
-function pfAddWarpEdges(graph, roomsByKey, have) {
+// Mirrors regions.py's _connect_warps_vanilla: every connection listed in a
+// warp group -- "root" ones included -- gets a fully bidirectional edge
+// to/from every other connection in that same group. Root is reachable like
+// any other node (fed automatically from its room's real exits, see the
+// root-feed block above) and, once reached, is just as valid a warp origin
+// as a real exit; landing AT root via a warp does NOT grant access to that
+// room's other exits (root has no edge back out to them -- see above), so
+// there's no special expansion here, just a plain edge to the root node.
+function pfAddWarpEdges(graph, have) {
   const warps = (typeof WARPS_DATA !== "undefined" && WARPS_DATA) || []
   warps.forEach((warp) => {
     if (!pfReqsSatisfied(warp.reqs || [], have)) return
     const conns = warp.connections || []
     conns.forEach(([n, e, side, idx], oi) => {
-      if (side === "root") return
       const fromRoom = `${n}_${e}`
       const fromNode = pfExitNodeKey(fromRoom, side, idx)
       conns.forEach(([tn, te, tside, tidx], di) => {
         if (di === oi) return
         const toRoom = `${tn}_${te}`
-        if (tside === "root") {
-          pfRoomExitList(roomsByKey[toRoom]).forEach(
-            ({ side: s2, idx: i2 }) => {
-              const toNode = pfExitNodeKey(toRoom, s2, i2)
-              pfAddEdge(
-                graph,
-                fromNode,
-                toNode,
-                fromRoom,
-                side,
-                idx,
-                toRoom,
-                s2,
-                i2,
-              )
-            },
-          )
-        } else {
-          const toNode = pfExitNodeKey(toRoom, tside, tidx)
-          pfAddEdge(
-            graph,
-            fromNode,
-            toNode,
-            fromRoom,
-            side,
-            idx,
-            toRoom,
-            tside,
-            tidx,
-          )
-        }
+        const toNode = pfExitNodeKey(toRoom, tside, tidx)
+        pfAddEdge(
+          graph,
+          fromNode,
+          toNode,
+          fromRoom,
+          side,
+          idx,
+          toRoom,
+          tside,
+          tidx,
+        )
       })
     })
   })

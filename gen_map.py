@@ -317,17 +317,16 @@ def build_doors_from_warps(warps, geom_index):
   already expects from the old hand-authored _exits.py door list: one
   one-way entry per ordered pair of connections in a warp group.
 
-  A "root" connection point is enter-only (per WARPS semantics -- nothing
-  ever leaves from it, it's a landing spot rather than a walkable exit
-  square), so it's skipped as an origin but is still a valid destination.
+  Matches regions.py's _connect_warps_vanilla: every connection in a warp
+  group -- "root" ones included -- gets a fully bidirectional link through
+  the shared warp hub, so root is just as valid an origin here as any real
+  exit (it's only the ROOM's own exits that never lead back out to it).
   """
   doors = []
   for warp_idx, warp in enumerate(warps):
     conns = warp.get("connections", ())
     reqs = warp.get("reqs", [])
     for oi, (o_n, o_e, o_side, o_idx) in enumerate(conns):
-      if o_side == "root":
-        continue
       # Virtual/fractional room coordinates (e.g. 17.1) have no rendered
       # tile at all -- truncating them to int for room-key lookups could
       # otherwise collide with an unrelated real integer room.

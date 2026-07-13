@@ -26,10 +26,11 @@ const RoomGraph = (function () {
   // origin exit so the BFS below can fire them off the moment that exit
   // becomes reachable, same as it does for physical doorways.
   //
-  // A "root" connection point is enter-only: per WARPS semantics nothing
-  // ever leaves from one (it's just a landing spot inside a room, not a
-  // walkable exit square), so it's skipped as an origin here -- but it's
-  // still a perfectly valid destination (handled in computeReachability).
+  // Matches regions.py's _connect_warps_vanilla exactly: every connection in
+  // a warp group -- root ones included -- gets a fully bidirectional edge
+  // to/from the shared warp hub. Root is *reachable* like any other node
+  // (see markExitReachable's automatic exit->root feed below) and, once
+  // reached, is just as valid a warp origin as a real exit.
   function buildWarpIndex() {
     warpIndex = {}
     const warps = (typeof WARPS_DATA !== "undefined" && WARPS_DATA) || []
@@ -37,7 +38,6 @@ const RoomGraph = (function () {
       const reqs = warp.reqs || []
       const conns = warp.connections || []
       conns.forEach(([n, e, side, idx], oi) => {
-        if (side === "root") return
         const originKey = `${n}_${e}|${side}|${idx}`
         const targets = conns
           .filter((_, di) => di !== oi)
@@ -180,9 +180,17 @@ const RoomGraph = (function () {
       }
     }
 
-    // Marks one exit reachable (if it isn't already) and queues it for
-    // further expansion. Every exit that becomes reachable this way also
-    // gets a chance to fire off any warp whose origin is that exact exit.
+    // Marks one exit (or the room's single "root" node) reachable, if it
+    // isn't already, and queues it for further expansion. Every node that
+    // becomes reachable this way also gets a chance to fire off any warp
+    // whose origin is that exact node.
+    //
+    // Matches regions.py's Pass 1 exactly: every real exit gets a one-way,
+    // unconditional edge straight into its room's root (so root becomes
+    // reachable the moment ANY exit of the room is), but root has no edge
+    // back out to any of the room's real exits -- the only way out of root
+    // is another warp anchored there. So root only ever gets *fed*, it
+    // never triggers the area-component expansion real exits do.
     function markExitReachable(roomKey, side, idx) {
       const node = `${roomKey}|${side}|${idx}`
       if (reachableExits.has(node)) return
@@ -190,16 +198,21 @@ const RoomGraph = (function () {
       if (!room) return
       ensureCounts(roomKey, room)
       reachableExits.add(node)
-      roomExitCounts[roomKey].reachable++
+      if (side !== "root") {
+        roomExitCounts[roomKey].reachable++
+        markExitReachable(roomKey, "root", 0)
+      }
       queue.push({ room: roomKey, side, idx })
     }
 
-    // "Seeds" a room the way actually starting there (or landing via a
-    // "root" warp connection) works: every exit becomes reachable at once,
-    // regardless of area/reqs gating between them, since the player is
-    // simply standing inside the room rather than having walked in through
-    // one specific gated exit.
-    function enterRoomAtRoot(roomKey) {
+    // "Seeds" a room the way actually starting there works: every exit
+    // becomes reachable at once, regardless of area/reqs gating between
+    // them, since the player is simply standing inside the room rather
+    // than having walked in through one specific gated exit. Used only for
+    // the real starting room (see the `startRoom` seed below) -- NOT for
+    // warps landing at a room's root, which per regions.py do NOT grant
+    // access to that room's other exits (see markExitReachable above).
+    function seedRoomFully(roomKey) {
       const room = roomIndex[roomKey]
       if (!room) return
       visitedRooms.add(roomKey)
@@ -212,10 +225,11 @@ const RoomGraph = (function () {
       }
     }
 
-    // Arriving through one specific exit of a room (a physical doorway, or
-    // a non-root warp landing): that exit becomes reachable, and so does
-    // the rest of its area-component (whatever's walkable from there given
-    // the room's current reqs-gated internal connectivity).
+    // Arriving through one specific real exit of a room (a physical
+    // doorway, or a warp landing at a non-root connection): that exit
+    // becomes reachable, and so does the rest of its area-component
+    // (whatever's walkable from there given the room's current reqs-gated
+    // internal connectivity).
     function enterRoomViaExit(roomKey, side, idx) {
       const room = roomIndex[roomKey]
       if (!room) return
@@ -232,22 +246,24 @@ const RoomGraph = (function () {
       }
     }
 
-    // Fires any WARPS group whose origin is this exact exit, once its reqs
-    // are satisfied: "root" targets seed the whole destination room, other
-    // targets are entered exactly like a physical doorway would be.
+    // Fires any WARPS group whose origin is this exact node (a real exit,
+    // or a room's root once fed), once its reqs are satisfied. A "root"
+    // target is just marked reachable (matching regions.py: warp -> root
+    // grants nothing beyond root itself); any other target is entered
+    // exactly like a physical doorway would be.
     function fireWarpsFrom(roomKey, side, idx) {
       const entries = warpIndex[`${roomKey}|${side}|${idx}`]
       if (!entries) return
       for (const { reqs, targets } of entries) {
         if (!reqsSatisfied(reqs, haveReal)) continue
         for (const t of targets) {
-          if (t.side === "root") enterRoomAtRoot(t.room)
+          if (t.side === "root") markExitReachable(t.room, "root", 0)
           else enterRoomViaExit(t.room, t.side, t.idx)
         }
       }
     }
 
-    if (roomIndex[startRoom]) enterRoomAtRoot(startRoom)
+    if (roomIndex[startRoom]) seedRoomFully(startRoom)
 
     while (queue.length > 0) {
       const cur = queue.shift()
@@ -255,6 +271,9 @@ const RoomGraph = (function () {
       if (!room) continue
 
       fireWarpsFrom(cur.room, cur.side, cur.idx)
+
+      // Root has no physical doorway of its own to cross through.
+      if (cur.side === "root") continue
 
       const dest = externalConnection(
         cur.room,
