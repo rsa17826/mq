@@ -539,9 +539,57 @@ function getCurrentPathRoutes() {
 }
 window.getCurrentPathRoutes = getCurrentPathRoutes
 
-// No route found -> PATH_ROUTES ends up empty -> nothing is drawn.
+// Distinct color for "there's genuinely no walkable route right now" so it
+// reads as "go here (somehow)" rather than "walk this exact way".
+const DIRECT_ARROW_COLOR = "#ff5533"
+
+function pfRoomCenter(roomKey) {
+  const origin = pfTileOrigin(roomKey)
+  if (!origin) return null
+  return {
+    x: origin.x + PF_TILE_WIDTH / 2,
+    y: origin.y + PF_TILE_HEIGHT / 2,
+  }
+}
+
+// findPathTo returns null specifically when no valid route exists with
+// what the player currently has/can reach (as opposed to [] for "already
+// there"). In that case, draw a plain straight-line pointer instead of a
+// path, in DIRECT_ARROW_COLOR so it's visually distinct from a real route.
+function showDirectArrowTo(targetKey) {
+  const fromKey = getCurrentRoomKey()
+  const a = fromKey && pfRoomCenter(fromKey)
+  const b = pfRoomCenter(targetKey)
+  if (!a || !b) {
+    PATH_ROUTES = []
+    requestUpdate()
+    return
+  }
+  const midX = (a.x + b.x) / 2
+  const midY = (a.y + b.y) / 2
+  PATH_ROUTES = [
+    {
+      d: [a.x, a.y, midX, midY, b.x, b.y],
+      color: DIRECT_ARROW_COLOR,
+      fromRoom: fromKey,
+      fromDir: null,
+      fromPoint: a,
+      toRoom: targetKey,
+      toDir: null,
+      toPoint: b,
+    },
+  ]
+  requestUpdate()
+}
+
+// No route found -> falls back to a direct pointer arrow instead of an
+// empty canvas.
 function showPathTo(targetKey, targetEntrance) {
   const path = findPathTo(targetKey, targetEntrance)
+  if (path === null) {
+    showDirectArrowTo(targetKey)
+    return
+  }
   PATH_ROUTES = buildPathRoutes(path)
   requestUpdate()
 }
@@ -552,20 +600,31 @@ function clearPathRoute() {
 }
 
 // =====================================================================
-// QUEST TRACKING
+// TOKEN TRACKING (quests AND items)
 //
-// trackQuestPath("gTree") keeps the path arrows pointed at the next
+// trackToken("quest:gTree") keeps the path arrows pointed at the next
 // not-yet-completed point of that quest (the lowest "quest:gTree.N" that
-// isn't satisfied yet), and keeps it updated as quest state changes or
-// the player moves to a new room.
+// isn't satisfied yet). trackToken("item:earthAmulet") (or any other exact
+// receive token) points at wherever that token is granted, and stops once
+// the player actually has it. Either way this keeps re-resolving as quest
+// state changes, items come in, or the player moves to a new room.
+//
+// trackQuestPath(questName) is kept as a thin backwards-compatible wrapper
+// around trackToken("quest:" + questName).
 // =====================================================================
 
-let trackedQuestName = null
+let trackedToken = null
 
 function pfGetProgData() {
   if (typeof PROG_DATA !== "undefined" && PROG_DATA) return PROG_DATA
   if (window.PROG_DATA) return window.PROG_DATA
   return []
+}
+
+function pfTokenHave(tok) {
+  tok = pfBaseTok(tok)
+  if (tok.startsWith("quest:")) return QuestState.satisfied(tok)
+  return (window.haveReal || new Set()).has(tok)
 }
 
 // Scans PROG_DATA for the not-yet-satisfied "quest:<questName>.N" token
@@ -589,25 +648,182 @@ function findNextQuestPoint(questName) {
   return best
 }
 
-// Re-runs the search and re-points the path arrows. Safe to call anytime;
-// it's a no-op unless a quest is actively being tracked.
-function updateTrackedQuestPath() {
-  if (!trackedQuestName) return
-  const next = findNextQuestPoint(trackedQuestName)
-  if (!next) {
+// Resolves a tracked token ("quest:<name>" or an exact receive token like
+// "item:earthAmulet") to the PROG_DATA entry that grants the next
+// not-yet-had step of it. Returns null once there's nothing left to chase.
+function findTokenEntry(token) {
+  if (!token) return null
+  if (token.startsWith("quest:")) {
+    const next = findNextQuestPoint(token.slice("quest:".length))
+    if (!next) return null
+    return (
+      pfGetProgData().find(
+        (e) =>
+          e.room === next.room &&
+          (e.receive || []).some((t) => pfBaseTok(t) === next.tok),
+      ) || { room: next.room, requires: [], receive: [next.tok] }
+    )
+  }
+  // if (pfTokenHave(token)) return null
+  return (
+    pfGetProgData().find((e) =>
+      (e.receive || []).some((rawTok) => pfBaseTok(rawTok) === token),
+    ) || null
+  )
+}
+
+// Some entries live in the virtual/no-location room (e.g. "20_20") and are
+// gated by an area:* requirement instead of having a real physical spot --
+// in that case the place to actually walk to is wherever that area flag is
+// granted, not the virtual room itself. Picks whichever granting location
+// is closest to the player right now (falls back to the first one found).
+function pfEntryAreaToken(entry) {
+  for (const group of entry.requires || []) {
+    for (const rawTok of group) {
+      const tok = pfBaseTok(rawTok)
+      if (tok.startsWith("area:")) return tok
+    }
+  }
+  return null
+}
+
+function pfResolveAreaRedirect(entry) {
+  if (!entry || entry.room !== "20_20") return entry
+  const areaTok = pfEntryAreaToken(entry)
+  if (!areaTok) return entry
+
+  const candidates = pfGetProgData().filter(
+    (e) =>
+      e.room !== "20_20" &&
+      (e.receive || []).some(
+        (rawTok) => pfBaseTok(rawTok) === areaTok,
+      ),
+  )
+  if (!candidates.length) return entry
+
+  const slotData = window.ap && window.ap.slotData
+  const startKey = getCurrentRoomKey()
+  if (slotData && startKey) {
+    const { graph, roomsByKey } = buildPathGraph(slotData)
+    if (roomsByKey[startKey]) {
+      const { dist } = pfBfs(graph, roomsByKey, startKey)
+      let best = null
+      let bestDist = Infinity
+      candidates.forEach((c) => {
+        const prefix = `${c.room}::`
+        for (const node of Object.keys(dist)) {
+          if (node.startsWith(prefix) && dist[node] < bestDist) {
+            bestDist = dist[node]
+            best = c
+          }
+        }
+      })
+      if (best) return best
+    }
+  }
+  return candidates[0]
+}
+
+// --- Loot-progress surfacing ---
+//
+// Requirement groups may include loot:<name>#<count> tokens. When tracking
+// something gated behind loot, surface the still-outstanding loot on the
+// in-game HUD readout (window.extraData), same shape as the game's own
+// loot counters, so the player knows what to go farm first.
+
+function pfParseLootToken(tok) {
+  const m = tok.match(/^loot:([^#]+)#?(\d*)$/)
+  if (!m) return null
+  return { name: m[1], count: m[2] ? Number(m[2]) : 1 }
+}
+
+function pfEntryLootTokens(entry) {
+  const seen = new Map()
+  ;(entry?.requires || []).forEach((group) =>
+    group.forEach((rawTok) => {
+      const parsed = pfParseLootToken(rawTok)
+      if (!parsed) return
+      if (
+        !seen.has(parsed.name) ||
+        seen.get(parsed.name) < parsed.count
+      )
+        seen.set(parsed.name, parsed.count)
+    }),
+  )
+  return [...seen.entries()]
+}
+
+const __origExtraData = window.extraData
+let lootTrackingList = null
+
+function buildLootExtraData(list) {
+  return () =>
+    list
+      .map(([name, count]) => {
+        const have =
+          window.manager?.loot?.[window.Enum?.Loot?.[name]] ?? 0
+        return have >= count ? "" : `${name}: ${have}/${count}`
+      })
+      .filter(Boolean)
+      .join("\n")
+}
+
+// Sets (or clears) the HUD loot readout to whatever's still outstanding
+// for `entry`. Safe to call with a null entry to just clear tracking.
+function applyLootTrackingFor(entry) {
+  const outstanding = pfEntryLootTokens(entry).filter(
+    ([name, count]) => {
+      const have =
+        window.manager?.loot?.[window.Enum?.Loot?.[name]] ?? 0
+      return have < count
+    },
+  )
+
+  if (!outstanding.length) {
+    if (lootTrackingList) {
+      lootTrackingList = null
+      window.extraData = __origExtraData
+    }
+    return
+  }
+  lootTrackingList = outstanding
+  window.extraData = buildLootExtraData(outstanding)
+}
+window.applyLootTrackingFor = applyLootTrackingFor
+
+// Re-runs the search and re-points the path arrows (and loot readout).
+// Safe to call anytime; it's a no-op unless something is being tracked.
+function updateTrackedPath() {
+  if (!trackedToken) return
+  const rawEntry = findTokenEntry(trackedToken)
+  applyLootTrackingFor(rawEntry)
+  if (!rawEntry) {
     clearPathRoute()
     return
   }
-  showPathTo(next.room)
+  const target = pfResolveAreaRedirect(rawEntry)
+  showPathTo(target.room)
 }
+// Backwards-compatible alias -- other code (onQuestChanged/onNewScreen
+// hooks below) referred to this by its old name.
+const updateTrackedQuestPath = updateTrackedPath
+
+// Call with an exact token to track: "quest:<name>" chases that quest's
+// next not-yet-satisfied step; any other token (e.g. "item:earthAmulet")
+// chases wherever that exact token is granted. Call with no argument (or a
+// falsy value) to stop tracking.
+function trackToken(token) {
+  trackedToken = token || null
+  selectedPathId = null // tracking supersedes any manual click-selection
+  updateTrackedPath()
+}
+window.trackToken = trackToken
 
 // Call with a quest key matching ap.slotData.maxQuests / manager.quest[
 // Enum.Quest.<name>] (e.g. "gTree") to start tracking it on the map.
 // Call with no argument (or a falsy value) to stop tracking.
 function trackQuestPath(questName) {
-  trackedQuestName = questName || null
-  selectedPathId = null // a tracked quest supersedes any manual click-selection
-  updateTrackedQuestPath()
+  trackToken(questName ? `quest:${questName}` : null)
 }
 window.trackQuestPath = trackQuestPath
 

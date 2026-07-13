@@ -1204,19 +1204,6 @@ manager.correct - manager.wrong > 800 = halo
   #   ],
   # },
   {
-    "room": {"north": 100, "east": 100},
-    "requires": [
-      [
-        "loot:sTooth#5",
-        "loot:vHorn#5",
-        "loot:oArm#5",
-      ],
-    ],
-    "receive": [
-      "craft:newtonsApple",
-    ],
-  },
-  {
     "room": {"north": 11, "east": 15},
     "requires": [
       [
