@@ -6501,7 +6501,7 @@ WARPS: tuple[Warp, ...] = (
     "connections": ((22, 12, "root", 0), (21, 9, "north", 0)),
   },
   {
-    "connections": ((18, 12, "root", 0), (18, 11, "west", 0)),
+    "connections": ((18, 12, "north", 0), (18, 11, "west", 0)),
   },
   {
     "reqs": [["permit:bomb"]],
@@ -6536,10 +6536,11 @@ WARPS: tuple[Warp, ...] = (
     "connections": ((12, 23, "root", 0), (12, 22, "north", 0)),
   },
   {
-    "connections": ((24, 10, "root", 0), (23, 14, "north", 0)),
+    "connections": ((24, 10, "east", 0), (23, 14, "north", 0)),
   },
   {
-    "connections": ((24, 13, "root", 0), (23, 10, "root", 0)),
+    # TODO !!! why map not show this correctly - should be able to get to 24 13 from 23 10
+    "connections": ((24, 13, "south", 0), (23, 10, "root", 0)),
   },
   {
     "reqs": [["quest:gTree.9"]],

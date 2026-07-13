@@ -173,6 +173,8 @@
       header.querySelector("#item-tracker-toggle").textContent =
         hidden ? "▾" : "▸"
     })
+    body.style.display = "none"
+    header.querySelector("#item-tracker-toggle").textContent = "▸"
 
     filterInput.addEventListener("click", (e) => e.stopPropagation())
     filterInput.addEventListener("input", render)
@@ -196,8 +198,7 @@
         row.style.cssText =
           "border-bottom:1px solid #333; padding:6px 0; display:flex; flex-direction:column; gap:2px;"
 
-        if (isChecked(entry) || /^(?:area|loot):/.test(recStr))
-          return
+        if (isChecked(entry) || /^(?:area|loot):/.test(recStr)) return
         if (isChecked(entry)) row.style.opacity = "0.4"
 
         const loc = document.createElement("div")

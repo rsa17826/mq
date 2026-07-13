@@ -77,6 +77,9 @@ function selectPathTarget(roomKey, entrance) {
     return
   }
   selectedPathId = id
+  localStorage.trackedToken = trackedToken =
+    roomKey + " - " + entrance
+
   showPathTo(roomKey, entrance)
 }
 
@@ -327,7 +330,17 @@ function buildPathGraph(slotData) {
     const rootNode = pfExitNodeKey(roomKey, "root", 0)
     pfRoomExitList(room).forEach(({ side, idx }) => {
       const exitNode = pfExitNodeKey(roomKey, side, idx)
-      pfAddEdge(graph, exitNode, rootNode, roomKey, side, idx, roomKey, "root", 0)
+      pfAddEdge(
+        graph,
+        exitNode,
+        rootNode,
+        roomKey,
+        side,
+        idx,
+        roomKey,
+        "root",
+        0,
+      )
     })
   })
 
@@ -347,7 +360,8 @@ function buildPathGraph(slotData) {
 // room's other exits (root has no edge back out to them -- see above), so
 // there's no special expansion here, just a plain edge to the root node.
 function pfAddWarpEdges(graph, have) {
-  const warps = (typeof WARPS_DATA !== "undefined" && WARPS_DATA) || []
+  const warps =
+    (typeof WARPS_DATA !== "undefined" && WARPS_DATA) || []
   warps.forEach((warp) => {
     if (!pfReqsSatisfied(warp.reqs || [], have)) return
     const conns = warp.connections || []
@@ -939,7 +953,10 @@ pfHookEvent("onNewScreen", () => {
   ) {
     return
   }
-  updateTrackedQuestPath()
+  if (/^[\d._]+ - /.test(trackedToken)) {
+    var tt = trackedToken.split(" - ")
+    showPathTo(tt[0], tt[1] !== "undefined" && tt[1])
+  } else updateTrackedQuestPath()
 })
 
 function resizeCanvas() {
