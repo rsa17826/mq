@@ -6584,6 +6584,10 @@ WARPS: tuple[Warp, ...] = (
     "connections": ((-1, -1, "root", 0), (14, 16, "west", 0)),
   },
   {
+    "reqs": [["food:sunflowerSeeds"]],
+    "connections": ((-1, -1, "root", 0), (11, 12, "east", 0)),
+  },
+  {
     "reqs": [["skill:warp"]],
     "connections": ((-1, -1, "root", 0), (10, 16, "west", 0)),
   },

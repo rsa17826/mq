@@ -12,7 +12,20 @@ const itemColors = {
   armor: "grey",
   permit: "darkorange",
 }
-
+function highlightArray(str) {
+  return str.replace(/\[|\]|'[^']*'|,\s*/g, (match) => {
+    if (match === "[" || match === "]") {
+      return `@purple!${match}@!`
+    } else if (match.startsWith("'")) {
+      // It's a string, color the quotes blue and the inner text green
+      const innerText = match.slice(1, -1)
+      return `@blue!"@!@green!${innerText}@!@blue!"@!`
+    } else {
+      // It's a comma (and optional whitespace)
+      return `@blue!${match}@!`
+    }
+  })
+}
 /**
  * @typedef {Object} Packet
  * @property {string} cmd
@@ -314,7 +327,7 @@ class ArchipelagoClient {
       }
     }
     apLog(
-      `@console!onDataPackage@!@blue![Archipelago]@! Received DataPackage for games: ${Object.keys(packet.data.games).join(", ")}`,
+      `@console!onDataPackage@!@blue![Archipelago]@! Received DataPackage for games: @green!${Object.keys(packet.data.games).join("@!@blue!, @!@green!")}@!`,
     )
   }
 
@@ -614,51 +627,65 @@ class ArchipelagoClient {
     const messageText = packet.data
       .map((part) => this.resolveMessagePart(part))
       .join("")
-    var mt = messageText
-      // 1. Original join message formatting
-      .replace(
-        /(^[^(]+) \((Team #\d+)\) playing (.*) has joined/,
-        "@green!$1@blue! (@green!$2@blue!) @!playing @green!$3@! has joined",
-      )
-      // 2. Highlight any command starting with ! or / (e.g., !help, /release)
-      .replace(/(^|\s)([!/][a-zA-Z_0-9]+)/g, "$1@green!$2@!")
+    var mt = highlightArray(
+      messageText
+        .replace(
+          /(^[^(]+) \((Team #\d+)\) (playing|tracking) (.*) has joined/,
+          "@green!$1@blue! (@green!$2@blue!) @!$3 @green!$4@! has joined",
+        )
+        .replace(
+          /(^[^(]+) \((Team #\d+)\) has left the game/,
+          "@green!$1@blue! (@green!$2@blue!) @! has left the game",
+        )
+        .replace(
+          /(^[^(]+) \((Team #\d+)\) has (started|stopped) (tracking|playing) the game/,
+          "@green!$1@blue! (@!@green!$2@blue!) @! has $3 $4 the game",
+        )
+        .replace(
+          /Client\((\d+)\.(\d+)\.(\d+)\)/,
+          "@pink!Client@blue!(@!@green!$1@!@blue!.@!@green!$2@!@blue!.@!@green!$3@!@blue!)@!",
+        )
+        // 2. Highlight any command starting with ! or / (e.g., !help, /release)
+        .replace(/(^|\s)([!/][a-zA-Z_0-9]+)/g, "$1@green!$2@!")
 
-      // 3. Highlight player messages formatted like "Player (Alias): message" or "Player: message"
-      // Captures the names/aliases and makes them yellow
-      .replace(
-        /(^|\]\s)([^:\n]+)\s*\(([^)]+)\):/,
-        (_, a, s, d) =>
-          `${a}@${d == ap.playerName ? "hotpink" : "yellow"}!${s}(${d})@!:`,
-      )
-      .replace(
-        /(^|\]\s)([^:\n\s]+):(?!\/\/)/,
-        (_, a, s) =>
-          `${a}@${s == ap.playerName ? "hotpink" : "yellow"}!${s}@!:`,
-      )
+        // 3. Highlight player messages formatted like "Player (Alias): message" or "Player: message"
+        // Captures the names/aliases and makes them yellow
+        .replace(
+          /(^|\]\s)([^:\n]+)\s*\(([^)]+)\):/,
+          (_, a, s, d) =>
+            `${a}@${d == ap.playerName ? "hotpink" : "yellow"}!${s}(${d})@!:`,
+        )
+        .replace(
+          /(^|\]\s)([^:\n\s]+):(?!\/\/)/,
+          (_, a, s) =>
+            `${a}@${s == ap.playerName ? "hotpink" : "yellow"}!${s}@!:`,
+        )
 
-      // 4. Highlight server options configurations (e.g., "Option hint_cost is set to 10")
-      // Colors the option name cyan and the value green
-      .replace(
-        /(Option\s)([_a-zA-Z0-9]+)(\sis\sset\sto\s)(.*)/g,
-        "$1@cyan!$2@!$3@green!$4@!",
-      )
+        // 4. Highlight server options configurations (e.g., "Option hint_cost is set to 10")
+        // Colors the option name cyan and the value green
+        .replace(
+          /(Option\s)([_a-zA-Z0-9]+)(\sis\sset\sto\s)(.*)/g,
+          "$1@cyan!$2@!$3@green!$4@!",
+        )
 
-      .replace(
-        /(Didn't find something that closely matches) '([^']+)' did you mean '([^']+)'\? \((\d+)% sure\)/gm,
-        "@red!$1@!",
-      )
-      .replace(
-        new RegExp(
-          `'(${Object.keys(itemColors).join("|")}):(\\S+)'`,
-          "gm",
+        .replace(
+          /(Didn't find something that closely matches) '([^']+)' did you mean '([^']+)'\? \((\d+)% sure\)/gm,
+          "@red!$1@!",
+        )
+        .replace(
+          new RegExp(
+            `'(${Object.keys(itemColors).join("|")}):(\\S+)'`,
+            "gm",
+          ),
+          (_, type, name) =>
+            `'@${itemColors[type]}!${type}:${name}@!'`,
+        )
+        // 5. Highlight common error/denial prefixes (e.g., "Sorry, ...", "Didn't find ...")
+        .replace(
+          /((?:^|@!) *(?:Sorry|Didn't find|You can't afford)[\w\s\d,]*[.?!]?)/gm,
+          "@red!$1@!",
         ),
-        (_, type, name) => `'@${itemColors[type]}!${type}:${name}@!'`,
-      )
-      // 5. Highlight common error/denial prefixes (e.g., "Sorry, ...", "Didn't find ...")
-      .replace(
-        /((?:^|@!) *(?:Sorry|Didn't find|You can't afford)[\w\s\d,]*[.?!]?)/gm,
-        "@red!$1@!",
-      )
+    )
     for (var { name } of Object.values(this.slotInfo)) {
       mt = mt.replace(
         new RegExp(`(?<!\\w)${RegExp.escape(name)}(?!\\w)`),
