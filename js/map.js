@@ -229,7 +229,11 @@ function pfRoomExitList(room) {
 function buildPathGraph(slotData) {
   const graph = {}
   const roomsByKey = pfRoomsByKey(slotData)
-  const have = window.haveReal || new Set()
+  // Prefer the fully-derived set (real items + virtual/free tokens like
+  // flags and quests unlocked purely by logic) so a warp/area gated behind
+  // a logical flag -- never a real item -- can actually resolve to a
+  // walkable path instead of falling back to a "no route" direct arrow.
+  const have = window.haveDerived || window.haveReal || new Set()
 
   // --- Cross-room edges: the physical doorways between rooms ---
   if (Array.isArray(slotData.roomData) && slotData.roomData.length) {
@@ -471,45 +475,101 @@ function pfReconstructPath(bestEdge, targetNode) {
   return path
 }
 
+// manager.homePoint -> the room it actually teleports you to (kept in sync
+// with whatever sets manager.homePoint in the first place).
+const HOMEPOINT_ROOMS = {
+  1: "20_20",
+  2: "13_18",
+  3: "12_9",
+  4: "20_15",
+}
+
+function pfHomePointRoomKey() {
+  const hp = window.manager && manager.homePoint
+  return HOMEPOINT_ROOMS[hp] || null
+}
+
+// Every room worth trying as a path's starting point: the player's real
+// current position, always; their current homepoint's room, since
+// teleporting there first might be a shorter overall route; and 20_20
+// specifically whenever they're holding the pendant, since that's an
+// always-available teleport home regardless of the homepoint currently set.
+function pfCandidateStartKeys() {
+  const keys = []
+  const real = getCurrentRoomKey()
+  if (real) keys.push(real)
+  const home = pfHomePointRoomKey()
+  if (home && !keys.includes(home)) keys.push(home)
+  const have = window.haveDerived || window.haveReal
+  if (have && have.has("misc:bobbisPendant") && !keys.includes("20_20")) {
+    keys.push("20_20")
+  }
+  return keys
+}
+
 // Path from the player's current room to targetKey. If targetEntrance
 // ({dir, idx}) is given, the route ends specifically through that entrance
 // (may be a hop longer than the shortest room-to-room path). Returns null
 // if there's genuinely no valid route with what the player currently has.
+//
+// Also tries starting from the player's homepoint (and 20_20, if they hold
+// the pendant) as alternate jumping-off points, and picks whichever
+// candidate start actually produces the shortest route.
 function findPathTo(targetKey, targetEntrance) {
   const slotData = window.ap && window.ap.slotData
-  const startKey = getCurrentRoomKey()
-  if (!slotData || !startKey) return null
+  if (!slotData) return null
 
   const { graph, roomsByKey } = buildPathGraph(slotData)
-  if (!roomsByKey[startKey]) return null
 
-  if (startKey === targetKey && !targetEntrance) return []
+  const candidates = pfCandidateStartKeys().filter(
+    (k) => roomsByKey[k],
+  )
+  if (!candidates.length) return null
 
-  const { dist, bestEdge } = pfBfs(graph, roomsByKey, startKey)
+  let best = null // { path, dist }
 
-  if (targetEntrance) {
-    const targetNode = pfExitNodeKey(
-      targetKey,
-      targetEntrance.dir,
-      targetEntrance.idx,
-    )
-    if (dist[targetNode] === undefined) return null
-    return pfReconstructPath(bestEdge, targetNode)
-  }
+  for (const startKey of candidates) {
+    if (startKey === targetKey && !targetEntrance) return [] // already there
 
-  // No specific entrance requested: take the closest exit-node belonging
-  // to that room that's actually reachable.
-  const prefix = `${targetKey}::`
-  let bestNode = null
-  let bestDist = Infinity
-  for (const node of Object.keys(dist)) {
-    if (node.startsWith(prefix) && dist[node] < bestDist) {
-      bestDist = dist[node]
-      bestNode = node
+    const { dist, bestEdge } = pfBfs(graph, roomsByKey, startKey)
+
+    let path = null
+    let pathDist = Infinity
+
+    if (targetEntrance) {
+      const targetNode = pfExitNodeKey(
+        targetKey,
+        targetEntrance.dir,
+        targetEntrance.idx,
+      )
+      if (dist[targetNode] !== undefined) {
+        path = pfReconstructPath(bestEdge, targetNode)
+        pathDist = dist[targetNode]
+      }
+    } else {
+      // No specific entrance requested: take the closest exit-node
+      // belonging to that room that's actually reachable.
+      const prefix = `${targetKey}::`
+      let bestNode = null
+      let bestNodeDist = Infinity
+      for (const node of Object.keys(dist)) {
+        if (node.startsWith(prefix) && dist[node] < bestNodeDist) {
+          bestNodeDist = dist[node]
+          bestNode = node
+        }
+      }
+      if (bestNode) {
+        path = pfReconstructPath(bestEdge, bestNode)
+        pathDist = bestNodeDist
+      }
+    }
+
+    if (path && pathDist < (best ? best.dist : Infinity)) {
+      best = { path, dist: pathDist }
     }
   }
-  if (!bestNode) return null
-  return pfReconstructPath(bestEdge, bestNode)
+
+  return best ? best.path : null
 }
 
 // --- Pixel geometry, read straight off the rendered tiles ---
@@ -703,7 +763,7 @@ function pfGetProgData() {
 function pfTokenHave(tok) {
   tok = pfBaseTok(tok)
   if (tok.startsWith("quest:")) return QuestState.satisfied(tok)
-  return (window.haveReal || new Set()).has(tok)
+  return (window.haveDerived || window.haveReal || new Set()).has(tok)
 }
 
 // Whether one specific (room, token) location has actually been checked --

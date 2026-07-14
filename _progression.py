@@ -16,7 +16,7 @@ class ProgressionNode(TypedDict):
 
 PROG: list[ProgressionNode] = [
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:6",
@@ -27,7 +27,7 @@ PROG: list[ProgressionNode] = [
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["area:4", "quest:mChal.4"],
     ],
@@ -36,7 +36,7 @@ PROG: list[ProgressionNode] = [
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:11",
@@ -47,7 +47,7 @@ PROG: list[ProgressionNode] = [
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:4",
@@ -58,7 +58,7 @@ PROG: list[ProgressionNode] = [
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:15",
@@ -69,7 +69,7 @@ PROG: list[ProgressionNode] = [
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:6",
@@ -80,7 +80,7 @@ PROG: list[ProgressionNode] = [
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:3",
@@ -91,7 +91,7 @@ PROG: list[ProgressionNode] = [
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:16",
@@ -102,7 +102,7 @@ PROG: list[ProgressionNode] = [
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:1.water",
@@ -116,7 +116,7 @@ PROG: list[ProgressionNode] = [
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:7",
@@ -127,7 +127,7 @@ PROG: list[ProgressionNode] = [
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:2",
@@ -139,7 +139,7 @@ PROG: list[ProgressionNode] = [
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:13",
@@ -150,7 +150,7 @@ PROG: list[ProgressionNode] = [
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:5",
@@ -161,7 +161,7 @@ PROG: list[ProgressionNode] = [
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:12",
@@ -170,7 +170,7 @@ PROG: list[ProgressionNode] = [
     "receive": ["weapon:pitchfork"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:8",
@@ -191,7 +191,7 @@ PROG: list[ProgressionNode] = [
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:4",
@@ -202,7 +202,7 @@ PROG: list[ProgressionNode] = [
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:16",
@@ -214,7 +214,7 @@ PROG: list[ProgressionNode] = [
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:2",
@@ -225,7 +225,7 @@ PROG: list[ProgressionNode] = [
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:15",
@@ -236,7 +236,7 @@ PROG: list[ProgressionNode] = [
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:12",
@@ -247,7 +247,7 @@ PROG: list[ProgressionNode] = [
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:8",
@@ -258,7 +258,7 @@ PROG: list[ProgressionNode] = [
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:15",
@@ -269,7 +269,7 @@ PROG: list[ProgressionNode] = [
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:1",
@@ -280,7 +280,7 @@ PROG: list[ProgressionNode] = [
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:11",
@@ -291,7 +291,7 @@ PROG: list[ProgressionNode] = [
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "weapon:bombSword",
@@ -310,7 +310,7 @@ PROG: list[ProgressionNode] = [
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [],
     ],
@@ -336,7 +336,7 @@ manager.correct - manager.wrong > 800 = halo
 """,
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "skill:craft",
@@ -347,7 +347,6 @@ manager.correct - manager.wrong > 800 = halo
       "loot:emeralds",
     ],
   },
-  # {"room": {"north": 20, "east": 20}, "receive": ["spawnpoint"],},
   {
     "room": {"north": 15, "east": 21},
     "requires": [
@@ -427,7 +426,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 11, "east": 13},
     "requires": [
       [
-        "loot:mStaff#1",
+        "loot:mStaff",
       ],
     ],
     "receive": [
@@ -623,7 +622,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:red chest",
@@ -3163,7 +3162,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 17, "east": 11},
     "requires": [
       [
-        "item:key#1",
+        "loot:key",
       ],
     ],
     "receive": [
@@ -3175,7 +3174,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 17, "east": 11},
     "requires": [
       [
-        "item:key#1",
+        "loot:key",
       ],
     ],
     "receive": [
@@ -3188,7 +3187,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 17, "east": 11},
     "requires": [
       [
-        "item:key#1",
+        "loot:key",
       ],
     ],
     "receive": [
@@ -4057,7 +4056,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "quest:dream.12",
@@ -4131,7 +4130,7 @@ manager.correct - manager.wrong > 800 = halo
     "receive": ["quest:aSword.5"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.5", "area:12", "weapon:baneBlade", "armor:grimGear"],
     ],
@@ -4145,35 +4144,35 @@ manager.correct - manager.wrong > 800 = halo
     "receive": ["quest:aSword.7", "weapon:aSword"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.7", "weapon:aSword", "area:1.19"],
     ],
     "receive": ["quest:aSword.8"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.8", "weapon:aSword", "area:1.19"],
     ],
     "receive": ["quest:aSword.9"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.9", "weapon:aSword", "area:1.19"],
     ],
     "receive": ["quest:aSword.10"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.10", "weapon:aSword", "area:1.19"],
     ],
     "receive": ["quest:aSword.11"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.11", "weapon:aSword", "area:1.19"],
     ],
@@ -4187,70 +4186,70 @@ manager.correct - manager.wrong > 800 = halo
     "receive": ["quest:aSword.13"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.13", "area:8", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.14"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.14", "area:8", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.15"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.15", "area:8", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.16"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.16", "area:8", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.17"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.17", "area:8", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.18"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.18", "area:8", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.19"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.19", "area:8", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.20"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.20", "area:8", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.21"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.21", "area:8", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.22"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.22", "area:8", "weapon:aSword", "item:diamonds"],
     ],
@@ -4264,105 +4263,105 @@ manager.correct - manager.wrong > 800 = halo
     "receive": ["quest:aSword.24"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.24", "area:6", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.25"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.25", "area:6", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.26"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.26", "area:6", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.27"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.27", "area:6", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.28"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.28", "area:6", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.29"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.29", "area:6", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.30"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.30", "area:6", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.31"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.31", "area:6", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.32"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.32", "area:6", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.33"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.33", "area:6", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.34"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.34", "area:6", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.35"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.35", "area:6", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.36"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.36", "area:6", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.37"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.37", "area:6", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.38"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.38", "area:6", "weapon:aSword", "item:diamonds"],
     ],
@@ -4376,7 +4375,7 @@ manager.correct - manager.wrong > 800 = halo
     "receive": ["quest:aSword.40"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.40", "area:1.water", "weapon:aSword", "item:diamonds"],
       ["quest:aSword.40", "area:2.water", "weapon:aSword", "item:diamonds"],
@@ -4384,28 +4383,28 @@ manager.correct - manager.wrong > 800 = halo
     "receive": ["quest:aSword.41"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.41", "area:16", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.42"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.42", "area:11", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.43"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.43", "area:9", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.44"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.44", "area:15", "weapon:aSword", "item:diamonds"],
     ],
@@ -8203,7 +8202,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:str up npc",
@@ -8216,7 +8215,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:str up npc",
@@ -8230,7 +8229,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:str up npc",
@@ -8244,7 +8243,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:str up npc",
@@ -8258,7 +8257,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:str up npc",
@@ -8272,7 +8271,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:str up npc",
@@ -8286,7 +8285,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:str up npc",
@@ -8300,7 +8299,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:str up npc",
@@ -8314,7 +8313,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:str up npc",
@@ -8328,7 +8327,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:str up npc",
@@ -8342,7 +8341,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:str up npc",
@@ -8374,7 +8373,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:magic upgrades",
@@ -8398,7 +8397,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "area:12",

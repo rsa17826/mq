@@ -59,6 +59,8 @@ class ArchipelagoClient {
   constructor({ hostname, port, game, playerName, password = "" }) {
     this.url = `wss://${hostname}:${port}`
     this.game = game
+    this.hostname = hostname
+    this.port = port
     this.playerName = playerName
     this.password = password
     this.socket = null
@@ -68,24 +70,34 @@ class ArchipelagoClient {
     this.locationIdToName = {}
     this.scoutedItems = {}
     this.deathLinkEnabled = true
+    this.isFallbackMode = false
+    // Look for a saved preference for this specific host
+    this.storageKey = `apUseWss - ${hostname}:${port}`
+    warn(this.storageKey)
+    this.wss = localStorage[this.storageKey] !== "false"
+    warn(this.wss, "this.wss")
+
+    this.url =
+      this.wss ?
+        `wss://${hostname}:${port}`
+      : `ws://${hostname}:${port}`
   }
 
   /**
    * Establishes the WebSocket connection.
    */
   connect() {
-    // Note: If running in Node.js, require the 'ws' package: const WebSocket = require('ws');
+    // apLog(this.url)
     this.socket = new WebSocket(this.url)
 
     this.socket.onopen = () => {
       apLog(
-        "WebSocket connection established. Awaiting '@green!RoomInfo@!' from server...",
+        `WebSocket connection established (${this.url.split(":")[0]}). Awaiting '@green!RoomInfo@!' from server...`,
       )
     }
 
     this.socket.onmessage = (event) => {
       try {
-        // Archipelago always wraps commands inside a JSON list
         const packets = JSON.parse(event.data)
         for (const packet of packets) {
           this.handlePacket(packet)
@@ -97,12 +109,35 @@ class ArchipelagoClient {
 
     this.socket.onclose = (event) => {
       apWarn(
-        `[WARNING] Disconnected from Archipelago server. Code: @orange!${event.code}@!`,
+        `@orange![WARNING]@! Disconnected from Archipelago server. Code: @orange!${event.code}@!`,
       )
     }
 
     this.socket.onerror = (error) => {
       apError("WebSocket network error:", error)
+
+      // If secure connection fails and we haven't shifted to ws:// yet
+      if (!this.isFallbackMode) {
+        apWarn(
+          `${this.url} connection failed. trying w${this.wss ? "" : "s"}s://${this.hostname}:${this.port}`,
+        )
+
+        // Save the preference so next time it skips straight to ws://
+        this.wss = !this.wss
+        localStorage[this.storageKey] = this.wss
+        this.isFallbackMode = true
+        this.url = `w${this.wss ? "s" : ""}s://${this.hostname}:${this.port}`
+
+        // Clean up old socket event listeners before retrying
+        this.socket.onopen = null
+        this.socket.onmessage = null
+        this.socket.onclose = null
+        this.socket.onerror = null
+
+        this.connect()
+      } else {
+        localStorage[this.storageKey] = !this.wss
+      }
     }
   }
 

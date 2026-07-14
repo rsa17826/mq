@@ -111,10 +111,11 @@
     function recompute() {
       QuestState.seedFromGame()
       const have = new Set(haveReal)
-      const roomGraph = RoomGraph.computeReachability(
-        haveReal,
-        "20_20",
-      )
+      // Room-internal `areas` gating can depend on virtual tokens (like
+      // "flag:...") that only exist once some PROG_DATA entry grants them
+      // below -- so `roomGraph` has to be rebuilt with the growing `have`
+      // set as those get derived, not just seeded once from haveReal.
+      let roomGraph = RoomGraph.computeReachability(have, "20_20")
 
       const status = new Array(PROG_DATA.length).fill("false")
       let changed = true
@@ -138,7 +139,21 @@
             }
           }
         }
+        if (changed) {
+          // A newly derived flag/quest token might satisfy an `areas` reqs
+          // group somewhere, opening a new room-internal connection (and
+          // thus reachability for some entrance.* token) -- recompute the
+          // physical graph before the next pass over PROG_DATA sees it.
+          roomGraph = RoomGraph.computeReachability(have, "20_20")
+        }
       }
+      // Expose the fully-derived set (real items + every virtual/free token
+      // unlocked above) so map.js's own pathfinding graph sees exactly the
+      // same flags/quests this reachability pass did, instead of just the
+      // raw network items -- otherwise a warp/area gated behind a purely
+      // logical flag (never a real item) could never resolve to a walkable
+      // path there, only a "no route" direct-pointer arrow.
+      window.haveDerived = have
 
       // Clear old logic markers, but never touch .checked (that's ground truth)
       document
