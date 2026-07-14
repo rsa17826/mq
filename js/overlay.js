@@ -275,11 +275,10 @@ function customDrawLoop() {
       // map.js exposes these; if it hasn't loaded (or there's no route
       // selected on the map), there's nothing to draw.
       if (
-        !window.getCurrentPathRoutes ||
         !window.pfWorldPointToRoomFraction
       )
         return
-      var routes = window.getCurrentPathRoutes()
+      var routes = window.PATH_ROUTES
       if (!routes || !routes.length) return
 
       var roomKey = `${window.player.north}_${window.player.east}`

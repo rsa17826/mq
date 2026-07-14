@@ -1301,8 +1301,6 @@ manager.correct - manager.wrong > 800 = halo
     "receive": [
       "quest:gTree.3",
     ],
-    # TODO
-    "info": "also unblocks the path here add info to other place too",
   },
   {
     "room": {"north": 19, "east": 23},

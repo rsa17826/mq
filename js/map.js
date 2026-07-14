@@ -57,7 +57,7 @@ const PF_DIR_OFFSET = {
 }
 
 const PATH_ARROW_COLOR = "#39ff14"
-let PATH_ROUTES = []
+window.PATH_ROUTES = []
 let selectedPathId = null // identifies whatever room/entrance is currently clicked-on, or null
 
 function pfSelectionId(roomKey, entrance) {
@@ -206,6 +206,15 @@ function pfRoomsByKey(slotData) {
 function pfRoomExitList(room) {
   const list = []
   if (room && room.exits) {
+    if (
+      (room.north == 10 && room.east == 16) ||
+      (room.north == 16 && room.east == 14) ||
+      ((room.north == 6 || room.north == 5) && room.east == 23) ||
+      (room.north == 20 && room.east == 12)
+    ) {
+      room.exits["north"].push({ west: 1, east: 1 })
+      room.exits["south"].push({ west: 1, east: 1 })
+    }
     Object.keys(room.exits).forEach((side) => {
       const sideList = room.exits[side]
       if (!Array.isArray(sideList)) return
@@ -416,6 +425,13 @@ function pfBfs(graph, roomsByKey, startRoomKey) {
   const allIncoming = {}
   const queue = []
 
+  // Seed every real exit of the start room AND its root directly: a room
+  // that's purely a warp hub (no physical doors at all, just a "root"
+  // landing spot) would otherwise never get seeded, since root is normally
+  // only fed by an exit->root edge -- and there are no exits here to feed it.
+  const rootNode = pfExitNodeKey(startRoomKey, "root", 0)
+  dist[rootNode] = 0
+  queue.push(rootNode)
   pfRoomExitList(roomsByKey[startRoomKey]).forEach(
     ({ side, idx }) => {
       const node = pfExitNodeKey(startRoomKey, side, idx)
@@ -602,12 +618,6 @@ function buildPathRoutes(path) {
   return routes
 }
 
-// Exposed for overlay.js so the in-game overlay can show the same route.
-function getCurrentPathRoutes() {
-  return PATH_ROUTES
-}
-window.getCurrentPathRoutes = getCurrentPathRoutes
-
 // Distinct color for "there's genuinely no walkable route right now" so it
 // reads as "go here (somehow)" rather than "walk this exact way".
 const DIRECT_ARROW_COLOR = "#ff5533"
@@ -630,13 +640,13 @@ function showDirectArrowTo(targetKey) {
   const a = fromKey && pfRoomCenter(fromKey)
   const b = pfRoomCenter(targetKey)
   if (!a || !b) {
-    PATH_ROUTES = []
+    window.PATH_ROUTES = []
     requestUpdate()
     return
   }
   const midX = (a.x + b.x) / 2
   const midY = (a.y + b.y) / 2
-  PATH_ROUTES = [
+  window.PATH_ROUTES = [
     {
       d: [a.x, a.y, midX, midY, b.x, b.y],
       color: DIRECT_ARROW_COLOR,
@@ -659,12 +669,12 @@ function showPathTo(targetKey, targetEntrance) {
     showDirectArrowTo(targetKey)
     return
   }
-  PATH_ROUTES = buildPathRoutes(path)
+  window.PATH_ROUTES = buildPathRoutes(path)
   requestUpdate()
 }
 
 function clearPathRoute() {
-  PATH_ROUTES = []
+  window.PATH_ROUTES = []
   requestUpdate()
 }
 
@@ -913,7 +923,14 @@ function trackToken(token) {
   updateTrackedPath()
 }
 window.trackToken = trackToken
-trackToken(localStorage.trackedToken)
+window.onPlayerLoaded.push(() => {
+  setTimeout(() => {
+    if (/^[\d._]+ - /.test(trackedToken)) {
+      var tt = localStorage.trackedToken.split(" - ")
+      selectPathTarget(tt[0], tt[1] !== "undefined" && tt[1])
+    } else trackToken(localStorage.trackedToken)
+  }, 0)
+})
 
 // Call with a quest key matching ap.slotData.maxQuests / manager.quest[
 // Enum.Quest.<name>] (e.g. "gTree") to start tracking it on the map.
@@ -947,7 +964,7 @@ pfHookEvent("onQuestChanged", () =>
 pfHookEvent("onQuestChanged", () => window.__trackerRecompute?.())
 pfHookEvent("onNewScreen", () => {
   if (
-    PATH_ROUTES.find(
+    window.PATH_ROUTES.find(
       (e) => e.toRoom == `${manager.north}_${manager.east}`,
     )
   ) {
@@ -1137,7 +1154,7 @@ function redrawCanvas() {
     routes.forEach((route) => drawArrow(route))
   }
 
-  PATH_ROUTES.forEach((route) => drawArrow(route, true))
+  window.PATH_ROUTES.forEach((route) => drawArrow(route, true))
 }
 
 function requestUpdate() {

@@ -217,6 +217,11 @@ const RoomGraph = (function () {
       if (!room) return
       visitedRooms.add(roomKey)
       ensureCounts(roomKey, room)
+      // Seed root directly too: a room that's purely a warp hub (no
+      // physical doors at all) would otherwise never feed its root, since
+      // that normally only happens via a real exit's exit->root edge --
+      // and there are no exits here to provide one.
+      markExitReachable(roomKey, "root", 0)
       const comps = computeRoomComponents(room, haveReal)
       for (const key of Object.keys(comps)) {
         const side = key.replace(/\d+$/, "")
