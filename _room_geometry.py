@@ -6522,13 +6522,13 @@ WARPS: tuple[Warp, ...] = (
   },
   {
     "reqs": [["permit:bomb"]],
-    "connections": ((12, 21, "root", 0), (11, 21, "root", 0)),
+    "connections": ((12, 21, "west", 0), (11, 21, "root", 0)),
   },
   {
     "connections": ((18, 16, "root", 0), (19, 16, "south", 0)),
   },
   {
-    "connections": ((19, 16, "root", 0), (19, 15, "north", 0)),
+    "connections": ((19, 16, "south", 0), (19, 15, "north", 0)),
   },
   {
     "connections": ((9, 22, "north", 0), (9, 21, "root", 0)),
@@ -6578,6 +6578,10 @@ WARPS: tuple[Warp, ...] = (
   {
     "reqs": [["skill:warp"]],
     "connections": ((-1, -1, "root", 0), (12, 19, "east", 0)),
+  },
+  {
+    "reqs": [["skill:warp"]],
+    "connections": ((-1, -1, "root", 0), (14, 16, "west", 0)),
   },
   {
     "reqs": [["skill:warp"]],

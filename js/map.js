@@ -212,7 +212,8 @@ function pfRoomExitList(room) {
       (room.north == 10 && room.east == 16) ||
       (room.north == 16 && room.east == 14) ||
       ((room.north == 6 || room.north == 5) && room.east == 23) ||
-      (room.north == 20 && room.east == 12)
+      (room.north == 20 && room.east == 12) ||
+      (room.north == 18 && room.east == 16)
     ) {
       room.exits["north"].push({ west: 1, east: 1 })
       room.exits["south"].push({ west: 1, east: 1 })
@@ -1266,7 +1267,7 @@ function drawArrow(route, solid) {
   ctx.stroke()
 
   const angle = Math.atan2(c.y - b.y, c.x - b.x)
-  const arrowSize = 12
+  const arrowSize = 24
 
   ctx.beginPath()
   ctx.moveTo(c.x, c.y)
@@ -1280,7 +1281,7 @@ function drawArrow(route, solid) {
   )
   ctx.closePath()
 
-  ctx.fillStyle = route.color
+  ctx.fillStyle = mix(route.color, "#00f2")
   ctx.fill()
 }
 

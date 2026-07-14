@@ -74,9 +74,7 @@ class ArchipelagoClient {
     this.isFallbackMode = false
     // Look for a saved preference for this specific host
     this.storageKey = `apUseWss - ${hostname}:${port}`
-    warn(this.storageKey)
     this.wss = localStorage[this.storageKey] !== "false"
-    warn(this.wss, "this.wss")
 
     this.url =
       this.wss ?
