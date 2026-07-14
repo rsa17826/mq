@@ -174,6 +174,7 @@ PROG: list[ProgressionNode] = [
     "requires": [
       [
         "area:8",
+        "loot:oCoin#100",
       ],
     ],
     "receive": ["weapon:orcBlade"],
@@ -4370,9 +4371,9 @@ manager.correct - manager.wrong > 800 = halo
     "receive": ["quest:aSword.39"],
   },
   {
-    "room": {"north": 20, "east": 20},
+    "room": {"north": 501, "east": 500},
     "requires": [
-      ["quest:aSword.39", "area:6", "weapon:aSword", "item:diamonds"],
+      ["quest:aSword.39", "skill:reveal"],
     ],
     "receive": ["quest:aSword.40"],
   },
