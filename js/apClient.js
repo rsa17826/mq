@@ -2,6 +2,7 @@ const itemColors = {
   food: "green",
   item: "brown",
   loot: "brown",
+  filler: "brown",
   misc: "pink",
   skill: "yellow",
   craft: "orange",

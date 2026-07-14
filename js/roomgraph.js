@@ -33,7 +33,8 @@ const RoomGraph = (function () {
   // reached, is just as valid a warp origin as a real exit.
   function buildWarpIndex() {
     warpIndex = {}
-    const warps = (typeof WARPS_DATA !== "undefined" && WARPS_DATA) || []
+    const warps =
+      (typeof WARPS_DATA !== "undefined" && WARPS_DATA) || []
     for (const warp of warps) {
       const reqs = warp.reqs || []
       const conns = warp.connections || []
@@ -296,11 +297,16 @@ const RoomGraph = (function () {
     }
 
     function roomStatus(room) {
-      const counts = roomExitCounts[room]
       if (!roomIndex[room]) return "full" // no entrance data at all: don't grey, unknown
-      if (!counts || counts.total === 0)
-        return visitedRooms.has(room) ? "full" : "full"
-      if (counts.reachable === 0) return "full"
+      // Ground truth for "can the player actually be in this room at all":
+      // root gets fed the moment ANY real exit is reached (see
+      // markExitReachable above), so it's reachable exactly when the room
+      // itself is enterable -- regardless of whether any specific doorway
+      // out of it happens to be usable yet.
+      const entered = reachableExits.has(`${room}|root|0`)
+      if (!entered) return "none" // never actually reached
+      const counts = roomExitCounts[room]
+      if (!counts || counts.total === 0) return "full" // warp-only hub / no exit data
       if (counts.reachable >= counts.total) return "full"
       return "partial"
     }

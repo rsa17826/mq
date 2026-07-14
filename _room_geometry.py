@@ -3604,6 +3604,9 @@ GEOM: list[ExitBase] = [
           [
             "weapon:soulSword",
           ],
+          [
+            "quest:gTree.7",
+          ],
         ],
         "areas": [
           [
