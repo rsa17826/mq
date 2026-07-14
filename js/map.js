@@ -102,6 +102,7 @@ function pfAddEdge(
   toRoom,
   toDir,
   toIdx,
+  isWarp,
 ) {
   if (!graph[fromNode]) graph[fromNode] = []
   graph[fromNode].push({
@@ -113,6 +114,7 @@ function pfAddEdge(
     toRoom,
     toDir,
     toIdx: Number(toIdx),
+    isWarp: !!isWarp,
   })
 }
 
@@ -359,7 +361,7 @@ function buildPathGraph(slotData) {
 
   // --- Warp edges: teleport-style connections from _room_geometry.WARPS,
   //     gated by their own reqs (same OR-of-AND shape as everything else) ---
-  pfAddWarpEdges(graph, have)
+  pfAddWarpEdges(graph, roomsByKey, have)
 
   return { graph, roomsByKey }
 }
@@ -372,17 +374,48 @@ function buildPathGraph(slotData) {
 // as a real exit; landing AT root via a warp does NOT grant access to that
 // room's other exits (root has no edge back out to them -- see above), so
 // there's no special expansion here, just a plain edge to the root node.
-function pfAddWarpEdges(graph, have) {
+//
+// A connection room of (-1, -1) is a wildcard: not a real place, but a
+// stand-in for "wherever the player currently is" (e.g. a "warp" skill
+// castable from anywhere). It's origin-only -- treated as an implicit edge
+// from every real room's root, rather than one fixed node -- since it
+// doesn't correspond to any actual location on the map.
+function pfAddWarpEdges(graph, roomsByKey, have) {
   const warps =
     (typeof WARPS_DATA !== "undefined" && WARPS_DATA) || []
   warps.forEach((warp) => {
     if (!pfReqsSatisfied(warp.reqs || [], have)) return
     const conns = warp.connections || []
     conns.forEach(([n, e, side, idx], oi) => {
+      const targets = conns.filter((_, di) => di !== oi)
+      const isWildcardOrigin = n === -1 && e === -1
+
+      if (isWildcardOrigin) {
+        Object.keys(roomsByKey).forEach((roomKey) => {
+          const fromNode = pfExitNodeKey(roomKey, "root", 0)
+          targets.forEach(([tn, te, tside, tidx]) => {
+            const toRoom = `${tn}_${te}`
+            const toNode = pfExitNodeKey(toRoom, tside, tidx)
+            pfAddEdge(
+              graph,
+              fromNode,
+              toNode,
+              roomKey,
+              "root",
+              0,
+              toRoom,
+              tside,
+              tidx,
+              true,
+            )
+          })
+        })
+        return
+      }
+
       const fromRoom = `${n}_${e}`
       const fromNode = pfExitNodeKey(fromRoom, side, idx)
-      conns.forEach(([tn, te, tside, tidx], di) => {
-        if (di === oi) return
+      targets.forEach(([tn, te, tside, tidx]) => {
         const toRoom = `${tn}_${te}`
         const toNode = pfExitNodeKey(toRoom, tside, tidx)
         pfAddEdge(
@@ -395,6 +428,7 @@ function pfAddWarpEdges(graph, have) {
           toRoom,
           tside,
           tidx,
+          true,
         )
       })
     })
@@ -501,7 +535,11 @@ function pfCandidateStartKeys() {
   const home = pfHomePointRoomKey()
   if (home && !keys.includes(home)) keys.push(home)
   const have = window.haveDerived || window.haveReal
-  if (have && have.has("misc:bobbisPendant") && !keys.includes("20_20")) {
+  if (
+    have &&
+    have.has("misc:bobbisPendant") &&
+    !keys.includes("20_20")
+  ) {
     keys.push("20_20")
   }
   return keys
@@ -514,7 +552,9 @@ function pfCandidateStartKeys() {
 //
 // Also tries starting from the player's homepoint (and 20_20, if they hold
 // the pendant) as alternate jumping-off points, and picks whichever
-// candidate start actually produces the shortest route.
+// candidate start actually produces the shortest route. Returns
+// { path, startKey } so callers can tell when the winning route didn't
+// actually start from the player's real position.
 function findPathTo(targetKey, targetEntrance) {
   const slotData = window.ap && window.ap.slotData
   if (!slotData) return null
@@ -526,10 +566,11 @@ function findPathTo(targetKey, targetEntrance) {
   )
   if (!candidates.length) return null
 
-  let best = null // { path, dist }
+  let best = null // { path, dist, startKey }
 
   for (const startKey of candidates) {
-    if (startKey === targetKey && !targetEntrance) return [] // already there
+    if (startKey === targetKey && !targetEntrance)
+      return { path: [], startKey } // already there
 
     const { dist, bestEdge } = pfBfs(graph, roomsByKey, startKey)
 
@@ -565,11 +606,11 @@ function findPathTo(targetKey, targetEntrance) {
     }
 
     if (path && pathDist < (best ? best.dist : Infinity)) {
-      best = { path, dist: pathDist }
+      best = { path, dist: pathDist, startKey }
     }
   }
 
-  return best ? best.path : null
+  return best ? { path: best.path, startKey: best.startKey } : null
 }
 
 // --- Pixel geometry, read straight off the rendered tiles ---
@@ -622,6 +663,16 @@ function pfExitPoint(roomKey, dir, idx) {
   const origin = pfTileOrigin(roomKey)
   if (!origin) return null
 
+  // Root has no drawn exit-square (it's a landing spot, not a doorway) --
+  // resolve it to the room's center instead, same place gen_map.py draws
+  // its own root warp markers.
+  if (dir === "root") {
+    return {
+      x: origin.x + PF_TILE_WIDTH / 2,
+      y: origin.y + PF_TILE_HEIGHT / 2,
+    }
+  }
+
   const squareCenter = pfExitSquareCenter(roomKey, origin, dir, idx)
   if (squareCenter) return squareCenter
 
@@ -673,6 +724,7 @@ function buildPathRoutes(path) {
       toRoom: edge.toRoom,
       toDir: edge.toDir,
       toPoint: b,
+      isWarp: !!edge.isWarp,
     })
   }
   return routes
@@ -721,15 +773,44 @@ function showDirectArrowTo(targetKey) {
   requestUpdate()
 }
 
+// A straight dashed "warp" segment representing an instant jump (homepoint
+// teleport, pendant, etc.) from the player's real position to wherever the
+// winning path actually started -- same idea as showDirectArrowTo's pointer,
+// but tagged isWarp so drawArrow renders it dashed like any other warp hop.
+function pfAltStartRoute(fromKey, toKey) {
+  const a = pfRoomCenter(fromKey)
+  const b = pfRoomCenter(toKey)
+  if (!a || !b) return null
+  const midX = (a.x + b.x) / 2
+  const midY = (a.y + b.y) / 2
+  return {
+    d: [a.x, a.y, midX, midY, b.x, b.y],
+    color: PATH_ARROW_COLOR,
+    fromRoom: fromKey,
+    fromDir: null,
+    fromPoint: a,
+    toRoom: toKey,
+    toDir: null,
+    toPoint: b,
+    isWarp: true,
+  }
+}
+
 // No route found -> falls back to a direct pointer arrow instead of an
 // empty canvas.
 function showPathTo(targetKey, targetEntrance) {
-  const path = findPathTo(targetKey, targetEntrance)
-  if (path === null) {
+  const result = findPathTo(targetKey, targetEntrance)
+  if (result === null) {
     showDirectArrowTo(targetKey)
     return
   }
-  window.PATH_ROUTES = buildPathRoutes(path)
+  const routes = buildPathRoutes(result.path)
+  const realKey = getCurrentRoomKey()
+  if (realKey && result.startKey && result.startKey !== realKey) {
+    const jump = pfAltStartRoute(realKey, result.startKey)
+    if (jump) routes.unshift(jump)
+  }
+  window.PATH_ROUTES = routes
   requestUpdate()
 }
 
@@ -1214,7 +1295,9 @@ function redrawCanvas() {
     routes.forEach((route) => drawArrow(route))
   }
 
-  window.PATH_ROUTES.forEach((route) => drawArrow(route, true))
+  window.PATH_ROUTES.forEach((route) =>
+    drawArrow(route, !route.isWarp),
+  )
 }
 
 function requestUpdate() {

@@ -14,6 +14,7 @@ const RoomGraph = (function () {
 
   let roomIndex = null // "north_east" -> room entry from AP_ENTRANCE_IDS
   let warpIndex = null // "room|side|idx" -> [{ reqs, targets: [{room,side,idx}] }]
+  let wildcardWarps = null // [{ reqs, targets }] -- fireable from ANY room's root
 
   function buildRoomIndex() {
     roomIndex = {}
@@ -31,15 +32,20 @@ const RoomGraph = (function () {
   // to/from the shared warp hub. Root is *reachable* like any other node
   // (see markExitReachable's automatic exit->root feed below) and, once
   // reached, is just as valid a warp origin as a real exit.
+  //
+  // A connection room of (-1, -1) is a wildcard, not a real place: a stand-
+  // in for "wherever the player currently is" (e.g. a "warp" skill castable
+  // from anywhere). It's origin-only, and gets fired from every room's root
+  // rather than indexed under one fixed key.
   function buildWarpIndex() {
     warpIndex = {}
+    wildcardWarps = []
     const warps =
       (typeof WARPS_DATA !== "undefined" && WARPS_DATA) || []
     for (const warp of warps) {
       const reqs = warp.reqs || []
       const conns = warp.connections || []
       conns.forEach(([n, e, side, idx], oi) => {
-        const originKey = `${n}_${e}|${side}|${idx}`
         const targets = conns
           .filter((_, di) => di !== oi)
           .map(([tn, te, tside, tidx]) => ({
@@ -47,6 +53,11 @@ const RoomGraph = (function () {
             side: tside,
             idx: tidx,
           }))
+        if (n === -1 && e === -1) {
+          wildcardWarps.push({ reqs, targets })
+          return
+        }
+        const originKey = `${n}_${e}|${side}|${idx}`
         if (!warpIndex[originKey]) warpIndex[originKey] = []
         warpIndex[originKey].push({ reqs, targets })
       })
@@ -259,12 +270,27 @@ const RoomGraph = (function () {
     // exactly like a physical doorway would be.
     function fireWarpsFrom(roomKey, side, idx) {
       const entries = warpIndex[`${roomKey}|${side}|${idx}`]
-      if (!entries) return
-      for (const { reqs, targets } of entries) {
-        if (!reqsSatisfied(reqs, haveReal)) continue
-        for (const t of targets) {
-          if (t.side === "root") markExitReachable(t.room, "root", 0)
-          else enterRoomViaExit(t.room, t.side, t.idx)
+      if (entries) {
+        for (const { reqs, targets } of entries) {
+          if (!reqsSatisfied(reqs, haveReal)) continue
+          for (const t of targets) {
+            if (t.side === "root")
+              markExitReachable(t.room, "root", 0)
+            else enterRoomViaExit(t.room, t.side, t.idx)
+          }
+        }
+      }
+      // A room's root becoming reachable means the player can genuinely be
+      // standing there -- which is exactly what a wildcard (-1,-1) warp
+      // origin means, so give it the same chance to fire from here too.
+      if (side === "root") {
+        for (const { reqs, targets } of wildcardWarps) {
+          if (!reqsSatisfied(reqs, haveReal)) continue
+          for (const t of targets) {
+            if (t.side === "root")
+              markExitReachable(t.room, "root", 0)
+            else enterRoomViaExit(t.room, t.side, t.idx)
+          }
         }
       }
     }

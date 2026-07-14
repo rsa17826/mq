@@ -38,4 +38,3 @@ const QuestState = (function () {
 
   return { satisfied, set, seedFromGame, values }
 })()
-
