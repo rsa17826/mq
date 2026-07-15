@@ -215,8 +215,10 @@ function pfRoomExitList(room) {
       (room.north == 20 && room.east == 12) ||
       (room.north == 18 && room.east == 16)
     ) {
-      room.exits["north"].push({ west: 1, east: 1 })
-      room.exits["south"].push({ west: 1, east: 1 })
+      if (!room.exits?.["north"]?.length)
+        list.push({ side: "north", idx: 0 })
+      if (!room.exits?.["south"]?.length)
+        list.push({ side: "south", idx: 0 })
     }
     Object.keys(room.exits).forEach((side) => {
       const sideList = room.exits[side]
