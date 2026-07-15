@@ -39,7 +39,9 @@
 
     const roomEls = {}
     document
-      .querySelectorAll(".tile-wrapper[data-room]")
+      .querySelectorAll(
+        '.tile-wrapper[data-room]:not([data-room="20_16"])',
+      )
       .forEach((el) => {
         roomEls[el.dataset.room] = el
       })

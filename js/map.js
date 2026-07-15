@@ -210,7 +210,6 @@ function pfRoomExitList(room) {
   if (room && room.exits) {
     if (
       (room.north == 10 && room.east == 16) ||
-      (room.north == 16 && room.east == 14) ||
       ((room.north == 6 || room.north == 5) && room.east == 23) ||
       (room.north == 20 && room.east == 12) ||
       (room.north == 18 && room.east == 16)
@@ -1213,7 +1212,9 @@ document.addEventListener("DOMContentLoaded", () => {
       requestUpdate()
     })
     tile.addEventListener("click", function (e) {
-      selectPathTarget(this.getAttribute("data-room"))
+      selectPathTarget(
+        this.getAttribute("data-room").replace("20_16", "19_16"),
+      )
     })
   })
 
@@ -1226,7 +1227,10 @@ document.addEventListener("DOMContentLoaded", () => {
     .forEach((square) => {
       square.addEventListener("click", function (e) {
         e.stopPropagation()
-        const roomKey = this.getAttribute("data-room")
+        const roomKey = this.getAttribute("data-room").replace(
+          "20_16",
+          "19_16",
+        )
         const dir = this.getAttribute("data-side")
         const idx = Number(this.getAttribute("data-idx"))
         selectPathTarget(roomKey, { dir, idx })

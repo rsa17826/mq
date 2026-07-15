@@ -177,7 +177,10 @@
     header.querySelector("#item-tracker-toggle").textContent = "▸"
 
     filterInput.addEventListener("click", (e) => e.stopPropagation())
-    filterInput.addEventListener("input", render)
+    filterInput.addEventListener("input", (e) => {
+      e.stopPropagation()
+      render()
+    })
 
     function render() {
       const q = filterInput.value.trim().toLowerCase()
