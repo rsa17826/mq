@@ -1050,9 +1050,6 @@ function updateTrackedPath() {
   const target = pfResolveAreaRedirect(rawEntry)
   showPathTo(target.room)
 }
-// Backwards-compatible alias -- other code (onQuestChanged/onNewScreen
-// hooks below) referred to this by its old name.
-const updateTrackedQuestPath = updateTrackedPath
 
 // Call with an exact token to track: "quest:<name>" chases that quest's
 // next not-yet-satisfied step; any other token (e.g. "item:earthAmulet")
@@ -1065,13 +1062,9 @@ function trackToken(token) {
   updateTrackedPath()
 }
 window.trackToken = trackToken
+var firstLoad = false
 window.onPlayerLoaded.push(() => {
-  setTimeout(() => {
-    if (/^[\d._]+ - /.test(trackedToken)) {
-      var tt = localStorage.trackedToken.split(" - ")
-      selectPathTarget(tt[0], tt[1] !== "undefined" && tt[1])
-    } else trackToken(localStorage.trackedToken)
-  }, 0)
+  firstLoad = true
 })
 
 // Call with a quest key matching ap.slotData.maxQuests / manager.quest[
@@ -1100,9 +1093,7 @@ function pfHookEvent(name, handler) {
   window[name] = handler
 }
 
-pfHookEvent("onQuestChanged", () =>
-  setTimeout(updateTrackedQuestPath),
-)
+pfHookEvent("onQuestChanged", () => setTimeout(updateTrackedPath))
 pfHookEvent("onQuestChanged", () => window.__trackerRecompute?.())
 pfHookEvent("onNewScreen", () => {
   if (
@@ -1112,10 +1103,20 @@ pfHookEvent("onNewScreen", () => {
   ) {
     return
   }
+  if (firstLoad) {
+    firstLoad = false
+    if (/^[\d._]+ - /.test(trackedToken)) {
+      var tt = localStorage.trackedToken.split(" - ")
+      selectPathTarget(
+        tt[0],
+        tt[1] !== "undefined" ? tt[1] : undefined,
+      )
+    } else trackToken(localStorage.trackedToken)
+  }
   if (/^[\d._]+ - /.test(trackedToken)) {
     var tt = trackedToken.split(" - ")
-    showPathTo(tt[0], tt[1] !== "undefined" && tt[1])
-  } else updateTrackedQuestPath()
+    showPathTo(tt[0], tt[1] !== "undefined" ? tt[1] : undefined)
+  } else updateTrackedPath()
 })
 
 function resizeCanvas() {

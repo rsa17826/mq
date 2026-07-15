@@ -317,6 +317,14 @@ function customDrawLoop() {
         // end is elsewhere on the map, so just point toward the exit.
         if (fromPt) {
           var vec = PF_DIR_SCREEN_VECTOR[route.fromDir] || [0, 0]
+          if (!route.fromDir && !toPt) {
+            overlayCtx.strokeStyle = "#000"
+            overlayCtx.lineJoin = "round"
+            overlayCtx.lineWidth = 3 // Controls the thickness of the outline
+            overlayCtx.strokeText(owo(route.toRoom), 50, 100)
+            overlayCtx.fillStyle = "#ddd"
+            overlayCtx.fillText(owo(route.toRoom), 50, 100)
+          }
           drawOverlayArrow(fromPt, {
             x: fromPt.x + vec[0] * stubLength,
             y: fromPt.y + vec[1] * stubLength,
@@ -325,8 +333,8 @@ function customDrawLoop() {
           var vec2 = PF_DIR_SCREEN_VECTOR[route.toDir] || [0, 0]
           drawOverlayArrow(
             {
-              x: toPt.x - vec2[0] * stubLength,
-              y: toPt.y - vec2[1] * stubLength,
+              x: toPt.x - vec2[0] * -stubLength,
+              y: toPt.y - vec2[1] * -stubLength,
             },
             toPt,
           )
