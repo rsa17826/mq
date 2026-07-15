@@ -310,6 +310,20 @@ PROG: list[ProgressionNode] = [
     ],
   },
   {
+    "room": {"north": 21, "east": 18},
+    "requires": [
+      [
+        "skill:reveal",
+        "permit:bomb",
+        "loot:vAsh#30",
+        "loot:shadowCrest#25",
+      ],
+    ],
+    "receive": [
+      "misc:hugeBomb",
+    ],
+  },
+  {
     "room": {"north": -1, "east": -1},
     "requires": [
       [],
