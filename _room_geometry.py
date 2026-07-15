@@ -6601,11 +6601,11 @@ WARPS: tuple[Warp, ...] = (
   },
   {
     "reqs": [["skill:warp", "quest:gTree.19"]],
-    "connections": ((-1, -1, "root", 0), (7, 9, "south", 0)),
+    "connections": ((-1, -1, "root", 0), (11, 24, "east", 0)),
   },
   {
-    "reqs": [["skill:warp", "quest:gTree.22"]],
-    "connections": ((-1, -1, "root", 0), (11, 24, "east", 0)),
+    "reqs": [["skill:warp", "quest:gTree.23"]],
+    "connections": ((-1, -1, "root", 0), (19, 12, "east", 0)),
   },
   {
     "connections": ((20, 20, "root", 0), (-1, -1, "root", 0)),

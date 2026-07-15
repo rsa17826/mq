@@ -269,7 +269,7 @@ function customDrawLoop() {
         b.y - arrowSize * Math.sin(angle + 0.35),
       )
       overlayCtx.closePath()
-      overlayCtx.fillStyle = "#39ff14"
+      overlayCtx.fillStyle = mix("#39ff14", "#00f2")
       overlayCtx.fill()
     }
 
@@ -317,7 +317,8 @@ function customDrawLoop() {
         // end is elsewhere on the map, so just point toward the exit.
         if (fromPt) {
           var vec = PF_DIR_SCREEN_VECTOR[route.fromDir] || [0, 0]
-          if (!route.fromDir && !toPt) {
+          // TODO - make show warp dest location and name and work
+          if (!route.fromDir) {
             overlayCtx.strokeStyle = "#000"
             overlayCtx.lineJoin = "round"
             overlayCtx.lineWidth = 3 // Controls the thickness of the outline
@@ -326,15 +327,15 @@ function customDrawLoop() {
             overlayCtx.fillText(owo(route.toRoom), 50, 100)
           }
           drawOverlayArrow(fromPt, {
-            x: fromPt.x + vec[0] * stubLength,
-            y: fromPt.y + vec[1] * stubLength,
+            x: fromPt.x + vec[0] * (stubLength / 1.6),
+            y: fromPt.y + vec[1] * (stubLength / 1.6),
           })
         } else if (toPt) {
           var vec2 = PF_DIR_SCREEN_VECTOR[route.toDir] || [0, 0]
           drawOverlayArrow(
             {
-              x: toPt.x - vec2[0] * -stubLength,
-              y: toPt.y - vec2[1] * -stubLength,
+              x: toPt.x - vec2[0] * -(stubLength / 1.6),
+              y: toPt.y - vec2[1] * -(stubLength / 1.6),
             },
             toPt,
           )
