@@ -268,7 +268,6 @@ body {
   margin: 6px 0;
 }
 
-/* --- ADD THESE LINES TO FIX THE SCROLLBAR --- */
 #item-tracker-panel::-webkit-scrollbar {
   width: 8px;
 }
@@ -303,7 +302,6 @@ body {
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  position: sticky !important;
 }
 #item-tracker-row {
   border-bottom: 1px solid #333;

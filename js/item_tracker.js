@@ -173,46 +173,63 @@
       )
     }
 
-    // --- Panel scaffolding ---
     let header, filterInput, clearLootBtn, list, itemTrackerToggle
-    const panel = newelem("div", { id: "item-tracker-panel" }, [
-      (header = newelem("div", { position: "sticky" }, [
-        (header = newelem("div", { id: "header" }, [
-          newelem("div", {}, [
-            newelem("b", {}, ["Items & Quests"]),
-            (itemTrackerToggle = newelem(
-              "span",
-              { id: "item-tracker-toggle" },
-              ["▾"],
-            )),
-          ]),
-          (filterInput = newelem("input", {
-            type: "text",
-            placeholder: "Filter by room, requires, or receive...",
-          })),
-          (clearLootBtn = newelem(
-            "button",
-            {
-              type: "text",
-              placeholder: "Filter by room, requires, or receive...",
-              marginBottom: "6px",
-              title:
-                "Reset the merged loot HUD (all Track Loot selections)",
-              onclick(e) {
-                e.stopPropagation()
-                clearLootTracking()
+    document.getElementById("viewport").appendChild(
+      newelem("div", { id: "item-tracker-panel" }, [
+        (header = newelem(
+          "div",
+          {
+            position: "sticky",
+            top: "-10px",
+            zIndex: "10",
+            background: "rgba(20, 20, 20, 0.98)",
+            paddingBottom: "4px",
+          },
+          [
+            (header = newelem(
+              "div",
+              {
+                id: "header",
               },
-            },
-            ["Clear Loot Tracking"],
-          )),
-        ])),
-      ])),
-      newelem("div", { id: "body" }, [
-        (list = newelem("div", { id: "item-tracker-list" })),
+              [
+                newelem("div", {}, [
+                  newelem("b", {}, ["Items & Quests"]),
+                  (itemTrackerToggle = newelem(
+                    "span",
+                    { id: "item-tracker-toggle" },
+                    ["▾"],
+                  )),
+                ]),
+                (filterInput = newelem("input", {
+                  type: "text",
+                  placeholder:
+                    "Filter by room, requires, or receive...",
+                })),
+                (clearLootBtn = newelem(
+                  "button",
+                  {
+                    type: "text",
+                    placeholder:
+                      "Filter by room, requires, or receive...",
+                    marginBottom: "6px",
+                    title:
+                      "Reset the merged loot HUD (all Track Loot selections)",
+                    onclick(e) {
+                      e.stopPropagation()
+                      clearLootTracking()
+                    },
+                  },
+                  ["Clear Loot Tracking"],
+                )),
+              ],
+            )),
+          ],
+        )),
+        newelem("div", { id: "body" }, [
+          (list = newelem("div", { id: "item-tracker-list" })),
+        ]),
       ]),
-    ])
-
-    document.getElementById("viewport")?.appendChild(panel)
+    )
 
     header.addEventListener("click", () => {
       const hidden = body.style.display === "none"
