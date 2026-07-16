@@ -179,7 +179,7 @@
       (header = newelem("div", { position: "sticky" }, [
         (header = newelem("div", { id: "header" }, [
           newelem("div", {}, [
-            newelem("b", {}, ["Items &amp; Quests"]),
+            newelem("b", {}, ["Items & Quests"]),
             (itemTrackerToggle = newelem(
               "span",
               { id: "item-tracker-toggle" },
@@ -232,52 +232,48 @@
       const reqStr = fmtRequires(entry.requires)
       const recStr = fmtReceive(entry.receive)
 
-      const row = document.createElement("div")
-      row.style.cssText =
-        "border-bottom:1px solid #333; padding:6px 0; display:flex; flex-direction:column; gap:2px;"
+      let btnRow
+      const row = newelem(
+        "div",
+        {
+          id: "item-tracker-row",
+        },
+        [
+          newelem("b", {}, [entry.room]),
+          newelem("div", { color: "#aaa" }, [`Requires: ${reqStr}`]),
+          newelem("div", { color: "#8f8" }, [`Receive: ${recStr}`]),
+          (btnRow = newelem("div", { id: "btn-row" }, [
+            newelem(
+              "button",
+              {
+                title:
+                  "Point the map arrow here (and auto-surface any outstanding loot requirement)",
+                onclick(e) {
+                  e.stopPropagation()
+                  window.trackToken(primaryTrackToken(entry))
+                },
+              },
+              ["Track"],
+            ),
+            entryLootTokens(entry).length ?
+              newelem(
+                "button",
+                {
+                  title:
+                    "Merge this entry's outstanding loot counts into the HUD (adds to, rather than replaces, any loot already being tracked)",
+                  onclick(e) {
+                    e.stopPropagation()
+                    applyMergedLootTracking(entry)
+                  },
+                },
+                ["Track Loot"],
+              )
+            : null,
+          ])),
+        ],
+      )
 
       if (isChecked(entry)) row.style.opacity = "0.4"
-
-      const loc = document.createElement("div")
-      loc.innerHTML = `<b>${entry.room}</b>`
-      const req = document.createElement("div")
-      req.textContent = `Requires: ${reqStr}`
-      req.style.color = "#aaa"
-      const rec = document.createElement("div")
-      rec.textContent = `Receive: ${recStr}`
-      rec.style.color = "#8f8"
-
-      row.appendChild(loc)
-      row.appendChild(req)
-      row.appendChild(rec)
-
-      const btnRow = document.createElement("div")
-      btnRow.style.cssText = "display:flex; gap:6px; margin-top:4px;"
-
-      const trackBtn = document.createElement("button")
-      trackBtn.textContent = "Track"
-      trackBtn.title =
-        "Point the map arrow here (and auto-surface any outstanding loot requirement)"
-      trackBtn.onclick = (e) => {
-        e.stopPropagation()
-        window.trackToken(primaryTrackToken(entry))
-      }
-      btnRow.appendChild(trackBtn)
-
-      const lootTokens = entryLootTokens(entry)
-      if (lootTokens.length) {
-        const lootBtn = document.createElement("button")
-        lootBtn.textContent = "Track Loot"
-        lootBtn.title =
-          "Merge this entry's outstanding loot counts into the HUD (adds to, rather than replaces, any loot already being tracked)"
-        lootBtn.onclick = (e) => {
-          e.stopPropagation()
-          applyMergedLootTracking(entry)
-        }
-        btnRow.appendChild(lootBtn)
-      }
-
-      row.appendChild(btnRow)
       return row
     }
 
