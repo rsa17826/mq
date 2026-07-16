@@ -1348,6 +1348,11 @@ window.addEventListener("mouseup", () => {
 viewport.addEventListener(
   "wheel",
   (e) => {
+    if (
+      !isPanning &&
+      document.querySelector("#item-tracker-panel").contains(e.target)
+    )
+      return
     e.preventDefault()
     const zoomIntensity = 0.0009
     const rect = viewport.getBoundingClientRect()

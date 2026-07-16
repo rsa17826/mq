@@ -241,3 +241,43 @@ body {
   max-height: 100vh;
   max-width: 150vh; /* (900 / 600) * 100 */
 }
+
+#item-tracker-panel button {
+  background: #333;
+  color: #eee;
+  border: 1px solid #555;
+  border-radius: 4px;
+  padding: 2px 8px;
+  cursor: pointer;
+  font-family: monospace;
+  font-size: 11px;
+}
+#item-tracker-panel button:hover {
+  background: #454545;
+}
+#item-tracker-panel input[type="text"] {
+  width: 100%;
+  box-sizing: border-box;
+  background: #111;
+  color: #eee;
+  border: 1px solid #555;
+  border-radius: 4px;
+  padding: 4px 6px;
+  font-family: monospace;
+  font-size: 11px;
+  margin: 6px 0;
+}
+
+/* --- ADD THESE LINES TO FIX THE SCROLLBAR --- */
+#item-tracker-panel::-webkit-scrollbar {
+  width: 8px;
+}
+#item-tracker-panel::-webkit-scrollbar-track {
+  background: rgba(20, 20, 20, 0.5);
+}
+#item-tracker-panel::-webkit-scrollbar-thumb {
+  background: #555;
+}
+#item-tracker-panel::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
