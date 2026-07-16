@@ -630,7 +630,7 @@ class ArchipelagoClient {
     var mt = highlightArray(
       messageText
         .replace(
-          /(^[^(]+) \((Team #\d+)\) (playing|tracking) (.*) has joined/,
+          /(^[^(]+) \((Team #\d+)\) (playing|tracking|viewing) (.*) has joined/,
           "@green!$1@blue! (@green!$2@blue!) @!$3 @green!$4@! has joined",
         )
         .replace(
@@ -638,7 +638,7 @@ class ArchipelagoClient {
           "@green!$1@blue! (@green!$2@blue!) @! has left the game",
         )
         .replace(
-          /(^[^(]+) \((Team #\d+)\) has (started|stopped) (tracking|playing) the game/,
+          /(^[^(]+) \((Team #\d+)\) has (started|stopped) (tracking|playing|viewing) the game/,
           "@green!$1@blue! (@!@green!$2@blue!) @! has $3 $4 the game",
         )
         .replace(
