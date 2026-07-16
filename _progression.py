@@ -2507,7 +2507,7 @@ manager.correct - manager.wrong > 800 = halo
     "receive": [
       "food:newtonsApple#15",
     ],
-    "info": "full refresh too",
+    "info": "full refresh too - full ignores aarmor bonus so not full and can even reduce values",
   },
   {
     "room": {"north": 17, "east": 15},
