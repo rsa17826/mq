@@ -239,6 +239,11 @@
     body.style.display = "none"
     itemTrackerToggle.textContent = "▸"
 
+    filterInput.addEventListener("keyup", (e) => e.stopPropagation())
+    filterInput.addEventListener("keydown", (e) =>
+      e.stopPropagation(),
+    )
+    filterInput.addEventListener("input", (e) => e.stopPropagation())
     filterInput.addEventListener("click", (e) => e.stopPropagation())
     filterInput.addEventListener("input", (e) => {
       e.stopPropagation()
