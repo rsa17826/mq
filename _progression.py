@@ -571,7 +571,7 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "skill:tough.+1",
+      "skill:tough.2",
     ],
   },
   # {
@@ -632,7 +632,18 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "skill:reveal.+1",
+      "skill:reveal.2",
+    ],
+  },
+  {
+    "room": {"north": 10, "east": 14},
+    "requires": [
+      [
+        "item:gold#2500",
+      ],
+    ],
+    "receive": [
+      "food:holyWater",
     ],
   },
   {
@@ -1044,6 +1055,17 @@ manager.correct - manager.wrong > 800 = halo
     "receive": [
       "skill:firewall.4",
       "flag:skill.firewall checked.4",
+    ],
+  },
+  {
+    "room": {"north": 20, "east": 15},
+    "requires": [
+      [
+        "loot:medallions#1",
+      ],
+    ],
+    "receive": [
+      "food:newtonsApple",
     ],
   },
   # NOTE don't need this many, lv4 is enough

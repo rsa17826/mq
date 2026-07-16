@@ -207,6 +207,7 @@ window.apWarn = function apWarn(...args) {
   )
 }
 window.apError = function apError(...args) {
+  window.apErrors.push(args.map(_apStringify).join(" "))
   apChatLogRaw(
     parseatts(args.map(_apStringify).join(" "), "error"),
     "error",
