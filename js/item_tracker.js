@@ -123,7 +123,11 @@
 
     function clearLootTracking() {
       trackedLootEntries.clear()
-      window.applyLootTrackingFor({ room: "Tracked Loot", requires: [[]], receive: [] })
+      window.applyLootTrackingFor({
+        room: "Tracked Loot",
+        requires: [[]],
+        receive: [],
+      })
     }
 
     // --- Subgroup classification ---
@@ -170,92 +174,53 @@
     }
 
     // --- Panel scaffolding ---
+    let header, filterInput, clearLootBtn, list, itemTrackerToggle
+    const panel = newelem("div", { id: "item-tracker-panel" }, [
+      (header = newelem("div", { position: "sticky" }, [
+        (header = newelem("div", { id: "header" }, [
+          newelem("div", {}, [
+            newelem("b", {}, ["Items &amp; Quests"]),
+            (itemTrackerToggle = newelem(
+              "span",
+              { id: "item-tracker-toggle" },
+              ["▾"],
+            )),
+          ]),
+          (filterInput = newelem("input", {
+            type: "text",
+            placeholder: "Filter by room, requires, or receive...",
+          })),
+          (clearLootBtn = newelem(
+            "button",
+            {
+              type: "text",
+              placeholder: "Filter by room, requires, or receive...",
+              marginBottom: "6px",
+              title:
+                "Reset the merged loot HUD (all Track Loot selections)",
+              onclick(e) {
+                e.stopPropagation()
+                clearLootTracking()
+              },
+            },
+            ["Clear Loot Tracking"],
+          )),
+        ])),
+      ])),
+      newelem("div", { id: "body" }, [
+        (list = newelem("div", { id: "item-tracker-list" })),
+      ]),
+    ])
 
-    const style = document.createElement("style")
-    style.textContent = `
-      #item-tracker-panel button {
-        background: #333;
-        color: #eee;
-        border: 1px solid #555;
-        border-radius: 4px;
-        padding: 2px 8px;
-        cursor: pointer;
-        font-family: monospace;
-        font-size: 11px;
-      }
-      #item-tracker-panel button:hover { background: #454545; }
-      #item-tracker-panel input[type="text"] {
-        width: 100%;
-        box-sizing: border-box;
-        background: #111;
-        color: #eee;
-        border: 1px solid #555;
-        border-radius: 4px;
-        padding: 4px 6px;
-        font-family: monospace;
-        font-size: 11px;
-        margin: 6px 0;
-      }
-    `
-    document.head.appendChild(style)
-
-    const panel = document.createElement("div")
-    panel.id = "item-tracker-panel"
-    panel.style.cssText = `
-      position: absolute;
-      top: 20px;
-      right: 350px;
-      max-height: 70vh;
-      width: 380px;
-      overflow-y: auto;
-      background: rgba(20,20,20,0.94);
-      border: 1px solid #444;
-      border-radius: 8px;
-      padding: 10px 12px;
-      font-family: monospace;
-      font-size: 11px;
-      color: #e0e0e0;
-      z-index: 10000000;
-    `
-
-    const header = document.createElement("div")
-    header.style.cssText =
-      "display:flex; justify-content:space-between; align-items:center; cursor:pointer;"
-    header.innerHTML = `<b>Items &amp; Quests</b><span id="item-tracker-toggle">▾</span>`
-
-    const filterInput = document.createElement("input")
-    filterInput.type = "text"
-    filterInput.placeholder =
-      "Filter by room, requires, or receive..."
-
-    const clearLootBtn = document.createElement("button")
-    clearLootBtn.textContent = "Clear Loot Tracking"
-    clearLootBtn.style.cssText = "margin-bottom:6px;"
-    clearLootBtn.title = "Reset the merged loot HUD (all Track Loot selections)"
-    clearLootBtn.onclick = (e) => {
-      e.stopPropagation()
-      clearLootTracking()
-    }
-
-    const body = document.createElement("div")
-    const list = document.createElement("div")
-    list.id = "item-tracker-list"
-    body.appendChild(filterInput)
-    body.appendChild(clearLootBtn)
-    body.appendChild(list)
-
-    panel.appendChild(header)
-    panel.appendChild(body)
     document.getElementById("viewport")?.appendChild(panel)
 
     header.addEventListener("click", () => {
       const hidden = body.style.display === "none"
       body.style.display = hidden ? "" : "none"
-      header.querySelector("#item-tracker-toggle").textContent =
-        hidden ? "▾" : "▸"
+      itemTrackerToggle.textContent = hidden ? "▾" : "▸"
     })
     body.style.display = "none"
-    header.querySelector("#item-tracker-toggle").textContent = "▸"
+    itemTrackerToggle.textContent = "▸"
 
     filterInput.addEventListener("click", (e) => e.stopPropagation())
     filterInput.addEventListener("input", (e) => {
@@ -353,9 +318,8 @@
         const group = groups.get(key)
         if (!group.entries.length) return
 
-        const collapsed = groupCollapsed.has(key)
-          ? groupCollapsed.get(key)
-          : true
+        const collapsed =
+          groupCollapsed.has(key) ? groupCollapsed.get(key) : true
 
         const groupHeader = document.createElement("div")
         groupHeader.style.cssText =

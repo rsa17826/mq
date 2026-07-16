@@ -281,3 +281,27 @@ body {
 #item-tracker-panel::-webkit-scrollbar-thumb:hover {
   background: #777;
 }
+
+#item-tracker-panel {
+  position: absolute;
+  top: 20px;
+  right: 350px;
+  max-height: 70vh;
+  width: 380px;
+  overflow-y: auto;
+  background: rgba(20, 20, 20, 0.94);
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-family: monospace;
+  font-size: 11px;
+  color: #e0e0e0;
+  z-index: 10000000;
+}
+#item-tracker-panel > #header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  position: sticky !important;
+}
