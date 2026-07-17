@@ -145,390 +145,416 @@ function mix(color1, color2) {
     ")")
 }
 function customDrawLoop() {
-  try {
-    // 1. Clear the frame
-    overlayCtx.clearRect(
-      0,
-      0,
-      overlayCanvas.width,
-      overlayCanvas.height,
+  // 1. Clear the frame
+  overlayCtx.clearRect(
+    0,
+    0,
+    overlayCanvas.width,
+    overlayCanvas.height,
+  )
+
+  if (!window.player) {
+    return
+  }
+  // 1. Define the size of each checkerboard tile
+  var tileSize = 50 // Pixels per tile
+
+  // Helper function to check if a specific grid cell (col, row) is an exit tile
+  function getExitColor(roomExits, col, row) {
+    // Convert our bottom-up canvas row (0 at bottom, 10 at top)
+    // to the top-down row index (0 at top, 10 at bottom) used by the data generator
+    var topDownRow = 10 - row
+    var color = null
+    for (var i = 0; i < roomExits.length; i++) {
+      var exit = roomExits[i]
+
+      if (exit.side === "warp") {
+        if (col == exit.x && row == exit.y) {
+          color = mix(color, exit.color)
+        }
+      }
+      if (exit.side === "west" && col === 0) {
+        if (topDownRow >= exit.top && topDownRow <= exit.bottom) {
+          color = mix(color, exit.color)
+        }
+      }
+      if (exit.side === "east" && col === 13) {
+        // 14 columns total (0 to 13)
+        if (topDownRow >= exit.top && topDownRow <= exit.bottom) {
+          color = mix(color, exit.color)
+        }
+      }
+      if (exit.side === "north" && row === 10) {
+        // Top row
+        if (col >= exit.left && col <= exit.right) {
+          color = mix(color, exit.color)
+        }
+      }
+      if (exit.side === "south" && row === 0) {
+        // Bottom row
+        if (col >= exit.left && col <= exit.right) {
+          color = mix(color, exit.color)
+        }
+      }
+    }
+    return color
+  }
+
+  function drawExits(room) {
+    for (var row = 0; row < 11; row++) {
+      for (var col = 0; col < 14; col++) {
+        // Check if this tile is an exit
+        var exitColor = null
+        if (localStorage.renderExits == "true")
+          exitColor = mix(exitColor, getExitColor(room, col, row))
+
+        if (localStorage.renderCheckerboard == "true")
+          if ((row + col) % 2 === 0) {
+            exitColor = mix(exitColor, "#FFFFFF10") // Light overlay instead of skipping entirely
+          } else {
+            exitColor = mix(exitColor, "#00000050") // Transparent black tile
+          }
+        if (!exitColor) {
+          continue
+        }
+        overlayCtx.fillStyle = exitColor // Render with the designated exit color
+
+        // Calculate X coordinate (normal math going right)
+        var x = col * tileSize
+
+        // Calculate Y coordinate (reverse math starting from bottom-left)
+        var y = overlayCanvas.height - tileSize - row * tileSize
+
+        // Draw the tile
+        overlayCtx.fillRect(x, y, tileSize, tileSize)
+      }
+    }
+  }
+
+  // Draws the map.js path-to-target arrow (see map.js's PATH_ROUTES),
+  // but reprojected onto this room's slice of the checkerboard instead
+  // of the whole overview map. The checkerboard covers the full 14x11
+  // room grid (tileSize px per block) flush against the bottom of the
+  // canvas, so a point that sits at fraction (fx, fy) across the room's
+  // map tile lands at the *same relative spot* here.
+  var PF_DIR_SCREEN_VECTOR = {
+    north: [0, -1],
+    south: [0, 1],
+    east: [1, 0],
+    west: [-1, 0],
+  }
+
+  function drawOverlayArrow(a, b) {
+    var angle = Math.atan2(b.y - a.y, b.x - a.x)
+    var arrowSize = 14
+
+    overlayCtx.beginPath()
+    overlayCtx.moveTo(a.x, a.y)
+    overlayCtx.lineTo(b.x, b.y)
+    overlayCtx.strokeStyle = "#39ff14"
+    overlayCtx.lineWidth = 5
+    overlayCtx.lineCap = "round"
+    overlayCtx.setLineDash([])
+    overlayCtx.stroke()
+
+    overlayCtx.beginPath()
+    overlayCtx.moveTo(b.x, b.y)
+    overlayCtx.lineTo(
+      b.x - arrowSize * Math.cos(angle - 0.35),
+      b.y - arrowSize * Math.sin(angle - 0.35),
+    )
+    overlayCtx.lineTo(
+      b.x - arrowSize * Math.cos(angle + 0.35),
+      b.y - arrowSize * Math.sin(angle + 0.35),
+    )
+    overlayCtx.closePath()
+    overlayCtx.fillStyle = mix("#39ff14", "#00f2")
+    overlayCtx.fill()
+  }
+
+  function drawRoomPathArrow() {
+    // map.js exposes these; if it hasn't loaded (or there's no route
+    // selected on the map), there's nothing to draw.
+    if (!window.pfWorldPointToRoomFraction) return
+    var routes = window.PATH_ROUTES
+    if (!routes || !routes.length) return
+
+    var roomKey = `${window.player.north}_${window.player.east}`
+    var gridWidth = 14 * tileSize
+    var gridHeight = 11 * tileSize
+    var gridTop = overlayCanvas.height - gridHeight
+    var stubLength = tileSize * 0.8
+
+    function toOverlayPoint(point, forRoom) {
+      var frac = window.pfWorldPointToRoomFraction(forRoom, point)
+      if (!frac) return null
+      return {
+        x: frac.fx * gridWidth,
+        y: gridTop + frac.fy * gridHeight,
+      }
+    }
+
+    routes.forEach(function (route) {
+      var fromHere = route.fromRoom === roomKey
+      var toHere = route.toRoom === roomKey
+      if (!fromHere && !toHere) return
+
+      var fromPt =
+        fromHere ? toOverlayPoint(route.fromPoint, roomKey) : null
+      var toPt =
+        toHere ? toOverlayPoint(route.toPoint, roomKey) : null
+
+      if (fromPt && toPt) {
+        // Both ends of this hop are in the room the player is standing
+        // in (an in-room move) -- draw it exactly as it appears on the
+        // overview map, just rescaled to this room's slice of the grid.
+        drawOverlayArrow(fromPt, toPt)
+        return
+      }
+
+      // Only one end of this hop is in the current room -- the other
+      // end is elsewhere on the map, so just point toward the exit.
+      if (fromPt) {
+        var vec = PF_DIR_SCREEN_VECTOR[route.fromDir] || [0, 0]
+        // TODO - make show warp dest location and name and work
+        if (!route.fromDir) {
+          overlayCtx.strokeStyle = "#000"
+          overlayCtx.lineJoin = "round"
+          overlayCtx.lineWidth = 3 // Controls the thickness of the outline
+          overlayCtx.strokeText(owo(route.toRoom), 50, 100)
+          overlayCtx.fillStyle = "#ddd"
+          overlayCtx.fillText(owo(route.toRoom), 50, 100)
+        }
+        drawOverlayArrow(fromPt, {
+          x: fromPt.x + vec[0] * (stubLength / 1.6),
+          y: fromPt.y + vec[1] * (stubLength / 1.6),
+        })
+      } else if (toPt) {
+        var vec2 = PF_DIR_SCREEN_VECTOR[route.toDir] || [0, 0]
+        drawOverlayArrow(
+          {
+            x: toPt.x - vec2[0] * -(stubLength / 1.6),
+            y: toPt.y - vec2[1] * -(stubLength / 1.6),
+          },
+          toPt,
+        )
+      }
+    })
+  }
+  // Sample multi-line coordinate text setup
+  var coordString = ""
+  if (
+    localStorage.renderExits == "true" ||
+    localStorage.renderCheckerboard == "true"
+  )
+    drawExits(
+      EXITS_DATA[`${window.player.north}_${window.player.east}`] ||
+        [],
     )
 
-    if (!window.player) {
-      return
-    }
-    // 1. Define the size of each checkerboard tile
-    var tileSize = 50 // Pixels per tile
+  drawRoomPathArrow()
 
-    // Helper function to check if a specific grid cell (col, row) is an exit tile
-    function getExitColor(roomExits, col, row) {
-      // Convert our bottom-up canvas row (0 at bottom, 10 at top)
-      // to the top-down row index (0 at top, 10 at bottom) used by the data generator
-      var topDownRow = 10 - row
-      var color = null
-      for (var i = 0; i < roomExits.length; i++) {
-        var exit = roomExits[i]
-
-        if (exit.side === "warp") {
-          if (col == exit.x && row == exit.y) {
-            color = mix(color, exit.color)
-          }
-        }
-        if (exit.side === "west" && col === 0) {
-          if (topDownRow >= exit.top && topDownRow <= exit.bottom) {
-            color = mix(color, exit.color)
-          }
-        }
-        if (exit.side === "east" && col === 13) {
-          // 14 columns total (0 to 13)
-          if (topDownRow >= exit.top && topDownRow <= exit.bottom) {
-            color = mix(color, exit.color)
-          }
-        }
-        if (exit.side === "north" && row === 10) {
-          // Top row
-          if (col >= exit.left && col <= exit.right) {
-            color = mix(color, exit.color)
-          }
-        }
-        if (exit.side === "south" && row === 0) {
-          // Bottom row
-          if (col >= exit.left && col <= exit.right) {
-            color = mix(color, exit.color)
-          }
-        }
-      }
-      return color
-    }
-
-    function drawExits(room) {
-      for (var row = 0; row < 11; row++) {
-        for (var col = 0; col < 14; col++) {
-          // Check if this tile is an exit
-          var exitColor = null
-          if (localStorage.renderExits == "true")
-            exitColor = mix(exitColor, getExitColor(room, col, row))
-
-          if (localStorage.renderCheckerboard == "true")
-            if ((row + col) % 2 === 0) {
-              exitColor = mix(exitColor, "#FFFFFF10") // Light overlay instead of skipping entirely
-            } else {
-              exitColor = mix(exitColor, "#00000050") // Transparent black tile
-            }
-          if (!exitColor) {
-            continue
-          }
-          overlayCtx.fillStyle = exitColor // Render with the designated exit color
-
-          // Calculate X coordinate (normal math going right)
-          var x = col * tileSize
-
-          // Calculate Y coordinate (reverse math starting from bottom-left)
-          var y = overlayCanvas.height - tileSize - row * tileSize
-
-          // Draw the tile
-          overlayCtx.fillRect(x, y, tileSize, tileSize)
-        }
-      }
-    }
-
-    // Draws the map.js path-to-target arrow (see map.js's PATH_ROUTES),
-    // but reprojected onto this room's slice of the checkerboard instead
-    // of the whole overview map. The checkerboard covers the full 14x11
-    // room grid (tileSize px per block) flush against the bottom of the
-    // canvas, so a point that sits at fraction (fx, fy) across the room's
-    // map tile lands at the *same relative spot* here.
-    var PF_DIR_SCREEN_VECTOR = {
-      north: [0, -1],
-      south: [0, 1],
-      east: [1, 0],
-      west: [-1, 0],
-    }
-
-    function drawOverlayArrow(a, b) {
-      var angle = Math.atan2(b.y - a.y, b.x - a.x)
-      var arrowSize = 14
-
-      overlayCtx.beginPath()
-      overlayCtx.moveTo(a.x, a.y)
-      overlayCtx.lineTo(b.x, b.y)
-      overlayCtx.strokeStyle = "#39ff14"
-      overlayCtx.lineWidth = 5
-      overlayCtx.lineCap = "round"
-      overlayCtx.setLineDash([])
-      overlayCtx.stroke()
-
-      overlayCtx.beginPath()
-      overlayCtx.moveTo(b.x, b.y)
-      overlayCtx.lineTo(
-        b.x - arrowSize * Math.cos(angle - 0.35),
-        b.y - arrowSize * Math.sin(angle - 0.35),
-      )
-      overlayCtx.lineTo(
-        b.x - arrowSize * Math.cos(angle + 0.35),
-        b.y - arrowSize * Math.sin(angle + 0.35),
-      )
-      overlayCtx.closePath()
-      overlayCtx.fillStyle = mix("#39ff14", "#00f2")
-      overlayCtx.fill()
-    }
-
-    function drawRoomPathArrow() {
-      // map.js exposes these; if it hasn't loaded (or there's no route
-      // selected on the map), there's nothing to draw.
-      if (!window.pfWorldPointToRoomFraction) return
-      var routes = window.PATH_ROUTES
-      if (!routes || !routes.length) return
-
-      var roomKey = `${window.player.north}_${window.player.east}`
-      var gridWidth = 14 * tileSize
-      var gridHeight = 11 * tileSize
-      var gridTop = overlayCanvas.height - gridHeight
-      var stubLength = tileSize * 0.8
-
-      function toOverlayPoint(point, forRoom) {
-        var frac = window.pfWorldPointToRoomFraction(forRoom, point)
-        if (!frac) return null
-        return {
-          x: frac.fx * gridWidth,
-          y: gridTop + frac.fy * gridHeight,
-        }
-      }
-
-      routes.forEach(function (route) {
-        var fromHere = route.fromRoom === roomKey
-        var toHere = route.toRoom === roomKey
-        if (!fromHere && !toHere) return
-
-        var fromPt =
-          fromHere ? toOverlayPoint(route.fromPoint, roomKey) : null
-        var toPt =
-          toHere ? toOverlayPoint(route.toPoint, roomKey) : null
-
-        if (fromPt && toPt) {
-          // Both ends of this hop are in the room the player is standing
-          // in (an in-room move) -- draw it exactly as it appears on the
-          // overview map, just rescaled to this room's slice of the grid.
-          drawOverlayArrow(fromPt, toPt)
-          return
-        }
-
-        // Only one end of this hop is in the current room -- the other
-        // end is elsewhere on the map, so just point toward the exit.
-        if (fromPt) {
-          var vec = PF_DIR_SCREEN_VECTOR[route.fromDir] || [0, 0]
-          // TODO - make show warp dest location and name and work
-          if (!route.fromDir) {
-            overlayCtx.strokeStyle = "#000"
-            overlayCtx.lineJoin = "round"
-            overlayCtx.lineWidth = 3 // Controls the thickness of the outline
-            overlayCtx.strokeText(owo(route.toRoom), 50, 100)
-            overlayCtx.fillStyle = "#ddd"
-            overlayCtx.fillText(owo(route.toRoom), 50, 100)
-          }
-          drawOverlayArrow(fromPt, {
-            x: fromPt.x + vec[0] * (stubLength / 1.6),
-            y: fromPt.y + vec[1] * (stubLength / 1.6),
-          })
-        } else if (toPt) {
-          var vec2 = PF_DIR_SCREEN_VECTOR[route.toDir] || [0, 0]
-          drawOverlayArrow(
-            {
-              x: toPt.x - vec2[0] * -(stubLength / 1.6),
-              y: toPt.y - vec2[1] * -(stubLength / 1.6),
-            },
-            toPt,
-          )
-        }
-      })
-    }
-    // Sample multi-line coordinate text setup
-    var coordString = ""
-    if (
-      localStorage.renderExits == "true" ||
-      localStorage.renderCheckerboard == "true"
-    )
-      drawExits(
-        EXITS_DATA[`${window.player.north}_${window.player.east}`] ||
-          [],
-      )
-
-    drawRoomPathArrow()
-
-    coordString =
-      localStorage.showPlayerPos == "true" ?
-        `
+  coordString =
+    localStorage.showPlayerPos == "true" ?
+      `
             SCREEN: ${window.player.north}_${window.player.east}
             POS: ${Math.round(window.player.x)} ${Math.round(window.player.y)}
             `
-      : ""
-    coordString += window.extraData?.() ?? ""
-    overlayCtx.font = '36px "Booter - Zero Zero"'
+    : ""
+  coordString += window.extraData?.() ?? ""
+  overlayCtx.font = '36px "Booter - Zero Zero"'
 
-    // Clean the text array up
-    var allText = coordString.trim().split("\n")
-    if (coordString.trim() === "") allText = [] // Handle empty text gracefully
+  // Clean the text array up
+  var allText = coordString.trim().split("\n")
+  if (coordString.trim() === "") allText = [] // Handle empty text gracefully
 
-    // 3. Define layout parameters
-    var lineHeight = 30 // Distance between your rows of text
-    var baseBottomPadding = 20 // Margin from the bottom boundary line
+  // 3. Define layout parameters
+  var lineHeight = 30 // Distance between your rows of text
+  var baseBottomPadding = 20 // Margin from the bottom boundary line
 
-    // --- PROGRESS BAR CONFIGURATION ---
-    // Change these values or bind them to your player stats (e.g., window.player.hp / window.player.maxHp)
+  // --- PROGRESS BAR CONFIGURATION ---
+  // Change these values or bind them to your player stats (e.g., window.player.hp / window.player.maxHp)
 
-    // 4. Draw lines calculating offsets dynamically
-    var totalTextHeight = allText.length * lineHeight
+  // 4. Draw lines calculating offsets dynamically
+  var totalTextHeight = allText.length * lineHeight
 
-    for (var i = 0; i < allText.length; i++) {
-      var text = allText[i].trim()
+  for (var i = 0; i < allText.length; i++) {
+    var text = allText[i].trim()
 
-      // Measure current line width so right-alignment holds true
-      var textWidth = overlayCtx.measureText(text).width
-      var x = overlayCanvas.width - textWidth - 20
+    // Measure current line width so right-alignment holds true
+    var textWidth = overlayCtx.measureText(text).width
+    var x = overlayCanvas.width - textWidth - 20
 
-      var y =
-        overlayCanvas.height -
-        baseBottomPadding -
-        (allText.length - 1 - i) * lineHeight
+    var y =
+      overlayCanvas.height -
+      baseBottomPadding -
+      (allText.length - 1 - i) * lineHeight
+
+    overlayCtx.strokeStyle = "#000"
+    overlayCtx.lineJoin = "round"
+    overlayCtx.lineWidth = 3 // Controls the thickness of the outline
+    overlayCtx.strokeText(owo(text), x, y)
+    overlayCtx.fillStyle = "#ddd"
+    overlayCtx.fillText(owo(text), x, y)
+  }
+  // render chest hints
+  {
+    if (localStorage.showVanillaItems != "true") {
+      for (var [
+        _color,
+        {
+          data: itemNames,
+          position: { x: _x, y: _y },
+          elem,
+        },
+      ] of Object.entries(
+        window.chestedItemInfo[`${manager.north}_${manager.east}`] ??
+          {},
+      )) {
+        if (elem.__visible) {
+          var lines = itemNames.map(owo)
+
+          overlayCtx.strokeStyle = "#000"
+          overlayCtx.lineJoin = "round"
+          overlayCtx.lineWidth = 3
+          overlayCtx.fillStyle = "#ddd"
+
+          lines.forEach(function (line, index) {
+            var currentY = _y + index * lineHeight
+            var w = overlayCtx.measureText(line).width
+            overlayCtx.strokeText(line, _x - w / 2, currentY)
+            overlayCtx.fillText(line, _x - w / 2, currentY)
+          })
+        }
+      }
+    }
+  }
+  var currentOffsetY = totalTextHeight - 10
+  var progressValue = 0
+  var maxProg = 0
+  if (window.ap?.slotData) {
+    var prog = 0
+    if (ap.slotData.final_boss) {
+      maxProg += 23
+      prog += Math.min(manager.quest[Enum.Quest.gTree], 23)
+    }
+    if (ap.slotData?.all_quests_maxed) {
+      prog += Object.entries(ap.slotData.maxQuests).reduce(
+        (a, [k, v]) => a + Math.min(v, manager.quest[Enum.Quest[k]]),
+        0,
+      )
+      maxProg += Object.values(ap.slotData.maxQuests).reduce(
+        (a, v) => a + v,
+        0,
+      )
+    }
+    progressValue = rerange(prog, 0, maxProg, 0, 1)
+    newBar(
+      progressValue,
+      155 + 30,
+      12,
+      10,
+      `progress: ${Math.floor(progressValue * 100)}%`,
+    )
+  }
+  var progressValue = 0
+  var maxProg = 0
+  if (window.ap?.slotData) {
+    progressValue = rerange(
+      ap.checkedLocations.length,
+      0,
+      ap.missingLocations.length + ap.checkedLocations.length,
+      0,
+      1,
+    )
+    newBar(
+      progressValue,
+      155 + 30,
+      12,
+      10,
+      `checks: ${Math.floor(progressValue * 100)}%`,
+    )
+  }
+
+  function newBar(
+    progressValue,
+    barWidth,
+    barHeight,
+    barPadding,
+    barText,
+  ) {
+    // Add padding first
+    currentOffsetY += barPadding
+
+    // Base coordinates for the entire component container
+    var containerX = overlayCanvas.width - barWidth - 5
+    var barY =
+      overlayCanvas.height -
+      baseBottomPadding -
+      currentOffsetY -
+      barHeight
+
+    var dynamicBarWidth = barWidth
+    var textWidth = 0
+
+    // If text is provided, measure it and adjust the bar's width
+    if (barText) {
+      overlayCtx.font = '28px "Booter - Zero Zero"' // Font for the bar text
+      textWidth = overlayCtx.measureText(barText).width
+      var textSpacing = 8 // Space between the bar and the text
+
+      // Shrink the bar width to make room for the text and spacing
+      dynamicBarWidth = Math.max(
+        0,
+        barWidth - textWidth - textSpacing,
+      )
+    }
+
+    // 1. Draw Background / Border Outline for the bar
+    if (dynamicBarWidth > 0) {
+      overlayCtx.fillStyle = "#000"
+      overlayCtx.fillRect(
+        containerX - 2,
+        barY - 2,
+        dynamicBarWidth + 4,
+        barHeight + 4,
+      ) // Outer black border
+
+      overlayCtx.fillStyle = "#444"
+      overlayCtx.fillRect(
+        containerX,
+        barY,
+        dynamicBarWidth,
+        barHeight,
+      ) // Dark background fill
+
+      // 2. Draw Foreground (The actual progress)
+      overlayCtx.fillStyle = "#00ffcc" // Cyan/Green progress color
+      overlayCtx.fillRect(
+        containerX,
+        barY,
+        dynamicBarWidth * progressValue,
+        barHeight,
+      )
+    }
+
+    // 3. Draw the text on the far right of the total barWidth area
+    if (barText) {
+      var textX = overlayCanvas.width - textWidth - 5
+      // Vertically center text relative to the bar height
+      var textY = barY + barHeight / 2 + 5
 
       overlayCtx.strokeStyle = "#000"
       overlayCtx.lineJoin = "round"
-      overlayCtx.lineWidth = 3 // Controls the thickness of the outline
-      overlayCtx.strokeText(owo(text), x, y)
+      overlayCtx.lineWidth = 3
+      overlayCtx.strokeText(owo(barText), textX, textY)
       overlayCtx.fillStyle = "#ddd"
-      overlayCtx.fillText(owo(text), x, y)
-    }
-    var currentOffsetY = totalTextHeight - 10
-    var progressValue = 0
-    var maxProg = 0
-    if (window.ap?.slotData) {
-      var prog = 0
-      if (ap.slotData.final_boss) {
-        maxProg += 23
-        prog += Math.min(manager.quest[Enum.Quest.gTree], 23)
-      }
-      if (ap.slotData?.all_quests_maxed) {
-        prog += Object.entries(ap.slotData.maxQuests).reduce(
-          (a, [k, v]) =>
-            a + Math.min(v, manager.quest[Enum.Quest[k]]),
-          0,
-        )
-        maxProg += Object.values(ap.slotData.maxQuests).reduce(
-          (a, v) => a + v,
-          0,
-        )
-      }
-      progressValue = rerange(prog, 0, maxProg, 0, 1)
-      newBar(
-        progressValue,
-        155 + 30,
-        12,
-        10,
-        `progress: ${Math.floor(progressValue * 100)}%`,
-      )
-    }
-    var progressValue = 0
-    var maxProg = 0
-    if (window.ap?.slotData) {
-      progressValue = rerange(
-        ap.checkedLocations.length,
-        0,
-        ap.missingLocations.length + ap.checkedLocations.length,
-        0,
-        1,
-      )
-      newBar(
-        progressValue,
-        155 + 30,
-        12,
-        10,
-        `checks: ${Math.floor(progressValue * 100)}%`,
-      )
+      overlayCtx.fillText(owo(barText), textX, textY)
     }
 
-    function newBar(
-      progressValue,
-      barWidth,
-      barHeight,
-      barPadding,
-      barText,
-    ) {
-      // Add padding first
-      currentOffsetY += barPadding
-
-      // Base coordinates for the entire component container
-      var containerX = overlayCanvas.width - barWidth - 5
-      var barY =
-        overlayCanvas.height -
-        baseBottomPadding -
-        currentOffsetY -
-        barHeight
-
-      var dynamicBarWidth = barWidth
-      var textWidth = 0
-
-      // If text is provided, measure it and adjust the bar's width
-      if (barText) {
-        overlayCtx.font = '28px "Booter - Zero Zero"' // Font for the bar text
-        textWidth = overlayCtx.measureText(barText).width
-        var textSpacing = 8 // Space between the bar and the text
-
-        // Shrink the bar width to make room for the text and spacing
-        dynamicBarWidth = Math.max(
-          0,
-          barWidth - textWidth - textSpacing,
-        )
-      }
-
-      // 1. Draw Background / Border Outline for the bar
-      if (dynamicBarWidth > 0) {
-        overlayCtx.fillStyle = "#000"
-        overlayCtx.fillRect(
-          containerX - 2,
-          barY - 2,
-          dynamicBarWidth + 4,
-          barHeight + 4,
-        ) // Outer black border
-
-        overlayCtx.fillStyle = "#444"
-        overlayCtx.fillRect(
-          containerX,
-          barY,
-          dynamicBarWidth,
-          barHeight,
-        ) // Dark background fill
-
-        // 2. Draw Foreground (The actual progress)
-        overlayCtx.fillStyle = "#00ffcc" // Cyan/Green progress color
-        overlayCtx.fillRect(
-          containerX,
-          barY,
-          dynamicBarWidth * progressValue,
-          barHeight,
-        )
-      }
-
-      // 3. Draw the text on the far right of the total barWidth area
-      if (barText) {
-        var textX = overlayCanvas.width - textWidth - 5
-        // Vertically center text relative to the bar height
-        var textY = barY + barHeight / 2 + 5
-
-        overlayCtx.strokeStyle = "#000"
-        overlayCtx.lineJoin = "round"
-        overlayCtx.lineWidth = 3
-        overlayCtx.strokeText(owo(barText), textX, textY)
-        overlayCtx.fillStyle = "#ddd"
-        overlayCtx.fillText(owo(barText), textX, textY)
-      }
-
-      // Shift the offset up by the height of this bar so the next bar sits above it
-      currentOffsetY += barHeight
-    }
-  } catch (e) {
-    error(e)
-  } finally {
-    requestAnimationFrame(customDrawLoop)
+    // Shift the offset up by the height of this bar so the next bar sits above it
+    currentOffsetY += barHeight
   }
+  requestAnimationFrame(customDrawLoop)
 }
 customDrawLoop()

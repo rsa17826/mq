@@ -9,7 +9,6 @@ class RoomCoordinates(TypedDict):
 class ProgressionNode(TypedDict):
   room: RoomCoordinates
   receive: NotRequired[list[str]]
-  tBoxUsed: NotRequired[int]
   # requires: NotRequired[list[list[str]]]
   requires: list[list[str]]
   info: NotRequired[str]
@@ -2756,7 +2755,6 @@ manager.correct - manager.wrong > 800 = halo
         "loot:key",
       ],
     ],
-    "tBoxUsed": 51,
     "receive": [
       "food:grapes#5",
       "food:strawberry",
