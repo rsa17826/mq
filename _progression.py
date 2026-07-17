@@ -636,7 +636,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 7, "east": 18},
     "requires": [
       [
-        "item:slamstones",
+        "loot:slamstones",
         "skill:reveal",
       ],
     ],
@@ -663,7 +663,7 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "item:slamstones",
+      "loot:slamstones",
     ],
   },
   {
@@ -8399,7 +8399,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "area:str up npc",
-        "item:slamstones#10",
+        "loot:slamstones#10",
         "flag:str up npc counter.9",
       ],
     ],
