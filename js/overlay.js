@@ -422,8 +422,8 @@ function customDrawLoop() {
           lines.forEach(function (line, index) {
             var currentY = _y + index * lineHeight
             var w = overlayCtx.measureText(line).width
-            overlayCtx.strokeText(line, _x - w / 2, currentY)
-            overlayCtx.fillText(line, _x - w / 2, currentY)
+            overlayCtx.strokeText(line, max(0, _x - w / 2), currentY)
+            overlayCtx.fillText(line, max(0, _x - w / 2), currentY)
           })
         }
       }
