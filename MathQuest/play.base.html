@@ -10,9 +10,30 @@
 <script>
   Object.assign(window, console)
   window.onPlayerLoaded = []
+  window.apErrors = []
 </script>
 <html>
   <head>
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/js/sw.js")
+            .then((reg) =>
+              console.log(
+                "Service Worker registered successfully!",
+                reg.scope,
+              ),
+            )
+            .catch((err) =>
+              console.log("Service Worker registration failed:", err),
+            )
+        })
+      }
+    </script>
     <link
       rel="preload"
       href="/MathQuest/fonts/BOOTERZZ.woff2"
