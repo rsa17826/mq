@@ -5,6 +5,7 @@ const itemColors = {
   filler: "brown",
   misc: "pink",
   skill: "yellow",
+  quest: "yellow",
   craft: "orange",
   trap: "red",
   magic: "purple",
@@ -445,6 +446,16 @@ class ArchipelagoClient {
       //   )
       // }
     }
+    const pairs = Object.values(ap.locationIdToName.MathQuest).map(
+      (str) => {
+        var [v, k] = str.split(" - quest:") ?? []
+        return [k, v] // Returns [key, value] array
+      },
+    )
+
+    const result = Object.fromEntries(pairs)
+    delete result['undefined']
+    window.questLocations = result
   }
 
   /**
