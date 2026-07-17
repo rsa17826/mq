@@ -41,7 +41,9 @@ html_start = f"""<!DOCTYPE html>
         html, body {{
             margin: 0;
             background-color: #111;
+
             color: #fff;
+
             scrollbar-width: none;
             -ms-overflow-style: none;
         }}
@@ -74,6 +76,7 @@ html_start = f"""<!DOCTYPE html>
             line-height: 1.6;
             box-shadow: 0 4px 20px rgba(0,0,0,0.6);
             color: #e0e0e0;
+
             overflow-y: auto;
         }}
         .info-header {{
@@ -82,6 +85,7 @@ html_start = f"""<!DOCTYPE html>
             padding-bottom: 4px;
             margin-bottom: 8px;
             color: #fff;
+
         }}
         .info-event-sep {{
             border-top: 1px dashed #444;
@@ -246,6 +250,7 @@ def djb2_color_hash(id_a, id_b):
   for char in combined_str:
     hash_val = ((hash_val << 5) + hash_val) + ord(char)
     hash_val &= 0xFFFFFFFF
+
   return f"hsla({hash_val % 360}, 90%, 50%, 60%)"
 
 
@@ -253,6 +258,7 @@ def load_connections():
   if not os.path.exists(CONNECTIONS_JSON_PATH):
     print(f"[-] Error: {CONNECTIONS_JSON_PATH} required.")
     return []
+
   with open(CONNECTIONS_JSON_PATH, "r", encoding="utf-8") as f:
     return json.load(f)["connections"]
 
@@ -273,6 +279,7 @@ def load_geometry_map():
       e = int(float(room["east"]))
       key = f"{n}_{e}"
       geom_db[key] = room.get("exits", {})
+
   return geom_db
 
 
@@ -294,6 +301,7 @@ def _resolve_warp_point(n, e, side, idx, geom_index):
   bounds_list = geom_index.get(room_key, {}).get(side) or []
   if not isinstance(bounds_list, list):
     bounds_list = [bounds_list]
+
   if idx >= len(bounds_list) or not isinstance(bounds_list[idx], dict):
     # Geometry doesn't actually have this exit (bad data / virtual room);
     # fall back to the room center rather than crashing.
@@ -332,12 +340,15 @@ def build_doors_from_warps(warps, geom_index):
       # otherwise collide with an unrelated real integer room.
       if float(o_n) != int(float(o_n)) or float(o_e) != int(float(o_e)):
         continue
+
       o_room, o_x, o_y = _resolve_warp_point(o_n, o_e, o_side, o_idx, geom_index)
       for di, (d_n, d_e, d_side, d_idx) in enumerate(conns):
         if di == oi:
           continue
+
         if float(d_n) != int(float(d_n)) or float(d_e) != int(float(d_e)):
           continue
+
         d_room, d_x, d_y = _resolve_warp_point(d_n, d_e, d_side, d_idx, geom_index)
         doors.append(
           {
@@ -352,6 +363,7 @@ def build_doors_from_warps(warps, geom_index):
             "one_way": True,
           }
         )
+
   return doors
 
 
@@ -368,15 +380,19 @@ def load_progression_map():
         key = f"{n}_{e}"
         if key not in prog_db:
           prog_db[key] = []
+
         prog_db[key].append(loc)
+
   except Exception as err:
     print(f"[-] Failed to read progression config details: {err}")
+
   return prog_db
 
 
 def get_item_token_html(item_name):
   """Generates an HTML token where item name and icon are kept unbroken together."""
   sanitized_name = re.sub(r"[:#?]", "_", re.sub(r"[#?].+$", "", item_name))
+
   icon_filename = f"{sanitized_name}.png"
   icon_src = os.path.join(PROGRESSION_ICON_PATH, icon_filename).replace("\\", "/")
   return f'<span class="info-item-token"><img src="{icon_src}" class="info-inline-icon" alt="{item_name}">{item_name}</span>'
@@ -396,6 +412,7 @@ def build_room_info_json(north, east, prog_entries):
         item_htmls = [get_item_token_html(item) for item in group if item]
         if item_htmls:
           req_groups.append(" AND ".join(item_htmls))
+
       if req_groups:
         parsed_entry["requiresHtml"] = " OR ".join(f"({r})" for r in req_groups) if len(req_groups) > 1 else req_groups[0]
 
@@ -405,6 +422,7 @@ def build_room_info_json(north, east, prog_entries):
         parsed_entry["receiveHtml"] = ", ".join(rec_htmls)
 
     info_data["entries"].append(parsed_entry)
+
   return json.dumps(info_data).replace('"', "&quot;")
 
 
@@ -421,12 +439,15 @@ def main():
     for side, bounds_list in exits.items():
       if not bounds_list:
         continue
+
       if not isinstance(bounds_list, list):
         bounds_list = [bounds_list]
+
       processed = []
       for b in bounds_list:
         if not isinstance(b, dict):
           continue
+
         if side in ["west", "east"]:
           start = int(float(b["top"]))
           end = int(float(b["bottom"]))
@@ -437,6 +458,7 @@ def main():
           end = int(float(b["right"]))
           center_block = (start + end) / 2
           processed.append({"side": side, "block": center_block})
+
       exit_lookup[room_key][side] = processed
 
   prog_index = load_progression_map()
@@ -531,16 +553,21 @@ def main():
       ctrl_x, ctrl_y = (mid_x + (25 if direction == "east" else -25), mid_y)
     else:
       ctrl_x, ctrl_y = (mid_x, mid_y + (25 if direction == "south" else -25))
+
     newid = [*map(float, conn["id"].split("_"))]
     match conn["direction"]:
       case "north":
         newid[2] += 1
+
       case "south":
         newid[2] -= 1
+
       case "east":
         newid[3] += 1
+
       case "west":
         newid[3] -= 1
+
     color = djb2_color_hash(conn["id"], "_".join(map(str, newid)))
 
     if room_key in js_routes_db:
@@ -567,6 +594,7 @@ def main():
       else:
         dest_x_local = ROOM_INTERNAL_WIDTH / 2
         dest_y_local = ROOM_INTERNAL_HEIGHT / 2
+
       to_exit_id = override.get("toExitId", "warp_gate")
       color = djb2_color_hash(d["id"], to_exit_id)
     else:
@@ -583,6 +611,7 @@ def main():
     room_key = f"{o_n}_{o_e}"
     if o_n not in north_to_track or o_e not in east_to_track:
       continue
+
     if d_n not in north_to_track or d_e not in east_to_track:
       continue
 
@@ -622,6 +651,7 @@ def main():
       for side, bounds_list in tile_exits.items():
         if not bounds_list:
           continue
+
         if not isinstance(bounds_list, list):
           bounds_list = [bounds_list]
 
@@ -645,10 +675,13 @@ def main():
             match conn["direction"]:
               case "north":
                 newid[2] += 1
+
               case "south":
                 newid[2] -= 1
+
               case "east":
                 newid[3] += 1
+
               case "west":
                 newid[3] -= 1
 
@@ -658,6 +691,7 @@ def main():
           if side in ["west", "east"]:
             if bounds.get("top") is None or bounds.get("bottom") is None:
               continue
+
             start_val = int(float(bounds["top"]))
             end_val = int(float(bounds["bottom"]))
 
@@ -680,6 +714,7 @@ def main():
           elif side in ["north", "south"]:
             if bounds.get("left") is None or bounds.get("right") is None:
               continue
+
             start_val = int(float(bounds["left"]))
             end_val = int(float(bounds["right"]))
 
@@ -774,6 +809,7 @@ def main():
     for item in sorted(unique_receives):
       if item.startswith(ITEM_NAMES):
         sanitized_name = re.sub(r"[:#? ]", "_", item.split(" - ", 1)[0].split(".", 1)[0].split("#", 1)[0])
+
         icon_filename = f"{sanitized_name}.png"
         icon_src = os.path.join(PROGRESSION_ICON_PATH, icon_filename).replace("\\", "/")
         # match the exact key format used when AP_LOCATION_IDS was generated:
@@ -781,11 +817,13 @@ def main():
         base_item_name = item.split("#")[0]
         location_key = f"{room_key} - {base_item_name}".replace('"', "&quot;")
         icon_html += f'\n            <img src="{icon_src}" class="progression-icon" alt="{item}" data-location="{location_key}">'
+
     icon_html += "</span>"
     icon_html += "<span class=fr>"
     for item in sorted(unique_receives):
       if not item.startswith(ITEM_NAMES) and not item.startswith(("loot:",)):
         sanitized_name = re.sub(r"[:#? ]", "_", item.split(" - ", 1)[0].split(".", 1)[0].split("#", 1)[0])
+
         icon_filename = f"{sanitized_name}.png"
         icon_src = os.path.join(PROGRESSION_ICON_PATH, icon_filename).replace("\\", "/")
         # match the exact key format used when AP_LOCATION_IDS was generated:
@@ -793,11 +831,14 @@ def main():
         base_item_name = item.split("#")[0]
         location_key = f"{room_key} - {base_item_name}".replace('"', "&quot;")
         icon_html += f'\n            <img src="{icon_src}" class="progression-icon" alt="{item}" data-location="{location_key}">'
+
     icon_html += "</span>"
     icon_html += "</span>"
     overlay_content = "\n".join(squares_html)
     wrapper_tag = f"""        <div class="tile-wrapper" data-room="{room_key}" style="left: {pixel_left:.1f}px; top: {pixel_top:.1f}px; background-image: url('{placeholder_img_path}');" data-info="{info_json_str}">{icon_html}
             <div class="overlay-layer" style="z-index: 6; position: absolute; top:0; left:0; width:100%; height:100%;">
+
+
 {overlay_content}
             </div>
         </div>"""

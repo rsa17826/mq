@@ -6,6 +6,8 @@ def find_duplicates(file_path):
   try:
     with open(file_path, "r", encoding="utf-8") as f:
       content = f.read()
+
+
   except FileNotFoundError:
     print(f"Error: {file_path} not found.")
     return
@@ -41,6 +43,8 @@ def find_duplicates(file_path):
       else:
         # FIX: Store the base_item, not the raw item with the '#' suffix
         seen[coord].add(base_item)
+
+
 
   # Output matching template format: \n{0}\{"north": %s, "east": %s\},[^\}]+?%s
   format_template = r"\n{{0}}\{{\"north\": {0}, \"east\": {1}\}},[^\}}]+?receive.*{2}"

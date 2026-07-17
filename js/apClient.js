@@ -454,7 +454,7 @@ class ArchipelagoClient {
     )
 
     const result = Object.fromEntries(pairs)
-    delete result['undefined']
+    delete result["undefined"]
     window.questLocations = result
   }
 

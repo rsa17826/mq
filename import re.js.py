@@ -4,6 +4,7 @@ def convert_line(line):
     ol = line
     if '==' in line:
       return ol
+
     line = line.strip()
     if not line:
         return ""
@@ -17,6 +18,7 @@ def convert_line(line):
           # Clean up quotes if the index is a literal string, or leave as is if it's a number/variable
           return f'setManagerData("{prop}", {index}, {value})'
 
+
     # 2. Match standard assignments: manager.bombCapacity = 0 -> setManagerData("bombCapacity", 0)
     # (Note: Standard variables don't have an index, so we pass None or skip that argument depending on your API)
     direct_match = re.match(r'^manager\.(\w+)\s*=\s*(.+)$', line)
@@ -25,6 +27,7 @@ def convert_line(line):
         prop, value = direct_match.groups()
         return f'setManagerData("{prop}", {value})'
 
+
     # 3. Match increments: manager.aurastones++ or manager.correct++ -> setManagerData("correct", manager.correct + 1)
     inc_match = re.match(r'^manager\.(\w+)\+\+$', line)
     if inc_match:
@@ -32,12 +35,14 @@ def convert_line(line):
         prop = inc_match.group(1)
         return f'setManagerData("{prop}", manager.{prop} + 1)'
 
+
     # 4. Match decrements: manager.aurastones-- -> setManagerData("aurastones", manager.aurastones - 1)
     dec_match = re.match(r'^manager\.(\w+)--$', line)
     if dec_match:
       if dec_match[1] in input_text:
         prop = dec_match.group(1)
         return f'setManagerData("{prop}", manager.{prop} - 1)'
+
 
     # Return the line untouched if it doesn't match any pattern
     return ol
@@ -374,5 +379,7 @@ with open("./MathQuest/MathQuest.base.js", "r") as f:
   for line in text.strip().split('\n'):
       lines+=(convert_line(line))
       lines+='\n'
+
+
 with open("./MathQuest/MathQuest.base.js", "w") as f:
   f.write(lines)

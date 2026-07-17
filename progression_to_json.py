@@ -15,6 +15,8 @@ def convert(src_path: str, out_path: str) -> None:
     if isinstance(node, ast.AnnAssign) and getattr(node.target, "id", None) == "PROG":
       prog = ast.literal_eval(node.value)
       break
+
+
   if prog is None:
     raise ValueError("Could not find a PROG: list[...] = [...] assignment in the source file")
 

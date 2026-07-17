@@ -34,8 +34,10 @@ def parse_mathquest_with_lines(file_path):
       e_m = re.search(single_east, line)
       if n_m:
         current_north = int(n_m.group(1))
+
       if e_m:
         current_east = int(e_m.group(1))
+
 
     # If we don't have valid context coordinates yet, skip quest matching
     if current_north is None or current_east is None:
@@ -61,6 +63,9 @@ def parse_mathquest_with_lines(file_path):
           results[coord_key]["comparisons"].append(entry)
         elif op in ("=", "++", "--"):
           results[coord_key]["assignments"].append(entry)
+
+
+
 
   # Transform output structure into sorted clean JSON lists
   json_output = []
