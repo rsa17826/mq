@@ -538,7 +538,7 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "item:gold#22",
+      "item:gold - merchant#8",
     ],
   },
   {
@@ -584,7 +584,7 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "item:gold#23",
+      "item:gold - merchant#9",
     ],
   },
   {
@@ -953,7 +953,7 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "item:gold#18",
+      "item:gold - merchant#1",
     ],
   },
   {
@@ -973,7 +973,7 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "item:gold#20",
+      "item:gold - merchant#3",
     ],
   },
   {
@@ -3202,7 +3202,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "food:gummyBears - 1-0-2#10",
-      "food:blueberries - 1-0-2#5#5",
+      "food:blueberries - 1-0-2#5",
     ],
   },
   {
@@ -6776,6 +6776,17 @@ manager.correct - manager.wrong > 800 = halo
       "food:gingerBread",
     ],
   },
+  {
+    "room": {"north": 13, "east": 18},
+    "requires": [
+      [
+        "loot:bFang#1",
+      ],
+    ],
+    "receive": [
+      "item:gold - merchant#5",
+    ],
+  },
   # NOTE these grapes say 30gp but are only 15gp as they are the same ones as at 20 20
   # {"room": {"north": 13, "east": 18}, "requires": [["item:gold#30"],], "receive": ["food:grapes"],},
   {
@@ -6976,6 +6987,17 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "area:0",
+    ],
+  },
+  {
+    "room": {"north": 13, "east": 17},
+    "requires": [
+      [
+        "loot:tBand",
+      ],
+    ],
+    "receive": [
+      "item:gold - merchant#12",
     ],
   },
   {
