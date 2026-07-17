@@ -19,6 +19,17 @@ PROG: list[ProgressionNode] = [
     "room": {"north": -1, "east": -1},
     "requires": [
       [
+        "area:3",
+      ],
+    ],
+    "receive": [
+      "loot:bFang",
+    ],
+  },
+  {
+    "room": {"north": -1, "east": -1},
+    "requires": [
+      [
         "area:6",
       ],
     ],

@@ -369,8 +369,7 @@ try:
           "Magic.blessing": 0,
           "diamondDig": 0,
           "food:gingerBread - pam16": 0,
-          "Craft.upgradeAAHP": 0,
-          "Craft.upgradeAAMP": 0,
+          "Craft.upgradeAA": 0,
           "Craft.upgradeStaff": 0,
           "Food.banana.guard": 0,
           "21_20 orange seller": 0,
@@ -378,6 +377,13 @@ try:
           "progressive weapons": 0,
           "progressive armor": 0,
           "progressive magic": 0,
+          "ring1": 0,
+          "ring2": 0,
+          "ring3": 0,
+          "ring4": 0,
+          "ring5": 0,
+          "ring6": 0,
+          "ring7": 0,
           "Food.holyWater": 0,
           "19_15 food:newtonsApple#2": 0,
           "11_13 food:blueberries": 0,
@@ -388,6 +394,18 @@ try:
           "skill:reveal.2": 0,
           "skill:tough.2": 0,
           "21_17 - item:rubies": 0,
+          "14_17 item:bombs#10": 0,
+          "10_14 - food:holyWater": 0,
+          "11_9 - gold - merchant": 0,
+          "13_17 - gold - merchant": 0,
+          "13_18 - gold - merchant": 0,
+          "19_21 - gold - merchant": 0,
+          "21_20 - gold - merchant": 0,
+          "9_16 - gold - merchant": 0,
+          "Armor.nobleArmor": 0,
+          "axeVar": 0,
+          "Weapon.creeperCrusher": 0,
+          "Weapon.upgradeStaff": 0,
         },
         "lastRecivedItem": 0,
         "window.apErrors": [],
@@ -395,5 +413,7 @@ try:
       file,
     )
     print("go")
+
+
 except Exception as e:
   print("stop", e)
