@@ -335,8 +335,6 @@ PROG: list[ProgressionNode] = [
       "skill:swap",
       "skill:firewall",
       "skill:halo",
-      # TODO !!! make instead push precollected 20_20 - item:gold
-      # "item:gold",
       "loot:key",
     ],
     "info": """can be got anywhere
@@ -627,7 +625,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 7, "east": 18},
     "requires": [
       [
-        "loot:slamstones",
+        "item:slamstones",
         "skill:reveal",
       ],
     ],
@@ -654,7 +652,7 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "loot:slamstones",
+      "item:slamstones",
     ],
   },
   {
@@ -1065,7 +1063,7 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "food:newtonsApple",
+      "food:newtonsApple#2",
     ],
   },
   # NOTE don't need this many, lv4 is enough
@@ -1212,7 +1210,7 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "misc:bombCapacity",
+      "misc:bombCapacity#50",
     ],
   },
   # {"room": {"north": 19, "east": 12}, "info": "warp skill warp point",},
@@ -2258,7 +2256,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "quest:geo.1",
-        "item:geode#5",
+        "item:geodes#5",
       ],
     ],
     "receive": [
@@ -2710,7 +2708,8 @@ manager.correct - manager.wrong > 800 = halo
       "item:gold",
       "item:diamonds",
       "item:aurastones",
-      "loot:slamstones",
+      "item:rubies",
+      "item:slamstones",
       "food:elixir",
       "food:holyWater",
     ],
@@ -2758,7 +2757,7 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "item:geode#2",
+      "item:geodes#2",
     ],
   },
   {
@@ -3202,8 +3201,8 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "food:gummyBears - 1-0-2",
-      "food:blueberries - 1-0-2",
+      "food:gummyBears - 1-0-2#10",
+      "food:blueberries - 1-0-2#5#5",
     ],
   },
   {
@@ -3214,9 +3213,9 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "item:gold - 5-0-5",
-      "item:rubies - 5-0-5",
-      "item:diamonds - 5-0-5",
+      "item:gold - 5-0-5#2000",
+      "item:rubies - 5-0-5#3",
+      "item:diamonds - 5-0-5#7",
     ],
   },
   {
@@ -3227,7 +3226,7 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "item:gold - 2-2-0",
+      "item:gold - 2-2-0#900",
     ],
   },
   {
@@ -3316,7 +3315,7 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "item:bombs",
+      "item:bombs#10",
     ],
   },
   {
@@ -8367,7 +8366,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "area:str up npc",
-        "loot:slamstones#10",
+        "item:slamstones#10",
         "flag:str up npc counter.9",
       ],
     ],
