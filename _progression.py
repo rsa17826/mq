@@ -2755,7 +2755,7 @@ manager.correct - manager.wrong > 800 = halo
         "loot:key",
       ],
     ],
-     "receive": [
+    "receive": [
       "food:grapes#5",
       "food:strawberry",
     ],
