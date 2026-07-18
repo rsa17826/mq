@@ -24,12 +24,7 @@ function onRoomDataLoaded() {
       exitIdx: r[7],
     })
   }
-  ap.sendLocationScouts(
-    new Array(Object.keys(ap.slotData.AP_LOCATION_IDS).length)
-      .fill(null)
-      .map((_, i) => i + 1),
-    0,
-  )
+  ap.sendLocationScouts(Object.values(ap.slotData.AP_LOCATION_IDS), 0)
   console.log(
     `[Archipelago] Database ready: ${Object.keys(ap.slotData.AP_LOCATION_IDS).length} locations, ${Object.keys(ap.slotData.AP_ITEM_IDS).length} items, ${Object.keys(ap.slotData.AP_ENTRANCE_IDS).length} entrances.`,
   )
