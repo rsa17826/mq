@@ -44,7 +44,7 @@ function highlightArray(str) {
  * @param {string} str
  */
 function removeColors(str) {
-  return str.replace(/@[a-z]*!/g, "")
+  return str.replace(/@console!.*?@!/g, "").replace(/@[a-z]*!/g, "")
 }
 
 /**

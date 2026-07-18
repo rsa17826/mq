@@ -422,16 +422,22 @@ function customDrawLoop() {
           lines.forEach(function (line, index) {
             var currentY = _y + index * lineHeight
             var w = overlayCtx.measureText(line).width
-            overlayCtx.strokeText(
-              line,
-              Math.max(10, _x - w / 2),
-              currentY,
-            )
-            overlayCtx.fillText(
-              line,
-              Math.max(10, _x - w / 2),
-              currentY,
-            )
+
+            // 1. Find where the text would normally start if centered
+            var startX = _x - w / 2
+
+            // 2. Find where the text would end
+            var endX = startX + w
+
+            // 3. Calculate how much it overflows past 700 pixels
+            var roff = endX - 690
+            if (roff < 0) roff = 0 // No overflow means no offset
+
+            // 4. Apply the offset, but keep it at least 10px away from the left wall
+            var finalX = Math.max(10, startX - roff)
+
+            overlayCtx.strokeText(line, finalX, currentY)
+            overlayCtx.fillText(line, finalX, currentY)
           })
         }
       }
