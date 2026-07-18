@@ -20,21 +20,13 @@ window.q = {
   "21_21": {
     craftGirl: ["21_21 - skill:craft"],
   },
-  "17_22": {
-    tBoxBlue: ["17_22 - item:diamonds"],
-  },
+  "17_22": {},
   "15_21": {
     soldierLeft: ["15_21 - food:banana"],
   },
-  "12_21": {
-    tBoxGreen: ["12_21 - food:banana", "12_21 - item:diamonds"],
-  },
-  "16_24": {
-    tBoxBlue: ["16_24 - food:gummyBears", "16_24 - item:gold"],
-  },
-  "16_25": {
-    tBoxBlue: ["16_25 - food:steak", "16_25 - item:diamonds"],
-  },
+  "12_21": {},
+  "16_24": {},
+  "16_25": {},
   "18_25": {
     woodsman: [
       "18_25 - skill:medic.1",
@@ -45,15 +37,8 @@ window.q = {
       "18_25 - skill:medic.6",
     ],
   },
-  "12_25": {
-    tBoxBlue: [
-      "12_25 - food:gummyBears",
-      "12_25 - item:diamonds - chest",
-    ],
-  },
-  "9_25": {
-    tBoxGreen: ["9_25 - item:gold", "9_25 - food:elixir"],
-  },
+  "12_25": {},
+  "9_25": {},
   "8_25": {
     strGuy: [
       "-1_-1 - misc:str up npc.1",
@@ -89,15 +74,11 @@ window.q = {
   "20_22": {
     rubySign: ["20_22 - item:rubies"],
   },
-  "3_26": {
-    tBoxBlue: ["3_26 - food:elixir"],
-  },
+  "3_26": {},
   "9_16": {
     tuskBuyer: ["9_16 - item:gold - merchant"],
   },
-  "8_18": {
-    tBoxGreen: ["8_18 - item:bombs", "8_18 - food:steak"],
-  },
+  "8_18": {},
   "6_12": {
     profRight: ["6_12 - quest:geo.1"],
   },
@@ -105,7 +86,6 @@ window.q = {
     desertGuy: ["11_12 - food:sunflowerSeeds"],
   },
   "12_12": {
-    tBoxBlue: ["12_12 - magic:blessing"],
     nHeadstone: ["10_25 - misc:headstoneSwitch3"],
   },
   blueBoy: ["12_11 - quest:canteen.1"],
@@ -121,9 +101,7 @@ window.q = {
   "10_25": {
     nHeadstone: ["18_24 - misc:headstoneSwitch4"],
   },
-  "15_18": {
-    tBoxBlue: ["15_18 - item:bombs", "15_18 - food:chocolate"],
-  },
+  "15_18": {},
   "14_18": {
     king: ["14_18 - quest:gTree.8", "14_18 - quest:gTree.9"],
   },
@@ -134,27 +112,13 @@ window.q = {
     soldierLeft: ["13_17 - quest:dream.2", "13_17 - quest:dream.2"],
     tuskBuyer: ["13_17 - item:gold - merchant"],
   },
-  "17_15": {
-    tBoxGreen: ["17_15 - item:gold", "17_15 - food:gingerBread"],
-  },
-  "18_15": {
-    tBoxBlue: ["18_15 - food:newtonsApple"],
-  },
-  "23_10": {
-    tBoxGreen: ["23_10 - armor:alphaArmor"],
-  },
+  "17_15": {},
+  "18_15": {},
+  "23_10": {},
   "11_13": {
     woodsman: ["11_13 - food:blueberries"],
   },
   "10_13": {
-    tBoxGreen: [
-      "10_13 - item:gold",
-      "10_13 - item:rubies",
-      "10_13 - item:aurastones",
-      "10_13 - item:diamonds",
-      "10_13 - food:holyWater",
-      "10_13 - food:elixir",
-    ],
     shayde: ["10_13 - misc:ninja"],
   },
 }

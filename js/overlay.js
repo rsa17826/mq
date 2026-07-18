@@ -424,12 +424,12 @@ function customDrawLoop() {
             var w = overlayCtx.measureText(line).width
             overlayCtx.strokeText(
               line,
-              Math.max(0, _x - w / 2),
+              Math.max(10, _x - w / 2),
               currentY,
             )
             overlayCtx.fillText(
               line,
-              Math.max(0, _x - w / 2),
+              Math.max(10, _x - w / 2),
               currentY,
             )
           })

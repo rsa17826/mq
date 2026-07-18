@@ -48,21 +48,46 @@ function removeColors(str) {
 }
 
 /**
- * @param {string} name
+ * @param {{itemName:string,itemPlayer:number}} data
+ * @param {boolean} color
  * @returns string
  */
-function formatItemName(name) {
-  if (name.includes(":")) {
-    var coloredName = name.split(":")
-    if (coloredName[1].includes(".")) {
-      coloredName[1] = "progressive " + coloredName[1].split(".")[0]
+function formatItemName(data, useColor) {
+  trace(data.itemPlayer, "data.itemPlayer", data)
+  var owner =
+    data.itemPlayer != -1 ?
+      `${data.itemPlayer == ap.slot ? "@pink!your" : `@pink!${ap.slotInfo[data.itemPlayer].name}'s`}@!`
+    : ""
+  if (data.itemName.includes(":")) {
+    var name = data.itemName.split(":")
+    name[1] ??= name[0]
+    var color = itemColors[name[0]]
+    if (name[0] == "permit") {
+      name[1] += " permit"
+      name[0] = ""
+    } else if (name[0] == "skill") {
+      name[1] += " skill"
+      name[0] = ""
+    } else if (name[0] == "magic") {
+      name[1] += " spell"
+      name[0] = ""
+    } else if (name[0] == "quest") {
+      name[1] += " quest"
+      name[0] = ""
+    }
+    if (name[1].includes(".") && name[0] != "quest") {
+      name[1] = "progressive " + name[1].split(".")[0]
     }
     // @ts-ignore
-    coloredName = `@${itemColors[coloredName[0]]}!@console!${coloredName[0]}:@!@${itemColors[coloredName[0]]}!${coloredName[1]}@!`
-    return coloredName
+    name = `${owner ? owner + " " : ""}${`@${color}!@console!${data.itemName} - @!@${color}!${name[1]}@!`}`
+  } else {
+    // @ts-ignore
+    var name = `${owner ? owner + " " : ""}@green!${name}@!`
   }
-  return `@green!${name}@!`
+  // @ts-ignore
+  return !useColor ? removeColors(name) : name
 }
+
 /**
  * A native JavaScript implementation of the Archipelago Network Protocol.
  */
@@ -337,13 +362,10 @@ class ArchipelagoClient {
    * Falls back to "Unknown Item (id)" if we don't have data for that
    * game yet (e.g. DataPackage hasn't arrived, or slot_info is missing).
    */
-  getItemName(itemId, sendingSlot, format = false) {
+  getItemName(itemId, sendingSlot) {
     // log(itemId, this.slotInfo?.[sendingSlot]?.game, format, "itemId, sendingSlot, format")
     const game = this.slotInfo?.[sendingSlot]?.game
     const name = game && this.itemIdToName?.[game]?.[itemId]
-    if (format && game == "MathQuest" && name) {
-      return formatItemName(name)
-    }
     return name ?? `Unknown Item ${game} - (${itemId})`
   }
 
@@ -559,7 +581,7 @@ class ArchipelagoClient {
       const globalIndex = packet.index + offset
 
       apLog(
-        `@${this.itemCount > window.lastRecivedItem ? "purple" : "orange"}![Item Received]@! @console!ID: ${item.item} (@!${formatItemName(itemName)}${this.itemCount > window.lastRecivedItem ? "" : " - @orange!already recived@!"} - sent by @blue!${senderName}@!@console!`,
+        `@${this.itemCount > window.lastRecivedItem ? "purple" : "orange"}![Item Received]@! @console!ID: ${item.item} (@!${formatItemName({ itemName, itemPlayer: this.slot }, true)}${this.itemCount > window.lastRecivedItem ? "" : " - @orange!already recived@!"} - sent by @blue!${senderName}@!@console!`,
         item,
         this.itemCount,
         window.lastRecivedItem,
@@ -708,7 +730,8 @@ class ArchipelagoClient {
         `(?<!\\w)(${Object.keys(itemColors).join("|")}):([\\w.#]+)(?!\\w)`,
         "g",
       ),
-      (name) => formatItemName(name),
+      (name) =>
+        formatItemName({ itemName: name, itemPlayer: -1 }, true),
     )
     mt = mt.replace(
       /\((\d+)_(\d+) - ([^\)]+)\)/g,
