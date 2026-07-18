@@ -400,45 +400,53 @@ function customDrawLoop() {
   // render chest hints
   {
     if (localStorage.showVanillaItems != "true") {
-      for (var [
-        _color,
-        {
-          data: itemNames,
-          position: { x: _x, y: _y },
-          elem,
-        },
-      ] of Object.entries(
-        window.chestedItemInfo[`${manager.north}_${manager.east}`] ??
-          {},
-      )) {
-        if (elem.__visible) {
-          var lines = itemNames.map(owo)
+      if (
+        !(
+          manager.exitButton.__visible ||
+          manager.mess.__visible
+        )
+      ) {
+        for (var [
+          _color,
+          {
+            data: itemNames,
+            position: { x: _x, y: _y },
+            elem,
+          },
+        ] of Object.entries(
+          window.chestedItemInfo[
+            `${manager.north}_${manager.east}`
+          ] ?? {},
+        )) {
+          if (elem.__visible) {
+            var lines = itemNames.map(owo)
 
-          overlayCtx.strokeStyle = "#000"
-          overlayCtx.lineJoin = "round"
-          overlayCtx.lineWidth = 3
-          overlayCtx.fillStyle = "#ddd"
+            overlayCtx.strokeStyle = "#000"
+            overlayCtx.lineJoin = "round"
+            overlayCtx.lineWidth = 3
+            overlayCtx.fillStyle = "#ddd"
 
-          lines.forEach(function (line, index) {
-            var currentY = _y + index * lineHeight
-            var w = overlayCtx.measureText(line).width
+            lines.forEach(function (line, index) {
+              var currentY = _y + index * lineHeight
+              var w = overlayCtx.measureText(line).width
 
-            // 1. Find where the text would normally start if centered
-            var startX = _x - w / 2
+              // 1. Find where the text would normally start if centered
+              var startX = _x - w / 2
 
-            // 2. Find where the text would end
-            var endX = startX + w
+              // 2. Find where the text would end
+              var endX = startX + w
 
-            // 3. Calculate how much it overflows past 700 pixels
-            var roff = endX - 690
-            if (roff < 0) roff = 0 // No overflow means no offset
+              // 3. Calculate how much it overflows past 700 pixels
+              var roff = endX - 690
+              if (roff < 0) roff = 0 // No overflow means no offset
 
-            // 4. Apply the offset, but keep it at least 10px away from the left wall
-            var finalX = Math.max(10, startX - roff)
+              // 4. Apply the offset, but keep it at least 10px away from the left wall
+              var finalX = Math.max(10, startX - roff)
 
-            overlayCtx.strokeText(line, finalX, currentY)
-            overlayCtx.fillText(line, finalX, currentY)
-          })
+              overlayCtx.strokeText(line, finalX, currentY)
+              overlayCtx.fillText(line, finalX, currentY)
+            })
+          }
         }
       }
     }
