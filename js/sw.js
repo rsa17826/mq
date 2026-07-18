@@ -18,26 +18,26 @@ const ASSETS = [
 ]
 
 // Install Service Worker and cache core assets
-self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      // Map through assets to catch the specific one failing
-      return Promise.all(
-        ASSETS.map((url) => {
-          return cache.add(url).catch((err) => {
-            console.error("❌ Failed to cache asset:", url, err)
-          })
-        }),
-      )
-    }),
-  )
-})
+// self.addEventListener("install", (event) => {
+//   event.waitUntil(
+//     caches.open(CACHE_NAME).then((cache) => {
+//       // Map through assets to catch the specific one failing
+//       return Promise.all(
+//         ASSETS.map((url) => {
+//           return cache.add(url).catch((err) => {
+//             console.error("❌ Failed to cache asset:", url, err)
+//           })
+//         }),
+//       )
+//     }),
+//   )
+// })
 
-// Cache-first strategy for loading assets
-self.addEventListener("fetch", (event) => {
-  event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      return cachedResponse || fetch(event.request)
-    }),
-  )
-})
+// // Cache-first strategy for loading assets
+// self.addEventListener("fetch", (event) => {
+//   event.respondWith(
+//     caches.match(event.request).then((cachedResponse) => {
+//       return cachedResponse || fetch(event.request)
+//     }),
+//   )
+// })

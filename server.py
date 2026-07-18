@@ -35,6 +35,7 @@ class CachedCGIHTTPRequestHandler(CGIHTTPRequestHandler):
       if not os.path.exists(normalized_path):
         self.generate_placeholder_image(normalized_path)
 
+
     super().do_GET()
 
   def address_string(self):
@@ -66,20 +67,28 @@ class CachedCGIHTTPRequestHandler(CGIHTTPRequestHandler):
         if (x // 25) % 2 == 0:
           draw.rectangle([(x, 0), (x + 12, 250)], fill=pattern_color)
 
+
+
     elif pattern_style == 1:
       for x in range(0, 250, 50):
         for y in range(0, 250, 50):
           if ((x // 50) + (y // 50)) % 2 == 0:
             draw.rectangle([(x, y), (x + 50, y + 50)], fill=pattern_color)
 
+
+
+
     elif pattern_style == 2:
       for i in range(0, 125, 25):
         if (i // 25) % 2 == 1:
           draw.rectangle([(i, i), (250 - i, 250 - i)], outline=pattern_color, width=10)
 
+
+
     elif pattern_style == 3:
       for offset in range(-250, 250, 30):
         draw.line([(offset, 0), (offset + 250, 250)], fill=pattern_color, width=8)
+
 
     draw.rectangle([(0, 0), (249, 249)], outline="black", width=2)
 
@@ -87,8 +96,10 @@ class CachedCGIHTTPRequestHandler(CGIHTTPRequestHandler):
       pil_format = "PNG" if ext.lower() == ".png" else "JPEG"
       img.save(target_path, pil_format)
       print(f"[+] Dynamically generated patterned image: {target_path} (Hashed from: {clean_filename}, Pattern: {pattern_style})")
+
     except Exception as e:
       print(f"[-] Failed to generate image: {e}")
+
 
   def end_headers(self):
     normalized_path = self.translate_path(self.path)
@@ -96,6 +107,9 @@ class CachedCGIHTTPRequestHandler(CGIHTTPRequestHandler):
 
     if (relative_path.startswith("map") or relative_path.startswith("mapimgs")) or relative_path.lower().split("?")[0].endswith((".jpg", ".jpeg", ".png", ".mp3", ".ogg", ".eot", ".svg", ".ttf")):
       self.send_header("Cache-Control", "public, max-age=31536000, immutable")
+
+    elif relative_path.lower().endswith(".js"):
+      self.send_header("Cache-Control", "no-store, must-revalidate")
 
     super().end_headers()
 
@@ -113,6 +127,7 @@ class HTMLChangeHandler(FileSystemEventHandler):
       # Add whatever action you want to run here.
       # Example: You could clear server caches or flag a state change.
       self.execute_on_change()
+
 
   def execute_on_change(self):
     main.main()
@@ -147,6 +162,7 @@ def run():
   httpd = HTTPServer(server_address, handler)
   try:
     httpd.serve_forever()
+
   except KeyboardInterrupt:
     print("\n[-] Shutting down server.")
     watcher.stop()
