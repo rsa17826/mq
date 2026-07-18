@@ -143,12 +143,18 @@ window.q = {
   "23_10": {
     tBoxGreen: ["23_10 - armor:alphaArmor"],
   },
-  "23_11": {
-    tBoxGreen: ["undefined - quest:curse.4"],
+  "11_13": {
+    woodsman: ["11_13 - food:blueberries"],
   },
-  "24_9": {
-    "": [
-      "24_9 - quest:gTree.23",
+  "10_13": {
+    tBoxGreen: [
+      "10_13 - item:gold",
+      "10_13 - item:rubies",
+      "10_13 - item:aurastones",
+      "10_13 - item:diamonds",
+      "10_13 - food:holyWater",
+      "10_13 - food:elixir",
     ],
+    shayde: ["10_13 - misc:ninja"],
   },
 }
