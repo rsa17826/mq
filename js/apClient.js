@@ -53,7 +53,6 @@ function removeColors(str) {
  * @returns string
  */
 function formatItemName(data, useColor) {
-  trace(data.itemPlayer, "data.itemPlayer", data)
   var owner =
     data.itemPlayer != -1 ?
       `${data.itemPlayer == ap.slot ? "@pink!your" : `@pink!${ap.slotInfo[data.itemPlayer].name}'s`}@!`
