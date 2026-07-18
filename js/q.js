@@ -134,4 +134,21 @@ window.q = {
     soldierLeft: ["13_17 - quest:dream.2", "13_17 - quest:dream.2"],
     tuskBuyer: ["13_17 - item:gold - merchant"],
   },
+  "17_15": {
+    tBoxGreen: ["17_15 - item:gold", "17_15 - food:gingerBread"],
+  },
+  "18_15": {
+    tBoxBlue: ["18_15 - food:newtonsApple"],
+  },
+  "23_10": {
+    tBoxGreen: ["23_10 - armor:alphaArmor"],
+  },
+  "23_11": {
+    tBoxGreen: ["undefined - quest:curse.4"],
+  },
+  "24_9": {
+    "": [
+      "24_9 - quest:gTree.23",
+    ],
+  },
 }
