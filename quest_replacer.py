@@ -88,16 +88,23 @@ def main():
       continue
 
     show_context(lines, line_no)
-    answer = input(f"Replace 'manager.quest' with 'questChecker' on line {line_no}? [y/N/q] ").strip().lower()
-
+    # answer = input(f"Replace 'manager.quest' with 'questChecker' on line {line_no}? [Y/n/q] ").strip().lower()
+    answer=0
     if answer == "q":
       print("Quitting without further changes.")
       break
 
-    if answer == "y":
-      new_line = re.sub(r"manager\.quest(?=\[Enum\.Quest)", "questChecker", line)
-    else:
+    if answer == "n":
       new_line = line
+    else:
+      def modify_match(match):
+        quest_enum = match.group(1) # e.g., "[Enum.Quest.SomeQuest]"
+        operator = match.group(2) # e.g., "==" or ">="
+        value = match.group(3) # e.g., "5"
+        new_operator = ">=" if operator == "==" else operator
+        return f"(questChecker{quest_enum} {operator} {value} && manager.quest{quest_enum} {new_operator} {value})"
+
+      new_line = re.sub(r"manager\.quest(\[Enum\.Quest[^\]]+\]) ([><]=?|==) (\d+)", modify_match, line)
 
     # Mark the line either way, so a future run won't ask about it again.
     stripped = new_line.rstrip("\n")
@@ -114,6 +121,8 @@ def main():
       print("Saved.")
     else:
       print("Discarded changes (file not modified).")
+
+
   else:
     print("No changes made.")
 
