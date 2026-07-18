@@ -130,4 +130,8 @@ window.q = {
   "13_18": {
     tuskBuyer: ["13_18 - item:gold - merchant"],
   },
+  "13_17": {
+    soldierLeft: ["13_17 - quest:dream.2", "13_17 - quest:dream.2"],
+    tuskBuyer: ["13_17 - item:gold - merchant"],
+  },
 }
