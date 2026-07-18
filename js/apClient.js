@@ -110,6 +110,7 @@ class ArchipelagoClient {
     this.scoutedItems = {}
     this.deathLinkEnabled = true
     this.isFallbackMode = false
+    this.doneConnecting = false
     // Look for a saved preference for this specific host
     this.storageKey = `apUseWss - ${hostname}:${port}`
     this.wss = localStorage[this.storageKey] !== "false"
@@ -378,7 +379,7 @@ class ArchipelagoClient {
 
     // 1. Mark the client as ready for gameplay packets
     this.isAuthenticated = true
-
+    this.doneConnecting = true
     this.team = packet.team
     this.slot = packet.slot
     this.missingLocations = packet.missing_locations
@@ -401,6 +402,7 @@ class ArchipelagoClient {
    * @param {Packet} packet
    */
   onConnectionRefused(packet) {
+    this.doneConnecting = true
     apError(
       "Authentication rejected by server. Errors:",
       packet.errors,
