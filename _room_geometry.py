@@ -4753,7 +4753,7 @@ GEOM: list[ExitBase] = [
         ],
         "reqs": [
           [
-            "quest:gTree.2",
+            "quest:gTree.3",
           ],
         ],
       },
