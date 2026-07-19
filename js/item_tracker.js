@@ -158,6 +158,9 @@
     // means "collapsed" (matches the main panel's default state).
     const groupCollapsed = new Map()
 
+    // In-logic-only filter state, enabled by default.
+    let inLogicOnly = true
+
     function isChecked(entry) {
       const tok = baseTok((entry.receive || [])[0] || "")
       if (!tok) return false
@@ -173,7 +176,28 @@
       )
     }
 
-    let header, filterInput, clearLootBtn, list, itemTrackerToggle
+    // "In logic" per logic.js's classification: the entry's first receive
+    // token's icon(s) carry the "in-logic" class it applies each recompute.
+    // If no matching icon exists at all (e.g. the token isn't rendered as
+    // an icon), treat it as in-logic so the filter doesn't silently hide it.
+    function isInLogic(entry) {
+      const tok = baseTok((entry.receive || [])[0] || "")
+      if (!tok) return true
+      const key = `${entry.room} - ${tok}`
+      const els = document.querySelectorAll(
+        `.progression-icon[data-location="${CSS.escape(key)}"]`,
+      )
+      if (!els.length) return true
+      return [...els].some((el) => el.classList.contains("in-logic"))
+    }
+
+    let header,
+      filterInput,
+      clearLootBtn,
+      list,
+      itemTrackerToggle,
+      inLogicCheckbox,
+      inLogicLabel
     document.getElementById("viewport").appendChild(
       newelem("div", { id: "item-tracker-panel" }, [
         (header = newelem(
@@ -205,6 +229,36 @@
                   placeholder:
                     "Filter by room, requires, or receive...",
                 })),
+                (inLogicLabel = newelem(
+                  "label",
+                  {
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "4px",
+                    fontSize: "12px",
+                    color: "#ccc",
+                    cursor: "pointer",
+                    userSelect: "none",
+                    margin: "4px 0",
+                    onclick(e) {
+                      e.stopPropagation()
+                      e.stopImmediatePropagation()
+                    },
+                  },
+                  [
+                    (inLogicCheckbox = newelem("input", {
+                      type: "checkbox",
+                      checked: true,
+                      onchange(e) {
+                        e.stopPropagation()
+                        e.stopImmediatePropagation()
+                        inLogicOnly = inLogicCheckbox.checked
+                        render()
+                      },
+                    })),
+                    "In logic only",
+                  ],
+                )),
                 (clearLootBtn = newelem(
                   "button",
                   {
@@ -317,6 +371,8 @@
           return
 
         if (isChecked(entry) || /^(?:area|loot):/.test(recStr)) return
+
+        if (inLogicOnly && !isInLogic(entry)) return
 
         const { key, label } = groupKeyFor(entry)
         if (!groups.has(key)) groups.set(key, { label, entries: [] })
