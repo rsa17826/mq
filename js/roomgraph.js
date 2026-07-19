@@ -11,22 +11,22 @@
  * @property {*} roomStatus
  * @property {*} visitedRooms
  */
-const RoomGraph = (function () {
-  const DIRS = {
+class RoomGraph {
+  static DIRS = {
     north: { dn: 1, de: 0, opposite: "south" },
     south: { dn: -1, de: 0, opposite: "north" },
     east: { dn: 0, de: 1, opposite: "west" },
     west: { dn: 0, de: -1, opposite: "east" },
   }
 
-  let roomIndex = null // "north_east" -> room entry from AP_ENTRANCE_IDS
-  let warpIndex = null // "room|side|idx" -> [{ reqs, targets: [{room,side,idx}] }]
-  let wildcardWarps = null // [{ reqs, targets }] -- fireable from ANY room's root
+  static roomIndex = null // "north_east" -> room entry from AP_ENTRANCE_IDS
+  static warpIndex = null // "room|side|idx" -> [{ reqs, targets: [{room,side,idx}] }]
+  static wildcardWarps = null // [{ reqs, targets }] -- fireable from ANY room's root
 
-  function buildRoomIndex() {
-    roomIndex = {}
+  static buildRoomIndex() {
+    RoomGraph.roomIndex = {}
     for (const r of ap.slotData.AP_ENTRANCE_IDS) {
-      roomIndex[`${r.north}_${r.east}`] = r
+      RoomGraph.roomIndex[`${r.north}_${r.east}`] = r
     }
   }
 
@@ -44,9 +44,9 @@ const RoomGraph = (function () {
   // in for "wherever the player currently is" (e.g. a "warp" skill castable
   // from anywhere). It's origin-only, and gets fired from every room's root
   // rather than indexed under one fixed key.
-  function buildWarpIndex() {
-    warpIndex = {}
-    wildcardWarps = []
+  static buildWarpIndex() {
+    RoomGraph.warpIndex = {}
+    RoomGraph.wildcardWarps = []
     const warps =
       (typeof WARPS_DATA !== "undefined" && WARPS_DATA) || []
     for (const warp of warps) {
@@ -61,12 +61,13 @@ const RoomGraph = (function () {
             idx: tidx,
           }))
         if (n === -1 && e === -1) {
-          wildcardWarps.push({ reqs, targets })
+          RoomGraph.wildcardWarps.push({ reqs, targets })
           return
         }
         const originKey = `${n}_${e}|${side}|${idx}`
-        if (!warpIndex[originKey]) warpIndex[originKey] = []
-        warpIndex[originKey].push({ reqs, targets })
+        if (!RoomGraph.warpIndex[originKey])
+          RoomGraph.warpIndex[originKey] = []
+        RoomGraph.warpIndex[originKey].push({ reqs, targets })
       })
     }
   }
@@ -74,7 +75,7 @@ const RoomGraph = (function () {
   // Same 3-state evaluator as logic.js, but simplified: room-internal reqs
   // aren't expected to reference entrance.* tokens, so any that do are
   // treated as an automatic pass (optimistic) rather than stalling the graph.
-  function reqsSatisfied(reqGroups, have) {
+  static reqsSatisfied(reqGroups, have) {
     if (!reqGroups || reqGroups.length === 0) return true
     return reqGroups.some((group) =>
       group.every((rawTok) => {
@@ -86,13 +87,13 @@ const RoomGraph = (function () {
     )
   }
 
-  function exitKey(side, idx) {
+  static exitKey(side, idx) {
     return `${side}${idx}`
   }
 
   // Union-find over this room's own exits, given which "areas" entries are
   // currently satisfied. Returns Map<"side idx", componentId(int)>.
-  function computeRoomComponents(room, have) {
+  static computeRoomComponents(room, have) {
     const parent = {}
     function find(x) {
       while (parent[x] !== x) {
@@ -110,7 +111,7 @@ const RoomGraph = (function () {
     const allKeys = []
     for (const side of Object.keys(room.exits || {})) {
       room.exits[side].forEach((_, idx) => {
-        const k = exitKey(side, idx)
+        const k = RoomGraph.exitKey(side, idx)
         parent[k] = k
         allKeys.push(k)
       })
@@ -122,11 +123,11 @@ const RoomGraph = (function () {
         union(allKeys[0], allKeys[i])
     } else {
       for (const entry of room.areas) {
-        if (!reqsSatisfied(entry.reqs, have)) continue
+        if (!RoomGraph.reqsSatisfied(entry.reqs, have)) continue
         for (const group of entry.areas) {
           for (let i = 1; i < group.length; i++) {
-            const a = exitKey(group[0].side, group[0].idx)
-            const b = exitKey(group[i].side, group[i].idx)
+            const a = RoomGraph.exitKey(group[0].side, group[0].idx)
+            const b = RoomGraph.exitKey(group[i].side, group[i].idx)
             if (parent[a] === undefined || parent[b] === undefined)
               continue
             union(a, b)
@@ -142,9 +143,9 @@ const RoomGraph = (function () {
 
   // Resolve the external connection for a given room exit: ER_MAP override
   // if it exists and matches, otherwise vanilla same-idx opposite-side neighbor.
-  function externalConnection(roomKey, room, side, idx) {
+  static externalConnection(roomKey, room, side, idx) {
     const [north, east] = roomKey.split("_").map(Number)
-    const d = DIRS[side]
+    const d = RoomGraph.DIRS[side]
 
     const conns = (ER_MAP.get(roomKey) || []).filter(
       (c) => c.origSide === side,
@@ -165,7 +166,7 @@ const RoomGraph = (function () {
     const vanillaNorth = north + d.dn
     const vanillaEast = east + d.de
     const neighborKey = `${vanillaNorth}_${vanillaEast}`
-    if (!roomIndex[neighborKey]) return null // no room there at all
+    if (!RoomGraph.roomIndex[neighborKey]) return null // no room there at all
     return { room: neighborKey, side: d.opposite, idx }
   }
 
@@ -179,19 +180,28 @@ const RoomGraph = (function () {
    * @param {string} startRoom
    * @returns {RoomGraphReachability}
    */
-  function computeReachability(haveReal, startRoom) {
-    if (!roomIndex) buildRoomIndex()
-    if (!warpIndex) buildWarpIndex()
+  static computeReachability(haveReal, startRoom) {
+    if (!RoomGraph.roomIndex) RoomGraph.buildRoomIndex()
+    if (!RoomGraph.warpIndex) RoomGraph.buildWarpIndex()
     QuestState.seedFromGame()
 
     const reachableExits = new Set()
     /**
-     *
+     * @type {Record<string, {reachable:number, total:number}>}
      */
     const roomExitCounts = {}
     const visitedRooms = new Set()
     const queue = []
 
+    /**
+     * @typedef {Object} Room
+     * @property {{north:string[]}} exits
+     */
+    /**
+     *
+     * @param {Room} room
+     * @returns
+     */
     function totalExitsFor(room) {
       let n = 0
       for (const side of Object.keys(room.exits || {}))
@@ -222,7 +232,7 @@ const RoomGraph = (function () {
     function markExitReachable(roomKey, side, idx) {
       const node = `${roomKey}|${side}|${idx}`
       if (reachableExits.has(node)) return
-      const room = roomIndex[roomKey]
+      const room = RoomGraph.roomIndex[roomKey]
       if (!room) return
       ensureCounts(roomKey, room)
       reachableExits.add(node)
@@ -241,7 +251,7 @@ const RoomGraph = (function () {
     // warps landing at a room's root, which per regions.py do NOT grant
     // access to that room's other exits (see markExitReachable above).
     function seedRoomFully(roomKey) {
-      const room = roomIndex[roomKey]
+      const room = RoomGraph.roomIndex[roomKey]
       if (!room) return
       visitedRooms.add(roomKey)
       ensureCounts(roomKey, room)
@@ -250,7 +260,7 @@ const RoomGraph = (function () {
       // that normally only happens via a real exit's exit->root edge --
       // and there are no exits here to provide one.
       markExitReachable(roomKey, "root", 0)
-      const comps = computeRoomComponents(room, haveReal)
+      const comps = RoomGraph.computeRoomComponents(room, haveReal)
       for (const key of Object.keys(comps)) {
         const side = key.replace(/\d+$/, "")
         const idx = Number(key.match(/\d+$/)[0])
@@ -264,12 +274,12 @@ const RoomGraph = (function () {
     // (whatever's walkable from there given the room's current reqs-gated
     // internal connectivity).
     function enterRoomViaExit(roomKey, side, idx) {
-      const room = roomIndex[roomKey]
+      const room = RoomGraph.roomIndex[roomKey]
       if (!room) return
       visitedRooms.add(roomKey)
       markExitReachable(roomKey, side, idx)
-      const comps = computeRoomComponents(room, haveReal)
-      const enteredComp = comps[exitKey(side, idx)]
+      const comps = RoomGraph.computeRoomComponents(room, haveReal)
+      const enteredComp = comps[RoomGraph.exitKey(side, idx)]
       if (enteredComp === undefined) return
       for (const key of Object.keys(comps)) {
         if (comps[key] !== enteredComp) continue
@@ -285,10 +295,10 @@ const RoomGraph = (function () {
     // grants nothing beyond root itself); any other target is entered
     // exactly like a physical doorway would be.
     function fireWarpsFrom(roomKey, side, idx) {
-      const entries = warpIndex[`${roomKey}|${side}|${idx}`]
+      const entries = RoomGraph.warpIndex[`${roomKey}|${side}|${idx}`]
       if (entries) {
         for (const { reqs, targets } of entries) {
-          if (!reqsSatisfied(reqs, haveReal)) continue
+          if (!RoomGraph.reqsSatisfied(reqs, haveReal)) continue
           for (const t of targets) {
             if (t.side === "root")
               markExitReachable(t.room, "root", 0)
@@ -300,8 +310,8 @@ const RoomGraph = (function () {
       // standing there -- which is exactly what a wildcard (-1,-1) warp
       // origin means, so give it the same chance to fire from here too.
       if (side === "root") {
-        for (const { reqs, targets } of wildcardWarps) {
-          if (!reqsSatisfied(reqs, haveReal)) continue
+        for (const { reqs, targets } of RoomGraph.wildcardWarps) {
+          if (!RoomGraph.reqsSatisfied(reqs, haveReal)) continue
           for (const t of targets) {
             if (t.side === "root")
               markExitReachable(t.room, "root", 0)
@@ -311,11 +321,11 @@ const RoomGraph = (function () {
       }
     }
 
-    if (roomIndex[startRoom]) seedRoomFully(startRoom)
+    if (RoomGraph.roomIndex[startRoom]) seedRoomFully(startRoom)
 
     while (queue.length > 0) {
       const cur = queue.shift()
-      const room = roomIndex[cur.room]
+      const room = RoomGraph.roomIndex[cur.room]
       if (!room) continue
 
       fireWarpsFrom(cur.room, cur.side, cur.idx)
@@ -323,13 +333,13 @@ const RoomGraph = (function () {
       // Root has no physical doorway of its own to cross through.
       if (cur.side === "root") continue
 
-      const dest = externalConnection(
+      const dest = RoomGraph.externalConnection(
         cur.room,
         room,
         cur.side,
         cur.idx,
       )
-      if (dest && roomIndex[dest.room]) {
+      if (dest && RoomGraph.roomIndex[dest.room]) {
         enterRoomViaExit(dest.room, dest.side, dest.idx)
       }
     }
@@ -339,7 +349,7 @@ const RoomGraph = (function () {
     }
 
     function roomStatus(room) {
-      if (!roomIndex[room]) return "full" // no entrance data at all: don't grey, unknown
+      if (!RoomGraph.roomIndex[room]) return "full" // no entrance data at all: don't grey, unknown
       // Ground truth for "can the player actually be in this room at all":
       // root gets fed the moment ANY real exit is reached (see
       // markExitReachable above), so it's reachable exactly when the room
@@ -361,6 +371,4 @@ const RoomGraph = (function () {
       visitedRooms,
     }
   }
-
-  return { computeReachability }
-})()
+}
