@@ -119,6 +119,7 @@ class ArchipelagoClient {
       this.wss ?
         `wss://${hostname}:${port}`
       : `ws://${hostname}:${port}`
+      window.onApCreated.forEach(e=>e(this))
   }
 
   /**

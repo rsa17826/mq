@@ -237,7 +237,7 @@ function buildPathGraph(slotData) {
   // flags and quests unlocked purely by logic) so a warp/area gated behind
   // a logical flag -- never a real item -- can actually resolve to a
   // walkable path instead of falling back to a "no route" direct arrow.
-  const have = window.haveDerived || window.haveReal || new Set()
+  const have = window.haveDerived || Logic.haveReal || new Set()
 
   // --- Cross-room edges: the physical doorways between rooms ---
   if (Array.isArray(slotData.roomData) && slotData.roomData.length) {
@@ -536,7 +536,7 @@ function pfCandidateStartKeys() {
   if (real) keys.push(real)
   const home = pfHomePointRoomKey()
   if (home && !keys.includes(home)) keys.push(home)
-  const have = window.haveDerived || window.haveReal
+  const have = window.haveDerived || Logic.haveReal
   if (
     have &&
     have.has("misc:bobbisPendant") &&
@@ -846,7 +846,7 @@ function pfGetProgData() {
 function pfTokenHave(tok) {
   tok = pfBaseTok(tok)
   if (tok.startsWith("quest:")) return QuestState.satisfied(tok)
-  return (window.haveDerived || window.haveReal || new Set()).has(tok)
+  return (window.haveDerived || Logic.haveReal || new Set()).has(tok)
 }
 
 // Whether one specific (room, token) location has actually been checked --

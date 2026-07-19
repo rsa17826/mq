@@ -3,7 +3,14 @@
 // vanilla adjacency, and BFSes from the start room (20,20) given the current
 // real-item "have" set. Feeds room-level grey-out classes AND resolves
 // entrance.* tokens for logic.js (replacing the old always-"unknown" stub).
-
+/**
+ * @typedef {Object} RoomGraphReachability
+ * @property {Set<string>} reachableExits
+ * @property {{}} roomExitCounts
+ * @property {*} isEntranceReachable
+ * @property {*} roomStatus
+ * @property {*} visitedRooms
+ */
 const RoomGraph = (function () {
   const DIRS = {
     north: { dn: 1, de: 0, opposite: "south" },
@@ -166,12 +173,21 @@ const RoomGraph = (function () {
   //   reachableExits: Set of "room|side|idx"
   //   roomExitCounts: Map<room, {reachable, total}>
   //   isEntranceReachable(room, side, idx): bool
+  /**
+   *
+   * @param {Set<string>} haveReal
+   * @param {string} startRoom
+   * @returns {RoomGraphReachability}
+   */
   function computeReachability(haveReal, startRoom) {
     if (!roomIndex) buildRoomIndex()
     if (!warpIndex) buildWarpIndex()
     QuestState.seedFromGame()
 
     const reachableExits = new Set()
+    /**
+     *
+     */
     const roomExitCounts = {}
     const visitedRooms = new Set()
     const queue = []
