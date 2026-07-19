@@ -70,9 +70,9 @@ window.onApCreated.push((ap) => {
       packet.items.forEach((item) => {
         const name =
           ap.slotData.AP_ITEM_IDS[item.item] || `#${item.item}`
-        itemCounts[name] = (itemCounts[name] || 0) + 1
+        Tracker.itemCounts[name] = (Tracker.itemCounts[name] || 0) + 1
       })
-      renderItemPanel()
+      Tracker.renderItemPanel()
     }
   }
   const origOnConnected = ap.onConnected.bind(ap)

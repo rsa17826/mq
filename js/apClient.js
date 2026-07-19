@@ -275,8 +275,8 @@ class ArchipelagoClient {
         }
       })
     }
-    window.__trackerRecompute?.()
-    setTimeout(() => window.__trackerRecompute?.())
+    Logic.recompute()
+    setTimeout(() => Logic.recompute())
   }
   /**
    * Handshake Step 2: Server sends RoomInfo.
@@ -614,7 +614,7 @@ class ArchipelagoClient {
       }
       this.lastProcessedIndex = globalIndex + 1
     })
-    window.__trackerRecompute?.()
+    Logic.recompute()
   }
 
   /**

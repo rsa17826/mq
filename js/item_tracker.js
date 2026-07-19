@@ -304,7 +304,7 @@ class ItemTracker {
               "Point the map arrow here (and auto-surface any outstanding loot requirement)",
             onclick: (e) => {
               e.stopPropagation()
-              Map.trackToken(this.primaryTrackToken(entry))
+              WorldMap.trackToken(this.primaryTrackToken(entry))
             },
           },
           ["Track"],

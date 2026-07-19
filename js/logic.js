@@ -6,11 +6,6 @@ class Logic {
   static pwcount = 0
   static pacount = 0
   static pmcount = 0
-  // Ground truth for "is this token a real network item" (vs a free/virtual
-  // flag like area:/quest:, or an unresolvable entrance.* token).
-  /**@type {Set<string>} */
-  static REAL_ITEM_NAMES = new Set()
-
   /**
    *
    * @param {string} tok
@@ -115,7 +110,7 @@ class Logic {
 
   static recompute() {
     QuestState.seedFromGame()
-    const have = new Set(haveReal)
+    const have = new Set(Logic.haveReal)
     // Room-internal `areas` gating can depend on virtual tokens (like
     // "flag:...") that only exist once some PROG_DATA entry grants them
     // below -- so `roomGraph` has to be rebuilt with the growing `have`
@@ -137,7 +132,7 @@ class Logic {
             const tok = Logic.baseTok(rawTok)
             // only virtual/free tokens auto-propagate; real items only
             // enter `have` via actual ReceivedItems packets
-            if (!REAL_ITEM_NAMES.has(tok) && !have.has(tok)) {
+            if (!ItemTracker.REAL_ITEM_NAMES.has(tok) && !have.has(tok)) {
               have.add(tok)
               changed = true
             }
@@ -152,13 +147,6 @@ class Logic {
         roomGraph = RoomGraph.computeReachability(have, "20_20")
       }
     }
-    // Expose the fully-derived set (real items + every virtual/free token
-    // unlocked above) so map.js's own pathfinding graph sees exactly the
-    // same flags/quests this reachability pass did, instead of just the
-    // raw network items -- otherwise a warp/area gated behind a purely
-    // logical flag (never a real item) could never resolve to a walkable
-    // path there, only a "no route" direct-pointer arrow.
-    window.haveDerived = have
 
     // Clear old logic markers, but never touch .checked (that's ground truth)
     document
@@ -190,7 +178,7 @@ class Logic {
           questDone
 
         if (r === "true" && !alreadyChecked) {
-          if (Logic.REAL_ITEM_NAMES.has(tok))
+          if (ItemTracker.REAL_ITEM_NAMES.has(tok))
             roomsWithAvailableItems.add(entry.room)
           if (isQuest) roomsWithAvailableQuests.add(entry.room)
         }
@@ -233,9 +221,6 @@ class Logic {
   }
 }
 window.onApConnect.push(() => {
-  Logic.REAL_ITEM_NAMES = new Set(
-    Object.values(ap.slotData.AP_ITEM_IDS),
-  )
   document
     .querySelectorAll(".progression-icon[data-location]")
     .forEach((el) => {
@@ -324,8 +309,8 @@ window.onApCreated.push((ap) => {
             break
         }
         // TODO ???, now both equal figure ho to fix
-        if (name == "permit:bomb.2") haveReal.add("permit:bomb")
-        haveReal.add(name)
+        if (name == "permit:bomb.2") Logic.haveReal.add("permit:bomb")
+        Logic.haveReal.add(name)
       }
     })
     Logic.recompute()
