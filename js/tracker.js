@@ -2,66 +2,30 @@
 // Assumes this script loads AFTER apClient.js and the game's
 // ap.slotData.AP_LOCATION_IDS / ap.slotData.AP_ITEM_IDS globals are defined on the page,
 // and that window.ap is (or will be) the connected ArchipelagoClient.
+class Tracker {
+  // id -> "north_east - item" location key
+  static ID_TO_LOCATION = {}
 
-;(function () {
-  function init() {
-    if (!window.ap?.slotData?.AP_LOCATION_IDS) {
-      setTimeout(init, 250)
-      return
-    }
+  // Cache icon elements by location key for fast lookups
+  static iconsByLocation = {}
 
-    // id -> "north_east - item" location key
-    const ID_TO_LOCATION = {}
-    for (const key in ap.slotData.AP_LOCATION_IDS) {
-      ID_TO_LOCATION[ap.slotData.AP_LOCATION_IDS[key]] = key
-    }
+  static markChecked(locationId) {
+    const key = Tracker.ID_TO_LOCATION[locationId]
+    if (!key) return
+    const els = Tracker.iconsByLocation[key]
+    if (!els) return
+    els.forEach((el) => el.classList.add("checked"))
+  }
 
-    // Cache icon elements by location key for fast lookups
-    const iconsByLocation = {}
-    document
-      .querySelectorAll(".progression-icon[data-location]")
-      .forEach((el) => {
-        const key = el.dataset.location
-        ;(iconsByLocation[key] ||= []).push(el)
-      })
+  static syncCheckedLocations(list) {
+    if (!list) return
+    list.forEach(Tracker.markChecked)
+  }
 
-    function markChecked(locationId) {
-      const key = ID_TO_LOCATION[locationId]
-      if (!key) return
-      const els = iconsByLocation[key]
-      if (!els) return
-      els.forEach((el) => el.classList.add("checked"))
-    }
-
-    function syncCheckedLocations(list) {
-      if (!list) return
-      list.forEach(markChecked)
-    }
-
-    // --- Locations: initial sync + ongoing updates ---
-    const origOnConnected = ap.onConnected.bind(ap)
-    ap.onConnected = function (packet) {
-      origOnConnected(packet)
-      if (window.playerLoaded) {
-        syncCheckedLocations(ap.checkedLocations)
-      } else {
-        window.onPlayerLoaded.push(() => {
-          syncCheckedLocations(ap.checkedLocations)
-        })
-      }
-    }
-
-    const origOnRoomUpdate = ap.onRoomUpdate.bind(ap)
-    ap.onRoomUpdate = function (packet) {
-      origOnRoomUpdate(packet)
-      syncCheckedLocations(packet.checked_locations)
-    }
-
-    // In case connection happened before this script attached its hooks
-    if (ap.checkedLocations) syncCheckedLocations(ap.checkedLocations)
-
-    // --- Items: basic received-item counter panel ---
-    const itemCounts = {}
+  // --- Items: basic received-item counter panel ---
+  static itemCounts = {}
+  static _initUI() {
+    Tracker.itemCounts = {}
     const panel = document.createElement("div")
     panel.id = "tracker-item-panel"
     panel.style.cssText = `
@@ -83,37 +47,61 @@
     panel.innerHTML =
       "<b>Items received</b><div id='tracker-item-list'></div>"
     document.getElementById("viewport")?.appendChild(panel)
+  }
+  static renderItemPanel() {
+    const list = document.getElementById("tracker-item-list")
+    if (!list) return
+    const rows = Object.entries(Tracker.itemCounts)
+      .sort((a, b) => a[0].localeCompare(b[0]))
+      .map(
+        ([name, count]) =>
+          `<div>${name}${count > 1 ? ` x${count}` : ""}</div>`,
+      )
+      .join("")
+    list.innerHTML = rows
+  }
+}
 
-    function renderItemPanel() {
-      const list = document.getElementById("tracker-item-list")
-      if (!list) return
-      const rows = Object.entries(itemCounts)
-        .sort((a, b) => a[0].localeCompare(b[0]))
-        .map(
-          ([name, count]) =>
-            `<div>${name}${count > 1 ? ` x${count}` : ""}</div>`,
-        )
-        .join("")
-      list.innerHTML = rows
+window.onApCreated.push((ap) => {
+  const origOnReceivedItems = ap.onReceivedItems.bind(ap)
+  ap.onReceivedItems = function (packet) {
+    origOnReceivedItems(packet)
+    if (window.playerLoaded) {
+      packet.items.forEach((item) => {
+        const name =
+          ap.slotData.AP_ITEM_IDS[item.item] || `#${item.item}`
+        itemCounts[name] = (itemCounts[name] || 0) + 1
+      })
+      renderItemPanel()
     }
-
-    const origOnReceivedItems = ap.onReceivedItems.bind(ap)
-    ap.onReceivedItems = function (packet) {
-      origOnReceivedItems(packet)
-      if (window.playerLoaded) {
-        packet.items.forEach((item) => {
-          const name =
-            ap.slotData.AP_ITEM_IDS[item.item] || `#${item.item}`
-          itemCounts[name] = (itemCounts[name] || 0) + 1
-        })
-        renderItemPanel()
-      }
-    }
-
-    console.log(
-      "[tracker] hooked into Archipelago client for map tracking",
-    )
+  }
+  const origOnConnected = ap.onConnected.bind(ap)
+  ap.onConnected = function (packet) {
+    origOnConnected(packet)
+    window.onPlayerLoaded.push(() => {
+      Tracker.syncCheckedLocations(ap.checkedLocations)
+    })
   }
 
-  init()
-})()
+  const origOnRoomUpdate = ap.onRoomUpdate.bind(ap)
+  ap.onRoomUpdate = function (packet) {
+    origOnRoomUpdate(packet)
+    Tracker.syncCheckedLocations(packet.checked_locations)
+  }
+})
+window.onApConnect.push(() => {
+  document
+    .querySelectorAll(".progression-icon[data-location]")
+    .forEach((el) => {
+      const key = el.dataset.location
+      ;(Tracker.iconsByLocation[key] ||= []).push(el)
+    })
+  for (const key in ap.slotData.AP_LOCATION_IDS) {
+    Tracker.ID_TO_LOCATION[ap.slotData.AP_LOCATION_IDS[key]] = key
+  }
+  // Tracker._initUI()
+  // Tracker.renderItemPanel()
+  console.log(
+    "[tracker] hooked into Archipelago client for map tracking",
+  )
+})
