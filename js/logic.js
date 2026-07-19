@@ -132,7 +132,10 @@ class Logic {
             const tok = Logic.baseTok(rawTok)
             // only virtual/free tokens auto-propagate; real items only
             // enter `have` via actual ReceivedItems packets
-            if (!ItemTracker.REAL_ITEM_NAMES.has(tok) && !have.has(tok)) {
+            if (
+              !ItemTracker.REAL_ITEM_NAMES.has(tok) &&
+              !have.has(tok)
+            ) {
               have.add(tok)
               changed = true
             }
@@ -318,9 +321,11 @@ window.onApCreated.push((ap) => {
       Logic.recompute()
     })
 
-    Logic.recompute()
     console.log(
       `[logic] reachability engine ready: ${PROG_DATA.length} entries`,
     )
   }
+})
+window.onPlayerLoaded.push(function () {
+  Logic.recompute()
 })

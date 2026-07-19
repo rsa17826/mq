@@ -22,12 +22,28 @@ class RoomGraph {
   static roomIndex = null // "north_east" -> room entry from AP_ENTRANCE_IDS
   static warpIndex = null // "room|side|idx" -> [{ reqs, targets: [{room,side,idx}] }]
   static wildcardWarps = null // [{ reqs, targets }] -- fireable from ANY room's root
+  static areaMap = null // "north_east" -> area string
+  static areaPowerReqs = null // area string -> requires (same [[...]] OR-group format as PROG_DATA)
 
   static buildRoomIndex() {
     RoomGraph.roomIndex = {}
     for (const r of ap.slotData.AP_ENTRANCE_IDS) {
       RoomGraph.roomIndex[`${r.north}_${r.east}`] = r
     }
+  }
+  static buildAreaIndex() {
+    RoomGraph.areaMap = (ap.slotData?.AREA_MAP) || {}
+    RoomGraph.areaPowerReqs =
+      (ap.slotData?.AREA_POWER_REQS) || {}
+  }
+  // Mirrors regions.py's powerRule: rooms whose area isn't in AREA_POWER_REQS
+  // (or whose room key isn't in AREA_MAP at all) have no power gate.
+  static areaPowerSatisfied(roomKey, have) {
+    const area = RoomGraph.areaMap[roomKey]
+    if (area === undefined) return true
+    const reqs = RoomGraph.areaPowerReqs[area]
+    if (!reqs) return true
+    return RoomGraph.reqsSatisfied(reqs, have)
   }
 
   // Indexes _room_geometry.WARPS (emitted as WARPS_DATA by gen_map.py) by
@@ -183,6 +199,7 @@ class RoomGraph {
   static computeReachability(haveReal, startRoom) {
     if (!RoomGraph.roomIndex) RoomGraph.buildRoomIndex()
     if (!RoomGraph.warpIndex) RoomGraph.buildWarpIndex()
+    if (!RoomGraph.areaMap) RoomGraph.buildAreaIndex()
     QuestState.seedFromGame()
 
     const reachableExits = new Set()
@@ -238,7 +255,8 @@ class RoomGraph {
       reachableExits.add(node)
       if (side !== "root") {
         roomExitCounts[roomKey].reachable++
-        markExitReachable(roomKey, "root", 0)
+        if (RoomGraph.areaPowerSatisfied(roomKey, haveReal))
+          markExitReachable(roomKey, "root", 0)
       }
       queue.push({ room: roomKey, side, idx })
     }
@@ -340,7 +358,8 @@ class RoomGraph {
         cur.idx,
       )
       if (dest && RoomGraph.roomIndex[dest.room]) {
-        enterRoomViaExit(dest.room, dest.side, dest.idx)
+        if (RoomGraph.areaPowerSatisfied(dest.room, haveReal))
+          enterRoomViaExit(dest.room, dest.side, dest.idx)
       }
     }
 
