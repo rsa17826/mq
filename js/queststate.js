@@ -2,39 +2,49 @@
 // resolve "quest:name.value" tokens (threshold comparisons, not simple
 // have/have-not flags).
 
-const QuestState = (function () {
-  const values = {} // questName -> current numeric value
+class QuestState {
+  /** @type {Record<string, number>} */
+  static values = {} // questName -> current numeric value
 
-  function parseToken(tok) {
+  /**
+   *
+   * @param {string} tok
+   * @returns
+   */
+  static parseToken(tok) {
     // e.g. "quest:curse.5" -> { name: "curse", threshold: 5 }
     const m = tok.match(/^quest:(.+)\.(-?\d+)$/)
     if (!m) return null
     return { name: m[1], threshold: Number(m[2]) }
   }
 
-  function satisfied(tok) {
-    const p = parseToken(tok)
+  /**
+   *
+   * @param {string} tok
+   * @returns
+   */
+  static satisfied(tok) {
+    const p = QuestState.parseToken(tok)
     if (!p) return false
-    const v = values[p.name]
+    const v = QuestState.values[p.name]
     return v !== undefined && v >= p.threshold
   }
 
-  function set(name, value) {
-    values[name] = value
+  /**
+   *
+   * @param {string} name
+   * @param {number} value
+   */
+  static set(name, value) {
+    QuestState.values[name] = value
   }
 
   // Read current values straight from the game's manager.quest, keyed by
   // Enum.Quest so names line up with the "quest:name.value" token format.
-  function seedFromGame() {
+  static seedFromGame() {
     for (const key of Object.keys(Enum.Quest)) {
-      try {
-        const v = manager.quest[Enum.Quest[key]]
-        if (v !== undefined) values[key] = v
-      } catch (e) {
-        // ignore keys that don't resolve cleanly
-      }
+      const v = manager.quest[Enum.Quest[key]]
+      if (v !== undefined) QuestState.values[key] = v
     }
   }
-
-  return { satisfied, set, seedFromGame, values }
-})()
+}
