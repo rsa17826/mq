@@ -120,12 +120,12 @@ class ItemTracker {
       ],
       receive: [],
     }
-    window.applyLootTrackingFor(mergedEntry)
+    PathFinding.applyLootTrackingFor(mergedEntry)
   }
 
   static clearLootTracking() {
     this.trackedLootEntries.clear()
-    window.applyLootTrackingFor({
+    PathFinding.applyLootTrackingFor({
       room: "Tracked Loot",
       requires: [[]],
       receive: [],
@@ -220,7 +220,7 @@ class ItemTracker {
                   display: "flex",
                   alignItems: "center",
                   gap: "4px",
-                  fontSize: "12px",
+                  fontSize: "18px",
                   color: "#ccc",
                   cursor: "pointer",
                   userSelect: "none",

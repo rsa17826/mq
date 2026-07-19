@@ -749,6 +749,7 @@ manager.correct - manager.wrong > 800 = halo
         "loot:aScepter",
         "loot:dScale#5",
         "skill:craft",
+        "permit:bomb",
         "permit:bomb.2",
       ],
     ],
@@ -925,6 +926,13 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "item:gold#500",
+        "entrance.north0"
+      ],
+      [
+        "item:gold#500",
+        "entrance.east0",
+        "permit:bomb",
+        "permit:bomb.2",
       ],
     ],
     "receive": [
@@ -2457,6 +2465,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "misc:blue crystal",
+        "permit:bomb",
         "permit:bomb.2",
         "quest:gTree.10",
       ],
@@ -2845,6 +2854,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "loot:key",
+        "permit:bomb",
         "permit:bomb.2",
       ],
     ],
@@ -8596,7 +8606,7 @@ AREA_POWER_REQS = {
   # "0": 0,
   "1.19": 1,
   "1.water": 2,
-  "1": 1,
+  # "1": 1,
   "10": 13,
   "11.1": 4,
   "11.2": 13,
