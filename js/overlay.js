@@ -275,7 +275,7 @@ function customDrawLoop() {
   function drawRoomPathArrow() {
     // map.js exposes these; if it hasn't loaded (or there's no route
     // selected on the map), there's nothing to draw.
-    if (!PathFinding.WorldPointToRoomFraction) return
+    if (!PathFinding.worldPointToRoomFraction) return
     var routes = window.PATH_ROUTES
     if (!routes || !routes.length) return
 
@@ -286,7 +286,7 @@ function customDrawLoop() {
     var stubLength = tileSize * 0.8
 
     function toOverlayPoint(point, forRoom) {
-      var frac = PathFinding.WorldPointToRoomFraction(forRoom, point)
+      var frac = PathFinding.worldPointToRoomFraction(forRoom, point)
       if (!frac) return null
       return {
         x: frac.fx * gridWidth,

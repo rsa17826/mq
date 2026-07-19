@@ -64,7 +64,7 @@ class PathFinding {
   /**
    * @param {any} tok
    */
-  static BaseTok(tok) {
+  static baseTok(tok) {
     return String(tok).split("#")[0]
   }
 
@@ -72,7 +72,7 @@ class PathFinding {
    * @param {string} tok
    * @param {{ has: (arg0: any) => any; }} have
    */
-  static HasToken(tok, have) {
+  static hasToken(tok, have) {
     if (tok.startsWith("quest:")) {
       return QuestState.satisfied(tok)
     }
@@ -85,11 +85,11 @@ class PathFinding {
    * @param {any[]} reqGroups
    * @param {any} have
    */
-  static ReqsSatisfied(reqGroups, have) {
+  static reqsSatisfied(reqGroups, have) {
     if (!reqGroups || !reqGroups.length) return true
     return reqGroups.some((/** @type {any[]} */ group) =>
       group.every((/** @type {any} */ tok) =>
-        PathFinding.HasToken(PathFinding.BaseTok(tok), have),
+        PathFinding.hasToken(PathFinding.baseTok(tok), have),
       ),
     )
   }
@@ -98,14 +98,14 @@ class PathFinding {
    * @param {string} side
    * @param {number} idx
    */
-  static ExitKey(side, idx) {
+  static exitKey(side, idx) {
     return `${side}::${idx}`
   }
   /**
    * @param {any} roomKey
    * @param {{ dir: any; idx: any; }} entrance
    */
-  static SelectionId(roomKey, entrance) {
+  static selectionId(roomKey, entrance) {
     return entrance ?
         `${roomKey}::${entrance.dir}::${entrance.idx}`
       : roomKey
@@ -114,7 +114,7 @@ class PathFinding {
    * @param {any} n
    * @param {any} e
    */
-  static RoomKey(n, e) {
+  static roomKey(n, e) {
     return `${n}_${e}`
   }
 
@@ -124,7 +124,7 @@ class PathFinding {
    * @param {string} side
    * @param {number} idx
    */
-  static ExitNodeKey(roomKey, side, idx) {
+  static exitNodeKey(roomKey, side, idx) {
     return `${roomKey}::${side}::${idx}`
   }
 
@@ -140,7 +140,7 @@ class PathFinding {
    * @param {number} toIdx
    * @param {boolean | undefined} [isWarp]
    */
-  static AddEdge(
+  static addEdge(
     graph,
     fromNode,
     toNode,
@@ -168,7 +168,7 @@ class PathFinding {
   /**
    * @param {{ AP_ENTRANCE_IDS: any; }} slotData
    */
-  static RoomsByKey(slotData) {
+  static roomsByKey(slotData) {
     const map = {}
     ;(slotData.AP_ENTRANCE_IDS || []).forEach(
       (
@@ -179,7 +179,7 @@ class PathFinding {
           room.north !== undefined &&
           room.east !== undefined
         ) {
-          map[PathFinding.RoomKey(room.north, room.east)] = room
+          map[PathFinding.roomKey(room.north, room.east)] = room
         }
       },
     )
@@ -189,7 +189,7 @@ class PathFinding {
   /**
    * @param {{ exits: { [x: string]: any; }; north: number; east: number; }} room
    */
-  static RoomExitList(room) {
+  static roomExitList(room) {
     const list = []
     if (room && room.exits) {
       if (
@@ -230,12 +230,12 @@ class PathFinding {
    * @param {{}} roomsByKey
    * @param {Set<string>} have
    */
-  static AddWarpEdges(graph, roomsByKey, have) {
+  static addWarpEdges(graph, roomsByKey, have) {
     const warps =
       (typeof WARPS_DATA !== "undefined" && WARPS_DATA) || []
     warps.forEach(
       (/** @type {{ reqs: any; connections: never[]; }} */ warp) => {
-        if (!PathFinding.ReqsSatisfied(warp.reqs || [], have)) return
+        if (!PathFinding.reqsSatisfied(warp.reqs || [], have)) return
         const conns = warp.connections || []
         conns.forEach(([n, e, side, idx], /** @type {any} */ oi) => {
           const targets = conns.filter(
@@ -246,19 +246,19 @@ class PathFinding {
 
           if (isWildcardOrigin) {
             Object.keys(roomsByKey).forEach((roomKey) => {
-              const fromNode = PathFinding.ExitNodeKey(
+              const fromNode = PathFinding.exitNodeKey(
                 roomKey,
                 "root",
                 0,
               )
               targets.forEach(([tn, te, tside, tidx]) => {
                 const toRoom = `${tn}_${te}`
-                const toNode = PathFinding.ExitNodeKey(
+                const toNode = PathFinding.exitNodeKey(
                   toRoom,
                   tside,
                   tidx,
                 )
-                PathFinding.AddEdge(
+                PathFinding.addEdge(
                   graph,
                   fromNode,
                   toNode,
@@ -276,19 +276,19 @@ class PathFinding {
           }
 
           const fromRoom = `${n}_${e}`
-          const fromNode = PathFinding.ExitNodeKey(
+          const fromNode = PathFinding.exitNodeKey(
             fromRoom,
             side,
             idx,
           )
           targets.forEach(([tn, te, tside, tidx]) => {
             const toRoom = `${tn}_${te}`
-            const toNode = PathFinding.ExitNodeKey(
+            const toNode = PathFinding.exitNodeKey(
               toRoom,
               tside,
               tidx,
             )
-            PathFinding.AddEdge(
+            PathFinding.addEdge(
               graph,
               fromNode,
               toNode,
@@ -313,7 +313,7 @@ class PathFinding {
    * @param {{ [x: string]: any; }} roomsByKey
    * @param {string} startRoomKey
    */
-  static Bfs(graph, roomsByKey, startRoomKey) {
+  static bfs(graph, roomsByKey, startRoomKey) {
     const dist = {}
     const bestEdge = {}
     const allIncoming = {}
@@ -323,12 +323,12 @@ class PathFinding {
     // that's purely a warp hub (no physical doors at all, just a "root"
     // landing spot) would otherwise never get seeded, since root is normally
     // only fed by an exit->root edge -- and there are no exits here to feed it.
-    const rootNode = PathFinding.ExitNodeKey(startRoomKey, "root", 0)
+    const rootNode = PathFinding.exitNodeKey(startRoomKey, "root", 0)
     dist[rootNode] = 0
     queue.push(rootNode)
-    PathFinding.RoomExitList(roomsByKey[startRoomKey]).forEach(
+    PathFinding.roomExitList(roomsByKey[startRoomKey]).forEach(
       ({ side, idx }) => {
-        const node = PathFinding.ExitNodeKey(startRoomKey, side, idx)
+        const node = PathFinding.exitNodeKey(startRoomKey, side, idx)
         if (dist[node] === undefined) {
           dist[node] = 0
           queue.push(node)
@@ -358,7 +358,7 @@ class PathFinding {
    * @param {{ [x: string]: any; }} bestEdge
    * @param {string} targetNode
    */
-  static ReconstructPath(bestEdge, targetNode) {
+  static reconstructPath(bestEdge, targetNode) {
     const path = []
     let cur = targetNode
     while (bestEdge[cur]) {
@@ -368,7 +368,7 @@ class PathFinding {
     }
     return path
   }
-  static HomePointRoomKey() {
+  static homePointRoomKey() {
     const hp = window.manager && manager.homePoint
     return HOMEPOINT_ROOMS[hp] || null
   }
@@ -378,11 +378,11 @@ class PathFinding {
   // teleporting there first might be a shorter overall route; and 20_20
   // specifically whenever they're holding the pendant, since that's an
   // always-available teleport home regardless of the homepoint currently set.
-  static CandidateStartKeys() {
+  static candidateStartKeys() {
     const keys = []
     const real = getCurrentRoomKey()
     if (real) keys.push(real)
-    const home = PathFinding.HomePointRoomKey()
+    const home = PathFinding.homePointRoomKey()
     if (home && !keys.includes(home)) keys.push(home)
     if (
       Logic.haveReal &&
@@ -398,7 +398,7 @@ class PathFinding {
   /**
    * @param {any} roomKey
    */
-  static TileOrigin(roomKey) {
+  static tileOrigin(roomKey) {
     const wrapper = document.querySelector(
       `.tile-wrapper[data-room="${roomKey}"]`,
     )
@@ -414,7 +414,7 @@ class PathFinding {
    * @param {any} dir
    * @param {string | number} idx
    */
-  static FindExitData(roomKey, dir, idx) {
+  static findExitData(roomKey, dir, idx) {
     const list =
       (window.EXITS_DATA && window.EXITS_DATA[roomKey]) || []
     const sideMatches = list.filter(
@@ -433,7 +433,7 @@ class PathFinding {
    * @param {any} dir
    * @param {any} idx
    */
-  static ExitSquareCenter(roomKey, origin, dir, idx) {
+  static exitSquareCenter(roomKey, origin, dir, idx) {
     const square = document.querySelector(
       `.exit-square[data-room="${roomKey}"][data-side="${dir}"][data-idx="${idx}"]`,
     )
@@ -465,8 +465,8 @@ class PathFinding {
    * @param {string} dir
    * @param {any} idx
    */
-  static ExitPoint(roomKey, dir, idx) {
-    const origin = PathFinding.TileOrigin(roomKey)
+  static exitPoint(roomKey, dir, idx) {
+    const origin = PathFinding.tileOrigin(roomKey)
     if (!origin) return null
 
     // Root has no drawn exit-square (it's a landing spot, not a doorway) --
@@ -479,7 +479,7 @@ class PathFinding {
       }
     }
 
-    const squareCenter = PathFinding.ExitSquareCenter(
+    const squareCenter = PathFinding.exitSquareCenter(
       roomKey,
       origin,
       dir,
@@ -487,7 +487,7 @@ class PathFinding {
     )
     if (squareCenter) return squareCenter
 
-    const exit = PathFinding.FindExitData(roomKey, dir, idx)
+    const exit = PathFinding.findExitData(roomKey, dir, idx)
 
     if (dir === "west" || dir === "east") {
       const top = exit ? exit.top : 0
@@ -515,8 +515,8 @@ class PathFinding {
    * @param {any} roomKey
    * @param {{ x: number; y: number; }} point
    */
-  static WorldPointToRoomFraction(roomKey, point) {
-    const origin = PathFinding.TileOrigin(roomKey)
+  static worldPointToRoomFraction(roomKey, point) {
+    const origin = PathFinding.tileOrigin(roomKey)
     if (!origin) return null
     return {
       fx: (point.x - origin.x) / PathFinding.TILE_WIDTH,
@@ -526,8 +526,8 @@ class PathFinding {
   /**
    * @param {string} roomKey
    */
-  static RoomCenter(roomKey) {
-    const origin = PathFinding.TileOrigin(roomKey)
+  static roomCenter(roomKey) {
+    const origin = PathFinding.tileOrigin(roomKey)
     if (!origin) return null
     return {
       x: origin.x + PathFinding.TILE_WIDTH / 2,
@@ -543,9 +543,9 @@ class PathFinding {
    * @param {string} fromKey
    * @param {any} toKey
    */
-  static AltStartRoute(fromKey, toKey) {
-    const a = PathFinding.RoomCenter(fromKey)
-    const b = PathFinding.RoomCenter(toKey)
+  static altStartRoute(fromKey, toKey) {
+    const a = PathFinding.roomCenter(fromKey)
+    const b = PathFinding.roomCenter(toKey)
     if (!a || !b) return null
     const midX = (a.x + b.x) / 2
     const midY = (a.y + b.y) / 2
@@ -562,7 +562,7 @@ class PathFinding {
     }
   }
 
-  static GetProgData() {
+  static getProgData() {
     if (typeof PROG_DATA !== "undefined" && PROG_DATA)
       return PROG_DATA
     if (window.PROG_DATA) return window.PROG_DATA
@@ -572,8 +572,8 @@ class PathFinding {
   /**
    * @param {string} tok
    */
-  static TokenHave(tok) {
-    tok = PathFinding.BaseTok(tok)
+  static tokenHave(tok) {
+    tok = PathFinding.baseTok(tok)
     if (tok.startsWith("quest:")) return QuestState.satisfied(tok)
     return Logic.haveReal.has(tok)
   }
@@ -589,8 +589,8 @@ class PathFinding {
    * @param {any} room
    * @param {string} token
    */
-  static LocationChecked(room, token) {
-    token = PathFinding.BaseTok(token)
+  static locationChecked(room, token) {
+    token = PathFinding.baseTok(token)
     if (token.startsWith("quest:")) return QuestState.satisfied(token)
     const key = `${room} - ${token}`
     const els = document.querySelectorAll(
@@ -605,10 +605,10 @@ class PathFinding {
   /**
    * @param {{ requires: any; }} entry
    */
-  static EntryAreaToken(entry) {
+  static entryAreaToken(entry) {
     for (const group of entry.requires || []) {
       for (const rawTok of group) {
-        const tok = PathFinding.BaseTok(rawTok)
+        const tok = PathFinding.baseTok(rawTok)
         if (tok.startsWith("area:")) return tok
       }
     }
@@ -618,17 +618,17 @@ class PathFinding {
   /**
    * @param {{ room: string; }} entry
    */
-  static ResolveAreaRedirect(entry) {
+  static resolveAreaRedirect(entry) {
     if (!entry || entry.room !== "20_20") return entry
-    const areaTok = PathFinding.EntryAreaToken(entry)
+    const areaTok = PathFinding.entryAreaToken(entry)
     if (!areaTok) return entry
 
-    const candidates = PathFinding.GetProgData().filter(
+    const candidates = PathFinding.getProgData().filter(
       (/** @type {{ room: string; receive: any; }} */ e) =>
         e.room !== "20_20" &&
         (e.receive || []).some(
           (/** @type {any} */ rawTok) =>
-            PathFinding.BaseTok(rawTok) === areaTok,
+            PathFinding.baseTok(rawTok) === areaTok,
         ),
     )
     if (!candidates.length) return entry
@@ -638,7 +638,7 @@ class PathFinding {
     if (slotData && startKey) {
       const { graph, roomsByKey } = buildPathGraph(slotData)
       if (roomsByKey[startKey]) {
-        const { dist } = PathFinding.Bfs(graph, roomsByKey, startKey)
+        const { dist } = PathFinding.bfs(graph, roomsByKey, startKey)
         let best = null
         let bestDist = Infinity
         candidates.forEach((/** @type {{ room: any; }} */ c) => {
@@ -666,7 +666,7 @@ class PathFinding {
   /**
    * @param {string} tok
    */
-  static ParseLootToken(tok) {
+  static parseLootToken(tok) {
     const m = tok.match(/^loot:([^#]+)#?(\d*)$/)
     if (!m) return null
     return { name: m[1], count: m[2] ? Number(m[2]) : 1 }
@@ -675,11 +675,11 @@ class PathFinding {
   /**
    * @param {{ requires: any; }} entry
    */
-  static EntryLootTokens(entry) {
+  static entryLootTokens(entry) {
     const seen = new Map()
     ;(entry?.requires || []).forEach((/** @type {any[]} */ group) =>
       group.forEach((/** @type {any} */ rawTok) => {
-        const parsed = PathFinding.ParseLootToken(rawTok)
+        const parsed = PathFinding.parseLootToken(rawTok)
         if (!parsed) return
         if (
           !seen.has(parsed.name) ||
@@ -701,7 +701,7 @@ class PathFinding {
    * @param {{ areas: any[]; }} room
    * @param {Set<string>} have
    */
-  static RoomConnectivity(room, have) {
+  static roomConnectivity(room, have) {
     const parent = {}
     /**
      * @param {string} x
@@ -721,9 +721,9 @@ class PathFinding {
       if (ra !== rb) parent[ra] = rb
     }
 
-    const exits = PathFinding.RoomExitList(room)
+    const exits = PathFinding.roomExitList(room)
     exits.forEach(({ side, idx }) =>
-      find(PathFinding.ExitKey(side, idx)),
+      find(PathFinding.exitKey(side, idx)),
     )
 
     if (
@@ -732,12 +732,12 @@ class PathFinding {
       room.areas.length === 0
     ) {
       if (exits.length > 0) {
-        const anchor = PathFinding.ExitKey(
+        const anchor = PathFinding.exitKey(
           exits[0].side,
           exits[0].idx,
         )
         exits.forEach(({ side, idx }) =>
-          union(PathFinding.ExitKey(side, idx), anchor),
+          union(PathFinding.exitKey(side, idx), anchor),
         )
       }
       return { find }
@@ -745,13 +745,13 @@ class PathFinding {
 
     room.areas.forEach(
       (/** @type {{ reqs: any; areas: any; }} */ layer) => {
-        if (!PathFinding.ReqsSatisfied(layer.reqs, have)) return
+        if (!PathFinding.reqsSatisfied(layer.reqs, have)) return
         ;(layer.areas || []).forEach(
           (/** @type {string | any[]} */ group) => {
             for (let i = 1; i < group.length; i++) {
               union(
-                PathFinding.ExitKey(group[0].side, group[0].idx),
-                PathFinding.ExitKey(group[i].side, group[i].idx),
+                PathFinding.exitKey(group[0].side, group[0].idx),
+                PathFinding.exitKey(group[i].side, group[i].idx),
               )
             }
           },
@@ -772,7 +772,7 @@ class PathFinding {
       clearPathRoute()
       return
     }
-    const target = PathFinding.ResolveAreaRedirect(rawEntry)
+    const target = PathFinding.resolveAreaRedirect(rawEntry)
     showPathTo(target.room)
   }
 
@@ -782,7 +782,7 @@ class PathFinding {
    * @param {{ room: string; requires: never[][] | string[][]; receive: never[] | never[]; }} entry
    */
   static applyLootTrackingFor(entry) {
-    const outstanding = PathFinding.EntryLootTokens(entry).filter(
+    const outstanding = PathFinding.entryLootTokens(entry).filter(
       ([name, count]) => {
         const have =
           window.manager?.loot?.[window.Enum?.Loot?.[name]] ?? 0
@@ -817,7 +817,7 @@ let selectedPathId = null // identifies whatever room/entrance is currently clic
  */
 function selectPathTarget(roomKey, entrance) {
   trackedQuestName = null
-  const id = PathFinding.SelectionId(roomKey, entrance)
+  const id = PathFinding.selectionId(roomKey, entrance)
   if (selectedPathId === id) {
     selectedPathId = null
     clearPathRoute()
@@ -839,7 +839,7 @@ function selectPathTarget(roomKey, entrance) {
  */
 function buildPathGraph(slotData) {
   const graph = {}
-  const roomsByKey = PathFinding.RoomsByKey(slotData)
+  const roomsByKey = PathFinding.roomsByKey(slotData)
   // Prefer the fully-derived set (real items + virtual/free tokens like
   // flags and quests unlocked purely by logic) so a warp/area gated behind
   // a logical flag -- never a real item -- can actually resolve to a
@@ -851,11 +851,11 @@ function buildPathGraph(slotData) {
         /** @type {[any, any, any, any, any, any, any, any]} */ row,
       ) => {
         const [n1, e1, dir1, idx1, n2, e2, dir2, idx2] = row
-        const k1 = PathFinding.RoomKey(n1, e1)
-        const k2 = PathFinding.RoomKey(n2, e2)
-        const node1 = PathFinding.ExitNodeKey(k1, dir1, idx1)
-        const node2 = PathFinding.ExitNodeKey(k2, dir2, idx2)
-        PathFinding.AddEdge(
+        const k1 = PathFinding.roomKey(n1, e1)
+        const k2 = PathFinding.roomKey(n2, e2)
+        const node1 = PathFinding.exitNodeKey(k1, dir1, idx1)
+        const node2 = PathFinding.exitNodeKey(k2, dir2, idx2)
+        PathFinding.addEdge(
           graph,
           node1,
           node2,
@@ -866,7 +866,7 @@ function buildPathGraph(slotData) {
           dir2,
           idx2,
         )
-        PathFinding.AddEdge(
+        PathFinding.addEdge(
           graph,
           node2,
           node1,
@@ -889,16 +889,16 @@ function buildPathGraph(slotData) {
         const list = room.exits[dir]
         if (!Array.isArray(list)) return
         const [dn, de] = PathFinding.DIR_OFFSET[dir] || [0, 0]
-        const toKey = PathFinding.RoomKey(
+        const toKey = PathFinding.roomKey(
           room.north + dn,
           room.east + de,
         )
         if (!roomsByKey[toKey]) return
         list.forEach((_, idx) => {
           const oppDir = PathFinding.OPPOSITE[dir]
-          const node1 = PathFinding.ExitNodeKey(fromKey, dir, idx)
-          const node2 = PathFinding.ExitNodeKey(toKey, oppDir, idx)
-          PathFinding.AddEdge(
+          const node1 = PathFinding.exitNodeKey(fromKey, dir, idx)
+          const node2 = PathFinding.exitNodeKey(toKey, oppDir, idx)
+          PathFinding.addEdge(
             graph,
             node1,
             node2,
@@ -909,7 +909,7 @@ function buildPathGraph(slotData) {
             oppDir,
             idx,
           )
-          PathFinding.AddEdge(
+          PathFinding.addEdge(
             graph,
             node2,
             node1,
@@ -929,20 +929,20 @@ function buildPathGraph(slotData) {
   //     gated by that room's areas/reqs ---
   Object.keys(roomsByKey).forEach((roomKey) => {
     const room = roomsByKey[roomKey]
-    const exits = PathFinding.RoomExitList(room)
-    const conn = PathFinding.RoomConnectivity(room, Logic.haveReal)
+    const exits = PathFinding.roomExitList(room)
+    const conn = PathFinding.roomConnectivity(room, Logic.haveReal)
     for (let i = 0; i < exits.length; i++) {
       for (let j = i + 1; j < exits.length; j++) {
         const a = exits[i]
         const b = exits[j]
         if (
-          conn.find(PathFinding.ExitKey(a.side, a.idx)) !==
-          conn.find(PathFinding.ExitKey(b.side, b.idx))
+          conn.find(PathFinding.exitKey(a.side, a.idx)) !==
+          conn.find(PathFinding.exitKey(b.side, b.idx))
         )
           continue
-        const nodeA = PathFinding.ExitNodeKey(roomKey, a.side, a.idx)
-        const nodeB = PathFinding.ExitNodeKey(roomKey, b.side, b.idx)
-        PathFinding.AddEdge(
+        const nodeA = PathFinding.exitNodeKey(roomKey, a.side, a.idx)
+        const nodeB = PathFinding.exitNodeKey(roomKey, b.side, b.idx)
+        PathFinding.addEdge(
           graph,
           nodeA,
           nodeB,
@@ -953,7 +953,7 @@ function buildPathGraph(slotData) {
           b.side,
           b.idx,
         )
-        PathFinding.AddEdge(
+        PathFinding.addEdge(
           graph,
           nodeB,
           nodeA,
@@ -976,10 +976,10 @@ function buildPathGraph(slotData) {
   //     warp anchored there), so it's added once per room, not paired. ---
   Object.keys(roomsByKey).forEach((roomKey) => {
     const room = roomsByKey[roomKey]
-    const rootNode = PathFinding.ExitNodeKey(roomKey, "root", 0)
-    PathFinding.RoomExitList(room).forEach(({ side, idx }) => {
-      const exitNode = PathFinding.ExitNodeKey(roomKey, side, idx)
-      PathFinding.AddEdge(
+    const rootNode = PathFinding.exitNodeKey(roomKey, "root", 0)
+    PathFinding.roomExitList(room).forEach(({ side, idx }) => {
+      const exitNode = PathFinding.exitNodeKey(roomKey, side, idx)
+      PathFinding.addEdge(
         graph,
         exitNode,
         rootNode,
@@ -995,14 +995,14 @@ function buildPathGraph(slotData) {
 
   // --- Warp edges: teleport-style connections from _room_geometry.WARPS,
   //     gated by their own reqs (same OR-of-AND shape as everything else) ---
-  PathFinding.AddWarpEdges(graph, roomsByKey, Logic.haveReal)
+  PathFinding.addWarpEdges(graph, roomsByKey, Logic.haveReal)
 
   return { graph, roomsByKey }
 }
 
 // Adjust here if the game exposes the player's current room differently.
 function getCurrentRoomKey() {
-  return PathFinding.RoomKey(
+  return PathFinding.roomKey(
     window.player.realnorth,
     window.player.realeast,
   )
@@ -1037,7 +1037,7 @@ function findPathTo(targetKey, targetEntrance) {
 
   const { graph, roomsByKey } = buildPathGraph(slotData)
 
-  const candidates = PathFinding.CandidateStartKeys().filter(
+  const candidates = PathFinding.candidateStartKeys().filter(
     (k) => roomsByKey[k],
   )
   if (!candidates.length) return null
@@ -1048,7 +1048,7 @@ function findPathTo(targetKey, targetEntrance) {
     if (startKey === targetKey && !targetEntrance)
       return { path: [], startKey } // already there
 
-    const { dist, bestEdge } = PathFinding.Bfs(
+    const { dist, bestEdge } = PathFinding.bfs(
       graph,
       roomsByKey,
       startKey,
@@ -1058,13 +1058,13 @@ function findPathTo(targetKey, targetEntrance) {
     let pathDist = Infinity
 
     if (targetEntrance) {
-      const targetNode = PathFinding.ExitNodeKey(
+      const targetNode = PathFinding.exitNodeKey(
         targetKey,
         targetEntrance.dir,
         targetEntrance.idx,
       )
       if (dist[targetNode] !== undefined) {
-        path = PathFinding.ReconstructPath(bestEdge, targetNode)
+        path = PathFinding.reconstructPath(bestEdge, targetNode)
         pathDist = dist[targetNode]
       }
     } else {
@@ -1080,7 +1080,7 @@ function findPathTo(targetKey, targetEntrance) {
         }
       }
       if (bestNode) {
-        path = PathFinding.ReconstructPath(bestEdge, bestNode)
+        path = PathFinding.reconstructPath(bestEdge, bestNode)
         pathDist = bestNodeDist
       }
     }
@@ -1100,12 +1100,12 @@ function buildPathRoutes(path) {
   if (!path || !path.length) return []
   const routes = []
   for (const edge of path) {
-    const a = PathFinding.ExitPoint(
+    const a = PathFinding.exitPoint(
       edge.fromRoom,
       edge.fromDir,
       edge.fromIdx,
     )
-    const b = PathFinding.ExitPoint(
+    const b = PathFinding.exitPoint(
       edge.toRoom,
       edge.toDir,
       edge.toIdx,
@@ -1141,8 +1141,8 @@ const DIRECT_ARROW_COLOR = "#ff5533"
  */
 function showDirectArrowTo(targetKey) {
   const fromKey = getCurrentRoomKey()
-  const a = fromKey && PathFinding.RoomCenter(fromKey)
-  const b = PathFinding.RoomCenter(targetKey)
+  const a = fromKey && PathFinding.roomCenter(fromKey)
+  const b = PathFinding.roomCenter(targetKey)
   if (!a || !b) {
     window.PATH_ROUTES = []
     WorldMap.requestUpdate()
@@ -1180,7 +1180,7 @@ function showPathTo(targetKey, targetEntrance) {
   const routes = buildPathRoutes(result.path)
   const realKey = getCurrentRoomKey()
   if (realKey && result.startKey && result.startKey !== realKey) {
-    const jump = PathFinding.AltStartRoute(realKey, result.startKey)
+    const jump = PathFinding.altStartRoute(realKey, result.startKey)
     if (jump) routes.unshift(jump)
   }
   window.PATH_ROUTES = routes
@@ -1220,10 +1220,10 @@ function findNextQuestPoint(questName) {
    */
   let best = null
 
-  PathFinding.GetProgData().forEach(
+  PathFinding.getProgData().forEach(
     (/** @type {{ receive: any; room: any; }} */ entry) => {
       ;(entry.receive || []).forEach((/** @type {any} */ rawTok) => {
-        const tok = PathFinding.BaseTok(rawTok)
+        const tok = PathFinding.baseTok(rawTok)
         if (!tok.startsWith(prefix)) return
         const n = Number(tok.slice(prefix.length))
         if (Number.isNaN(n)) return
@@ -1253,24 +1253,24 @@ function findTokenEntry(token) {
     const next = findNextQuestPoint(token.slice("quest:".length))
     if (!next) return null
     return (
-      PathFinding.GetProgData().find(
+      PathFinding.getProgData().find(
         (/** @type {{ room: any; receive: any; }} */ e) =>
           e.room === next.room &&
           (e.receive || []).some(
             (/** @type {any} */ t) =>
-              PathFinding.BaseTok(t) === next.tok,
+              PathFinding.baseTok(t) === next.tok,
           ),
       ) || { room: next.room, requires: [], receive: [next.tok] }
     )
   }
-  for (const entry of PathFinding.GetProgData()) {
+  for (const entry of PathFinding.getProgData()) {
     if (
       !(entry.receive || []).some(
-        (/** @type {any} */ t) => PathFinding.BaseTok(t) === token,
+        (/** @type {any} */ t) => PathFinding.baseTok(t) === token,
       )
     )
       continue
-    if (PathFinding.LocationChecked(entry.room, token)) continue
+    if (PathFinding.locationChecked(entry.room, token)) continue
     return entry
   }
   return null
@@ -1447,7 +1447,9 @@ class WorldMap {
     )
   }
   static init() {
-    HookEvent("onQuestChanged", () => setTimeout(PathFinding.updateTrackedPath))
+    HookEvent("onQuestChanged", () =>
+      setTimeout(PathFinding.updateTrackedPath),
+    )
     HookEvent("onQuestChanged", () => Logic.recompute())
     HookEvent("onNewScreen", () => {
       if (
