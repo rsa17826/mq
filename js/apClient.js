@@ -395,6 +395,7 @@ class ArchipelagoClient {
     // (via the world's fill_slot_data), e.g. { difficulty: "hard", ... }.
     this.slotData = packet.slot_data ?? {}
     window.onRoomDataLoaded()
+    window.onApConnect.forEach((e) => e())
   }
 
   /**

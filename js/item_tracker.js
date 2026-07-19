@@ -12,195 +12,185 @@
 // Requires PROG_DATA (prog.js), ap.slotData.AP_ITEM_IDS, and map.js's
 // trackToken/applyLootTrackingFor to already be present on the page.
 
-;(function () {
-  function init() {
-    if (
-      !window.ap?.slotData?.AP_LOCATION_IDS ||
-      typeof PROG_DATA === "undefined" ||
-      !window.trackToken
-    ) {
-      setTimeout(init, 250)
-      return
-    }
+class ItemTracker {
+  static groupCollapsed = new Map()
+  static inLogicOnly = true
+  static trackedLootEntries = new Map()
+  /** @type {Set<string>} */
+  static REAL_ITEM_NAMES = new Set()
+  /**
+   * @param {string} tok
+   * @returns {string}
+   */
+  static baseTok(tok) {
+    return String(tok).split("#")[0]
+  }
 
-    const REAL_ITEM_NAMES = new Set(
-      Object.values(ap.slotData.AP_ITEM_IDS),
+  /**
+   * @param {string} tok
+   * @returns {boolean}
+   */
+  static isLootToken(tok) {
+    return this.baseTok(tok).startsWith("loot:")
+  }
+
+  /**
+   * @param {string[][]} requires
+   * @returns {string}
+   */
+  static fmtRequires(requires) {
+    if (!requires || !requires.length) return "(none)"
+    return requires
+      .map((group) =>
+        group.length ? group.map(String).join(" & ") : "(free)",
+      )
+      .join("  OR  ")
+  }
+
+  /**
+   * @param {string[]|undefined} receive
+   * @returns {string}
+   */
+  static fmtReceive(receive) {
+    return (receive || []).map(String).join(", ") || "(nothing)"
+  }
+
+  // Token to hand to trackToken() for a given entry: quest receive
+  // tokens ("quest:name.N") track by quest name so tracking auto-advances
+  // through later points of the same quest; everything else tracks the
+  // exact token.
+  /**
+   * @param {Entry} entry
+   * @returns {string}
+   */
+  static primaryTrackToken(entry) {
+    const questTok = (entry.receive || [])
+      .map((t) => this.baseTok(t))
+      .find((t) => t.startsWith("quest:"))
+    if (questTok) {
+      const m = questTok.match(/^quest:(.+)\.\d+$/)
+      return m ? `quest:${m[1]}` : questTok
+    }
+    const realTok = (entry.receive || [])
+      .map((t) => this.baseTok(t))
+      .find((t) => this.REAL_ITEM_NAMES.has(t))
+    if (realTok) return realTok
+    return this.baseTok((entry.receive || [])[0] || "")
+  }
+
+  static entryLootTokens(entry) {
+    const seen = new Map()
+    ;(entry.requires || []).forEach((group) =>
+      group.forEach((rawTok) => {
+        if (!this.isLootToken(rawTok)) return
+        const m = this.baseTok(rawTok).match(/^loot:([^#]+)#?(\d*)$/)
+        if (!m) return
+        const name = m[1]
+        const count = m[2] ? Number(m[2]) : 1
+        if (!seen.has(name) || seen.get(name) < count)
+          seen.set(name, count)
+      }),
     )
+    return [...seen.entries()]
+  }
 
-    function baseTok(tok) {
-      return String(tok).split("#")[0]
-    }
+  static entryKey(entry) {
+    return `${entry.room}||${(entry.receive || []).join(",")}`
+  }
 
-    function isLootToken(tok) {
-      return baseTok(tok).startsWith("loot:")
-    }
-
-    function fmtRequires(requires) {
-      if (!requires || !requires.length) return "(none)"
-      return requires
-        .map((group) =>
-          group.length ? group.map(String).join(" & ") : "(free)",
-        )
-        .join("  OR  ")
-    }
-
-    function fmtReceive(receive) {
-      return (receive || []).map(String).join(", ") || "(nothing)"
-    }
-
-    // Token to hand to trackToken() for a given entry: quest receive
-    // tokens ("quest:name.N") track by quest name so tracking auto-advances
-    // through later points of the same quest; everything else tracks the
-    // exact token.
-    function primaryTrackToken(entry) {
-      const questTok = (entry.receive || [])
-        .map(baseTok)
-        .find((t) => t.startsWith("quest:"))
-      if (questTok) {
-        const m = questTok.match(/^quest:(.+)\.\d+$/)
-        return m ? `quest:${m[1]}` : questTok
-      }
-      const realTok = (entry.receive || [])
-        .map(baseTok)
-        .find((t) => REAL_ITEM_NAMES.has(t))
-      if (realTok) return realTok
-      return baseTok((entry.receive || [])[0] || "")
-    }
-
-    function entryLootTokens(entry) {
-      const seen = new Map()
-      ;(entry.requires || []).forEach((group) =>
-        group.forEach((rawTok) => {
-          if (!isLootToken(rawTok)) return
-          const m = baseTok(rawTok).match(/^loot:([^#]+)#?(\d*)$/)
-          if (!m) return
-          const name = m[1]
-          const count = m[2] ? Number(m[2]) : 1
-          if (!seen.has(name) || seen.get(name) < count)
-            seen.set(name, count)
-        }),
-      )
-      return [...seen.entries()]
-    }
-
-    // --- Loot tracking accumulation ---
-    // Clicking "Track Loot" on an entry no longer replaces whatever was
-    // being shown on the HUD; instead we remember every entry that's been
-    // loot-tracked and re-merge all of their loot requirements (summing
-    // counts per loot name) every time a new one is added, so e.g.
-    // loot:oArm#1 + loot:oArm#3 shows up as a single oArm 0/4 line instead
-    // of two separate oArm 0/1 / oArm 0/3 lines.
-    const trackedLootEntries = new Map()
-
-    function entryKey(entry) {
-      return `${entry.room}||${(entry.receive || []).join(",")}`
-    }
-
-    function computeMergedLootTotals() {
-      const totals = new Map()
-      trackedLootEntries.forEach((entry) => {
-        entryLootTokens(entry).forEach(([name, count]) => {
-          totals.set(name, (totals.get(name) || 0) + count)
-        })
+  static computeMergedLootTotals() {
+    const totals = new Map()
+    this.trackedLootEntries.forEach((entry) => {
+      this.entryLootTokens(entry).forEach(([name, count]) => {
+        totals.set(name, (totals.get(name) || 0) + count)
       })
-      return totals
+    })
+    return totals
+  }
+
+  static applyMergedLootTracking(entry) {
+    this.trackedLootEntries.set(this.entryKey(entry), entry)
+    const totals = this.computeMergedLootTotals()
+    const mergedEntry = {
+      room: "Tracked Loot",
+      requires: [
+        [...totals.entries()].map(
+          ([name, count]) => `loot:${name}#${count}`,
+        ),
+      ],
+      receive: [],
+    }
+    window.applyLootTrackingFor(mergedEntry)
+  }
+
+  static clearLootTracking() {
+    this.trackedLootEntries.clear()
+    window.applyLootTrackingFor({
+      room: "Tracked Loot",
+      requires: [[]],
+      receive: [],
+    })
+  }
+
+  // --- Subgroup classification ---
+  // Every entry falls into exactly one subgroup: "Flags" for anything
+  // gated behind a flag: requirement, "Quest: <name>" for entries that
+  // receive a quest:<name>.N token (grouping all points of the same
+  // questline together), or "Other" for everything else.
+  static groupKeyFor(entry) {
+    const hasFlag = (entry.requires || []).some((group) =>
+      group.some((tok) => this.baseTok(tok).startsWith("flag:")),
+    )
+    if (hasFlag) return { key: "flags", label: "Flags" }
+
+    const questTok = (entry.receive || [])
+      .map((t) => this.baseTok(t))
+      .find((t) => t.startsWith("quest:"))
+    if (questTok) {
+      const m = questTok.match(/^quest:([^.]+)/)
+      const name = m ? m[1] : questTok
+      return { key: `quest:${name}`, label: `Quest: ${name}` }
     }
 
-    function applyMergedLootTracking(entry) {
-      trackedLootEntries.set(entryKey(entry), entry)
-      const totals = computeMergedLootTotals()
-      const mergedEntry = {
-        room: "Tracked Loot",
-        requires: [
-          [...totals.entries()].map(
-            ([name, count]) => `loot:${name}#${count}`,
-          ),
-        ],
-        receive: [],
-      }
-      window.applyLootTrackingFor(mergedEntry)
-    }
+    return { key: "other", label: "Other" }
+  }
 
-    function clearLootTracking() {
-      trackedLootEntries.clear()
-      window.applyLootTrackingFor({
-        room: "Tracked Loot",
-        requires: [[]],
-        receive: [],
-      })
-    }
+  static isChecked(entry) {
+    const tok = this.baseTok((entry.receive || [])[0] || "")
+    if (!tok) return false
+    const key = `${entry.room} - ${tok}`
+    const els = document.querySelectorAll(
+      `.progression-icon[data-location="${CSS.escape(key)}"]`,
+    )
+    return (
+      [...els].some((el) => el.classList.contains("checked")) ||
+      (tok.startsWith("quest:") &&
+        typeof QuestState !== "undefined" &&
+        QuestState.satisfied(tok))
+    )
+  }
 
-    // --- Subgroup classification ---
-    // Every entry falls into exactly one subgroup: "Flags" for anything
-    // gated behind a flag: requirement, "Quest: <name>" for entries that
-    // receive a quest:<name>.N token (grouping all points of the same
-    // questline together), or "Other" for everything else.
-    function groupKeyFor(entry) {
-      const hasFlag = (entry.requires || []).some((group) =>
-        group.some((tok) => baseTok(tok).startsWith("flag:")),
-      )
-      if (hasFlag) return { key: "flags", label: "Flags" }
+  // "In logic" per logic.js's classification: the entry's first receive
+  // token's icon(s) carry the "in-logic" class it applies each recompute.
+  // If no matching icon exists at all (e.g. the token isn't rendered as
+  // an icon), treat it as in-logic so the filter doesn't silently hide it.
+  static isInLogic(entry) {
+    const tok = this.baseTok((entry.receive || [])[0] || "")
+    if (!tok) return true
+    const key = `${entry.room} - ${tok}`
+    const els = document.querySelectorAll(
+      `.progression-icon[data-location="${CSS.escape(key)}"]`,
+    )
+    if (!els.length) return true
+    return [...els].some((el) => el.classList.contains("in-logic"))
+  }
 
-      const questTok = (entry.receive || [])
-        .map(baseTok)
-        .find((t) => t.startsWith("quest:"))
-      if (questTok) {
-        const m = questTok.match(/^quest:([^.]+)/)
-        const name = m ? m[1] : questTok
-        return { key: `quest:${name}`, label: `Quest: ${name}` }
-      }
+  // ---- UI construction ----
 
-      return { key: "other", label: "Other" }
-    }
-
-    // Persisted across re-renders so toggling a subgroup open/closed
-    // survives the periodic refresh and filter typing. Undefined/absent
-    // means "collapsed" (matches the main panel's default state).
-    const groupCollapsed = new Map()
-
-    // In-logic-only filter state, enabled by default.
-    let inLogicOnly = true
-
-    function isChecked(entry) {
-      const tok = baseTok((entry.receive || [])[0] || "")
-      if (!tok) return false
-      const key = `${entry.room} - ${tok}`
-      const els = document.querySelectorAll(
-        `.progression-icon[data-location="${CSS.escape(key)}"]`,
-      )
-      return (
-        [...els].some((el) => el.classList.contains("checked")) ||
-        (tok.startsWith("quest:") &&
-          typeof QuestState !== "undefined" &&
-          QuestState.satisfied(tok))
-      )
-    }
-
-    // "In logic" per logic.js's classification: the entry's first receive
-    // token's icon(s) carry the "in-logic" class it applies each recompute.
-    // If no matching icon exists at all (e.g. the token isn't rendered as
-    // an icon), treat it as in-logic so the filter doesn't silently hide it.
-    function isInLogic(entry) {
-      const tok = baseTok((entry.receive || [])[0] || "")
-      if (!tok) return true
-      const key = `${entry.room} - ${tok}`
-      const els = document.querySelectorAll(
-        `.progression-icon[data-location="${CSS.escape(key)}"]`,
-      )
-      if (!els.length) return true
-      return [...els].some((el) => el.classList.contains("in-logic"))
-    }
-
-    let header,
-      filterInput,
-      clearLootBtn,
-      list,
-      itemTrackerToggle,
-      inLogicCheckbox,
-      inLogicLabel
+  static _buildUi() {
     document.getElementById("viewport").appendChild(
       newelem("div", { id: "item-tracker-panel" }, [
-        (header = newelem(
+        (this.header = newelem(
           "div",
           {
             position: "sticky",
@@ -210,226 +200,212 @@
             paddingBottom: "4px",
           },
           [
-            (header = newelem(
-              "div",
-              {
-                id: "header",
-              },
-              [
-                newelem("div", {}, [
-                  newelem("b", {}, ["Items & Quests"]),
-                  (itemTrackerToggle = newelem(
-                    "span",
-                    { id: "item-tracker-toggle" },
-                    ["▾"],
-                  )),
-                ]),
-                (filterInput = newelem("input", {
-                  type: "text",
-                  placeholder:
-                    "Filter by room, requires, or receive...",
-                })),
-                (inLogicLabel = newelem(
-                  "label",
-                  {
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "4px",
-                    fontSize: "12px",
-                    color: "#ccc",
-                    cursor: "pointer",
-                    userSelect: "none",
-                    margin: "4px 0",
-                    onclick(e) {
+            newelem("div", { id: "header" }, [
+              newelem("div", {}, [
+                newelem("b", {}, ["Items & Quests"]),
+                (this.itemTrackerToggle = newelem(
+                  "span",
+                  { id: "item-tracker-toggle" },
+                  ["▾"],
+                )),
+              ]),
+              (this.filterInput = newelem("input", {
+                type: "text",
+                placeholder:
+                  "Filter by room, requires, or receive...",
+              })),
+              (this.inLogicLabel = newelem(
+                "label",
+                {
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "4px",
+                  fontSize: "12px",
+                  color: "#ccc",
+                  cursor: "pointer",
+                  userSelect: "none",
+                  margin: "4px 0",
+                  onclick: (e) => {
+                    e.stopPropagation()
+                    e.stopImmediatePropagation()
+                  },
+                },
+                [
+                  (this.inLogicCheckbox = newelem("input", {
+                    type: "checkbox",
+                    checked: true,
+                    onchange: (e) => {
                       e.stopPropagation()
                       e.stopImmediatePropagation()
+                      this.inLogicOnly = this.inLogicCheckbox.checked
+                      this.render()
                     },
-                  },
-                  [
-                    (inLogicCheckbox = newelem("input", {
-                      type: "checkbox",
-                      checked: true,
-                      onchange(e) {
-                        e.stopPropagation()
-                        e.stopImmediatePropagation()
-                        inLogicOnly = inLogicCheckbox.checked
-                        render()
-                      },
-                    })),
-                    "In logic only",
-                  ],
-                )),
-                (clearLootBtn = newelem(
-                  "button",
-                  {
-                    type: "text",
-                    placeholder:
-                      "Filter by room, requires, or receive...",
-                    marginBottom: "6px",
-                    title:
-                      "Reset the merged loot HUD (all Track Loot selections)",
-                    onclick(e) {
-                      e.stopPropagation()
-                      clearLootTracking()
-                    },
-                  },
-                  ["Clear Loot Tracking"],
-                )),
-              ],
-            )),
-          ],
-        )),
-        newelem("div", { id: "body" }, [
-          (list = newelem("div", { id: "item-tracker-list" })),
-        ]),
-      ]),
-    )
-
-    header.addEventListener("click", () => {
-      const hidden = body.style.display === "none"
-      body.style.display = hidden ? "" : "none"
-      itemTrackerToggle.textContent = hidden ? "▾" : "▸"
-    })
-    body.style.display = "none"
-    itemTrackerToggle.textContent = "▸"
-
-    filterInput.addEventListener("keyup", (e) => e.stopPropagation())
-    filterInput.addEventListener("keydown", (e) =>
-      e.stopPropagation(),
-    )
-    filterInput.addEventListener("input", (e) => e.stopPropagation())
-    filterInput.addEventListener("click", (e) => e.stopPropagation())
-    filterInput.addEventListener("input", (e) => {
-      e.stopPropagation()
-      render()
-    })
-
-    function buildEntryRow(entry) {
-      const reqStr = fmtRequires(entry.requires)
-      const recStr = fmtReceive(entry.receive)
-
-      let btnRow
-      const row = newelem(
-        "div",
-        {
-          id: "item-tracker-row",
-        },
-        [
-          newelem("b", {}, [entry.room]),
-          newelem("div", { color: "#aaa" }, [`Requires: ${reqStr}`]),
-          newelem("div", { color: "#8f8" }, [`Receive: ${recStr}`]),
-          (btnRow = newelem("div", { id: "btn-row" }, [
-            newelem(
-              "button",
-              {
-                title:
-                  "Point the map arrow here (and auto-surface any outstanding loot requirement)",
-                onclick(e) {
-                  e.stopPropagation()
-                  window.trackToken(primaryTrackToken(entry))
-                },
-              },
-              ["Track"],
-            ),
-            entryLootTokens(entry).length ?
-              newelem(
+                  })),
+                  "In logic only",
+                ],
+              )),
+              (this.clearLootBtn = newelem(
                 "button",
                 {
                   title:
-                    "Merge this entry's outstanding loot counts into the HUD (adds to, rather than replaces, any loot already being tracked)",
-                  onclick(e) {
+                    "Reset the merged loot HUD (all Track Loot selections)",
+                  onclick: (e) => {
                     e.stopPropagation()
-                    applyMergedLootTracking(entry)
+                    this.clearLootTracking()
                   },
                 },
-                ["Track Loot"],
-              )
-            : null,
-          ])),
-        ],
-      )
-
-      if (isChecked(entry)) row.style.opacity = "0.4"
-      return row
-    }
-
-    function render() {
-      const q = filterInput.value.trim().toLowerCase()
-      list.innerHTML = ""
-
-      const groups = new Map() // key -> { label, entries: [] }
-
-      PROG_DATA.forEach((entry) => {
-        const reqStr = fmtRequires(entry.requires)
-        const recStr = fmtReceive(entry.receive)
-        if (
-          q &&
-          !`${entry.room} ${reqStr} ${recStr}`
-            .toLowerCase()
-            .includes(q)
-        )
-          return
-
-        if (isChecked(entry) || /^(?:area|loot):/.test(recStr)) return
-
-        if (inLogicOnly && !isInLogic(entry)) return
-
-        const { key, label } = groupKeyFor(entry)
-        if (!groups.has(key)) groups.set(key, { label, entries: [] })
-        groups.get(key).entries.push(entry)
-      })
-
-      // Flags first, then questlines alphabetically, then Other last.
-      const sortedKeys = [...groups.keys()].sort((a, b) => {
-        if (a === "flags") return -1
-        if (b === "flags") return 1
-        if (a === "other") return 1
-        if (b === "other") return -1
-        return a.localeCompare(b)
-      })
-
-      sortedKeys.forEach((key) => {
-        const group = groups.get(key)
-        if (!group.entries.length) return
-
-        const collapsed =
-          groupCollapsed.has(key) ? groupCollapsed.get(key) : true
-
-        const groupHeader = document.createElement("div")
-        groupHeader.style.cssText =
-          "display:flex; justify-content:space-between; align-items:center; cursor:pointer; background:#2a2a2a; padding:4px 6px; margin-top:6px; border-radius:4px; font-weight:bold;"
-        groupHeader.innerHTML = `<span>${group.label} (${group.entries.length})</span><span>${
-          collapsed ? "▸" : "▾"
-        }</span>`
-        groupHeader.addEventListener("click", (e) => {
-          e.stopPropagation()
-          groupCollapsed.set(key, !collapsed)
-          render()
-        })
-        list.appendChild(groupHeader)
-
-        if (collapsed) return
-
-        const groupBody = document.createElement("div")
-        groupBody.style.cssText = "padding-left:4px;"
-        group.entries.forEach((entry) => {
-          groupBody.appendChild(buildEntryRow(entry))
-        })
-        list.appendChild(groupBody)
-      })
-    }
-
-    render()
-    window.__itemTrackerRefresh = render
-
-    // Cheap periodic refresh so "checked" dimming stays roughly current
-    // without deep-observing the whole map DOM.
-    setInterval(render, 3000)
-
-    console.log(
-      `[item-tracker] panel ready: ${PROG_DATA.length} entries`,
+                ["Clear Loot Tracking"],
+              )),
+            ]),
+          ],
+        )),
+        (this.body = newelem("div", { id: "body" }, [
+          (this.list = newelem("div", { id: "item-tracker-list" })),
+        ])),
+      ]),
     )
+
+    this.header.addEventListener("click", () => {
+      const hidden = this.body.style.display === "none"
+      this.body.style.display = hidden ? "" : "none"
+      this.itemTrackerToggle.textContent = hidden ? "▾" : "▸"
+    })
+    this.body.style.display = "none"
+    this.itemTrackerToggle.textContent = "▸"
+
+    this.filterInput.addEventListener("keyup", (e) =>
+      e.stopPropagation(),
+    )
+    this.filterInput.addEventListener("keydown", (e) =>
+      e.stopPropagation(),
+    )
+    this.filterInput.addEventListener("click", (e) =>
+      e.stopPropagation(),
+    )
+    this.filterInput.addEventListener("input", (e) => {
+      e.stopPropagation()
+      this.render()
+    })
   }
 
-  init()
-})()
+  static buildEntryRow(entry) {
+    const reqStr = this.fmtRequires(entry.requires)
+    const recStr = this.fmtReceive(entry.receive)
+
+    const row = newelem("div", { id: "item-tracker-row" }, [
+      newelem("b", {}, [entry.room]),
+      newelem("div", { color: "#aaa" }, [`Requires: ${reqStr}`]),
+      newelem("div", { color: "#8f8" }, [`Receive: ${recStr}`]),
+      newelem("div", { id: "btn-row" }, [
+        newelem(
+          "button",
+          {
+            title:
+              "Point the map arrow here (and auto-surface any outstanding loot requirement)",
+            onclick: (e) => {
+              e.stopPropagation()
+              Map.trackToken(this.primaryTrackToken(entry))
+            },
+          },
+          ["Track"],
+        ),
+        this.entryLootTokens(entry).length ?
+          newelem(
+            "button",
+            {
+              title:
+                "Merge this entry's outstanding loot counts into the HUD (adds to, rather than replaces, any loot already being tracked)",
+              onclick: (e) => {
+                e.stopPropagation()
+                this.applyMergedLootTracking(entry)
+              },
+            },
+            ["Track Loot"],
+          )
+        : null,
+      ]),
+    ])
+
+    if (this.isChecked(entry)) row.style.opacity = "0.4"
+    return row
+  }
+
+  // ---- rendering ----
+
+  static render() {
+    const q = this.filterInput.value.trim().toLowerCase()
+    this.list.innerHTML = ""
+
+    const groups = new Map() // key -> { label, entries: [] }
+
+    PROG_DATA.forEach((entry) => {
+      const reqStr = this.fmtRequires(entry.requires)
+      const recStr = this.fmtReceive(entry.receive)
+      if (
+        q &&
+        !`${entry.room} ${reqStr} ${recStr}`.toLowerCase().includes(q)
+      )
+        return
+
+      if (this.isChecked(entry) || /^(?:area|loot):/.test(recStr))
+        return
+
+      if (this.inLogicOnly && !this.isInLogic(entry)) return
+
+      const { key, label } = this.groupKeyFor(entry)
+      if (!groups.has(key)) groups.set(key, { label, entries: [] })
+      groups.get(key).entries.push(entry)
+    })
+
+    // Flags first, then questlines alphabetically, then Other last.
+    const sortedKeys = [...groups.keys()].sort((a, b) => {
+      if (a === "flags") return -1
+      if (b === "flags") return 1
+      if (a === "other") return 1
+      if (b === "other") return -1
+      return a.localeCompare(b)
+    })
+
+    sortedKeys.forEach((key) => {
+      const group = groups.get(key)
+      if (!group.entries.length) return
+
+      const collapsed =
+        this.groupCollapsed.has(key) ?
+          this.groupCollapsed.get(key)
+        : true
+
+      const groupHeader = document.createElement("div")
+      groupHeader.style.cssText =
+        "display:flex; justify-content:space-between; align-items:center; cursor:pointer; background:#2a2a2a; padding:4px 6px; margin-top:6px; border-radius:4px; font-weight:bold;"
+      groupHeader.innerHTML = `<span>${group.label} (${group.entries.length})</span><span>${
+        collapsed ? "▸" : "▾"
+      }</span>`
+      groupHeader.addEventListener("click", (e) => {
+        e.stopPropagation()
+        this.groupCollapsed.set(key, !collapsed)
+        this.render()
+      })
+      this.list.appendChild(groupHeader)
+
+      if (collapsed) return
+
+      const groupBody = document.createElement("div")
+      groupBody.style.cssText = "padding-left:4px;"
+      group.entries.forEach((entry) => {
+        groupBody.appendChild(this.buildEntryRow(entry))
+      })
+      this.list.appendChild(groupBody)
+    })
+  }
+}
+
+window.onApConnect.push(() => {
+  ItemTracker.REAL_ITEM_NAMES = new Set(
+    Object.values(ap.slotData.AP_ITEM_IDS),
+  )
+  ItemTracker._buildUi()
+})
+window.onPlayerLoaded.push(() => {
+  ItemTracker.render()
+})
