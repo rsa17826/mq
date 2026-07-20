@@ -231,7 +231,7 @@ function customDrawLoop() {
     }
   }
 
-  // Draws the map.js path-to-target arrow (see map.js's PATH_ROUTES),
+  // Draws the map.js path-to-target arrow (see map.js's WorldMap.PATH_ROUTES),
   // but reprojected onto this room's slice of the checkerboard instead
   // of the whole overview map. The checkerboard covers the full 14x11
   // room grid (tileSize px per block) flush against the bottom of the
@@ -276,7 +276,7 @@ function customDrawLoop() {
     // map.js exposes these; if it hasn't loaded (or there's no route
     // selected on the map), there's nothing to draw.
     if (!PathFinding.worldPointToRoomFraction) return
-    var routes = window.PATH_ROUTES
+    var routes = WorldMap.PATH_ROUTES
     if (!routes || !routes.length) return
 
     var roomKey = `${window.player.north}_${window.player.east}`

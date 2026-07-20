@@ -803,7 +803,7 @@ class PathFinding {
 }
 
 const PATH_ARROW_COLOR = "#39ff14"
-window.PATH_ROUTES = []
+WorldMap.PATH_ROUTES = []
 /**
  * @type {null}
  */
@@ -1144,13 +1144,13 @@ function showDirectArrowTo(targetKey) {
   const a = fromKey && PathFinding.roomCenter(fromKey)
   const b = PathFinding.roomCenter(targetKey)
   if (!a || !b) {
-    window.PATH_ROUTES = []
+    WorldMap.PATH_ROUTES = []
     WorldMap.requestUpdate()
     return
   }
   const midX = (a.x + b.x) / 2
   const midY = (a.y + b.y) / 2
-  window.PATH_ROUTES = [
+  WorldMap.PATH_ROUTES = [
     {
       d: [a.x, a.y, midX, midY, b.x, b.y],
       color: DIRECT_ARROW_COLOR,
@@ -1183,12 +1183,12 @@ function showPathTo(targetKey, targetEntrance) {
     const jump = PathFinding.altStartRoute(realKey, result.startKey)
     if (jump) routes.unshift(jump)
   }
-  window.PATH_ROUTES = routes
+  WorldMap.PATH_ROUTES = routes
   WorldMap.requestUpdate()
 }
 
 function clearPathRoute() {
-  window.PATH_ROUTES = []
+  WorldMap.PATH_ROUTES = []
   WorldMap.requestUpdate()
 }
 
@@ -1299,6 +1299,7 @@ function buildLootExtraData(list) {
 }
 
 class WorldMap {
+  static PATH_ROUTES = []
   // Call with an exact token to track: "quest:<name>" chases that quest's
   // next not-yet-satisfied step; any other token (e.g. "item:earthAmulet")
   // chases wherever that exact token is granted. Call with no argument (or a
@@ -1394,7 +1395,7 @@ class WorldMap {
       )
     }
 
-    window.PATH_ROUTES.forEach(
+    WorldMap.PATH_ROUTES.forEach(
       (/** @type {{ isWarp: any; }} */ route) =>
         WorldMap.drawArrow(route, !route.isWarp),
     )
@@ -1453,7 +1454,7 @@ class WorldMap {
     HookEvent("onQuestChanged", () => Logic.recompute())
     HookEvent("onNewScreen", () => {
       if (
-        window.PATH_ROUTES.find(
+        WorldMap.PATH_ROUTES.find(
           (/** @type {{ toRoom: string; }} */ e) =>
             e.toRoom == `${manager.north}_${manager.east}`,
         )
