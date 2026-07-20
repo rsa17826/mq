@@ -1603,9 +1603,7 @@ class WorldMap {
       (e) => {
         if (
           !isPanning &&
-          document
-            .querySelector("#item-tracker-panel")
-            .contains(e.target)
+          ItemTracker.itemTrackerPanel?.contains?.(e.target)
         )
           return
         e.preventDefault()

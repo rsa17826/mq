@@ -324,7 +324,7 @@ window.onApCreated.push((ap) => {
       `[logic] reachability engine ready: ${PROG_DATA.length} entries`,
     )
   }
-})
-window.onPlayerLoaded.push(function () {
-  Logic.recompute()
+  window.onPlayerLoaded.push(function () {
+    Logic.recompute()
+  })
 })

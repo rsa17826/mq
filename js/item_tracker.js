@@ -189,80 +189,85 @@ class ItemTracker {
 
   static _buildUi() {
     document.getElementById("viewport").appendChild(
-      newelem("div", { id: "item-tracker-panel" }, [
-        (this.header = newelem(
-          "div",
-          {
-            position: "sticky",
-            top: "-10px",
-            zIndex: "10",
-            background: "rgba(20, 20, 20, 0.98)",
-            paddingBottom: "4px",
-          },
-          [
-            newelem("div", { id: "header" }, [
-              newelem("div", {}, [
-                newelem("b", {}, ["Items & Quests"]),
-                (this.itemTrackerToggle = newelem(
-                  "span",
-                  { id: "item-tracker-toggle" },
-                  ["▾"],
-                )),
-              ]),
-              (this.filterInput = newelem("input", {
-                type: "text",
-                placeholder:
-                  "Filter by room, requires, or receive...",
-              })),
-              (this.inLogicLabel = newelem(
-                "label",
-                {
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "4px",
-                  fontSize: "18px",
-                  color: "#ccc",
-                  cursor: "pointer",
-                  userSelect: "none",
-                  margin: "4px 0",
-                  onclick: (e) => {
-                    e.stopPropagation()
-                    e.stopImmediatePropagation()
-                  },
-                },
-                [
-                  (this.inLogicCheckbox = newelem("input", {
-                    type: "checkbox",
-                    checked: true,
-                    onchange: (e) => {
+      (this.itemTrackerPanel = newelem(
+        "div",
+        { id: "item-tracker-panel" },
+        [
+          (this.header = newelem(
+            "div",
+            {
+              position: "sticky",
+              top: "-10px",
+              zIndex: "10",
+              background: "rgba(20, 20, 20, 0.98)",
+              paddingBottom: "4px",
+            },
+            [
+              newelem("div", { id: "header" }, [
+                newelem("div", {}, [
+                  newelem("b", {}, ["Items & Quests"]),
+                  (this.itemTrackerToggle = newelem(
+                    "span",
+                    { id: "item-tracker-toggle" },
+                    ["▾"],
+                  )),
+                ]),
+                (this.filterInput = newelem("input", {
+                  type: "text",
+                  placeholder:
+                    "Filter by room, requires, or receive...",
+                })),
+                (this.inLogicLabel = newelem(
+                  "label",
+                  {
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "4px",
+                    fontSize: "18px",
+                    color: "#ccc",
+                    cursor: "pointer",
+                    userSelect: "none",
+                    margin: "4px 0",
+                    onclick: (e) => {
                       e.stopPropagation()
                       e.stopImmediatePropagation()
-                      this.inLogicOnly = this.inLogicCheckbox.checked
-                      this.render()
                     },
-                  })),
-                  "In logic only",
-                ],
-              )),
-              (this.clearLootBtn = newelem(
-                "button",
-                {
-                  title:
-                    "Reset the merged loot HUD (all Track Loot selections)",
-                  onclick: (e) => {
-                    e.stopPropagation()
-                    this.clearLootTracking()
                   },
-                },
-                ["Clear Loot Tracking"],
-              )),
-            ]),
-          ],
-        )),
-        (this.body = newelem("div", { id: "body" }, [
-          (this.list = newelem("div", { id: "item-tracker-list" })),
-        ])),
-      ]),
+                  [
+                    (this.inLogicCheckbox = newelem("input", {
+                      type: "checkbox",
+                      checked: true,
+                      onchange: (e) => {
+                        e.stopPropagation()
+                        e.stopImmediatePropagation()
+                        this.inLogicOnly =
+                          this.inLogicCheckbox.checked
+                        this.render()
+                      },
+                    })),
+                    "In logic only",
+                  ],
+                )),
+                (this.clearLootBtn = newelem(
+                  "button",
+                  {
+                    title:
+                      "Reset the merged loot HUD (all Track Loot selections)",
+                    onclick: (e) => {
+                      e.stopPropagation()
+                      this.clearLootTracking()
+                    },
+                  },
+                  ["Clear Loot Tracking"],
+                )),
+              ]),
+            ],
+          )),
+          (this.body = newelem("div", { id: "body" }, [
+            (this.list = newelem("div", { id: "item-tracker-list" })),
+          ])),
+        ],
+      )),
     )
 
     this.header.addEventListener("click", () => {
@@ -405,7 +410,7 @@ window.onApConnect.push(() => {
     Object.values(ap.slotData.AP_ITEM_IDS),
   )
   ItemTracker._buildUi()
-})
-window.onPlayerLoaded.push(() => {
-  ItemTracker.render()
+  window.onPlayerLoaded.push(() => {
+    ItemTracker.render()
+  })
 })
