@@ -337,24 +337,99 @@ PROG: list[ProgressionNode] = [
   {
     "room": {"north": -1, "east": -1},
     "requires": [
-      [],
+      [
+        "flag:new room#5",
+      ],
     ],
     "receive": [
       "skill:dig",
-      "skill:kick",
-      "skill:flee",
-      "skill:swap",
-      "skill:firewall",
-      "skill:halo",
-      "loot:key",
     ],
-    "info": """can be got anywhere
+    "info": """
 manager.correct - manager.wrong > 9 = dig
+""",
+  },
+  {
+    "room": {"north": -1, "east": -1},
+    "requires": [
+      [
+        "flag:new room#20",
+      ],
+    ],
+    "receive": [
+      "skill:kick",
+    ],
+    "info": """
 manager.correct - manager.wrong > 49 = kick
+""",
+  },
+  {
+    "room": {"north": -1, "east": -1},
+    "requires": [
+      [
+        "flag:new room#40",
+      ],
+    ],
+    "receive": [
+      "skill:flee",
+    ],
+    "info": """
 manager.correct - manager.wrong > 149 = flee
+""",
+  },
+  {
+    "room": {"north": -1, "east": -1},
+    "requires": [
+      [
+        "flag:new room#80",
+      ],
+    ],
+    "receive": [
+      "skill:swap",
+    ],
+    "info": """
 manager.correct - manager.wrong > 300 = swap
+""",
+  },
+  {
+    "room": {"north": -1, "east": -1},
+    "requires": [
+      [
+        "flag:new room#100",
+      ],
+    ],
+    "receive": [
+      "skill:firewall",
+    ],
+    "info": """
 manager.correct - manager.wrong > 500 = firewall
   can be leveled up without getting it first and doesn't give it to do so so the levels are separate
+""",
+  },
+  {
+    "room": {"north": -1, "east": -1},
+    "requires": [
+      [
+        "flag:new room#130",
+      ],
+    ],
+    "receive": [
+      "skill:halo",
+    ],
+    "info": """
+manager.correct - manager.wrong > 800 = halo
+""",
+  },
+  {
+    "room": {"north": -1, "east": -1},
+    "requires": [
+      [
+        "flag:new room#10",
+      ],
+    ],
+    "receive": [
+      "loot:key",
+    ],
+    "info": """
 manager.correct - manager.wrong > 800 = halo
 """,
   },
@@ -440,7 +515,7 @@ manager.correct - manager.wrong > 800 = halo
         "skill:craft",
       ],
     ],
-  "receive": [
+    "receive": [
       "craft:upgradeAAHP",
       "craft:upgradeAAMP",
     ],
@@ -924,10 +999,7 @@ manager.correct - manager.wrong > 800 = halo
   {
     "room": {"north": 20, "east": 22},
     "requires": [
-      [
-        "item:gold#500",
-        "entrance.north0"
-      ],
+      ["item:gold#500", "entrance.north0"],
       [
         "item:gold#500",
         "entrance.east0",

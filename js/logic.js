@@ -247,6 +247,7 @@ window.onApCreated.push((ap) => {
     origOnReceivedItems(packet)
     if (!window.playerLoaded) return
     packet.items.forEach((item) => {
+      log(item, ap.slotData.AP_ITEM_IDS[item.item])
       let name = ap.slotData.AP_ITEM_IDS[item.item]
       if (name) {
         switch (name) {
@@ -271,7 +272,7 @@ window.onApCreated.push((ap) => {
               "weapon:axe",
               "weapon:bombSword",
               "weapon:soulSword",
-            ][this.pwcount++]
+            ][Logic.pwcount++]
             break
           case "armor:progressive armor":
             name = [
@@ -290,7 +291,7 @@ window.onApCreated.push((ap) => {
               "armor:grimGear",
               "armor:nobleArmor",
               "armor:diamondArmor",
-            ][this.pacount++]
+            ][Logic.pacount++]
             break
           case "magic:progressive magic":
             name = [
@@ -308,11 +309,9 @@ window.onApCreated.push((ap) => {
               "magic:doubleDown",
               "magic:ice",
               "magic:lightning",
-            ][this.pmcount++]
+            ][Logic.pmcount++]
             break
         }
-        // TODO ???, now both equal figure ho to fix
-        if (name == "permit:bomb.2") Logic.haveReal.add("permit:bomb")
         Logic.haveReal.add(name)
       }
     })

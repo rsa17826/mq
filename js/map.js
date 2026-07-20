@@ -41,12 +41,22 @@ let lastLoadedResolution = null
 // =====================================================================
 
 class PathFinding {
+  static DIRECT_ARROW_COLOR = "#ff5533"
+
   static TILE_WIDTH = 710
   static TILE_HEIGHT = 560
   static BLOCKS_X = 14
   static BLOCKS_Y = 11
   static BLOCK_W = PathFinding.TILE_WIDTH / PathFinding.BLOCKS_X
   static BLOCK_H = PathFinding.TILE_HEIGHT / PathFinding.BLOCKS_Y
+  // manager.homePoint -> the room it actually teleports you to (kept in sync
+  // with whatever sets manager.homePoint in the first place).
+  static HOMEPOINT_ROOMS = {
+    1: "20_20",
+    2: "13_18",
+    3: "12_9",
+    4: "20_15",
+  }
 
   static OPPOSITE = {
     north: "south",
@@ -370,7 +380,7 @@ class PathFinding {
   }
   static homePointRoomKey() {
     const hp = window.manager && manager.homePoint
-    return HOMEPOINT_ROOMS[hp] || null
+    return PathFinding.HOMEPOINT_ROOMS[hp] || null
   }
 
   // Every room worth trying as a path's starting point: the player's real
@@ -380,7 +390,7 @@ class PathFinding {
   // always-available teleport home regardless of the homepoint currently set.
   static candidateStartKeys() {
     const keys = []
-    const real = getCurrentRoomKey()
+    const real = PathFinding.getCurrentRoomKey()
     if (real) keys.push(real)
     const home = PathFinding.homePointRoomKey()
     if (home && !keys.includes(home)) keys.push(home)
@@ -634,9 +644,10 @@ class PathFinding {
     if (!candidates.length) return entry
 
     const slotData = window.ap && window.ap.slotData
-    const startKey = getCurrentRoomKey()
+    const startKey = PathFinding.getCurrentRoomKey()
     if (slotData && startKey) {
-      const { graph, roomsByKey } = buildPathGraph(slotData)
+      const { graph, roomsByKey } =
+        PathFinding.buildPathGraph(slotData)
       if (roomsByKey[startKey]) {
         const { dist } = PathFinding.bfs(graph, roomsByKey, startKey)
         let best = null
@@ -765,15 +776,17 @@ class PathFinding {
   // Re-runs the search and re-points the path arrows (and loot readout).
   // Safe to call anytime; it's a no-op unless something is being tracked.
   static updateTrackedPath() {
-    if (!trackedToken) return
-    const rawEntry = findTokenEntry(trackedToken)
+    if (!PathFinding.trackedToken) return
+    const rawEntry = PathFinding.findTokenEntry(
+      PathFinding.trackedToken,
+    )
     PathFinding.applyLootTrackingFor(rawEntry)
     if (!rawEntry) {
-      clearPathRoute()
+      PathFinding.clearPathRoute()
       return
     }
     const target = PathFinding.resolveAreaRedirect(rawEntry)
-    showPathTo(target.room)
+    PathFinding.showPathTo(target.room)
   }
 
   // Sets (or clears) the HUD loot readout to whatever's still outstanding
@@ -791,22 +804,486 @@ class PathFinding {
     )
 
     if (!outstanding.length) {
-      if (lootTrackingList) {
-        lootTrackingList = null
+      if (PathFinding.lootTrackingList) {
+        PathFinding.lootTrackingList = null
         window.extraData = null
       }
       return
     }
-    lootTrackingList = outstanding
-    window.extraData = buildLootExtraData(outstanding)
+    PathFinding.lootTrackingList = outstanding
+    window.extraData = PathFinding.buildLootExtraData(outstanding)
+  }
+
+  // --- Requirement checking (permits/items gating room-internal crossings) ---
+
+  // Rebuilt on every path request: cheap (a few hundred rooms), and keeps the
+  // intra-room edges honest as the player's inventory (`have`) changes.
+  /**
+   * @param {{ roomData: any[]; }} slotData
+   */
+  static buildPathGraph(slotData) {
+    const graph = {}
+    const roomsByKey = PathFinding.roomsByKey(slotData)
+    // Prefer the fully-derived set (real items + virtual/free tokens like
+    // flags and quests unlocked purely by logic) so a warp/area gated behind
+    // a logical flag -- never a real item -- can actually resolve to a
+    // walkable path instead of falling back to a "no route" direct arrow.
+    // --- Cross-room edges: the physical doorways between rooms ---
+    if (
+      Array.isArray(slotData.roomData) &&
+      slotData.roomData.length
+    ) {
+      slotData.roomData.forEach(
+        (
+          /** @type {[any, any, any, any, any, any, any, any]} */ row,
+        ) => {
+          const [n1, e1, dir1, idx1, n2, e2, dir2, idx2] = row
+          const k1 = PathFinding.roomKey(n1, e1)
+          const k2 = PathFinding.roomKey(n2, e2)
+          const node1 = PathFinding.exitNodeKey(k1, dir1, idx1)
+          const node2 = PathFinding.exitNodeKey(k2, dir2, idx2)
+          PathFinding.addEdge(
+            graph,
+            node1,
+            node2,
+            k1,
+            dir1,
+            idx1,
+            k2,
+            dir2,
+            idx2,
+          )
+          PathFinding.addEdge(
+            graph,
+            node2,
+            node1,
+            k2,
+            dir2,
+            idx2,
+            k1,
+            dir1,
+            idx1,
+          )
+        },
+      )
+    } else {
+      // Fallback (vanilla layout): exit N in a direction connects to exit N
+      // (same index) in the opposite direction of the neighboring room.
+      Object.keys(roomsByKey).forEach((fromKey) => {
+        const room = roomsByKey[fromKey]
+        if (!room.exits) return
+        Object.keys(room.exits).forEach((dir) => {
+          const list = room.exits[dir]
+          if (!Array.isArray(list)) return
+          const [dn, de] = PathFinding.DIR_OFFSET[dir] || [0, 0]
+          const toKey = PathFinding.roomKey(
+            room.north + dn,
+            room.east + de,
+          )
+          if (!roomsByKey[toKey]) return
+          list.forEach((_, idx) => {
+            const oppDir = PathFinding.OPPOSITE[dir]
+            const node1 = PathFinding.exitNodeKey(fromKey, dir, idx)
+            const node2 = PathFinding.exitNodeKey(toKey, oppDir, idx)
+            PathFinding.addEdge(
+              graph,
+              node1,
+              node2,
+              fromKey,
+              dir,
+              idx,
+              toKey,
+              oppDir,
+              idx,
+            )
+            PathFinding.addEdge(
+              graph,
+              node2,
+              node1,
+              toKey,
+              oppDir,
+              idx,
+              fromKey,
+              dir,
+              idx,
+            )
+          })
+        })
+      })
+    }
+
+    // --- Intra-room edges: walking between exits inside the same room,
+    //     gated by that room's areas/reqs ---
+    Object.keys(roomsByKey).forEach((roomKey) => {
+      const room = roomsByKey[roomKey]
+      const exits = PathFinding.roomExitList(room)
+      const conn = PathFinding.roomConnectivity(room, Logic.haveReal)
+      for (let i = 0; i < exits.length; i++) {
+        for (let j = i + 1; j < exits.length; j++) {
+          const a = exits[i]
+          const b = exits[j]
+          if (
+            conn.find(PathFinding.exitKey(a.side, a.idx)) !==
+            conn.find(PathFinding.exitKey(b.side, b.idx))
+          )
+            continue
+          const nodeA = PathFinding.exitNodeKey(
+            roomKey,
+            a.side,
+            a.idx,
+          )
+          const nodeB = PathFinding.exitNodeKey(
+            roomKey,
+            b.side,
+            b.idx,
+          )
+          PathFinding.addEdge(
+            graph,
+            nodeA,
+            nodeB,
+            roomKey,
+            a.side,
+            a.idx,
+            roomKey,
+            b.side,
+            b.idx,
+          )
+          PathFinding.addEdge(
+            graph,
+            nodeB,
+            nodeA,
+            roomKey,
+            b.side,
+            b.idx,
+            roomKey,
+            a.side,
+            a.idx,
+          )
+        }
+      }
+    })
+
+    // --- Root feed: matches regions.py's Pass 1 exactly -- every real exit
+    //     gets a one-way, unconditional edge into its room's single "root"
+    //     node, so anything anchored there (a warp) becomes reachable the
+    //     moment ANY exit of the room is. Root has no edge back out to real
+    //     exits (that's the whole point: the only way out of root is another
+    //     warp anchored there), so it's added once per room, not paired. ---
+    Object.keys(roomsByKey).forEach((roomKey) => {
+      const room = roomsByKey[roomKey]
+      const rootNode = PathFinding.exitNodeKey(roomKey, "root", 0)
+      PathFinding.roomExitList(room).forEach(({ side, idx }) => {
+        const exitNode = PathFinding.exitNodeKey(roomKey, side, idx)
+        PathFinding.addEdge(
+          graph,
+          exitNode,
+          rootNode,
+          roomKey,
+          side,
+          idx,
+          roomKey,
+          "root",
+          0,
+        )
+      })
+    })
+
+    // --- Warp edges: teleport-style connections from _room_geometry.WARPS,
+    //     gated by their own reqs (same OR-of-AND shape as everything else) ---
+    PathFinding.addWarpEdges(graph, roomsByKey, Logic.haveReal)
+
+    return { graph, roomsByKey }
+  }
+  static getCurrentRoomKey() {
+    return PathFinding.roomKey(
+      window.player.realnorth,
+      window.player.realeast,
+    )
+  }
+  // Path from the player's current room to targetKey. If targetEntrance
+  // ({dir, idx}) is given, the route ends specifically through that entrance
+  // (may be a hop longer than the shortest room-to-room path). Returns null
+  // if there's genuinely no valid route with what the player currently has.
+  //
+  // Also tries starting from the player's homepoint (and 20_20, if they hold
+  // the pendant) as alternate jumping-off points, and picks whichever
+  // candidate start actually produces the shortest route. Returns
+  // { path, startKey } so callers can tell when the winning route didn't
+  // actually start from the player's real position.
+  /**
+   * @param {any} targetKey
+   * @param {{ dir: any; idx: any; }} targetEntrance
+   */
+  static findPathTo(targetKey, targetEntrance) {
+    const slotData = window.ap && window.ap.slotData
+    if (!slotData) return null
+
+    const { graph, roomsByKey } = PathFinding.buildPathGraph(slotData)
+
+    const candidates = PathFinding.candidateStartKeys().filter(
+      (k) => roomsByKey[k],
+    )
+    if (!candidates.length) return null
+
+    let best = null // { path, dist, startKey }
+
+    for (const startKey of candidates) {
+      if (startKey === targetKey && !targetEntrance)
+        return { path: [], startKey } // already there
+
+      const { dist, bestEdge } = PathFinding.bfs(
+        graph,
+        roomsByKey,
+        startKey,
+      )
+
+      let path = null
+      let pathDist = Infinity
+
+      if (targetEntrance) {
+        const targetNode = PathFinding.exitNodeKey(
+          targetKey,
+          targetEntrance.dir,
+          targetEntrance.idx,
+        )
+        if (dist[targetNode] !== undefined) {
+          path = PathFinding.reconstructPath(bestEdge, targetNode)
+          pathDist = dist[targetNode]
+        }
+      } else {
+        // No specific entrance requested: take the closest exit-node
+        // belonging to that room that's actually reachable.
+        const prefix = `${targetKey}::`
+        let bestNode = null
+        let bestNodeDist = Infinity
+        for (const node of Object.keys(dist)) {
+          if (node.startsWith(prefix) && dist[node] < bestNodeDist) {
+            bestNodeDist = dist[node]
+            bestNode = node
+          }
+        }
+        if (bestNode) {
+          path = PathFinding.reconstructPath(bestEdge, bestNode)
+          pathDist = bestNodeDist
+        }
+      }
+
+      if (path && pathDist < (best ? best.dist : Infinity)) {
+        best = { path, dist: pathDist, startKey }
+      }
+    }
+
+    return best ? { path: best.path, startKey: best.startKey } : null
+  }
+
+  // findPathTo returns null specifically when no valid route exists with
+  // what the player currently has/can reach (as opposed to [] for "already
+  // there"). In that case, draw a plain straight-line pointer instead of a
+  // path, in DIRECT_ARROW_COLOR so it's visually distinct from a real route.
+  /**
+   * @param {any} targetKey
+   */
+  static showDirectArrowTo(targetKey) {
+    const fromKey = PathFinding.getCurrentRoomKey()
+    const a = fromKey && PathFinding.roomCenter(fromKey)
+    const b = PathFinding.roomCenter(targetKey)
+    if (!a || !b) {
+      WorldMap.PATH_ROUTES = []
+      WorldMap.requestUpdate()
+      return
+    }
+    const midX = (a.x + b.x) / 2
+    const midY = (a.y + b.y) / 2
+    WorldMap.PATH_ROUTES = [
+      {
+        d: [a.x, a.y, midX, midY, b.x, b.y],
+        color: PathFinding.DIRECT_ARROW_COLOR,
+        fromRoom: fromKey,
+        fromDir: null,
+        fromPoint: a,
+        toRoom: targetKey,
+        toDir: null,
+        toPoint: b,
+      },
+    ]
+    WorldMap.requestUpdate()
+  }
+
+  // Distinct color for "there's genuinely no walkable route right now" so it
+  // reads as "go here (somehow)" rather than "walk this exact way".
+  // No route found -> falls back to a direct pointer arrow instead of an
+  // empty canvas.
+  /**
+   * @param {any} targetKey
+   * @param {undefined} [targetEntrance]
+   */
+  static showPathTo(targetKey, targetEntrance) {
+    const result = PathFinding.findPathTo(targetKey, targetEntrance)
+    if (result === null) {
+      PathFinding.showDirectArrowTo(targetKey)
+      return
+    }
+    const routes = PathFinding.buildPathRoutes(result.path)
+    const realKey = PathFinding.getCurrentRoomKey()
+    if (realKey && result.startKey && result.startKey !== realKey) {
+      const jump = PathFinding.altStartRoute(realKey, result.startKey)
+      if (jump) routes.unshift(jump)
+    }
+    WorldMap.PATH_ROUTES = routes
+    WorldMap.requestUpdate()
+  }
+  static clearPathRoute() {
+    WorldMap.PATH_ROUTES = []
+    WorldMap.requestUpdate()
+  }
+
+  // =====================================================================
+  // TOKEN TRACKING (quests AND items)
+  //
+  // trackToken("quest:gTree") keeps the path arrows pointed at the next
+  // not-yet-completed point of that quest (the lowest "quest:gTree.N" that
+  // isn't satisfied yet). trackToken("item:earthAmulet") (or any other exact
+  // receive token) points at wherever that token is granted, and stops once
+  // the player actually has it. Either way this keeps re-resolving as quest
+  // state changes, items come in, or the player moves to a new room.
+  //
+  // trackQuestPath(questName) is kept as a thin backwards-compatible wrapper
+  // around trackToken("quest:" + questName).
+  // =====================================================================
+
+  static trackedToken = localStorage.trackedToken || null
+
+  // Scans PROG_DATA for the not-yet-satisfied "quest:<questName>.N" token
+  // with the lowest N, and returns the room it's granted in.
+  /**
+   * @param {any} questName
+   */
+  static findNextQuestPoint(questName) {
+    const prefix = `quest:${questName}.`
+    /**
+     * @type {{ n: any; room?: any; tok?: string; } | null}
+     */
+    let best = null
+
+    PathFinding.getProgData().forEach(
+      (/** @type {{ receive: any; room: any; }} */ entry) => {
+        ;(entry.receive || []).forEach(
+          (/** @type {any} */ rawTok) => {
+            const tok = PathFinding.baseTok(rawTok)
+            if (!tok.startsWith(prefix)) return
+            const n = Number(tok.slice(prefix.length))
+            if (Number.isNaN(n)) return
+            const done = QuestState.satisfied(tok)
+            if (done) return
+            if (!best || n < best.n)
+              best = { room: entry.room, tok, n }
+          },
+        )
+      },
+    )
+
+    return best
+  }
+
+  // Resolves a tracked token ("quest:<name>" or an exact receive token like
+  // "craft:emerald") to the PROG_DATA entry that grants the next
+  // not-yet-*checked* instance of it -- checking each (entry.room, token)
+  // pairing individually, since several entries (or even one entry with
+  // several receive tokens) can share the same token across different
+  // physical locations. Returns null once every location granting this token
+  // has actually been checked.
+  /**
+   * @param {string} token
+   */
+  static findTokenEntry(token) {
+    if (!token) return null
+    if (token.startsWith("quest:")) {
+      const next = PathFinding.findNextQuestPoint(
+        token.slice("quest:".length),
+      )
+      if (!next) return null
+      return (
+        PathFinding.getProgData().find(
+          (/** @type {{ room: any; receive: any; }} */ e) =>
+            e.room === next.room &&
+            (e.receive || []).some(
+              (/** @type {any} */ t) =>
+                PathFinding.baseTok(t) === next.tok,
+            ),
+        ) || { room: next.room, requires: [], receive: [next.tok] }
+      )
+    }
+    for (const entry of PathFinding.getProgData()) {
+      if (
+        !(entry.receive || []).some(
+          (/** @type {any} */ t) => PathFinding.baseTok(t) === token,
+        )
+      )
+        continue
+      if (PathFinding.locationChecked(entry.room, token)) continue
+      return entry
+    }
+    return null
+  }
+
+  /**
+   * @param {string | any[]} path
+   */
+  static buildPathRoutes(path) {
+    if (!path || !path.length) return []
+    const routes = []
+    for (const edge of path) {
+      const a = PathFinding.exitPoint(
+        edge.fromRoom,
+        edge.fromDir,
+        edge.fromIdx,
+      )
+      const b = PathFinding.exitPoint(
+        edge.toRoom,
+        edge.toDir,
+        edge.toIdx,
+      )
+      if (!a || !b) continue
+      const midX = (a.x + b.x) / 2
+      const midY = (a.y + b.y) / 2
+      routes.push({
+        d: [a.x, a.y, midX, midY, b.x, b.y],
+        color: PATH_ARROW_COLOR,
+        fromRoom: edge.fromRoom,
+        fromDir: edge.fromDir,
+        fromPoint: a,
+        toRoom: edge.toRoom,
+        toDir: edge.toDir,
+        toPoint: b,
+        isWarp: !!edge.isWarp,
+      })
+    }
+    return routes
+  }
+  /**
+   * @type {[any, any][] | null}
+   */
+  static lootTrackingList = null
+
+  /**
+   * @param {[any, any][]} list
+   */
+  static buildLootExtraData(list) {
+    return () =>
+      list
+        .map(([name, count]) => {
+          const have =
+            window.Enum?.Loot?.[name] === undefined ?
+              (window.manager?.[name] ?? 0)
+            : (window.manager?.loot?.[window.Enum?.Loot?.[name]] ?? 0)
+          return have >= count ? "" : `${name}: ${have}/${count}`
+        })
+        .filter(Boolean)
+        .join("\n")
   }
 }
 
 const PATH_ARROW_COLOR = "#39ff14"
-WorldMap.PATH_ROUTES = []
-/**
- * @type {null}
- */
 let selectedPathId = null // identifies whatever room/entrance is currently clicked-on, or null
 
 // Clicking a tile/entrance shows the route to it; clicking the same one
@@ -820,482 +1297,14 @@ function selectPathTarget(roomKey, entrance) {
   const id = PathFinding.selectionId(roomKey, entrance)
   if (selectedPathId === id) {
     selectedPathId = null
-    clearPathRoute()
+    PathFinding.clearPathRoute()
     return
   }
   selectedPathId = id
-  localStorage.trackedToken = trackedToken =
+  localStorage.trackedToken = PathFinding.trackedToken =
     roomKey + " - " + entrance
 
-  showPathTo(roomKey, entrance)
-}
-
-// --- Requirement checking (permits/items gating room-internal crossings) ---
-
-// Rebuilt on every path request: cheap (a few hundred rooms), and keeps the
-// intra-room edges honest as the player's inventory (`have`) changes.
-/**
- * @param {{ roomData: any[]; }} slotData
- */
-function buildPathGraph(slotData) {
-  const graph = {}
-  const roomsByKey = PathFinding.roomsByKey(slotData)
-  // Prefer the fully-derived set (real items + virtual/free tokens like
-  // flags and quests unlocked purely by logic) so a warp/area gated behind
-  // a logical flag -- never a real item -- can actually resolve to a
-  // walkable path instead of falling back to a "no route" direct arrow.
-  // --- Cross-room edges: the physical doorways between rooms ---
-  if (Array.isArray(slotData.roomData) && slotData.roomData.length) {
-    slotData.roomData.forEach(
-      (
-        /** @type {[any, any, any, any, any, any, any, any]} */ row,
-      ) => {
-        const [n1, e1, dir1, idx1, n2, e2, dir2, idx2] = row
-        const k1 = PathFinding.roomKey(n1, e1)
-        const k2 = PathFinding.roomKey(n2, e2)
-        const node1 = PathFinding.exitNodeKey(k1, dir1, idx1)
-        const node2 = PathFinding.exitNodeKey(k2, dir2, idx2)
-        PathFinding.addEdge(
-          graph,
-          node1,
-          node2,
-          k1,
-          dir1,
-          idx1,
-          k2,
-          dir2,
-          idx2,
-        )
-        PathFinding.addEdge(
-          graph,
-          node2,
-          node1,
-          k2,
-          dir2,
-          idx2,
-          k1,
-          dir1,
-          idx1,
-        )
-      },
-    )
-  } else {
-    // Fallback (vanilla layout): exit N in a direction connects to exit N
-    // (same index) in the opposite direction of the neighboring room.
-    Object.keys(roomsByKey).forEach((fromKey) => {
-      const room = roomsByKey[fromKey]
-      if (!room.exits) return
-      Object.keys(room.exits).forEach((dir) => {
-        const list = room.exits[dir]
-        if (!Array.isArray(list)) return
-        const [dn, de] = PathFinding.DIR_OFFSET[dir] || [0, 0]
-        const toKey = PathFinding.roomKey(
-          room.north + dn,
-          room.east + de,
-        )
-        if (!roomsByKey[toKey]) return
-        list.forEach((_, idx) => {
-          const oppDir = PathFinding.OPPOSITE[dir]
-          const node1 = PathFinding.exitNodeKey(fromKey, dir, idx)
-          const node2 = PathFinding.exitNodeKey(toKey, oppDir, idx)
-          PathFinding.addEdge(
-            graph,
-            node1,
-            node2,
-            fromKey,
-            dir,
-            idx,
-            toKey,
-            oppDir,
-            idx,
-          )
-          PathFinding.addEdge(
-            graph,
-            node2,
-            node1,
-            toKey,
-            oppDir,
-            idx,
-            fromKey,
-            dir,
-            idx,
-          )
-        })
-      })
-    })
-  }
-
-  // --- Intra-room edges: walking between exits inside the same room,
-  //     gated by that room's areas/reqs ---
-  Object.keys(roomsByKey).forEach((roomKey) => {
-    const room = roomsByKey[roomKey]
-    const exits = PathFinding.roomExitList(room)
-    const conn = PathFinding.roomConnectivity(room, Logic.haveReal)
-    for (let i = 0; i < exits.length; i++) {
-      for (let j = i + 1; j < exits.length; j++) {
-        const a = exits[i]
-        const b = exits[j]
-        if (
-          conn.find(PathFinding.exitKey(a.side, a.idx)) !==
-          conn.find(PathFinding.exitKey(b.side, b.idx))
-        )
-          continue
-        const nodeA = PathFinding.exitNodeKey(roomKey, a.side, a.idx)
-        const nodeB = PathFinding.exitNodeKey(roomKey, b.side, b.idx)
-        PathFinding.addEdge(
-          graph,
-          nodeA,
-          nodeB,
-          roomKey,
-          a.side,
-          a.idx,
-          roomKey,
-          b.side,
-          b.idx,
-        )
-        PathFinding.addEdge(
-          graph,
-          nodeB,
-          nodeA,
-          roomKey,
-          b.side,
-          b.idx,
-          roomKey,
-          a.side,
-          a.idx,
-        )
-      }
-    }
-  })
-
-  // --- Root feed: matches regions.py's Pass 1 exactly -- every real exit
-  //     gets a one-way, unconditional edge into its room's single "root"
-  //     node, so anything anchored there (a warp) becomes reachable the
-  //     moment ANY exit of the room is. Root has no edge back out to real
-  //     exits (that's the whole point: the only way out of root is another
-  //     warp anchored there), so it's added once per room, not paired. ---
-  Object.keys(roomsByKey).forEach((roomKey) => {
-    const room = roomsByKey[roomKey]
-    const rootNode = PathFinding.exitNodeKey(roomKey, "root", 0)
-    PathFinding.roomExitList(room).forEach(({ side, idx }) => {
-      const exitNode = PathFinding.exitNodeKey(roomKey, side, idx)
-      PathFinding.addEdge(
-        graph,
-        exitNode,
-        rootNode,
-        roomKey,
-        side,
-        idx,
-        roomKey,
-        "root",
-        0,
-      )
-    })
-  })
-
-  // --- Warp edges: teleport-style connections from _room_geometry.WARPS,
-  //     gated by their own reqs (same OR-of-AND shape as everything else) ---
-  PathFinding.addWarpEdges(graph, roomsByKey, Logic.haveReal)
-
-  return { graph, roomsByKey }
-}
-
-// Adjust here if the game exposes the player's current room differently.
-function getCurrentRoomKey() {
-  return PathFinding.roomKey(
-    window.player.realnorth,
-    window.player.realeast,
-  )
-}
-
-// manager.homePoint -> the room it actually teleports you to (kept in sync
-// with whatever sets manager.homePoint in the first place).
-const HOMEPOINT_ROOMS = {
-  1: "20_20",
-  2: "13_18",
-  3: "12_9",
-  4: "20_15",
-}
-
-// Path from the player's current room to targetKey. If targetEntrance
-// ({dir, idx}) is given, the route ends specifically through that entrance
-// (may be a hop longer than the shortest room-to-room path). Returns null
-// if there's genuinely no valid route with what the player currently has.
-//
-// Also tries starting from the player's homepoint (and 20_20, if they hold
-// the pendant) as alternate jumping-off points, and picks whichever
-// candidate start actually produces the shortest route. Returns
-// { path, startKey } so callers can tell when the winning route didn't
-// actually start from the player's real position.
-/**
- * @param {any} targetKey
- * @param {{ dir: any; idx: any; }} targetEntrance
- */
-function findPathTo(targetKey, targetEntrance) {
-  const slotData = window.ap && window.ap.slotData
-  if (!slotData) return null
-
-  const { graph, roomsByKey } = buildPathGraph(slotData)
-
-  const candidates = PathFinding.candidateStartKeys().filter(
-    (k) => roomsByKey[k],
-  )
-  if (!candidates.length) return null
-
-  let best = null // { path, dist, startKey }
-
-  for (const startKey of candidates) {
-    if (startKey === targetKey && !targetEntrance)
-      return { path: [], startKey } // already there
-
-    const { dist, bestEdge } = PathFinding.bfs(
-      graph,
-      roomsByKey,
-      startKey,
-    )
-
-    let path = null
-    let pathDist = Infinity
-
-    if (targetEntrance) {
-      const targetNode = PathFinding.exitNodeKey(
-        targetKey,
-        targetEntrance.dir,
-        targetEntrance.idx,
-      )
-      if (dist[targetNode] !== undefined) {
-        path = PathFinding.reconstructPath(bestEdge, targetNode)
-        pathDist = dist[targetNode]
-      }
-    } else {
-      // No specific entrance requested: take the closest exit-node
-      // belonging to that room that's actually reachable.
-      const prefix = `${targetKey}::`
-      let bestNode = null
-      let bestNodeDist = Infinity
-      for (const node of Object.keys(dist)) {
-        if (node.startsWith(prefix) && dist[node] < bestNodeDist) {
-          bestNodeDist = dist[node]
-          bestNode = node
-        }
-      }
-      if (bestNode) {
-        path = PathFinding.reconstructPath(bestEdge, bestNode)
-        pathDist = bestNodeDist
-      }
-    }
-
-    if (path && pathDist < (best ? best.dist : Infinity)) {
-      best = { path, dist: pathDist, startKey }
-    }
-  }
-
-  return best ? { path: best.path, startKey: best.startKey } : null
-}
-
-/**
- * @param {string | any[]} path
- */
-function buildPathRoutes(path) {
-  if (!path || !path.length) return []
-  const routes = []
-  for (const edge of path) {
-    const a = PathFinding.exitPoint(
-      edge.fromRoom,
-      edge.fromDir,
-      edge.fromIdx,
-    )
-    const b = PathFinding.exitPoint(
-      edge.toRoom,
-      edge.toDir,
-      edge.toIdx,
-    )
-    if (!a || !b) continue
-    const midX = (a.x + b.x) / 2
-    const midY = (a.y + b.y) / 2
-    routes.push({
-      d: [a.x, a.y, midX, midY, b.x, b.y],
-      color: PATH_ARROW_COLOR,
-      fromRoom: edge.fromRoom,
-      fromDir: edge.fromDir,
-      fromPoint: a,
-      toRoom: edge.toRoom,
-      toDir: edge.toDir,
-      toPoint: b,
-      isWarp: !!edge.isWarp,
-    })
-  }
-  return routes
-}
-
-// Distinct color for "there's genuinely no walkable route right now" so it
-// reads as "go here (somehow)" rather than "walk this exact way".
-const DIRECT_ARROW_COLOR = "#ff5533"
-
-// findPathTo returns null specifically when no valid route exists with
-// what the player currently has/can reach (as opposed to [] for "already
-// there"). In that case, draw a plain straight-line pointer instead of a
-// path, in DIRECT_ARROW_COLOR so it's visually distinct from a real route.
-/**
- * @param {any} targetKey
- */
-function showDirectArrowTo(targetKey) {
-  const fromKey = getCurrentRoomKey()
-  const a = fromKey && PathFinding.roomCenter(fromKey)
-  const b = PathFinding.roomCenter(targetKey)
-  if (!a || !b) {
-    WorldMap.PATH_ROUTES = []
-    WorldMap.requestUpdate()
-    return
-  }
-  const midX = (a.x + b.x) / 2
-  const midY = (a.y + b.y) / 2
-  WorldMap.PATH_ROUTES = [
-    {
-      d: [a.x, a.y, midX, midY, b.x, b.y],
-      color: DIRECT_ARROW_COLOR,
-      fromRoom: fromKey,
-      fromDir: null,
-      fromPoint: a,
-      toRoom: targetKey,
-      toDir: null,
-      toPoint: b,
-    },
-  ]
-  WorldMap.requestUpdate()
-}
-
-// No route found -> falls back to a direct pointer arrow instead of an
-// empty canvas.
-/**
- * @param {any} targetKey
- * @param {undefined} [targetEntrance]
- */
-function showPathTo(targetKey, targetEntrance) {
-  const result = findPathTo(targetKey, targetEntrance)
-  if (result === null) {
-    showDirectArrowTo(targetKey)
-    return
-  }
-  const routes = buildPathRoutes(result.path)
-  const realKey = getCurrentRoomKey()
-  if (realKey && result.startKey && result.startKey !== realKey) {
-    const jump = PathFinding.altStartRoute(realKey, result.startKey)
-    if (jump) routes.unshift(jump)
-  }
-  WorldMap.PATH_ROUTES = routes
-  WorldMap.requestUpdate()
-}
-
-function clearPathRoute() {
-  WorldMap.PATH_ROUTES = []
-  WorldMap.requestUpdate()
-}
-
-// =====================================================================
-// TOKEN TRACKING (quests AND items)
-//
-// trackToken("quest:gTree") keeps the path arrows pointed at the next
-// not-yet-completed point of that quest (the lowest "quest:gTree.N" that
-// isn't satisfied yet). trackToken("item:earthAmulet") (or any other exact
-// receive token) points at wherever that token is granted, and stops once
-// the player actually has it. Either way this keeps re-resolving as quest
-// state changes, items come in, or the player moves to a new room.
-//
-// trackQuestPath(questName) is kept as a thin backwards-compatible wrapper
-// around trackToken("quest:" + questName).
-// =====================================================================
-
-let trackedToken = localStorage.trackedToken || null
-
-// Scans PROG_DATA for the not-yet-satisfied "quest:<questName>.N" token
-// with the lowest N, and returns the room it's granted in.
-/**
- * @param {any} questName
- */
-function findNextQuestPoint(questName) {
-  const prefix = `quest:${questName}.`
-  /**
-   * @type {{ n: any; room?: any; tok?: string; } | null}
-   */
-  let best = null
-
-  PathFinding.getProgData().forEach(
-    (/** @type {{ receive: any; room: any; }} */ entry) => {
-      ;(entry.receive || []).forEach((/** @type {any} */ rawTok) => {
-        const tok = PathFinding.baseTok(rawTok)
-        if (!tok.startsWith(prefix)) return
-        const n = Number(tok.slice(prefix.length))
-        if (Number.isNaN(n)) return
-        const done = QuestState.satisfied(tok)
-        if (done) return
-        if (!best || n < best.n) best = { room: entry.room, tok, n }
-      })
-    },
-  )
-
-  return best
-}
-
-// Resolves a tracked token ("quest:<name>" or an exact receive token like
-// "craft:emerald") to the PROG_DATA entry that grants the next
-// not-yet-*checked* instance of it -- checking each (entry.room, token)
-// pairing individually, since several entries (or even one entry with
-// several receive tokens) can share the same token across different
-// physical locations. Returns null once every location granting this token
-// has actually been checked.
-/**
- * @param {string} token
- */
-function findTokenEntry(token) {
-  if (!token) return null
-  if (token.startsWith("quest:")) {
-    const next = findNextQuestPoint(token.slice("quest:".length))
-    if (!next) return null
-    return (
-      PathFinding.getProgData().find(
-        (/** @type {{ room: any; receive: any; }} */ e) =>
-          e.room === next.room &&
-          (e.receive || []).some(
-            (/** @type {any} */ t) =>
-              PathFinding.baseTok(t) === next.tok,
-          ),
-      ) || { room: next.room, requires: [], receive: [next.tok] }
-    )
-  }
-  for (const entry of PathFinding.getProgData()) {
-    if (
-      !(entry.receive || []).some(
-        (/** @type {any} */ t) => PathFinding.baseTok(t) === token,
-      )
-    )
-      continue
-    if (PathFinding.locationChecked(entry.room, token)) continue
-    return entry
-  }
-  return null
-}
-
-/**
- * @type {[any, any][] | null}
- */
-let lootTrackingList = null
-
-/**
- * @param {[any, any][]} list
- */
-function buildLootExtraData(list) {
-  return () =>
-    list
-      .map(([name, count]) => {
-        const have =
-          window.Enum?.Loot?.[name] === undefined ?
-            (window.manager?.[name] ?? 0)
-          : (window.manager?.loot?.[window.Enum?.Loot?.[name]] ?? 0)
-        return have >= count ? "" : `${name}: ${have}/${count}`
-      })
-      .filter(Boolean)
-      .join("\n")
+  PathFinding.showPathTo(roomKey, entrance)
 }
 
 class WorldMap {
@@ -1308,8 +1317,8 @@ class WorldMap {
    * @param {string | null} token
    */
   static trackToken(token) {
-    trackedToken = token || null
-    localStorage.trackedToken = trackedToken
+    PathFinding.trackedToken = token || null
+    localStorage.trackedToken = PathFinding.trackedToken
     selectedPathId = null // tracking supersedes any manual click-selection
     PathFinding.updateTrackedPath()
   }
@@ -1463,7 +1472,7 @@ class WorldMap {
       }
       if (firstLoad) {
         firstLoad = false
-        if (/^[\d._]+ - /.test(trackedToken)) {
+        if (/^[\d._]+ - /.test(PathFinding.trackedToken)) {
           var tt = localStorage.trackedToken.split(" - ")
           selectPathTarget(
             tt[0],
@@ -1471,9 +1480,12 @@ class WorldMap {
           )
         } else WorldMap.trackToken(localStorage.trackedToken)
       }
-      if (/^[\d._]+ - /.test(trackedToken)) {
-        var tt = trackedToken.split(" - ")
-        showPathTo(tt[0], tt[1] !== "undefined" ? tt[1] : undefined)
+      if (/^[\d._]+ - /.test(PathFinding.trackedToken)) {
+        var tt = PathFinding.trackedToken.split(" - ")
+        PathFinding.showPathTo(
+          tt[0],
+          tt[1] !== "undefined" ? tt[1] : undefined,
+        )
       } else PathFinding.updateTrackedPath()
     })
     window.addEventListener("resize", WorldMap.resizeCanvas)
