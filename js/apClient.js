@@ -49,8 +49,8 @@ function removeColors(str) {
 
 /**
  * @param {{itemName:string,itemPlayer:number}} data
- * @param {boolean} color
- * @returns string
+ * @param {boolean} useColor
+ * @returns {string}
  */
 function formatItemName(data, useColor) {
   var owner =
