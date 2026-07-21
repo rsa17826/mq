@@ -47,14 +47,7 @@ class ProcessManager:
       # Start process if it's not already running
       if self.process is None or self.process.poll() is not None:
         print(f"[*] Starting shared process: {' '.join(cmd)}")
-        self.process = subprocess.Popen(
-          cmd,
-          stdout=subprocess.PIPE,
-          stderr=subprocess.STDOUT,
-          text=True,
-          bufsize=1,
-          cwd=os.path.dirname(cmd[0])
-        )
+        self.process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1, cwd=os.path.dirname(cmd[0]))
         # Start background thread to read process stdout
         threading.Thread(target=self._reader_loop, daemon=True).start()
 
@@ -165,6 +158,11 @@ class CachedCGIHTTPRequestHandler(CGIHTTPRequestHandler):
       return
 
     cmd = [executable_path]
+    if arg1 is not None:
+      arg1 = arg1.split("=", 1)
+      arg1 = arg1[1] if len(arg1) > 1 else None
+
+    print("[" + arg1 + "]", "arg1", not not arg1)
     if arg1:
       cmd.append(arg1)
 
