@@ -551,7 +551,7 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "misc:headstoneSwitch2",
+      "misc:headstoneSwitch3",
     ],
   },
   # {"room": {"north": 10, "east": 12}, "info": "warp skill warp point",},
@@ -840,7 +840,7 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "misc:headstoneSwitch3",
+      "misc:headstoneSwitch4",
     ],
   },
   {
@@ -969,7 +969,7 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "misc:headstoneSwitch4",
+      "misc:headstoneSwitch1",
     ],
   },
   {
@@ -1288,7 +1288,7 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "misc:headstoneSwitch1",
+      "misc:headstoneSwitch2",
     ],
   },
   {

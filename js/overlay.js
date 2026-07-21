@@ -400,16 +400,11 @@ function customDrawLoop() {
   // render chest hints
   {
     if (localStorage.showVanillaItems != "true") {
-      if (
-        !(
-          manager.exitButton.__visible ||
-          manager.mess.__visible
-        )
-      ) {
+      if (!(manager.exitButton.__visible || manager.mess.__visible)) {
         for (var [
           _color,
           {
-            data: itemNames,
+            data: items,
             position: { x: _x, y: _y },
             elem,
           },
@@ -419,7 +414,9 @@ function customDrawLoop() {
           ] ?? {},
         )) {
           if (elem.__visible) {
-            var lines = itemNames.map(owo)
+            var lines = items
+              .filter(([_i, e]) => !ap.checkedLocations.includes(_i))
+              .map(([_i, e]) => owo(e))
 
             overlayCtx.strokeStyle = "#000"
             overlayCtx.lineJoin = "round"
