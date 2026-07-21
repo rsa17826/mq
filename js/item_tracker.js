@@ -410,6 +410,9 @@ window.onApConnect.push(() => {
     Object.values(ap.slotData.AP_ITEM_IDS),
   )
   ItemTracker._buildUi()
+  window.onQuestChanged.push(() => {
+    ItemTracker.render()
+  })
   window.onPlayerLoaded.push(() => {
     ItemTracker.render()
   })

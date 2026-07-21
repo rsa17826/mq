@@ -607,7 +607,7 @@ class PathFinding {
       `.progression-icon[data-location="${CSS.escape(key)}"]`,
     )
     return [...els].some((el) => el.classList.contains("checked"))
-  } // Some entries live in the virtual/no-location room (e.g. "20_20") and are
+  } // Some entries live in the virtual/no-location room (e.g. "-1_-1") and are
   // gated by an area:* requirement instead of having a real physical spot --
   // in that case the place to actually walk to is wherever that area flag is
   // granted, not the virtual room itself. Picks whichever granting location
@@ -629,13 +629,13 @@ class PathFinding {
    * @param {{ room: string; }} entry
    */
   static resolveAreaRedirect(entry) {
-    if (!entry || entry.room !== "20_20") return entry
+    if (!entry || entry.room !== "-1_-1") return entry
     const areaTok = PathFinding.entryAreaToken(entry)
     if (!areaTok) return entry
 
     const candidates = PathFinding.getProgData().filter(
       (/** @type {{ room: string; receive: any; }} */ e) =>
-        e.room !== "20_20" &&
+        e.room !== "-1_-1" &&
         (e.receive || []).some(
           (/** @type {any} */ rawTok) =>
             PathFinding.baseTok(rawTok) === areaTok,
@@ -1457,10 +1457,10 @@ class WorldMap {
     )
   }
   static init() {
-    HookEvent("onQuestChanged", () =>
-      setTimeout(PathFinding.updateTrackedPath),
-    )
-    HookEvent("onQuestChanged", () => Logic.recompute())
+    window.onQuestChanged.push(() => {
+      setTimeout(PathFinding.updateTrackedPath)
+      Logic.recompute()
+    })
     HookEvent("onNewScreen", () => {
       if (
         WorldMap.PATH_ROUTES.find(
