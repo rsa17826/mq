@@ -401,6 +401,12 @@ function apSendSayFromInput() {
         ap.connect()
       },
     },
+    runAPServer: {
+      desc: "starts an ap server, pass seed to load old save",
+      func(seed) {
+        ArchipelagoClient.runAPServer(seed || undefined)
+      },
+    },
     time: {
       args: [["format", "12/24"]],
       desc: "changes time mode",

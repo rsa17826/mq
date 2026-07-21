@@ -1,7 +1,11 @@
 import hashlib
 import os
+import queue
 import re
-from http.server import CGIHTTPRequestHandler, HTTPServer
+import subprocess
+import threading
+import urllib.parse
+from http.server import CGIHTTPRequestHandler, ThreadingHTTPServer
 
 from PIL import Image, ImageDraw
 from watchdog.events import FileSystemEventHandler
@@ -16,12 +20,112 @@ DIRECTORY = "."
 WATCH_FILE = os.path.normpath("MathQuest/play.base.html")
 
 
+class ProcessManager:
+  """Manages a single running process, broadcasts output to all connected
+
+  clients, and automatically kills the process after 10 idle seconds.
+  """
+
+  def __init__(self):
+    self.lock = threading.Lock()
+    self.process = None
+    self.subscribers = []
+    self.idle_timer = None
+
+  def subscribe(self, cmd):
+    with self.lock:
+      # Cancel active idle timer if a client connects/reconnects
+      if self.idle_timer:
+        self.idle_timer.cancel()
+        self.idle_timer = None
+        print("[*] Client connected. Idle countdown cancelled.")
+
+      # Create dedicated output queue for this HTTP handler thread
+      q = queue.Queue()
+      self.subscribers.append(q)
+
+      # Start process if it's not already running
+      if self.process is None or self.process.poll() is not None:
+        print(f"[*] Starting shared process: {' '.join(cmd)}")
+        self.process = subprocess.Popen(
+          cmd,
+          stdout=subprocess.PIPE,
+          stderr=subprocess.STDOUT,
+          text=True,
+          bufsize=1,
+          cwd=os.path.dirname(cmd[0])
+        )
+        # Start background thread to read process stdout
+        threading.Thread(target=self._reader_loop, daemon=True).start()
+
+      return q
+
+
+  def unsubscribe(self, q):
+    with self.lock:
+      if q in self.subscribers:
+        self.subscribers.remove(q)
+
+      # Start 10s countdown if no active clients remain
+      if len(self.subscribers) == 0 and self.process and self.process.poll() is None:
+        print("[!] No active connections. Starting 10s idle timer...")
+        self.idle_timer = threading.Timer(10.0, self._stop_process)
+        self.idle_timer.start()
+
+
+
+  def _reader_loop(self):
+    """Continuously reads stdout and pushes lines to all connected subscriber queues."""
+    for line in iter(self.process.stdout.readline, ""):
+      if not line:
+        break
+
+      with self.lock:
+        for q in list(self.subscribers):
+          q.put(line)
+
+
+
+    self.process.wait()
+    # Notify remaining subscribers that the process has finished
+    with self.lock:
+      for q in list(self.subscribers):
+        q.put(None)
+
+
+
+  def _stop_process(self):
+    """Kills process when 10 seconds elapse with zero active connections."""
+    with self.lock:
+      if self.process and self.process.poll() is None:
+        print("[!] 10s idle timeout reached. Stopping process...")
+        self.process.terminate()
+        try:
+          self.process.wait(timeout=2)
+
+        except subprocess.TimeoutExpired:
+          self.process.kill()
+
+
+      self.process = None
+
+
+
+# Global process manager instance
+process_manager = ProcessManager()
+
+
 class CachedCGIHTTPRequestHandler(CGIHTTPRequestHandler):
   def __init__(self, *args, **kwargs):
     super().__init__(*args, directory=DIRECTORY, **kwargs)
 
   def do_GET(self):
-    clean_path = self.path.split("?")[0]
+    parsed_url = urllib.parse.urlparse(self.path)
+    clean_path = parsed_url.path
+
+    if clean_path == "/run":
+      self.handle_run_script(parsed_url.query)
+      return
 
     if clean_path.lower().endswith(".mp3"):
       self.path = "/empty.mp3"
@@ -38,8 +142,59 @@ class CachedCGIHTTPRequestHandler(CGIHTTPRequestHandler):
 
     super().do_GET()
 
-  def address_string(self):
-    return self.client_address[0]
+  def handle_run_script(self, query_string):
+    query_params = urllib.parse.parse_qs(query_string)
+    arg1 = query_params.get("arg", [None])[0]
+
+    if not arg1 and query_string:
+      arg1 = urllib.parse.unquote(query_string)
+
+    try:
+      with open("./apWorldPath", "r") as f:
+        base_path = f.read().strip()
+
+
+    except Exception as e:
+      self.send_error(500, f"Failed to read ./apWorldPath file: {e}")
+      return
+
+    executable_path = os.path.join(base_path, "start")
+
+    if not os.path.exists(executable_path):
+      self.send_error(404, f"Executable not found at: {executable_path}")
+      return
+
+    cmd = [executable_path]
+    if arg1:
+      cmd.append(arg1)
+
+    # Set response headers
+    self.send_response(200)
+    self.send_header("Content-Type", "text/plain; charset=utf-8")
+    self.send_header("Cache-Control", "no-cache")
+    self.send_header("X-Content-Type-Options", "nosniff")
+    self.end_headers()
+
+    # Subscribe connection to shared process output
+    sub_queue = process_manager.subscribe(cmd)
+
+    try:
+      while True:
+        line = sub_queue.get()
+        if line is None: # Process ended
+          break
+
+        self.wfile.write(line.encode("utf-8"))
+        self.wfile.flush()
+
+
+    except (BrokenPipeError, ConnectionResetError, OSError):
+      # Client disconnected (browser tab closed, network dropped, etc.)
+      pass
+
+    finally:
+      process_manager.unsubscribe(sub_queue)
+
 
   def generate_placeholder_image(self, target_path):
     os.makedirs(os.path.dirname(target_path), exist_ok=True)
@@ -105,9 +260,19 @@ class CachedCGIHTTPRequestHandler(CGIHTTPRequestHandler):
     normalized_path = self.translate_path(self.path)
     relative_path = os.path.relpath(normalized_path, os.getcwd())
 
-    if (relative_path.startswith("map") or relative_path.startswith("mapimgs")) or relative_path.lower().split("?")[0].endswith((".jpg", ".jpeg", ".png", ".mp3", ".ogg", ".eot", ".svg", ".ttf")):
+    if (relative_path.startswith("map") or relative_path.startswith("mapimgs")) or relative_path.lower().split("?")[0].endswith(
+      (
+        ".jpg",
+        ".jpeg",
+        ".png",
+        ".mp3",
+        ".ogg",
+        ".eot",
+        ".svg",
+        ".ttf",
+      )
+    ):
       self.send_header("Cache-Control", "public, max-age=31536000, immutable")
-
     elif relative_path.lower().endswith(".js"):
       self.send_header("Cache-Control", "no-store, must-revalidate")
 
@@ -116,16 +281,10 @@ class CachedCGIHTTPRequestHandler(CGIHTTPRequestHandler):
 
 # --- File Watcher Logic ---
 class HTMLChangeHandler(FileSystemEventHandler):
-  """Listens for modifications specifically on the target HTML file."""
-
   def on_modified(self, event):
-    # Normalize the event path to match WATCH_FILE style
     event_path = os.path.normpath(os.path.relpath(event.src_path, os.getcwd()))
-
     if event_path == WATCH_FILE:
       print(f"\n[!] Change detected in {WATCH_FILE}!")
-      # Add whatever action you want to run here.
-      # Example: You could clear server caches or flag a state change.
       self.execute_on_change()
 
 
@@ -134,10 +293,7 @@ class HTMLChangeHandler(FileSystemEventHandler):
 
 
 def start_file_watcher():
-  """Initializes and runs the watchdog observer in a background thread."""
   watch_dir = os.path.dirname(WATCH_FILE) or "."
-
-  # Ensure the directory exists before watching it
   if not os.path.exists(watch_dir):
     os.makedirs(watch_dir, exist_ok=True)
 
@@ -151,15 +307,15 @@ def start_file_watcher():
 
 def run():
   server_address = ("", PORT)
+  # Switched to ThreadingHTTPServer for concurrent HTTP request handling
   handler = CachedCGIHTTPRequestHandler
 
-  print(f"[*] Starting custom CGI server with map/ caching on port {PORT}...")
+  print(f"[*] Starting multithreaded CGI server with map/ caching on port {PORT}...")
   print(f"[*] Serving directory: {os.path.abspath(DIRECTORY)}")
 
-  # Start the watchdog observer thread
   watcher = start_file_watcher()
 
-  httpd = HTTPServer(server_address, handler)
+  httpd = ThreadingHTTPServer(server_address, handler)
   try:
     httpd.serve_forever()
 
