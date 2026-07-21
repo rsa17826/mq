@@ -321,6 +321,7 @@ class ArchipelagoClient {
     }
     Logic.recompute()
     setTimeout(() => Logic.recompute())
+    ItemTracker.render()
   }
   /**
    * Handshake Step 2: Server sends RoomInfo.

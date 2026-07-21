@@ -138,9 +138,13 @@ class ItemTracker {
   // receive a quest:<name>.N token (grouping all points of the same
   // questline together), or "Other" for everything else.
   static groupKeyFor(entry) {
-    const hasFlag = (entry.requires || []).some((group) =>
-      group.some((tok) => this.baseTok(tok).startsWith("flag:")),
-    )
+    const hasFlag =
+      (entry.requires || []).some((group) =>
+        group.some((tok) => this.baseTok(tok).startsWith("flag:")),
+      ) ||
+      (entry.receive || []).every((tok) =>
+        this.baseTok(tok).startsWith("flag:"),
+      )
     if (hasFlag) return { key: "flags", label: "Flags" }
 
     const questTok = (entry.receive || [])
