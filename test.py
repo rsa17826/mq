@@ -28,6 +28,7 @@ def parse_mathquest_with_lines(file_path):
         current_north, current_east = int(g[1]), int(g[3])
       else:
         current_east, current_north = int(g[1]), int(g[3])
+
     else:
       # Check individual components
       n_m = re.search(single_north, line)

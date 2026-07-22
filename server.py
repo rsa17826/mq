@@ -221,7 +221,6 @@ class CachedCGIHTTPRequestHandler(CGIHTTPRequestHandler):
           draw.rectangle([(x, 0), (x + 12, 250)], fill=pattern_color)
 
 
-
     elif pattern_style == 1:
       for x in range(0, 250, 50):
         for y in range(0, 250, 50):
@@ -230,12 +229,10 @@ class CachedCGIHTTPRequestHandler(CGIHTTPRequestHandler):
 
 
 
-
     elif pattern_style == 2:
       for i in range(0, 125, 25):
         if (i // 25) % 2 == 1:
           draw.rectangle([(i, i), (250 - i, 250 - i)], outline=pattern_color, width=10)
-
 
 
     elif pattern_style == 3:

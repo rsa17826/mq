@@ -40,6 +40,7 @@ def find_duplicates(file_path):
         # Ensure we only record this specific duplicate item once per room coordinate
         if (north, east, base_item) not in duplicates:
           duplicates.append((north, east, base_item))
+
       else:
         # FIX: Store the base_item, not the raw item with the '#' suffix
         seen[coord].add(base_item)

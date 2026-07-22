@@ -32,9 +32,8 @@ class RoomGraph {
     }
   }
   static buildAreaIndex() {
-    RoomGraph.areaMap = (ap.slotData?.AREA_MAP) || {}
-    RoomGraph.areaPowerReqs =
-      (ap.slotData?.AREA_POWER_REQS) || {}
+    RoomGraph.areaMap = ap.slotData?.AREA_MAP || {}
+    RoomGraph.areaPowerReqs = ap.slotData?.AREA_POWER_REQS || {}
   }
   // Mirrors regions.py's powerRule: rooms whose area isn't in AREA_POWER_REQS
   // (or whose room key isn't in AREA_MAP at all) have no power gate.
