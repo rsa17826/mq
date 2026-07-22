@@ -300,31 +300,16 @@ window.q = {
     ringEvaIcon: ["13_16 - item:ring of evasion"],
   },
   "14_22": {
-    "": ["14_22 - item:ring of gold"],
+    "water|49": ["14_22 - item:ring of gold"],
   },
   "16_21": {
-    "": ["16_21 - item:ring of health"],
-  },
-  "15_14": {
-    "": ["15_14 - food:carrot"],
+    "skeleton|0": ["16_21 - item:ring of health"],
   },
   "4_17": {
     vik: ["4_17 - weapon:axe.+1"],
   },
-  "4_24": {
-    "": ["4_24 - food:cherries"],
-  },
   "13_26": {
     whiteHead: ["13_26 - food:gingerBread"],
-  },
-  "9_23": {
-    "": ["9_23 - magic:drain"],
-  },
-  "9_10": {
-    "": ["9_10 - item:gold"],
-  },
-  "6_10": {
-    "": ["6_10 - food:chocolate"],
   },
   "13_21": {
     bombBro: [
@@ -339,43 +324,17 @@ window.q = {
   "5_24": {
     orbStatue: ["5_24 - food:holyWater"],
   },
-  "24_14": {
-    "": ["24_14 - armor:grimGear"],
-  },
-  "24_11": {
-    "": ["24_11 - weapon:baneBlade"],
-  },
-  "21_11": {
-    "": ["21_11 - food:gummyBears"],
-  },
   "11_15": {
     craftGirl: ["11_15 - craft:key"],
   },
-  "17_11": {
-    "": [
-      "17_11 - item:gold - 2-2-0",
-      "17_11 - food:holyWater - 0-7-0",
-      "17_11 - food:gummyBears - 1-0-2",
-      "17_11 - food:blueberries - 1-0-2",
-      "17_11 - item:gold - 5-0-5",
-      "17_11 - item:rubies - 5-0-5",
-      "17_11 - item:diamonds - 5-0-5",
-    ],
-  },
   "12_11": {
     blueBoy: ["12_11 - item:diamonds"],
-  },
-  "8_10": {
-    "": ["8_10 - item:gold", "8_10 - food:beefJerky"],
   },
   "7_18": {
     vik: ["7_18 - skill:reveal.2"],
   },
   "15_17": {
     shayde: ["15_17 - craft:holyWater"],
-  },
-  "16_15": {
-    "": ["16_15 - armor:diamondArmor"],
   },
   "21_22": {
     ringGuy: ["21_22 - craft:ringGold"],
@@ -390,7 +349,7 @@ window.q = {
     ],
   },
   "100_100": {
-    "": [
+    "tent|2": [
       "100_100 - food:orange",
       "100_100 - food:gingerBread",
       "100_100 - food:strawberry",
@@ -412,22 +371,10 @@ window.q = {
   "16_10": {
     magicSymbol: ["16_10 - item:ring of death"],
   },
-  "14_15": {
-    "": ["14_15 - item:bombs", "14_15 - food:orange"],
-  },
-  "18_17": {
-    "": ["18_17 - item:gold"],
-  },
   "500_501": {
     shayde: ["500_501 - weapon:aSword"],
   },
   "8_14": {
     vik: ["8_14 - skill:tough.2"],
-  },
-  "9_15": {
-    "": ["9_15 - armor:phantomCoat"],
-  },
-  "11_17": {
-    "": ["11_17 - item:bombs", "11_17 - item:gold"],
   },
 }
