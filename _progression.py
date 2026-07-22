@@ -5437,6 +5437,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "loot:tBand#2",
+        "skill:medic",
       ],
     ],
     "receive": [
@@ -5448,6 +5449,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 18, "east": 25},
     "requires": [
       [
+        "skill:medic",
         "flag:medicNPCUsed.1",
         "loot:cFang#5",
       ],
@@ -5461,6 +5463,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 18, "east": 25},
     "requires": [
       [
+        "skill:medic",
         "flag:medicNPCUsed.2",
         "loot:mStaff#10",
         "loot:oCoin#20",
@@ -5475,6 +5478,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 18, "east": 25},
     "requires": [
       [
+        "skill:medic",
         "flag:medicNPCUsed.3",
         "loot:gSkin#10",
         "loot:dScale#10",
@@ -5489,6 +5493,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 18, "east": 25},
     "requires": [
       [
+        "skill:medic",
         "flag:medicNPCUsed.4",
         "loot:aAxe#5",
         "loot:kCrest#10",
@@ -5503,6 +5508,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 18, "east": 25},
     "requires": [
       [
+        "skill:medic",
         "flag:medicNPCUsed.5",
         "loot:gFeather#3",
         "loot:aScepter#5",

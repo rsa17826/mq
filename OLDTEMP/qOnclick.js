@@ -41,3 +41,19 @@ onclick = () => {
   navigator.clipboard.writeText(window.selectedThing)
   log(window.selectedThing)
 }
+
+function removeDuplicates(obj) {
+  for (const key in obj) {
+    if (Array.isArray(obj[key])) {
+      // Deduplicate the array using Set
+      obj[key] = [...new Set(obj[key])]
+    } else if (typeof obj[key] === "object" && obj[key] !== null) {
+      // Recurse into nested objects
+      removeDuplicates(obj[key])
+    }
+  }
+  return obj
+}
+
+// Clean window.q in-place
+removeDuplicates(window.q)
