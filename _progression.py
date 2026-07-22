@@ -4215,7 +4215,7 @@ manager.correct - manager.wrong > 800 = halo
       [
         "quest:dream.12",
         "area:4",
-        "food:steak#12"
+        "food:steak#12",
       ],
     ],
     "receive": [
