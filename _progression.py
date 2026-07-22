@@ -19,6 +19,18 @@ PROG: list[ProgressionNode] = [
     "room": {"north": -1, "east": -1},
     "requires": [
       [
+        "area:7",
+        "quest:isles.10",
+      ],
+    ],
+    "receive": [
+      "flag:magnetic slime",
+    ],
+  },
+  {
+    "room": {"north": -1, "east": -1},
+    "requires": [
+      [
         "area:3",
       ],
     ],
@@ -338,7 +350,7 @@ PROG: list[ProgressionNode] = [
     "room": {"north": -1, "east": -1},
     "requires": [
       [
-        "flag:new room#5",
+        "flag:room with mobs#5",
       ],
     ],
     "receive": [
@@ -352,7 +364,7 @@ manager.correct - manager.wrong > 9 = dig
     "room": {"north": -1, "east": -1},
     "requires": [
       [
-        "flag:new room#20",
+        "flag:room with mobs#20",
       ],
     ],
     "receive": [
@@ -366,7 +378,7 @@ manager.correct - manager.wrong > 49 = kick
     "room": {"north": -1, "east": -1},
     "requires": [
       [
-        "flag:new room#40",
+        "flag:room with mobs#40",
       ],
     ],
     "receive": [
@@ -380,7 +392,7 @@ manager.correct - manager.wrong > 149 = flee
     "room": {"north": -1, "east": -1},
     "requires": [
       [
-        "flag:new room#80",
+        "flag:room with mobs#80",
       ],
     ],
     "receive": [
@@ -394,7 +406,7 @@ manager.correct - manager.wrong > 300 = swap
     "room": {"north": -1, "east": -1},
     "requires": [
       [
-        "flag:new room#100",
+        "flag:room with mobs#100",
       ],
     ],
     "receive": [
@@ -409,7 +421,7 @@ manager.correct - manager.wrong > 500 = firewall
     "room": {"north": -1, "east": -1},
     "requires": [
       [
-        "flag:new room#130",
+        "flag:room with mobs#130",
       ],
     ],
     "receive": [
@@ -423,7 +435,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": -1, "east": -1},
     "requires": [
       [
-        "flag:new room#10",
+        "flag:room with mobs#10",
       ],
     ],
     "receive": [
@@ -2117,7 +2129,6 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "quest:bBomb.6",
-      "permit:volcano",
     ],
   },
   {
@@ -2129,6 +2140,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "quest:bBomb.7",
+      "permit:volcano",
     ],
   },
   {
@@ -2222,6 +2234,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 11, "east": 11},
     "requires": [
       [
+        "loot:cFang#5",
         "quest:rings.5",
       ],
     ],
@@ -2643,6 +2656,17 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "armor:diamondArmor",
+    ],
+  },
+  {
+    "room": {"north": 19, "east": 20},
+    "requires": [
+      [
+        "armor:diamondArmor",
+        "quest:pam.15",
+      ],
+    ],
+    "receive": [
       "quest:pam.16",
     ],
   },
@@ -3245,6 +3269,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "quest:bBomb.13",
+        "weapon:creeperCrusher",
       ],
     ],
     "receive": [
@@ -4046,6 +4071,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 8, "east": 12},
     "requires": [
       [
+        "flag:magnetic slime",
         "quest:isles.11",
       ],
     ],
@@ -4054,7 +4080,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
   },
   {
-    "room": {"north": 9.11, "east": 20},
+    "room": {"north": 5, "east": 20},
     "requires": [
       [
         "quest:isles.12",
@@ -4189,6 +4215,7 @@ manager.correct - manager.wrong > 800 = halo
       [
         "quest:dream.12",
         "area:4",
+        "food:steak#12"
       ],
     ],
     "receive": [
@@ -4215,6 +4242,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "quest:dream.15",
+      "armor:nobleArmor",
     ],
   },
   {
@@ -5538,17 +5566,6 @@ manager.correct - manager.wrong > 800 = halo
   #   "room": {"north": "?", "east": "?",},
   #   "receive": ["item:ring of evasion"],
   # },
-  {
-    "room": {"north": 13, "east": 17},
-    "requires": [
-      [
-        "armor:royalArmor",
-      ],
-    ],
-    "receive": [
-      "armor:nobleArmor",
-    ],
-  },
   # {
   #   "room": {"north": "?", "east": "?",},
   #   "receive": ["misc:bobbisPendant"],
