@@ -479,6 +479,17 @@ manager.correct - manager.wrong > 800 = halo
       "food:orange",
     ],
   },
+  {
+    "room": {"north": 13, "east": 18},
+    "requires": [
+      [
+        "loot:venom",
+      ],
+    ],
+    "receive": [
+      "food:orange",
+    ],
+  },
   # {"room": {"north": 18, "east": 20}, "info": "warp skill warp point",},
   {
     "room": {"north": 14, "east": 19},
@@ -831,14 +842,7 @@ manager.correct - manager.wrong > 800 = halo
         "loot:dScale#5",
         "skill:craft",
       ],
-      [
-        "entrance.south0",
-        "loot:aScepter",
-        "loot:dScale#5",
-        "skill:craft",
-        "permit:bomb",
-        "permit:bomb.2",
-      ],
+      ["entrance.south0", "loot:aScepter", "loot:dScale#5", "skill:craft", "permit:bomb#2"],
     ],
     "receive": [
       "craft:elixir",
@@ -1012,12 +1016,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 20, "east": 22},
     "requires": [
       ["item:gold#500", "entrance.north0"],
-      [
-        "item:gold#500",
-        "entrance.east0",
-        "permit:bomb",
-        "permit:bomb.2",
-      ],
+      ["item:gold#500", "entrance.east0", "permit:bomb#2"],
     ],
     "receive": [
       "item:rubies",
@@ -2163,7 +2162,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "quest:bBomb.9",
-      "permit:bomb.2",
+      "permit:bomb", # 2
     ],
   },
   {
@@ -2550,8 +2549,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "misc:blue crystal",
-        "permit:bomb",
-        "permit:bomb.2",
+        "permit:bomb#2",
         "quest:gTree.10",
       ],
     ],
@@ -2950,8 +2948,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "loot:key",
-        "permit:bomb",
-        "permit:bomb.2",
+        "permit:bomb#2",
       ],
     ],
     "receive": [
