@@ -1,12 +1,9 @@
 window.q = {
   "21_20": {
-    tuskBuyer: [
-      "21_20 - item:gold - merchant",
-      "21_20 - item:gold - merchant",
-    ],
-    venomGirl: ["21_20 - food:orange", "21_20 - food:orange"],
-    goldMan: ["21_20 - magic:crush", "21_20 - magic:crush"],
-    bombSis: ["21_20 - quest:bBomb.1", "21_20 - quest:bBomb.1"],
+    tuskBuyer: ["21_20 - item:gold - merchant"],
+    venomGirl: ["21_20 - food:orange"],
+    goldMan: ["21_20 - magic:crush"],
+    bombSis: ["21_20 - quest:bBomb.1"],
     magicShop: [
       "21_20 - magic:heal",
       "21_20 - magic:blast",
@@ -41,13 +38,13 @@ window.q = {
     tuskBuyer: ["19_21 - item:gold - merchant"],
   },
   "21_21": {
-    craftGirl: ["21_21 - skill:craft", "21_21 - skill:craft"],
+    craftGirl: ["21_21 - skill:craft"],
   },
   "17_22": {
     "": ["17_22 - item:diamonds"],
   },
   "15_21": {
-    soldierLeft: ["15_21 - food:banana", "15_21 - food:banana"],
+    soldierLeft: ["15_21 - food:banana"],
     "": ["15_21 - item:gold", "15_21 - item:bombs"],
   },
   "12_21": {
@@ -67,11 +64,6 @@ window.q = {
       "18_25 - skill:medic.4",
       "18_25 - skill:medic.5",
       "18_25 - skill:medic.6",
-      "18_25 - skill:medic.2",
-      "18_25 - skill:medic.3",
-      "18_25 - skill:medic.4",
-      "18_25 - skill:medic.5",
-      "18_25 - skill:medic.6",
     ],
     "": ["18_25 - skill:medic.1"],
   },
@@ -83,15 +75,21 @@ window.q = {
   },
   "8_25": {
     strGuy: [
-      "-1_-1 - misc:str up npc.1",
+      "-1_-1 - misc:str up npc.5",
+      "-1_-1 - misc:str up npc.6",
+      "-1_-1 - misc:str up npc.7",
+      "-1_-1 - misc:str up npc.8",
+      "-1_-1 - misc:str up npc.9",
       "-1_-1 - misc:str up npc.2",
       "-1_-1 - misc:str up npc.3",
       "-1_-1 - misc:str up npc.4",
+      "-1_-1 - misc:str up npc.1",
+      "-1_-1 - misc:str up npc.10",
+      "-1_-1 - misc:str up npc.11",
     ],
   },
   "9_22": {
     blueBoy: [
-      "9_22 - quest:seeds.1",
       "9_22 - quest:seeds.1",
       "9_22 - food:orange",
       "9_22 - food:peppers - seeds3",
@@ -104,10 +102,10 @@ window.q = {
     ],
   },
   "10_22": {
-    goldMan: ["10_22 - craft:elixir", "10_22 - craft:elixir"],
+    goldMan: ["10_22 - craft:elixir"],
   },
   "11_22": {
-    craftGirl: ["11_22 - craft:emerald", "11_22 - craft:emerald"],
+    craftGirl: ["11_22 - craft:emerald"],
   },
   "11_23": {
     youngMan: ["11_23 - quest:dream.1"],
@@ -122,11 +120,7 @@ window.q = {
       "-1_-1 - misc:str up npc.2",
       "-1_-1 - misc:str up npc.3",
       "-1_-1 - misc:str up npc.4",
-      "-1_-1 - misc:str up npc.5",
-      "-1_-1 - misc:str up npc.6",
-      "-1_-1 - misc:str up npc.7",
-      "-1_-1 - misc:str up npc.8",
-      "-1_-1 - misc:str up npc.9",
+      "-1_-1 - misc:str up npc.1",
       "-1_-1 - misc:str up npc.10",
       "-1_-1 - misc:str up npc.11",
     ],
@@ -143,10 +137,7 @@ window.q = {
     "": ["3_26 - food:elixir"],
   },
   "9_16": {
-    tuskBuyer: [
-      "9_16 - item:gold - merchant",
-      "9_16 - item:gold - merchant",
-    ],
+    tuskBuyer: ["9_16 - item:gold - merchant"],
   },
   "8_18": {
     "": ["8_18 - item:bombs", "8_18 - food:steak"],
@@ -156,19 +147,15 @@ window.q = {
     "": ["6_12 - item:geodes"],
   },
   "11_12": {
-    desertGuy: [
-      "11_12 - food:sunflowerSeeds",
-      "11_12 - food:sunflowerSeeds",
-    ],
+    desertGuy: ["11_12 - food:sunflowerSeeds"],
   },
   "12_12": {
     nHeadstone: ["10_25 - misc:headstoneSwitch3"],
-    "": ["12_12 - magic:blessing"],
   },
   blueBoy: ["12_11 - quest:canteen.1"],
   "12_9": {
-    venomGirl: ["12_9 - food:orange", "12_9 - food:orange"],
-    "": [
+    venomGirl: ["12_9 - food:orange"],
+    "tent|2": [
       "12_9 - food:carrot",
       "12_9 - food:beefJerky",
       "12_9 - food:cherries",
@@ -181,11 +168,8 @@ window.q = {
     desertGuy: ["12_9 - misc:fire crystal"],
   },
   "11_9": {
-    tuskBuyer: [
-      "11_9 - item:gold - merchant",
-      "11_9 - item:gold - merchant",
-    ],
-    "": [
+    tuskBuyer: ["11_9 - item:gold - merchant"],
+    "tent|3": [
       "11_9 - magic:weak",
       "11_9 - magic:refresh",
       "11_9 - magic:lightning",
@@ -193,7 +177,7 @@ window.q = {
     desertGuyLeft: ["11_9 - skill:warp"],
   },
   "10_14": {
-    baron: ["10_14 - food:holyWater", "10_14 - food:holyWater"],
+    baron: ["10_14 - food:holyWater"],
   },
   "10_25": {
     nHeadstone: ["18_24 - misc:headstoneSwitch4"],
@@ -215,22 +199,15 @@ window.q = {
     soldierLeft: ["14_18 - weapon:creeperCrusher"],
   },
   "13_18": {
-    tuskBuyer: [
-      "13_18 - item:gold - merchant",
-      "13_18 - item:gold - merchant",
-    ],
+    tuskBuyer: ["13_18 - item:gold - merchant"],
     supplies: ["13_18 - food:gingerBread", "13_18 - food:banana"],
   },
   "13_17": {
     soldierLeft: [
       "13_17 - quest:dream.2",
-      "13_17 - quest:dream.2",
       "13_17 - armor:nobleArmor",
     ],
-    tuskBuyer: [
-      "13_17 - item:gold - merchant",
-      "13_17 - item:gold - merchant",
-    ],
+    tuskBuyer: ["13_17 - item:gold - merchant"],
     blacksmith: [
       "13_17 - weapon:royalSword",
       "13_17 - weapon:royalStaff",
@@ -239,37 +216,11 @@ window.q = {
     ],
     magicShop: ["13_17 - magic:regen", "13_17 - magic:cloud"],
   },
-  "17_15": {
-    "": ["17_15 - item:gold", "17_15 - food:gingerBread"],
-  },
-  "18_15": {
-    "": ["18_15 - food:newtonsApple"],
-  },
-  "23_10": {
-    "": [
-      "23_10 - armor:alphaArmor",
-      "23_10 - item:diamonds",
-      "23_10 - food:newtonsApple",
-    ],
-  },
   "11_13": {
-    woodsman: [
-      "11_13 - food:blueberries",
-      "11_13 - food:blueberries",
-    ],
+    woodsman: ["11_13 - food:blueberries"],
   },
   "10_13": {
-    shayde: ["10_13 - misc:ninja", "10_13 - misc:ninja"],
-    "": [
-      "10_13 - item:gold",
-      "10_13 - item:rubies",
-      "10_13 - item:aurastones",
-      "10_13 - item:diamonds",
-      "10_13 - item:diamonds",
-      "10_13 - item:slamstones",
-      "10_13 - food:holyWater",
-      "10_13 - food:elixir",
-    ],
+    shayde: ["10_13 - misc:ninja"],
   },
   "20_20": {
     blacksmith: [
@@ -286,79 +237,17 @@ window.q = {
       "20_20 - food:grapes",
     ],
   },
-  "18_20": {
-    "": ["18_20 - item:gold"],
-  },
-  "18_21": {
-    "": ["18_21 - food:gingerBread"],
-  },
-  "19_23": {
-    "": ["19_23 - magic:fire"],
-  },
-  "16_22": {
-    "": ["16_22 - item:gold"],
-  },
-  "14_19": {
-    "": ["14_19 - armor:regenArmor"],
-  },
-  "11_21": {
-    "": ["11_21 - item:bombs"],
-  },
-  "11_19": {
-    "": ["11_19 - food:sunflowerSeeds", "11_19 - food:strawberry"],
-  },
-  "11_25": {
-    "": ["11_25 - food:beefJerky"],
-  },
-  "17_20": {
-    "": ["17_20 - item:gold", "17_20 - food:beefJerky"],
-  },
-  "15_19": {
-    "": [
-      "15_19 - item:gold",
-      "15_19 - item:bombs",
-      "15_19 - food:banana",
-    ],
-  },
-  "14_21": {
-    "": [
-      "14_21 - item:bombs",
-      "14_21 - food:apple",
-      "14_21 - item:gold",
-    ],
-  },
-  "15_24": {
-    "": ["15_24 - item:gold"],
-  },
-  "18_23": {
-    "": ["18_23 - weapon:warlockStaff"],
-  },
-  "21_23": {
-    "": ["21_23 - item:diamonds - chest", "21_23 - item:gold"],
-  },
   "14_17": {
     desertGuy: ["14_17 - item:bombs"],
   },
   "15_16": {
-    goldMan: [
-      "15_16 - magic:ice",
-      "15_16 - magic:ice",
-      "15_16 - item:ring of magic",
-    ],
+    goldMan: ["15_16 - magic:ice", "15_16 - item:ring of magic"],
   },
   "16_16": {
-    nHeadstone: [
-      "18_24 - misc:headstoneSwitch1",
-      "16_16 - misc:headstoneSwitch2",
-      "12_12 - misc:headstoneSwitch3",
-      "10_25 - misc:headstoneSwitch4",
-    ],
-  },
-  "17_16": {
-    "": ["17_16 - item:diamonds"],
+    nHeadstone: ["16_16 - misc:headstoneSwitch2"],
   },
   "19_15": {
-    "": [
+    "aGuard|1": [
       "19_15 - skill:hint",
       "19_15 - skill:fear",
       "19_15 - skill:shield",
@@ -381,53 +270,34 @@ window.q = {
       "20_15 - skill:firewall.4",
       "20_15 - skill:firewall.5",
     ],
-    strGuy: ["-1_-1 - misc:str up npc.1"],
-  },
-  "19_18": {
-    "": ["19_18 - item:rubies"],
+    strGuy: [
+      "-1_-1 - misc:str up npc.5",
+      "-1_-1 - misc:str up npc.6",
+      "-1_-1 - misc:str up npc.7",
+      "-1_-1 - misc:str up npc.8",
+      "-1_-1 - misc:str up npc.9",
+      "-1_-1 - misc:str up npc.2",
+      "-1_-1 - misc:str up npc.3",
+      "-1_-1 - misc:str up npc.4",
+      "-1_-1 - misc:str up npc.1",
+      "-1_-1 - misc:str up npc.10",
+      "-1_-1 - misc:str up npc.11",
+    ],
   },
   "21_18": {
-    "": ["21_18 - item:diamonds", "21_18 - food:peppers"],
     shayde: ["21_18 - misc:hugeBomb"],
   },
   "21_17": {
     soldier: ["21_17 - item:rubies"],
   },
-  "9_26": {
-    "": ["9_26 - food:blueberries"],
-  },
   "4_26": {
-    "": ["4_26 - weapon:shadowStaff"],
     goldArmorGuy: ["4_26 - skill:tough"],
   },
   "300_300": {
     supplies: ["300_300 - food:blueberries", "300_300 - food:elixir"],
   },
-  "9_13": {
-    "": ["9_13 - item:bombs"],
-  },
-  "10_9": {
-    "": ["10_9 - food:steak"],
-  },
-  "6_13": {
-    "": ["6_13 - food:grapes", "6_13 - food:strawberry"],
-  },
   "13_16": {
-    "": ["13_16 - magic:weak", "13_16 - weapon:sKnife"],
     ringEvaIcon: ["13_16 - item:ring of evasion"],
-  },
-  "11_18": {
-    "": ["11_18 - magic:refresh"],
-  },
-  "12_18": {
-    "": [
-      "-1_-1 - skill:dig",
-      "-1_-1 - skill:kick",
-      "-1_-1 - skill:flee",
-      "-1_-1 - skill:swap",
-      "-1_-1 - skill:firewall",
-      "-1_-1 - skill:halo",
-    ],
   },
   "14_22": {
     "": ["14_22 - item:ring of gold"],
@@ -528,41 +398,7 @@ window.q = {
     craftGirl: ["100_100 - craft:newtonsApple"],
   },
   "200_200": {
-    ringGuy: [
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-      "200_200 - weapon:twinFury",
-    ],
+    ringGuy: ["200_200 - weapon:twinFury"],
   },
   "11_11": {
     goldArmorGuy: ["11_11 - item:ring of poison"],

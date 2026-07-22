@@ -162,9 +162,10 @@ class CachedCGIHTTPRequestHandler(CGIHTTPRequestHandler):
       arg1 = arg1.split("=", 1)
       arg1 = arg1[1] if len(arg1) > 1 else None
 
-    print("[" + arg1 + "]", "arg1", not not arg1)
     if arg1:
       cmd.append(arg1)
+    else:
+      process_manager._stop_process()
 
     # Set response headers
     self.send_response(200)
