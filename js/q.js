@@ -300,7 +300,7 @@ window.q = {
     ringEvaIcon: ["13_16 - item:ring of evasion"],
   },
   "14_22": {
-    "water|49": ["14_22 - item:ring of gold"],
+    "water|48": ["14_22 - item:ring of gold"],
   },
   "16_21": {
     "skeleton|0": ["16_21 - item:ring of health"],
