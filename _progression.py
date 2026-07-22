@@ -569,7 +569,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 12, "east": 12},
     "requires": [
       [
-        "quest:rings.1",
+        "quest:warp.1",
         "entrance.west0",
       ],
     ],
@@ -852,7 +852,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 10, "east": 25},
     "requires": [
       [
-        "quest:rings.1",
+        "quest:warp.1",
       ],
     ],
     "receive": [
@@ -981,7 +981,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 18, "east": 24},
     "requires": [
       [
-        "quest:rings.1",
+        "quest:warp.1",
       ],
     ],
     "receive": [
@@ -1295,7 +1295,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 16, "east": 16},
     "requires": [
       [
-        "quest:rings.1",
+        "quest:warp.1",
       ],
     ],
     "receive": [
