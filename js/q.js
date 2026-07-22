@@ -126,12 +126,9 @@ window.q = {
     ],
     "": ["misc:str up npc.1", "-1_-1 - misc:str up npc.1"],
   },
-  "18_24": {
-    nHeadstone: ["16_16 - misc:headstoneSwitch1"],
-  },
   "20_22": {
     rubySign: ["20_22 - item:rubies"],
-    darkHouse: ["20_22 - item:rubies"],
+    // darkHouse: ["20_22 - item:rubies"],
   },
   "3_26": {
     "": ["3_26 - food:elixir"],
@@ -148,9 +145,6 @@ window.q = {
   },
   "11_12": {
     desertGuy: ["11_12 - food:sunflowerSeeds"],
-  },
-  "12_12": {
-    nHeadstone: ["10_25 - misc:headstoneSwitch3"],
   },
   blueBoy: ["12_11 - quest:canteen.1"],
   "12_9": {
@@ -178,9 +172,6 @@ window.q = {
   },
   "10_14": {
     baron: ["10_14 - food:holyWater"],
-  },
-  "10_25": {
-    nHeadstone: ["18_24 - misc:headstoneSwitch4"],
   },
   "15_18": {
     "": ["15_18 - item:bombs", "15_18 - food:chocolate"],
