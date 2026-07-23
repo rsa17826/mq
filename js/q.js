@@ -269,10 +269,6 @@ window.q = {
       "15_18 - food:beefJerky",
       "15_18 - permit:shadowsoulEntrance",
     ],
-    "tBoxBlue\nchar|8": [
-      "15_18 - item:bombs",
-      "15_18 - food:chocolate",
-    ],
     "mBox\nmess\nchar|0": [
       "15_18 - permit:shadowsoulEntrance",
       "15_18 - quest:gTree.18",
@@ -450,7 +446,6 @@ window.q = {
   },
   "4_26": {
     goldArmorGuy: ["4_26 - skill:tough"],
-    "char|0\ntBox|15": ["4_26 - weapon:shadowStaff"],
     "": [
       "4_26 - quest:isles.19",
       "undefined - quest:isles.20",
@@ -665,7 +660,7 @@ window.q = {
     forestGuard: ["18_22 - quest:gTree.3"],
   },
   "19_23": {
-    "": ["19_23 - quest:gTree.4", "19_23 - magic:fire"],
+    woodsman: ["19_23 - quest:gTree.4"],
   },
   "21_23": {
     "char|4": ["21_23 - item:diamonds - chest", "21_23 - item:gold"],
@@ -684,7 +679,7 @@ window.q = {
     ],
   },
   "15_24": {
-    "": ["15_24 - quest:oMan.2", "15_24 - item:gold"],
+    whiteHead: ["15_24 - quest:oMan.2"],
   },
   "14_20": {
     "dirt|76\ncavernWall|76": ["14_20 - quest:gTree.7"],
@@ -693,7 +688,6 @@ window.q = {
     "skillsScreen\nwaterNW|15\nskillTile|0": ["12_20 - quest:pam.4"],
   },
   "14_19": {
-    "char|0\ntBox|3": ["14_19 - armor:regenArmor"],
     "dirt|60": [
       "14_19 - quest:aSword.47",
       "14_19 - quest:aSword.48",
@@ -712,7 +706,6 @@ window.q = {
     ],
   },
   "16_15": {
-    "tBoxBlue\nchar|0\nsnow|39": ["16_15 - armor:diamondArmor"],
     "snow|45": [
       "16_15 - quest:hWater.2",
       "16_15 - armor:diamondArmor",
@@ -721,37 +714,18 @@ window.q = {
       "16_15 - quest:pam.10",
     ],
   },
-  "17_15": {
-    "tBoxGreen\nchar|0\nsnow|53": [
-      "17_15 - item:gold",
-      "17_15 - food:gingerBread",
-    ],
-  },
   "18_15": {
-    "tBoxBlue\nchar|0\nsnow|39": ["18_15 - food:newtonsApple"],
     "snow|105": ["18_15 - quest:oMan.8"],
-  },
-  "15_14": {
-    "char|0\nsnow|119\ntBox|5": ["15_14 - food:carrot"],
   },
   "16_14": {
     "snow|47": ["16_14 - quest:gTree.10"],
     "snow|19\ncolumn|19": ["16_14 - quest:gTree.22"],
-  },
-  "9_13": {
-    "": ["9_13 - item:bombs"],
-  },
-  "6_13": {
-    "": ["6_13 - food:grapes", "6_13 - food:strawberry"],
   },
   "11_21": {
     "dirt|107": ["11_21 - quest:oMan.4"],
     "dirt|80": ["11_21 - item:bombs"],
     "dirt|66": ["11_21 - quest:oMan.12"],
     "dirt|104": ["11_21 - quest:oMan.16"],
-  },
-  "11_17": {
-    "char|12\ntBox|9": ["11_17 - item:bombs", "11_17 - item:gold"],
   },
   "10_17": {
     "skillsScreen\nskillTile|0": ["10_17 - quest:pam.6"],
@@ -766,17 +740,16 @@ window.q = {
     "dirt|89": ["12_14 - quest:bBomb.5"],
   },
   "19_16": {
-    "": [
+    arenaDir: [
       "19_16 - quest:access.1",
       "19_16 - quest:access.2",
-      "19_16 - quest:access.3",
       "19_16 - quest:access.4",
       "19_16 - quest:access.5",
       "19_16 - quest:access.6",
       "19_16 - quest:access.7",
-      "19_16 - quest:access.8",
       "19_16 - quest:access.9",
     ],
+    bombBro: ["19_16 - quest:access.3", "19_16 - quest:access.8"],
   },
   "10_15": {
     "water|107": ["10_15 - quest:oMan.5"],
@@ -784,16 +757,11 @@ window.q = {
     "water|109": ["10_15 - quest:oMan.9"],
   },
   "11_16": {
-    "": [
-      "-1_-1 - skill:kick",
-      "11_16 - quest:dream.6",
-      "11_16 - quest:dream.7",
-      "11_16 - quest:dream.8",
-    ],
+    youngMan: ["11_16 - quest:dream.6", "11_16 - quest:dream.8"],
     "water|136": ["11_16 - quest:oMan.6"],
   },
   "201_200": {
-    "": ["201_200 - quest:isles.3", "201_200 - quest:isles.5"],
+    baron: ["201_200 - quest:isles.3", "201_200 - quest:isles.5"],
     "black|93": ["201_200 - quest:isles.8"],
     "backArrowPH\nblack|121": ["201_200 - quest:isles.15"],
   },
@@ -801,10 +769,8 @@ window.q = {
     "lava|38": ["18_17 - item:gold"],
     "lava|61": ["-1_-1 - quest:curse.2"],
     "lava|145": ["-1_-1 - quest:aSword.6"],
-    "": ["-1_-1 - weapon:pitchfork"],
   },
   "19_18": {
-    "tBoxBlue\nchar|1\nvRock|91": ["19_18 - item:rubies"],
     "vRock|37": ["19_18 - quest:rings.11"],
   },
   "20_17": {
@@ -821,8 +787,7 @@ window.q = {
     "skillsScreen\nskillTile|0": ["9_11 - quest:pam.8"],
   },
   "10_10": {
-    "": ["10_10 - quest:dream.9"],
-    "dRocks|55": ["10_10 - quest:dream.10", "10_10 - quest:dream.11"],
+    youngMan: ["10_10 - quest:dream.9", "10_10 - quest:dream.11"],
   },
   "12_22": {
     "dirt|66": ["12_22 - quest:curse.1"],
@@ -920,9 +885,6 @@ window.q = {
       "15_18 - quest:gTree.18",
     ],
   },
-  "4_24": {
-    "char|0\ntHole|54": ["4_24 - food:cherries"],
-  },
   "19_14": {
     "backArrowPH\ncavernWall|120": ["19_14 - quest:hWater.3"],
   },
@@ -931,37 +893,13 @@ window.q = {
     "stoneDark|46": ["24_9 - quest:gTree.24"],
   },
   "23_10": {
-    "tBoxGreen\nchar|8\nstoneDark|114": ["23_10 - armor:alphaArmor"],
     "char|8\nstoneDark|138": [
       "23_10 - item:diamonds",
       "23_10 - food:newtonsApple",
     ],
   },
-  "24_14": {
-    "char|8\nstoneDark|75": ["24_14 - armor:grimGear"],
-  },
-  "24_11": {
-    "char|8\ntBox|17\nstoneDark|25": ["24_11 - weapon:baneBlade"],
-  },
-  "21_11": {
-    "char|8\ntBox|33\nstoneDark|15\nsteelPillar|1": [
-      "21_11 - food:gummyBears",
-    ],
-  },
   "17_11": {
-    "char|8\nnecroColumn|1": ["17_11 - item:gold - 2-2-0"],
-    "": [
-      "17_11 - quest:hWater.4",
-      "17_11 - item:gold - 5-0-5",
-      "17_11 - item:rubies - 5-0-5",
-      "17_11 - item:diamonds - 5-0-5",
-    ],
-    "char|13": ["17_11 - food:holyWater - 0-7-0"],
-    "backArrowPH\nchar|13": [
-      "17_11 - food:gummyBears - 1-0-2",
-      "17_11 - food:blueberries - 1-0-2",
-    ],
-    "shayde\nchar|5": ["17_11 - quest:hWater.6"],
+    shayde: ["17_11 - quest:hWater.6"],
   },
   "17_10": {
     "": ["17_10 - quest:hWater.5"],
@@ -1041,32 +979,10 @@ window.q = {
       "14_21 - item:gold",
     ],
   },
-  "6_10": {
-    "char|5\ntBox|11": ["6_10 - food:chocolate"],
-  },
-  "10_9": {
-    "char|5": ["10_9 - food:steak"],
-  },
-  "9_10": {
-    "char|5": ["9_10 - item:gold"],
-  },
   "9_15": {
     "water|45": ["9_15 - armor:phantomCoat"],
   },
   "18_13": {
     "": ["18_13 - misc:bombCapacity"],
-  },
-  "11_19": {
-    "char|12": [
-      "11_19 - food:sunflowerSeeds",
-      "11_19 - food:strawberry",
-    ],
-  },
-  "15_19": {
-    "char|12": [
-      "15_19 - item:gold",
-      "15_19 - item:bombs",
-      "15_19 - food:banana",
-    ],
   },
 }
