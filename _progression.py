@@ -1012,6 +1012,7 @@ manager.correct - manager.wrong > 800 = halo
         "item:ring of gold",
         "loot:tBand#5",
         "loot:gSkin#2",
+        "skill:craft",
       ],
     ],
     "receive": [
@@ -2075,6 +2076,20 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "quest:rings.3",
+    ],
+  },
+  {
+    "room": {"north": 19, "east": 20},
+    "requires": [
+      [
+        "skill:reveal",
+        "misc:blue crystal",
+      ],
+    ],
+    "receive": [
+      "food:holyWater",
+      "food:elixir",
+      "food:strawberry#5",
     ],
   },
   {
