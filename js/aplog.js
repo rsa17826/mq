@@ -408,6 +408,20 @@ function apSendSayFromInput() {
         ArchipelagoClient.runAPServer(seed || undefined, apTryConnect)
       },
     },
+    showMissing: {
+      desc: "shows missing locations",
+      func(seed) {
+        apLog(
+          ap.missingLocations
+            .map(
+              (e) =>
+                `${ap.scoutedItems[e].locationName} - ${ap.scoutedItems[e].itemName}`,
+            )
+            .join("\n"),
+          ap.missingLocations.length,
+        )
+      },
+    },
     time: {
       args: [["format", "12/24"]],
       desc: "changes time mode",

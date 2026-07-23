@@ -57,3 +57,26 @@ function removeDuplicates(obj) {
 
 // Clean window.q in-place
 removeDuplicates(window.q)
+
+
+function findDuplicateArrays(obj) {
+  const map = {};
+  const duplicates = {};
+
+  for (const [key, val] of Object.entries(obj)) {
+    // Convert array to a unique string signature
+    const signature = JSON.stringify(val);
+
+    if (!map[signature]) {
+      map[signature] = [key];
+    } else {
+      map[signature].push(key);
+      // Store in duplicates map once we find 2 or more keys with the same array
+      duplicates[signature] = map[signature];
+    }
+  }
+
+  return duplicates;
+}
+
+Object.values(q).map(findDuplicateArrays).filter(e=>Object.keys(e).length)
