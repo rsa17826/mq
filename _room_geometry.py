@@ -735,7 +735,11 @@ GEOM: list[ExitBase] = [
     "east": 9,
     "areas": [
       {
-        "reqs": [["permit:bomb"]],
+        "reqs": [
+          [
+            "permit:bomb",
+          ],
+        ],
         "areas": [
           [
             {"side": "north", "idx": 0},
@@ -6531,10 +6535,10 @@ WARPS: tuple[Warp, ...] = (
     "connections": ((19, 16, "south", 0), (19, 15, "north", 0)),
   },
   {
-    "connections": ((9, 22, "north", 0), (9, 21, "root", 0)),
+    "connections": ((9, 22, "north", 1), (9, 21, "root", 0)),
   },
   {
-    "reqs": [["permit:bomb.2"]],
+    "reqs": [["permit:bomb#2"]],
     "connections": ((12, 14, "root", 0), (9, 21, "root", 0)),
   },
   {

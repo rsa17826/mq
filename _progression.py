@@ -842,7 +842,13 @@ manager.correct - manager.wrong > 800 = halo
         "loot:dScale#5",
         "skill:craft",
       ],
-      ["entrance.south0", "loot:aScepter", "loot:dScale#5", "skill:craft", "permit:bomb#2"],
+      [
+        "entrance.south0",
+        "loot:aScepter",
+        "loot:dScale#5",
+        "skill:craft",
+        "permit:bomb#2",
+      ],
     ],
     "receive": [
       "craft:elixir",
@@ -1016,7 +1022,11 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 20, "east": 22},
     "requires": [
       ["item:gold#500", "entrance.north0"],
-      ["item:gold#500", "entrance.east0", "permit:bomb#2"],
+      [
+        "item:gold#500",
+        "entrance.east0",
+        "permit:bomb#2",
+      ],
     ],
     "receive": [
       "item:rubies",
