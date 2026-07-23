@@ -919,21 +919,21 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 14, "east": 25},
     "requires": [[]],
     "receive": [
-      "flag:three part code part 1",
+      "flag:three part code part 3",
     ],
   },
   {
     "room": {"north": 14, "east": 24},
     "requires": [[]],
     "receive": [
-      "flag:three part code part 2",
+      "flag:three part code part 1",
     ],
   },
   {
     "room": {"north": 13, "east": 24},
     "requires": [[]],
     "receive": [
-      "flag:three part code part 3",
+      "flag:three part code part 2",
     ],
   },
   {
@@ -2187,7 +2187,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "quest:bBomb.9",
-      "permit:bomb", # 2
+      "permit:bomb@2",
     ],
   },
   {
@@ -2276,7 +2276,7 @@ manager.correct - manager.wrong > 800 = halo
         "item:ring of health",
         "item:ring of evasion",
         "item:ring of poison",
-        "quest:rings.1",
+        "quest:rings.6",
       ]
     ],
     "receive": [
@@ -2328,8 +2328,19 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "item:ring of magic",
       "quest:rings.9",
+    ],
+  },
+  {
+    "room": {"north": -1, "east": -1},
+    "requires": [
+      [
+        "quest:rings.9",
+        "area:4",
+      ],
+    ],
+    "receive": [
+      "item:ring of magic",
     ],
     "info": "doesn't require lv3 fire but using lv3 fire doesn't require as much luck but if not it will spawn eventually",
   },
@@ -3285,12 +3296,143 @@ manager.correct - manager.wrong > 800 = halo
       "food:blueberries#10",
     ],
   },
-  # TODO
   {
     "room": {"north": 16, "east": 18},
     "requires": [
       [
         "quest:bBomb.13",
+        "weapon:creeperCrusher",
+      ],
+    ],
+    "receive": [
+      "quest:bBomb.14",
+    ],
+  },
+  {
+    "room": {"north": 16, "east": 18},
+    "requires": [
+      [
+        "quest:bBomb.14",
+        "weapon:creeperCrusher",
+      ],
+    ],
+    "receive": [
+      "quest:bBomb.15",
+    ],
+  },
+  {
+    "room": {"north": 16, "east": 18},
+    "requires": [
+      [
+        "quest:bBomb.15",
+        "weapon:creeperCrusher",
+      ],
+    ],
+    "receive": [
+      "quest:bBomb.16",
+    ],
+  },
+  {
+    "room": {"north": 16, "east": 18},
+    "requires": [
+      [
+        "quest:bBomb.16",
+        "weapon:creeperCrusher",
+      ],
+    ],
+    "receive": [
+      "quest:bBomb.17",
+    ],
+  },
+  {
+    "room": {"north": 16, "east": 18},
+    "requires": [
+      [
+        "quest:bBomb.17",
+        "weapon:creeperCrusher",
+      ],
+    ],
+    "receive": [
+      "quest:bBomb.18",
+    ],
+  },
+  {
+    "room": {"north": 16, "east": 18},
+    "requires": [
+      [
+        "quest:bBomb.18",
+        "weapon:creeperCrusher",
+      ],
+    ],
+    "receive": [
+      "quest:bBomb.19",
+    ],
+  },
+  {
+    "room": {"north": 16, "east": 18},
+    "requires": [
+      [
+        "quest:bBomb.19",
+        "weapon:creeperCrusher",
+      ],
+    ],
+    "receive": [
+      "quest:bBomb.20",
+    ],
+  },
+  {
+    "room": {"north": 16, "east": 18},
+    "requires": [
+      [
+        "quest:bBomb.20",
+        "weapon:creeperCrusher",
+      ],
+    ],
+    "receive": [
+      "quest:bBomb.21",
+    ],
+  },
+  {
+    "room": {"north": 16, "east": 18},
+    "requires": [
+      [
+        "quest:bBomb.21",
+        "weapon:creeperCrusher",
+      ],
+    ],
+    "receive": [
+      "quest:bBomb.22",
+    ],
+  },
+  {
+    "room": {"north": 16, "east": 18},
+    "requires": [
+      [
+        "quest:bBomb.22",
+        "weapon:creeperCrusher",
+      ],
+    ],
+    "receive": [
+      "quest:bBomb.23",
+    ],
+  },
+  {
+    "room": {"north": 16, "east": 18},
+    "requires": [
+      [
+        "quest:bBomb.23",
+        "weapon:creeperCrusher",
+      ],
+    ],
+    "receive": [
+      "quest:bBomb.24",
+    ],
+  },
+  {
+    "room": {"north": 16, "east": 18},
+    "requires": [
+      [
+        "quest:bBomb.24",
         "weapon:creeperCrusher",
       ],
     ],
@@ -3767,9 +3909,8 @@ manager.correct - manager.wrong > 800 = halo
   {
     "room": {"north": 10, "east": 12},
     "requires": [
-      [
-        "quest:oMan.17",
-      ],
+      ["quest:oMan.17", "area:6"],
+      ["quest:oMan.17", "area:7"],
     ],
     "receive": [
       "quest:oMan.18",
@@ -3920,10 +4061,40 @@ manager.correct - manager.wrong > 800 = halo
     ],
   },
   {
-    "room": {"north": 4, "east": 26},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "quest:isles.19",
+        "area:17",
+        "area:6",
+        "area:9",
+        "area:2",
+      ],
+    ],
+    "receive": [
+      "quest:isles.20",
+    ],
+  },
+  {
+    "room": {"north": -1, "east": -1},
+    "requires": [
+      [
+        "quest:isles.20",
+        "area:17",
+        "area:6",
+        "area:9",
+        "area:2",
+      ],
+    ],
+    "receive": [
+      "quest:isles.21",
+    ],
+  },
+  {
+    "room": {"north": -1, "east": -1},
+    "requires": [
+      [
+        "quest:isles.21",
         "area:17",
         "area:6",
         "area:9",
@@ -4444,6 +4615,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.24", "area:6", "weapon:aSword", "item:diamonds"],
+      ["quest:aSword.24", "area:7", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.25"],
   },
@@ -4451,6 +4623,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.25", "area:6", "weapon:aSword", "item:diamonds"],
+      ["quest:aSword.25", "area:7", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.26"],
   },
@@ -4458,6 +4631,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.26", "area:6", "weapon:aSword", "item:diamonds"],
+      ["quest:aSword.26", "area:7", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.27"],
   },
@@ -4465,6 +4639,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.27", "area:6", "weapon:aSword", "item:diamonds"],
+      ["quest:aSword.27", "area:7", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.28"],
   },
@@ -4472,6 +4647,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.28", "area:6", "weapon:aSword", "item:diamonds"],
+      ["quest:aSword.28", "area:7", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.29"],
   },
@@ -4479,6 +4655,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.29", "area:6", "weapon:aSword", "item:diamonds"],
+      ["quest:aSword.29", "area:7", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.30"],
   },
@@ -4486,6 +4663,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.30", "area:6", "weapon:aSword", "item:diamonds"],
+      ["quest:aSword.30", "area:7", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.31"],
   },
@@ -4493,6 +4671,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.31", "area:6", "weapon:aSword", "item:diamonds"],
+      ["quest:aSword.31", "area:7", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.32"],
   },
@@ -4500,6 +4679,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.32", "area:6", "weapon:aSword", "item:diamonds"],
+      ["quest:aSword.32", "area:7", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.33"],
   },
@@ -4507,6 +4687,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.33", "area:6", "weapon:aSword", "item:diamonds"],
+      ["quest:aSword.33", "area:7", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.34"],
   },
@@ -4514,6 +4695,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.34", "area:6", "weapon:aSword", "item:diamonds"],
+      ["quest:aSword.34", "area:7", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.35"],
   },
@@ -4521,6 +4703,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.35", "area:6", "weapon:aSword", "item:diamonds"],
+      ["quest:aSword.35", "area:7", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.36"],
   },
@@ -4528,6 +4711,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.36", "area:6", "weapon:aSword", "item:diamonds"],
+      ["quest:aSword.36", "area:7", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.37"],
   },
@@ -4535,6 +4719,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.37", "area:6", "weapon:aSword", "item:diamonds"],
+      ["quest:aSword.37", "area:7", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.38"],
   },
@@ -4542,11 +4727,12 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": -1, "east": -1},
     "requires": [
       ["quest:aSword.38", "area:6", "weapon:aSword", "item:diamonds"],
+      ["quest:aSword.38", "area:7", "weapon:aSword", "item:diamonds"],
     ],
     "receive": ["quest:aSword.39"],
   },
   {
-    "room": {"north": 501, "east": 500},
+    "room": {"north": 500, "east": 501},
     "requires": [
       ["quest:aSword.39", "skill:reveal"],
     ],
