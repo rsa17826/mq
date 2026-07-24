@@ -86,7 +86,9 @@ class ItemTracker {
     ;(entry.requires || []).forEach((group) =>
       group.forEach((rawTok) => {
         if (!this.isLootToken(rawTok)) return
-        const m = this.baseTok(rawTok).match(/^loot:(?!key)([^#]+)#?(\d*)$/)
+        const m = this.baseTok(rawTok).match(
+          /^loot:(?!key)([^#]+)#?(\d*)$/,
+        )
         if (!m) return
         const name = m[1]
         const count = m[2] ? Number(m[2]) : 1
@@ -166,14 +168,10 @@ class ItemTracker {
     const tok = this.baseTok((entry.receive || [])[0] || "")
     if (!tok) return false
     const key = `${entry.room} - ${tok}`
-    const els = document.querySelectorAll(
-      `.progression-icon[data-location="${CSS.escape(key)}"]`,
-    )
+    const els = Logic.iconsByLocation[key]
     return (
       [...els].some((el) => el.classList.contains("checked")) ||
-      (tok.startsWith("quest:") &&
-        typeof QuestState !== "undefined" &&
-        QuestState.satisfied(tok))
+      (tok.startsWith("quest:") && QuestState.satisfied(tok))
     )
   }
 

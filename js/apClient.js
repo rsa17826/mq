@@ -659,7 +659,6 @@ class ArchipelagoClient {
       }
       this.lastProcessedIndex = globalIndex + 1
     })
-    Logic.recompute()
   }
 
   /**

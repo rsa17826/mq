@@ -12,7 +12,7 @@ class Tracker {
   static markChecked(locationId) {
     const key = Tracker.ID_TO_LOCATION[locationId]
     if (!key) return
-    const els = Tracker.iconsByLocation[key]
+    const els = Logic.iconsByLocation[key]
     if (!els) return
     els.forEach((el) => el.classList.add("checked"))
   }
@@ -90,12 +90,6 @@ window.onApCreated.push((ap) => {
   }
 })
 window.onApConnect.push(() => {
-  document
-    .querySelectorAll(".progression-icon[data-location]")
-    .forEach((el) => {
-      const key = el.dataset.location
-      ;(Tracker.iconsByLocation[key] ||= []).push(el)
-    })
   for (const key in ap.slotData.AP_LOCATION_IDS) {
     Tracker.ID_TO_LOCATION[ap.slotData.AP_LOCATION_IDS[key]] = key
   }
