@@ -9,8 +9,24 @@
 // @endregex
 // @ts-nocheck
 
-window.debug = false
-
+window.debugEnabled = !false
+onPlayerLoaded.push(() => {
+  window.OEM = Object.entries(manager)
+  OEMA = [
+    ...OEM.filter(([k, e]) => !["whiteFlash"].includes(k)).map(
+      (e) => e[0],
+    ),
+  ]
+  OEMB = [
+    ...OEM.filter(
+      ([k, e]) =>
+        !["sand", "grass", "char"].includes(k) &&
+        !k.includes("Floor") &&
+        !k.includes("floor") &&
+        e?.[0]?.__visible != undefined,
+    ),
+  ]
+})
 // TODO make settings for all the overlay renders
 // TODO make q store pos and only show if pos matches
 // TODO fix sell dialogue causing lag
@@ -3609,50 +3625,41 @@ for (var i = 0; i < 11; i++) {
             if (aaa) {
               // TODO remove when done
               if (
-                window.debug &&
+                window.debugEnabled &&
                 (this == manager.char[0] ||
                   this == manager.charBottom[0] ||
                   this == test.colCharBottom)
               ) {
-                window.selectedThing = [
-                  ...Object.entries(manager)
-                    .filter(
-                      ([k, e]) =>
-                        !["whiteFlash"].includes(k) &&
-                        e?.get_visible?.() &&
-                        e?.hitTestPoint?.(
-                          test.get_mouseX(),
-                          test.get_mouseY(),
-                          true,
-                        ),
-                    )
-                    .map((e) => e[0]),
-                  ...Object.entries(manager)
-                    .filter(
-                      ([k, e]) =>
-                        !["sand", "grass"].includes(k) &&
-                        !k.includes("Floor") &&
-                        !k.includes("floor"),
-                    )
-                    .map(([k, e]) =>
-                      e
-                        ?.map?.((e, i) =>
-                          (
-                            e?.get_visible?.() &&
-                            e?.hitTestPoint?.(
-                              test.get_mouseX(),
-                              test.get_mouseY(),
-                              true,
-                            )
-                          ) ?
-                            [k, i]
-                          : null,
-                        )
-                        .filter(Boolean),
-                    )
-                    .filter((e) => e?.length)
-                    .map((e) => e[0].join("|")),
-                ].join("\n")
+                let mx = manager.x
+                let my = manager.y
+                const results = []
+
+                // 1. Process OEMA
+                for (let k of OEMA) {
+                  const [k, e] = OEMA[i]
+                  if (e?.__visible && e.hitTestPoint(mx, my, true)) {
+                    results.push(k)
+                  }
+                }
+
+                // 2. Process OEMB
+                for (let i = 0; i < OEMB.length; i++) {
+                  const [k, subList] = OEMB[i]
+                  if (!subList) continue
+
+                  for (let j = 0; j < subList.length; j++) {
+                    const e = subList[j]
+                    if (
+                      e?.__visible &&
+                      e.hitTestPoint(mx, my, true)
+                    ) {
+                      results.push(`${k}|${j}`)
+                      break
+                    }
+                  }
+                }
+
+                window.selectedThing = results.join("\n")
               }
             }
             return aaa
