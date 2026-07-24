@@ -603,7 +603,7 @@ class PathFinding {
     token = PathFinding.baseTok(token)
     if (token.startsWith("quest:")) return QuestState.satisfied(token)
     const key = `${room} - ${token}`
-    const els = Logic.iconsByLocation[key]
+    const els = Logic.iconsByLocation[key] || []
     return els.some((el) => el.classList.contains("checked"))
   } // Some entries live in the virtual/no-location room (e.g. "-1_-1") and are
   // gated by an area:* requirement instead of having a real physical spot --

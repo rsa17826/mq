@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+# https://github.com/bahamas10/ysap/blob/main/code/2025-09-03-progress-bar-2/progress-bar
+
+BAR_CHAR='█'
+EMPTY_CHAR='░'
+
+fatal() {
+  echo '[FATAL]' "$@" >&2
+  exit 1
+}
+
+progress-bar() {
+  local current=$1
+  local len=$2
+
+  local perc_done=$((current * 100 / len))
+
+  local suffix=" $current/$len ($perc_done%)"
+
+  local length=$((COLUMNS - ${#suffix}))
+  local num_bars=$((perc_done * length / 100))
+
+  local i
+  local s=''
+  for ((i = 0; i < num_bars; i++)); do
+    s+=$BAR_CHAR
+  done
+  for ((i = num_bars; i < length; i++)); do
+    s+=$EMPTY_CHAR
+  done
+  s+=''
+  s+=$suffix
+
+  printf '\e7'                  # save the cursor location
+  printf '\e[%d;%dH' "$LINES" 0 # move cursor to the bottom line
+  printf '\e[0K'                # clear the line
+  printf '%s' "$s"              # print the progress bar
+  printf '\e8'                  # restore the cursor location
+}
+
+init-term() {
+  printf '\n'                           # ensure we have space for the scrollbar
+  printf '\e7'                          # save the cursor location
+  printf '\e[%d;%dr' 0 "$((LINES - 1))" # set the scrollable region (margin)
+  printf '\e8'                          # restore the cursor location
+  printf '\e[2A'                        # move cursor up
+  printf '\e[?25l'                      # move cursor up
+}
+
+deinit-term() {
+  printf '\e7'                  # save the cursor location
+  printf '\e[%d;%dr' 0 "$LINES" # reset the scrollable region (margin)
+  printf '\e[%d;%dH' "$LINES" 0 # move cursor to the bottom line
+  printf '\e[0K'                # clear the line
+  printf '\e8'                  # reset the cursor location
+  printf '\e[?25h'              # reset the cursor location
+}
+
+shopt -s globstar nullglob checkwinsize
+# this line is to ensure LINES and COLUMNS are set
+(:)
+
+_exit() {
+  deinit-term
+  exit 1
+}
+
+trap deinit-term exit
+trap _exit sigint
+trap _exit sigabt
+trap init-term winch
+init-term
