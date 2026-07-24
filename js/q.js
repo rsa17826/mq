@@ -48,13 +48,13 @@ window.q = {
       "19_20 - quest:pam.16",
       "19_20 - food:gingerBread - pam16",
     ],
-    "char|1": [
-      "19_20 - food:holyWater",
-      "19_20 - quest:pam.13",
-      "19_20 - quest:pam.14",
-      "19_20 - quest:pam.15",
-      "19_20 - misc:blue crystal",
-    ],
+    // "char|1": [
+    //   "19_20 - food:holyWater",
+    //   "19_20 - quest:pam.13",
+    //   "19_20 - quest:pam.14",
+    //   "19_20 - quest:pam.15",
+    //   "19_20 - misc:blue crystal",
+    // ],
   },
   "18_19": {
     treeGuard: ["18_19 - quest:gTree.1"],
@@ -63,7 +63,7 @@ window.q = {
       "18_19 - quest:seeds.2",
       "18_19 - quest:seeds.3",
     ],
-    "char|9": ["18_19 - quest:gTree.5"],
+    // "char|9": ["18_19 - quest:gTree.5"],
   },
   "17_19": {
     goldMan: ["17_19 - quest:oMan.1"],
@@ -323,11 +323,11 @@ window.q = {
       "13_17 - weapon:royalSword",
       "20_20 - weapon:sword",
     ],
-    "char|5": [
-      "21_20 - magic:heal",
-      "13_17 - magic:regen",
-      "13_17 - magic:cloud",
-    ],
+    // "char|5": [
+    //   "21_20 - magic:heal",
+    //   "13_17 - magic:regen",
+    //   "13_17 - magic:cloud",
+    // ],
     "": [
       "13_17 - quest:dream.2",
       "13_17 - quest:dream.12",
@@ -591,7 +591,7 @@ window.q = {
       "100_100 - craft:newtonsApple",
       "100_100 - quest:isles.1",
     ],
-    "char|5": ["100_100 - quest:isles.17"],
+    // "char|5": ["100_100 - quest:isles.17"],
   },
   "200_200": {
     ringGuy: ["200_200 - weapon:twinFury"],
@@ -644,7 +644,7 @@ window.q = {
     ],
     "cavernWall|133": ["500_501 - quest:aSword.46"],
     "": ["500_501 - quest:aSword.52"],
-    "char|5": ["500_501 - quest:aSword.58"],
+    // "char|5": ["500_501 - quest:aSword.58"],
     "greyStone|65": ["500_501 - quest:aSword.64"],
   },
   "8_14": {
@@ -663,20 +663,20 @@ window.q = {
     woodsman: ["19_23 - quest:gTree.4"],
   },
   "21_23": {
-    "char|4": ["21_23 - item:diamonds - chest", "21_23 - item:gold"],
+    // "char|4": ["21_23 - item:diamonds - chest", "21_23 - item:gold"],
     "headstone|87": ["21_23 - item:diamonds - dig"],
   },
   "16_22": {
-    "char|0": ["16_22 - item:gold"],
+    // "char|0": ["16_22 - item:gold"],
   },
   "15_23": {
     "skillsScreen\nskillTile|0": ["15_23 - quest:pam.2"],
   },
   "17_20": {
-    "char|5\ntree1|11": [
-      "17_20 - item:gold",
-      "17_20 - food:beefJerky",
-    ],
+    // "char|5\ntree1|11": [
+    //   "17_20 - item:gold",
+    //   "17_20 - food:beefJerky",
+    // ],
   },
   "15_24": {
     whiteHead: ["15_24 - quest:oMan.2"],
@@ -697,13 +697,13 @@ window.q = {
     "dirt|62": ["14_19 - quest:aSword.51"],
   },
   "17_16": {
-    "char|0": ["17_16 - item:diamonds"],
+    // "char|0": ["17_16 - item:diamonds"],
   },
   "14_15": {
-    "char|0\nsnow|24\nsnowTree|24": [
-      "14_15 - item:bombs",
-      "14_15 - food:orange",
-    ],
+    // "char|0\nsnow|24\nsnowTree|24": [
+    //   "14_15 - item:bombs",
+    //   "14_15 - food:orange",
+    // ],
   },
   "16_15": {
     "snow|45": [
@@ -734,7 +734,7 @@ window.q = {
     "black|65": ["10_19 - quest:gTree.12"],
   },
   "11_18": {
-    "char|0": ["11_18 - magic:refresh"],
+    // "char|0": ["11_18 - magic:refresh"],
   },
   "12_14": {
     "dirt|89": ["12_14 - quest:bBomb.5"],
@@ -777,11 +777,11 @@ window.q = {
     "lava|94": ["20_18 - quest:bBomb.8"],
   },
   "17_18": {
-    "char|9": ["17_18 - quest:bBomb.10"],
+    // "char|9": ["17_18 - quest:bBomb.10"],
     "dirt|67": ["17_18 - quest:bBomb.13"],
   },
   "8_10": {
-    "char|0": ["8_10 - item:gold", "8_10 - food:beefJerky"],
+    // "char|0": ["8_10 - item:gold", "8_10 - food:beefJerky"],
   },
   "9_11": {
     "skillsScreen\nskillTile|0": ["9_11 - quest:pam.8"],
@@ -800,7 +800,7 @@ window.q = {
     "skillsScreen\nskillTile|0": ["6_24 - quest:pam.12"],
   },
   "11_25": {
-    "char|4": ["11_25 - food:beefJerky"],
+    // "char|4": ["11_25 - food:beefJerky"],
     "": [
       "-1_-1 - quest:aSword.14",
       "-1_-1 - quest:aSword.15",
@@ -889,14 +889,14 @@ window.q = {
     "backArrowPH\ncavernWall|120": ["19_14 - quest:hWater.3"],
   },
   "24_9": {
-    "char|8\nstoneDark|90": ["24_9 - quest:gTree.23"],
+    // "char|8\nstoneDark|90": ["24_9 - quest:gTree.23"],
     "stoneDark|46": ["24_9 - quest:gTree.24"],
   },
   "23_10": {
-    "char|8\nstoneDark|138": [
-      "23_10 - item:diamonds",
-      "23_10 - food:newtonsApple",
-    ],
+    // "char|8\nstoneDark|138": [
+    //   "23_10 - item:diamonds",
+    //   "23_10 - food:newtonsApple",
+    // ],
   },
   "17_11": {
     shayde: ["17_11 - quest:hWater.6"],
