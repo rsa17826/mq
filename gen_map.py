@@ -185,12 +185,12 @@ html_start = f"""<!DOCTYPE html>
         }}
         .tile-wrapper.room-has-available-item {{
             outline: 10px solid #2020aa;
-            outline-offset: -11px;
+            outline-offset: -10px;
             z-index: 20;
         }}
         .tile-wrapper.room-has-available-quest {{
             outline: 10px solid #f1c40f;
-            outline-offset: -11px;
+            outline-offset: -10px;
             z-index: 20;
         }}
         .progression-icon.checked {{
