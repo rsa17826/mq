@@ -238,31 +238,30 @@ function customDrawLoop() {
       `${manager.north}_${manager.east}`,
     )
   ) {
-    overlayCtx.lineWidth = 10
-    overlayCtx.strokeStyle =
-      (
-        Logic.roomsWithAvailableItems.has(
-          `${manager.north}_${manager.east}`,
-        )
-      ) ?
-        "#2020aa"
-      : "#f1c40f"
-
-    // 1. Calculate top-left coordinates (x, y)
     var startX = 0
     var startY = overlayCanvas.height - 11 * tileSize
-    overlayCtx.lineJoin = "miter"
+    // overlayCtx.lineJoin = "miter"
     // 2. Calculate dimensions (width, height)
     var rectWidth = 14 * tileSize
     var rectHeight = 11 * tileSize
 
-    // 3. Draw: strokeRect(startX, startY, width, height)
-    overlayCtx.strokeRect(
-      startX + 4,
-      startY + 4,
-      rectWidth - 8,
-      rectHeight - 8,
-    )
+    draw(overlayCtx)
+      .lineWidth(10)
+      .strokeStyle(
+        (
+          Logic.roomsWithAvailableItems.has(
+            `${manager.north}_${manager.east}`,
+          )
+        ) ?
+          "#2020aa"
+        : "#f1c40f",
+      )
+      .strokeRect(
+        startX + 4,
+        startY + 4,
+        rectWidth - 8,
+        rectHeight - 8,
+      )
   }
   // Draws the map.js path-to-target arrow (see map.js's WorldMap.PATH_ROUTES),
   // but reprojected onto this room's slice of the checkerboard instead
@@ -281,28 +280,29 @@ function customDrawLoop() {
     var angle = Math.atan2(b.y - a.y, b.x - a.x)
     var arrowSize = 14
 
-    overlayCtx.beginPath()
-    overlayCtx.moveTo(a.x, a.y)
-    overlayCtx.lineTo(b.x, b.y)
-    overlayCtx.strokeStyle = "#39ff14"
-    overlayCtx.lineWidth = 5
-    overlayCtx.lineCap = "round"
-    overlayCtx.setLineDash([])
-    overlayCtx.stroke()
+    draw(overlayCtx)
+      .beginPath()
+      .moveTo(a.x, a.y)
+      .lineTo(b.x, b.y)
+      .strokeStyle("#39ff14")
+      .lineWidth(5)
+      .lineCap("round")
+      .setLineDash([])
+      .stroke()
 
-    overlayCtx.beginPath()
-    overlayCtx.moveTo(b.x, b.y)
-    overlayCtx.lineTo(
-      b.x - arrowSize * Math.cos(angle - 0.35),
-      b.y - arrowSize * Math.sin(angle - 0.35),
-    )
-    overlayCtx.lineTo(
-      b.x - arrowSize * Math.cos(angle + 0.35),
-      b.y - arrowSize * Math.sin(angle + 0.35),
-    )
-    overlayCtx.closePath()
-    overlayCtx.fillStyle = mix("#39ff14", "#00f2")
-    overlayCtx.fill()
+      .beginPath()
+      .moveTo(b.x, b.y)
+      .lineTo(
+        b.x - arrowSize * Math.cos(angle - 0.35),
+        b.y - arrowSize * Math.sin(angle - 0.35),
+      )
+      .lineTo(
+        b.x - arrowSize * Math.cos(angle + 0.35),
+        b.y - arrowSize * Math.sin(angle + 0.35),
+      )
+      .closePath()
+      .fillStyle(mix("#39ff14", "#00f2"))
+      .fill()
   }
 
   function drawRoomPathArrow() {
@@ -351,12 +351,13 @@ function customDrawLoop() {
         var vec = PF_DIR_SCREEN_VECTOR[route.fromDir] || [0, 0]
         // TODO - make show warp dest location and name and work
         if (!route.fromDir) {
-          overlayCtx.strokeStyle = "#000"
-          overlayCtx.lineJoin = "round"
-          overlayCtx.lineWidth = 3 // Controls the thickness of the outline
-          overlayCtx.strokeText(owo(route.toRoom), 50, 100)
-          overlayCtx.fillStyle = "#ddd"
-          overlayCtx.fillText(owo(route.toRoom), 50, 100)
+          draw(overlayCtx)
+            .strokeStyle("#000")
+            .lineJoin("round")
+            .lineWidth(3) // Controls the thickness of the outline
+            .strokeText(owo(route.toRoom), 50, 100)
+            .fillStyle("#ddd")
+            .fillText(owo(route.toRoom), 50, 100)
         }
         drawOverlayArrow(fromPt, {
           x: fromPt.x + vec[0] * (stubLength / 1.6),
@@ -423,12 +424,13 @@ function customDrawLoop() {
       baseBottomPadding -
       (allText.length - 1 - i) * lineHeight
 
-    overlayCtx.strokeStyle = "#000"
-    overlayCtx.lineJoin = "round"
-    overlayCtx.lineWidth = 3 // Controls the thickness of the outline
-    overlayCtx.strokeText(owo(text), x, y)
-    overlayCtx.fillStyle = "#ddd"
-    overlayCtx.fillText(owo(text), x, y)
+    draw(overlayCtx)
+      .strokeStyle("#000")
+      .lineJoin("round")
+      .lineWidth(3) // Controls the thickness of the outline
+      .strokeText(owo(text), x, y)
+      .fillStyle("#ddd")
+      .fillText(owo(text), x, y)
   }
   // render chest hints
   {
