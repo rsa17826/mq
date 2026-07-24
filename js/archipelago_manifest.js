@@ -8,7 +8,7 @@ const BLOCK_H = ROOM_INTERNAL_HEIGHT / BLOCKS_Y
 var ER_MAP = new Map()
 window.ER_MAP = ER_MAP
 
-function onRoomDataLoaded() {
+window.onApConnect.push(function () {
   for (var r of window.ap.slotData.roomData) {
     // Key by origin room: "north_east"
     var key = r[0] + "_" + r[1]
@@ -28,4 +28,4 @@ function onRoomDataLoaded() {
   console.log(
     `[Archipelago] Database ready: ${Object.keys(ap.slotData.AP_LOCATION_IDS).length} locations, ${Object.keys(ap.slotData.AP_ITEM_IDS).length} items, ${Object.keys(ap.slotData.AP_ENTRANCE_IDS).length} entrances.`,
   )
-}
+})

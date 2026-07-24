@@ -440,7 +440,6 @@ class ArchipelagoClient {
     // Per-player options baked in at generation time from their YAML file
     // (via the world's fill_slot_data), e.g. { difficulty: "hard", ... }.
     this.slotData = packet.slot_data ?? {}
-    window.onRoomDataLoaded()
     window.onApConnect.forEach((e) => e())
 
     // Report to the server that this slot is connected and about to
