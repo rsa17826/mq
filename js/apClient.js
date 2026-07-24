@@ -442,6 +442,10 @@ class ArchipelagoClient {
     this.slotData = packet.slot_data ?? {}
     window.onRoomDataLoaded()
     window.onApConnect.forEach((e) => e())
+
+    // Report to the server that this slot is connected and about to
+    // begin play (10 = CLIENT_READY).
+    this.sendStatusUpdate(10)
   }
 
   /**
@@ -629,13 +633,13 @@ class ArchipelagoClient {
       const globalIndex = packet.index + offset
 
       apLog(
-        `@${this.itemCount > window.lastRecivedItem ? "purple" : "orange"}![Item Received]@! @console!ID: ${item.item} (@!${formatItemName({ itemName, itemPlayer: this.slot }, true)}${this.itemCount > window.lastRecivedItem ? "" : " - @orange!already recived@!"} - sent by @blue!${senderName}@!@console!`,
+        `@${this.itemCount > window.lastReceivedItem ? "purple" : "orange"}![Item Received]@! @console!ID: ${item.item} (@!${formatItemName({ itemName, itemPlayer: this.slot }, true)}${this.itemCount > window.lastReceivedItem ? "" : " - @orange!already recived@!"} - sent by @blue!${senderName}@!@console!`,
         item,
         this.itemCount,
-        window.lastRecivedItem,
+        window.lastReceivedItem,
       )
-      if (this.itemCount > window.lastRecivedItem) {
-        if (this.itemCount - 1 === window.lastRecivedItem) {
+      if (this.itemCount > window.lastReceivedItem) {
+        if (this.itemCount - 1 === window.lastReceivedItem) {
           if (itemList[itemName]) {
             itemList[itemName]()
           } else if (tryGiveLoot(itemName)) {
@@ -650,12 +654,12 @@ class ArchipelagoClient {
           }
         } else {
           apWarn(
-            "somthing went wrong with sending items!!",
-            window.lastRecivedItem,
+            "something went wrong with sending items!!",
+            window.lastReceivedItem,
             this.itemCount,
           )
         }
-        window.lastRecivedItem = this.itemCount
+        window.lastReceivedItem = this.itemCount
       }
       this.lastProcessedIndex = globalIndex + 1
     })
@@ -811,12 +815,34 @@ class ArchipelagoClient {
     this.sendPackets([checkPayload])
   }
 
+  /**
+   * Application Action: Report this client's ClientStatus to the server.
+   * status: 10 = ready, 20 = playing, 30 = goal complete
+   * @param {number} status
+   */
+  sendStatusUpdate(status) {
+    if (!this.isAuthenticated) {
+      apError(
+        "Cannot send status update yet. Waiting for server authentication handshake to complete.",
+      )
+      return
+    }
+    if (status === 30 && this.goalCompleteSent) {
+      // Already reported goal completion; never send it twice.
+      return
+    }
+    if (status === 30) {
+      this.goalCompleteSent = true
+    }
+    this.sendPackets([{ cmd: "StatusUpdate", status }])
+  }
+
   generateUUID() {
     return Math.random().toString(36).substring(2, 15)
   }
 }
 function apTryConnect() {
-  window.lastRecivedItem = 0
+  window.lastReceivedItem = 0
   if (location.search) {
     var data = location.search
       .replace("?", "")
@@ -855,24 +881,28 @@ function apTryConnect() {
       if (
         (data = await get(`/MQFiles/loadChar_${window.seed}.json`))
       ) {
-        var newdata = data["lastRecivedItem"]
+        var newdata = data["lastReceivedItem"]
         if (isNaN(newdata)) {
           apWarn("newdata was nan")
           newdata = 0
         }
         log(newdata, "newdata")
-        window.lastRecivedItem = newdata
+        window.lastReceivedItem = newdata
         if (window.playerLoaded) {
           for (var packet of window.waitingPackets) {
             ap.handlePacket(packet)
           }
           waitingPackets = []
+          // Player is already in-game (20 = CLIENT_PLAYING).
+          ap.sendStatusUpdate(20)
         } else {
           window.onPlayerLoaded.push(function () {
             for (var packet of window.waitingPackets) {
               ap.handlePacket(packet)
             }
             waitingPackets = []
+            // Player is now actually in-game (20 = CLIENT_PLAYING).
+            ap.sendStatusUpdate(20)
           })
         }
       } else {

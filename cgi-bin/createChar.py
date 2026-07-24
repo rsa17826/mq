@@ -407,7 +407,7 @@ try:
           "Weapon.creeperCrusher": 0,
           "Weapon.upgradeStaff": 0,
         },
-        "lastRecivedItem": 0,
+        "lastReceivedItem": 0,
         "window.apErrors": [],
         "questChecker": [
           0,

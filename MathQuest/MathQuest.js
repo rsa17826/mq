@@ -45982,7 +45982,7 @@ for (var i = 0; i < 11; i++) {
           //   saveFile: window.seed ?? "nonAP",
           // }
           // var i = 266
-          // newData["stat" + i++] = window.lastRecivedItem
+          // newData["stat" + i++] = window.lastReceivedItem
           // for (var [k, v] of Object.entries(checker)) {
           //   newData["stat" + i++] = v
           // }
@@ -65209,7 +65209,7 @@ for (var i = 0; i < 11; i++) {
           ["tBoxUsed[63]"]: manager.tBoxUsed[63],
           "window.apErrors": window.apErrors,
           checker: { ...checker },
-          lastRecivedItem: window.lastRecivedItem ?? 0,
+          lastReceivedItem: window.lastReceivedItem ?? 0,
           checksInFlight: window.checksInFlight,
         }
       }
@@ -65511,7 +65511,7 @@ for (var i = 0; i < 11; i++) {
         manager.tBoxUsed[63] = data["tBoxUsed[63]"]
         Array.apply(window.apErrors, data["window.apErrors"] ?? [])
         Object.assign(checker, data.checker)
-        window.lastRecivedItem = data.lastRecivedItem
+        window.lastReceivedItem = data.lastReceivedItem
         window.checksInFlight = data.checksInFlight ?? []
         // var statsParser = new Date().getMonth()
         // TODO

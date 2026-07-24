@@ -280,6 +280,7 @@ def load_geometry_map():
       key = f"{n}_{e}"
       geom_db[key] = room.get("exits", {})
 
+
   return geom_db
 
 
@@ -364,6 +365,8 @@ def build_doors_from_warps(warps, geom_index):
           }
         )
 
+
+
   return doors
 
 
@@ -382,6 +385,8 @@ def load_progression_map():
           prog_db[key] = []
 
         prog_db[key].append(loc)
+
+
 
   except Exception as err:
     print(f"[-] Failed to read progression config details: {err}")
@@ -413,13 +418,16 @@ def build_room_info_json(north, east, prog_entries):
         if item_htmls:
           req_groups.append(" AND ".join(item_htmls))
 
+
       if req_groups:
         parsed_entry["requiresHtml"] = " OR ".join(f"({r})" for r in req_groups) if len(req_groups) > 1 else req_groups[0]
+
 
     if "receive" in entry and len(entry["receive"]) > 0:
       rec_htmls = [get_item_token_html(item) for item in entry["receive"] if item]
       if rec_htmls:
         parsed_entry["receiveHtml"] = ", ".join(rec_htmls)
+
 
     info_data["entries"].append(parsed_entry)
 
@@ -459,7 +467,9 @@ def main():
           center_block = (start + end) / 2
           processed.append({"side": side, "block": center_block})
 
+
       exit_lookup[room_key][side] = processed
+
 
   prog_index = load_progression_map()
   conn_override_index = {str(c["fromExitId"]): c for c in connections if "fromExitId" in c}
@@ -472,7 +482,8 @@ def main():
     if match:
       north = int(match.group(1))
       east = int(match.group(2))
-      parsed_tiles.append((north, east, filename))
+      parsed_tiles.append((north, east, filename.replace(".jpg", ".webp")))
+
 
   if not parsed_tiles:
     print("[-] No valid tiles found in image folder.")
@@ -568,10 +579,12 @@ def main():
       case "west":
         newid[3] -= 1
 
+
     color = djb2_color_hash(conn["id"], "_".join(map(str, newid)))
 
     if room_key in js_routes_db:
       js_routes_db[room_key].append({"d": [arrow_src_x, arrow_src_y, ctrl_x, ctrl_y, arrow_dest_x, arrow_dest_y], "color": color})
+
 
   room_doors_index = {}
   for d in doors:
@@ -608,6 +621,7 @@ def main():
         dest_y_local = ROOM_INTERNAL_HEIGHT / 2
         color = djb2_color_hash(d["id"], "warp_gate")
 
+
     room_key = f"{o_n}_{o_e}"
     if o_n not in north_to_track or o_e not in east_to_track:
       continue
@@ -628,6 +642,7 @@ def main():
 
     if room_key in js_routes_db:
       js_routes_db[room_key].append({"d": [arrow_src_x, arrow_src_y, ctrl_x, ctrl_y, arrow_dest_x, arrow_dest_y], "color": color})
+
 
   canvas_tiles_data = []
   html_elements = []
@@ -685,6 +700,7 @@ def main():
               case "west":
                 newid[3] -= 1
 
+
             matched_color = djb2_color_hash(conn["id"], "_".join(map(str, newid)))
             connection_id = "_".join(map(str, newid))
 
@@ -734,6 +750,9 @@ def main():
               }
             )
 
+
+
+
     for d in doors:
       o_n, o_e = int(d["origin"]["north"]), int(d["origin"]["east"])
       v_dest_n, v_dest_e = int(d["dest"]["north"]), int(d["dest"]["east"])
@@ -748,6 +767,7 @@ def main():
         else:
           dest_x_local = float(d["dest_x"])
           dest_y_local = float(d["dest_y"])
+
       else:
         d_n, d_e = int(d["dest"]["north"]), int(d["dest"]["east"])
         dest_x_local = float(d["dest_x"])
@@ -768,6 +788,7 @@ def main():
           }
         )
 
+
     room_prog_data = prog_index.get(room_key, [])
     info_json_str = build_room_info_json(north, east, room_prog_data)
 
@@ -778,6 +799,9 @@ def main():
         for item in receive_list:
           if item:
             unique_receives.add(item)
+
+
+
 
     icon_html = "<span class=fc>"
     icon_html += "<span class=fr>"
@@ -818,6 +842,7 @@ def main():
         location_key = f"{room_key} - {base_item_name}".replace('"', "&quot;")
         icon_html += f'\n            <img src="{icon_src}" class="progression-icon" alt="{item}" data-location="{location_key}">'
 
+
     icon_html += "</span>"
     icon_html += "<span class=fr>"
     for item in sorted(unique_receives):
@@ -831,6 +856,7 @@ def main():
         base_item_name = item.split("#")[0]
         location_key = f"{room_key} - {base_item_name}".replace('"', "&quot;")
         icon_html += f'\n            <img src="{icon_src}" class="progression-icon" alt="{item}" data-location="{location_key}">'
+
 
     icon_html += "</span>"
     icon_html += "</span>"

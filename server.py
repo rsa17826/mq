@@ -126,7 +126,7 @@ class CachedCGIHTTPRequestHandler(CGIHTTPRequestHandler):
     normalized_path = self.translate_path(self.path)
     relative_path = os.path.relpath(normalized_path, os.getcwd())
 
-    is_image = relative_path.lower().endswith((".jpg", ".jpeg", ".png"))
+    is_image = relative_path.lower().endswith((".jpg", ".jpeg", ".png", ".webp"))
 
     if relative_path.startswith("mapimgs") and is_image:
       if not os.path.exists(normalized_path):
@@ -259,6 +259,7 @@ class CachedCGIHTTPRequestHandler(CGIHTTPRequestHandler):
     if (relative_path.startswith("map") or relative_path.startswith("mapimgs")) or relative_path.lower().split("?")[0].endswith(
       (
         ".jpg",
+        ".webp",
         ".jpeg",
         ".png",
         ".mp3",
