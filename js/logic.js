@@ -9,6 +9,10 @@ class Logic {
   static pwcount = 0
   static pacount = 0
   static pmcount = 0
+
+  static roomsWithAvailableItems = new Set()
+  static roomsWithAvailableQuests = new Set()
+
   /**
    *
    * @param {string} tok
@@ -177,8 +181,8 @@ class Logic {
         ),
       )
 
-    const roomsWithAvailableItems = new Set()
-    const roomsWithAvailableQuests = new Set()
+    Logic.roomsWithAvailableItems = new Set()
+    Logic.roomsWithAvailableQuests = new Set()
 
     PROG_DATA.forEach((entry, i) => {
       const r = status[i]
@@ -195,8 +199,8 @@ class Logic {
 
         if (r === "true" && !alreadyChecked) {
           if (ItemTracker.REAL_ITEM_NAMES.has(tok))
-            roomsWithAvailableItems.add(entry.room)
-          if (isQuest) roomsWithAvailableQuests.add(entry.room)
+            Logic.roomsWithAvailableItems.add(entry.room)
+          if (isQuest) Logic.roomsWithAvailableQuests.add(entry.room)
         }
 
         els.forEach((el) => {
@@ -215,12 +219,12 @@ class Logic {
     for (const roomKey of Object.keys(Logic.roomEls)) {
       Logic.roomEls[roomKey].classList.toggle(
         "room-has-available-item",
-        roomsWithAvailableItems.has(roomKey),
+        Logic.roomsWithAvailableItems.has(roomKey),
       )
       Logic.roomEls[roomKey].classList.toggle(
         "room-has-available-quest",
-        roomsWithAvailableQuests.has(roomKey) &&
-          !roomsWithAvailableItems.has(roomKey),
+        Logic.roomsWithAvailableQuests.has(roomKey) &&
+          !Logic.roomsWithAvailableItems.has(roomKey),
       )
     }
 

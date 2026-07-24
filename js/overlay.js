@@ -230,7 +230,40 @@ function customDrawLoop() {
       }
     }
   }
+  if (
+    Logic.roomsWithAvailableItems.has(
+      `${manager.north}_${manager.east}`,
+    ) ||
+    Logic.roomsWithAvailableQuests.has(
+      `${manager.north}_${manager.east}`,
+    )
+  ) {
+    overlayCtx.lineWidth = 10
+    overlayCtx.strokeStyle =
+      (
+        Logic.roomsWithAvailableItems.has(
+          `${manager.north}_${manager.east}`,
+        )
+      ) ?
+        "#2020aa"
+      : "#f1c40f"
 
+    // 1. Calculate top-left coordinates (x, y)
+    var startX = 0
+    var startY = overlayCanvas.height - 11 * tileSize
+    overlayCtx.lineJoin = "miter"
+    // 2. Calculate dimensions (width, height)
+    var rectWidth = 14 * tileSize
+    var rectHeight = 11 * tileSize
+
+    // 3. Draw: strokeRect(startX, startY, width, height)
+    overlayCtx.strokeRect(
+      startX + 4,
+      startY + 4,
+      rectWidth - 8,
+      rectHeight - 8,
+    )
+  }
   // Draws the map.js path-to-target arrow (see map.js's WorldMap.PATH_ROUTES),
   // but reprojected onto this room's slice of the checkerboard instead
   // of the whole overview map. The checkerboard covers the full 14x11
