@@ -21800,17 +21800,18 @@ for (var i = 0; i < 11; i++) {
         },
         get(target, prop) {
           // Check 1: Quest specific override
-          if (
-            this.k === "quest" &&
-            window.playerLoaded &&
-            window.lastSetQuestValue
-          ) {
-            if (prop === window.lastSetQuestValue[0]) {
-              log(window.lastSetQuestValue)
-              return window.lastSetQuestValue[1]
-            }
-            return questItemVal[prop]
-          }
+          // TODO not needed until eachquestisanitem is working
+          // if (
+          //   this.k === "quest" &&
+          //   window.playerLoaded &&
+          //   window.lastSetQuestValue
+          // ) {
+          //   if (prop === window.lastSetQuestValue[0]) {
+          //     log(window.lastSetQuestValue)
+          //     return window.lastSetQuestValue[1]
+          //   }
+          //   return questItemVal[prop]
+          // }
 
           // Check 2: Infinite items check (Cache slotData reference)
           if (!this.k) {
