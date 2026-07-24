@@ -3,6 +3,9 @@
 // data-location markers to already be present on the page.
 
 class Logic {
+  static roomsWithMobsCount = 0
+  static roomsWithMobsSeen = new Set()
+
   static pwcount = 0
   static pacount = 0
   static pmcount = 0
@@ -79,6 +82,12 @@ class Logic {
         if (!QuestState.satisfied(tok)) return "false"
         continue
       }
+      if (tok === "flag:room with mobs") {
+        const m = rawTok.match(/#(\d+)$/)
+        const threshold = m ? Number(m[1]) : 1
+        if (Logic.roomsWithMobsCount < threshold) return "false"
+        continue
+      }
       if (!have.has(tok)) return "false"
     }
     return "true"
@@ -128,6 +137,10 @@ class Logic {
         const r = Logic.evalEntry(entry, have, roomGraph)
         status[i] = r
         if (r === "true") {
+          if (!Logic.roomsWithMobsSeen.has(entry.room)) {
+            Logic.roomsWithMobsSeen.add(entry.room)
+            Logic.roomsWithMobsCount = Logic.roomsWithMobsSeen.size
+          }
           for (const rawTok of entry.receive) {
             const tok = Logic.baseTok(rawTok)
             // only virtual/free tokens auto-propagate; real items only
@@ -316,15 +329,11 @@ window.onApCreated.push((ap) => {
       }
     })
     Logic.recompute()
-    window.onApConnect.push(function (packet) {
-      Logic.recompute()
-    })
 
     console.log(
       `[logic] reachability engine ready: ${PROG_DATA.length} entries`,
     )
   }
-  window.onPlayerLoaded.push(function () {
-    Logic.recompute()
-  })
+  window.onApConnect.push(Logic.recompute)
+  window.onPlayerLoaded.push(Logic.recompute)
 })

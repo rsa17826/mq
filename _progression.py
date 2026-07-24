@@ -441,9 +441,6 @@ manager.correct - manager.wrong > 800 = halo
     "receive": [
       "loot:key",
     ],
-    "info": """
-manager.correct - manager.wrong > 800 = halo
-""",
   },
   {
     "room": {"north": -1, "east": -1},

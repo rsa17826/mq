@@ -678,7 +678,7 @@ class PathFinding {
    * @param {string} tok
    */
   static parseLootToken(tok) {
-    const m = tok.match(/^loot:([^#]+)#?(\d*)$/)
+    const m = tok.match(/^loot:(?!key)([^#]+)#?(\d*)$/)
     if (!m) return null
     return { name: m[1], count: m[2] ? Number(m[2]) : 1 }
   }

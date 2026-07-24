@@ -31,7 +31,10 @@ class ItemTracker {
    * @returns {boolean}
    */
   static isLootToken(tok) {
-    return this.baseTok(tok).startsWith("loot:")
+    return (
+      this.baseTok(tok).startsWith("loot:") &&
+      this.baseTok(tok) != "loot:key"
+    )
   }
 
   /**
@@ -83,7 +86,7 @@ class ItemTracker {
     ;(entry.requires || []).forEach((group) =>
       group.forEach((rawTok) => {
         if (!this.isLootToken(rawTok)) return
-        const m = this.baseTok(rawTok).match(/^loot:([^#]+)#?(\d*)$/)
+        const m = this.baseTok(rawTok).match(/^loot:(?!key)([^#]+)#?(\d*)$/)
         if (!m) return
         const name = m[1]
         const count = m[2] ? Number(m[2]) : 1
