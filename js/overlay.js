@@ -244,9 +244,9 @@ function customDrawLoop() {
     // 2. Calculate dimensions (width, height)
     var rectWidth = 14 * tileSize
     var rectHeight = 11 * tileSize
-
+    let w = 4
     draw(overlayCtx)
-      .lineWidth(10)
+      .lineWidth(w)
       .strokeStyle(
         (
           Logic.roomsWithAvailableItems.has(
@@ -257,10 +257,10 @@ function customDrawLoop() {
         : "#f1c40f",
       )
       .strokeRect(
-        startX + 4,
-        startY + 4,
-        rectWidth - 8,
-        rectHeight - 8,
+        startX + (w - 1) / 2,
+        startY + (w - 1) / 2,
+        rectWidth - (w - 1),
+        rectHeight - (w - 1),
       )
   }
   // Draws the map.js path-to-target arrow (see map.js's WorldMap.PATH_ROUTES),

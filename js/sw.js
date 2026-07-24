@@ -3,7 +3,6 @@ const ASSETS = [
   "/MathQuest/play.base.html",
   "/css/main.css",
   "/MathQuest/fonts/BOOTERZZ.woff2",
-  "/MathQuest/lib/howler.min.js",
   "/MathQuest/MathQuest.js",
   "/js/apClient.js",
   "/js/map.js",

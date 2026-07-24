@@ -144,90 +144,16 @@
 }
 
 @media screen and (max-width: 1150px) {
-  #rightMenuHomePage {
-    position: unset;
-    width: 100%;
-    margin-top: 0;
-    height: 100%;
-  }
-  .header {
-    width: 100%;
-    min-width: 100%;
-    height: 92px;
-  }
-  .logo img {
-    width: 250px !important;
-    margin-left: 50%;
-    transform: translateX(-50%);
-  }
-  #contentHomePage {
-    min-width: 100%;
-    margin-right: 0;
-    margin-top: 100px;
-    height: 100%;
-  }
   #openfl-content {
     width: 100%;
     min-width: 100%;
   }
-  .fullPage {
-    min-width: 100%;
-  }
-  .w-100dr {
-    width: 100%;
-  }
-  #content {
-    width: 100% !important;
-    min-width: 100% !important;
-    height: auto !important;
-  }
-  #leftThing {
-    width: 100% !important;
-    float: unset !important;
-  }
-  #rightThing {
-    width: 100% !important;
-    float: unset !important;
-  }
-  .searchbar_Dr {
-    left: 50% !important;
-    position: fixed;
-    top: 52px !important;
-    transform: translateX(-50%);
-  }
 }
 
-@media screen and (max-width: 767px) {
-  p.welcome-text {
-    text-align: center;
-  }
-  .header-block {
-    float: unset;
-    text-align: center;
-    padding-bottom: 14px;
-  }
-  .header-block p {
-    margin-bottom: 0px;
-    text-align: center;
-    display: inline-block;
-  }
-  .header-link {
-    float: unset;
-  }
-  .wp-organic-logo {
-    display: block;
-    margin-bottom: 25px;
-  }
-}
 html,
 body {
   overflow-x: hidden;
   overflow-y: hidden;
-}
-@media screen and (max-width: 1150px) and (min-width: 460px) {
-  div#rightMenuContent {
-    position: static !important;
-  }
 }
 #overlayCanvas {
   position: fixed;
@@ -296,12 +222,6 @@ body {
   font-size: 11px;
   color: #e0e0e0;
   z-index: 10000000;
-}
-#item-tracker-panel > #header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
 }
 #item-tracker-row {
   border-bottom: 1px solid #333;

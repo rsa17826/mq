@@ -57261,19 +57261,19 @@ for (var i = 0; i < 11; i++) {
           ) {
             if (manager.north == 18 && manager.east == 24) {
               checker.headstoneSwitch1 = 1
-              newItem("16_16 - misc:headstoneSwitch1")
+              newItem("18_24 - misc:headstoneSwitch1")
             }
             if (manager.north == 16 && manager.east == 16) {
               checker.headstoneSwitch2 = 1
-              newItem("12_12 - misc:headstoneSwitch2")
+              newItem("16_16 - misc:headstoneSwitch2")
             }
             if (manager.north == 12 && manager.east == 12) {
               checker.headstoneSwitch3 = 1
-              newItem("10_25 - misc:headstoneSwitch3")
+              newItem("12_12 - misc:headstoneSwitch3")
             }
             if (manager.north == 10 && manager.east == 25) {
               checker.headstoneSwitch4 = 1
-              newItem("18_24 - misc:headstoneSwitch4")
+              newItem("10_25 - misc:headstoneSwitch4")
             }
             manager.mess.set_text(
               "You have found one of the Noble Headstones!",

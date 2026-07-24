@@ -594,7 +594,7 @@ def main():
 
   for d in doors:
     o_n, o_e = int(d["origin"]["north"]), int(d["origin"]["east"])
-    v_dest_n, v_dest_e = int(d["dest"]["north"]), int(d["dest"]["east"])
+    # v_dest_n, v_dest_e = int(d["dest"]["north"]), int(d["dest"]["east"])
     door_id_str = str(d["id"])
 
     src_x_local, src_y_local = snapToGrid(d["dest_x"], d["dest_y"])
@@ -755,7 +755,7 @@ def main():
 
     for d in doors:
       o_n, o_e = int(d["origin"]["north"]), int(d["origin"]["east"])
-      v_dest_n, v_dest_e = int(d["dest"]["north"]), int(d["dest"]["east"])
+      # v_dest_n, v_dest_e = int(d["dest"]["north"]), int(d["dest"]["east"])
 
       door_id_str = str(d["id"])
       if door_id_str in conn_override_index:

@@ -25,7 +25,7 @@ window.onApConnect.push(function () {
     })
   }
   ap.sendLocationScouts(Object.values(ap.slotData.AP_LOCATION_IDS), 0)
-  console.log(
+  log(
     `[Archipelago] Database ready: ${Object.keys(ap.slotData.AP_LOCATION_IDS).length} locations, ${Object.keys(ap.slotData.AP_ITEM_IDS).length} items, ${Object.keys(ap.slotData.AP_ENTRANCE_IDS).length} entrances.`,
   )
 })
