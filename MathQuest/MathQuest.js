@@ -9,6 +9,8 @@
 // @endregex
 // @ts-nocheck
 
+window.debug = false
+
 // TODO make settings for all the overlay renders
 // TODO make q store pos and only show if pos matches
 // TODO fix sell dialogue causing lag
@@ -435,7 +437,7 @@ function pmax() {
   player.speed = 20
   manager.slamstones += 99999
   manager.rubies += 9999
-  manager.correct+=9999
+  manager.correct += 9999
 }
 // --- Usage ---
 
@@ -3607,9 +3609,10 @@ for (var i = 0; i < 11; i++) {
             if (aaa) {
               // TODO remove when done
               if (
-                this == manager.char[0] ||
-                this == manager.charBottom[0] ||
-                this == test.colCharBottom
+                window.debug &&
+                (this == manager.char[0] ||
+                  this == manager.charBottom[0] ||
+                  this == test.colCharBottom)
               ) {
                 window.selectedThing = [
                   ...Object.entries(manager)
@@ -21638,6 +21641,19 @@ for (var i = 0; i < 11; i++) {
           window.capturing = false
         }, 7000)
       }
+      // 1. O(1) property lookup initialized ONCE outside the trap
+      const MONITORED_PROPS = new Set([
+        "food",
+        "loot",
+        "quest",
+        "magic",
+        "skills",
+        "weapon",
+        "armor",
+      ])
+
+      // 2. Cache proxies so objects are only wrapped ONCE
+      const proxyCache = new WeakMap()
       const ____pm = {
         k: "",
         set(target, prop, value) {
@@ -21783,68 +21799,57 @@ for (var i = 0; i < 11; i++) {
           return true
         },
         get(target, prop) {
-          if (this.k === "quest") {
-            if (window.playerLoaded && window.lastSetQuestValue) {
-              if (prop == window.lastSetQuestValue[0]) {
-                log(window.lastSetQuestValue)
-                return lastSetQuestValue[1]
-              } else {
-                return questItemVal[prop]
+          // Check 1: Quest specific override
+          if (
+            this.k === "quest" &&
+            window.playerLoaded &&
+            window.lastSetQuestValue
+          ) {
+            if (prop === window.lastSetQuestValue[0]) {
+              log(window.lastSetQuestValue)
+              return window.lastSetQuestValue[1]
+            }
+            return questItemVal[prop]
+          }
+
+          // Check 2: Infinite items check (Cache slotData reference)
+          if (!this.k) {
+            const slotData = window.ap?.slotData
+            if (slotData) {
+              if (prop === "gold" && slotData.infinite_gold)
+                return Infinity
+              if (
+                prop === "aurastones" &&
+                slotData.infinite_aurastones
+              )
+                return Infinity
+              if (prop === "keys" && slotData.infinite_keys)
+                return Infinity
+            }
+          }
+
+          // Check 3: Nested proxy wrapping with WeakMap Caching
+          if (MONITORED_PROPS.has(prop)) {
+            const subTarget = target[prop]
+
+            if (typeof subTarget === "object" && subTarget !== null) {
+              // Return existing cached proxy if available
+              if (proxyCache.has(subTarget)) {
+                return proxyCache.get(subTarget)
               }
+
+              // Create proxy ONCE and cache it
+              const newpm = {
+                ...____pm,
+                k: prop === "skills" ? "skill" : prop,
+              }
+              const newSubProxy = new Proxy(subTarget, newpm)
+              proxyCache.set(subTarget, newSubProxy)
+              return newSubProxy
             }
           }
-          if (
-            window.ap?.slotData?.infinite_gold &&
-            !this.k &&
-            prop == "gold"
-          ) {
-            return Infinity
-          }
-          if (
-            window.ap?.slotData?.infinite_aurastones &&
-            !this.k &&
-            prop == "aurastones"
-          ) {
-            return Infinity
-          }
-          if (
-            window.ap?.slotData?.infinite_keys &&
-            !this.k &&
-            prop == "keys"
-          ) {
-            return Infinity
-          }
-          if (
-            [
-              "food",
-              "loot",
-              "quest",
-              "magic",
-              "skills",
-              "weapon",
-              "armor",
-              "quest",
-            ].includes(prop)
-          ) {
-            var newpm = {
-              ...____pm,
-              k: prop.replace("skills", "skill"),
-            }
-            return new Proxy(target[prop], newpm)
-          }
-          // if (
-          //   typeof target[prop] === "number" &&
-          //   (!window.accessList.includes(prop) ||
-          //     window.lcapturing) &&
-          //   !window.badlist.includes(prop) &&
-          //   !prop.startsWith("__")
-          // ) {
-          //   console.log(
-          //     `[ACCESS GET] Key: ${this.k}"${prop}" was read.`,
-          //     new Error().stack,
-          //   )
-          //   window.accessList.push(prop)
-          // }
+
+          // Fallback normal access
           return target[prop]
         },
       }

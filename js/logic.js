@@ -3,6 +3,8 @@
 // data-location markers to already be present on the page.
 
 class Logic {
+  static iconsByRoom = {}
+
   static roomsWithMobsCount = 0
   static roomsWithMobsSeen = new Set()
 
@@ -249,6 +251,7 @@ window.onApConnect.push(() => {
         return
       }
       ;(Logic.iconsByLocation[el.dataset.location] ||= []).push(el)
+      // ;(Logic.iconsByRoom[el.dataset.location] ||= []).push(el)
     })
   document
     .querySelectorAll(

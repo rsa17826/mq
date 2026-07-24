@@ -168,9 +168,9 @@ class ItemTracker {
     const tok = this.baseTok((entry.receive || [])[0] || "")
     if (!tok) return false
     const key = `${entry.room} - ${tok}`
-    const els = Logic.iconsByLocation[key]
+    const els = Logic.iconsByLocation[key] ?? []
     return (
-      [...els].some((el) => el.classList.contains("checked")) ||
+      els.some((el) => el.classList.contains("checked")) ||
       (tok.startsWith("quest:") && QuestState.satisfied(tok))
     )
   }
