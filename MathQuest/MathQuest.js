@@ -27,6 +27,8 @@ onPlayerLoaded.push(() => {
     ),
   ]
 })
+
+// TODO save rng seed
 // TODO make settings for all the overlay renders
 // TODO make q store pos and only show if pos matches
 // TODO fix sell dialogue causing lag
@@ -23084,10 +23086,10 @@ for (var i = 0; i < 11; i++) {
               manager.char[0].set_x(335)
               manager.char[0].set_y(125)
             }
-            if (this.checkDay == 0) {
-              this.checkDay = true
-              this.loadHS()
-            }
+            // if (this.checkDay == 0) {
+            //   this.checkDay = true
+            //   // this.loadHS()
+            // }
             this.shopMess.set_x(0)
             manager.problemBox.set_x(75)
           }
@@ -45961,7 +45963,7 @@ for (var i = 0; i < 11; i++) {
         save: async function () {
           this.showHS = false
           console.log("saving")
-          var saveCharData = new customConstructor()
+          // var saveCharData = new customConstructor()
           var charURL = _aNewIdentifierName.plus(
             manager.charName.get_text(),
             ".",
@@ -46000,62 +46002,62 @@ for (var i = 0; i < 11; i++) {
           //   ...charURL,
           //   data: newData,
           // })
-          saveCharData.addEventListener(
-            "complete",
-            createObjectMixin(this, this.sendComplete),
-          )
-          this.saveHS()
+          // saveCharData.addEventListener(
+          //   "complete",
+          //   createObjectMixin(this, this.sendComplete),
+          // )
+          // this.saveHS()
         },
-        loadHS: function () {
-          console.log("hs load started")
-          if (this.checkDay == 0) {
-            manager.itemDisplay[0].set_x(250)
-            manager.itemDisplay[0].set_y(250)
-            manager.itemDisplay[0].set_text(
-              "Loading Top 5 Players...",
-            )
-            manager.itemDisplay[0].setTextFormat(manager.hsFormat)
-            manager.itemDisplay[0].set_visible(true)
-          }
-          var jsHttpRequest = new _qObject(
-            "../MQphp/MQhsLoad.json?rand=" + rng.random() * 1e3,
-          )
-          this.sender.load(jsHttpRequest)
-          this.sender.addEventListener(
-            "complete",
-            createObjectMixin(this, this.loadHSComplete),
-          )
-        },
-        loadHSComplete: function (_initialData) {
-          console.log("hs complete")
-          this.sender.removeEventListener(
-            "complete",
-            createObjectMixin(this, this.loadHSComplete),
-          )
-          this.outputHSTxt.set_text(
-            _aNewIdentifierName.fromDynamic(this.sender.data),
-          )
-          this.bytes = this.outputHSTxt.get_text()
-          this.mystring = this.bytes.toString()
-          this.stats = this.mystring.split(" ")
-          console.log("checkDay: " + f.string(this.checkDay))
-          if (this.showHS == 1 && this.checkDay == 0) {
-            this.standings()
-          }
-        },
-        saveHS: function () {
-          console.log("save hs started")
-          var scoreAndName = cloneObject._new()
-          scoreAndName.score = manager.fame
-          scoreAndName.name = manager.charName.get_text()
-          var hsSaveLoader = new _qObject("../MQphp/MQhsSave.json")
-          hsSaveLoader.data = scoreAndName
-          this.sender.load(hsSaveLoader)
-          this.sender.addEventListener(
-            "complete",
-            createObjectMixin(this, this.loadHSComplete),
-          )
-        },
+        // loadHS: function () {
+        //   console.log("hs load started")
+        //   if (this.checkDay == 0) {
+        //     manager.itemDisplay[0].set_x(250)
+        //     manager.itemDisplay[0].set_y(250)
+        //     manager.itemDisplay[0].set_text(
+        //       "Loading Top 5 Players...",
+        //     )
+        //     manager.itemDisplay[0].setTextFormat(manager.hsFormat)
+        //     manager.itemDisplay[0].set_visible(true)
+        //   }
+        //   // var jsHttpRequest = new _qObject(
+        //   //   "../MQphp/MQhsLoad.json?rand=" + Math.random() * 1e3,
+        //   // )
+        //   // this.sender.load(jsHttpRequest)
+        //   // this.sender.addEventListener(
+        //   //   "complete",
+        //   //   createObjectMixin(this, this.loadHSComplete),
+        //   // )
+        // },
+        // loadHSComplete: function (_initialData) {
+        //   console.log("hs complete")
+        //   this.sender.removeEventListener(
+        //     "complete",
+        //     createObjectMixin(this, this.loadHSComplete),
+        //   )
+        //   this.outputHSTxt.set_text(
+        //     _aNewIdentifierName.fromDynamic(this.sender.data),
+        //   )
+        //   this.bytes = this.outputHSTxt.get_text()
+        //   this.mystring = this.bytes.toString()
+        //   this.stats = this.mystring.split(" ")
+        //   console.log("checkDay: " + f.string(this.checkDay))
+        //   if (this.showHS == 1 && this.checkDay == 0) {
+        //     this.standings()
+        //   }
+        // },
+        // saveHS: function () {
+        //   console.log("save hs started")
+        //   var scoreAndName = cloneObject._new()
+        //   scoreAndName.score = manager.fame
+        //   scoreAndName.name = manager.charName.get_text()
+        //   var hsSaveLoader = new _qObject("../MQphp/MQhsSave.json")
+        //   hsSaveLoader.data = scoreAndName
+        //   this.sender.load(hsSaveLoader)
+        //   this.sender.addEventListener(
+        //     "complete",
+        //     createObjectMixin(this, this.loadHSComplete),
+        //   )
+        // },
         standings: function () {
           console.log("standings")
           this.counter = 0
@@ -50446,7 +50448,7 @@ for (var i = 0; i < 11; i++) {
             }
           }
         }
-        var currentRandomIndex = Math.ceil(rng.random() * 100)
+        var currentRandomIndex = 100//Math.ceil(rng.random() * 100)
         if (manager.christmas == 0) {
           currentRandomIndex = -1
         }
@@ -55958,6 +55960,7 @@ for (var i = 0; i < 11; i++) {
                 __createObject.locaX > 300) ||
               (manager.north == 16 && manager.east == 24)
             ) {
+              // TODO ????? what this doing
               currentRandomIndex =
                 manager.woodenPostVert[__createObject.innerCounter]
               currentRandomIndex.set_x(
@@ -65218,6 +65221,7 @@ for (var i = 0; i < 11; i++) {
           checker: { ...checker },
           lastReceivedItem: window.lastReceivedItem ?? 0,
           checksInFlight: window.checksInFlight,
+          rngSeed: rng.state,
         }
       }
       Udf.ReceiveVariables = function (data) {
@@ -65516,6 +65520,7 @@ for (var i = 0; i < 11; i++) {
         manager.aPower = data["aPower"]
         manager.weapon[Enum.Weapon.aSword] = data["weapon:aSword"]
         manager.tBoxUsed[63] = data["tBoxUsed[63]"]
+        if (data["rngSeed"]) window.asd = rng.state = data["rngSeed"]
         Array.apply(window.apErrors, data["window.apErrors"] ?? [])
         Object.assign(checker, data.checker)
         window.lastReceivedItem = data.lastReceivedItem
