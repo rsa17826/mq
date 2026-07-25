@@ -28,7 +28,7 @@ onPlayerLoaded.push(() => {
   ]
 })
 
-// TODO save rng seed
+// TODO make force mute a setting
 // TODO make settings for all the overlay renders
 // TODO make q store pos and only show if pos matches
 // TODO fix sell dialogue causing lag
