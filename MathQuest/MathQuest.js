@@ -26985,8 +26985,8 @@ for (var i = 0; i < 11; i++) {
             if (manager.ring6 > 0) {
               manager.skillPoints += 10
             }
-            manager.north = 18
-            manager.east = 20
+            manager.realnorth = 18
+            manager.realeast = 20
             manager.char[0].set_x(550)
             manager.char[0].set_y(375)
             this.newScreen()
@@ -27013,8 +27013,8 @@ for (var i = 0; i < 11; i++) {
             if (manager.ring6 > 0) {
               manager.skillPoints += 10
             }
-            manager.north = 15
-            manager.east = 22
+            manager.realnorth = 15
+            manager.realeast = 22
             manager.char[0].set_x(160)
             manager.char[0].set_y(450)
             this.newScreen()
@@ -27041,8 +27041,8 @@ for (var i = 0; i < 11; i++) {
             if (manager.ring6 > 0) {
               manager.skillPoints += 10
             }
-            manager.north = 12
-            manager.east = 19
+            manager.realnorth = 12
+            manager.realeast = 19
             manager.char[0].set_x(310)
             manager.char[0].set_y(200)
             this.newScreen()
@@ -27069,8 +27069,8 @@ for (var i = 0; i < 11; i++) {
             if (manager.ring6 > 0) {
               manager.skillPoints += 10
             }
-            manager.north = 14
-            manager.east = 16
+            manager.realnorth = 14
+            manager.realeast = 16
             manager.char[0].set_x(550)
             manager.char[0].set_y(180)
             this.newScreen()
@@ -27097,8 +27097,8 @@ for (var i = 0; i < 11; i++) {
             if (manager.ring6 > 0) {
               manager.skillPoints += 10
             }
-            manager.north = 10
-            manager.east = 16
+            manager.realnorth = 10
+            manager.realeast = 16
             manager.char[0].set_x(600)
             manager.char[0].set_y(200)
             this.newScreen()
@@ -27125,8 +27125,8 @@ for (var i = 0; i < 11; i++) {
             if (manager.ring6 > 0) {
               manager.skillPoints += 10
             }
-            manager.north = 12
-            manager.east = 10
+            manager.realnorth = 12
+            manager.realeast = 10
             manager.char[0].set_x(285)
             manager.char[0].set_y(225)
             this.newScreen()
@@ -27153,8 +27153,8 @@ for (var i = 0; i < 11; i++) {
             if (manager.ring6 > 0) {
               manager.skillPoints += 10
             }
-            manager.north = 7
-            manager.east = 9
+            manager.realnorth = 7
+            manager.realeast = 9
             manager.char[0].set_x(335)
             manager.char[0].set_y(250)
             this.newScreen()
@@ -27184,8 +27184,8 @@ for (var i = 0; i < 11; i++) {
             if (manager.ring6 > 0) {
               manager.skillPoints += 10
             }
-            manager.north = 11
-            manager.east = 24
+            manager.realnorth = 11
+            manager.realeast = 24
             manager.char[0].set_x(610)
             manager.char[0].set_y(250)
             this.newScreen()
@@ -27212,8 +27212,8 @@ for (var i = 0; i < 11; i++) {
             if (manager.ring6 > 0) {
               manager.skillPoints += 10
             }
-            manager.north = 19
-            manager.east = 12
+            manager.realnorth = 19
+            manager.realeast = 12
             manager.char[0].set_x(170)
             manager.char[0].set_y(160)
             this.newScreen()
@@ -32923,8 +32923,8 @@ for (var i = 0; i < 11; i++) {
             this.magicSound.play()
             manager.char[0].set_x(335)
             manager.char[0].set_y(400)
-            manager.north = 20
-            manager.east = 20
+            manager.realnorth = 20
+            manager.realeast = 20
             this.newScreen()
           }
           if (
@@ -37323,21 +37323,21 @@ for (var i = 0; i < 11; i++) {
             manager.char[0].set_x(335)
             manager.char[0].set_y(400)
             if (manager.homePoint == 1) {
-              manager.north = 20
-              manager.east = 20
+              manager.realnorth = 20
+              manager.realeast = 20
             }
             if (manager.homePoint == 2) {
-              manager.north = 13
-              manager.east = 18
+              manager.realnorth = 13
+              manager.realeast = 18
             }
             if (manager.homePoint == 3) {
-              manager.north = 12
-              manager.east = 9
+              manager.realnorth = 12
+              manager.realeast = 9
               manager.char[0].set_x(400)
             }
             if (manager.homePoint == 4) {
-              manager.north = 20
-              manager.east = 15
+              manager.realnorth = 20
+              manager.realeast = 15
               manager.char[0].set_x(400)
             }
             this.newScreen()

@@ -3,6 +3,7 @@
 // data-location markers to already be present on the page.
 
 class Logic {
+  static haveDerived = new Set()
   static iconsByRoom = {}
 
   static roomsWithMobsCount = 0
@@ -151,10 +152,7 @@ class Logic {
             const tok = Logic.baseTok(rawTok)
             // only virtual/free tokens auto-propagate; real items only
             // enter `have` via actual ReceivedItems packets
-            if (
-              !ItemTracker.REAL_ITEM_NAMES.has(tok) &&
-              !have.has(tok)
-            ) {
+            if (/^(?:area|loot|flag):/.test(tok) && !have.has(tok)) {
               have.add(tok)
               changed = true
             }
@@ -218,6 +216,7 @@ class Logic {
       }
     })
 
+    Logic.haveDerived = have
     for (const roomKey of Object.keys(Logic.roomEls)) {
       Logic.roomEls[roomKey].classList.toggle(
         "room-has-available-item",

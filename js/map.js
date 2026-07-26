@@ -377,8 +377,7 @@ class PathFinding {
     const home = this.homePointRoomKey()
     if (home && !keys.includes(home)) keys.push(home)
     if (
-      Logic.haveReal &&
-      Logic.haveReal.has("misc:bobbisPendant") &&
+      Logic.haveDerived.has("misc:bobbisPendant") &&
       !keys.includes("20_20")
     ) {
       keys.push("20_20")
@@ -559,7 +558,7 @@ class PathFinding {
   static tokenHave(tok) {
     tok = this.baseTok(tok)
     if (tok.startsWith("quest:")) return QuestState.satisfied(tok)
-    return Logic.haveReal.has(tok)
+    return Logic.haveDerived.has(tok)
   }
 
   // Whether one specific (room, token) location has actually been checked --
@@ -927,7 +926,7 @@ class PathFinding {
     Object.keys(roomsByKey).forEach((roomKey) => {
       const room = roomsByKey[roomKey]
       const exits = this.roomExitList(room)
-      const conn = this.roomConnectivity(room, Logic.haveReal)
+      const conn = this.roomConnectivity(room, Logic.haveDerived)
       for (let i = 0; i < exits.length; i++) {
         for (let j = i + 1; j < exits.length; j++) {
           const a = exits[i]
@@ -992,7 +991,7 @@ class PathFinding {
 
     // --- Warp edges: teleport-style connections from _room_geometry.WARPS,
     //     gated by their own reqs (same OR-of-AND shape as everything else) ---
-    this.addWarpEdges(graph, roomsByKey, Logic.haveReal)
+    this.addWarpEdges(graph, roomsByKey, Logic.haveDerived)
 
     return { graph, roomsByKey }
   }
