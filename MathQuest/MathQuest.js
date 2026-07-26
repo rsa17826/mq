@@ -135,14 +135,14 @@ function helpImStuck() {
 // TODO fix the map to have colored exits again
 window.checksInFlight = []
 function newItem(name) {
-  window.q ??= {}
-  window.q[`${manager.north}_${manager.east}`] ??= {}
-  window.q[`${manager.north}_${manager.east}`][
-    window.selectedThing
-  ] ??= []
-  window.q[`${manager.north}_${manager.east}`][
-    window.selectedThing
-  ].push(name.split("#")[0])
+  // window.q ??= {}
+  // window.q[`${manager.north}_${manager.east}`] ??= {}
+  // window.q[`${manager.north}_${manager.east}`][
+  //   window.selectedThing
+  // ] ??= []
+  // window.q[`${manager.north}_${manager.east}`][
+  //   window.selectedThing
+  // ].push(name.split("#")[0])
   if (!window.ap?.slotData) {
     apError("newItem: failed to check", name)
     return
@@ -33326,7 +33326,7 @@ for (var i = 0; i < 11; i++) {
               " " +
               manager.westCounter,
           )
-          window.onNewScreen?.()
+          window.onNewScreen.forEach(e=>e())
         },
         churchFunc: function () {
           console.log("church")
@@ -113325,7 +113325,7 @@ for (var i = 0; i < 11; i++) {
                 erUpdatingInternal = false
               }
             } else if (key == "null_null") {
-              window.onNewScreen?.()
+              window.onNewScreen.forEach(e=>e())
             }
             erInTransition = false
           }

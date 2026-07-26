@@ -1510,7 +1510,7 @@ class WorldMap {
       Logic.recompute()
       PathFinding.updateTrackedPath()
     })
-    HookEvent("onNewScreen", () => {
+    window.onNewScreen.push(() => {
       if (
         WorldMap.PATH_ROUTES.find(
           (/** @type {{ toRoom: string; }} */ e) =>

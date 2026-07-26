@@ -136,7 +136,6 @@ window.q = {
       "9_22 - food:steak",
       "9_22 - food:peppers",
     ],
-    "greyStone|93": ["9_22 - quest:seeds.1"],
     "greyStone|77": [
       "9_22 - food:peppers",
       "9_22 - food:steak",
@@ -478,7 +477,6 @@ window.q = {
   "4_17": {
     vik: ["4_17 - weapon:axe.+1"],
     "water|107": [
-      "4_17 - weapon:axe.+1",
       "10_15 - quest:canteen.2",
       "12_11 - quest:canteen.3",
     ],
@@ -702,7 +700,6 @@ window.q = {
   },
   "11_21": {
     "dirt|107": ["11_21 - quest:oMan.4"],
-    "dirt|80": ["11_21 - item:bombs"],
     "dirt|66": ["11_21 - quest:oMan.12"],
     "dirt|104": ["11_21 - quest:oMan.16"],
   },
@@ -744,9 +741,6 @@ window.q = {
     "black|93": ["201_200 - quest:isles.8"],
     "backArrowPH\nblack|121": ["201_200 - quest:isles.15"],
   },
-  "18_17": {
-    "lava|38": ["18_17 - item:gold"],
-  },
   "19_18": {
     "vRock|37": ["19_18 - quest:rings.11"],
   },
@@ -775,8 +769,6 @@ window.q = {
   },
   "6_24": {
     "skillsScreen\nskillTile|0": ["6_24 - quest:pam.12"],
-  },
-  "11_25": {
   },
   "12_23": {
     "dirt|67": ["undefined - quest:curse.4"],
@@ -869,22 +861,6 @@ window.q = {
   "20_16": {
     "": ["19_16 - quest:aSword.4"],
   },
-  "10_12": {
-  },
-  "6_11": {
-  },
-  "8_11": {
-  },
-  "10_16": {
-  },
-  "8_15": {
-  },
-  "21_12": {
-  },
-  "5_23": {
-  },
-  "18_11": {
-  },
   "5_9": {
     "": [
       "5_9 - quest:aSword.53",
@@ -918,9 +894,6 @@ window.q = {
       "14_21 - food:apple",
       "14_21 - item:gold",
     ],
-  },
-  "9_15": {
-    "water|45": ["9_15 - armor:phantomCoat"],
   },
   "18_13": {
     "": ["18_13 - misc:bombCapacity"],
