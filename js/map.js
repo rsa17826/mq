@@ -1499,8 +1499,16 @@ class WorldMap {
   }
   static init() {
     window.onQuestChanged.push(() => {
-      setTimeout(PathFinding.updateTrackedPath)
+      // Recompute logic/reachability FIRST so the tracked-path search below
+      // sees the post-quest-change state (newly unlocked area/warp gates,
+      // next quest step, etc) rather than stale data from before the quest
+      // advanced. Previously this ran deferred via setTimeout, which let
+      // the map's own rAF loop pick up the new PATH_ROUTES on its next
+      // frame but left the in-world overlay (which reads the same
+      // PATH_ROUTES array) rendering the old route until the player moved
+      // and forced a recompute of their own.
       Logic.recompute()
+      PathFinding.updateTrackedPath()
     })
     HookEvent("onNewScreen", () => {
       if (

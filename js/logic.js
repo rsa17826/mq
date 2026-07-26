@@ -240,6 +240,15 @@ class Logic {
         else if (st === "partial") el.classList.add("room-partial")
       }
     }
+
+    // Whatever just changed (received item, quest advancing, a newly
+    // reachable room/warp) can shift where the currently-tracked token's
+    // nearest not-yet-checked location is. Re-resolve the path arrow here
+    // too so both the overview map AND the in-world overlay (which both
+    // just read PathFinding/WorldMap.PATH_ROUTES every frame) immediately
+    // reflect the new target instead of only updating once the player
+    // physically moves and triggers another recompute.
+    PathFinding.updateTrackedPath()
   }
 }
 window.onApConnect.push(() => {

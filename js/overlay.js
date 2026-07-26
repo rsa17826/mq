@@ -276,7 +276,7 @@ function customDrawLoop() {
     west: [-1, 0],
   }
 
-  function drawOverlayArrow(a, b) {
+  function drawOverlayArrow(a, b, isWarp, destLabel) {
     var angle = Math.atan2(b.y - a.y, b.x - a.x)
     var arrowSize = 14
 
@@ -287,9 +287,8 @@ function customDrawLoop() {
       .strokeStyle("#39ff14")
       .lineWidth(5)
       .lineCap("round")
-      .setLineDash([])
+      .setLineDash(isWarp ? [10, 7] : [])
       .stroke()
-
       .beginPath()
       .moveTo(b.x, b.y)
       .lineTo(
@@ -301,8 +300,25 @@ function customDrawLoop() {
         b.y - arrowSize * Math.sin(angle + 0.35),
       )
       .closePath()
+      .setLineDash([])
       .fillStyle(mix("#39ff14", "#00f2"))
       .fill()
+
+    // Warp hops jump to a different room than the one currently on
+    // screen -- label the arrival point with the destination room so it
+    // reads as "warp to X" instead of just an arrow pointing at a wall.
+    if (isWarp && destLabel) {
+      var labelX = b.x
+      var labelY = b.y - arrowSize - 6
+      overlayCtx.font = '22px "Booter - Zero Zero"'
+      draw(overlayCtx)
+        .strokeStyle("#000")
+        .lineJoin("round")
+        .lineWidth(3)
+        .strokeText(owo(destLabel), labelX, labelY)
+        .fillStyle("#39ff14")
+        .fillText(owo(destLabel), labelX, labelY)
+    }
   }
 
   function drawRoomPathArrow() {
@@ -341,28 +357,30 @@ function customDrawLoop() {
         // Both ends of this hop are in the room the player is standing
         // in (an in-room move) -- draw it exactly as it appears on the
         // overview map, just rescaled to this room's slice of the grid.
-        drawOverlayArrow(fromPt, toPt)
+        drawOverlayArrow(
+          fromPt,
+          toPt,
+          route.isWarp,
+          route.isWarp ? route.toRoom : null,
+        )
         return
       }
 
       // Only one end of this hop is in the current room -- the other
-      // end is elsewhere on the map, so just point toward the exit.
+      // end is elsewhere on the map, so just point toward the exit (or,
+      // for a warp, straight toward the hub) and label the destination
+      // room so it's clear where the hop actually leads.
       if (fromPt) {
         var vec = PF_DIR_SCREEN_VECTOR[route.fromDir] || [0, 0]
-        // TODO - make show warp dest location and name and work
-        if (!route.fromDir) {
-          draw(overlayCtx)
-            .strokeStyle("#000")
-            .lineJoin("round")
-            .lineWidth(3) // Controls the thickness of the outline
-            .strokeText(owo(route.toRoom), 50, 100)
-            .fillStyle("#ddd")
-            .fillText(owo(route.toRoom), 50, 100)
-        }
-        drawOverlayArrow(fromPt, {
-          x: fromPt.x + vec[0] * (stubLength / 1.6),
-          y: fromPt.y + vec[1] * (stubLength / 1.6),
-        })
+        drawOverlayArrow(
+          fromPt,
+          {
+            x: fromPt.x + vec[0] * (stubLength / 1.6),
+            y: fromPt.y + vec[1] * (stubLength / 1.6),
+          },
+          route.isWarp,
+          route.toRoom,
+        )
       } else if (toPt) {
         var vec2 = PF_DIR_SCREEN_VECTOR[route.toDir] || [0, 0]
         drawOverlayArrow(
@@ -371,6 +389,8 @@ function customDrawLoop() {
             y: toPt.y - vec2[1] * -(stubLength / 1.6),
           },
           toPt,
+          route.isWarp,
+          route.isWarp ? route.fromRoom : null,
         )
       }
     })
