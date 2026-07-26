@@ -175,19 +175,35 @@ class ItemTracker {
     )
   }
 
-  // "In logic" per logic.js's classification: the entry's first receive
-  // token's icon(s) carry the "in-logic" class it applies each recompute.
-  // If no matching icon exists at all (e.g. the token isn't rendered as
-  // an icon), treat it as in-logic so the filter doesn't silently hide it.
+  // "In logic" check.
+  //
+  // Previously this proxied through the entry's first receive token's
+  // rendered map icon (checking for logic.js's "in-logic" CSS class), and
+  // fell back to `true` whenever no matching icon existed at all. Entries
+  // whose room is the virtual "-1_-1" placeholder (gated behind an area:*
+  // requirement instead of a real physical spot) never get a rendered icon,
+  // so every one of those silently bypassed the "in logic only" filter
+  // regardless of whether requires were actually satisfied.
+  //
+  // Redirecting to the physical entry that grants the area:* flag (as
+  // map.js's PathFinding.resolveAreaRedirect does for path tracking) isn't
+  // right either: that resolved entry's icon reflects ITS OWN requires
+  // (whatever unlocks the area), not this entry's actual requires (e.g.
+  // quest:/weapon:/armor: gates alongside the area: token).
+  //
+  // So evaluate the entry's own `requires` directly instead of proxying
+  // through any icon. This mirrors Logic.evalGroup's token handling:
+  // quest:* tokens go through QuestState, entrance.* tokens are treated as
+  // satisfied here (PathFinding.reqsSatisfied's convention -- room-internal
+  // reqs on a -1_-1/virtual entry aren't expected to reference doorways),
+  // everything else checks Logic.haveReal directly.
   static isInLogic(entry) {
-    const tok = this.baseTok((entry.receive || [])[0] || "")
-    if (!tok) return true
-    const key = `${entry.room} - ${tok}`
-    const els = document.querySelectorAll(
-      `.progression-icon[data-location="${CSS.escape(key)}"]`,
+    if (!entry) return true
+    log(entry, "asdasdasd")
+    return (
+      PathFinding.reqsSatisfied(entry.requires, Logic.haveReal) &&
+      PathFinding.findPathTo(entry.room)
     )
-    if (!els.length) return true
-    return [...els].some((el) => el.classList.contains("in-logic"))
   }
 
   // ---- UI construction ----
