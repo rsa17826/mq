@@ -136,14 +136,16 @@ function helpImStuck() {
 // TODO fix the map to have colored exits again
 window.checksInFlight = []
 function newItem(name) {
-  // window.q ??= {}
-  // window.q[`${manager.north}_${manager.east}`] ??= {}
-  // window.q[`${manager.north}_${manager.east}`][
-  //   window.selectedThing
-  // ] ??= []
-  // window.q[`${manager.north}_${manager.east}`][
-  //   window.selectedThing
-  // ].push(name.split("#")[0])
+  if (window.debugEnabled) {
+    window.q ??= {}
+    window.q[`${manager.north}_${manager.east}`] ??= {}
+    window.q[`${manager.north}_${manager.east}`][
+      window.selectedThing
+    ] ??= []
+    window.q[`${manager.north}_${manager.east}`][
+      window.selectedThing
+    ].push(name.split("#")[0])
+  }
   if (!window.ap?.slotData) {
     apError("newItem: failed to check", name)
     return
