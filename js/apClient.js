@@ -619,7 +619,7 @@ class ArchipelagoClient {
       window.waitingPackets.push(packet)
       return
     }
-
+    var alreadyReceivedItemsList = []
     packet.items.forEach((item, offset) => {
       this.itemCount += 1
       // item.player is the slot number that SENT this item (the source
@@ -630,13 +630,24 @@ class ArchipelagoClient {
         (p) => String(p.slot) === String(item.player),
       )?.alias
       const globalIndex = packet.index + offset
-
-      apLog(
+      var itemData = [
         `@${this.itemCount > window.lastReceivedItem ? "purple" : "orange"}![Item Received]@! @console!ID: ${item.item} (@!${formatItemName({ itemName, itemPlayer: this.slot }, true)}${this.itemCount > window.lastReceivedItem ? "" : " - @orange!already recived@!"} - sent by @blue!${senderName}@!@console!`,
         item,
         this.itemCount,
         window.lastReceivedItem,
-      )
+      ]
+      if (this.itemCount <= window.lastReceivedItem) {
+        alreadyReceivedItemsList.push(itemData)
+        if (alreadyReceivedItemsList.length > 25) {
+          alreadyReceivedItemsList.shift()
+        }
+      } else {
+        if (alreadyReceivedItemsList.length) {
+          alreadyReceivedItemsList.forEach((e) => apLog(...e))
+          alreadyReceivedItemsList = []
+        }
+        apLog(...itemData)
+      }
       if (this.itemCount > window.lastReceivedItem) {
         if (this.itemCount - 1 === window.lastReceivedItem) {
           if (itemList[itemName]) {
@@ -662,6 +673,10 @@ class ArchipelagoClient {
       }
       this.lastProcessedIndex = globalIndex + 1
     })
+    if (alreadyReceivedItemsList.length) {
+      alreadyReceivedItemsList.forEach((e) => apLog(...e))
+      alreadyReceivedItemsList = []
+    }
   }
 
   /**

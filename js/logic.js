@@ -276,7 +276,6 @@ window.onApCreated.push((ap) => {
     origOnReceivedItems(packet)
     if (!window.playerLoaded) return
     packet.items.forEach((item) => {
-      log(item, ap.slotData.AP_ITEM_IDS[item.item])
       let name = ap.slotData.AP_ITEM_IDS[item.item]
       if (name) {
         switch (name) {

@@ -199,7 +199,6 @@ class ItemTracker {
   // everything else checks Logic.haveReal directly.
   static isInLogic(entry) {
     if (!entry) return true
-    log(entry, "asdasdasd")
     return (
       PathFinding.reqsSatisfied(entry.requires, Logic.haveReal) &&
       PathFinding.findPathTo(entry.room)

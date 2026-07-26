@@ -29,6 +29,7 @@ if (window.debugEnabled)
     ]
   })
 
+// TODO ?add option to log all received items when starting instead of only 25 - would there be any use in this
 // TODO make force mute a setting
 // TODO make settings for all the overlay renders
 // TODO make q store pos and only show if pos matches
