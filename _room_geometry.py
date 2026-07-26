@@ -4361,7 +4361,7 @@ GEOM: list[ExitBase] = [
     "east": 11,
     "exits": {
       "west": [
-        {"top": 4, "bottom": 4},
+        # {"top": 4, "bottom": 4},
       ],
       "south": [
         {"left": 3, "right": 4},
@@ -6462,6 +6462,10 @@ WARPS: tuple[Warp, ...] = (
   },
   {
     "connections": ((4, 13, "root", 0), (100, 100, "south", 0)),
+  },
+  {
+    "reqs": [["magic:lightning", "area:magic upgrades"]],
+    "connections": ((16, 11, "root", 0), (17, 10, "east", 0)),
   },
   {
     "connections": ((3, 16, "root", 0), (200, 200, "north", 0)),

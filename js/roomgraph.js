@@ -38,6 +38,9 @@ class RoomGraph {
   // Mirrors regions.py's powerRule: rooms whose area isn't in AREA_POWER_REQS
   // (or whose room key isn't in AREA_MAP at all) have no power gate.
   static areaPowerSatisfied(roomKey, have) {
+    if (ap.slotData.no_power_reqs) {
+      return true
+    }
     const area = RoomGraph.areaMap[roomKey]
     if (area === undefined) return true
     const reqs = RoomGraph.areaPowerReqs[area]
