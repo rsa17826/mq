@@ -9,24 +9,25 @@
 // @endregex
 // @ts-nocheck
 
-window.debugEnabled = !false
-onPlayerLoaded.push(() => {
-  window.OEM = Object.entries(manager)
-  OEMA = [
-    ...OEM.filter(([k, e]) => !["whiteFlash"].includes(k)).map(
-      (e) => e[0],
-    ),
-  ]
-  OEMB = [
-    ...OEM.filter(
-      ([k, e]) =>
-        !["sand", "grass", "char"].includes(k) &&
-        !k.includes("Floor") &&
-        !k.includes("floor") &&
-        e?.[0]?.__visible != undefined,
-    ),
-  ]
-})
+window.debugEnabled = false
+if (window.debugEnabled)
+  onPlayerLoaded.push(() => {
+    window.OEM = Object.entries(manager)
+    OEMA = [
+      ...OEM.filter(([k, e]) => !["whiteFlash"].includes(k)).map(
+        (e) => e[0],
+      ),
+    ]
+    OEMB = [
+      ...OEM.filter(
+        ([k, e]) =>
+          !["sand", "grass", "char"].includes(k) &&
+          !k.includes("Floor") &&
+          !k.includes("floor") &&
+          e?.[0]?.__visible != undefined,
+      ),
+    ]
+  })
 
 // TODO make force mute a setting
 // TODO make settings for all the overlay renders
@@ -200,7 +201,18 @@ addEventListener("keydown", ({ key }) => {
   if (document.activeElement.id == "apChatSayInput") {
     return
   }
+  if (key == "Shift") window.useSlowSpeed = 1
   if (key == "f" && !test.fightMode) test.save()
+  if (key == "Escape") {
+    window.escPressed = 1
+    test.stage.dispatchEvent({
+      type: "mouseDown",
+      isDefaultPrevented() {
+        return true
+      },
+    })
+    window.escPressed = 0
+  }
   if (
     key == "m" &&
     window.canUseMagic &&
@@ -241,7 +253,11 @@ addEventListener("keydown", ({ key }) => {
   }
 })
 window.onkeyup = ({ key }) => {
-  // if (key == "z") player.speed = 40
+  if (key == "esc") window.escPressed = 0
+  if (key == "Shift") window.useSlowSpeed = 0
+}
+onblur = () => {
+  window.useSlowSpeed = 0
 }
 // function newItem(north,east,name,value,isadd) {
 //   log("newItem", north,east,name,value,isadd)
@@ -23369,38 +23385,22 @@ for (var i = 0; i < 11; i++) {
                 this.memx = manager.char[0].get_x()
                 this.memy = manager.char[0].get_y()
               }
+              let tempSpeed =
+                7 +
+                ((manager.speed + manager.eSpeed) / 5 + this.ninSpeed)
+              if (window.useSlowSpeed) tempSpeed = 1
               if (this.down == 1) {
                 keyIcon = manager.char[0]
-                keyIcon.set_y(
-                  keyIcon.get_y() +
-                    (7 +
-                      ((manager.speed + manager.eSpeed) / 5 +
-                        this.ninSpeed)),
-                )
+                keyIcon.set_y(keyIcon.get_y() + tempSpeed)
               } else if (this.up == 1) {
                 keyIcon = manager.char[0]
-                keyIcon.set_y(
-                  keyIcon.get_y() -
-                    (7 +
-                      ((manager.speed + manager.eSpeed) / 5 +
-                        this.ninSpeed)),
-                )
+                keyIcon.set_y(keyIcon.get_y() - tempSpeed)
               } else if (this.left == 1) {
                 keyIcon = manager.char[0]
-                keyIcon.set_x(
-                  keyIcon.get_x() -
-                    (7 +
-                      ((manager.speed + manager.eSpeed) / 5 +
-                        this.ninSpeed)),
-                )
+                keyIcon.set_x(keyIcon.get_x() - tempSpeed)
               } else if (this.right == 1) {
                 keyIcon = manager.char[0]
-                keyIcon.set_x(
-                  keyIcon.get_x() +
-                    (7 +
-                      ((manager.speed + manager.eSpeed) / 5 +
-                        this.ninSpeed)),
-                )
+                keyIcon.set_x(keyIcon.get_x() + tempSpeed)
               }
               manager.charBottom[0].set_x(manager.char[0].get_x())
               manager.charBottom[0].set_y(
@@ -26708,41 +26708,24 @@ for (var i = 0; i < 11; i++) {
         },
         charBounceBack: function () {
           this.charStateTimer.reset()
+          let tempSpeed =
+            7 + ((manager.speed + manager.eSpeed) / 5 + this.ninSpeed)
+          if (window.useSlowSpeed) tempSpeed = 1
           if (this.up == 1) {
             var targetCharacter = manager.char[0]
-            targetCharacter.set_y(
-              targetCharacter.get_y() +
-                (7 +
-                  ((manager.speed + manager.eSpeed) / 5 +
-                    this.ninSpeed)),
-            )
+            targetCharacter.set_y(targetCharacter.get_y() + tempSpeed)
           }
           if (this.down == 1) {
             targetCharacter = manager.char[0]
-            targetCharacter.set_y(
-              targetCharacter.get_y() -
-                (7 +
-                  ((manager.speed + manager.eSpeed) / 5 +
-                    this.ninSpeed)),
-            )
+            targetCharacter.set_y(targetCharacter.get_y() - tempSpeed)
           }
           if (this.left == 1) {
             targetCharacter = manager.char[0]
-            targetCharacter.set_x(
-              targetCharacter.get_x() +
-                (7 +
-                  ((manager.speed + manager.eSpeed) / 5 +
-                    this.ninSpeed)),
-            )
+            targetCharacter.set_x(targetCharacter.get_x() + tempSpeed)
           }
           if (this.right == 1) {
             targetCharacter = manager.char[0]
-            targetCharacter.set_x(
-              targetCharacter.get_x() -
-                (7 +
-                  ((manager.speed + manager.eSpeed) / 5 +
-                    this.ninSpeed)),
-            )
+            targetCharacter.set_x(targetCharacter.get_x() - tempSpeed)
           }
           manager.charBottom[0].set_x(manager.char[0].get_x())
           manager.charBottom[0].set_y(manager.char[0].get_y() + 54)
@@ -26753,40 +26736,31 @@ for (var i = 0; i < 11; i++) {
           console.log(
             manager.char[0].get_x() + " " + manager.char[0].get_y(),
           )
+          let tempSpeed =
+            7 + ((manager.speed + manager.eSpeed) / 5 + this.ninSpeed)
+          if (window.useSlowSpeed) tempSpeed = 1
           if (this.up == 1) {
             var charPositionController = manager.char[0]
             charPositionController.set_y(
-              charPositionController.get_y() +
-                (7 +
-                  ((manager.speed + manager.eSpeed) / 5 +
-                    this.ninSpeed)),
+              charPositionController.get_y() + tempSpeed,
             )
           }
           if (this.down == 1) {
             charPositionController = manager.char[0]
             charPositionController.set_y(
-              charPositionController.get_y() -
-                (7 +
-                  ((manager.speed + manager.eSpeed) / 5 +
-                    this.ninSpeed)),
+              charPositionController.get_y() - tempSpeed,
             )
           }
           if (this.left == 1) {
             charPositionController = manager.char[0]
             charPositionController.set_x(
-              charPositionController.get_x() +
-                (7 +
-                  ((manager.speed + manager.eSpeed) / 5 +
-                    this.ninSpeed)),
+              charPositionController.get_x() + tempSpeed,
             )
           }
           if (this.right == 1) {
             charPositionController = manager.char[0]
             charPositionController.set_x(
-              charPositionController.get_x() -
-                (7 +
-                  ((manager.speed + manager.eSpeed) / 5 +
-                    this.ninSpeed)),
+              charPositionController.get_x() - tempSpeed,
             )
           }
           manager.charBottom[0].set_x(manager.char[0].get_x())
@@ -26988,6 +26962,7 @@ for (var i = 0; i < 11; i++) {
         },
         useWarpHandler: function (canvas) {
           if (
+            window.escPressed ||
             manager.exitButton.hitTestPoint(
               this.get_mouseX(),
               this.get_mouseY(),
@@ -27689,6 +27664,7 @@ for (var i = 0; i < 11; i++) {
             manager.mess.set_text("You don't have that many.")
             manager.mess.setTextFormat(manager.messFormat)
           } else if (
+            window.escPressed ||
             manager.exitButton.hitTestPoint(
               this.get_mouseX(),
               this.get_mouseY(),
@@ -28502,6 +28478,7 @@ for (var i = 0; i < 11; i++) {
         },
         buyingHandler: function (currentChar) {
           if (
+            window.escPressed ||
             manager.exitButton.hitTestPoint(
               this.get_mouseX(),
               this.get_mouseY(),
@@ -33939,11 +33916,12 @@ for (var i = 0; i < 11; i++) {
           hitTestPointMouseButtonDownRemoveListenerVisibilitySetters,
         ) {
           if (
-            manager.exitButton.hitTestPoint(
-              this.get_mouseX(),
-              this.get_mouseY(),
-              true,
-            ) &&
+            (window.escPressed ||
+              manager.exitButton.hitTestPoint(
+                this.get_mouseX(),
+                this.get_mouseY(),
+                true,
+              )) &&
             manager.exitButton.get_visible() == 1
           ) {
             this.stage.removeEventListener(
@@ -34057,11 +34035,12 @@ for (var i = 0; i < 11; i++) {
         rubyBuyHandler: function (rubyBuyHandler) {
           console.log("RubyBuyHandler")
           if (
-            manager.exitButton.hitTestPoint(
-              this.get_mouseX(),
-              this.get_mouseY(),
-              true,
-            ) &&
+            (window.escPressed ||
+              manager.exitButton.hitTestPoint(
+                this.get_mouseX(),
+                this.get_mouseY(),
+                true,
+              )) &&
             manager.exitButton.get_visible() == 1
           ) {
             this.stage.removeEventListener(
@@ -34222,11 +34201,12 @@ for (var i = 0; i < 11; i++) {
         },
         newtonBuyHandler: function (mouseInteractionHandler) {
           if (
-            manager.exitButton.hitTestPoint(
-              this.get_mouseX(),
-              this.get_mouseY(),
-              true,
-            ) &&
+            (window.escPressed ||
+              manager.exitButton.hitTestPoint(
+                this.get_mouseX(),
+                this.get_mouseY(),
+                true,
+              )) &&
             manager.exitButton.get_visible() == 1
           ) {
             manager.messPage = 1
@@ -34308,11 +34288,12 @@ for (var i = 0; i < 11; i++) {
         },
         diaBuyHandler: function (currentMouseHandler) {
           if (
-            manager.exitButton.hitTestPoint(
-              this.get_mouseX(),
-              this.get_mouseY(),
-              true,
-            ) &&
+            (window.escPressed ||
+              manager.exitButton.hitTestPoint(
+                this.get_mouseX(),
+                this.get_mouseY(),
+                true,
+              )) &&
             manager.exitButton.get_visible() == 1
           ) {
             this.stage.removeEventListener(
@@ -36219,11 +36200,12 @@ for (var i = 0; i < 11; i++) {
         useItemHandler: function (itemUseFunction) {
           console.log("use item")
           if (
-            manager.exitButton.hitTestPoint(
-              this.get_mouseX(),
-              this.get_mouseY(),
-              true,
-            ) &&
+            (window.escPressed ||
+              manager.exitButton.hitTestPoint(
+                this.get_mouseX(),
+                this.get_mouseY(),
+                true,
+              )) &&
             manager.exitButton.get_visible() == 1
           ) {
             manager.itemsScreen.set_visible(false)
@@ -37306,11 +37288,12 @@ for (var i = 0; i < 11; i++) {
         },
         useMagicHandler: function (mouseClickHandler) {
           if (
-            manager.exitButton.hitTestPoint(
-              this.get_mouseX(),
-              this.get_mouseY(),
-              true,
-            ) &&
+            (window.escPressed ||
+              manager.exitButton.hitTestPoint(
+                this.get_mouseX(),
+                this.get_mouseY(),
+                true,
+              )) &&
             manager.exitButton.get_visible() == 1
           ) {
             manager.magicScreen.set_visible(false)
@@ -38683,11 +38666,12 @@ for (var i = 0; i < 11; i++) {
         },
         useSkillsHandler: function (mouseInputHandler) {
           if (
-            manager.exitButton.hitTestPoint(
-              this.get_mouseX(),
-              this.get_mouseY(),
-              true,
-            ) &&
+            (window.escPressed ||
+              manager.exitButton.hitTestPoint(
+                this.get_mouseX(),
+                this.get_mouseY(),
+                true,
+              )) &&
             manager.exitButton.get_visible() == 1
           ) {
             manager.skillsScreen.set_visible(false)
@@ -39574,11 +39558,12 @@ for (var i = 0; i < 11; i++) {
         },
         craftingHandler: function (mouseHandler) {
           if (
-            manager.exitButton.hitTestPoint(
-              this.get_mouseX(),
-              this.get_mouseY(),
-              true,
-            ) &&
+            (window.escPressed ||
+              manager.exitButton.hitTestPoint(
+                this.get_mouseX(),
+                this.get_mouseY(),
+                true,
+              )) &&
             manager.exitButton.get_visible() == 1
           ) {
             manager.skillsScreen.set_visible(false)
@@ -40305,11 +40290,12 @@ for (var i = 0; i < 11; i++) {
           }
           this.itemClicked = -1
           if (
-            manager.exitButton.hitTestPoint(
-              this.get_mouseX(),
-              this.get_mouseY(),
-              true,
-            ) &&
+            (window.escPressed ||
+              manager.exitButton.hitTestPoint(
+                this.get_mouseX(),
+                this.get_mouseY(),
+                true,
+              )) &&
             manager.exitButton.get_visible() == 1
           ) {
             manager.weapScreen.set_visible(false)
@@ -41032,11 +41018,12 @@ for (var i = 0; i < 11; i++) {
           }
           this.itemClicked = -1
           if (
-            manager.exitButton.hitTestPoint(
-              this.get_mouseX(),
-              this.get_mouseY(),
-              true,
-            ) &&
+            (window.escPressed ||
+              manager.exitButton.hitTestPoint(
+                this.get_mouseX(),
+                this.get_mouseY(),
+                true,
+              )) &&
             manager.exitButton.get_visible() == 1
           ) {
             manager.armorScreen.set_visible(false)
@@ -41589,11 +41576,12 @@ for (var i = 0; i < 11; i++) {
         },
         statScreenHandler: function (controller) {
           if (
-            manager.exitButton.hitTestPoint(
-              this.get_mouseX(),
-              this.get_mouseY(),
-              true,
-            ) &&
+            (window.escPressed ||
+              manager.exitButton.hitTestPoint(
+                this.get_mouseX(),
+                this.get_mouseY(),
+                true,
+              )) &&
             manager.exitButton.get_visible() == 1
           ) {
             manager.armorScreen.set_visible(false)
@@ -42317,11 +42305,12 @@ for (var i = 0; i < 11; i++) {
         },
         lootExitHandler: function (gameButton) {
           if (
-            manager.exitButton.hitTestPoint(
-              this.get_mouseX(),
-              this.get_mouseY(),
-              true,
-            ) &&
+            (window.escPressed ||
+              manager.exitButton.hitTestPoint(
+                this.get_mouseX(),
+                this.get_mouseY(),
+                true,
+              )) &&
             manager.exitButton.get_visible() == 1
           ) {
             manager.lootScreen.set_visible(false)
@@ -44243,11 +44232,12 @@ for (var i = 0; i < 11; i++) {
         },
         questExitHandler: function (__minifiedFunction) {
           if (
-            manager.exitButton.hitTestPoint(
-              this.get_mouseX(),
-              this.get_mouseY(),
-              true,
-            ) &&
+            (window.escPressed ||
+              manager.exitButton.hitTestPoint(
+                this.get_mouseX(),
+                this.get_mouseY(),
+                true,
+              )) &&
             manager.exitButton.get_visible() == 1
           ) {
             manager.questScreen.set_visible(false)
@@ -44381,11 +44371,12 @@ for (var i = 0; i < 11; i++) {
             this.pupSound.play()
           }
           if (
-            (manager.exitButton.hitTestPoint(
-              this.get_mouseX(),
-              this.get_mouseY(),
-              true,
-            ) &&
+            ((window.escPressed ||
+              manager.exitButton.hitTestPoint(
+                this.get_mouseX(),
+                this.get_mouseY(),
+                true,
+              )) &&
               manager.exitButton.get_visible() == 1) ||
             manager.pup == 0
           ) {
@@ -44457,11 +44448,12 @@ for (var i = 0; i < 11; i++) {
         },
         convertExit: function (exitButtonClicked) {
           if (
-            (manager.exitButton.hitTestPoint(
-              this.get_mouseX(),
-              this.get_mouseY(),
-              true,
-            ) &&
+            ((window.escPressed ||
+              manager.exitButton.hitTestPoint(
+                this.get_mouseX(),
+                this.get_mouseY(),
+                true,
+              )) &&
               manager.exitButton.get_visible() == 1) ||
             manager.pup == 0
           ) {
@@ -103638,9 +103630,11 @@ for (var i = 0; i < 11; i++) {
           return this.get_height()
         },
         get_mouseX: function () {
+          if (window.escapePressed) return 0
           return this.__mouseX
         },
         get_mouseY: function () {
+          if (window.escapePressed) return 0
           return this.__mouseY
         },
         get_quality: function () {

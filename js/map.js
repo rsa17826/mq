@@ -783,15 +783,23 @@ class PathFinding {
   // Safe to call anytime; it's a no-op unless something is being tracked.
   static updateTrackedPath() {
     if (!this.trackedToken) return
-    const rawEntry = this.findTokenEntry(this.trackedToken)
-    this.applyLootTrackingFor(rawEntry)
-    if (!rawEntry) {
-      this.clearPathRoute()
-      return
+    if (/^[\d._]+ - /.test(this.trackedToken)) {
+      var tt = this.trackedToken.split(" - ")
+      this.showPathTo(
+        tt[0],
+        tt[1] !== "undefined" ? tt[1] : undefined,
+      )
+    } else {
+      const rawEntry = this.findTokenEntry(this.trackedToken)
+      this.applyLootTrackingFor(rawEntry)
+      if (!rawEntry) {
+        this.clearPathRoute()
+        return
+      }
+      const target = this.resolveAreaRedirect(rawEntry)
+      const entranceTok = this.entryEntranceToken(target)
+      this.showPathTo(target.room, entranceTok || undefined)
     }
-    const target = this.resolveAreaRedirect(rawEntry)
-    const entranceTok = this.entryEntranceToken(target)
-    this.showPathTo(target.room, entranceTok || undefined)
   }
 
   // Sets (or clears) the HUD loot readout to whatever's still outstanding
@@ -1105,7 +1113,7 @@ class PathFinding {
   // empty canvas.
   /**
    * @param {any} targetKey
-   * @param {undefined} [targetEntrance]
+   * @param {{ dir: string; idx: number; }} targetEntrance
    */
   static showPathTo(targetKey, targetEntrance) {
     const result = this.findPathTo(targetKey, targetEntrance)
@@ -1303,8 +1311,8 @@ class WorldMap {
    * @param {string | null} token
    */
   static trackToken(token) {
-    PathFinding.trackedToken = token || null
-    localStorage.trackedToken = PathFinding.trackedToken
+    localStorage.trackedToken = PathFinding.trackedToken =
+      token || null
     selectedPathId = null // tracking supersedes any manual click-selection
     PathFinding.updateTrackedPath()
   }
@@ -1474,13 +1482,7 @@ class WorldMap {
           )
         } else WorldMap.trackToken(localStorage.trackedToken)
       }
-      if (/^[\d._]+ - /.test(PathFinding.trackedToken)) {
-        var tt = PathFinding.trackedToken.split(" - ")
-        PathFinding.showPathTo(
-          tt[0],
-          tt[1] !== "undefined" ? tt[1] : undefined,
-        )
-      } else PathFinding.updateTrackedPath()
+      PathFinding.updateTrackedPath()
     })
     window.addEventListener("resize", WorldMap.resizeCanvas)
 
