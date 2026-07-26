@@ -33326,7 +33326,7 @@ for (var i = 0; i < 11; i++) {
               " " +
               manager.westCounter,
           )
-          window.onNewScreen.forEach(e=>e())
+          window.onNewScreen.forEach((e) => e())
         },
         churchFunc: function () {
           console.log("church")
@@ -101664,9 +101664,13 @@ for (var i = 0; i < 11; i++) {
                   window.keysDownList = window.keysDownList.filter(
                     (e) => e != argumentB,
                   )
-                  for (var key of window.keysDownList) {
+                  for (let key of window.keysDownList) {
                     requestAnimFrame(() => {
-                      currentScope.onKeyDown.dispatch(key, _closureId)
+                      if (window.keysDownList.includes(key))
+                        currentScope.onKeyDown.dispatch(
+                          key,
+                          _closureId,
+                        )
                     })
                   }
                 }
@@ -113325,7 +113329,7 @@ for (var i = 0; i < 11; i++) {
                 erUpdatingInternal = false
               }
             } else if (key == "null_null") {
-              window.onNewScreen.forEach(e=>e())
+              window.onNewScreen.forEach((e) => e())
             }
             erInTransition = false
           }
