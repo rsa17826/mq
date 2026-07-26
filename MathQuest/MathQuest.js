@@ -31,10 +31,8 @@ onPlayerLoaded.push(() => {
 // TODO make force mute a setting
 // TODO make settings for all the overlay renders
 // TODO make q store pos and only show if pos matches
-// TODO fix sell dialogue causing lag
-// TODO check all tboxused for wrong ids!!!
-// TODO make the map detect what checks player got work for all items!!!
-// TODO hide overlay during battle or chat
+// TODO make option to hide/change color of hint texts for ool checks
+// TODO make the map detect what checks player got work for all items!!! - check if working
 // TODO make map show 9.11 20 as 9 20
 // TODO make item list in logic use logic for reqs too
 // TODO make sunflower seeds infinite

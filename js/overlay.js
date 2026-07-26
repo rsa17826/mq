@@ -455,7 +455,13 @@ function customDrawLoop() {
   // render chest hints
   {
     if (localStorage.showVanillaItems != "true") {
-      if (!(manager.exitButton.__visible || manager.mess.__visible)) {
+      if (
+        !(
+          manager.exitButton.__visible ||
+          manager.mess.__visible ||
+          test.fightMode == 1
+        )
+      ) {
         for (var [
           _color,
           {
