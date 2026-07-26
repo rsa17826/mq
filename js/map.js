@@ -641,6 +641,26 @@ class PathFinding {
     )
     if (!candidates.length) return entry
 
+    return PathFinding.pickClosestCandidate(candidates) || entry
+  }
+
+  // Given several candidate PROG_DATA entries that all grant the same thing
+  // (e.g. several distinct physical locations that each satisfy a tracked
+  // token, or several locations that grant a redirected area: flag), picks
+  // whichever one is actually closest to the player right now, walking the
+  // same graph/BFS used for real path routing -- not just "first in list"
+  // and not just crow-flight distance. Since `dist` (from PathFinding.bfs)
+  // only ever contains nodes that are genuinely reachable with what the
+  // player currently holds, a reachable-but-farther candidate always wins
+  // over an unreachable-but-nominally-closer one; candidates with no
+  // reachable node at all are simply never selected here.
+  /**
+   * @param {any[]} candidates
+   */
+  static pickClosestCandidate(candidates) {
+    if (!candidates || !candidates.length) return null
+    if (candidates.length === 1) return candidates[0]
+
     const slotData = window.ap && window.ap.slotData
     const startKey = PathFinding.getCurrentRoomKey()
     if (slotData && startKey) {
@@ -663,6 +683,26 @@ class PathFinding {
       }
     }
     return candidates[0]
+  }
+
+  // Scans an entry's requirement groups for an "entrance.<side><idx>" token
+  // (e.g. "entrance.north0") and, if present, returns { dir, idx } so the
+  // path can be routed to that exact doorway instead of just "somewhere in
+  // this room". Mirrors rules.py/regions.py's own entrance-token handling.
+  /**
+   * @param {{ requires: any; }} entry
+   */
+  static entryEntranceToken(entry) {
+    for (const group of entry?.requires || []) {
+      for (const rawTok of group) {
+        const tok = PathFinding.baseTok(rawTok)
+        const m = tok.match(
+          /^entrance\.(north|south|east|west)(\d+)$/,
+        )
+        if (m) return { dir: m[1], idx: Number(m[2]) }
+      }
+    }
+    return null
   }
 
   // --- Loot-progress surfacing ---
@@ -784,7 +824,8 @@ class PathFinding {
       return
     }
     const target = PathFinding.resolveAreaRedirect(rawEntry)
-    PathFinding.showPathTo(target.room)
+    const entranceTok = PathFinding.entryEntranceToken(target)
+    PathFinding.showPathTo(target.room, entranceTok || undefined)
   }
 
   // Sets (or clears) the HUD loot readout to whatever's still outstanding
@@ -1211,17 +1252,19 @@ class PathFinding {
         ) || { room: next.room, requires: [], receive: [next.tok] }
       )
     }
-    for (const entry of PathFinding.getProgData()) {
-      if (
-        !(entry.receive || []).some(
-          (/** @type {any} */ t) => PathFinding.baseTok(t) === token,
+    const candidates = PathFinding.getProgData().filter(
+      (/** @type {{ receive: any; room: string; }} */ entry) => {
+        if (
+          !(entry.receive || []).some(
+            (/** @type {any} */ t) =>
+              PathFinding.baseTok(t) === token,
+          )
         )
-      )
-        continue
-      if (PathFinding.locationChecked(entry.room, token)) continue
-      return entry
-    }
-    return null
+          return false
+        return !PathFinding.locationChecked(entry.room, token)
+      },
+    )
+    return PathFinding.pickClosestCandidate(candidates)
   }
 
   /**
