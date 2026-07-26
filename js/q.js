@@ -111,15 +111,15 @@ window.q = {
   },
   "8_25": {
     strGuy: [
+      "-1_-1 - misc:str up npc.1",
+      "-1_-1 - misc:str up npc.2",
+      "-1_-1 - misc:str up npc.3",
+      "-1_-1 - misc:str up npc.4",
       "-1_-1 - misc:str up npc.5",
       "-1_-1 - misc:str up npc.6",
       "-1_-1 - misc:str up npc.7",
       "-1_-1 - misc:str up npc.8",
       "-1_-1 - misc:str up npc.9",
-      "-1_-1 - misc:str up npc.2",
-      "-1_-1 - misc:str up npc.3",
-      "-1_-1 - misc:str up npc.4",
-      "-1_-1 - misc:str up npc.1",
       "-1_-1 - misc:str up npc.10",
       "-1_-1 - misc:str up npc.11",
     ],
@@ -157,29 +157,17 @@ window.q = {
   },
   "17_23": {
     strGuy: [
+      "-1_-1 - misc:str up npc.1",
+      "-1_-1 - misc:str up npc.2",
+      "-1_-1 - misc:str up npc.3",
+      "-1_-1 - misc:str up npc.4",
       "-1_-1 - misc:str up npc.5",
       "-1_-1 - misc:str up npc.6",
       "-1_-1 - misc:str up npc.7",
       "-1_-1 - misc:str up npc.8",
       "-1_-1 - misc:str up npc.9",
-      "-1_-1 - misc:str up npc.2",
-      "-1_-1 - misc:str up npc.3",
-      "-1_-1 - misc:str up npc.4",
-      "-1_-1 - misc:str up npc.1",
       "-1_-1 - misc:str up npc.10",
       "-1_-1 - misc:str up npc.11",
-    ],
-    "": [
-      "misc:str up npc.1",
-      "-1_-1 - misc:str up npc.1",
-      "-1_-1 - misc:str up npc.2",
-      "-1_-1 - misc:str up npc.3",
-      "-1_-1 - misc:str up npc.4",
-      "-1_-1 - misc:str up npc.5",
-      "-1_-1 - misc:str up npc.6",
-      "-1_-1 - misc:str up npc.7",
-      "-1_-1 - misc:str up npc.8",
-      "-1_-1 - misc:str up npc.9",
     ],
   },
   "18_24": {
@@ -338,7 +326,6 @@ window.q = {
   },
   "11_13": {
     woodsman: ["11_13 - food:blueberries"],
-    "dRocks|150": ["-1_-1 - quest:dream.13"],
   },
   "10_13": {
     shayde: ["10_13 - misc:ninja"],
@@ -416,15 +403,15 @@ window.q = {
       "20_15 - skill:firewall.5",
     ],
     strGuy: [
+      "-1_-1 - misc:str up npc.1",
+      "-1_-1 - misc:str up npc.2",
+      "-1_-1 - misc:str up npc.3",
+      "-1_-1 - misc:str up npc.4",
       "-1_-1 - misc:str up npc.5",
       "-1_-1 - misc:str up npc.6",
       "-1_-1 - misc:str up npc.7",
       "-1_-1 - misc:str up npc.8",
       "-1_-1 - misc:str up npc.9",
-      "-1_-1 - misc:str up npc.2",
-      "-1_-1 - misc:str up npc.3",
-      "-1_-1 - misc:str up npc.4",
-      "-1_-1 - misc:str up npc.1",
       "-1_-1 - misc:str up npc.10",
       "-1_-1 - misc:str up npc.11",
     ],
@@ -434,8 +421,6 @@ window.q = {
       "20_15 - skill:firewall.3",
       "20_15 - skill:firewall.4",
     ],
-    "": ["-1_-1 - misc:str up npc.10"],
-    "mBox\nmess": ["-1_-1 - misc:str up npc.11"],
   },
   "21_18": {
     shayde: ["21_18 - misc:hugeBomb"],
@@ -574,7 +559,6 @@ window.q = {
       "13_13 - craft:upgradeAAHP",
       "13_13 - craft:upgradeAAMP",
     ],
-    "snow|60": ["-1_-1 - quest:mChal.5"],
   },
   "100_100": {
     "tent|2": [
@@ -631,11 +615,6 @@ window.q = {
     "cavernWall|145": [
       "500_501 - weapon:aSword",
       "500_501 - quest:aSword.7",
-      "-1_-1 - quest:aSword.8",
-      "-1_-1 - quest:aSword.9",
-      "-1_-1 - quest:aSword.10",
-      "-1_-1 - quest:aSword.11",
-      "-1_-1 - quest:aSword.12",
     ],
     "greyStone|106": ["500_501 - quest:aSword.13"],
     "greyStone|52": [
@@ -767,8 +746,6 @@ window.q = {
   },
   "18_17": {
     "lava|38": ["18_17 - item:gold"],
-    "lava|61": ["-1_-1 - quest:curse.2"],
-    "lava|145": ["-1_-1 - quest:aSword.6"],
   },
   "19_18": {
     "vRock|37": ["19_18 - quest:rings.11"],
@@ -800,20 +777,6 @@ window.q = {
     "skillsScreen\nskillTile|0": ["6_24 - quest:pam.12"],
   },
   "11_25": {
-    // "char|4": ["11_25 - food:beefJerky"],
-    "": [
-      "-1_-1 - quest:aSword.14",
-      "-1_-1 - quest:aSword.15",
-      "-1_-1 - quest:aSword.16",
-      "-1_-1 - quest:aSword.17",
-      "-1_-1 - quest:aSword.18",
-      "-1_-1 - quest:aSword.19",
-      "-1_-1 - quest:aSword.20",
-      "-1_-1 - quest:aSword.21",
-      "-1_-1 - quest:aSword.22",
-      "-1_-1 - quest:aSword.23",
-    ],
-    "treePink|76": ["-1_-1 - weapon:orcBlade"],
   },
   "12_23": {
     "dirt|67": ["undefined - quest:curse.4"],
@@ -876,7 +839,6 @@ window.q = {
   },
   "7_12": {
     "dirt|124": ["10_12 - quest:oMan.18"],
-    "greyStone|52": ["-1_-1 - quest:aSword.26"],
   },
   "7_10": {
     "": ["7_10 - quest:gTree.17"],
@@ -908,41 +870,20 @@ window.q = {
     "": ["19_16 - quest:aSword.4"],
   },
   "10_12": {
-    "greyStone|52": ["-1_-1 - quest:aSword.25"],
   },
   "6_11": {
-    "": ["-1_-1 - quest:aSword.27"],
   },
   "8_11": {
-    "": [
-      "-1_-1 - quest:aSword.28",
-      "-1_-1 - quest:aSword.29",
-      "-1_-1 - quest:aSword.30",
-      "-1_-1 - quest:aSword.31",
-      "-1_-1 - quest:aSword.32",
-      "-1_-1 - quest:aSword.33",
-      "-1_-1 - quest:aSword.34",
-      "-1_-1 - quest:aSword.35",
-      "-1_-1 - quest:aSword.36",
-      "-1_-1 - quest:aSword.37",
-      "-1_-1 - quest:aSword.38",
-      "-1_-1 - quest:aSword.39",
-    ],
   },
   "10_16": {
-    "waterN|133": ["-1_-1 - quest:aSword.41"],
   },
   "8_15": {
-    "water|133": ["-1_-1 - quest:aSword.42"],
   },
   "21_12": {
-    "stoneDark|133": ["-1_-1 - quest:aSword.43"],
   },
   "5_23": {
-    "": ["-1_-1 - quest:aSword.44"],
   },
   "18_11": {
-    "": ["-1_-1 - quest:aSword.45"],
   },
   "5_9": {
     "": [
@@ -950,7 +891,6 @@ window.q = {
       "5_9 - quest:aSword.54",
       "5_9 - quest:aSword.55",
       "5_9 - quest:aSword.56",
-      "-1_-1 - skill:flee",
       "5_9 - quest:aSword.57",
     ],
   },

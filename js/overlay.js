@@ -289,6 +289,7 @@ function customDrawLoop() {
       .lineCap("round")
       .setLineDash(isWarp ? [10, 7] : [])
       .stroke()
+
       .beginPath()
       .moveTo(b.x, b.y)
       .lineTo(
@@ -382,6 +383,10 @@ function customDrawLoop() {
           route.toRoom,
         )
       } else if (toPt) {
+        // Player is standing at the WARP DESTINATION here, not its origin
+        // -- no label in this case (see the fromPt branch above, which is
+        // the only place a warp's destination name should be shown, since
+        // that's where the player is actually deciding to take the warp).
         var vec2 = PF_DIR_SCREEN_VECTOR[route.toDir] || [0, 0]
         drawOverlayArrow(
           {
@@ -390,7 +395,7 @@ function customDrawLoop() {
           },
           toPt,
           route.isWarp,
-          route.isWarp ? route.fromRoom : null,
+          null,
         )
       }
     })

@@ -87,7 +87,7 @@ function getChestedItemInfo(detectorKey, elem) {
       ),
     )
     ?.filter?.(Boolean)
-    ?.map?.(([i, e]) => [Number(i), formatItemName(e, false)])
+    ?.map?.(([i, e]) => [Number(i), formatItemName(e, false), e])
   if (data) {
     window.chestedItemInfo[room][detectorKey] = {
       data,
@@ -5596,6 +5596,7 @@ for (var i = 0; i < 11; i++) {
                       .map(([i, e]) => [
                         Number(i),
                         formatItemName(e, false),
+                        e,
                       ]),
                     position: {
                       x: this.get_x() + this.get_width() / 2,
@@ -50446,7 +50447,7 @@ for (var i = 0; i < 11; i++) {
             }
           }
         }
-        var currentRandomIndex = 100//Math.ceil(rng.random() * 100)
+        var currentRandomIndex = 100 //Math.ceil(rng.random() * 100)
         if (manager.christmas == 0) {
           currentRandomIndex = -1
         }
