@@ -39,7 +39,7 @@ python desktop_app.py
 } else {
 ```
 
-lower key repeat delay increases enemy encounters and the fastest way to force another encounter is quickly tapping any arrow key - shown by `manager.tap` in [./MathQuest/MathQuest.js](./MathQuest/MathQuest.js)
+the fastest way to force another encounter is quickly tapping any arrow key - shown by `manager.tap` in [./MathQuest/MathQuest.js](./MathQuest/MathQuest.js)
 
 you can always pass sideways through any small breakables without removing them first
 ![](./gh_images/small%20breakables.png)
