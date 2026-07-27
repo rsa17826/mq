@@ -41,7 +41,7 @@ lower key repeat delay increases enemy encounters
 } else {
 ```
 
-fastest way to force another encounter is quickly tapping any arrow key - shown by `manager.tap`
+fastest way to force another encounter is quickly tapping any arrow key - shown by `manager.tap` in [](./MathQuest/MathQuest.js)
 
 you can always pass sideways through any small breakables without removing them first
 ![](./gh_images/small%20breakables.png)
@@ -60,3 +60,4 @@ you can always pass sideways through any small breakables without removing them 
 - `u` and `z` casts lightning during battle - was only `z` before
 - press `e` then `enter` if some dialogue box doesn't close
 - hold `shift` to move very slowly - helps getting through tight gaps
+- can press `enter` to say `yes` and `esc` to say `no` to any dialogue boxes
