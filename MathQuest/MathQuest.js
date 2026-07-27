@@ -135,8 +135,7 @@ function helpImStuck() {
   test.newScreen()
 }
 
-function onBattleEnd(){
-}
+function onBattleEnd() {}
 
 // TODO add helpimstuck button
 // TODO shop items swap image back to normal when checker shows as bought
@@ -47109,6 +47108,10 @@ for (var i = 0; i < 11; i++) {
           manager.arenaMobBoost()
         }
         console.log(newObserveObject.mobVar + " = mobVar")
+        // NOTE don't crash if an invalid enemy is spawned
+        if (!manager.mob[newObserveObject.mobVar]) {
+          newObserveObject.mobVar = 1
+        }
         manager.mob[newObserveObject.mobVar].set_x(300)
         if (
           manager.area == 15 ||
