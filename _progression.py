@@ -8827,6 +8827,17 @@ manager.correct - manager.wrong > 800 = halo
     ],
   },
   {
+    "room": {"north": -1, "east": -1},
+    "requires": [
+      [
+        "quest:curse.3",
+      ],
+    ],
+    "receive": [
+      "quest:curse.4",
+    ],
+  },
+  {
     "room": {"north": 12, "east": 22},
     "requires": [
       [
