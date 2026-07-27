@@ -113108,6 +113108,15 @@ for (var i = 0; i < 11; i++) {
               erNorth = 9
               erEast = 21
             }
+            // NOTE player gets moved then transition happens so it captures wrong src
+            if (
+              erOrigin.north == 17 &&
+              erOrigin.east == 14 &&
+              erNorth == 16 &&
+              erEast == 14
+            ) {
+              erOrigin.x = 332
+            }
             if (
               erOrigin.north == 21 &&
               erOrigin.east == 21 &&
