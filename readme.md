@@ -43,3 +43,20 @@ lower key repeat delay increases enemy encounters
 
 fastest way to force another encounter is quickly tapping any arrow key - shown by `manager.tap`
 
+you can always pass sideways through any small breakables without removing them first
+![](./gh_images/small%20breakables.png)
+
+## new features
+
+- can press esc to close most menus
+- pressing one arrow then releasing another arrow now causes player direction to change immeditly instead of only on next key repeat
+<!-- - m opens magic menu -->
+- f saves the game
+- option to make the battle loot messages appear insteantly
+<!-- - option to auto close dialogue boxes without having to press enter -->
+- option to auto close battle messages when battle ends without need to press enter
+- press `shift+h` to recall back to `20_20` if stuck
+- `i` casts ice during battle
+- `u` and `z` casts lightning during battle - was only `z` before
+- press `e` then `enter` if some dialogue box doesn't close
+- hold `shift` to move very slowly - helps getting through tight gaps
