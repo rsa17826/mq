@@ -32,6 +32,7 @@ if (window.debugEnabled)
     ]
   })
 
+// TODO !make shops show original item when random item bought
 // TODO ?add option to show scouted items on the map/ on the maps hover popup
 // TODO ?add option to log all received items when starting instead of only 25 - would there be any use in this
 // TODO make force mute a setting
