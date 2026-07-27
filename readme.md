@@ -19,6 +19,7 @@ python desktop_app.py
 ![](./gh_images/screenshot_20260706_193505_620.png)
 ![](./gh_images/screenshot_20260706_193408_682.png)
 ![](./gh_images/screenshot_20260706_193515_978.png)
+![](./gh_images/pathfinding.png)
 
 ## tips or other notes
 
