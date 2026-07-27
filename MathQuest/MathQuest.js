@@ -9,7 +9,9 @@
 // @endregex
 // @ts-nocheck
 
-window.allBitmapData = []
+window.oldArea = null
+// window.allBitmapData = []
+
 window.debugEnabled = false
 if (window.debugEnabled)
   onPlayerLoaded.push(() => {
@@ -132,6 +134,10 @@ function helpImStuck() {
   manager.east = 20
   test.newScreen()
 }
+
+function onBattleEnd(){
+}
+
 // TODO add helpimstuck button
 // TODO shop items swap image back to normal when checker shows as bought
 // TODO fix the map not knowing about warppoints for logic
@@ -483,13 +489,7 @@ function newQuest(pos, name, value, isadd) {
   // window.ap.sendLocationChecks([`quest:${name}.${newval}`])
   manager.quest[Enum.Quest[name]] = newval
 }
-function setManagerData(k, v, vv) {
-  if (vv === undefined) {
-    manager[k] = v
-  } else {
-    manager[k][v] = vv
-  }
-}
+
 const Enum = Object.freeze({
   Loot: Object.freeze({
     aAxe: 19,
@@ -835,10 +835,16 @@ const itemList = {
     manager.poiSymbol.set_visible(true)
     manager.poiTimer.start()
   },
-  "trap:spawn_random_enemies": () => {},
+  "trap:spawn_random_enemies": () => {
+    window.oldArea = manager.area
+    manager.area = 11
+    startNewBattle()
+  },
   "trap:del_del": () => {},
   "trap:nothing": () => {},
-  "filler:filler_gold": () => {},
+  "filler:filler_gold": () => {
+    manager.gold += 2000
+  },
   "weapon:progressive weapons": () => {
     itemList[
       [
@@ -20797,105 +20803,58 @@ for (var i = 0; i < 11; i++) {
         this.fakePassword.set_visible(false)
         this.fakePassword.setTextFormat(this.charNameFormat)
         this.addChild(this.fakePassword)
+        manager.mob.push(new initObj(this.beePic))
+        manager.mobStatus.push(new initObj(this.statusBlastPic))
+        manager.mob.push(new initObj(this.boarPic))
+        manager.mobStatus.push(new initObj(this.fireStatusPic))
+        manager.mob.push(new initObj(this.bearPic))
+        manager.mobStatus.push(new initObj(this.iceStatusPic))
+        manager.mob.push(new initObj(this.waterSnakePic))
+        manager.mobStatus.push(manager.statusShield)
+        manager.mob.push(new initObj(this.batPic))
+        manager.mobStatus.push(new initObj(this.nukeStatusPic))
+        manager.mob.push(new initObj(this.trollPic))
+        manager.mob.push(new initObj(this.creeperPic))
+        manager.mob.push(new initObj(this.magePic))
+        manager.mob.push(new initObj(this.wolfPic))
+        manager.mob.push(new initObj(this.zombiePic))
+        manager.mob.push(new initObj(this.undeadMagePic))
+        manager.mob.push(new initObj(this.scorpionPic))
+        manager.mob.push(new initObj(this.cobraPic))
+        manager.mob.push(new initObj(this.dwarfPic))
+        manager.mob.push(new initObj(this.hawkPic))
+        manager.mob.push(new initObj(this.orcSmallPic))
+        manager.mob.push(new initObj(this.orcBigPic))
+        manager.mob.push(new initObj(this.impPic))
+        manager.mob.push(new initObj(this.brownMagePic))
+        manager.mob.push(new initObj(this.blackSnakePic))
+        manager.mob.push(new initObj(this.shadowSoulPic))
+        manager.mob.push(new initObj(this.negKni1Pic))
+        manager.mob.push(new initObj(this.negKni2Pic))
+        manager.mob.push(new initObj(this.negKni3Pic))
+        manager.mob.push(new initObj(this.denominatorPic))
+        manager.mob.push(new initObj(this.dragonPic))
+        manager.mob.push(new initObj(this.viperPic))
+        manager.mob.push(new initObj(this.fiendPic))
+        manager.mob.push(new initObj(this.gatorPic))
+        manager.mob.push(new initObj(this.blobPic))
+        manager.mob.push(new initObj(this.minotaurPic))
+        manager.mob.push(new initObj(this.blueMagePic))
+        manager.mob.push(new initObj(this.greyMagePic))
+        manager.mob.push(new initObj(this.piratePic))
+        manager.mob.push(new initObj(this.robosaurPic))
+        manager.mob.push(new initObj(this.ninjaPic))
+        manager.mob.push(new initObj(this.arcaneMagePic))
+        manager.mob.push(new initObj(this.newtonPic))
+        manager.mob.push(new initObj(this.grimReaperPic))
+        manager.mob.push(new initObj(this.mummyPic))
+        manager.mob.push(new initObj(this.santaPic))
+        manager.mob.push(new initObj(this.opahPic))
+        manager.mob.push(new initObj(this.sharkPic))
+        manager.mob.push(new initObj(this.octopusPic))
+        manager.mob.push(new initObj(this.vikingPic))
+        manager.mob.push(new initObj(this.aTicPic))
         for (this.counter = 0; this.counter < 46; ) {
-          if (this.counter == 0) {
-            manager.mob.push(new initObj(this.beePic))
-            manager.mobStatus.push(new initObj(this.statusBlastPic))
-          } else if (this.counter == 1) {
-            manager.mob.push(new initObj(this.boarPic))
-            manager.mobStatus.push(new initObj(this.fireStatusPic))
-          } else if (this.counter == 2) {
-            manager.mob.push(new initObj(this.bearPic))
-            manager.mobStatus.push(new initObj(this.iceStatusPic))
-          } else if (this.counter == 3) {
-            manager.mob.push(new initObj(this.waterSnakePic))
-            manager.mobStatus.push(manager.statusShield)
-          } else if (this.counter == 4) {
-            manager.mob.push(new initObj(this.batPic))
-            manager.mobStatus.push(new initObj(this.nukeStatusPic))
-          } else if (this.counter == 5) {
-            manager.mob.push(new initObj(this.trollPic))
-          } else if (this.counter == 6) {
-            manager.mob.push(new initObj(this.creeperPic))
-          } else if (this.counter == 7) {
-            manager.mob.push(new initObj(this.magePic))
-          } else if (this.counter == 8) {
-            manager.mob.push(new initObj(this.wolfPic))
-          } else if (this.counter == 9) {
-            manager.mob.push(new initObj(this.zombiePic))
-          } else if (this.counter == 10) {
-            manager.mob.push(new initObj(this.undeadMagePic))
-          } else if (this.counter == 11) {
-            manager.mob.push(new initObj(this.scorpionPic))
-          } else if (this.counter == 12) {
-            manager.mob.push(new initObj(this.cobraPic))
-          } else if (this.counter == 13) {
-            manager.mob.push(new initObj(this.dwarfPic))
-          } else if (this.counter == 14) {
-            manager.mob.push(new initObj(this.hawkPic))
-          } else if (this.counter == 15) {
-            manager.mob.push(new initObj(this.orcSmallPic))
-          } else if (this.counter == 16) {
-            manager.mob.push(new initObj(this.orcBigPic))
-          } else if (this.counter == 17) {
-            manager.mob.push(new initObj(this.impPic))
-          } else if (this.counter == 18) {
-            manager.mob.push(new initObj(this.brownMagePic))
-          } else if (this.counter == 19) {
-            manager.mob.push(new initObj(this.blackSnakePic))
-          } else if (this.counter == 20) {
-            manager.mob.push(new initObj(this.shadowSoulPic))
-          } else if (this.counter == 21) {
-            manager.mob.push(new initObj(this.negKni1Pic))
-          } else if (this.counter == 22) {
-            manager.mob.push(new initObj(this.negKni2Pic))
-          } else if (this.counter == 23) {
-            manager.mob.push(new initObj(this.negKni3Pic))
-          } else if (this.counter == 24) {
-            manager.mob.push(new initObj(this.denominatorPic))
-          } else if (this.counter == 25) {
-            manager.mob.push(new initObj(this.dragonPic))
-          } else if (this.counter == 26) {
-            manager.mob.push(new initObj(this.viperPic))
-          } else if (this.counter == 27) {
-            manager.mob.push(new initObj(this.fiendPic))
-          } else if (this.counter == 28) {
-            manager.mob.push(new initObj(this.gatorPic))
-          } else if (this.counter == 29) {
-            manager.mob.push(new initObj(this.blobPic))
-          } else if (this.counter == 30) {
-            manager.mob.push(new initObj(this.minotaurPic))
-          } else if (this.counter == 31) {
-            manager.mob.push(new initObj(this.blueMagePic))
-          } else if (this.counter == 32) {
-            manager.mob.push(new initObj(this.greyMagePic))
-          } else if (this.counter == 33) {
-            manager.mob.push(new initObj(this.piratePic))
-          } else if (this.counter == 34) {
-            manager.mob.push(new initObj(this.robosaurPic))
-          } else if (this.counter == 35) {
-            manager.mob.push(new initObj(this.ninjaPic))
-          } else if (this.counter == 36) {
-            manager.mob.push(new initObj(this.arcaneMagePic))
-          } else if (this.counter == 37) {
-            manager.mob.push(new initObj(this.newtonPic))
-          } else if (this.counter == 38) {
-            manager.mob.push(new initObj(this.grimReaperPic))
-          } else if (this.counter == 39) {
-            manager.mob.push(new initObj(this.mummyPic))
-          } else if (this.counter == 40) {
-            manager.mob.push(new initObj(this.santaPic))
-          } else if (this.counter == 41) {
-            manager.mob.push(new initObj(this.opahPic))
-          } else if (this.counter == 42) {
-            manager.mob.push(new initObj(this.sharkPic))
-          } else if (this.counter == 43) {
-            manager.mob.push(new initObj(this.octopusPic))
-          } else if (this.counter == 44) {
-            manager.mob.push(new initObj(this.vikingPic))
-          } else if (this.counter == 45) {
-            manager.mob.push(new initObj(this.aTicPic))
-          }
           manager.mob[this.counter].set_visible(false)
           manager.mob[this.counter].set_x(300)
           if (this.counter < 5) {
@@ -33670,6 +33629,7 @@ for (var i = 0; i < 11; i++) {
                   this.newScreen()
                   __createObject.loca()
                 }
+                window.onBattleEnd()
               }
               this.innerCounter = 0
               while (
@@ -47192,6 +47152,10 @@ for (var i = 0; i < 11; i++) {
         manager.mob[newObserveObject.mobVar].set_visible(true)
         manager.mob[newObserveObject.mobVar].set_alpha(1)
         newObserveObject.showMobStats()
+        manager.area = window.oldArea
+        if (window.oldArea != null) {
+          window.oldArea = null
+        }
       }
       newObserveObject.mobAttack = function () {
         manager.mobSecs = 10
@@ -112383,8 +112347,8 @@ for (var i = 0; i < 11; i++) {
           if (isCacheHit && _____a.cache.get_enabled()) {
             _____a.cache.setBitmapData(__inputImage, _bitmapData)
           }
-            // window.allBitmapData.push(_bitmapData)
-            // window._____a = _____a
+          // window.allBitmapData.push(_bitmapData)
+          // window._____a = _____a
           return _bitmapData
         } else {
           return null

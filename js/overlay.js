@@ -411,7 +411,15 @@ function customDrawLoop() {
         [],
     )
 
-  drawRoomPathArrow()
+  if (
+    !(
+      manager.exitButton.__visible ||
+      manager.mess.__visible ||
+      test.fightMode == 1
+    )
+  ) {
+    drawRoomPathArrow()
+  }
 
   coordString =
     localStorage.showPlayerPos == "true" ?
