@@ -21824,6 +21824,8 @@ for (var i = 0; i < 11; i++) {
             if (slotData) {
               if (prop === "gold" && slotData.infinite_gold)
                 return Infinity
+              if (prop === "bombs" && slotData.infinite_bombs)
+                return manager.bombCapacity
               if (
                 prop === "aurastones" &&
                 slotData.infinite_aurastones
