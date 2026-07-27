@@ -73,7 +73,7 @@ function autoYes() {
 function getChestedItemInfo(detectorKey, elem) {
   var room = `${manager.north}_${manager.east}`
   if (
-    localStorage.showVanillaItems == "true" ||
+    localStorage.neverShowLocationScouts == "true" ||
     window.chestedItemInfo[room]?.[detectorKey]
   ) {
     return
@@ -768,7 +768,7 @@ function applyRandomizedIcon(tile, useRandom = false) {
 
   const vanillaName = vanillaItemNameForTile(tileInfo)
   let bmd = null
-  if (useRandom && localStorage.showVanillaItems != "true") {
+  if (useRandom && localStorage.neverShowLocationScouts != "true") {
     if (
       vanillaName &&
       typeof ap.slotData?.AP_LOCATION_IDS !== "undefined"
@@ -5580,7 +5580,7 @@ for (var i = 0; i < 11; i++) {
               ) {
                 if (
                   !(
-                    localStorage.showVanillaItems == "true" ||
+                    localStorage.neverShowLocationScouts == "true" ||
                     window.chestedItemInfo[room]?.[k]
                   )
                 ) {
@@ -21759,6 +21759,28 @@ for (var i = 0; i < 11; i++) {
           }
           if (this.k === "quest") {
             window.onQuestChanged.forEach((e) => e(prop, value))
+            if (localStorage.dontAutoSendCompleteEvent != "true") {
+              window.maxQuestList ??= Object.entries(
+                ap.slotData.maxQuests,
+              )
+              win = true
+              if (win && window?.ap?.slotData?.final_boss) {
+                if (manager.quest[Enum.Quest.gTree] < 23) {
+                  win = false
+                }
+              }
+              if (win && window?.ap?.slotData?.all_quests_maxed) {
+                for (var [k, m] of window.maxQuestList) {
+                  if (manager.quest[Enum.Quest[k]] < m) {
+                    win = false
+                    break
+                  }
+                }
+              }
+              if (win) {
+                ap.sendStatusUpdate(30)
+              }
+            }
           }
           return true
         },

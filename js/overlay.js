@@ -467,7 +467,7 @@ function customDrawLoop() {
   }
   // render chest hints
   {
-    if (localStorage.showVanillaItems != "true") {
+    if (localStorage.neverShowLocationScouts != "true") {
       if (
         !(
           manager.exitButton.__visible ||

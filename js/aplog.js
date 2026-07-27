@@ -367,26 +367,32 @@ function apSendSayFromInput() {
     },
     showPlayerPos: {
       desc: "toggle showing player position information in the bottom right of the game",
-      func(on = true) {
+      func(on = "1") {
         localStorage.showPlayerPos = ["1", "true"].includes(on)
       },
     },
     renderExits: {
       desc: "toggle showing each rooms exit regions ingame",
-      func(on = true) {
+      func(on = "1") {
         localStorage.renderExits = ["1", "true"].includes(on)
       },
     },
     renderCheckerboard: {
       desc: "toggle rendering a checkerboard over each tile ingame",
-      func(on = true) {
+      func(on = "1") {
         localStorage.renderCheckerboard = ["1", "true"].includes(on)
       },
     },
-    showVanillaItems: {
-      desc: "if enabled will always show the vanilla item and not the one that has been randomized to that spot",
-      func(on = true) {
-        localStorage.showVanillaItems = ["1", "true"].includes(on)
+    neverShowLocationScouts: {
+      desc: "never show location scouts",
+      func(on = "1") {
+        localStorage.neverShowLocationScouts = ["1", "true"].includes(on)
+      },
+    },
+    dontAutoSendCompleteEvent: {
+      desc: "if enabled doesn't send the complete event when the goal is completed",
+      func(on = "1") {
+        localStorage.dontAutoSendCompleteEvent = ["1", "true"].includes(on)
       },
     },
     reconnect: {
