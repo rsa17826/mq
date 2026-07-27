@@ -38,16 +38,15 @@ if (window.debugEnabled)
 // TODO make the map detect what checks player got work for all items!!! - check if working
 // TODO make map show 9.11 20 as 9 20
 // TODO make item list in logic use logic for reqs too
-// TODO make sunflower seeds infinite
-// TODO make overlay not show completed checks from q
+// TODO make overlay not show different colors for in and out of logic checks from q
 // TODO check that all orange girl working
 // TODO make /reconnect try both ws/wss again
 // TODO make option to change the img qual/autoqual
 // TODO make ! open apchat same as / does
 // TODO make reconnecting not clear already received item data!!
-// TODO make m not repeat last cast when opening magic screen ?
+// TODO ?make m not repeat last cast when opening magic screen
 // TODO make newItem("14_17 - item:gold") from diamonds
-// TODO prevent dialogue boxes from locking player when autoclose enabled
+// TODO prevent dialogue boxes from locking player when autoclose enabled - from make sure auto close closes all, as currently isnt
 
 // TODO make not raf and put in correct spot
 function autoYes() {
