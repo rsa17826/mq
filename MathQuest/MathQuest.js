@@ -238,10 +238,6 @@ addEventListener("keydown", ({ key }) => {
     test.magicScreenShowForwarder()
     setTimeout(test.removeMagicScreen.bind(test))
   }
-  if (key == "[") {
-    // NOTE toggles forced encounter on every encounter check
-    test.fightVarCheat = test.fightVarCheat == 666 ? 0 : 666
-  }
   if (key == "e") {
     player.messFin = true
   }
@@ -249,6 +245,10 @@ addEventListener("keydown", ({ key }) => {
     helpImStuck()
   }
   if (localStorage.debug != "true") return
+  if (key == "[") {
+    // NOTE toggles forced encounter on every encounter check
+    test.fightVarCheat = test.fightVarCheat == 666 ? 0 : 666
+  }
   if (key == "p") {
     test.fightSetUp()
   }
