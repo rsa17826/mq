@@ -47177,8 +47177,8 @@ for (var i = 0; i < 11; i++) {
         manager.mob[newObserveObject.mobVar].set_visible(true)
         manager.mob[newObserveObject.mobVar].set_alpha(1)
         newObserveObject.showMobStats()
-        manager.area = window.oldArea
         if (window.oldArea != null) {
+          manager.area = window.oldArea
           window.oldArea = null
         }
       }
