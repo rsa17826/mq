@@ -249,8 +249,12 @@ addEventListener("keydown", ({ key }) => {
     // NOTE toggles forced encounter on every encounter check
     test.fightVarCheat = test.fightVarCheat == 666 ? 0 : 666
   }
+  if (key == "]") {
+    // NOTE disables encounters
+    test.fightVarCheat = test.fightVarCheat == 333 ? 0 : 333
+  }
   if (key == "p") {
-    test.fightSetUp()
+    startNewBattle()
   }
   if (key == "q") test.newScreen()
   // if (key == "z") player.speed = 4000

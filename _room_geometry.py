@@ -6513,10 +6513,10 @@ WARPS: tuple[Warp, ...] = (
     "connections": ((20, 12, "root", 0), (21, 12, "south", 0)),
   },
   {
-    "connections": ((22, 10, "root", 0), (22, 13, "east", 0), (22, 13, "north", 0)),
+    "connections": ((22, 10, "root", 0), (22, 13, "east", 0)),
   },
   {
-    "connections": ((21, 13, "east", 0), (22, 11, "south", 0), (22, 11, "north", 0)),
+    "connections": ((21, 13, "east", 0), (22, 11, "south", 0)),
   },
   {
     "connections": ((22, 12, "root", 0), (21, 9, "north", 0)),
