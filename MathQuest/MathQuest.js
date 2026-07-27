@@ -210,6 +210,9 @@ addEventListener("keydown", ({ key }) => {
   if (document.activeElement.id == "apChatSayInput") {
     return
   }
+  if (!window.playerLoaded) {
+    return
+  }
   if (key == "Shift") window.useSlowSpeed = 1
   if (key == "f" && !test.fightMode) test.save()
   if (key == "Escape") {
@@ -235,13 +238,20 @@ addEventListener("keydown", ({ key }) => {
     test.magicScreenShowForwarder()
     setTimeout(test.removeMagicScreen.bind(test))
   }
+  if (key == "[") {
+    // NOTE toggles forced encounter on every encounter check
+    test.fightVarCheat = test.fightVarCheat == 666 ? 0 : 666
+  }
   if (key == "e") {
     player.messFin = true
   }
+  if (key == "H") {
+    helpImStuck()
+  }
+  if (localStorage.debug != "true") return
   if (key == "p") {
     test.fightSetUp()
   }
-  if (localStorage.debug != "true") return
   if (key == "q") test.newScreen()
   // if (key == "z") player.speed = 4000
   if (key == "a") {
