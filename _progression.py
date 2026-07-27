@@ -1114,8 +1114,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 21, "east": 17},
     "requires": [
       [
-        # NOTE
-        # "item:aurastones",
+        "item:aurastones",
         "item:gold#500",
       ],
     ],
@@ -8799,12 +8798,15 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": -1, "east": -1},
     "requires": [
       [
+        "quest:curse.1",
         "area:12",
       ],
       [
+        "quest:curse.1",
         "area:9",
       ],
       [
+        "quest:curse.1",
         "area:13",
       ],
     ],
@@ -8828,7 +8830,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 12, "east": 22},
     "requires": [
       [
-        "quest:curse.3",
+        "quest:curse.4",
       ],
     ],
     "receive": [

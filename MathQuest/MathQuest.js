@@ -819,45 +819,20 @@ function tryGiveLoot(itemName) {
     }
   }
   return false
-  var [type, name, count = 1] = itemName.split(/:|#/g)
-  count = Number(count)
-  if (type !== "item") {
-    return false
-  }
-  if (Enum.Loot[name] || name == "bTusk") {
-    manager.loot[Enum.Loot[name]] += count
-    return true
-  }
-  switch (name) {
-    case "slamstones":
-      manager.slamstones += count
-      return true
-    case "emeralds":
-      manager.emeralds += count
-      return true
-    case "aurastones":
-      manager.aurastones += count
-      return true
-    case "medallions":
-      manager.medallions += count
-      return true
-    case "gold":
-      manager.gold += count
-      return true
-    case "key":
-      manager.key += count
-      return true
-    case "rubies":
-      manager.rubies += count
-      return true
-  }
-  return false
 }
 
 const itemList = {
   // TODO
   "misc:hugeBomb": () => {
     manager.hugeBomb = 1
+  },
+  "trap:confusion": () => {
+    manager.confused = true
+  },
+  "trap:poison": () => {
+    manager.poi = (manager.mxhp / 20) | 0
+    manager.poiSymbol.set_visible(true)
+    manager.poiTimer.start()
   },
   "trap:spawn_random_enemies": () => {},
   "trap:del_del": () => {},
