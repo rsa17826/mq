@@ -9,6 +9,7 @@
 // @endregex
 // @ts-nocheck
 
+window.allBitmapData = []
 window.debugEnabled = false
 if (window.debugEnabled)
   onPlayerLoaded.push(() => {
@@ -50422,6 +50423,7 @@ for (var i = 0; i < 11; i++) {
             }
           }
         }
+        // ANCHOR
         var currentRandomIndex = 100 //Math.ceil(rng.random() * 100)
         if (manager.christmas == 0) {
           currentRandomIndex = -1
@@ -65509,6 +65511,21 @@ for (var i = 0; i < 11; i++) {
         // TODO does this break things
         window.seed ??= "nonAP"
         window.onPlayerLoaded.forEach((e) => e())
+        // // 1. Get all cache keys (file paths/identifiers) and values (BitmapData objects)
+        // let cacheMap = _____a.cache.bitmapData.h
+        // let keys = Object.keys(cacheMap)
+        // let values = Object.values(cacheMap)
+
+        // // 2. Shuffle the values array using your PRNG
+        // let r = new LFSR32(seed)
+        // let shuffledValues = values
+        //   .slice()
+        //   .sort(() => r.random() - r.random())
+
+        // // 3. Re-assign the shuffled values back to the original keys
+        // keys.forEach((key, index) => {
+        //   cacheMap[key] = shuffledValues[index]
+        // })
         window.checksInFlight = [
           ...new Set(window.checksInFlight),
         ].filter((e) => !ap.checkedLocations.includes(e))
@@ -112356,6 +112373,7 @@ for (var i = 0; i < 11; i++) {
         ) {
           var _bitmapData = _____a.cache.getBitmapData(__inputImage)
           if (_____a.isValidBitmapData(_bitmapData)) {
+            // window.allBitmapData.push(_bitmapData)
             return _bitmapData
           }
         }
@@ -112365,6 +112383,8 @@ for (var i = 0; i < 11; i++) {
           if (isCacheHit && _____a.cache.get_enabled()) {
             _____a.cache.setBitmapData(__inputImage, _bitmapData)
           }
+            // window.allBitmapData.push(_bitmapData)
+            // window._____a = _____a
           return _bitmapData
         } else {
           return null
