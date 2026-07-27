@@ -42,7 +42,31 @@ python desktop_app.py
 the fastest way to force another encounter is quickly tapping any arrow key - shown by `manager.tap` in [./MathQuest/MathQuest.js](./MathQuest/MathQuest.js)
 
 you can always pass sideways through any small breakables without removing them first
+
 ![](./gh_images/small%20breakables.png)
+
+the items in `17_11` are located at
+|southCounter|eastCounter|westCounter|loot|
+|:-|-|:-|:-|
+|1|0|2|gold chest|
+|5|0|5|gold chest|
+|2|2|0|gold chest|
+|0|7|0|blue chest|
+|2|1|1|south exit - requires ending with 1 south|
+
+the exits can be took in any order unlike the sign at `19_11` makes it look like
+
+# clips
+
+you can clip left in `17_19` just by walking here
+![](./gh_images/clip%201.png)
+
+or down in `7_21` just by walking here
+![](./gh_images/clip2.png)
+
+# skips
+
+you can get `gTree` quest to `8` at any time you can get to `14_18` even starting with `gTree` level `0`
 
 ## new features
 
