@@ -29,6 +29,7 @@ if (window.debugEnabled)
     ]
   })
 
+// TODO ?add option to show scouted items on the map/ on the maps hover popup
 // TODO ?add option to log all received items when starting instead of only 25 - would there be any use in this
 // TODO make force mute a setting
 // TODO make settings for all the overlay renders
@@ -21706,10 +21707,13 @@ for (var i = 0; i < 11; i++) {
               return true
             }
           }
-          if (!this.k && prop == "messFin") {
-            if (value) {
-              window.lastSetQuestValue = null
-            }
+          if (
+            this.k == "food" &&
+            prop == Enum.Food.sunflowerSeeds &&
+            target[prop] > 0 &&
+            value <= 0
+          ) {
+            return true
           }
           if (target[prop] === undefined || target[prop] > value) {
             target[prop] = value
@@ -36432,8 +36436,8 @@ for (var i = 0; i < 11; i++) {
               this.removeItemScreen()
             } else if (this.fightMode == 0) {
               manager.food[Enum.Food.sunflowerSeeds]--
-              manager.north = 11
-              manager.east = 12
+              manager.realnorth = 11
+              manager.realeast = 12
               manager.char[0].set_x(270)
               manager.char[0].set_y(150)
               this.newScreen()
