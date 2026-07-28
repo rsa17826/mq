@@ -5,7 +5,7 @@ import re
 import subprocess
 import threading
 import urllib.parse
-from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from http.server import CGIHTTPRequestHandler, ThreadingHTTPServer
 
 from PIL import Image, ImageDraw
 from watchdog.events import FileSystemEventHandler
@@ -119,7 +119,7 @@ class ProcessManager:
 process_manager = ProcessManager()
 
 
-class CachedCGIHTTPRequestHandler(BaseHTTPRequestHandler):
+class CachedCGIHTTPRequestHandler(CGIHTTPRequestHandler):
   def __init__(self, *args, **kwargs):
     super().__init__(*args, directory=DIRECTORY, **kwargs)
 

@@ -1,4 +1,4 @@
-const CACHE_NAME = "math-quest-v5"
+const CACHE_NAME = "math-quest-v7"
 const STATIC_CACHE_NAME = "math-quest-static-v1"
 const STATIC_ENDS = [".png", ".jpg", ".wav", ".webp", ".jpeg", ".mp3"]
 // prettier-ignore
