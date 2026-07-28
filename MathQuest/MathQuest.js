@@ -22842,7 +22842,9 @@ for (var i = 0; i < 11; i++) {
               "../cgi-bin/createChar.py?rand=" +
                 Math.random() +
                 "&saveFile=" +
-                (window.seed ?? "nonAP"),
+                (window.seed ?
+                  window.seed + "|" + window?.ap?.playerName
+                : "nonAP"),
             )
           }
           window.rng = new LFSR32(
@@ -22873,7 +22875,7 @@ for (var i = 0; i < 11; i++) {
           //   data: {
           //     ...fullCharName.data,
           //     filename: window.ap?.playerName ?? "user",
-          //     saveFile: window.seed ?? "nonAP",
+          //     saveFile: getSaveFileId(),
           //   },
           // })
           this.sender.addEventListener(
@@ -22891,10 +22893,7 @@ for (var i = 0; i < 11; i++) {
                   plainText,
                 )
                 Udf.SendVariables()
-                urlBuilder = new _qObject(
-                  `../MQFiles/loadChar_${window.seed ?? "nonAP"}.json?rand=` +
-                    rng.random() * 1e3,
-                )
+                urlBuilder = new _qObject(getSaveFilePath())
                 urlBuilder.data = manager.myVar
                 this.sender.load(urlBuilder)
                 this.sender.addEventListener(
@@ -22916,11 +22915,7 @@ for (var i = 0; i < 11; i++) {
           //   userPassword,
           // )
           Udf.ReceiveVariables(
-            await (
-              await fetch(
-                `../MQFiles/loadChar_${window.seed ?? "nonAP"}.json?rand=${Math.random()}`,
-              )
-            ).json(),
+            await (await fetch(getSaveFilePath())).json(),
           )
           this.sendComplete()
           // this.sender.addEventListener(
@@ -45647,7 +45642,7 @@ for (var i = 0; i < 11; i++) {
           window.anInputHandlerActive = true
         },
         dead: function (nosenddeathlink = false) {
-          if (!nosenddeathlink) {
+          if (!nosenddeathlink && window.ap) {
             if (test.fightMode)
               ap.sendDeathLink(
                 `@pink!${ap.playerName}@! was @red!defeated@! by @pink!${manager.mName}@!`,
@@ -45951,14 +45946,14 @@ for (var i = 0; i < 11; i++) {
                 "Content-Type": "application/json",
               },
               body: JSON.stringify({
-                saveFile: window.seed ?? "nonAP",
+                saveFile: getSaveFileId(),
                 myVar: manager.myVar,
               }),
             })
           ).text()
           // var newData = {
           //   ...charURL.data,
-          //   saveFile: window.seed ?? "nonAP",
+          //   saveFile: getSaveFileId(),
           // }
           // var i = 266
           // newData["stat" + i++] = window.lastReceivedItem
@@ -65511,8 +65506,6 @@ for (var i = 0; i < 11; i++) {
         manager.hitMax()
         window.accessList = {}
         window.playerLoaded = true
-        // TODO does this break things
-        window.seed ??= "nonAP"
         window.onPlayerLoaded.forEach((e) => e())
         // // 1. Get all cache keys (file paths/identifiers) and values (BitmapData objects)
         // let cacheMap = _____a.cache.bitmapData.h
@@ -80305,14 +80298,14 @@ for (var i = 0; i < 11; i++) {
         instanceCreator.libraries.remove(librarySelector)
       }
       instanceCreator.__cacheBreak = function (enhancedQueryString) {
-        if (instanceCreator.cache.version > 0) {
-          enhancedQueryString =
-            enhancedQueryString.indexOf("?") > -1 ?
-              enhancedQueryString +
-              ("&" + instanceCreator.cache.version)
-            : enhancedQueryString +
-              ("?" + instanceCreator.cache.version)
-        }
+        // if (instanceCreator.cache.version > 0) {
+        //   enhancedQueryString =
+        //     enhancedQueryString.indexOf("?") > -1 ?
+        //       enhancedQueryString +
+        //       ("&" + instanceCreator.cache.version)
+        //     : enhancedQueryString +
+        //       ("?" + instanceCreator.cache.version)
+        // }
         return enhancedQueryString
       }
       instanceCreator.__libraryNotFound = function (libName) {

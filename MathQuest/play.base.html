@@ -15,6 +15,14 @@
   window.onApCreated = []
   window.onQuestChanged = []
   window.onNewScreen = []
+  function getSaveFileId() {
+    return (window.seed) ?
+        window.seed + "|" + window?.ap?.playerName
+      : "nonAP"
+  }
+  function getSaveFilePath() {
+    return `/MQFiles/loadChar_${getSaveFileId()}.json?rand=${Math.random() * 1e3}`
+  }
 </script>
 <script src="/js/owo.js"></script>
 <script src="/js/newelem.js"></script>
@@ -28,21 +36,21 @@
     <meta name="theme-color" content="#000000" />
     <meta name="mobile-web-app-capable" content="yes" />
     <script>
-      if ("serviceWorker" in navigator) {
-        window.addEventListener("load", () => {
-          navigator.serviceWorker
-            .register("/js/sw.js")
-            .then((reg) =>
-              console.log(
-                "Service Worker registered successfully!",
-                reg.scope,
-              ),
-            )
-            .catch((err) =>
-              console.log("Service Worker registration failed:", err),
-            )
-        })
-      }
+      // if ("serviceWorker" in navigator) {
+      //   window.addEventListener("load", () => {
+      //     navigator.serviceWorker
+      //       .register("/sw.js")
+      //       .then((reg) =>
+      //         console.log(
+      //           "Service Worker registered successfully!",
+      //           reg.scope,
+      //         ),
+      //       )
+      //       .catch((err) =>
+      //         console.log("Service Worker registration failed:", err),
+      //       )
+      //   })
+      // }
     </script>
     <link
       rel="preload"
