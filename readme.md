@@ -1,3 +1,36 @@
+##
+
+mathquest is an rpg game about solving simple math equasions.
+
+## download
+
+- game client: https://github.com/rsa17826/mq
+- ap world: https://github.com/rsa17826/mqap
+
+# things currently working
+
+- ## current checks
+  - every chest / shop / items from quests
+  - every loot seller npc
+  - every orange seller npc
+  - optionally every quest itself is also a check
+
+- ## misc
+  - entrance rando works mostly
+  - options for progressive weapons, progressive armor, and progressive magic
+  - deathlink works
+
+- ## traps
+  - poison - applies a strong poison
+  - confusion - prevents magic usage
+  - gold - gives 2k gold
+  - nothing - does nothing
+  - spawn_random_enemies - spawns an enemy when triggered - TODO make delay until not in - encounter to activate
+
+this game should be playable but is still being developed
+
+---
+
 ## running the game
 
 ```sh
@@ -79,10 +112,10 @@ you can get `gTree` quest to `8` at any time you can get to `14_18` even startin
 - can press esc to close most menus
 - pressing one arrow then releasing another arrow now causes player direction to change immeditly instead of only on next key repeat
   - key press/repeat is also used for the ring of health/magic
-  <!-- - `m` opens magic menu -->
+  <!-- `m` opens magic menu -->
 - f saves the game
 - option to make the battle loot messages appear insteantly
-<!-- - option to auto close dialogue boxes without having to press enter -->
+<!-- option to auto close dialogue boxes without having to press enter -->
 - option to auto close battle messages when battle ends without need to press enter
 - press `shift+h` to recall back to `20_20` if stuck
 - `i` casts ice during battle
