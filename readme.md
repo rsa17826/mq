@@ -43,6 +43,10 @@ the fastest way to force another encounter is quickly tapping any arrow key - sh
 
 you can always pass sideways through any small breakables without removing them first
 
+using the reveal skill reloads the room which can allow getting from quest `curse` `3` to `4` without leaving room `12_22` or to reload red chests without leaving the room - works even if the reveal skill is already active
+
+if an encounter is triggered while on the spot of the red chest and the chest was visible before and the player never left the spot with the red chest even if the red chest is not visible anymore the encounter will still be the red chest encounter as the game still believes you are colliding with the chest
+
 ![](./gh_images/small%20breakables.png)
 
 the items in `17_11` are located at
