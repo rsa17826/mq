@@ -853,7 +853,6 @@ class ArchipelagoClient {
   // Server replies to Get with "Retrieved"; live changes come as "SetReply".
   onRetrieved(packet) {
     const key = `_read_hints_${this.team}_${this.slot}`
-    // log("Retrieved packet:", packet) // <-- add this
     if (packet.keys?.[key] !== undefined) {
       HintTracker.setHints(packet.keys[key] || [])
     }
