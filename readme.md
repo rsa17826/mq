@@ -39,7 +39,11 @@ cd mq
 direnv allow
 ./generate_map_scales.sh
 
-python desktop_app.py
+./start &
+xdg-open "http://127.0.0.1:1533/MathQuest/play.html"
+# type /installSw then press enter and the page should work without having to start the server every time and only restarted when updating
+read -r _
+kill %%
 ```
 
 ## images

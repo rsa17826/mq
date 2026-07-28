@@ -26,6 +26,9 @@ CACHE_VERSION_PATTERN = re.compile(r'(\bCACHE_NAME\s*=\s*"math-quest-v)(\d+)(")'
 STATIC_VERSION_PATTERN = re.compile(r'(\bSTATIC_CACHE_NAME\s*=\s*"math-quest-static-v)(\d+)(")')
 # Extensions treated as "static" assets (mirrors sw.js's STATIC_ENDS list)
 STATIC_ASSET_EXTS = (".png", ".jpg", ".wav", ".webp", ".jpeg", ".mp3")
+# Matches the `const ASSETS = [...]` array in sw.js so we can tell whether a
+# changed file is one the service worker actually caches.
+ASSETS_PATTERN = re.compile(r"\bASSETS\s*=\s*\[(.*?)\]", re.DOTALL)
 # Debounce window (seconds): coalesce bursts of filesystem events from a
 # single save into one version bump.
 SW_BUMP_DEBOUNCE_SECONDS = 0.5
@@ -355,6 +358,55 @@ def bump_sw_cache_versions(target):
     _sw_bump_timer.start()
 
 
+_sw_assets_cache = {"mtime": None, "assets": None}
+_sw_assets_lock = threading.Lock()
+
+
+def _get_sw_assets():
+  """Parses the `const ASSETS = [...]` array out of sw.js and returns it as
+  a set of normalized (leading-slash-stripped, OS-normalized) paths.
+  Re-parses only when sw.js's mtime changes; returns None if the file or
+  the ASSETS array can't be found/parsed (caller should then allow the
+  change through rather than silently dropping it).
+  """
+  try:
+    mtime = os.path.getmtime(SW_FILE)
+
+  except OSError:
+    return None
+
+  with _sw_assets_lock:
+    if _sw_assets_cache["mtime"] == mtime:
+      return _sw_assets_cache["assets"]
+
+
+  try:
+    with open(SW_FILE, "r") as f:
+      content = f.read()
+
+
+  except Exception:
+    return None
+
+  match = ASSETS_PATTERN.search(content)
+  if not match:
+    return None
+
+  raw_items = re.findall(r'"([^"]*)"|\'([^\']*)\'', match.group(1))
+  assets = set()
+  for double, single in raw_items:
+    item = double or single
+    if item:
+      assets.add(os.path.normpath(item.lstrip("/\\")))
+
+
+  with _sw_assets_lock:
+    _sw_assets_cache["mtime"] = mtime
+    _sw_assets_cache["assets"] = assets
+
+  return assets
+
+
 # --- File Watcher Logic ---
 # Editors (e.g. VS Code, on focus changes or via atomic-save temp-file
 # shuffling) can generate filesystem "modified" events without the file's
@@ -420,6 +472,14 @@ class AnyChangeHandler(FileSystemEventHandler):
         _last_content_hashes.pop(event.src_path, None)
 
     elif not _content_actually_changed(event.src_path):
+      return
+
+    # Only bump the version if this file is actually listed in sw.js's
+    # ASSETS array. If the array can't be parsed, fail open (allow the
+    # bump) so a malformed/renamed ASSETS constant doesn't silently stop
+    # cache invalidation altogether.
+    assets = _get_sw_assets()
+    if assets is not None and event_path not in assets:
       return
 
     target = "static" if event_path.lower().endswith(STATIC_ASSET_EXTS) else "cache"
