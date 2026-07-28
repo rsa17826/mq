@@ -18,20 +18,6 @@ main.main()
 PORT = 1533
 DIRECTORY = "."
 WATCH_FILE = os.path.normpath("MathQuest/play.base.html")
-SW_FILE = os.path.normpath("sw.js")
-# Matches only CACHE_NAME = "math-quest-vN" (not STATIC_CACHE_NAME, since that
-# requires "-static-" between "math-quest" and "-v").
-CACHE_VERSION_PATTERN = re.compile(r'(\bCACHE_NAME\s*=\s*"math-quest-v)(\d+)(")')
-# Matches only STATIC_CACHE_NAME = "math-quest-static-vN"
-STATIC_VERSION_PATTERN = re.compile(r'(\bSTATIC_CACHE_NAME\s*=\s*"math-quest-static-v)(\d+)(")')
-# Extensions treated as "static" assets (mirrors sw.js's STATIC_ENDS list)
-STATIC_ASSET_EXTS = (".png", ".jpg", ".wav", ".webp", ".jpeg", ".mp3")
-# Matches the `const ASSETS = [...]` array in sw.js so we can tell whether a
-# changed file is one the service worker actually caches.
-ASSETS_PATTERN = re.compile(r"\bASSETS\s*=\s*\[(.*?)\]", re.DOTALL)
-# Debounce window (seconds): coalesce bursts of filesystem events from a
-# single save into one version bump.
-SW_BUMP_DEBOUNCE_SECONDS = 0.5
 
 
 class ProcessManager:
@@ -194,7 +180,7 @@ class CachedCGIHTTPRequestHandler(CGIHTTPRequestHandler):
     try:
       while True:
         line = sub_queue.get()
-        if line is None: # Process ended
+        if line is None:  # Process ended
           break
 
         self.wfile.write(line.encode("utf-8"))
@@ -290,220 +276,17 @@ class CachedCGIHTTPRequestHandler(CGIHTTPRequestHandler):
     super().end_headers()
 
 
-_sw_bump_lock = threading.Lock()
-_sw_bump_pending = {"cache": False, "static": False}
-_sw_bump_timer = None
-
-
-def _do_bump_sw_cache_versions():
-  """Applies any pending bumps to sw.js in a single read/write pass."""
-  global _sw_bump_pending, _sw_bump_timer
-
-  with _sw_bump_lock:
-    pending = _sw_bump_pending
-    _sw_bump_pending = {"cache": False, "static": False}
-    _sw_bump_timer = None
-
-  if not (pending["cache"] or pending["static"]) or not os.path.exists(SW_FILE):
-    return
-
-  def _incr(match):
-    prefix, num, suffix = match.group(1), match.group(2), match.group(3)
-    return f"{prefix}{int(num) + 1}{suffix}"
-
-  try:
-    with open(SW_FILE, "r") as f:
-      content = f.read()
-
-    new_content = content
-    bumped = []
-
-    if pending["cache"]:
-      new_content, count = CACHE_VERSION_PATTERN.subn(_incr, new_content)
-      if count:
-        bumped.append("CACHE_NAME")
-
-
-    if pending["static"]:
-      new_content, count = STATIC_VERSION_PATTERN.subn(_incr, new_content)
-      if count:
-        bumped.append("STATIC_CACHE_NAME")
-
-
-    if bumped and new_content != content:
-      with open(SW_FILE, "w") as f:
-        f.write(new_content)
-
-      print(f"[+] Bumped {', '.join(bumped)} in {SW_FILE}")
-
-
-  except Exception as e:
-    print(f"[-] Failed to bump sw.js cache versions: {e}")
-
-
-def bump_sw_cache_versions(target):
-  """Schedules a debounced bump for the given target ('cache' or 'static'),
-  coalescing bursts of filesystem events from a single save into one write.
-  """
-  global _sw_bump_timer
-
-  with _sw_bump_lock:
-    _sw_bump_pending[target] = True
-
-    if _sw_bump_timer:
-      _sw_bump_timer.cancel()
-
-    _sw_bump_timer = threading.Timer(SW_BUMP_DEBOUNCE_SECONDS, _do_bump_sw_cache_versions)
-    _sw_bump_timer.daemon = True
-    _sw_bump_timer.start()
-
-
-_sw_assets_cache = {"mtime": None, "assets": None}
-_sw_assets_lock = threading.Lock()
-
-
-def _get_sw_assets():
-  """Parses the `const ASSETS = [...]` array out of sw.js and returns it as
-  a set of normalized (leading-slash-stripped, OS-normalized) paths.
-  Re-parses only when sw.js's mtime changes; returns None if the file or
-  the ASSETS array can't be found/parsed (caller should then allow the
-  change through rather than silently dropping it).
-  """
-  try:
-    mtime = os.path.getmtime(SW_FILE)
-
-  except OSError:
-    return None
-
-  with _sw_assets_lock:
-    if _sw_assets_cache["mtime"] == mtime:
-      return _sw_assets_cache["assets"]
-
-
-  try:
-    with open(SW_FILE, "r") as f:
-      content = f.read()
-
-
-  except Exception:
-    return None
-
-  match = ASSETS_PATTERN.search(content)
-  if not match:
-    return None
-
-  raw_items = re.findall(r'"([^"]*)"|\'([^\']*)\'', match.group(1))
-  assets = set()
-  for double, single in raw_items:
-    item = double or single
-    if item:
-      assets.add(os.path.normpath(item.lstrip("/\\")))
-
-
-  with _sw_assets_lock:
-    _sw_assets_cache["mtime"] = mtime
-    _sw_assets_cache["assets"] = assets
-
-  return assets
-
-
 # --- File Watcher Logic ---
-# Editors (e.g. VS Code, on focus changes or via atomic-save temp-file
-# shuffling) can generate filesystem "modified" events without the file's
-# actual content changing. Guard against these False positives by hashing
-# file contents and only reacting when the hash differs from last time.
-_content_hash_lock = threading.Lock()
-_last_content_hashes = {}
-
-
-def _content_actually_changed(path):
-  """True if `path` has content different from the last time we checked (or
-  we've never seen it). False if missing/unreadable/unchanged, so spurious
-  events are ignored.
-  """
-  try:
-    with open(path, "rb") as f:
-      new_hash = hashlib.md5(f.read()).hexdigest()
-
-
-  except Exception:
-    return False
-
-  with _content_hash_lock:
-    old_hash = _last_content_hashes.get(path)
-    if old_hash == new_hash:
-      return False
-
-    _last_content_hashes[path] = new_hash
-    return True
-
-
 class HTMLChangeHandler(FileSystemEventHandler):
   def on_modified(self, event):
-    if event.is_directory:
-      return
-
     event_path = os.path.normpath(os.path.relpath(event.src_path, os.getcwd()))
-    if event_path == WATCH_FILE and _content_actually_changed(event.src_path):
+    if event_path == WATCH_FILE:
       print(f"\n[!] Change detected in {WATCH_FILE}!")
       self.execute_on_change()
 
 
   def execute_on_change(self):
     main.main()
-
-
-class AnyChangeHandler(FileSystemEventHandler):
-  """Watches the whole project directory and bumps sw.js cache version
-  numbers whenever any file's content actually changes (ignoring sw.js
-  itself to avoid triggering on its own writes).
-  """
-
-  def _handle(self, event):
-    if event.is_directory:
-      return
-
-    event_path = os.path.normpath(os.path.relpath(event.src_path, os.getcwd()))
-    if event_path == SW_FILE:
-      return
-
-    if event.event_type == "deleted":
-      with _content_hash_lock:
-        _last_content_hashes.pop(event.src_path, None)
-
-    elif not _content_actually_changed(event.src_path):
-      return
-
-    # Only bump the version if this file is actually listed in sw.js's
-    # ASSETS array. If the array can't be parsed, fail open (allow the
-    # bump) so a malformed/renamed ASSETS constant doesn't silently stop
-    # cache invalidation altogether.
-    assets = _get_sw_assets()
-    if assets is not None and event_path not in assets:
-      return
-
-    target = "static" if event_path.lower().endswith(STATIC_ASSET_EXTS) else "cache"
-    bump_sw_cache_versions(target)
-
-  def on_modified(self, event):
-    self._handle(event)
-
-  def on_created(self, event):
-    self._handle(event)
-
-  def on_moved(self, event):
-    self._handle(event)
-
-  def on_deleted(self, event):
-    self._handle(event)
-
-
-def start_dir_watcher():
-  observer = Observer()
-  observer.schedule(AnyChangeHandler(), path=".", recursive=True)
-  observer.start()
-  print("[*] Directory watcher active: Monitoring all changes in '.' to bump sw.js cache versions")
-  return observer
 
 
 def start_file_watcher():
@@ -528,7 +311,6 @@ def run():
   print(f"[*] Serving directory: {os.path.abspath(DIRECTORY)}")
 
   watcher = start_file_watcher()
-  dir_watcher = start_dir_watcher()
 
   httpd = ThreadingHTTPServer(server_address, handler)
   try:
@@ -537,11 +319,9 @@ def run():
   except KeyboardInterrupt:
     print("\n[-] Shutting down server.")
     watcher.stop()
-    dir_watcher.stop()
     httpd.server_close()
 
   watcher.join()
-  dir_watcher.join()
 
 
 if __name__ == "__main__":
