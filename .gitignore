@@ -11,7 +11,5 @@ map_*
 randomized_index.html
 MathQuest/play.html
 .images
-MQFiles/*
-!MQFiles/MQhsSave.json
 js/prog.js
 apWorldPath
