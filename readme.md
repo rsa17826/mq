@@ -42,7 +42,16 @@ direnv allow
 then run
 
 ```sh
-./init
+./generate_map_scales.sh
+./start &
+SERVER_PID=$!
+xdg-open "http://127.0.0.1:1533/MathQuest/play.html"
+
+echo "on the webpage type /installSw and press enter"
+echo "then also click install in the browsers omibar to install it as a pwa"
+echo "press enter when done to exit"
+read -r _
+kill $SERVER_PID
 ```
 
 - NOTE these must be ran separately, direnv allow doesn't execute until the full command ends
