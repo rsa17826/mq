@@ -42,6 +42,7 @@ direnv allow
 ./start &
 xdg-open "http://127.0.0.1:1533/MathQuest/play.html"
 # type /installSw then press enter and the page should work without having to start the server every time and only restarted when updating
+# you can also click install in the browsers omibar to install it as a pwa
 read -r _
 kill %%
 ```
