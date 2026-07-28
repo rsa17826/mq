@@ -496,6 +496,26 @@ function apSendSayFromInput() {
         }
       },
     },
+    backupSaveData: {
+      alias: ["downloadSaveData"],
+      desc: "export save data to a local file",
+      args: [],
+      func() {
+        const jsonString = JSON.stringify(saveData, null, 2) // The 'null, 2' makes it nicely formatted
+        const blob = new Blob([jsonString], {
+          type: "application/json",
+        })
+        const href = URL.createObjectURL(blob)
+        const a = newelem("a", {
+          href,
+          download: "MathQuest save files.json",
+        })
+        document.body.appendChild(a)
+        a.click()
+        document.body.removeChild(a)
+        URL.revokeObjectURL(href)
+      },
+    },
   }
   log(text)
   if (!text) return
