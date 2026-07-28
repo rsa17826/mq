@@ -269,6 +269,12 @@ class ArchipelagoClient {
       case "Bounced":
         this.onBounced(packet)
         break
+      case "Retrieved":
+        this.onRetrieved(packet)
+        break
+      case "SetReply":
+        this.onSetReply(packet)
+        break
       case "InvalidPacket":
         apError("❌ Archipelago Server rejected payload:", {
           type: packet.type,
@@ -833,6 +839,31 @@ class ArchipelagoClient {
 
   generateUUID() {
     return Math.random().toString(36).substring(2, 15)
+  }
+
+  // Ask for + subscribe to this slot's hint list right after connecting.
+  requestHints() {
+    const key = `_read_hints_${this.team}_${this.slot}`
+    this.sendPackets([
+      { cmd: "Get", keys: [key] },
+      { cmd: "SetNotify", keys: [key] },
+    ])
+  }
+
+  // Server replies to Get with "Retrieved"; live changes come as "SetReply".
+  onRetrieved(packet) {
+    const key = `_read_hints_${this.team}_${this.slot}`
+    // log("Retrieved packet:", packet) // <-- add this
+    if (packet.keys?.[key] !== undefined) {
+      HintTracker.setHints(packet.keys[key] || [])
+    }
+  }
+
+  onSetReply(packet) {
+    const key = `_read_hints_${this.team}_${this.slot}`
+    if (packet.key === key) {
+      HintTracker.setHints(packet.value || [])
+    }
   }
 }
 function apTryConnect() {

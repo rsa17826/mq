@@ -431,6 +431,29 @@ function customDrawLoop() {
   if (window?.test?.fightVarCheat == 666) {
     coordString += "battle mode enabled - [ to toggle\n"
   }
+  for (let hint of HintTracker.all) {
+    var itemName = ap.itemIdToName["MathQuest"][hint.item]
+    var finder = ap.players.find(
+      (e) => e.slot == HintTracker.all[0].finding_player,
+    )
+    var owner = ap.players.find(
+      (e) => e.slot == HintTracker.all[0].receiving_player,
+    )
+    var finderName =
+      hint.finding_player == ap.slot ? "your"
+      : finder.alias == finder.name ? `${finder.name}'s`
+      : `${finder.name} (${finder.alias})'s`
+    var ownerName =
+      hint.receiving_player == ap.slot ? "your"
+      : owner.alias == owner.name ? `${owner.name}'s`
+      : `${owner.name} (${owner.alias})'s`
+
+    const finderGame =
+      ap.slotInfo[HintTracker.all[0].finding_player].game
+    const locationName =
+      ap.locationIdToName[finderGame][hint.location]
+    coordString += `${ownerName} ${itemName} - found at ${finderName} ${locationName}\n`
+  }
   coordString += window.extraData?.() ?? ""
   overlayCtx.font = '36px "Booter - Zero Zero"'
 
