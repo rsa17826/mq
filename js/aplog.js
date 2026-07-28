@@ -474,8 +474,10 @@ function apSendSayFromInput() {
   log(text)
   if (!text) return
   var [cmd, ...args] = (
-    text.match(/[^\s"']+|"([^"]*)"|'([^']*)'/g) ?? [text]
-  ).map((arg) => arg.replace(/^['"]|['"]$/g, ""))
+    text.match(/[^\s"']+|"[^"]*"|'[^']*'|(?<=\s)(?=\s)/g) ?? [text]
+  ).map((arg) =>
+    arg === "" ? undefined : arg.replace(/^['"]|['"]$/g, ""),
+  )
   document.querySelector("#apChatSayInput").onblur?.()
   cmd = cmd.toLowerCase()
   for (var [k, v] of Object.entries(options)) {

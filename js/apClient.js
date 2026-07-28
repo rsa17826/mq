@@ -333,7 +333,14 @@ class ArchipelagoClient {
       warn("page loaded old ap game, reloading!")
       location.reload()
     }
-    location.hash = window.seed = packet.seed_name
+    window.seed = packet.seed_name
+    window.history.replaceState(
+      {},
+      "",
+      location.href.replace(/[?&]seed=[^&#]+/, "") +
+        "&seed=" +
+        packet.seed_name,
+    )
     apLog(
       `RoomInfo received. Multiworld Seed: @green!${packet.seed_name}@!`,
     )
