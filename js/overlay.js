@@ -428,8 +428,8 @@ function customDrawLoop() {
             POS: ${Math.round(window.player.x)} ${Math.round(window.player.y)}
             `
     : ""
-  if (window?.test?.fightVarCheat == 666){
-    coordString+='battle mode enabled - [ to toggle\n'
+  if (window?.test?.fightVarCheat == 666) {
+    coordString += "battle mode enabled - [ to toggle\n"
   }
   coordString += window.extraData?.() ?? ""
   overlayCtx.font = '36px "Booter - Zero Zero"'

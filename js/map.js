@@ -1,9 +1,33 @@
 //a @ts-nocheck
+/**
+ * @type {HTMLCanvasElement}
+ */
+// @ts-ignore
 const canvas = document.getElementById("arrow-canvas-2d")
+/**
+ * @type {CanvasRenderingContext2D}
+ */
+// @ts-ignore
 const ctx = canvas.getContext("2d")
+/**
+ * @type {HTMLElement}
+ */
+// @ts-ignore
 const viewport = document.getElementById("viewport")
+/**
+ * @type {HTMLElement}
+ */
+// @ts-ignore
 const grid = document.getElementById("grid")
+/**
+ * @type {HTMLElement}
+ */
+// @ts-ignore
 const panLayer = document.getElementById("pan-layer")
+/**
+ * @type {HTMLElement}
+ */
+// @ts-ignore
 const infoPanel = document.getElementById("info-panel")
 
 let scale = Number(localStorage.scale ?? 0.286)
@@ -113,7 +137,7 @@ class PathFinding {
   }
   /**
    * @param {any} roomKey
-   * @param {{ dir: any; idx: any; }} entrance
+   * @param {{ dir: any; idx: any; }|undefined} entrance
    */
   static selectionId(roomKey, entrance) {
     return entrance ?
@@ -387,12 +411,10 @@ class PathFinding {
   // --- Pixel geometry, read straight off the rendered tiles ---
 
   /**
-   * @param {any} roomKey
+   * @param {string} roomKey
    */
   static tileOrigin(roomKey) {
-    const wrapper = document.querySelector(
-      `.tile-wrapper[data-room="${roomKey}"]`,
-    )
+    const wrapper = HTMLStorage.TileByKey[roomKey]
     if (!wrapper) return null
     return {
       x: parseFloat(wrapper.style.left) || 0,
@@ -1013,7 +1035,7 @@ class PathFinding {
   // actually start from the player's real position.
   /**
    * @param {any} targetKey
-   * @param {{ dir: any; idx: any; }} targetEntrance
+   * @param {{ dir: any; idx: any; }|undefined} targetEntrance
    */
   static findPathTo(targetKey, targetEntrance) {
     const slotData = window.ap && window.ap.slotData
@@ -1112,7 +1134,7 @@ class PathFinding {
   // empty canvas.
   /**
    * @param {any} targetKey
-   * @param {{ dir: string; idx: number; }} targetEntrance
+   * @param {{ dir: string; idx: number; }|undefined} targetEntrance
    */
   static showPathTo(targetKey, targetEntrance) {
     const result = this.findPathTo(targetKey, targetEntrance)
@@ -1277,16 +1299,16 @@ class PathFinding {
 }
 
 const PATH_ARROW_COLOR = "#39ff14"
+/**@type  {{ dir: any; idx: any; }|null} */
 let selectedPathId = null // identifies whatever room/entrance is currently clicked-on, or null
 
 // Clicking a tile/entrance shows the route to it; clicking the same one
 // again clears the route. A manual click always wins over quest tracking.
 /**
  * @param {string} roomKey
- * @param {string | undefined} [entrance]
+ * @param {{ dir: any; idx: any; } | undefined} [entrance]
  */
 function selectPathTarget(roomKey, entrance) {
-  trackedQuestName = null
   const id = PathFinding.selectionId(roomKey, entrance)
   if (selectedPathId === id) {
     selectedPathId = null
@@ -1492,10 +1514,10 @@ class WorldMap {
       WorldMap.resizeCanvas()
       WorldMap.updateTileBackgrounds()
 
-      document.querySelectorAll(".tile-wrapper").forEach((tile) => {
+      HTMLStorage.tileWrapper.forEach((tile) => {
         tile.addEventListener("mouseenter", function () {
-          currentRoom = this.getAttribute("data-room")
-          const rawInfo = this.getAttribute("data-info")
+          currentRoom = this.dataset.room
+          const rawInfo = this.dataset.info
           if (infoPanel && rawInfo) {
             try {
               const infoObj = JSON.parse(rawInfo)
@@ -1541,7 +1563,7 @@ class WorldMap {
         })
         tile.addEventListener("click", function (e) {
           selectPathTarget(
-            this.getAttribute("data-room").replace("20_16", "19_16"),
+            this.dataset.room.replace("20_16", "19_16"),
           )
         })
       })
@@ -1550,20 +1572,15 @@ class WorldMap {
       // entrance instead of just "somewhere in this room". Requires gen_map.py
       // to have been regenerated with data-room/data-side/data-idx attributes
       // on .exit-square elements.
-      document
-        .querySelectorAll(".exit-square[data-side]")
-        .forEach((square) => {
-          square.addEventListener("click", function (e) {
-            e.stopPropagation()
-            const roomKey = this.getAttribute("data-room").replace(
-              "20_16",
-              "19_16",
-            )
-            const dir = this.getAttribute("data-side")
-            const idx = Number(this.getAttribute("data-idx"))
-            selectPathTarget(roomKey, { dir, idx })
-          })
+      HTMLStorage.exitSquare.forEach((square) => {
+        square.addEventListener("click", function (e) {
+          e.stopPropagation()
+          const roomKey = this.dataset.room.replace("20_16", "19_16")
+          const dir = this.dataset.side
+          const idx = Number(this.dataset.idx)
+          selectPathTarget(roomKey, { dir, idx })
         })
+      })
     })
 
     // --- MOUSE PANNING ---

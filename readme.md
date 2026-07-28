@@ -126,3 +126,4 @@ you can get `gTree` quest to `8` at any time you can get to `14_18` even startin
 - skills are all on a single page
 - all weapons can be collected and will all fit in the weapons page
 - food can go above 99
+- all chests are now always reachable, unlike the original game where some chests disappear biased on the wrong chest ids

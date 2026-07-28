@@ -3,6 +3,8 @@
 // data-location markers to already be present on the page.
 
 class Logic {
+  /**@type {RoomGraphReachability} */
+  static roomGraph
   static haveDerived = new Set()
   static iconsByRoom = {}
 
@@ -169,17 +171,13 @@ class Logic {
     }
 
     // Clear old logic markers, but never touch .checked (that's ground truth)
-    document
-      .querySelectorAll(
-        ".progression-icon.in-logic, .progression-icon.route-unknown, .progression-icon.out-of-logic",
-      )
-      .forEach((el) =>
-        el.classList.remove(
-          "in-logic",
-          "route-unknown",
-          "out-of-logic",
-        ),
-      )
+    HTMLStorage.progressionIcon.forEach((el) =>
+      el.classList.remove(
+        "in-logic",
+        "route-unknown",
+        "out-of-logic",
+      ),
+    )
 
     Logic.roomsWithAvailableItems = new Set()
     Logic.roomsWithAvailableQuests = new Set()
@@ -217,12 +215,16 @@ class Logic {
     })
 
     Logic.haveDerived = have
-    for (const roomKey of Object.keys(Logic.roomEls)) {
-      Logic.roomEls[roomKey].classList.toggle(
+    // Exposed so overlay.js can color individual entrance tiles by whether
+    // that specific exit is reachable, not just the room-level status.
+    Logic.roomGraph = roomGraph
+
+    for (const roomKey of Object.keys(HTMLStorage.TileByKey)) {
+      HTMLStorage.TileByKey[roomKey].classList.toggle(
         "room-has-available-item",
         Logic.roomsWithAvailableItems.has(roomKey),
       )
-      Logic.roomEls[roomKey].classList.toggle(
+      HTMLStorage.TileByKey[roomKey].classList.toggle(
         "room-has-available-quest",
         Logic.roomsWithAvailableQuests.has(roomKey) &&
           !Logic.roomsWithAvailableItems.has(roomKey),
@@ -231,8 +233,8 @@ class Logic {
 
     // Room-level grey overlay based on physical reachability
     if (roomGraph) {
-      for (const roomKey of Object.keys(Logic.roomEls)) {
-        const el = Logic.roomEls[roomKey]
+      for (const roomKey of Object.keys(HTMLStorage.TileByKey)) {
+        const el = HTMLStorage.TileByKey[roomKey]
         el.classList.remove("room-unreachable", "room-partial")
         const st = roomGraph.roomStatus(roomKey)
         if (st === "none") el.classList.add("room-unreachable")
@@ -251,23 +253,14 @@ class Logic {
   }
 }
 window.onApConnect.push(() => {
-  document
-    .querySelectorAll(".progression-icon[data-location]")
-    .forEach((el) => {
-      // ANCHOR exclude some icons from prog checks
-      if (["area:", "flag:"].find((e) => el.alt.startsWith(e))) {
-        return
-      }
-      ;(Logic.iconsByLocation[el.dataset.location] ||= []).push(el)
-      // ;(Logic.iconsByRoom[el.dataset.location] ||= []).push(el)
-    })
-  document
-    .querySelectorAll(
-      '.tile-wrapper[data-room]:not([data-room="20_16"])',
-    )
-    .forEach((el) => {
-      Logic.roomEls[el.dataset.room] = el
-    })
+  HTMLStorage.progressionIcon.forEach((el) => {
+    // ANCHOR exclude some icons from prog checks
+    if (["area:", "flag:"].find((e) => el.alt.startsWith(e))) {
+      return
+    }
+    // @ts-ignore
+    ;(Logic.iconsByLocation[el.dataset.location] ||= []).push(el)
+  })
 })
 window.onApCreated.push((ap) => {
   const origOnReceivedItems = ap.onReceivedItems.bind(ap)

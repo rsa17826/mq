@@ -266,7 +266,7 @@ function _apUpdateToastOpacities() {
   if (oneVisible) {
     setTimeout(_apUpdateToastOpacities, 100)
   }
-  document.querySelector("#apChatLog").style.display =
+  HTMLStorage.apChatLog.style.display =
     oneVisible || !container.classList.contains("collapsed") ?
       "block"
     : "none"
@@ -386,13 +386,18 @@ function apSendSayFromInput() {
     neverShowLocationScouts: {
       desc: "never show location scouts",
       func(on = "1") {
-        localStorage.neverShowLocationScouts = ["1", "true"].includes(on)
+        localStorage.neverShowLocationScouts = ["1", "true"].includes(
+          on,
+        )
       },
     },
     dontAutoSendCompleteEvent: {
       desc: "if enabled doesn't send the complete event when the goal is completed",
       func(on = "1") {
-        localStorage.dontAutoSendCompleteEvent = ["1", "true"].includes(on)
+        localStorage.dontAutoSendCompleteEvent = [
+          "1",
+          "true",
+        ].includes(on)
       },
     },
     reconnect: {
@@ -468,7 +473,7 @@ function apSendSayFromInput() {
   var [cmd, ...args] = (
     text.match(/[^\s"']+|"([^"]*)"|'([^']*)'/g) ?? [text]
   ).map((arg) => arg.replace(/^['"]|['"]$/g, ""))
-  document.querySelector("#apChatSayInput").onblur?.()
+  HTMLStorage.apChatLog.onblur?.()
   cmd = cmd.toLowerCase()
   for (var [k, v] of Object.entries(options)) {
     for (var kk of [...(v.alias ?? []), k]) {
@@ -621,7 +626,7 @@ window.addEventListener(
       e.preventDefault()
       if (document.activeElement?.id != "apChatSayInput") {
         toggleCollapse(false)
-        document.querySelector("#apChatSayInput").focus()
+        HTMLStorage.apChatLog.focus()
       } else {
         toggleCollapse(true)
       }
@@ -635,11 +640,11 @@ window.addEventListener(
         if (col) {
           toggleCollapse(false)
         }
-        document.querySelector("#apChatSayInput").focus()
-        document.querySelector("#apChatSayInput").value = "/"
+        HTMLStorage.apChatLog.focus()
+        HTMLStorage.apChatLog.value = "/"
         if (col) {
-          document.querySelector("#apChatSayInput").onblur = () => {
-            document.querySelector("#apChatSayInput").onblur = null
+          HTMLStorage.apChatLog.onblur = () => {
+            HTMLStorage.apChatLog.onblur = null
             toggleCollapse(true)
           }
         }
