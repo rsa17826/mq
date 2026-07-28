@@ -718,7 +718,6 @@ const TILE_ARRAY_INFO = {
 function preloadRandomizedIcons(assetLoader, allItemNames) {
   bmCache.byItemName = {}
   for (var k of Object.keys(bmCache)) {
-    log(k, "kkkk")
     if (k == "itemTile") {
       for (var i in bmCache[k]) {
         bmCache.byItemName[

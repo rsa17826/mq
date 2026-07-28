@@ -232,14 +232,13 @@ class Logic {
     }
 
     // Room-level grey overlay based on physical reachability
-    if (roomGraph) {
-      for (const roomKey of Object.keys(HTMLStorage.TileByKey)) {
-        const el = HTMLStorage.TileByKey[roomKey]
-        el.classList.remove("room-unreachable", "room-partial")
-        const st = roomGraph.roomStatus(roomKey)
-        if (st === "none") el.classList.add("room-unreachable")
-        else if (st === "partial") el.classList.add("room-partial")
-      }
+    for (const [roomKey, el] of Object.entries(
+      HTMLStorage.TileByKey,
+    )) {
+      el.classList.remove("room-unreachable", "room-partial")
+      const st = roomGraph.roomStatus(roomKey)
+      if (st === "none") el.classList.add("room-unreachable")
+      else if (st === "partial") el.classList.add("room-partial")
     }
 
     // Whatever just changed (received item, quest advancing, a newly

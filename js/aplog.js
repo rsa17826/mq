@@ -17,12 +17,10 @@ function _apStringify(a) {
     return String(a)
   }
 }
-let apChatLog
-let apChatSayInput
-document.addEventListener("DOMContentLoaded", () => {
-  apChatLog = document.querySelector("#apChatLog")
-  apChatSayInput = document.querySelector("#apChatSayInput")
-})
+
+let apChatLog = document.querySelector("#apChatLog")
+let apChatSayInput = document.querySelector("#apChatSayInput")
+
 function _apRenderEntry(entry) {
   var el = document.createElement("div")
   el.innerHTML =
