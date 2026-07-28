@@ -86,3 +86,6 @@ you can get `gTree` quest to `8` at any time you can get to `14_18` even startin
 - press `e` then `enter` if some dialogue box doesn't close
 - hold `shift` to move very slowly - helps getting through tight gaps
 - can press `enter` to say `yes` and `esc` to say `no` to any dialogue boxes
+- skills are all on a single page
+- all weapons can be collected and will all fit in the weapons page
+- food can go above 99
