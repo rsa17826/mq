@@ -285,22 +285,7 @@ window.onkeyup = ({ key }) => {
 onblur = () => {
   window.useSlowSpeed = 0
 }
-// function newItem(north,east,name,value,isadd) {
-//   log("newItem", north,east,name,value,isadd)
-//   console.log(`Player opened chest #${chestId}!`);
 
-//   // 2. Map your game's chest ID to your Archipelago Location ID
-//   const apLocationId = convertChestToApId(chestId);
-
-//   // 3. Send it to the Archipelago server
-//   // Note: Archipelago expects an ARRAY of numbers, even if it's just one check!
-//   if (window.ap && window.ap.isAuthenticated) {
-//     window.ap.sendLocationChecks([apLocationId]);
-//   } else {
-//     console.warn("Archipelago client is not connected yet. Storing check for later.");
-//     // Optional: queue the check to send once authenticated
-//   }
-// }
 const checker = new Proxy(
   {
     // progressive levels
@@ -739,19 +724,6 @@ function preloadRandomizedIcons(assetLoader, allItemNames) {
       ] = bmCache[k][i]
     }
   }
-  // for (const name of allItemNames) {
-  //   const safe = sanitizeItemName(name)
-  //   try {
-  //     bmCache.byItemName[safe] = assetLoader.getBitmapData(
-  //       `img/items/${safe}.png`,
-  //     )
-  //   } catch (e) {
-  //     // no art for this one; will fall through to fallback at swap time
-  //   }
-  // }
-  // bmCache.fallback = assetLoader.getBitmapData(
-  //   "img/items/fallback.png",
-  // )
 }
 
 function sanitizeItemName(name) {
@@ -22871,15 +22843,6 @@ for (var i = 0; i < 11; i++) {
           )
           // Udf.SendVariables()
           fullCharName = new _qObject("../cgi-bin/createChar.py")
-          // fullCharName.data = manager.myVar
-          // this.sender.load({
-          //   ...fullCharName,
-          //   data: {
-          //     ...fullCharName.data,
-          //     filename: window.ap?.playerName ?? "user",
-          //     saveFile: getSaveFileId(),
-          //   },
-          // })
           var urlBuilder = _aNewIdentifierName.plus(
             manager.charName.get_text(),
             ".",
@@ -22893,24 +22856,11 @@ for (var i = 0; i < 11; i++) {
           window.saveData[getSaveFileId()] = manager.myVar
         },
         load: async function () {
-          // var fullCharacterDetails = _aNewIdentifierName.plus(
-          //   manager.charName.get_text(),
-          //   ".",
-          // )
-          // var userPassword = this.password.get_text()
-          // manager.myVar.filename = _aNewIdentifierName.plus(
-          //   fullCharacterDetails,
-          //   userPassword,
-          // )
           if (!window.saveData[getSaveFileId()]) {
             createNewSave()
           }
           Udf.ReceiveVariables(window.saveData[getSaveFileId()])
           this.sendComplete()
-          // this.sender.addEventListener(
-          //   "complete",
-          //   createObjectMixin(this, this.sendComplete),
-          // )
         },
         sendComplete: function () {
           console.log(
@@ -34484,21 +34434,6 @@ for (var i = 0; i < 11; i++) {
               this.upgrade = false
               manager.aurastones -=
                 Math.pow(manager.magic[this.upgradeSpell] + 1, 2) | 0
-              // TODO
-              // newItem(16,23,'Enum.Magic.slow', )
-              // newItem(14,13,'Enum.Magic.crush', )
-              // newItem(14,13,'Enum.Magic.doubleDown', )
-              // newItem(14,13,'Enum.Magic.lightning', )
-              // newItem(14,13,'Enum.Magic.lightning', )
-              // newItem(14,13,'Enum.Magic.refresh', )
-              // newItem(14,13,'Enum.Magic.ice', )
-              // newItem(14,13,'Enum.Magic.weak', )
-              // newItem(14,13,'Enum.Magic.cloud', )
-              // newItem(14,13,'Enum.Magic.regen', )
-              // newItem(14,13,'Enum.Magic.fire', )
-              // newItem(14,13,'Enum.Magic.blast', )
-              // newItem(14,13,'Enum.Magic.heal', )
-              // newItem(14,13,'Enum.Magic.slow', )
               manager.magic[this.upgradeSpell]++
               manager.magicScreen.set_visible(false)
               this.showButtons()
@@ -45929,78 +45864,7 @@ for (var i = 0; i < 11; i++) {
           )
           Udf.SendVariables()
           window.saveData[getSaveFileId()] = manager.myVar
-          // var newData = {
-          //   ...charURL.data,
-          //   saveFile: getSaveFileId(),
-          // }
-          // var i = 266
-          // newData["stat" + i++] = window.lastReceivedItem
-          // for (var [k, v] of Object.entries(checker)) {
-          //   newData["stat" + i++] = v
-          // }
-          // for (var k of window.prevSeenItems) {
-          //   newData["stat" + i++] = k
-          // }
-          // saveCharData.load({
-          //   ...charURL,
-          //   data: newData,
-          // })
-          // saveCharData.addEventListener(
-          //   "complete",
-          //   createObjectMixin(this, this.sendComplete),
-          // )
-          // this.saveHS()
         },
-        // loadHS: function () {
-        //   console.log("hs load started")
-        //   if (this.checkDay == 0) {
-        //     manager.itemDisplay[0].set_x(250)
-        //     manager.itemDisplay[0].set_y(250)
-        //     manager.itemDisplay[0].set_text(
-        //       "Loading Top 5 Players...",
-        //     )
-        //     manager.itemDisplay[0].setTextFormat(manager.hsFormat)
-        //     manager.itemDisplay[0].set_visible(true)
-        //   }
-        //   // var jsHttpRequest = new _qObject(
-        //   //   "../MQphp/MQhsLoad.json?rand=" + Math.random() * 1e3,
-        //   // )
-        //   // this.sender.load(jsHttpRequest)
-        //   // this.sender.addEventListener(
-        //   //   "complete",
-        //   //   createObjectMixin(this, this.loadHSComplete),
-        //   // )
-        // },
-        // loadHSComplete: function (_initialData) {
-        //   console.log("hs complete")
-        //   this.sender.removeEventListener(
-        //     "complete",
-        //     createObjectMixin(this, this.loadHSComplete),
-        //   )
-        //   this.outputHSTxt.set_text(
-        //     _aNewIdentifierName.fromDynamic(this.sender.data),
-        //   )
-        //   this.bytes = this.outputHSTxt.get_text()
-        //   this.mystring = this.bytes.toString()
-        //   this.stats = this.mystring.split(" ")
-        //   console.log("checkDay: " + f.string(this.checkDay))
-        //   if (this.showHS == 1 && this.checkDay == 0) {
-        //     this.standings()
-        //   }
-        // },
-        // saveHS: function () {
-        //   console.log("save hs started")
-        //   var scoreAndName = cloneObject._new()
-        //   scoreAndName.score = manager.fame
-        //   scoreAndName.name = manager.charName.get_text()
-        //   var hsSaveLoader = new _qObject("../MQphp/MQhsSave.json")
-        //   hsSaveLoader.data = scoreAndName
-        //   this.sender.load(hsSaveLoader)
-        //   this.sender.addEventListener(
-        //     "complete",
-        //     createObjectMixin(this, this.loadHSComplete),
-        //   )
-        // },
         standings: function () {
           console.log("standings")
           this.counter = 0
