@@ -356,10 +356,43 @@ def bump_sw_cache_versions(target):
 
 
 # --- File Watcher Logic ---
+# Editors (e.g. VS Code, on focus changes or via atomic-save temp-file
+# shuffling) can generate filesystem "modified" events without the file's
+# actual content changing. Guard against these False positives by hashing
+# file contents and only reacting when the hash differs from last time.
+_content_hash_lock = threading.Lock()
+_last_content_hashes = {}
+
+
+def _content_actually_changed(path):
+  """True if `path` has content different from the last time we checked (or
+  we've never seen it). False if missing/unreadable/unchanged, so spurious
+  events are ignored.
+  """
+  try:
+    with open(path, "rb") as f:
+      new_hash = hashlib.md5(f.read()).hexdigest()
+
+
+  except Exception:
+    return False
+
+  with _content_hash_lock:
+    old_hash = _last_content_hashes.get(path)
+    if old_hash == new_hash:
+      return False
+
+    _last_content_hashes[path] = new_hash
+    return True
+
+
 class HTMLChangeHandler(FileSystemEventHandler):
   def on_modified(self, event):
+    if event.is_directory:
+      return
+
     event_path = os.path.normpath(os.path.relpath(event.src_path, os.getcwd()))
-    if event_path == WATCH_FILE:
+    if event_path == WATCH_FILE and _content_actually_changed(event.src_path):
       print(f"\n[!] Change detected in {WATCH_FILE}!")
       self.execute_on_change()
 
@@ -370,8 +403,8 @@ class HTMLChangeHandler(FileSystemEventHandler):
 
 class AnyChangeHandler(FileSystemEventHandler):
   """Watches the whole project directory and bumps sw.js cache version
-  numbers whenever any file changes (ignoring sw.js itself to avoid
-  triggering on its own writes).
+  numbers whenever any file's content actually changes (ignoring sw.js
+  itself to avoid triggering on its own writes).
   """
 
   def _handle(self, event):
@@ -380,6 +413,13 @@ class AnyChangeHandler(FileSystemEventHandler):
 
     event_path = os.path.normpath(os.path.relpath(event.src_path, os.getcwd()))
     if event_path == SW_FILE:
+      return
+
+    if event.event_type == "deleted":
+      with _content_hash_lock:
+        _last_content_hashes.pop(event.src_path, None)
+
+    elif not _content_actually_changed(event.src_path):
       return
 
     target = "static" if event_path.lower().endswith(STATIC_ASSET_EXTS) else "cache"
