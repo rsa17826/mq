@@ -470,6 +470,32 @@ function apSendSayFromInput() {
         }
       },
     },
+    installSw: {
+      alias: ["download", "offline", "install"],
+      desc: "download for offline access without need to start the server to load the page",
+      args: [],
+      func() {
+        if ("serviceWorker" in navigator) {
+          window.addEventListener("load", () => {
+            navigator.serviceWorker
+              .register("/sw.js")
+              .then((reg) =>
+                apLog(
+                  "Service Worker registered successfully!",
+                  reg.scope,
+                ),
+              )
+              .catch((err) =>
+                apError("Service Worker registration failed:", err),
+              )
+          })
+        } else {
+          apError(
+            "can't download without access to navigator.serviceWorker",
+          )
+        }
+      },
+    },
   }
   log(text)
   if (!text) return

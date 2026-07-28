@@ -25,7 +25,7 @@ mathquest is an rpg game about solving simple math equations.
   - confusion - prevents magic usage
   - gold - gives 2k gold
   - nothing - does nothing
-  - spawn_random_enemies - spawns an enemy when triggered - TODO make delay until not in - encounter to activate
+  - spawn_random_enemies - spawns an enemy when triggered - TODO make delay until not in encounter to activate
 
 this game should be playable but is still being developed
 

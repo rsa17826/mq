@@ -345,19 +345,6 @@ class ArchipelagoClient {
       `RoomInfo received. Multiworld Seed: @green!${packet.seed_name}@!`,
     )
 
-    // const connectPayload = {
-    //   cmd: "Connect",
-    //   password: this.password,
-    //   game: this.game,
-    //   name: this.playerName,
-    //   uuid: this.generateUUID(),
-    //   version: { major: 0, minor: 6, build: 2, class: "Version" },
-    //   // items_handling configuration:
-    //   // 7 (0b111) = Receive items from other worlds, own world, and starting inventory.
-    //   items_handling: 7,
-    //   tags: ["Tracker"], // Capabilities list (e.g., "Tracker", "TextOnly")
-    //   slot_data: true,
-    // }
     const connectPayload = {
       cmd: "Connect",
       password: this.password,
@@ -511,20 +498,6 @@ class ArchipelagoClient {
         locationName,
         flags,
       }
-
-      // apLog(
-      //   `@blue![Archipelago]@! Scouted location ${locationName}: ${itemName}`,
-      // )
-
-      // if (typeof window.onLocationScouted === "function") {
-      //   window.onLocationScouted(
-      //     location,
-      //     locationName,
-      //     itemName,
-      //     player,
-      //     flags,
-      //   )
-      // }
     }
     const pairs = Object.values(ap.locationIdToName.MathQuest).map(
       (str) => {
