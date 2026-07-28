@@ -17,7 +17,12 @@ function _apStringify(a) {
     return String(a)
   }
 }
-
+let apChatLog
+let apChatSayInput
+document.addEventListener("DOMContentLoaded", () => {
+  apChatLog = document.querySelector("#apChatLog")
+  apChatSayInput = document.querySelector("#apChatSayInput")
+})
 function _apRenderEntry(entry) {
   var el = document.createElement("div")
   el.innerHTML =
@@ -266,7 +271,7 @@ function _apUpdateToastOpacities() {
   if (oneVisible) {
     setTimeout(_apUpdateToastOpacities, 100)
   }
-  HTMLStorage.apChatLog.style.display =
+  apChatLog.style.display =
     oneVisible || !container.classList.contains("collapsed") ?
       "block"
     : "none"
@@ -473,7 +478,7 @@ function apSendSayFromInput() {
   var [cmd, ...args] = (
     text.match(/[^\s"']+|"([^"]*)"|'([^']*)'/g) ?? [text]
   ).map((arg) => arg.replace(/^['"]|['"]$/g, ""))
-  HTMLStorage.apChatLog.onblur?.()
+  document.querySelector("#apChatSayInput").onblur?.()
   cmd = cmd.toLowerCase()
   for (var [k, v] of Object.entries(options)) {
     for (var kk of [...(v.alias ?? []), k]) {
@@ -626,7 +631,7 @@ window.addEventListener(
       e.preventDefault()
       if (document.activeElement?.id != "apChatSayInput") {
         toggleCollapse(false)
-        HTMLStorage.apChatLog.focus()
+        document.querySelector("#apChatSayInput").focus()
       } else {
         toggleCollapse(true)
       }
@@ -640,11 +645,11 @@ window.addEventListener(
         if (col) {
           toggleCollapse(false)
         }
-        HTMLStorage.apChatLog.focus()
-        HTMLStorage.apChatLog.value = "/"
+        document.querySelector("#apChatSayInput").focus()
+        document.querySelector("#apChatSayInput").value = "/"
         if (col) {
-          HTMLStorage.apChatLog.onblur = () => {
-            HTMLStorage.apChatLog.onblur = null
+          document.querySelector("#apChatSayInput").onblur = () => {
+            document.querySelector("#apChatSayInput").onblur = null
             toggleCollapse(true)
           }
         }
