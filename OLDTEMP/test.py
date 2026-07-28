@@ -4,6 +4,7 @@ import sys
 
 try:
     import pyperclip
+
 except ImportError:
     print("[-] Dependency missing: 'pyperclip' is required to copy directly to your clipboard.")
     print("[*] Please run: pip install pyperclip")
@@ -21,6 +22,7 @@ def generate_edge_data(input_string):
     try:
         origin_east = int(parts[1])
         origin_north = int(parts[0])
+
     except ValueError:
         print("[-] Error: 'east' and 'north' positions must be valid integers.")
         return None
@@ -88,6 +90,7 @@ def main():
 
             print("\n[+] Success! The following JSON was copied to your clipboard:\n")
             print(json_output)
+
 
     except KeyboardInterrupt:
         print("\n[-] Exiting.")

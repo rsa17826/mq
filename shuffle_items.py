@@ -47,6 +47,7 @@ def init():
         if placeholder:
           rest = rest[:-1]
           result["placeholder"] = True
+
         if "#" in rest:
           name, count_str = rest.rsplit("#", 1)
           result["name"] = name
@@ -56,10 +57,13 @@ def init():
           else:
             try:
               result["count"] = int(count_str)
+
             except ValueError:
               result["count"] = None
               if not placeholder:
                 result["parse_warning"] = f"could not parse count from {tok!r}"
+
+
         elif "." in rest:
           name, tier_str = rest.rsplit(".", 1)
           result["name"] = name
@@ -69,21 +73,30 @@ def init():
           else:
             try:
               result["tier"] = int(tier_str)
+
             except ValueError:
               result["tier"] = None
               if not placeholder:
                 result["parse_warning"] = f"could not parse tier from {tok!r}"
+
+
+
         else:
           result["name"] = rest
           result["count"] = 1
+
         return result
+
+
     if "?" in tok:
       return {"raw": tok, "type": "flag", "name": tok, "placeholder": True}
+
     return {"raw": tok, "type": "flag", "name": tok}
 
   def parse_requires(requires):
     if not requires:
       return []
+
     return [[parse_requirement_token(t) for t in group] for group in requires]
 
   def load_progression():
@@ -91,6 +104,7 @@ def init():
     if not os.path.exists(path):
       print(f"ERROR: json/progression.json required but not found at {path}")
       sys.exit(1)
+
     raw = json.load(open(path))
 
     locations = []
@@ -106,6 +120,7 @@ def init():
           "raw": loc,
         }
       )
+
     return locations
 
   locations = load_progression()
@@ -127,12 +142,14 @@ def init():
         is_infinite_loc = True
         break
 
+
     if is_infinite_loc:
       infinite_locations.append(loc)
       infinite_item_pool.extend(loc["original_receive"])
     else:
       finite_locations.append(loc)
       finite_item_pool.extend(loc["original_receive"])
+
 
   print(f"Loaded {len(locations)} total item locations:")
   print(f"  -> Finite Pool: {len(finite_locations)} locations, {len(finite_item_pool)} items")
@@ -142,6 +159,7 @@ def init():
   def token_satisfied(tok, have):
     if tok.get("placeholder"):
       return True
+
     key = (tok["type"], tok.get("name"))
     needed = tok.get("count") or tok.get("tier") or 1
     return have.get(key, 0) >= needed
@@ -152,6 +170,7 @@ def init():
   def requires_satisfied(requires_groups, have):
     if not requires_groups:
       return True
+
     return any(group_satisfied(g, have) for g in requires_groups)
 
   def apply_gives(items_list, have):
@@ -162,6 +181,8 @@ def init():
       if amount > have.get(key, 0):
         have[key] = amount
 
+
+
   # --- Shuffling & Placement Engine ---
   placements = {}
 
@@ -169,6 +190,7 @@ def init():
     print("Vanilla mode requested: keeping items in original locations.")
     for loc in locations:
       placements[loc["id"]] = loc["original_receive"]
+
   else:
     # 1. Shuffle Infinite Pool (Purely randomized, typically contains no gating items)
     rng.shuffle(infinite_item_pool)
@@ -199,6 +221,7 @@ def init():
         if requires_satisfied(loc["requires"], assumed_inventory):
           available_locs.append(loc)
 
+
       if not available_locs:
         # Fallback to avoid complete deadlocks if progression definitions are tightly coiled
         available_locs = remaining_locations
@@ -212,6 +235,8 @@ def init():
       while len(placements[chosen_loc["id"]]) < len(chosen_loc["original_receive"]) and remaining_items:
         placements[chosen_loc["id"]].append(remaining_items.pop(0))
 
+
+
   # --- Export formatting ---
   output_placements = []
   for loc in locations:
@@ -224,6 +249,7 @@ def init():
 
   with open(f"{OUT_DIR}/json/item_placements.json", "w") as f:
     json.dump(out, f, indent=2)
+
   print("Wrote json/item_placements.json")
 
   # --- Hint Data Generation ---
@@ -235,6 +261,7 @@ def init():
       key_str = f"{tok['type']}:{tok.get('name')}"
       item_to_loc_index.setdefault(key_str, []).append({"locationId": p["locationId"], "room": room_str})
 
+
   hint_data = {
     "seed": SEED if not NO_SHUFFLE else "vanilla",
     "itemToLocationIndex": item_to_loc_index,
@@ -242,6 +269,7 @@ def init():
 
   with open(f"{OUT_DIR}/json/item_hint_data.json", "w") as f:
     json.dump(hint_data, f, indent=2)
+
   print("Wrote json/item_hint_data.json")
 
 

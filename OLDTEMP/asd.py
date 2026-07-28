@@ -26,7 +26,5 @@ def find_unsorted_exits(rooms: ExitBase):
         print(f"   Current order of `{sort_key}`: {values}\n")
 
 
-
-
 # Run the check
 find_unsorted_exits(GEOM)
