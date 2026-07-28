@@ -58682,7 +58682,7 @@ for (var i = 0; i < 11; i++) {
               "Pam: My son once made a special type of armor\nthat would prevent you from being\npoisoned. He hid it somewhere in\nthe Multiple Mountains.",
             )
             if (manager.quest[Enum.Quest.pam] == 15) {
-              // NOTE moved quest to here to prevent skipping with blue crystal
+              // NOTE moved quest to here to prevent skipping with blue crystal as skipping the quest would lock out the items got from lower quest vals here
               if (manager.armor[Enum.Armor.diamondArmor] > 0) {
                 newQuest("16_15", "pam", 16, false)
               }
