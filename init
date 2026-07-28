@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# Setup and run
+git clone https://github.com/rsa17826/mq.git
+cd mq
+direnv allow
+./generate_map_scales.sh
+
+# Start server in background
+./start &
+
+# Open browser
+xdg-open "http://127.0.0.1:1533/MathQuest/play.html"
+
+# Wait for the user to press Enter, then kill the background server
+echo "Press [Enter] to stop the server and exit..."
+read -r _
+kill %%

@@ -37,6 +37,9 @@ this game should be playable but is still being developed
 git clone https://github.com/rsa17826/mq.git
 cd mq
 direnv allow
+```
+
+```sh
 ./generate_map_scales.sh
 
 ./start &
