@@ -6,6 +6,10 @@ declare global {
     ap: ArchipelagoClient
     onPlayerLoaded: Array<() => void>
     apErrors: string[]
+    checksInFlight: number[]
+    seed: string | undefined | null
+    waitingPackets: Packet[]
+    playerLoaded: true | undefined
     onApConnect: Array<() => void>
     onApCreated: Array<(ap: any) => void>
     onQuestChanged: Array<(name: number, val: number) => void>

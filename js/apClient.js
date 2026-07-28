@@ -1,9 +1,17 @@
 /**
- * @typedef {Object} LocationIdToName
- * @property {Object} Archipelago
- * @property {Object} MathQuest
- * @property {Object.<string, *>} [key]
+ * @typedef {Object} ItemNameToId
+ * @property {Record<string,string>} Archipelago
+ * @property {Record<string,string>} MathQuest
+ * @property {Record<string, string>} [key]
  */
+
+/**
+ * @typedef {Object} LocationIdToName
+ * @property {Record<string,string>} Archipelago
+ * @property {Record<string,string>} MathQuest
+ * @property {Record<string,string>} [key]
+ */
+
 /**
  * @typedef {Object} ScoutedItems
  * @property {string} itemName
@@ -29,13 +37,16 @@ const itemColors = {
 }
 
 function highlightArray(str) {
-  return str.replace(/\[|\]|'[^']*'|,\s*/g, (match) => {
+  // Updated regex to match brackets, commas with spaces,
+  // or strings while avoiding apostrophes inside words (\w'\w)
+  const regex = /\[|\]|,\s*|'([^'\\]*(?:\\.[^'\\]*)*)'(?!\s*\w)/g
+
+  return str.replace(regex, (match, innerGroup) => {
     if (match === "[" || match === "]") {
       return `@purple!${match}@!`
-    } else if (match.startsWith("'")) {
-      // It's a string, color the quotes blue and the inner text green
-      const innerText = match.slice(1, -1)
-      return `@blue!"@!@green!${innerText}@!@blue!"@!`
+    } else if (innerGroup !== undefined) {
+      // It's a valid string literal inside the array
+      return `@blue!"@!@green!${innerGroup}@!@blue!"@!`
     } else {
       // It's a comma (and optional whitespace)
       return `@blue!${match}@!`
@@ -45,14 +56,15 @@ function highlightArray(str) {
 /**
  * @typedef {Object} Packet
  * @property {string} cmd
- * @property {any} type
- * @property {string} text
- * @property {string} original_cmd
- * @property {string} seed_name
- * @property {string} games
- * @property {string} errors
- * @property {string[]} tags
- * @property {{games:{location_name_to_id:string},time:any, cause:string|undefined, source:string, coloredCause:string|undefined}} data
+ * @property {any?} [type]
+ * @property {string?} [text]
+ * @property {string?} [original_cmd]
+ * @property {string?} [seed_name]
+ * @property {string?} [games]
+ * @property {string?} [errors]
+ * @property {string[]?} [tags]
+ * @property {number[]?} [checked_locations]
+ * @property {{games:{location_name_to_id:string},time:any, cause:string|undefined, source:string, coloredCause:string|undefined}?} [data]
  */
 
 /**
@@ -121,10 +133,16 @@ class ArchipelagoClient {
     this.socket
     this.lastProcessedIndex = 0 // Tracks received items to maintain sync
     this.itemCount = 0 // Tracks received items to maintain sync
+    /** @type {ItemNameToId} */
+    // @ts-ignore
     this.itemIdToName = {}
     /** @type {LocationIdToName} */
     // @ts-ignore
     this.locationIdToName = {}
+    /** @type {number[]} */
+    this.missingLocations
+    /** @type {number[]} */
+    this.checkedLocations
     /** @type {Object.<string, ScoutedItems>} */
     this.scoutedItems = {}
     this.deathLinkEnabled = true
@@ -244,9 +262,10 @@ class ArchipelagoClient {
 
   /**
    * Standardized helper to transmit packets to the server.
+   * @param {Packet[]} packetsArray
    */
   sendPackets(packetsArray) {
-    log("SENDING TO SERVER:", JSON.stringify(packetsArray)) // <-- Add this line
+    log("SENDING TO SERVER:", JSON.stringify(packetsArray))
     if (this.socket && this.socket.readyState === WebSocket.OPEN) {
       this.socket.send(JSON.stringify(packetsArray))
     } else {

@@ -682,7 +682,7 @@ window.addEventListener(
         toggleCollapse(true)
       }
     }
-    if (e.key == "/") {
+    if (e.key == "/" || e.key == "!") {
       if (document.activeElement?.id != "apChatSayInput") {
         e.preventDefault()
         var col = document
@@ -692,7 +692,7 @@ window.addEventListener(
           toggleCollapse(false)
         }
         document.querySelector("#apChatSayInput").focus()
-        document.querySelector("#apChatSayInput").value = "/"
+        document.querySelector("#apChatSayInput").value = e.key
         if (col) {
           document.querySelector("#apChatSayInput").onblur = () => {
             document.querySelector("#apChatSayInput").onblur = null

@@ -48,7 +48,6 @@ if (window.debugEnabled)
 // TODO check that all orange girl working
 // TODO make /reconnect try both ws/wss again
 // TODO make option to change the img qual/autoqual
-// TODO make ! open apchat same as / does
 // TODO make reconnecting not clear already received item data!!
 // TODO ?make m not repeat last cast when opening magic screen
 // TODO make newItem("14_17 - item:gold") from diamonds
