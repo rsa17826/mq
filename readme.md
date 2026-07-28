@@ -64,6 +64,8 @@ you can clip left in `17_19` just by walking here
 or down in `7_21` just by walking here
 ![](./gh_images/clip2.png)
 
+the `20_22` darkHouse can sell negative rubies
+
 # skips
 
 you can get `gTree` quest to `8` at any time you can get to `14_18` even starting with `gTree` level `0`
