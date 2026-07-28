@@ -432,6 +432,7 @@ function customDrawLoop() {
     coordString += "battle mode enabled - [ to toggle\n"
   }
   for (let hint of HintTracker.all) {
+    if (hint.found) continue
     var itemName = ap.itemIdToName["MathQuest"][hint.item]
     var finder = ap.players.find(
       (e) => e.slot == HintTracker.all[0].finding_player,

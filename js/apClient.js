@@ -1,3 +1,17 @@
+/**
+ * @typedef {Object} LocationIdToName
+ * @property {Object} Archipelago
+ * @property {Object} MathQuest
+ * @property {Object.<string, *>} [key]
+ */
+/**
+ * @typedef {Object} ScoutedItems
+ * @property {string} itemName
+ * @property {number} itemPlayer
+ * @property {string} locationName
+ * @property {number} flags
+ */
+
 const itemColors = {
   food: "green",
   item: "brown",
@@ -103,11 +117,15 @@ class ArchipelagoClient {
     this.port = port
     this.playerName = playerName
     this.password = password
-    this.socket = null
+    /** @type {WebSocket} */
+    this.socket
     this.lastProcessedIndex = 0 // Tracks received items to maintain sync
     this.itemCount = 0 // Tracks received items to maintain sync
     this.itemIdToName = {}
+    /** @type {LocationIdToName} */
+    // @ts-ignore
     this.locationIdToName = {}
+    /** @type {Object.<string, ScoutedItems>} */
     this.scoutedItems = {}
     this.deathLinkEnabled = true
     this.isFallbackMode = false
