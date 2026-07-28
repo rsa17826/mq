@@ -1,6 +1,6 @@
 ##
 
-mathquest is an rpg game about solving simple math equasions.
+mathquest is an rpg game about solving simple math equations.
 
 ## download
 
