@@ -9,6 +9,8 @@
 // @endregex
 // @ts-nocheck
 
+// TODO make start cmd relink the data files if they arnt linked
+
 window.oldArea = null
 // window.allBitmapData = []
 
@@ -22878,31 +22880,17 @@ for (var i = 0; i < 11; i++) {
           //     saveFile: getSaveFileId(),
           //   },
           // })
-          this.sender.addEventListener(
-            "complete",
-            createObjectMixin(
-              this,
-              function () {
-                var urlBuilder = _aNewIdentifierName.plus(
-                  manager.charName.get_text(),
-                  ".",
-                )
-                var plainText = this.password.get_text()
-                manager.myVar.filename = _aNewIdentifierName.plus(
-                  urlBuilder,
-                  plainText,
-                )
-                Udf.SendVariables()
-                urlBuilder = new _qObject(getSaveFilePath())
-                urlBuilder.data = manager.myVar
-                this.sender.load(urlBuilder)
-                this.sender.addEventListener(
-                  "complete",
-                  createObjectMixin(this, this.sendComplete),
-                )
-              }.bind(this),
-            ),
+          var urlBuilder = _aNewIdentifierName.plus(
+            manager.charName.get_text(),
+            ".",
           )
+          var plainText = this.password.get_text()
+          manager.myVar.filename = _aNewIdentifierName.plus(
+            urlBuilder,
+            plainText,
+          )
+          Udf.SendVariables()
+          window.saveData[getSaveFileId()] = manager.myVar
         },
         load: async function () {
           // var fullCharacterDetails = _aNewIdentifierName.plus(
@@ -22914,9 +22902,10 @@ for (var i = 0; i < 11; i++) {
           //   fullCharacterDetails,
           //   userPassword,
           // )
-          Udf.ReceiveVariables(
-            await (await fetch(getSaveFilePath())).json(),
-          )
+          if (!window.saveData[getSaveFileId()]) {
+            createNewSave()
+          }
+          Udf.ReceiveVariables(window.saveData[getSaveFileId()])
           this.sendComplete()
           // this.sender.addEventListener(
           //   "complete",
@@ -45939,18 +45928,7 @@ for (var i = 0; i < 11; i++) {
             passwordString,
           )
           Udf.SendVariables()
-          await (
-            await fetch(`../cgi-bin/saveChar.py`, {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                saveFile: getSaveFileId(),
-                myVar: manager.myVar,
-              }),
-            })
-          ).text()
+          window.saveData[getSaveFileId()] = manager.myVar
           // var newData = {
           //   ...charURL.data,
           //   saveFile: getSaveFileId(),
