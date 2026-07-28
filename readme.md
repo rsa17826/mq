@@ -39,16 +39,16 @@ cd mq
 direnv allow
 ```
 
-```sh
-./generate_map_scales.sh
+then run
 
-./start &
-xdg-open "http://127.0.0.1:1533/MathQuest/play.html"
-# type /installSw then press enter and the page should work without having to start the server every time and only restarted when updating
-# you can also click install in the browsers omibar to install it as a pwa
-read -r _
-kill %%
+```sh
+./init
 ```
+
+- NOTE these must be ran separately, direnv allow doesn't execute until the full command ends
+- NOTE direnv allow can be replaced with nix develop
+
+when the on the webpage that will open type /installSw and press enter then also click install in the browsers omibar to install it as a pwa and it will appear in your installed apps section
 
 ## images
 
