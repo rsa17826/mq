@@ -139,11 +139,34 @@ function helpImStuck() {
 }
 
 function onBattleEnd() {
-  if (window.remainingBattleTriggers > 0) {
-    setTimeout(spawnRandomEnemy, 100)
+  if (
+    window.remainingBattleTriggers > 0 &&
+    window.ap &&
+    test.fightMode == 0
+  ) {
+    setTimeout(
+      ap.slotData.enemy_trap_spawns_any_enemy ?
+        spawnAnyEnemy
+      : spawnAnEnemy,
+      100,
+    )
   }
 }
-function spawnRandomEnemy() {
+window.onNewScreen.push(onBattleEnd)
+function spawnAnEnemy() {
+  if (window.remainingBattleTriggers > 0) {
+    const areas = [
+      1.19, 10, 11.1, 11.2, 11.3, 11.4, 11, 12, 15, 16.1, 16, 2, 3.1,
+      3, 4.1, 4, 5, 6, 7, 8, 9.1, 9,
+    ]
+    if (areas.includes(manager.area)) {
+      startNewBattle()
+      window.remainingBattleTriggers--
+    }
+  }
+}
+
+function spawnAnyEnemy() {
   if (window.remainingBattleTriggers > 0) {
     const areas = [
       1.19, 10, 11.1, 11.2, 11.3, 11.4, 11, 12, 15, 16.1, 16, 2, 3.1,
@@ -206,6 +229,7 @@ function newItem(name) {
   }
 }
 function startNewBattle() {
+  debugger
   manager.attacked.set_x(manager.char[0].get_x() - 85)
   manager.attacked.set_y(manager.char[0].get_y() + 20)
   if (manager.attacked.get_x() < 0) {
@@ -842,8 +866,8 @@ const itemList = {
   "trap:spawn_random_enemies": () => {
     // prettier-ignore
     window.remainingBattleTriggers++
-    if (test.fightMode == 0 && window.remainingBattleTriggers === 1) {
-      spawnRandomEnemy()
+    if (test.fightMode == 0 && window.remainingBattleTriggers == 1) {
+      spawnAnyEnemy()
     }
   },
   "trap:del_del": () => {},
@@ -22880,6 +22904,11 @@ for (var i = 0; i < 11; i++) {
           }
           Udf.ReceiveVariables(window.saveData[getSaveFileId()])
           this.sendComplete()
+          // NOTE can't find where player actually is actually fully loaded at so delay should be enough
+          setTimeout(() => {
+            window.playerLoaded = true
+            window.onPlayerLoaded.forEach((e) => e())
+          }, 100)
         },
         sendComplete: function () {
           console.log(
@@ -65368,8 +65397,7 @@ for (var i = 0; i < 11; i++) {
         // statsParser == 0 || statsParser == 11 ? true : false
         manager.hitMax()
         window.accessList = {}
-        window.playerLoaded = true
-        window.onPlayerLoaded.forEach((e) => e())
+
         // // 1. Get all cache keys (file paths/identifiers) and values (BitmapData objects)
         // let cacheMap = _____a.cache.bitmapData.h
         // let keys = Object.keys(cacheMap)
