@@ -57,9 +57,9 @@ if (window.debugEnabled)
 // TODO make not raf and put in correct spot
 function autoYes() {
   if (localStorage.autoYes == "true") {
+    test.messEnter({ keyCode: 13 })
     test.yesNo({ keyCode: 13 })
     test.yesNo99({ keyCode: 13 })
-    test.messEnter({ keyCode: 13 })
   }
 }
 // NOTE fixes text canvas being to small for the new text
