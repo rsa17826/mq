@@ -403,6 +403,12 @@ function apSendSayFromInput() {
         ].includes(on)
       },
     },
+    autoYes: {
+      desc: "if enabled the yes button is instantly clicked in all interactions",
+      func(on = "1") {
+        localStorage.autoYes = ["1", "true"].includes(on)
+      },
+    },
     reconnect: {
       desc: "reconnects to ap for if disconnected",
       func() {

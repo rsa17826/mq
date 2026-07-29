@@ -56,11 +56,11 @@ if (window.debugEnabled)
 
 // TODO make not raf and put in correct spot
 function autoYes() {
-  requestAnimationFrame(() => {
+  if (localStorage.autoYes == "true") {
     test.yesNo({ keyCode: 13 })
     test.yesNo99({ keyCode: 13 })
     test.messEnter({ keyCode: 13 })
-  })
+  }
 }
 // NOTE fixes text canvas being to small for the new text
 ;(function () {
@@ -22175,7 +22175,7 @@ for (var i = 0; i < 11; i++) {
         manager.enterButton.set_visible(false)
         manager.yes.set_visible(true)
         manager.no.set_visible(true)
-        autoYes()
+        queueMicrotask(autoYes)
       }
       manager.__super__ = QDataIterator
       manager.prototype = initialize(QDataIterator.prototype, {
