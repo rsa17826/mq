@@ -33312,6 +33312,14 @@ for (var i = 0; i < 11; i++) {
           this.removeListeners()
           this.right = this.left = this.down = this.up = false
           V.dialogueMess()
+          if (
+            localStorage.autoCloseDialogueBoxes == "true" &&
+            test.fightMode == 0 &&
+            manager.yes.get_visible() == 0 &&
+            !manager.enterTimer.running
+          ) {
+            manager.enterTimer.start()
+          }
           this.stage.addEventListener(
             "keyDown",
             createObjectMixin(this, this.messEnter),
@@ -65085,6 +65093,7 @@ for (var i = 0; i < 11; i++) {
           lastReceivedItem: window.lastReceivedItem ?? 0,
           checksInFlight: window.checksInFlight,
           rngSeed: rng.state,
+          remainingBattleTriggers: window.remainingBattleTriggers,
         }
       }
       Udf.ReceiveVariables = function (data) {
@@ -65388,6 +65397,8 @@ for (var i = 0; i < 11; i++) {
         Object.assign(checker, data.checker)
         window.lastReceivedItem = data.lastReceivedItem
         window.checksInFlight = data.checksInFlight ?? []
+        window.remainingBattleTriggers =
+          data.remainingBattleTriggers ?? 0
         // var statsParser = new Date().getMonth()
         // TODO
         manager.christmas = 0

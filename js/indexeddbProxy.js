@@ -1,6 +1,6 @@
 // ==UserScript==
-// @name         lib:indexeddb ls
-// @version      14
+// @name         lib:indexeddbProxy
+// @version      15
 // @description  none
 // @license      GPLv3
 // @run-at       document-start
@@ -80,6 +80,7 @@
       ...options,
     })
     const proxyCache = new WeakMap()
+    const proxyToTarget = new WeakMap()
 
     /* =========================
        LOAD INITIAL DATA
@@ -209,8 +210,26 @@
         await flush()
       })
     }
+    function unwrap(value) {
+      if (value === null || typeof value !== "object") return value
+
+      // If this is one of our proxies, get the real underlying target
+      const raw = proxyToTarget.get(value) ?? value
+
+      if (Array.isArray(raw)) return raw.map(unwrap)
+
+      if (isPlainObject(raw)) {
+        const out = {}
+        for (const k of Object.keys(raw)) out[k] = unwrap(raw[k])
+        return out
+      }
+
+      // Non-plain objects (Date, etc.) pass through as-is
+      return raw
+    }
+
     function clone(val) {
-      return val
+      return unwrap(val)
     }
     function isPlainObject(value) {
       if (value === null || typeof value !== "object") return false
@@ -237,7 +256,7 @@
           },
 
           set(obj, prop, value) {
-            obj[prop] = value
+            obj[prop] = unwrap(value)
 
             // Persist entire root object
             queueWrite(rootKey, clone(localData[rootKey]))
@@ -261,6 +280,7 @@
         })
 
         proxyCache.set(target, proxy)
+        proxyToTarget.set(proxy, target)
         return proxy
       }
       return target
@@ -350,7 +370,7 @@
     ========================== */
 
     function setProp(key, value) {
-      localData[key] = value
+      localData[key] = unwrap(value)
       // shouldProxy(value) ? createDeepProxy(key, value) : value
 
       queueWrite(key, clone(localData[key]))
@@ -377,8 +397,9 @@
 
     const handler = {
       set(target, prop, value) {
-        target[prop] = value
-        setProp(prop, value)
+        const raw = unwrap(value)
+        target[prop] = raw
+        setProp(prop, raw)
         return true
       },
 
