@@ -69,7 +69,7 @@ when the on the webpage that will open type /installSw and press enter then also
 
 ## tips or other notes
 
-`20_23` red chest has best slamstone droprates as it waw coded incorrectly
+`20_23` red chest has best slamstone droprates as it was coded incorrectly
 
 ```js
 } else if (this.prize >= 10) {
