@@ -139,11 +139,8 @@ function helpImStuck() {
 }
 
 function onBattleEnd() {
-  if (
-    window.remainingBattleTriggers > 0 &&
-    window.ap &&
-    test.fightMode == 0
-  ) {
+  if (window.remainingBattleTriggers > 0 && window.ap) {
+    // TODO decide if should be different traps and if not add the setting
     setTimeout(
       ap.slotData.enemy_trap_spawns_any_enemy ?
         spawnAnyEnemy
@@ -154,10 +151,10 @@ function onBattleEnd() {
 }
 window.onNewScreen.push(onBattleEnd)
 function spawnAnEnemy() {
-  if (window.remainingBattleTriggers > 0) {
+  if (window.remainingBattleTriggers > 0 && test.fightMode == 0) {
     const areas = [
       1.19, 10, 11.1, 11.2, 11.3, 11.4, 11, 12, 15, 16.1, 16, 2, 3.1,
-      3, 4.1, 4, 5, 6, 7, 8, 9.1, 9,
+      3, 4.1, 4, 5, 6, 7, 8, 9.1, 9, 1,
     ]
     if (areas.includes(manager.area)) {
       startNewBattle()
@@ -167,10 +164,10 @@ function spawnAnEnemy() {
 }
 
 function spawnAnyEnemy() {
-  if (window.remainingBattleTriggers > 0) {
+  if (window.remainingBattleTriggers > 0 && test.fightMode == 0) {
     const areas = [
       1.19, 10, 11.1, 11.2, 11.3, 11.4, 11, 12, 15, 16.1, 16, 2, 3.1,
-      3, 4.1, 4, 5, 6, 7, 8, 9.1, 9,
+      3, 4.1, 4, 5, 6, 7, 8, 9.1, 9, 1,
     ]
     window.oldArea = manager.area
     manager.area =
@@ -867,7 +864,7 @@ const itemList = {
     // prettier-ignore
     window.remainingBattleTriggers++
     if (test.fightMode == 0 && window.remainingBattleTriggers == 1) {
-      spawnAnyEnemy()
+      onBattleEnd()
     }
   },
   "trap:del_del": () => {},
