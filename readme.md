@@ -31,7 +31,7 @@ this game should be playable but is still being developed
 
 ---
 
-## running the game
+## running/installing the game
 
 ```sh
 git clone https://github.com/rsa17826/mq.git
