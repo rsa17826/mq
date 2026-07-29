@@ -415,13 +415,6 @@ function apSendSayFromInput() {
         ap.connect()
       },
     },
-    startAPServer: {
-      alias: ["runAPServer"],
-      desc: "starts an ap server, pass seed to load old save",
-      func(seed) {
-        ArchipelagoClient.runAPServer(seed || undefined, apTryConnect)
-      },
-    },
     showMissing: {
       desc: "shows missing locations",
       func(seed) {

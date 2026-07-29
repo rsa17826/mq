@@ -158,39 +158,6 @@ class ArchipelagoClient {
       : `ws://${hostname}:${port}`
     window.onApCreated.forEach((e) => e(this))
   }
-  static async runAPServer(optionalArg = "", onServerStarted) {
-    // const logElement = document.getElementById("output-log")
-    // logElement.textContent = ""
-
-    const response = await fetch(
-      `/run?arg=${encodeURIComponent(optionalArg)}`,
-    )
-    const reader = response.body.getReader()
-    const decoder = new TextDecoder()
-    var text = ""
-    var serverStartedCalled = false
-    while (true) {
-      const { done, value } = await reader.read()
-      if (done) break
-      log(
-        (text += decoder.decode(value, {
-          stream: true,
-        })),
-      )
-      if (
-        (text.includes("[::]:38281") ||
-          text.includes("0.0.0.0:38281")) &&
-        !serverStartedCalled
-      ) {
-        serverStartedCalled = true
-        onServerStarted?.()
-        text = ""
-      }
-      // logElement.textContent += decoder.decode(value, {
-      //   stream: true,
-      // })
-    }
-  }
   /**
    * Establishes the WebSocket connection.
    */
@@ -245,17 +212,6 @@ class ArchipelagoClient {
         this.connect()
       } else {
         localStorage[this.storageKey] = !this.wss
-        if (
-          location.hash?.length > 5 &&
-          this.hostname == "127.0.0.1" &&
-          this.port == 38281
-        ) {
-          apLog("server found to be local - trying to start server")
-          ArchipelagoClient.runAPServer(
-            location.hash.replace("#", ""),
-            apTryConnect,
-          )
-        }
       }
     }
   }

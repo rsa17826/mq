@@ -5,7 +5,7 @@ import re
 import subprocess
 import threading
 import urllib.parse
-from http.server import CGIHTTPRequestHandler, ThreadingHTTPServer
+from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 
 from PIL import Image, ImageDraw
 from watchdog.events import FileSystemEventHandler
@@ -108,17 +108,13 @@ class ProcessManager:
 process_manager = ProcessManager()
 
 
-class CachedCGIHTTPRequestHandler(CGIHTTPRequestHandler):
+class MySimpleHTTPRequestHandler(SimpleHTTPRequestHandler):
   def __init__(self, *args, **kwargs):
     super().__init__(*args, directory=DIRECTORY, **kwargs)
 
   def do_GET(self):
     parsed_url = urllib.parse.urlparse(self.path)
     clean_path = parsed_url.path
-
-    if clean_path == "/run":
-      self.handle_run_script(parsed_url.query)
-      return
 
     if clean_path.lower().endswith(".mp3"):
       self.path = "/empty.mp3"
@@ -134,66 +130,6 @@ class CachedCGIHTTPRequestHandler(CGIHTTPRequestHandler):
 
 
     super().do_GET()
-
-  def handle_run_script(self, query_string):
-    query_params = urllib.parse.parse_qs(query_string)
-    arg1 = query_params.get("arg", [None])[0]
-
-    if not arg1 and query_string:
-      arg1 = urllib.parse.unquote(query_string)
-
-    try:
-      with open("./apWorldPath", "r") as f:
-        base_path = f.read().strip()
-
-
-    except Exception as e:
-      self.send_error(500, f"Failed to read ./apWorldPath file: {e}")
-      return
-
-    executable_path = os.path.join(base_path, "start")
-
-    if not os.path.exists(executable_path):
-      self.send_error(404, f"Executable not found at: {executable_path}")
-      return
-
-    cmd = [executable_path]
-    if arg1 is not None:
-      arg1 = arg1.split("=", 1)
-      arg1 = arg1[1] if len(arg1) > 1 else None
-
-    if arg1:
-      cmd.append(arg1)
-    else:
-      process_manager._stop_process()
-
-    # Set response headers
-    self.send_response(200)
-    self.send_header("Content-Type", "text/plain; charset=utf-8")
-    self.send_header("Cache-Control", "no-cache")
-    self.send_header("X-Content-Type-Options", "nosniff")
-    self.end_headers()
-
-    # Subscribe connection to shared process output
-    sub_queue = process_manager.subscribe(cmd)
-
-    try:
-      while True:
-        line = sub_queue.get()
-        if line is None:  # Process ended
-          break
-
-        self.wfile.write(line.encode("utf-8"))
-        self.wfile.flush()
-
-
-    except (BrokenPipeError, ConnectionResetError, OSError):
-      # Client disconnected (browser tab closed, network dropped, etc.)
-      pass
-
-    finally:
-      process_manager.unsubscribe(sub_queue)
-
 
   def generate_placeholder_image(self, target_path):
     os.makedirs(os.path.dirname(target_path), exist_ok=True)
@@ -305,9 +241,9 @@ def start_file_watcher():
 def run():
   server_address = ("", PORT)
   # Switched to ThreadingHTTPServer for concurrent HTTP request handling
-  handler = CachedCGIHTTPRequestHandler
+  handler = MySimpleHTTPRequestHandler
 
-  print(f"[*] Starting multithreaded CGI server with map/ caching on port {PORT}...")
+  print(f"[*] Starting on port {PORT}...")
   print(f"[*] Serving directory: {os.path.abspath(DIRECTORY)}")
 
   watcher = start_file_watcher()

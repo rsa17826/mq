@@ -12,6 +12,7 @@
 // TODO make start cmd relink the data files if they arnt linked
 
 window.oldArea = null
+window.remainingBattleTriggers = 0
 // window.allBitmapData = []
 
 window.debugEnabled = false
@@ -137,7 +138,24 @@ function helpImStuck() {
   test.newScreen()
 }
 
-function onBattleEnd() {}
+function onBattleEnd() {
+  if (window.remainingBattleTriggers > 0) {
+    setTimeout(spawnRandomEnemy, 100)
+  }
+}
+function spawnRandomEnemy() {
+  if (window.remainingBattleTriggers > 0) {
+    const areas = [
+      1.19, 10, 11.1, 11.2, 11.3, 11.4, 11, 12, 15, 16.1, 16, 2, 3.1,
+      3, 4.1, 4, 5, 6, 7, 8, 9.1, 9,
+    ]
+    window.oldArea = manager.area
+    manager.area =
+      areas[Math.round(rng.random() * (areas.length - 1))]
+    startNewBattle()
+    window.remainingBattleTriggers--
+  }
+}
 
 // TODO add helpimstuck button
 // TODO shop items swap image back to normal when checker shows as bought
@@ -822,9 +840,11 @@ const itemList = {
     manager.poiTimer.start()
   },
   "trap:spawn_random_enemies": () => {
-    window.oldArea = manager.area
-    manager.area = 11
-    startNewBattle()
+    // prettier-ignore
+    window.remainingBattleTriggers++
+    if (test.fightMode == 0 && window.remainingBattleTriggers === 1) {
+      spawnRandomEnemy()
+    }
   },
   "trap:del_del": () => {},
   "trap:nothing": () => {},
@@ -37259,6 +37279,7 @@ for (var i = 0; i < 11; i++) {
                 this.innerCounter++
               }
               this.showButtons()
+              window.onBattleEnd()
             }
             if (this.dungeonPlaying == 1) {
               if (this.dungeonThemeChan.get_position() > 0) {
@@ -45403,6 +45424,7 @@ for (var i = 0; i < 11; i++) {
           manager.problemBox.set_visible(false)
           manager.exitButton.set_visible(false)
           this.showButtons()
+          window.onBattleEnd()
         },
         fightMessage: function () {
           newObserveObject.fightMesFormat.color = 16777215
