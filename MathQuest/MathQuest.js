@@ -501,10 +501,9 @@ function pmax() {
   player.medallions += 99990000
   player.shadowCrest += 99990000
   manager.skillPoints += 999999
-  manager.mxmp += 9999999
-  manager.mxhp += 9999999
+  manager.mp = manager.mxmp += 9999999
+  manager.hp = manager.mxhp += 9999999
   manager.str += 999999
-  manager.hp += 999999
   checker.blueCrystal = 1
   manager.loot.fill(999)
   manager.minB = 999
