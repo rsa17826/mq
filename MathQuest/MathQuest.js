@@ -3622,8 +3622,6 @@ for (var i = 0; i < 11; i++) {
           return sourcePoint
         },
         hitTestObject: function (boundingRectChecker) {
-          // TODO ???? would this break anything?
-          if (!boundingRectChecker.__visible) return
           var obj = boundingRectChecker
           if (
             boundingRectChecker != null &&
