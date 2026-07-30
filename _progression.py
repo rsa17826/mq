@@ -1695,8 +1695,6 @@ manager.correct - manager.wrong > 800 = halo
         "entrance.south0",
       ],
     ],
-    # TODO ???
-    # "item:bombs#15",
     "receive": [
       "quest:bBomb.4",
       "permit:bomb",
@@ -1860,7 +1858,6 @@ manager.correct - manager.wrong > 800 = halo
         "quest:gTree.17",
       ],
     ],
-    # TODO
     "receive": [
       "quest:gTree.18",
       "permit:shadowsoulEntrance",
@@ -2456,15 +2453,6 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "info": "add reqs later",
   },
-  # {
-  #   "room": {"north": 13, "east": 14},
-  #   "requires": [
-  #     ["magic:fire.1", "quest:?", "entrance.east0"],
-  #     ["magic:fire.1", "quest:?", "entrance.north0", "permit:bomb"],
-  #   ],
-  #   "receive": ["???"],
-  # },
-  # TODO start of all chests remove dupes when done
   {
     "room": {"north": 18, "east": 20},
     "requires": [
@@ -5627,12 +5615,6 @@ manager.correct - manager.wrong > 800 = halo
       "weapon:dagger",
     ],
   },
-  # TODO
-  # {
-  #   "room": {"north": 500, "east": 501},
-  #   "requires": [["weapon:baneBlade"],],
-  #   "receive": ["weapon:aSword"],
-  # },
   {
     "room": {"north": 200, "east": 200},
     "requires": [
@@ -6238,8 +6220,6 @@ manager.correct - manager.wrong > 800 = halo
       "area:2.water",
     ],
   },
-  # TODO add more water locations later?
-  # "area:2.water",
   {
     "room": {"north": 10, "east": 22},
     "requires": [
@@ -8789,7 +8769,7 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      # TODO don't think this should be a check
+      # NOTE don't think this should be a check
       "flag:magic:fire.2",
     ],
   },
