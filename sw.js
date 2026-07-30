@@ -60,7 +60,7 @@ self.addEventListener("fetch", (event) => {
         // console.timeEnd(event.request.url)
         return networkResponse
       } catch (err) {
-        console.error(`failed to get file!!!`, event.request.url, err)
+        // console.error(`failed to get file!!!`, event.request.url, err)
         let res = getCached(event.request.url)
         if (res) return res
         console.error(
@@ -77,7 +77,7 @@ self.addEventListener("fetch", (event) => {
 async function getCached(url) {
   // console.time(event.request.url)
   // failedToFetch = true
-  console.warn("SERVING FROM CACHE:", url)
+  // console.warn("SERVING FROM CACHE:", url)
   cache ??= await caches.open("cache")
   const cachedResponse = await cache.match(url.split("?")[0])
   // console.timeEnd(event.request.url)
