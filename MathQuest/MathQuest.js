@@ -49,7 +49,6 @@ if (window.debugEnabled)
 // TODO make reconnecting not clear already received item data!!
 // TODO ?make m not repeat last cast when opening magic screen
 
-// TODO make not raf and put in correct spot
 function autoYes() {
   if (localStorage.autoYes == "true") {
     test.messEnter({ keyCode: 13 })
@@ -172,9 +171,6 @@ function spawnAnyEnemy() {
   }
 }
 
-// TODO add helpimstuck button
-// TODO shop items swap image back to normal when checker shows as bought
-// TODO fix the map not knowing about warppoints for logic
 // TODO fix the map to have colored exits again
 window.checksInFlight = []
 function newItem(name) {
@@ -843,7 +839,6 @@ function tryGiveLoot(itemName) {
 }
 
 const itemList = {
-  // TODO
   "misc:hugeBomb": () => {
     manager.hugeBomb = 1
   },
@@ -1006,16 +1001,16 @@ const itemList = {
     manager.skills[Enum.Skill.shield] += 1
   },
   "weapon:bombSword": () => {
-    manager.weapon[Enum.Weapon.bombSword] = 1
+    manager.weapon[Enum.Weapon.bombSword] ||= 1
   },
   "weapon:refreshStaff": () => {
-    manager.weapon[Enum.Weapon.refreshStaff] = 1
+    manager.weapon[Enum.Weapon.refreshStaff] ||= 1
   },
   "weapon:axe": () => {
-    manager.weapon[Enum.Weapon.axe] = 1
+    manager.weapon[Enum.Weapon.axe] ||= 1
   },
   "weapon:soulSword": () => {
-    manager.weapon[Enum.Weapon.soulSword] = 1
+    manager.weapon[Enum.Weapon.soulSword] ||= 1
   },
   "misc:ninja": () => {
     manager.ninjaSkills = true
@@ -1119,22 +1114,22 @@ const itemList = {
     manager.magic[Enum.Magic.lightning] += 1
   },
   "weapon:club": () => {
-    manager.weapon[Enum.Weapon.club] = 1
+    manager.weapon[Enum.Weapon.club] ||= 1
   },
   "weapon:dagger": () => {
-    manager.weapon[Enum.Weapon.dagger] = 1
+    manager.weapon[Enum.Weapon.dagger] ||= 1
   },
   "weapon:pitchfork": () => {
-    manager.weapon[Enum.Weapon.pitchfork] = 1
+    manager.weapon[Enum.Weapon.pitchfork] ||= 1
   },
   "weapon:sword": () => {
-    manager.weapon[Enum.Weapon.sword] = 1
+    manager.weapon[Enum.Weapon.sword] ||= 1
   },
   "weapon:royalSword": () => {
-    manager.weapon[Enum.Weapon.royalSword] = 1
+    manager.weapon[Enum.Weapon.royalSword] ||= 1
   },
   "weapon:royalStaff": () => {
-    manager.weapon[Enum.Weapon.royalStaff] = 1
+    manager.weapon[Enum.Weapon.royalStaff] ||= 1
   },
   "armor:vest": () => {
     manager.armor[Enum.Armor.vest] = 1
@@ -1174,13 +1169,13 @@ const itemList = {
     manager.armor[Enum.Armor.speedVest] += 1
   },
   "weapon:aSword": () => {
-    manager.weapon[Enum.Weapon.aSword] = 1
+    manager.weapon[Enum.Weapon.aSword] ||= 1
   },
   "weapon:orcBlade": () => {
-    manager.weapon[Enum.Weapon.orcBlade] = 1
+    manager.weapon[Enum.Weapon.orcBlade] ||= 1
   },
   "weapon:twinFury": () => {
-    manager.weapon[Enum.Weapon.twinFury] = 1
+    manager.weapon[Enum.Weapon.twinFury] ||= 1
   },
   "item:diamonds - chest#50": () => {
     manager.diamonds += 50
@@ -1270,7 +1265,7 @@ const itemList = {
     manager.gold += 30
   },
   "weapon:baneBlade": () => {
-    manager.weapon[Enum.Weapon.baneBlade] = 1
+    manager.weapon[Enum.Weapon.baneBlade] ||= 1
   },
   "skill:craft": () => {
     manager.skills[Enum.Skill.craft] += 1
@@ -1352,15 +1347,10 @@ const itemList = {
     manager.food[Enum.Food.apple] += 30
   },
   "weapon:shadowStaff": () => {
-    manager.weapon[Enum.Weapon.shadowStaff] = 1
+    manager.weapon[Enum.Weapon.shadowStaff] ||= 1
   },
   "weapon:warlockStaff": () => {
-    // TODO
-    manager.weapon[Enum.Weapon.warlockStaff] = 1
-    // if (manager.weapon[Enum.Weapon.warlockStaff] == 0) {
-    // } else {
-    //   manager.gold += 2000
-    // }
+    manager.weapon[Enum.Weapon.warlockStaff] ||= 1
   },
   "craft:elixir": () => {
     manager.crafts[Enum.Craft.elixir] += 5
@@ -1402,10 +1392,10 @@ const itemList = {
     manager.magic[Enum.Magic.weak] += 1
   },
   "weapon:sKnife": () => {
-    manager.weapon[Enum.Weapon.sKnife] = 1
+    manager.weapon[Enum.Weapon.sKnife] ||= 1
   },
   "weapon:sunSword": () => {
-    manager.weapon[Enum.Weapon.sunSword] = 1
+    manager.weapon[Enum.Weapon.sunSword] ||= 1
   },
   "armor:regenArmor": () => {
     manager.armor[Enum.Armor.regenArmor] = 1
@@ -1580,7 +1570,7 @@ const itemList = {
     manager.food[Enum.Food.strawberry] += 1
   },
   "weapon:creeperCrusher": () => {
-    manager.weapon[Enum.Weapon.creeperCrusher] = 1
+    manager.weapon[Enum.Weapon.creeperCrusher] ||= 1
   },
   "armor:nobleArmor": () => {
     manager.armor[Enum.Armor.nobleArmor] = 1
