@@ -493,6 +493,8 @@ class LFSR32 {
   }
 }
 function pmax() {
+  manager.magic[Enum.Magic.lightning] = 99
+  // manager.skills[Enum.Skill.reveal] = 0.01
   player.emeralds += 9999
   player.gold += 99990000
   player.keys += 99990000
@@ -34277,7 +34279,8 @@ for (var i = 0; i < 11; i++) {
               )
               if (
                 checker["14_17 - item:gold"] == 0 &&
-                f.parseInt(manager.sell.get_text()) > 0 && manager.diamonds>0
+                f.parseInt(manager.sell.get_text()) > 0 &&
+                manager.diamonds > 0
               ) {
                 manager.sell.set_text(
                   String(f.parseInt(manager.sell.get_text()) - 1),
