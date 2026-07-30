@@ -20,17 +20,28 @@ self.addEventListener("activate", (event) => {
   event.waitUntil(clients.claim())
 })
 
-self.failedToFetch = false
+let failedToFetch = false
+let cache = null
 // Network-first strategy: always prefer the live server,
 // only serve from cache if the network request fails
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return
   event.respondWith(
     (async () => {
-      try {
-        if (self.failedToFetch) {
-          throw new Error()
+      if (failedToFetch) {
+        let res = getCached(event.request.url)
+        if (!res) {
+          console.error(
+            `failed to get cached file!!!`,
+            event.request.url,
+          )
+          throw new Error(
+            `failed to get cached file!!! ${event.request.url}`,
+          )
         }
+        return res
+      }
+      try {
         // console.time(event.request.url)
         const networkResponse = await fetch(event.request)
         // console.timeEnd(event.request.url)
@@ -39,27 +50,29 @@ self.addEventListener("fetch", (event) => {
         if (
           String(event.request.url).startsWith("http://127.0.0.1")
         ) {
+          cache ??= await caches.open("cache")
           const cloned = networkResponse.clone()
           event.waitUntil(
-            caches
-              .open("cache")
-              .then((cache) => cache.put(event.request, cloned)),
+            cache.then((cache) => cache.put(event.request, cloned)),
           )
         }
         // console.timeEnd(event.request.url)
         return networkResponse
       } catch (err) {
-        // console.time(event.request.url)
-        self.failedToFetch = true
-        // Fallback to cache if network fails (e.g. server is off)
-        const cachedResponse = await caches.match(
-          event.request.url.split("?")[0],
-        )
-        // console.timeEnd(event.request.url)
-        if (cachedResponse) return cachedResponse
+        let res = getCached(event.request.url)
+        if (res) return res
         console.error(err)
         throw err
       }
     })(),
   )
 })
+
+async function getCached(url) {
+  // console.time(event.request.url)
+  failedToFetch = true
+  cache ??= await caches.open("cache")
+  const cachedResponse = await cache.match(url.split("?")[0])
+  // console.timeEnd(event.request.url)
+  return cachedResponse
+}
