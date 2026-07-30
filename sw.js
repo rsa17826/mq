@@ -25,16 +25,17 @@ self.failedToFetch = false
 // only serve from cache if the network request fails
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return
-  if (self.failedToFetch)
-    return event.respondWith(
-      caches.match(event.request, { ignoreSearch: true }),
-    )
-
   event.respondWith(
     (async () => {
       try {
+        if (self.failedToFetch) {
+          throw new Error()
+        }
+        // console.time(event.request.url)
         const networkResponse = await fetch(event.request)
+        // console.timeEnd(event.request.url)
 
+        // console.time(event.request.url)
         if (
           String(event.request.url).startsWith("http://127.0.0.1")
         ) {
@@ -45,13 +46,16 @@ self.addEventListener("fetch", (event) => {
               .then((cache) => cache.put(event.request, cloned)),
           )
         }
+        // console.timeEnd(event.request.url)
         return networkResponse
       } catch (err) {
+        // console.time(event.request.url)
         self.failedToFetch = true
         // Fallback to cache if network fails (e.g. server is off)
-        const cachedResponse = await caches.match(event.request, {
-          ignoreSearch: true,
-        })
+        const cachedResponse = await caches.match(
+          event.request.url.split("?")[0],
+        )
+        // console.timeEnd(event.request.url)
         if (cachedResponse) return cachedResponse
         console.error(err)
         throw err
