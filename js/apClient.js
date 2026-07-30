@@ -212,6 +212,7 @@ class ArchipelagoClient {
         this.connect()
       } else {
         localStorage[this.storageKey] = !this.wss
+        this.isFallbackMode = false
       }
     }
   }

@@ -43,6 +43,9 @@ self.addEventListener("fetch", (event) => {
       }
       try {
         // console.time(event.request.url)
+        // const networkResponse = await fetch(event.request, {
+        //   cache: "no-store",
+        // })
         const networkResponse = await fetch(event.request)
         // console.timeEnd(event.request.url)
 
@@ -52,16 +55,19 @@ self.addEventListener("fetch", (event) => {
         ) {
           cache ??= await caches.open("cache")
           const cloned = networkResponse.clone()
-          event.waitUntil(
-            cache.then((cache) => cache.put(event.request, cloned)),
-          )
+          event.waitUntil(cache.put(event.request, cloned))
         }
         // console.timeEnd(event.request.url)
         return networkResponse
       } catch (err) {
+        console.error(`failed to get file!!!`, event.request.url, err)
         let res = getCached(event.request.url)
         if (res) return res
-        console.error(err)
+        console.error(
+          `failed to get cached file!!!`,
+          event.request.url,
+          err,
+        )
         throw err
       }
     })(),
@@ -70,7 +76,8 @@ self.addEventListener("fetch", (event) => {
 
 async function getCached(url) {
   // console.time(event.request.url)
-  failedToFetch = true
+  // failedToFetch = true
+  console.warn("SERVING FROM CACHE:", url)
   cache ??= await caches.open("cache")
   const cachedResponse = await cache.match(url.split("?")[0])
   // console.timeEnd(event.request.url)

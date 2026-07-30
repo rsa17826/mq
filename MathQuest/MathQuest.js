@@ -44,10 +44,8 @@ if (window.debugEnabled)
 // TODO make option to hide/change color of hint texts for ool checks
 // TODO make the map detect what checks player got work for all items!!! - check if working
 // TODO make map show 9.11 20 as 9 20
-// TODO make item list in logic use logic for reqs too
 // TODO make overlay not show different colors for in and out of logic checks from q
 // TODO check that all orange girl working
-// TODO make /reconnect try both ws/wss again
 // TODO make option to change the img qual/autoqual
 // TODO make reconnecting not clear already received item data!!
 // TODO ?make m not repeat last cast when opening magic screen
@@ -458,6 +456,7 @@ const checker = new Proxy(
     "item:gold - mayor": 0,
     "tbox diamondArmor": 0,
     "13_18 orange seller": 0,
+    "14_17 - item:gold": 0,
   },
   {
     get(target, prop, receiver) {
@@ -20777,12 +20776,12 @@ for (var i = 0; i < 11; i++) {
         this.addChild(manager.check)
         manager.ex.set_visible(false)
         this.addChild(manager.ex)
-        manager.sell.set_x(290)
+        manager.sell.set_x(230)
         manager.sell.set_y(450)
-        manager.sell.set_width(80)
+        manager.sell.set_width(200)
         manager.sell.set_text("00")
         manager.sell.set_type(NewIdentifier.fromString("input"))
-        manager.sell.set_maxChars(2)
+        manager.sell.set_maxChars(5)
         manager.sell.set_embedFonts(true)
         manager.sell.set_visible(false)
         manager.sell.setTextFormat(manager.sellFormat)
@@ -34295,6 +34294,17 @@ for (var i = 0; i < 11; i++) {
                 "mouseDown",
                 createObjectMixin(this, this.diaBuyHandler),
               )
+              if (
+                checker["14_17 - item:gold"] == 0 &&
+                f.parseInt(manager.sell.get_text()) > 0 && manager.diamonds>0
+              ) {
+                manager.sell.set_text(
+                  String(f.parseInt(manager.sell.get_text()) - 1),
+                )
+                manager.diamonds--
+                checker["14_17 - item:gold"] = 1
+                newItem("14_17 - item:gold")
+              }
               manager.diamonds -= f.parseInt(manager.sell.get_text())
               manager.gold +=
                 f.parseInt(manager.sell.get_text()) * 100
