@@ -106,7 +106,7 @@ the items in `17_11` are located at
 
 the exits can be took in any order unlike the sign at `19_11` makes it look like
 
-at the very bottom of the screen inWater is always false
+at the very bottom of the screen inWater is always false, only the bottom works as you can't get close enough to the top or sides to not be in water without getting a screen transition
 ![](./gh_images/notinwater.png)
 
 # clips
