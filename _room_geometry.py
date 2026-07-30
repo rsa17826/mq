@@ -6560,7 +6560,6 @@ WARPS: tuple[Warp, ...] = (
     "connections": ((24, 10, "east", 0), (23, 14, "north", 0)),
   },
   {
-    # TODO !!! why map not show this correctly - should be able to get to 24 13 from 23 10
     "connections": ((24, 13, "south", 0), (23, 10, "root", 0)),
   },
   {

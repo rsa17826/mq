@@ -3588,6 +3588,17 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 14, "east": 17},
     "requires": [
       [
+        "item:diamonds",
+      ],
+    ],
+    "receive": [
+      "item:gold#100",
+    ],
+  },
+  {
+    "room": {"north": 14, "east": 17},
+    "requires": [
+      [
         "item:gold",
         "permit:bomb",
       ],

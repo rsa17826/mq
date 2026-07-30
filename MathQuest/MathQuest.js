@@ -37,20 +37,17 @@ if (window.debugEnabled)
 
 // TODO !make shops show original item when random item bought
 // TODO ?add option to show scouted items on the map/ on the maps hover popup
-// TODO ?add option to log all received items when starting instead of only 25 - would there be any use in this
+// REVIEW ?add option to log all received items when starting instead of only 25 - would there be any use in this
 // TODO make force mute a setting
 // TODO make settings for all the overlay renders
 // TODO make q store pos and only show if pos matches
 // TODO make option to hide/change color of hint texts for ool checks
-// TODO make the map detect what checks player got work for all items!!! - check if working
 // TODO make map show 9.11 20 as 9 20
 // TODO make overlay not show different colors for in and out of logic checks from q
 // TODO check that all orange girl working
 // TODO make option to change the img qual/autoqual
 // TODO make reconnecting not clear already received item data!!
 // TODO ?make m not repeat last cast when opening magic screen
-// TODO make newItem("14_17 - item:gold") from diamonds
-// TODO prevent dialogue boxes from locking player when autoclose enabled - from make sure auto close closes all, as currently isnt
 
 // TODO make not raf and put in correct spot
 function autoYes() {
@@ -224,7 +221,6 @@ function newItem(name) {
   }
 }
 function startNewBattle() {
-  debugger
   manager.attacked.set_x(manager.char[0].get_x() - 85)
   manager.attacked.set_y(manager.char[0].get_y() + 20)
   if (manager.attacked.get_x() < 0) {
@@ -23149,7 +23145,7 @@ for (var i = 0; i < 11; i++) {
           }
           // TODO ??? why this here?
           // if (
-          //   manager.quest[Enum.Quest.access] <= 2 &&  // questChecker-reviewed
+          //   manager.quest[Enum.Quest.access] <= 2 &&
           //   manager.weapon[Enum.Weapon.axe] == 1 &&
           //   manager.weapScreen.get_visible() == 0
           // ) {
@@ -29279,9 +29275,7 @@ for (var i = 0; i < 11; i++) {
             // manager.magic[Enum.Magic.weak] < 1 &&
             manager.magicTile[Enum.Magic.weak].get_visible() == 1
           ) {
-            // TODO !!!!!!!!!!!!!!!! is 11 9 not 13 17
             newItem("11_9 - magic:weak")
-            // newItem("13_17 - magic:weak")
             checker["Magic.weak.1"] = 1
 
             manager.gold -= 900
@@ -33935,7 +33929,6 @@ for (var i = 0; i < 11; i++) {
               }
               manager.mess.setTextFormat(manager.messFormat)
             } else {
-              // TODO check if working
               if (
                 checker["14_17 item:bombs#10"] == 0 &&
                 f.parseInt(manager.sell.get_text()) > 0
@@ -35199,12 +35192,8 @@ for (var i = 0; i < 11; i++) {
               (manager.weapon[Enum.Weapon.sword] == 1 ||
                 manager.weapon[Enum.Weapon.bombSword] == 1)
             ) {
-              // TODO
-              // manager.weapon[Enum.Weapon.sword] = 0
-              // manager.weapon[Enum.Weapon.bombSword] = 0
               manager.fame++
               newQuest("11_23", "dream", 3, false)
-              // manager.quest[Enum.Quest.dream] = 3
               manager.messPage = 1
               this.dialogue()
             } else if (manager.north == 11 && manager.east == 23) {
@@ -44758,7 +44747,7 @@ for (var i = 0; i < 11; i++) {
           )
         },
         anInputHandler: function (inputKey) {
-          // TODO - keybinds
+          // LINK - keybinds
           console.log(inputKey.keyCode, this)
           if (inputKey.keyCode == 70) {
             this.CastFire()
@@ -53198,7 +53187,6 @@ for (var i = 0; i < 11; i++) {
             "cccccccccccccccccccccccccccccccc   rrrr   cccc   rrrr   cccc   cccccccc             c             c      cccccccc      ccc    c      ccc    cccccccccccccc".split(
               "",
             )
-          // TODO !!! check box number
           if (manager.tBoxUsed[52] == 0) {
             manager.tBox[0].set_x(510)
             manager.tBox[0].set_y(480)
@@ -53315,7 +53303,6 @@ for (var i = 0; i < 11; i++) {
             "wwwwwwww6 4wwwwwwwwwww6 4wwwwwwwwwww6 4wwwwwo222223 4wwwww67889   4wwwww64ww6   4wwwww64ww6   4wwwww61223   4wwwwwk88889  4wwwwwwwwwwk88lwwwwwwwwwwwwwwwww".split(
               "",
             )
-          // TODO !!! check box number
           if (manager.tBoxUsed[51] == 0) {
             manager.tBox[0].set_x(125)
             manager.tBox[0].set_y(420)
@@ -53566,7 +53553,6 @@ for (var i = 0; i < 11; i++) {
           manager.stairsDown.set_x(65)
           manager.stairsDown.set_y(100)
           manager.stairsDown.set_visible(false)
-          // TODO !!! check box number
           manager.tBox[0].set_x(520)
           manager.tBox[0].set_y(200)
           manager.tBox[0].set_visible(true)
@@ -57822,10 +57808,6 @@ for (var i = 0; i < 11; i++) {
           manager.tBoxUsed[25] = 1
           manager.tBoxBlue.set_visible(false)
           newItem("15_18 - item:bombs#50")
-          // TODO
-          // if (manager.bombs > 99) {
-          //   manager.bombs = 99
-          // }
           newItem("15_18 - food:chocolate")
           manager.messFin = true
           manager.removeMBox = true
@@ -58811,7 +58793,6 @@ for (var i = 0; i < 11; i++) {
             manager.mess.set_text(
               "Thank you so much!\nHere, you can have this diamond.",
             )
-            // TODO didn't send - see why it not trigger, does quest skip 2?
             newItem("12_11 - item:diamonds")
             manager.fame++
             manager.messFin = true
