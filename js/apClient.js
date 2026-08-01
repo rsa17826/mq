@@ -108,7 +108,7 @@ function formatItemName(data, useColor) {
     name = `${owner ? owner + " " : ""}${`@${color}!@console!${data.itemName} - @!@${color}!${name[1]}@!`}`
   } else {
     // @ts-ignore
-    var name = `${owner ? owner + " " : ""}@green!${name}@!`
+    var name = `${owner ? owner + " " : ""}@green!${data.itemName}@!`
   }
   // @ts-ignore
   return !useColor ? removeColors(name) : name

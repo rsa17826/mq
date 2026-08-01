@@ -10,6 +10,7 @@
 // @ts-nocheck
 
 // TODO make start cmd relink the data files if they arnt linked
+// TODO !make ap log not scroll if not at bottom
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
@@ -188,7 +189,7 @@ function newItem(name) {
     apError("newItem: failed to check", name)
     return
   }
-  const apLocationId = ap.slotData.AP_LOCATION_IDS[name.split("#")[0]]
+  const apLocationId = ap.slotData.AP_LOCATION_IDS[name]
 
   if (ap.checkedLocations.includes(apLocationId)) {
     apWarn(
@@ -35462,7 +35463,7 @@ for (var i = 0; i < 11; i++) {
               manager.messPage = 2
               V.tBoxMes()
               this.enterFunc()
-              newItem("18_20 - item:gold")
+              newItem("18_20 - item:gold#30")
               manager.tBox[19].set_visible(false)
               manager.tBoxUsed[19] = 1
               manager.tBoxSound.play()
@@ -57648,7 +57649,7 @@ for (var i = 0; i < 11; i++) {
           )
           manager.messFin = true
           manager.tBoxUsed[54] = 1
-          newItem("19_20 - food:holyWater")
+          newItem("19_20 - food:holyWater - blue chest")
           newItem("19_20 - food:elixir")
           newItem("19_20 - food:strawberry#5")
           // manager.food[Enum.Food.holyWater] =
