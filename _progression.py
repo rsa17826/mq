@@ -8,7 +8,7 @@ class RoomCoordinates(TypedDict):
 
 class ProgressionNode(TypedDict):
   room: RoomCoordinates
-  receive: NotRequired[list[str]]
+  receive: list[str]
   # requires: NotRequired[list[list[str]]]
   requires: list[list[str]]
   info: NotRequired[str]
@@ -576,17 +576,6 @@ manager.correct - manager.wrong > 800 = halo
   },
   # {"room": {"north": 10, "east": 12}, "info": "warp skill warp point",},
   # {"room": {"north": 12, "east": 9}, "receive": ["spawnpoint"],},
-  {
-    "room": {"north": 12, "east": 9},
-    "requires": [
-      [
-        "item:gold",
-      ],
-    ],
-    "receive": [
-      "food:cherries",
-    ],
-  },
   {
     "room": {"north": 12, "east": 9},
     "requires": [
@@ -2080,7 +2069,7 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "food:holyWater",
+      "food:holyWater - blue chest",
       "food:elixir",
       "food:strawberry#5",
     ],
@@ -2868,7 +2857,7 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "food:holyWater",
+      "food:holyWater - pam12",
     ],
   },
   {
@@ -3998,17 +3987,6 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "food:orange",
-    ],
-  },
-  {
-    "room": {"north": 100, "east": 100},
-    "requires": [
-      [
-        "item:gold#10",
-      ],
-    ],
-    "receive": [
-      "food:gingerBread",
     ],
   },
   {

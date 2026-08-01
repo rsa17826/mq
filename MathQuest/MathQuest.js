@@ -947,6 +947,12 @@ const itemList = {
   "food:holyWater - 0-7-0": () => {
     manager.food[Enum.Food.holyWater] += 1
   },
+  "food:holyWater - pam12": () => {
+    manager.food[Enum.Food.holyWater] += 1
+  },
+  "food:holyWater - blue chest": () => {
+    manager.food[Enum.Food.holyWater] += 1
+  },
   "item:gold - 2-2-0#900": () => {
     manager.gold += 900
   },
