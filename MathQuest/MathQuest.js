@@ -45913,7 +45913,15 @@ for (var i = 0; i < 11; i++) {
             passwordString,
           )
           Udf.SendVariables()
+          window.saveComplete = false
           window.saveData[getSaveFileId()] = manager.myVar
+          saveData.doneSaving.then(() => {
+            window.saveComplete = true
+            setTimeout(() => {
+              if (window.saveComplete == true)
+                window.saveComplete = null
+            }, 1000)
+          })
         },
         standings: function () {
           console.log("standings")

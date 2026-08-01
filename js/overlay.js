@@ -431,6 +431,12 @@ function customDrawLoop() {
   if (window?.test?.fightVarCheat == 666) {
     coordString += "battle mode enabled - [ to toggle\n"
   }
+  if (window.saveComplete == true) {
+    coordString += "save complete\n"
+  }
+  if (window.saveComplete == false) {
+    coordString += "saving...\n"
+  }
   for (let hint of HintTracker.all) {
     if (hint.found) continue
     var itemName = ap.itemIdToName["MathQuest"][hint.item]
