@@ -22,6 +22,7 @@
 // TODO make itemtracker auto revompute without closing and reopening section when check checked
 // TODO after ap connects a dc shouldn't try ws
 // TODO 11 24 guard sticky from bottom side
+// TODO walking into bridge switch counts as walking while dialogue box up
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
@@ -58157,7 +58158,10 @@ for (var i = 0; i < 11; i++) {
           }
           if (manager.messPage == 2) {
             manager.sell.set_visible(false)
-            if (f.parseInt(manager.sell.get_text()) == manager.an) {
+            if (
+              f.parseInt(manager.sell.get_text()) == manager.an ||
+              localStorage.dontLikeBridges == "true"
+            ) {
               manager.mess.set_text("You may proceed.")
               if (
                 (manager.north == 11 && manager.east == 19) ||
