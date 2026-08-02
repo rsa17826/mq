@@ -1993,9 +1993,7 @@ manager.correct - manager.wrong > 800 = halo
   {
     "room": {"north": 12, "east": 11},
     "requires": [
-      [
-        "quest:canteen.2",
-      ],
+      ["quest:canteen.2", ""],
     ],
     "receive": [
       "quest:canteen.3",
@@ -3511,6 +3509,11 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "quest:canteen.1",
+        "entrance.west0",
+      ],
+      [
+        "quest:canteen.1",
+        "entrance.south0",
       ],
     ],
     "receive": [
