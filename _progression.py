@@ -2649,7 +2649,7 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "item:gold#100",
+      # "item:gold#100",
       "food:gingerBread#50",
       "item:gold#Enum.Craft.emerald",
     ],
@@ -5731,9 +5731,12 @@ manager.correct - manager.wrong > 800 = halo
   {
     "room": {"north": 20, "east": 18},
     "requires": [
-      ["loot:dScale#3"],
-      ["loot:sFrag#5"],
-      ["loot:fBone#10"],
+      [
+        "loot:dScale#3",
+        "loot:sFrag#5",
+        "loot:fBone#10",
+        "quest:rings.11",
+      ],
     ],
     "receive": ["item:ring of skill"],
   },

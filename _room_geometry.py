@@ -4952,7 +4952,7 @@ GEOM: list[ExitBase] = [
       {
         "reqs": [
           [
-            "quest:rings.10",
+            "quest:rings.11",
           ],
         ],
         "areas": [

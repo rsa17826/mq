@@ -14,7 +14,7 @@
 // TODO make map not strip # anymore
 // TODO fix arrow turns red when recalcing if targeting an entrance
 // TODO sunflower seller sticks
-// TODO tracker tracking area should track closest area bfs
+// TODO tracker tracking area shoulddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd dddddddddddtrack
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
@@ -57243,8 +57243,8 @@ for (var i = 0; i < 11; i++) {
           manager.messFin = true
           manager.tBoxUsed[58] = 1
           manager.emeralds = manager.emeralds - 1
-          newItem("17_15 - item:gold")
-          newItem("17_15 - food:gingerBread")
+          newItem("17_15 - item:gold#Enum.Craft.emerald")
+          newItem("17_15 - food:gingerBread#50")
           // // if (manager.food[Enum.Food.gingerBread] > 99) {
           // //   manager.food[Enum.Food.gingerBread] = 99
           // // }
