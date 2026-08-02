@@ -26,6 +26,7 @@
 // TODO make track button also use only player entered areas thing if enabled
 // TODO 21 17 guard is sticky
 // TODO 24 13 south 0 gets larger when opening the bridge
+// TODO 14 13 east exit to large
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
