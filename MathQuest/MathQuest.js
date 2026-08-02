@@ -23,6 +23,7 @@
 // TODO after ap connects a dc shouldn't try ws
 // TODO 11 24 guard sticky from bottom side
 // TODO walking into bridge switch counts as walking while dialogue box up
+// TODO make track button also use only player entered areas thing if enabled
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
