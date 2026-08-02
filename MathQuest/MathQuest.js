@@ -21785,7 +21785,12 @@ for (var i = 0; i < 11; i++) {
             manager.goldDisplay.setTextFormat(manager.goldFormat)
           }
           if (prop == "bombs" && !this.k && manager.bombDisplay) {
-            if (value > manager.bombCapacity) {
+            if (
+              value > manager.bombCapacity &&
+              window.playerLoaded &&
+              manager.bombCapacity != undefined &&
+              value != undefined
+            ) {
               value = manager.bombCapacity
             }
             manager.bombDisplay.set_text(f.string(value))
