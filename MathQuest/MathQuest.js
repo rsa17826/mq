@@ -57707,9 +57707,9 @@ for (var i = 0; i < 11; i++) {
           )
           manager.messFin = true
           manager.removeMBox = true
-          newItem("12_25 - food:gummyBears#5")
+          newItem("12_25 - food:gummyBears#10")
           manager.tBoxUsed[35] = 1
-          newItem("12_25 - item:diamonds - chest")
+          newItem("12_25 - item:diamonds - chest#50")
           manager.tBoxBlue.set_visible(false)
           manager.tBoxSound.play()
         } else if (
