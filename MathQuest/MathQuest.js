@@ -216,7 +216,7 @@ function newItem(name) {
     console.log(
       `[Archipelago] Check registered: ${name} (ID: ${apLocationId})`,
     )
-    window.onItemSent.forEach(e=>e())
+    window.onItemSent.forEach((e) => e())
     window.checksInFlight.push(apLocationId)
     window.ap.sendLocationChecks([apLocationId])
   } else {
@@ -21780,7 +21780,6 @@ for (var i = 0; i < 11; i++) {
             )
           }
 
-          target[prop] = value
           if (prop == "gold" && !this.k && manager.goldDisplay) {
             manager.goldDisplay.set_text("Gold: " + value)
             manager.goldDisplay.setTextFormat(manager.goldFormat)
@@ -21792,6 +21791,9 @@ for (var i = 0; i < 11; i++) {
             manager.bombDisplay.set_text(f.string(value))
             manager.bombDisplay.setTextFormat(manager.shopMesFormat)
           }
+
+          target[prop] = value
+
           if (
             this.k === "quest" &&
             window.playerLoaded &&

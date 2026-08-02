@@ -342,5 +342,7 @@ window.onApCreated.push((ap) => {
   }
   window.onItemSent.push(Logic.recompute)
   window.onApConnect.push(Logic.recompute)
-  window.onPlayerLoaded.push(Logic.recompute)
+  window.onPlayerLoaded.push(() => {
+    setTimeout(Logic.recompute)
+  })
 })

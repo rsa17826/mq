@@ -3762,6 +3762,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "quest:access.1",
+        "loot:aClub",
       ],
     ],
     "receive": [

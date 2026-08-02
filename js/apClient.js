@@ -322,6 +322,7 @@ class ArchipelagoClient {
     Logic.recompute()
     setTimeout(() => Logic.recompute())
     ItemTracker.render()
+    Tracker.syncCheckedLocations(packet.checked_locations)
   }
   /**
    * Handshake Step 2: Server sends RoomInfo.

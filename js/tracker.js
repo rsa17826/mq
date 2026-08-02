@@ -75,19 +75,11 @@ window.onApCreated.push((ap) => {
       Tracker.renderItemPanel()
     }
   }
-  const origOnConnected = ap.onConnected.bind(ap)
-  ap.onConnected = function (packet) {
-    origOnConnected(packet)
+  window.onApConnect.push(function () {
     window.onPlayerLoaded.push(() => {
       Tracker.syncCheckedLocations(ap.checkedLocations)
     })
-  }
-
-  const origOnRoomUpdate = ap.onRoomUpdate.bind(ap)
-  ap.onRoomUpdate = function (packet) {
-    origOnRoomUpdate(packet)
-    Tracker.syncCheckedLocations(packet.checked_locations)
-  }
+  })
 })
 window.onApConnect.push(() => {
   for (const key in ap.slotData.AP_LOCATION_IDS) {
