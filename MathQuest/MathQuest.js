@@ -16,6 +16,7 @@
 // TODO sunflower seller sticks
 // TODO tracker tracking area should track closest
 // TODO make adding &seed go before #
+// TODO track last used entrance and use that for bfs start instead of any exit for the current room
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
