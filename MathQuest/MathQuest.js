@@ -35518,12 +35518,12 @@ for (var i = 0; i < 11; i++) {
               manager.messPage = 2
               V.tBoxMes()
               this.enterFunc()
-              newItem("15_19 - item:gold")
+              newItem("15_19 - item:gold#300")
               newItem("15_19 - item:bombs#10")
               if (manager.bombs > manager.bombCapacity) {
                 manager.bombs = manager.bombCapacity
               }
-              newItem("15_19 - food:banana")
+              newItem("15_19 - food:banana#5")
               manager.tBox[20].set_visible(false)
               manager.tBoxUsed[20] = 1
               manager.keys = manager.keys - 1
