@@ -2376,6 +2376,8 @@ manager.correct - manager.wrong > 800 = halo
       [
         "quest:geo.1",
         "item:geodes#5",
+        # NOTE required to get more than 2 geodes
+        "skill:dig",
       ],
     ],
     "receive": [
