@@ -24,6 +24,7 @@
 // TODO 11 24 guard sticky from bottom side
 // TODO walking into bridge switch counts as walking while dialogue box up
 // TODO make track button also use only player entered areas thing if enabled
+// TODO 21 17 guard is sticky
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
@@ -35363,7 +35364,7 @@ for (var i = 0; i < 11; i++) {
               this.enterFunc()
               manager.tBox[32].set_visible(false)
               manager.tBoxUsed[32] = 1
-              newItem("10_9 - food:steak")
+              newItem("10_9 - food:steak#30")
               manager.keys = manager.keys - 1
               manager.tBoxSound.play()
             } else if (manager.north == 9 && manager.east == 26) {
@@ -57176,11 +57177,11 @@ for (var i = 0; i < 11; i++) {
           manager.messFin = true
           manager.tBoxUsed[56] = 1
           manager.emeralds = manager.emeralds - 1
-          newItem("12_21 - food:banana")
+          newItem("12_21 - food:banana#20")
           // // if (manager.food[Enum.Food.banana] > 99) {
           // //   manager.food[Enum.Food.banana] = 99
           // // }
-          newItem("12_21 - item:diamonds")
+          newItem("12_21 - item:diamonds#Enum.Craft.emerald")
           manager.removeMBox = true
           manager.tBoxGreen.set_visible(false)
           manager.tBoxSound.play()
