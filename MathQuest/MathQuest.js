@@ -14,7 +14,8 @@
 // TODO make map not strip # anymore
 // TODO fix arrow turns red when recalcing if targeting an entrance
 // TODO sunflower seller sticks
-// TODO tracker tracking area shoulddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd dddddddddddtrack
+// TODO tracker tracking area should track closest
+// TODO make adding &seed go before #
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
