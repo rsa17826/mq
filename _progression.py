@@ -3644,9 +3644,7 @@ manager.correct - manager.wrong > 800 = halo
   {
     "room": {"north": 4, "east": 19},
     "requires": [
-      [
-        "quest:isles.3",
-      ],
+      ["quest:isles.3", "skill:dig"],
     ],
     "receive": [
       "quest:isles.4",
@@ -3779,10 +3777,204 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "quest:access.3",
+        "flag:allWeaknesses",
       ],
     ],
     "receive": [
       "quest:access.4",
+    ],
+  },
+  {
+    "room": {"north": -1, "east": -1},
+    "requires": [
+      [
+        "flag:clubType",
+        "flag:daggerType",
+        "flag:swordType",
+        "flag:staffType",
+        "flag:pitchforkType",
+        "flag:weakType",
+        "flag:drainType",
+        "flag:slowType",
+        "flag:crushType",
+        "flag:fireType",
+        "flag:lightningType",
+        "flag:iceType",
+      ],
+    ],
+    "receive": [
+      "flag:allWeaknesses",
+    ],
+  },
+  {
+    "room": {"north": -1, "east": -1},
+    "requires": [
+      [
+        "weapon:club",
+      ],
+    ],
+    "receive": [
+      "flag:clubType",
+    ],
+  },
+  {
+    "room": {"north": -1, "east": -1},
+    "requires": [
+      [
+        "weapon:dagger",
+      ],
+      [
+        "weapon:sKnife",
+      ],
+    ],
+    "receive": [
+      "flag:daggerType",
+    ],
+  },
+  {
+    "room": {"north": -1, "east": -1},
+    "requires": [
+      [
+        "weapon:sword",
+      ],
+      [
+        "weapon:royalSword",
+      ],
+      [
+        "weapon:sunSword",
+      ],
+      [
+        "weapon:orcBlade",
+      ],
+      [
+        "weapon:baneBlade",
+      ],
+      [
+        "weapon:creeperCrusher",
+      ],
+      [
+        "weapon:bombSword",
+      ],
+      [
+        "weapon:soulSword",
+      ],
+    ],
+    "receive": [
+      "flag:swordType",
+    ],
+  },
+  {
+    "room": {"north": -1, "east": -1},
+    "requires": [
+      [
+        "weapon:refreshStaff",
+      ],
+      [
+        "weapon:royalStaff",
+      ],
+      [
+        "weapon:warlockStaff",
+      ],
+      [
+        "weapon:shadowStaff",
+      ],
+    ],
+    "receive": [
+      "flag:staffType",
+    ],
+  },
+  {
+    "room": {"north": -1, "east": -1},
+    "requires": [
+      [
+        "weapon:pitchfork",
+      ],
+    ],
+    "receive": [
+      "flag:pitchforkType",
+    ],
+  },
+  {
+    "room": {"north": -1, "east": -1},
+    "requires": [
+      [
+        "magic:weak",
+      ],
+    ],
+    "receive": [
+      "flag:weakType",
+    ],
+  },
+  {
+    "room": {"north": -1, "east": -1},
+    "requires": [
+      [
+        "magic:drain",
+      ],
+      [
+        "magic:doubleDown",
+      ],
+    ],
+    "receive": [
+      "flag:drainType",
+    ],
+  },
+  {
+    "room": {"north": -1, "east": -1},
+    "requires": [
+      [
+        "magic:slow",
+      ],
+      [
+        "magic:doubleDown",
+      ],
+    ],
+    "receive": [
+      "flag:slowType",
+    ],
+  },
+  {
+    "room": {"north": -1, "east": -1},
+    "requires": [
+      [
+        "magic:crush",
+      ],
+    ],
+    "receive": [
+      "flag:crushType",
+    ],
+  },
+  {
+    "room": {"north": -1, "east": -1},
+    "requires": [
+      [
+        "magic:fire",
+      ],
+    ],
+    "receive": [
+      "flag:fireType",
+    ],
+  },
+  {
+    "room": {"north": -1, "east": -1},
+    "requires": [
+      [
+        "magic:lightning",
+      ],
+    ],
+    "receive": [
+      "flag:lightningType",
+    ],
+  },
+  {
+    "room": {"north": -1, "east": -1},
+    "requires": [
+      [
+        "magic:ice",
+      ],
+    ],
+    "receive": [
+      "flag:iceType",
     ],
   },
   {

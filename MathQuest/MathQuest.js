@@ -35294,8 +35294,8 @@ for (var i = 0; i < 11; i++) {
               this.enterFunc()
               manager.tBox[44].set_visible(false)
               manager.tBoxUsed[44] = 1
-              newItem("21_23 - item:diamonds - chest")
-              newItem("21_23 - item:gold")
+              newItem("21_23 - item:diamonds - chest#2")
+              newItem("21_23 - item:gold#300")
               manager.keys = manager.keys - 1
               manager.tBoxSound.play()
             } else if (manager.north == 9 && manager.east == 13) {
