@@ -21783,7 +21783,15 @@ for (var i = 0; i < 11; i++) {
             manager.goldDisplay.set_text("Gold: " + value)
             manager.goldDisplay.setTextFormat(manager.goldFormat)
           }
-          if (this.k === "quest" && window.playerLoaded && window.ap) {
+          if (prop == "bombs" && !this.k && manager.bombDisplay) {
+            manager.bombDisplay.set_text(f.string(manager.bombs))
+            manager.bombDisplay.setTextFormat(manager.shopMesFormat)
+          }
+          if (
+            this.k === "quest" &&
+            window.playerLoaded &&
+            window.ap
+          ) {
             window.onQuestChanged.forEach((e) => e(prop, value))
             if (localStorage.dontAutoSendCompleteEvent != "true") {
               window.maxQuestList ??= Object.entries(
@@ -57779,7 +57787,7 @@ for (var i = 0; i < 11; i++) {
           )
           manager.messFin = true
           manager.removeMBox = true
-          checker["16_15 - diamondArmor chest"]=1
+          checker["16_15 - diamondArmor chest"] = 1
           // manager.armorTile[Enum.Armor.diamondArmor].set_x(300)
           // manager.armorTile[Enum.Armor.diamondArmor].set_y(470)
           // manager.armorTile[Enum.Armor.diamondArmor].set_visible(true)
