@@ -25,6 +25,7 @@
 // TODO walking into bridge switch counts as walking while dialogue box up
 // TODO make track button also use only player entered areas thing if enabled
 // TODO 21 17 guard is sticky
+// TODO 24 13 south 0 gets larger when opening the bridge
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
@@ -35335,7 +35336,7 @@ for (var i = 0; i < 11; i++) {
               this.enterFunc()
               manager.tBox[0].set_visible(false)
               manager.tBoxUsed[50] = 1
-              newItem("23_10 - item:diamonds")
+              newItem("23_10 - item:diamonds#5")
               newItem("23_10 - food:newtonsApple#2")
               manager.keys = manager.keys - 1
               manager.tBoxSound.play()
@@ -57195,7 +57196,7 @@ for (var i = 0; i < 11; i++) {
           manager.tBoxUsed[57] = 1
           manager.emeralds = manager.emeralds - 1
           newItem("8_18 - item:bombs#25")
-          newItem("8_18 - food:steak")
+          newItem("8_18 - food:steak#Enum.Craft.emerald")
           // // if (manager.food[Enum.Food.steak] > 99) {
           // //   manager.food[Enum.Food.steak] = 99
           // // }
@@ -57228,8 +57229,8 @@ for (var i = 0; i < 11; i++) {
           manager.messFin = true
           manager.tBoxUsed[59] = 1
           manager.emeralds = manager.emeralds - 1
-          newItem("8_10 - item:gold")
-          newItem("8_10 - food:beefJerky")
+          newItem("8_10 - item:gold#Enum.Craft.emerald")
+          newItem("8_10 - food:beefJerky#30")
           // if (manager.food[Enum.Food.beefJerky] > 99) {
           //   manager.food[Enum.Food.beefJerky] = 99
           // }
