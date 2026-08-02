@@ -11,6 +11,7 @@
 
 // TODO make start cmd relink the data files if they arnt linked
 // TODO !make ap log not scroll if not at bottom
+// TODO make map not strip # anymore
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
@@ -273,7 +274,7 @@ addEventListener("keydown", ({ key }) => {
   if (key == "e") {
     player.messFin = true
   }
-  if (key == "H") {
+  if (key == "H" && test.fightMode == 0) {
     helpImStuck()
   }
   if (localStorage.debug != "true") return
@@ -57796,7 +57797,7 @@ for (var i = 0; i < 11; i++) {
           manager.mess.set_text(
             "The blue crystal shines. The chest opens!\nYou find 20 diamonds inside.",
           )
-          newItem("17_22 - item:diamonds")
+          newItem("17_22 - item:diamonds#20")
           manager.tBoxUsed[24] = 1
           manager.tBoxBlue.set_visible(false)
           manager.messFin = true
