@@ -59348,8 +59348,8 @@ for (var i = 0; i < 11; i++) {
               manager.craftsTile[Enum.Craft.upgradeAAMP].set_visible(
                 true,
               )
-              newItem("13_13 - craft:upgradeAAHP")
               checker["Craft.upgradeAA"] = 1
+              newItem("13_13 - craft:upgradeAAHP")
               newItem("13_13 - craft:upgradeAAMP")
               manager.messFin = true
             }
@@ -113218,7 +113218,7 @@ for (var i = 0; i < 11; i++) {
                 }
 
                 setCoords()
-                setTimeout(function () {
+                queueMicrotask(function () {
                   setCoords()
                   test.newScreen()
                   setCoords()
