@@ -18909,7 +18909,7 @@ for (var i = 0; i < 11; i++) {
         this.addChild(this.colCharBottom)
         this.mystring = this.bytes.toString()
         randInit.push(() => {
-          manager.fakeHeadstone = Math.floor(Math.random() * 18)
+          manager.fakeHeadstone = Math.floor(rng.random() * 18)
         })
         this.batWinSound.load(new _qObject("sounds/BatWin.mp3"))
         this.craftSound.load(new _qObject("sounds/craftSuccess.mp3"))
@@ -19621,20 +19621,20 @@ for (var i = 0; i < 11; i++) {
             manager.treeCmas = new initObj(
               _____a.getBitmapData("img/tiles/cmasTree.png"),
             );
-            !((manager.a2 = Math.ceil(Math.random() * 9)),
-            (manager.b2 = Math.ceil(Math.random() * 9)),
+            !((manager.a2 = Math.ceil(rng.random() * 9)),
+            (manager.b2 = Math.ceil(rng.random() * 9)),
             (manager.an2 = manager.a2 * manager.b2),
             manager.a2 * manager.b2 <= 9);
           );
           while (
-            !((manager.a1 = Math.ceil(Math.random() * 9)),
-            (manager.b1 = Math.ceil(Math.random() * 9)),
+            !((manager.a1 = Math.ceil(rng.random() * 9)),
+            (manager.b1 = Math.ceil(rng.random() * 9)),
             (manager.an1 = (manager.a1 + manager.b1) | 0),
             manager.an1 <= 9)
           );
           while (
-            ((manager.a3 = Math.ceil(Math.random() * 9)),
-            (manager.b3 = Math.ceil(Math.random() * 9)),
+            ((manager.a3 = Math.ceil(rng.random() * 9)),
+            (manager.b3 = Math.ceil(rng.random() * 9)),
             (manager.an3 = (manager.a3 - manager.b3) | 0),
             manager.an3 > 9 ||
               manager.an3 < 0 ||
@@ -21485,9 +21485,9 @@ for (var i = 0; i < 11; i++) {
         randInit.push(() => {
           for (
             this.doorCode = 3;
-            (manager.door1 = Math.ceil(Math.random() * 9)),
-              (manager.door2 = Math.ceil(Math.random() * 9)),
-              (manager.door3 = Math.ceil(Math.random() * 9)),
+            (manager.door1 = Math.ceil(rng.random() * 9)),
+              (manager.door2 = Math.ceil(rng.random() * 9)),
+              (manager.door3 = Math.ceil(rng.random() * 9)),
               (this.doorCode =
                 (manager.door1 * manager.door2 - manager.door3) / 2),
               (manager.door1 * manager.door2 - manager.door3) % 2 !=
@@ -22848,14 +22848,7 @@ for (var i = 0; i < 11; i++) {
         },
         checkAvail: async function (gameManagerHandler) {
           if (this.newGame == 1) {
-            await fetch(
-              "../cgi-bin/createChar.py?rand=" +
-                Math.random() +
-                "&saveFile=" +
-                (window.seed ?
-                  window.seed + "|" + window?.ap?.playerName
-                : "nonAP"),
-            )
+            // TODO !!! create new save file
           }
           window.rng = new LFSR32(
             Number(
@@ -35326,7 +35319,7 @@ for (var i = 0; i < 11; i++) {
               this.enterFunc()
               manager.tBox[0].set_visible(false)
               manager.tBoxUsed[51] = 1
-              newItem("6_13 - food:grapes")
+              newItem("6_13 - food:grapes#5")
               newItem("6_13 - food:strawberry")
               manager.keys = manager.keys - 1
               manager.tBoxSound.play()
@@ -35384,7 +35377,7 @@ for (var i = 0; i < 11; i++) {
               this.enterFunc()
               manager.tBox[36].set_visible(false)
               manager.tBoxUsed[36] = 1
-              newItem("9_26 - food:blueberries")
+              newItem("9_26 - food:blueberries#10")
               manager.keys = manager.keys - 1
               manager.tBoxSound.play()
             } else if (manager.north == 21 && manager.east == 11) {
@@ -112889,7 +112882,7 @@ for (var i = 0; i < 11; i++) {
       manager.buyButton = new initObj()
       manager.cloudImage = new initObj()
       randInit.push(() => {
-        manager.tileRow = Math.ceil(Math.random() * 7) + 2
+        manager.tileRow = Math.ceil(rmg.random() * 7) + 2
       })
       manager.tilesLit = 0
       manager.firewallUpgrade = 1
@@ -113252,8 +113245,8 @@ for (var i = 0; i < 11; i++) {
       manager.eliteWins = 0
       manager.medallions = 0
       randInit.push(() => {
-        manager.pSide1 = Math.ceil(Math.random() * 9)
-        manager.pSide2 = Math.ceil(Math.random() * 9)
+        manager.pSide1 = Math.ceil(rng.random() * 9)
+        manager.pSide2 = Math.ceil(rng.random() * 9)
       })
       manager.perimeter = 0
       manager.hp = 100
@@ -113315,9 +113308,9 @@ for (var i = 0; i < 11; i++) {
       manager.ring6 = 0
       manager.ring7 = 0
       randInit.push(() => {
-        manager.door1 = Math.ceil(Math.random() * 9)
-        manager.door2 = Math.ceil(Math.random() * 9)
-        manager.door3 = Math.ceil(Math.random() * 9)
+        manager.door1 = Math.ceil(rng.random() * 9)
+        manager.door2 = Math.ceil(rng.random() * 9)
+        manager.door3 = Math.ceil(rng.random() * 9)
       })
       manager.drainVar = 0
       manager.decimalSplitVar = 0
