@@ -409,6 +409,12 @@ function apSendSayFromInput() {
         localStorage.autoYes = ["1", "true"].includes(on)
       },
     },
+    alwaysShowAllPaths: {
+      desc: "alwaysShowAllPaths",
+      func(on = "1") {
+        localStorage.alwaysShowAllPaths = ["1", "true"].includes(on)
+      },
+    },
     reconnect: {
       desc: "reconnects to ap for if disconnected",
       func() {

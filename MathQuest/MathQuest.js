@@ -64771,6 +64771,7 @@ for (var i = 0; i < 11; i++) {
       Udf.__name__ = ["Vars"]
       Udf.SendVariables = function () {
         manager.myVar = {
+          ["playerCheckedEntrances"]: window.playerCheckedEntrances,
           ["q"]: window.q,
           ["currentX"]: manager.char[0].get_x() | 0,
           ["currentY"]: manager.char[0].get_y() | 0,
@@ -65063,6 +65064,9 @@ for (var i = 0; i < 11; i++) {
         }
       }
       Udf.ReceiveVariables = function (data) {
+        window.playerCheckedEntrances =
+          data.playerCheckedEntrances || window.playerCheckedEntrances
+        WorldMap.updateEntranceColors()
         window.q = data.q || window.q
         manager.char[0].set_x(data["currentX"])
         manager.char[0].set_y(data["currentY"])
@@ -113090,12 +113094,17 @@ for (var i = 0; i < 11; i++) {
                       "can't find where player left the screen at!",
                     )
                   } else {
-                    window.playerCheckedEntrances.add(
-                      String(erOrigin.north) +
-                        String(erOrigin.east) +
-                        String(direction) +
-                        String(matchedExitIndex),
-                    )
+                    let fullkey = `${erOrigin.north}_${erOrigin.east}_${direction}_${matchedExitIndex}`
+                    if (!window.playerCheckedEntrances.has(fullkey)) {
+                      window.playerCheckedEntrances.add(fullkey)
+                      WorldMap.updateEntranceColors()
+                      Logic.recompute()
+                      PathFinding.updateTrackedPath()
+                    }
+                    let fullkey = `${erOrigin.north}_${erOrigin.east}_${direction}_${matchedExitIndex}`
+                    if (!window.playerCheckedEntrances.has(fullkey)) {
+                      window.playerCheckedEntrances.add(fullkey)
+                    }
                   }
                   if (matchedExitIndex !== -1) {
                     var specificTarget = conns.find(function (c) {

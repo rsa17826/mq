@@ -329,28 +329,7 @@ class ItemTracker {
               "Point the map arrow here (and auto-surface any outstanding loot requirement)",
             onclick: (e) => {
               e.stopPropagation()
-              // If this entry is gated behind loot: requirements we don't
-              // have enough of yet, tracking the entry's own room isn't
-              // actually useful -- the player needs to go farm that loot
-              // first. Instead, point at whichever not-yet-checked
-              // location grants the first still-outstanding loot type,
-              // picking the closest one via the same nearest-candidate
-              // logic trackToken/findTokenEntry already use for any other
-              // token, rather than just "the room this entry lives in".
-              const outstanding = this.entryLootTokens(entry).filter(
-                ([name, count]) => {
-                  const have =
-                    window.manager?.loot?.[
-                      window.Enum?.Loot?.[name]
-                    ] ?? 0
-                  return have < count
-                },
-              )
-              if (outstanding.length) {
-                WorldMap.trackToken(`loot:${outstanding[0][0]}`)
-              } else {
-                WorldMap.trackToken(this.primaryTrackToken(entry))
-              }
+              WorldMap.trackToken(this.primaryTrackToken(entry))
             },
           },
           ["Track"],

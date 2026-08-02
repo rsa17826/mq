@@ -102,6 +102,48 @@ class PathFinding {
     return String(tok).split("#")[0]
   }
 
+  // --- Entrance-rando "only walk through checked entrances" support ---
+  //
+  // window.playerCheckedEntrances is a Set of strings like "20_20_south_0"
+  // (roomKey_side_idx), added to externally as the player actually walks
+  // through a given physical exit for the first time. When entrance_rando
+  // is on (and the player hasn't opted into localStorage.alwaysShowAllPaths),
+  // the pathfinder should only route through exits the player has actually
+  // used before, since with entrance rando the far side of an unused exit
+  // is unknown/unspoiled.
+  /**
+   * @param {string} roomKey
+   * @param {string} side
+   * @param {number|string} idx
+   */
+  static entranceKey(roomKey, side, idx) {
+    return `${roomKey}_${side}_${idx}`
+  }
+
+  static restrictToCheckedEntrances() {
+    return (
+      !!(
+        window.ap &&
+        window.ap.slotData &&
+        window.ap.slotData.entrance_rando
+      ) && localStorage.alwaysShowAllPaths !== "true"
+    )
+  }
+
+  /**
+   * @param {string} roomKey
+   * @param {string} side
+   * @param {number|string} idx
+   */
+  static isEntranceChecked(roomKey, side, idx) {
+    return !!(
+      window.playerCheckedEntrances &&
+      window.playerCheckedEntrances.has(
+        this.entranceKey(roomKey, side, idx),
+      )
+    )
+  }
+
   /**
    * @param {string} tok
    * @param {{ has: (arg0: any) => any; }} have
@@ -876,28 +918,33 @@ class PathFinding {
           const k2 = this.roomKey(n2, e2)
           const node1 = this.exitNodeKey(k1, dir1, idx1)
           const node2 = this.exitNodeKey(k2, dir2, idx2)
-          this.addEdge(
-            graph,
-            node1,
-            node2,
-            k1,
-            dir1,
-            idx1,
-            k2,
-            dir2,
-            idx2,
-          )
-          this.addEdge(
-            graph,
-            node2,
-            node1,
-            k2,
-            dir2,
-            idx2,
-            k1,
-            dir1,
-            idx1,
-          )
+          const restrict = this.restrictToCheckedEntrances()
+          if (!restrict || this.isEntranceChecked(k1, dir1, idx1)) {
+            this.addEdge(
+              graph,
+              node1,
+              node2,
+              k1,
+              dir1,
+              idx1,
+              k2,
+              dir2,
+              idx2,
+            )
+          }
+          if (!restrict || this.isEntranceChecked(k2, dir2, idx2)) {
+            this.addEdge(
+              graph,
+              node2,
+              node1,
+              k2,
+              dir2,
+              idx2,
+              k1,
+              dir1,
+              idx1,
+            )
+          }
         },
       )
     } else {
@@ -916,28 +963,39 @@ class PathFinding {
             const oppDir = this.OPPOSITE[dir]
             const node1 = this.exitNodeKey(fromKey, dir, idx)
             const node2 = this.exitNodeKey(toKey, oppDir, idx)
-            this.addEdge(
-              graph,
-              node1,
-              node2,
-              fromKey,
-              dir,
-              idx,
-              toKey,
-              oppDir,
-              idx,
-            )
-            this.addEdge(
-              graph,
-              node2,
-              node1,
-              toKey,
-              oppDir,
-              idx,
-              fromKey,
-              dir,
-              idx,
-            )
+            const restrict = this.restrictToCheckedEntrances()
+            if (
+              !restrict ||
+              this.isEntranceChecked(fromKey, dir, idx)
+            ) {
+              this.addEdge(
+                graph,
+                node1,
+                node2,
+                fromKey,
+                dir,
+                idx,
+                toKey,
+                oppDir,
+                idx,
+              )
+            }
+            if (
+              !restrict ||
+              this.isEntranceChecked(toKey, oppDir, idx)
+            ) {
+              this.addEdge(
+                graph,
+                node2,
+                node1,
+                toKey,
+                oppDir,
+                idx,
+                fromKey,
+                dir,
+                idx,
+              )
+            }
           })
         })
       })
@@ -1035,9 +1093,9 @@ class PathFinding {
   // actually start from the player's real position.
   /**
    * @param {any} targetKey
-   * @param {{ dir: any; idx: any; }|undefined} targetEntrance
+   * @param {({ dir: any; idx: any; }|undefined)?} targetEntrance
    */
-  static findPathTo(targetKey, targetEntrance) {
+  static findPathTo(targetKey, targetEntrance = undefined) {
     const slotData = window.ap && window.ap.slotData
     if (!slotData) return null
 
@@ -1344,6 +1402,48 @@ class WorldMap {
     WorldMap.requestUpdate()
   }
 
+  // Colors each rendered .exit-square based on whether the player has
+  // actually walked through that specific entrance yet (only meaningful
+  // under entrance_rando, where the far side of an unused exit isn't
+  // known). Checked exits get a green outline, unchecked ones red/orange;
+  // when entrance_rando is off, any previously-applied styling is cleared.
+  static ENTRANCE_CHECKED_COLOR = "#39ff14"
+  static ENTRANCE_UNCHECKED_COLOR = "#ff5533"
+  static updateEntranceColors() {
+    const erOn = !!(
+      window.ap &&
+      window.ap.slotData &&
+      window.ap.slotData.entrance_rando
+    )
+    HTMLStorage.exitSquare.forEach((square) => {
+      if (!erOn) {
+        square.style.outline = ""
+        square.style.boxShadow = ""
+        square.classList.remove(
+          "entrance-checked",
+          "entrance-unchecked",
+        )
+        return
+      }
+      const roomKey = square.dataset.room
+      const side = square.dataset.side
+      const idx = square.dataset.idx
+      const checked = PathFinding.isEntranceChecked(
+        roomKey,
+        side,
+        idx,
+      )
+      square.classList.toggle("entrance-checked", checked)
+      square.classList.toggle("entrance-unchecked", !checked)
+      const color =
+        checked ?
+          WorldMap.ENTRANCE_CHECKED_COLOR
+        : WorldMap.ENTRANCE_UNCHECKED_COLOR
+      square.style.outline = `2px solid ${color}`
+      square.style.boxShadow = `0 0 4px ${color}`
+    })
+  }
+
   /**
    * @param {number} x
    * @param {number} y
@@ -1513,6 +1613,7 @@ class WorldMap {
       toggleCollapse(localStorage.apLogVisible !== "true")
       WorldMap.resizeCanvas()
       WorldMap.updateTileBackgrounds()
+      WorldMap.updateEntranceColors()
 
       HTMLStorage.tileWrapper.forEach((tile) => {
         tile.addEventListener("mouseenter", function () {
