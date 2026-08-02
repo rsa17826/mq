@@ -16,7 +16,7 @@
 // TODO sunflower seller sticks
 // TODO tracker tracking area should track closest
 // TODO make adding &seed go before #
-// TODO track last used entrance and use that for bfs start instead of any exit for the current room
+// TODO track last
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
@@ -35639,7 +35639,7 @@ for (var i = 0; i < 11; i++) {
               this.enterFunc()
               manager.tBoxUsed[12] = 1
               manager.tBox[12].set_visible(false)
-              newItem("9_10 - item:gold")
+              newItem("9_10 - item:gold#750")
               manager.keys = manager.keys - 1
               manager.tBoxSound.play()
             } else if (manager.north == 11 && manager.east == 17) {
