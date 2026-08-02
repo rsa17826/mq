@@ -21,6 +21,7 @@
 // TODO 7_12 not accessible without quest canteen - warp thinks you can get to south0
 // TODO make itemtracker auto revompute without closing and reopening section when check checked
 // TODO after ap connects a dc shouldn't try ws
+// TODO 11 24 guard sticky from bottom side
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
@@ -35571,7 +35572,7 @@ for (var i = 0; i < 11; i++) {
               this.itemTile[8].set_visible(true)
               manager.tBox[16].set_visible(false)
               manager.tBoxUsed[16] = 1
-              newItem("4_24 - food:cherries")
+              newItem("4_24 - food:cherries#10")
               // newItem("food:cherries")
               // if (manager.food[Enum.Food.cherries] > 99) {
               //   manager.food[Enum.Food.cherries] = 99
@@ -57240,9 +57241,9 @@ for (var i = 0; i < 11; i++) {
           )
           manager.messFin = true
           manager.tBoxUsed[60] = 1
-          newItem("21_18 - item:diamonds")
+          newItem("21_18 - item:diamonds#Enum.Craft.emerald")
           manager.emeralds = manager.emeralds - 1
-          newItem("21_18 - food:peppers")
+          newItem("21_18 - food:peppers#30")
           // // if (manager.food[Enum.Food.peppers] > 99) {
           // //   manager.food[Enum.Food.peppers] = 99
           // // }
@@ -57812,7 +57813,7 @@ for (var i = 0; i < 11; i++) {
           manager.mess.set_text(
             "The blue crystal shines. The chest opens!\nYou find 3 rubies inside!",
           )
-          newItem("19_18 - item:rubies")
+          newItem("19_18 - item:rubies#3")
           manager.tBoxUsed[31] = 1
           manager.tBoxBlue.set_visible(false)
           manager.messFin = true
