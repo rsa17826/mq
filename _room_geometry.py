@@ -6466,7 +6466,7 @@ WARPS: tuple[Warp, ...] = (
     "connections": ((4, 13, "root", 0), (100, 100, "south", 0)),
   },
   {
-    "reqs": [["magic:lightning", "area:magic upgrades"]],
+    "reqs": [["magic:lightning", "area:magic upgrades", "skill:revela"]],
     "connections": ((16, 11, "root", 0), (17, 10, "east", 0)),
   },
   {

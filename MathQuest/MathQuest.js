@@ -9,6 +9,7 @@
 // @endregex
 // @ts-nocheck
 
+// TODO esc not working on aurastone house
 // TODO make start cmd relink the data files if they arnt linked
 // TODO !make ap log not scroll if not at bottom
 // TODO make map not strip # anymore
@@ -17533,11 +17534,14 @@ for (var i = 0; i < 11; i++) {
           if (!this.running) {
             this.running = true
             if (
-              this == manager.enterTimer &&
-              ((localStorage.autoCloseBattleMessages == "true" &&
-                test.fightMode == 1) ||
-                (localStorage.autoCloseDialogueBoxes == "true" &&
-                  test.fightMode == 0))
+              (this == manager.enterTimer &&
+                ((localStorage.autoCloseBattleMessages == "true" &&
+                  test.fightMode == 1) ||
+                  (localStorage.autoCloseDialogueBoxes == "true" &&
+                    test.fightMode == 0))) ||
+              (this == manager.bombTimer &&
+                localStorage.instantBombs == "true" &&
+                test.fightMode == 0)
             ) {
               this.__timerID = window.setInterval(
                 createObjectMixin(this, this.timer_onTimer),
@@ -35491,7 +35495,7 @@ for (var i = 0; i < 11; i++) {
               manager.messPage = 2
               V.tBoxMes()
               this.enterFunc()
-              newItem("18_17 - item:gold")
+              newItem("18_17 - item:gold#1000")
               manager.tBox[30].set_visible(false)
               manager.tBoxUsed[30] = 1
               manager.keys = manager.keys - 1

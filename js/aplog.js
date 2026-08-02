@@ -380,6 +380,12 @@ function apSendSayFromInput() {
         localStorage.renderExits = ["1", "true"].includes(on)
       },
     },
+    instantBombs: {
+      desc: "bombs explode instantly",
+      func(on = "1") {
+        localStorage.instantBombs = ["1", "true"].includes(on)
+      },
+    },
     renderCheckerboard: {
       desc: "toggle rendering a checkerboard over each tile ingame",
       func(on = "1") {
