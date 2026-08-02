@@ -562,17 +562,21 @@ function customDrawLoop() {
     var prog = 0
     if (ap.slotData.final_boss) {
       maxProg += 23
-      prog += Math.min(manager.quest[Enum.Quest.gTree], 23)
+      if (manager.quest)
+        prog += Math.min(manager.quest[Enum.Quest.gTree], 23)
     }
     if (ap.slotData?.all_quests_maxed) {
-      prog += Object.entries(ap.slotData.maxQuests).reduce(
-        (a, [k, v]) => a + Math.min(v, manager.quest[Enum.Quest[k]]),
-        0,
-      )
-      maxProg += Object.values(ap.slotData.maxQuests).reduce(
-        (a, v) => a + v,
-        0,
-      )
+      if (manager.quest)
+        prog += Object.entries(ap.slotData.maxQuests).reduce(
+          (a, [k, v]) =>
+            a + Math.min(v, manager.quest[Enum.Quest[k]]),
+          0,
+        )
+      if (manager.quest)
+        maxProg += Object.values(ap.slotData.maxQuests).reduce(
+          (a, v) => a + v,
+          0,
+        )
     }
     progressValue = rerange(prog, 0, maxProg, 0, 1)
     newBar(

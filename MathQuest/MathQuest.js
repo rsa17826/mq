@@ -12,6 +12,7 @@
 // TODO make start cmd relink the data files if they arnt linked
 // TODO !make ap log not scroll if not at bottom
 // TODO make map not strip # anymore
+// TODO fix arrow turns red when recalcing if targeting an entrance
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
@@ -21773,7 +21774,7 @@ for (var i = 0; i < 11; i++) {
           }
 
           target[prop] = value
-          if (prop == "gold" && !this.k) {
+          if (prop == "gold" && !this.k && manager.goldDisplay) {
             manager.goldDisplay.set_text("Gold: " + value)
             manager.goldDisplay.setTextFormat(manager.goldFormat)
           }
