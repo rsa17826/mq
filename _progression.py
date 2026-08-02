@@ -3544,6 +3544,11 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "quest:dream.2",
+        "weapon:sword",
+      ],
+      [
+        "quest:dream.2",
+        "weapon:bombSword",
       ],
     ],
     "receive": [

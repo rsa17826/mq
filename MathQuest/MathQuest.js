@@ -18,6 +18,7 @@
 // TODO make adding &seed go before #
 // TODO track last entrance and use that for start of bfs instead of any location in the room
 // TODO make overlay show colors for ool checks
+// TODO 7_12 not accessible without quest canteen - warp thinks you can get to south0
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
