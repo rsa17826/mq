@@ -340,6 +340,7 @@ window.onApCreated.push((ap) => {
       `[logic] reachability engine ready: ${PROG_DATA.length} entries`,
     )
   }
+  window.onItemSent.push(Logic.recompute)
   window.onApConnect.push(Logic.recompute)
   window.onPlayerLoaded.push(Logic.recompute)
 })

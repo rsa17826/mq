@@ -11,6 +11,7 @@ declare global {
     waitingPackets: Packet[]
     playerLoaded: true | undefined
     onApConnect: Array<() => void>
+    onItemSent: Array<() => void>
     onApCreated: Array<(ap: any) => void>
     onQuestChanged: Array<(name: number, val: number) => void>
     onNewScreen: Array<() => void>

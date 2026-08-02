@@ -216,6 +216,7 @@ function newItem(name) {
     console.log(
       `[Archipelago] Check registered: ${name} (ID: ${apLocationId})`,
     )
+    window.onItemSent.forEach(e=>e())
     window.checksInFlight.push(apLocationId)
     window.ap.sendLocationChecks([apLocationId])
   } else {
@@ -34278,7 +34279,7 @@ for (var i = 0; i < 11; i++) {
                 )
                 manager.diamonds--
                 checker["14_17 - item:gold"] = 1
-                newItem("14_17 - item:gold")
+                newItem("14_17 - item:gold#100")
               }
               manager.diamonds -= f.parseInt(manager.sell.get_text())
               manager.gold +=
@@ -34955,12 +34956,12 @@ for (var i = 0; i < 11; i++) {
             ) {
               if (
                 manager.loot[Enum.Loot.dScale] >=
-                  manager.firewallUpgrade * 5 &&
-                manager.medallions >= manager.firewallUpgrade * 3
+                  checker.firewallUpgrade * 5 &&
+                manager.medallions >= checker.firewallUpgrade * 3
               ) {
                 manager.loot[Enum.Loot.dScale] -=
-                  manager.firewallUpgrade * 5
-                manager.medallions -= manager.firewallUpgrade * 3
+                  checker.firewallUpgrade * 5
+                manager.medallions -= checker.firewallUpgrade * 3
                 manager.messPage = 3
                 newItem(
                   "20_15 - skill:firewall." +
@@ -35464,7 +35465,7 @@ for (var i = 0; i < 11; i++) {
               manager.messPage = 2
               V.tBoxMes()
               this.enterFunc()
-              newItem("17_16 - item:diamonds")
+              newItem("17_16 - item:diamonds#5")
               manager.tBox[26].set_visible(false)
               manager.tBoxUsed[26] = 1
               manager.tBoxSound.play()
@@ -35616,7 +35617,7 @@ for (var i = 0; i < 11; i++) {
               manager.tBoxUsed[9] = 1
               manager.tBox[9].set_visible(false)
               newItem("11_17 - item:bombs#8")
-              newItem("11_17 - item:gold")
+              newItem("11_17 - item:gold#200")
               manager.keys = manager.keys - 1
               manager.tBoxSound.play()
             } else if (
