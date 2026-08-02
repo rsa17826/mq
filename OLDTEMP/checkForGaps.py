@@ -3,7 +3,7 @@ import re
 from _progression import PROG
 
 # Pattern to extract quest name and level, e.g. "quest:curse.2" or "quest:gTree.15"
-QUEST_PATTERN = re.compile(r"^quest:([^.]+)\.(\d+)$")
+QUEST_PATTERN = re.compile(r"^quest:([^.]+)\.(-?\d+)$")
 
 
 def check_quest_sparsity(prog_list):

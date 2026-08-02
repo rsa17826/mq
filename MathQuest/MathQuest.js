@@ -13,6 +13,7 @@
 // TODO !make ap log not scroll if not at bottom
 // TODO make map not strip # anymore
 // TODO fix arrow turns red when recalcing if targeting an entrance
+// TODO sunflower seller sticks
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
@@ -452,6 +453,7 @@ const checker = new Proxy(
     "tbox diamondArmor": 0,
     "13_18 orange seller": 0,
     "14_17 - item:gold": 0,
+    "16_15 - diamondArmor chest": 0,
   },
   {
     get(target, prop, receiver) {
@@ -21721,7 +21723,7 @@ for (var i = 0; i < 11; i++) {
 
                 if (callerLine) {
                   const match = callerLine.match(
-                    /(https?:\/\/[^\s)]+):(\d+):(\d+)/,
+                    /(https?:\/\/[^\s)]+):(-?\d+):(-?\d+)/,
                   )
 
                   if (match) {
@@ -21778,7 +21780,7 @@ for (var i = 0; i < 11; i++) {
             manager.goldDisplay.set_text("Gold: " + value)
             manager.goldDisplay.setTextFormat(manager.goldFormat)
           }
-          if (this.k === "quest") {
+          if (this.k === "quest" && window.playerLoaded && window.ap) {
             window.onQuestChanged.forEach((e) => e(prop, value))
             if (localStorage.dontAutoSendCompleteEvent != "true") {
               window.maxQuestList ??= Object.entries(
@@ -35541,7 +35543,7 @@ for (var i = 0; i < 11; i++) {
                 manager.bombs = manager.bombCapacity
               }
               // }
-              newItem("14_15 - food:orange")
+              newItem("14_15 - food:orange#12")
               manager.tBox[21].set_visible(false)
               manager.tBoxUsed[21] = 1
               manager.keys = manager.keys - 1
@@ -35730,7 +35732,7 @@ for (var i = 0; i < 11; i++) {
               this.itemTile[6].set_visible(true)
               manager.tBox[5].set_visible(false)
               manager.tBoxUsed[5] = 1
-              newItem("15_14 - food:carrot")
+              newItem("15_14 - food:carrot#5")
               manager.keys = manager.keys - 1
               manager.tBoxSound.play()
             } else if (manager.north == 9 && manager.east == 23) {
@@ -35899,7 +35901,7 @@ for (var i = 0; i < 11; i++) {
               manager.tBoxSound.play()
             } else if (manager.north == 16 && manager.east == 22) {
               manager.messPage = 2
-              newItem("16_22 - item:gold")
+              newItem("16_22 - item:gold#400")
               manager.keys = manager.keys - 1
               V.tBoxMes()
               manager.tBoxUsed[2] = 1
@@ -53756,7 +53758,7 @@ for (var i = 0; i < 11; i++) {
           manager.snowman[0].set_x(550)
           manager.snowman[0].set_y(450)
           manager.snowman[0].set_visible(true)
-          if (manager.armor[Enum.Armor.diamondArmor] == 0) {
+          if (checker["16_15 - diamondArmor chest"] == 0) {
             manager.tBoxBlue.set_x(580)
             manager.tBoxBlue.set_y(150)
             manager.tBoxBlue.set_visible(true)
@@ -57751,7 +57753,7 @@ for (var i = 0; i < 11; i++) {
           )
           manager.messFin = true
           manager.removeMBox = true
-          newItem("18_15 - food:newtonsApple#2")
+          newItem("18_15 - food:newtonsApple#15")
           manager.tBoxUsed[47] = 1
           manager.hp = manager.mxhp
           manager.mp = manager.mxmp
@@ -57767,7 +57769,7 @@ for (var i = 0; i < 11; i++) {
           )
           manager.messFin = true
           manager.removeMBox = true
-          newItem("11_25 - food:beefJerky")
+          newItem("11_25 - food:beefJerky#20")
           manager.tBoxUsed[28] = 1
           manager.tBoxBlue.set_visible(false)
           manager.tBoxSound.play()
@@ -57781,6 +57783,7 @@ for (var i = 0; i < 11; i++) {
           )
           manager.messFin = true
           manager.removeMBox = true
+          checker["16_15 - diamondArmor chest"]=1
           // manager.armorTile[Enum.Armor.diamondArmor].set_x(300)
           // manager.armorTile[Enum.Armor.diamondArmor].set_y(470)
           // manager.armorTile[Enum.Armor.diamondArmor].set_visible(true)
@@ -61610,7 +61613,7 @@ for (var i = 0; i < 11; i++) {
               manager.quest[Enum.Quest.gTree] == 11
             ) {
               if (manager.quest[Enum.Quest.gTree] == 10) {
-                newItem("15_18 - food:beefJerky")
+                newItem("15_18 - food:beefJerky#3")
                 // newItem(15,18,'Enum.Quest.gTree',null)
                 manager.quest[Enum.Quest.gTree] = 11
               }
@@ -115950,7 +115953,7 @@ for (var i = 0; i < 11; i++) {
       var audioContextVar =
         html5AudioManager._navigator &&
         html5AudioManager._navigator.appVersion.match(
-          /OS (\d+)_(\d+)_?(\d+)?/,
+          /OS (-?\d+)_(-?\d+)_?(-?\d+)?/,
         )
       audioContextVar =
         audioContextVar ? parseInt(audioContextVar[1], 10) : null

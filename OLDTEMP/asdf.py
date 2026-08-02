@@ -2,7 +2,7 @@ import re
 from _progression import PROG
 
 # Regex to match quest items with levels, e.g. "quest:curse.2" or "quest:gTree.15"
-QUEST_PATTERN = re.compile(r"^quest:([^.]+)\.(\d+)$")
+QUEST_PATTERN = re.compile(r"^quest:([^.]+)\.(-?\d+)$")
 
 
 def find_missing_quest_prerequisites(prog_list):

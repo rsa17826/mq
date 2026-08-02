@@ -21,7 +21,7 @@ def validate_map_edges():
   all_files = os.listdir(IMAGE_FOLDER)
 
   for filename in all_files:
-    match = re.match(r"^(\d+)[,\-](\d+)\.jpg$", filename.lower())
+    match = re.match(r"^(-?\d+)[,\-](-?\d+)\.jpg$", filename.lower())
     if match:
       east = int(match.group(1))
       north = int(match.group(2))

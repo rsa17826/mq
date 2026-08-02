@@ -478,7 +478,7 @@ def main():
   files = os.listdir(FULL_IMAGE_FOLDER)
   parsed_tiles = []
   for filename in files:
-    match = re.match(r"^(\d+)[,\-](\d+)", filename)
+    match = re.match(r"^(-?\d+)[,\-](-?\d+)", filename)
     if match:
       north = int(match.group(1))
       east = int(match.group(2))

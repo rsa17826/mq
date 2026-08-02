@@ -37,7 +37,7 @@ def find_unmapped_images():
 
   for filename in all_files:
     # Match files starting with coordinates like 13,6.jpg or 13-6.jpg
-    match = re.match(r"^(\d+)[,\-](\d+)", filename)
+    match = re.match(r"^(-?\d+)[,\-](-?\d+)", filename)
     if match:
       east = int(match.group(1))
       north = int(match.group(2))

@@ -127,7 +127,7 @@ def start_clipboard_monitor():
             if current_paste != last_paste:
                 last_paste = current_paste
 
-                match = re.search(r"(\d+)[,\-](\d+)", current_paste)
+                match = re.search(r"(-?\d+)[,\-](-?\d+)", current_paste)
                 if match:
                     east = int(match.group(1))
                     north = int(match.group(2))

@@ -5,7 +5,7 @@ path = "./MathQuest/MathQuest.js"
 with open(path, encoding="utf-8") as f:
     text = f.read()
 
-coord_re = re.compile(r'manager\.north\s*==\s*(\d+)\s*&&\s*manager\.east\s*==\s*(\d+)')
+coord_re = re.compile(r'manager\.north\s*==\s*(-?\d+)\s*&&\s*manager\.east\s*==\s*(-?\d+)')
 matches = list(coord_re.finditer(text))
 
 def line_no(pos):
@@ -32,7 +32,7 @@ for i, m in enumerate(matches):
     coord = (m.group(1), m.group(2))
     block = extract_block(m.end())
 
-    tbox_used = re.findall(r'tBoxUsed\[(\d+)\]', block)
+    tbox_used = re.findall(r'tBoxUsed\[(-?\d+)\]', block)
     coord_strings = re.findall(r'"(\d+_\d+)\s*-', block)
 
     results.append({

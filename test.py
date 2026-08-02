@@ -9,11 +9,11 @@ def parse_mathquest_with_lines(file_path):
   results = {}
 
   # Helper regexes
-  coord_pattern = r"manager\.(north|east)\s*==\s*(\d+)\s*&&\s*manager\.(north|east)\s*==\s*(\d+)"
-  single_north = r"manager\.north\s*==\s*(\d+)"
-  single_east = r"manager\.east\s*==\s*(\d+)"
+  coord_pattern = r"manager\.(north|east)\s*==\s*(-?\d+)\s*&&\s*manager\.(north|east)\s*==\s*(-?\d+)"
+  single_north = r"manager\.north\s*==\s*(-?\d+)"
+  single_east = r"manager\.east\s*==\s*(-?\d+)"
 
-  quest_patterns = [(r"manager\.quest\[manager\.(\w+)\]\s*(==|>=|<=|=)\s*(\d+)", True), (r"manager\.quest\[manager\.(\w+)\]\s*(\+\+|--)", False)]
+  quest_patterns = [(r"manager\.quest\[manager\.(\w+)\]\s*(==|>=|<=|=)\s*(-?\d+)", True), (r"manager\.quest\[manager\.(\w+)\]\s*(\+\+|--)", False)]
 
   # Persistent state tracking for contexts across lines
   current_north = None

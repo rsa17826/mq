@@ -779,7 +779,7 @@ class ArchipelagoClient {
         formatItemName({ itemName: name, itemPlayer: -1 }, true),
     )
     mt = mt.replace(
-      /\((\d+)_(\d+) - ([^\)]+)\)/g,
+      /\((-?\d+)_(-?\d+) - ([^\)]+)\)/g,
       `@blue!(@!@green!$1_$2@!@blue! - @!$3@blue!)@!`,
     )
 
