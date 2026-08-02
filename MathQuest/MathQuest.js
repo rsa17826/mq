@@ -35329,8 +35329,8 @@ for (var i = 0; i < 11; i++) {
               this.enterFunc()
               manager.tBox[45].set_visible(false)
               manager.tBoxUsed[45] = 1
-              newItem("17_20 - item:gold")
-              newItem("17_20 - food:beefJerky")
+              newItem("17_20 - item:gold#200")
+              newItem("17_20 - food:beefJerky#5")
               manager.keys = manager.keys - 1
               manager.tBoxSound.play()
             } else if (manager.north == 15 && manager.east == 24) {
