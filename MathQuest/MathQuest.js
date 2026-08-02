@@ -113095,15 +113095,21 @@ for (var i = 0; i < 11; i++) {
                     )
                   } else {
                     let fullkey = `${erOrigin.north}_${erOrigin.east}_${direction}_${matchedExitIndex}`
+                    let recomp = false
                     if (!window.playerCheckedEntrances.has(fullkey)) {
                       window.playerCheckedEntrances.add(fullkey)
+                      recomp=true
+                    }
+                    // TODO add other side of exit at same time
+                    // fullkey = `${erOrigin.north}_${erOrigin.east}_${direction}_${matchedExitIndex}`
+                    // if (!window.playerCheckedEntrances.has(fullkey)) {
+                    //   window.playerCheckedEntrances.add(fullkey)
+                    //   recom=true
+                    // }
+                    if (recomp){
                       WorldMap.updateEntranceColors()
                       Logic.recompute()
                       PathFinding.updateTrackedPath()
-                    }
-                    let fullkey = `${erOrigin.north}_${erOrigin.east}_${direction}_${matchedExitIndex}`
-                    if (!window.playerCheckedEntrances.has(fullkey)) {
-                      window.playerCheckedEntrances.add(fullkey)
                     }
                   }
                   if (matchedExitIndex !== -1) {

@@ -402,6 +402,65 @@ function customDrawLoop() {
   }
   // Sample multi-line coordinate text setup
   var coordString = ""
+  // Same idea as map.js's WorldMap.updateEntranceColors (which colors the
+  // rendered .exit-square elements on the overview map), but drawn on this
+  // room's slice of the in-game overlay canvas instead: outlines each real
+  // exit's bounding box green if the player has already walked through it,
+  // orange-red if not. Only meaningful under entrance_rando -- when it's
+  // off every exit leads exactly where vanilla says it does, so there's
+  // nothing to distinguish.
+  function drawEntranceBorders(roomKey, roomExits) {
+    if (
+      !(
+        window.ap &&
+        window.ap.slotData &&
+        window.ap.slotData.entrance_rando
+      )
+    )
+      return
+
+    // idx per side = position among same-side exits, in list order --
+    // matches how gen_map.py / map.js's findExitData index exits.
+    var seenBySide = {}
+
+    for (var i = 0; i < roomExits.length; i++) {
+      var exit = roomExits[i]
+      if (exit.side === "warp") continue
+
+      var idx = seenBySide[exit.side] || 0
+      seenBySide[exit.side] = idx + 1
+
+      var checked = PathFinding.isEntranceChecked(
+        roomKey,
+        exit.side,
+        idx,
+      )
+      var color =
+        checked ?
+          WorldMap.ENTRANCE_CHECKED_COLOR
+        : WorldMap.ENTRANCE_UNCHECKED_COLOR
+
+      var x, y, w, h
+      if (exit.side === "west" || exit.side === "east") {
+        x = exit.side === "west" ? 0 : 13 * tileSize
+        w = tileSize
+        y = exit.top * tileSize
+        h = (exit.bottom - exit.top + 1) * tileSize
+      } else {
+        // north / south
+        y = exit.side === "north" ? 0 : 10 * tileSize
+        h = tileSize
+        x = exit.left * tileSize
+        w = (exit.right - exit.left + 1) * tileSize
+      }
+
+      draw(overlayCtx)
+        .lineWidth(3)
+        .strokeStyle(color)
+        .strokeRect(x + 1.5, y + 1.5, w - 3, h - 3)
+    }
+  }
+
   if (
     localStorage.renderExits == "true" ||
     localStorage.renderCheckerboard == "true"
@@ -410,6 +469,11 @@ function customDrawLoop() {
       EXITS_DATA[`${window.player.north}_${window.player.east}`] ||
         [],
     )
+
+  drawEntranceBorders(
+    `${window.player.north}_${window.player.east}`,
+    EXITS_DATA[`${window.player.north}_${window.player.east}`] || [],
+  )
 
   if (
     !(
