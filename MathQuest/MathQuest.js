@@ -112882,7 +112882,7 @@ for (var i = 0; i < 11; i++) {
       manager.buyButton = new initObj()
       manager.cloudImage = new initObj()
       randInit.push(() => {
-        manager.tileRow = Math.ceil(rmg.random() * 7) + 2
+        manager.tileRow = Math.ceil(rng.random() * 7) + 2
       })
       manager.tilesLit = 0
       manager.firewallUpgrade = 1
