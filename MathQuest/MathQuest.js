@@ -35948,7 +35948,7 @@ for (var i = 0; i < 11; i++) {
               this.itemTile[4].set_visible(true)
               manager.tBox[0].set_visible(false)
               manager.tBoxUsed[0] = 1
-              newItem("18_21 - food:gingerBread")
+              newItem("18_21 - food:gingerBread#5")
               manager.keys = manager.keys - 1
               manager.tBoxSound.play()
               // if (manager.food[Enum.Food.gingerBread] > 99) {
@@ -57288,7 +57288,7 @@ for (var i = 0; i < 11; i++) {
           manager.messFin = true
           manager.tBoxUsed[61] = 1
           manager.emeralds = manager.emeralds - 1
-          newItem("9_25 - item:gold")
+          newItem("9_25 - item:gold#Enum.Craft.emerald")
           newItem("9_25 - food:elixir")
           // if (manager.food[Enum.Food.elixir] > 99) {
           //   manager.food[Enum.Food.elixir] = 99
