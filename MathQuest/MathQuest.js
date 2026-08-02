@@ -113094,25 +113094,6 @@ for (var i = 0; i < 11; i++) {
                       "can't find where player left the screen at!",
                     )
                   } else {
-                    let fullkey = `${erOrigin.north}_${erOrigin.east}_${direction}_${matchedExitIndex}`
-                    let recomp = false
-                    if (!window.playerCheckedEntrances.has(fullkey)) {
-                      window.playerCheckedEntrances.add(fullkey)
-                      recomp=true
-                    }
-                    // TODO add other side of exit at same time
-                    // fullkey = `${erOrigin.north}_${erOrigin.east}_${direction}_${matchedExitIndex}`
-                    // if (!window.playerCheckedEntrances.has(fullkey)) {
-                    //   window.playerCheckedEntrances.add(fullkey)
-                    //   recom=true
-                    // }
-                    if (recomp){
-                      WorldMap.updateEntranceColors()
-                      Logic.recompute()
-                      PathFinding.updateTrackedPath()
-                    }
-                  }
-                  if (matchedExitIndex !== -1) {
                     var specificTarget = conns.find(function (c) {
                       return (
                         c.origSide === direction &&
@@ -113120,8 +113101,26 @@ for (var i = 0; i < 11; i++) {
                       )
                     })
 
+                    let fullkey = `${erOrigin.north}_${erOrigin.east}_${direction}_${matchedExitIndex}`
+                    let recomp = false
+                    if (!window.playerCheckedEntrances.has(fullkey)) {
+                      window.playerCheckedEntrances.add(fullkey)
+                      recomp = true
+                    }
                     if (specificTarget) {
                       conn = specificTarget
+                      fullkey = `${conn.newNorth}_${conn.newEast}_${conn.exitSide}_${conn.exitIdx}`
+                      if (
+                        !window.playerCheckedEntrances.has(fullkey)
+                      ) {
+                        window.playerCheckedEntrances.add(fullkey)
+                        recom = true
+                      }
+                    }
+                    if (recomp) {
+                      WorldMap.updateEntranceColors()
+                      Logic.recompute()
+                      PathFinding.updateTrackedPath()
                     }
                   }
                 }
