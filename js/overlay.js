@@ -442,13 +442,13 @@ function customDrawLoop() {
 
       var x, y, w, h
       if (exit.side === "west" || exit.side === "east") {
-        x = exit.side === "west" ? 0 : 13 * tileSize
+        x = (exit.side === "west" ? 0 : 13) * tileSize
         w = tileSize
-        y = exit.top * tileSize
+        y = (exit.top + 1) * tileSize
         h = (exit.bottom - exit.top + 1) * tileSize
       } else {
         // north / south
-        y = exit.side === "north" ? 0 : 10 * tileSize
+        y = (exit.side === "north" ? 1 : 11) * tileSize
         h = tileSize
         x = exit.left * tileSize
         w = (exit.right - exit.left + 1) * tileSize
