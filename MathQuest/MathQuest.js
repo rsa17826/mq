@@ -31250,9 +31250,6 @@ for (var i = 0; i < 11; i++) {
               )
               // newItem(20,16,'bombs', )
               manager.bombs += this.prize
-              if (manager.bombs > manager.bombCapacity) {
-                manager.bombs = manager.bombCapacity
-              }
               this.batEndMesMover()
               manager.mobSecs = this.prize3 < 25 ? 4 : 5
             } else if (manager.mName == "RoboSaurus") {
@@ -31558,9 +31555,6 @@ for (var i = 0; i < 11; i++) {
                 // newItem(10,10,'bombs', )
                 // newItem(11,11,'bombs', )
                 manager.bombs += this.prizeQuant
-                if (manager.bombs > manager.bombCapacity) {
-                  manager.bombs = manager.bombCapacity
-                }
               }
               this.batEndMesMover()
               manager.mobSecs = this.prize3 < 25 ? 4 : 5
@@ -31635,9 +31629,6 @@ for (var i = 0; i < 11; i++) {
                   newObserveObject.fightMesCurrent
                 ].set_text("You find 30 bombs in the treasure chest.")
                 manager.bombs += 30
-                if (manager.bombs > manager.bombCapacity) {
-                  manager.bombs = manager.bombCapacity
-                }
               } else if (this.prize >= 63) {
                 newObserveObject.fightMes[
                   newObserveObject.fightMesCurrent
@@ -31711,9 +31702,6 @@ for (var i = 0; i < 11; i++) {
                   newObserveObject.fightMesCurrent
                 ].set_text("You find 60 bombs in the treasure chest.")
                 manager.bombs += 60
-                if (manager.bombs > manager.bombCapacity) {
-                  manager.bombs = manager.bombCapacity
-                }
               } else if (this.prize >= 63) {
                 newObserveObject.fightMes[
                   newObserveObject.fightMesCurrent
@@ -31782,9 +31770,6 @@ for (var i = 0; i < 11; i++) {
                   newObserveObject.fightMesCurrent
                 ].set_text("You find 50 bombs in the treasure chest.")
                 manager.bombs += 50
-                if (manager.bombs > manager.bombCapacity) {
-                  manager.bombs = manager.bombCapacity
-                }
               } else if (this.prize >= 63) {
                 newObserveObject.fightMes[
                   newObserveObject.fightMesCurrent
@@ -31944,9 +31929,6 @@ for (var i = 0; i < 11; i++) {
                   newObserveObject.fightMesCurrent
                 ].set_text("You find 88 bombs in the treasure chest.")
                 manager.bombs += 88
-                if (manager.bombs > manager.bombCapacity) {
-                  manager.bombs = manager.bombCapacity
-                }
               } else if (this.prize >= 63) {
                 newObserveObject.fightMes[
                   newObserveObject.fightMesCurrent
@@ -32015,9 +31997,6 @@ for (var i = 0; i < 11; i++) {
                   newObserveObject.fightMesCurrent
                 ].set_text("You find 15 bombs in the treasure chest.")
                 manager.bombs += 15
-                if (manager.bombs > manager.bombCapacity) {
-                  manager.bombs = manager.bombCapacity
-                }
               } else if (this.prize >= 63) {
                 newObserveObject.fightMes[
                   newObserveObject.fightMesCurrent
@@ -32087,9 +32066,6 @@ for (var i = 0; i < 11; i++) {
                   newObserveObject.fightMesCurrent
                 ].set_text("You find 10 bombs in the treasure chest.")
                 manager.bombs += 10
-                if (manager.bombs > manager.bombCapacity) {
-                  manager.bombs = manager.bombCapacity
-                }
               } else if (this.prize >= 63) {
                 newObserveObject.fightMes[
                   newObserveObject.fightMesCurrent
@@ -32155,9 +32131,6 @@ for (var i = 0; i < 11; i++) {
                   newObserveObject.fightMesCurrent
                 ].set_text("You find 5 bombs in the treasure chest.")
                 manager.bombs += 5
-                if (manager.bombs > manager.bombCapacity) {
-                  manager.bombs = manager.bombCapacity
-                }
               } else if (this.prize >= 63) {
                 newObserveObject.fightMes[
                   newObserveObject.fightMesCurrent
@@ -34357,9 +34330,6 @@ for (var i = 0; i < 11; i++) {
                   " bombs in the chest.",
               )
               manager.bombs += randomNumberGenerator
-              if (manager.bombs > manager.bombCapacity) {
-                manager.bombs = manager.bombCapacity
-              }
             } else if (randomNumberGenerator < 5) {
               manager.mess.set_text(
                 "You found a diamond in the chest.",
@@ -35321,9 +35291,6 @@ for (var i = 0; i < 11; i++) {
               } else {
                 manager.bombs += 10
               }
-              if (manager.bombs > manager.bombCapacity) {
-                manager.bombs = manager.bombCapacity
-              }
               manager.keys = manager.keys - 1
               manager.tBoxSound.play()
             } else if (manager.north == 6 && manager.east == 13) {
@@ -35520,9 +35487,6 @@ for (var i = 0; i < 11; i++) {
               this.enterFunc()
               newItem("15_19 - item:gold#300")
               newItem("15_19 - item:bombs#10")
-              if (manager.bombs > manager.bombCapacity) {
-                manager.bombs = manager.bombCapacity
-              }
               newItem("15_19 - food:banana#5")
               manager.tBox[20].set_visible(false)
               manager.tBoxUsed[20] = 1
@@ -35533,9 +35497,6 @@ for (var i = 0; i < 11; i++) {
               V.tBoxMes()
               this.enterFunc()
               newItem("11_21 - item:bombs#15")
-              if (manager.bombs > manager.bombCapacity) {
-                manager.bombs = manager.bombCapacity
-              }
               manager.tBox[34].set_visible(false)
               manager.tBoxUsed[34] = 1
               manager.keys = manager.keys - 1
@@ -35546,9 +35507,6 @@ for (var i = 0; i < 11; i++) {
               this.enterFunc()
               // if (manager.quest[Enum.Quest.bBomb] > 3) {
               newItem("14_15 - item:bombs#5")
-              if (manager.bombs > manager.bombCapacity) {
-                manager.bombs = manager.bombCapacity
-              }
               // }
               newItem("14_15 - food:orange#12")
               manager.tBox[21].set_visible(false)
@@ -35587,11 +35545,8 @@ for (var i = 0; i < 11; i++) {
               this.enterFunc()
               manager.tBox[23].set_visible(false)
               manager.tBoxUsed[23] = 1
-              newItem("15_21 - item:gold")
+              newItem("15_21 - item:gold#manager.fame * 5")
               newItem("15_21 - item:bombs#5")
-              if (manager.bombs > manager.bombCapacity) {
-                manager.bombs = manager.bombCapacity
-              }
               manager.hitMax()
               manager.keys = manager.keys - 1
               manager.tBoxSound.play()
@@ -35660,9 +35615,6 @@ for (var i = 0; i < 11; i++) {
               manager.tBoxUsed[9] = 1
               manager.tBox[9].set_visible(false)
               newItem("11_17 - item:bombs#8")
-              if (manager.bombs > manager.bombCapacity) {
-                manager.bombs = manager.bombCapacity
-              }
               newItem("11_17 - item:gold")
               manager.keys = manager.keys - 1
               manager.tBoxSound.play()
@@ -35690,11 +35642,8 @@ for (var i = 0; i < 11; i++) {
               manager.tBoxUsed[7] = 1
               manager.tBox[7].set_visible(false)
               newItem("14_21 - item:bombs#12")
-              if (manager.bombs > manager.bombCapacity) {
-                manager.bombs = manager.bombCapacity
-              }
-              newItem("14_21 - food:apple")
-              newItem("14_21 - item:gold")
+              newItem("14_21 - food:apple#30")
+              newItem("14_21 - item:gold#100")
               manager.hitMax()
               manager.keys = manager.keys - 1
               manager.tBoxSound.play()
@@ -57230,9 +57179,6 @@ for (var i = 0; i < 11; i++) {
           manager.tBoxUsed[57] = 1
           manager.emeralds = manager.emeralds - 1
           newItem("8_18 - item:bombs#25")
-          if (manager.bombs > manager.bombCapacity) {
-            manager.bombs = manager.bombCapacity
-          }
           newItem("8_18 - food:steak")
           // // if (manager.food[Enum.Food.steak] > 99) {
           // //   manager.food[Enum.Food.steak] = 99
