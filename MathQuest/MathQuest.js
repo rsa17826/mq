@@ -27,6 +27,7 @@
 // TODO 21 17 guard is sticky
 // TODO 24 13 south 0 gets larger when opening the bridge
 // TODO 14 13 east exit to large
+// TODO beating boss before high quest gtree will skip some items?
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
@@ -57789,7 +57790,7 @@ for (var i = 0; i < 11; i++) {
           manager.tBoxUsed[25] = 1
           manager.tBoxBlue.set_visible(false)
           newItem("15_18 - item:bombs#50")
-          newItem("15_18 - food:chocolate")
+          newItem("15_18 - food:chocolate#20")
           manager.messFin = true
           manager.removeMBox = true
           manager.tBoxSound.play()
