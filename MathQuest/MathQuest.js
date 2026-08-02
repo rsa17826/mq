@@ -20,6 +20,7 @@
 // TODO make overlay show colors for ool checks
 // TODO 7_12 not accessible without quest canteen - warp thinks you can get to south0
 // TODO make itemtracker auto revompute without closing and reopening section when check checked
+// TODO after ap connects a dc shouldn't try ws
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
@@ -113087,6 +113088,13 @@ for (var i = 0; i < 11; i++) {
                   if (matchedExitIndex === -1) {
                     apError(
                       "can't find where player left the screen at!",
+                    )
+                  } else {
+                    window.playerCheckedEntrances.add(
+                      String(erOrigin.north) +
+                        String(erOrigin.east) +
+                        String(direction) +
+                        String(matchedExitIndex),
                     )
                   }
                   if (matchedExitIndex !== -1) {

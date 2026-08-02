@@ -36,4 +36,6 @@ declare global {
   var apLog: (...a) => void
   var apWarn: (...a) => void
   var apError: (...a) => void
+
+  var playerCheckedEntrances: Set<String>
 }
