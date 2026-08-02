@@ -21784,7 +21784,10 @@ for (var i = 0; i < 11; i++) {
             manager.goldDisplay.setTextFormat(manager.goldFormat)
           }
           if (prop == "bombs" && !this.k && manager.bombDisplay) {
-            manager.bombDisplay.set_text(f.string(manager.bombs))
+            if (value > manager.bombCapacity) {
+              value = manager.bombCapacity
+            }
+            manager.bombDisplay.set_text(f.string(value))
             manager.bombDisplay.setTextFormat(manager.shopMesFormat)
           }
           if (
