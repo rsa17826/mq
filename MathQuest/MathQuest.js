@@ -19,6 +19,7 @@
 // TODO track last entrance and use that for start of bfs instead of any location in the room
 // TODO make overlay show colors for ool checks
 // TODO 7_12 not accessible without quest canteen - warp thinks you can get to south0
+// TODO make itemtracker auto revompute without closing and reopening section when check checked
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
