@@ -536,6 +536,10 @@ function apSendSayFromInput() {
       }
     }
   }
+  if (text.startsWith("/")){
+    apWarn(`[WARNING] ${cmd} is not a valid command!`)
+    return
+  }
   if (!window.ap || !window.ap.isAuthenticated) {
     apWarn("Cannot send Say; not connected/authenticated yet.")
     return
