@@ -16,7 +16,8 @@
 // TODO sunflower seller sticks
 // TODO tracker tracking area should track closest
 // TODO make adding &seed go before #
-// TODO track last
+// TODO track last entrance and use that for start of bfs instead of any location in the room
+// TODO make overlay show colors for ool checks
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
