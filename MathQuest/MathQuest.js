@@ -14,6 +14,7 @@
 // TODO make map not strip # anymore
 // TODO fix arrow turns red when recalcing if targeting an entrance
 // TODO sunflower seller sticks
+// TODO tracker tracking area should track closest area bfs
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
