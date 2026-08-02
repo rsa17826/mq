@@ -129,8 +129,8 @@ function helpImStuck() {
   manager.mp = 0
   manager.char[0].set_x(335)
   manager.char[0].set_y(400)
-  manager.north = 20
-  manager.east = 20
+  manager.realnorth = 20
+  manager.realeast = 20
   test.newScreen()
 }
 
@@ -21693,10 +21693,10 @@ for (var i = 0; i < 11; i++) {
           ) {
             return true
           }
-          if (target[prop] === undefined || target[prop] > value) {
-            target[prop] = value
-            return true
-          }
+          // if (target[prop] === undefined || target[prop] > value) {
+          //   target[prop] = value
+          //   return true
+          // }
           if (target[prop] == value) {
             return true
           }
@@ -35362,7 +35362,7 @@ for (var i = 0; i < 11; i++) {
               this.enterFunc()
               manager.tBox[46].set_visible(false)
               manager.tBoxUsed[46] = 1
-              newItem("15_24 - item:gold")
+              newItem("15_24 - item:gold#correct")
               manager.keys = manager.keys - 1
               manager.tBoxSound.play()
             } else if (manager.north == 10 && manager.east == 9) {
@@ -45812,21 +45812,21 @@ for (var i = 0; i < 11; i++) {
           manager.char[0].set_y(400)
           this.charState = 0
           if (manager.homePoint == 1) {
-            manager.north = 20
-            manager.east = 20
+            manager.realnorth = 20
+            manager.realeast = 20
           }
           if (manager.homePoint == 2) {
-            manager.north = 13
-            manager.east = 18
+            manager.realnorth = 13
+            manager.realeast = 18
           }
           if (manager.homePoint == 3) {
-            manager.north = 12
-            manager.east = 9
+            manager.realnorth = 12
+            manager.realeast = 9
             manager.char[0].set_x(400)
           }
           if (manager.homePoint == 4) {
-            manager.north = 20
-            manager.east = 15
+            manager.realnorth = 20
+            manager.realeast = 15
             manager.char[0].set_x(400)
           }
           manager.gReset = true
@@ -57686,8 +57686,8 @@ for (var i = 0; i < 11; i++) {
           )
           manager.messFin = true
           manager.tBoxUsed[49] = 1
-          newItem("16_24 - food:gummyBears#5")
-          newItem("16_24 - item:gold")
+          newItem("16_24 - food:gummyBears#12")
+          newItem("16_24 - item:gold#1000")
           manager.removeMBox = true
           manager.tBoxBlue.set_visible(false)
           manager.tBoxSound.play()
@@ -57701,8 +57701,8 @@ for (var i = 0; i < 11; i++) {
           )
           manager.messFin = true
           manager.tBoxUsed[48] = 1
-          newItem("16_25 - food:steak")
-          newItem("16_25 - item:diamonds")
+          newItem("16_25 - food:steak#12")
+          newItem("16_25 - item:diamonds#5")
           manager.removeMBox = true
           manager.tBoxBlue.set_visible(false)
           manager.tBoxSound.play()

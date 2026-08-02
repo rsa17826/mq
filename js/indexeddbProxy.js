@@ -175,10 +175,6 @@
           electLeader()
           break
 
-        case "write-request":
-          if (isLeader) queueWrite(msg.key, msg.value)
-          break
-
         case "external-update":
           applyExternal(msg.items)
           break
@@ -286,17 +282,14 @@
       return target
     }
     function queueWrite(key, value) {
-      if (!isLeader) {
-        channel.postMessage({ type: "write-request", key, value })
-        return
-      }
-
       writeQueue.set(key, { id: key, val: value })
       scheduleFlush()
     }
 
     async function flush() {
-      if (flushing || !isLeader || !writeQueue.size) {
+      if (flushing) return // an in-progress flush's finally{} will reschedule and resolve
+
+      if (!writeQueue.size) {
         resolvePending()
         return
       }
