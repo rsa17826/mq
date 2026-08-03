@@ -2435,12 +2435,14 @@ manager.correct - manager.wrong > 800 = halo
   {
     "room": {"north": 19, "east": 16},
     "requires": [
-      [],
+      [
+        "quest:access.3",
+        "flag:allWeaknesses",
+      ],
     ],
     "receive": [
       "loot:medallions",
     ],
-    "info": "add reqs later",
   },
   {
     "room": {"north": 18, "east": 20},

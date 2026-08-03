@@ -838,8 +838,7 @@ def main():
         icon_src = os.path.join(PROGRESSION_ICON_PATH, icon_filename).replace("\\", "/")
         # match the exact key format used when AP_LOCATION_IDS was generated:
         # f"{north}_{east} - {itemInfo.split('#')[0]}"
-        base_item_name = item.split("#")[0]
-        location_key = f"{room_key} - {base_item_name}".replace('"', "&quot;")
+        location_key = f"{room_key} - {item}".replace('"', "&quot;")
         icon_html += f'\n            <img src="{icon_src}" class="progression-icon" alt="{item}" data-location="{location_key}">'
 
 
