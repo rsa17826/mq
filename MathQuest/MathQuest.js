@@ -29,7 +29,8 @@
 // TODO 24 13 south 0 gets larger when opening the bridge
 // TODO 14 13 east exit to large
 // TODO beating boss before high quest gtree will skip some items?
-// TODO 11 22/23 add one thing
+// TODO 11 22/23 add one thing to bottom, can go below fense
+// TODO 13 20 add one to each side of exit south0
 
 window.oldArea = null
 window.remainingBattleTriggers = 0

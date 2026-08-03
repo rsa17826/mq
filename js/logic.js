@@ -65,7 +65,6 @@ class Logic {
     if (group.length === 0) return "true"
     for (const rawTok of group) {
       if (Logic.isEntranceToken(rawTok)) {
-        return "true"
         const parsed = Logic.parseEntranceToken(rawTok)
         if (!parsed || !roomGraph) return "unknown"
         if (!roomGraph.reachableExits) return "unknown"
@@ -97,7 +96,10 @@ class Logic {
         if (Logic.roomsWithMobsCount < threshold) return "false"
         continue
       }
-      if (!have.has(Logic.baseTok(rawTok))) return "false"
+      if (rawTok == "permit:bomb#2") {
+        if (!(have.has("permit:bomb") && have.has("permit:bomb@2")))
+          return "false"
+      } else if (!have.has(Logic.baseTok(rawTok))) return "false"
     }
     return "true"
   }

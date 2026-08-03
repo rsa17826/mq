@@ -108,6 +108,40 @@ class PathFinding {
     selectedPathId = null // tracking supersedes any manual click-selection
     PathFinding.updateTrackedPath()
   }
+
+  // --- Room/entrance token encoding ---
+  //
+  // Tracking a specific room (optionally one specific entrance within it,
+  // e.g. from clicking an .exit-square) has to round-trip through
+  // localStorage.trackedToken as a plain string, same as quest/item tokens.
+  // This used to be done with `roomKey + " - " + entrance`, which silently
+  // stringified the {dir, idx} object to "[object Object]" and lost the
+  // entrance on every reload. Room tokens now get an unambiguous "room:"
+  // prefix, so decoding no longer needs a fragile regex guess at whether a
+  // token "looks like" a room key.
+  /**
+   * @param {string} roomKey
+   * @param {{dir:string, idx:number|string}|undefined} [entrance]
+   * @returns {string}
+   */
+  static encodeRoomToken(roomKey, entrance) {
+    return entrance ?
+        `room:${roomKey}:${entrance.dir}:${entrance.idx}`
+      : `room:${roomKey}`
+  }
+
+  /**
+   * @param {string} token
+   * @returns {{room:string, entrance:({dir:string, idx:number}|undefined)}|null}
+   */
+  static decodeRoomToken(token) {
+    if (!token || !token.startsWith("room:")) return null
+    const [, roomKey, dir, idx] = token.split(":")
+    return {
+      room: roomKey,
+      entrance: dir ? { dir, idx: Number(idx) } : undefined,
+    }
+  }
   // --- Entrance-rando "only walk through checked entrances" support ---
   //
   // window.playerCheckedEntrances is a Set of strings like "20_20_south_0"
@@ -155,10 +189,15 @@ class PathFinding {
    * @param {{ has: (arg0: any) => any; }} have
    */
   static hasToken(tok, have) {
+    if (tok == "permit:bomb#2")
+      return (
+        Logic.haveDerived.has("permit:bomb") &&
+        Logic.haveDerived.has("permit:bomb@2")
+      )
     if (tok.startsWith("quest:")) {
       return QuestState.satisfied(tok)
     }
-    return have.has(tok)
+    return have.has(Logic.baseTok(tok))
   }
 
   // reqGroups: array of AND-groups; satisfied if ANY group's tokens are ALL
@@ -178,7 +217,7 @@ class PathFinding {
             `${room}|${s[0]}|${s[1]}`,
           )
         }
-        return this.hasToken(Logic.baseTok(tok), have)
+        return this.hasToken(tok, have)
       }),
     )
   }
@@ -189,15 +228,6 @@ class PathFinding {
    */
   static exitKey(side, idx) {
     return `${side}::${idx}`
-  }
-  /**
-   * @param {any} roomKey
-   * @param {{ dir: any; idx: any; }|undefined} entrance
-   */
-  static selectionId(roomKey, entrance) {
-    return entrance ?
-        `${roomKey}::${entrance.dir}::${entrance.idx}`
-      : roomKey
   }
   /**
    * @param {any} n
@@ -629,15 +659,6 @@ class PathFinding {
     return []
   }
 
-  /**
-   * @param {string} tok
-   */
-  static tokenHave(tok) {
-    tok = Logic.baseTok(tok)
-    if (tok.startsWith("quest:")) return QuestState.satisfied(tok)
-    return Logic.haveDerived.has(tok)
-  }
-
   // Whether one specific (room, token) location has actually been checked --
   // NOT whether the player happens to hold that item type already. The same
   // receive token can be granted by several different physical locations
@@ -856,23 +877,20 @@ class PathFinding {
   // Safe to call anytime; it's a no-op unless something is being tracked.
   static updateTrackedPath() {
     if (!this.trackedToken) return
-    if (/^[\d._]+ - /.test(this.trackedToken)) {
-      var tt = this.trackedToken.split(" - ")
-      this.showPathTo(
-        tt[0],
-        tt[1] !== "undefined" ? tt[1] : undefined,
-      )
-    } else {
-      const rawEntry = this.findTokenEntry(this.trackedToken)
-      this.applyLootTrackingFor(rawEntry)
-      if (!rawEntry) {
-        this.clearPathRoute()
-        return
-      }
-      const target = this.resolveAreaRedirect(rawEntry)
-      const entranceTok = this.entryEntranceToken(target)
-      this.showPathTo(target.room, entranceTok || undefined)
+    const roomTok = PathFinding.decodeRoomToken(this.trackedToken)
+    if (roomTok) {
+      this.showPathTo(roomTok.room, roomTok.entrance)
+      return
     }
+    const rawEntry = this.findTokenEntry(this.trackedToken)
+    this.applyLootTrackingFor(rawEntry)
+    if (!rawEntry) {
+      this.clearPathRoute()
+      return
+    }
+    const target = this.resolveAreaRedirect(rawEntry)
+    const entranceTok = this.entryEntranceToken(target)
+    this.showPathTo(target.room, entranceTok || undefined)
   }
 
   // Sets (or clears) the HUD loot readout to whatever's still outstanding
@@ -1387,17 +1405,17 @@ let selectedPathId = null // identifies whatever room/entrance is currently clic
  * @param {{ dir: any; idx: any; } | undefined} [entrance]
  */
 function selectPathTarget(roomKey, entrance) {
-  const id = PathFinding.selectionId(roomKey, entrance)
+  const id = PathFinding.encodeRoomToken(roomKey, entrance)
   if (selectedPathId === id) {
     selectedPathId = null
     PathFinding.clearPathRoute()
     return
   }
   selectedPathId = id
-  localStorage.trackedToken = PathFinding.trackedToken =
-    roomKey + " - " + entrance
-
-  PathFinding.showPathTo(roomKey, entrance)
+  // trackToken already persists to localStorage and re-resolves/redraws the
+  // path (via updateTrackedPath), so there's no separate showPathTo call
+  // needed here anymore.
+  PathFinding.trackToken(id)
 }
 
 class WorldMap {
@@ -1602,15 +1620,20 @@ class WorldMap {
       }
       if (firstLoad) {
         firstLoad = false
-        if (/^[\d._]+ - /.test(PathFinding.trackedToken)) {
-          var tt = localStorage.trackedToken.split(" - ")
-          selectPathTarget(
-            tt[0],
-            tt[1] !== "undefined" ? tt[1] : undefined,
-          )
-        } else PathFinding.trackToken(localStorage.trackedToken)
+        // Both branches below call trackToken/selectPathTarget, which
+        // already persist + re-resolve + redraw the path themselves, so
+        // there's no need for an extra updateTrackedPath() call after this.
+        const roomTok = PathFinding.decodeRoomToken(
+          localStorage.trackedToken || "",
+        )
+        if (roomTok) {
+          selectPathTarget(roomTok.room, roomTok.entrance)
+        } else {
+          PathFinding.trackToken(localStorage.trackedToken)
+        }
+      } else {
+        PathFinding.updateTrackedPath()
       }
-      PathFinding.updateTrackedPath()
     })
     window.addEventListener("resize", WorldMap.resizeCanvas)
 
