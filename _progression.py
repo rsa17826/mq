@@ -2025,7 +2025,6 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 14, "east": 22},
     "requires": [
       [
-        "quest:rings.1",
         "item:ring of gold",
       ],
     ],
@@ -2051,7 +2050,6 @@ manager.correct - manager.wrong > 800 = halo
       [
         "item:ring of gold",
         "item:ring of health",
-        "quest:rings.1",
       ],
     ],
     "receive": [
@@ -2079,7 +2077,6 @@ manager.correct - manager.wrong > 800 = halo
         "item:ring of gold",
         "item:ring of health",
         "item:ring of evasion",
-        "quest:rings.1",
       ]
     ],
     "receive": [
@@ -2256,7 +2253,6 @@ manager.correct - manager.wrong > 800 = halo
         "item:ring of health",
         "item:ring of evasion",
         "item:ring of poison",
-        "quest:rings.6",
       ]
     ],
     "receive": [
@@ -2328,7 +2324,11 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 14, "east": 22},
     "requires": [
       [
-        "quest:rings.9",
+        "item:ring of gold",
+        "item:ring of health",
+        "item:ring of evasion",
+        "item:ring of poison",
+        "item:ring of magic",
       ],
     ],
     "receive": [
@@ -4487,7 +4487,12 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 14, "east": 22},
     "requires": [
       [
-        "quest:rings.14",
+        "item:ring of gold",
+        "item:ring of health",
+        "item:ring of evasion",
+        "item:ring of poison",
+        "item:ring of magic",
+        "item:ring of skill",
       ],
     ],
     "receive": [
@@ -5943,7 +5948,9 @@ manager.correct - manager.wrong > 800 = halo
         "quest:rings.11",
       ],
     ],
-    "receive": ["item:ring of skill"],
+    "receive": [
+      "item:ring of skill",
+    ],
   },
   # {
   #   "room": {"north": "?", "east": "?",},

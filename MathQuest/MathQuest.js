@@ -61115,25 +61115,25 @@ for (var i = 0; i < 11; i++) {
           manager.messFin = true
         }
         if (manager.north == 14 && manager.east == 22) {
-          if (checker["ring1"] == 0) {
+          if (manager.ring1 == 0) {
             manager.mess.set_text(
               "Gorlus: I've hidden the 8 Rings of Fate\nthroughout the land. The first ring,\nThe Ring of Gold is buried deep in that lake over\nthere.",
             )
             // newItem(14,22,'Enum.Quest.bBomb3',null)
             manager.quest[Enum.Quest.rings] = 1
-          } else if (checker["ring2"] == 0) {
+          } else if (manager.ring2 == 0) {
             manager.mess.set_text(
               "Gorlus: The second ring I hid was the Ring of\nHealth. I hid it in Creepers' Cavern.\nFind a room near the entrance that\ncontains only two skeletons.",
             )
             // newItem(14,22,'Enum.Quest.bBomb3',null)
             manager.quest[Enum.Quest.rings] = 2
-          } else if (checker["ring3"] == 0) {
+          } else if (manager.ring3 == 0) {
             manager.mess.set_text(
               "Gorlus: The Ring of Evasion is carefully\nhidden to the west of Castle Muldivadd.\nYou'll need to bring some bombs with you.\nLook for a statue in the woods.",
             )
             // newItem(14,22,'Enum.Quest.bBomb3',3)
             manager.quest[Enum.Quest.rings] = 3
-          } else if (checker["ring4"] == 0) {
+          } else if (manager.ring4 == 0) {
             manager.mess.set_text(
               "Gorlus: The Ring of Poison can be found in\nthe Division Desert. For more information about\nthat, find my friend Cogul. He's somewhere\nin the desert.",
             )
@@ -61141,19 +61141,19 @@ for (var i = 0; i < 11; i++) {
               newQuest("14_22", "rings", 4, false)
               // manager.quest[Enum.Quest.rings] = 4
             }
-          } else if (checker["ring5"] == 0) {
+          } else if (manager.ring5 == 0) {
             manager.mess.set_text(
               "Gorlus: You're doing well!\nThe 5th ring, the Ring of Magic, is\nsomewhere in the Multiple Mountains.",
             )
             newQuest("14_22", "rings", 7, false)
             // manager.quest[Enum.Quest.rings] = 7
-          } else if (checker["ring6"] == 0) {
+          } else if (manager.ring6 == 0) {
             manager.mess.set_text(
               "Gorlus: The Ring of Skill is the 6th ring.\nIt will reduce how many skill points you use\nwhen using skills (by half). Speak with Lusic\nin the Variable Volcano to learn more.",
             )
             newQuest("14_22", "rings", 10, false)
             // manager.quest[Enum.Quest.rings] = 10
-          } else if (checker["ring7"] == 0) {
+          } else if (manager.ring7 == 0) {
             manager.mess.set_text(
               "Gorlus: The final ring, the Ring of Death, is\nlocated in a secret tomb just south of Grimsbane.\nIt's known as The Necropolis of Illusion.\nMeet me in the cemetery.",
             )

@@ -506,7 +506,7 @@ function apSendSayFromInput() {
       },
     },
     backupSaveData: {
-      alias: ["downloadSaveData"],
+      alias: ["downloadSaveData", "exportSaveData"],
       desc: "export save data to a local file",
       args: [],
       func() {
