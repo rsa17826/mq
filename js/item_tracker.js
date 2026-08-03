@@ -20,21 +20,10 @@ class ItemTracker {
   static REAL_ITEM_NAMES = new Set()
   /**
    * @param {string} tok
-   * @returns {string}
-   */
-  static baseTok(tok) {
-    return String(tok)//.split("#")[0]
-  }
-
-  /**
-   * @param {string} tok
    * @returns {boolean}
    */
   static isLootToken(tok) {
-    return (
-      this.baseTok(tok).startsWith("loot:") &&
-      this.baseTok(tok) != "loot:key"
-    )
+    return tok.startsWith("loot:")
   }
 
   /**
@@ -68,7 +57,6 @@ class ItemTracker {
    */
   static primaryTrackToken(entry) {
     const questTok = (entry.receive || [])
-      .map((t) => this.baseTok(t))
       .find((t) => t.startsWith("quest:"))
     if (questTok) {
       const m = questTok.match(/^quest:(.+)\.\d+$/)
@@ -76,9 +64,9 @@ class ItemTracker {
     }
     const realTok = (entry.receive || [])
       // TODO - replace with just t when ap world fixed!!!!!
-      .find((t) => this.REAL_ITEM_NAMES.has(this.baseTok(t)))
+      .find((t) => this.REAL_ITEM_NAMES.has(t.split("#")[0]))
     if (realTok) return realTok
-    return this.baseTok((entry.receive || [])[0] || "")
+    return entry.receive?.[0] || ""
   }
 
   static entryLootTokens(entry) {
@@ -86,7 +74,7 @@ class ItemTracker {
     ;(entry.requires || []).forEach((group) =>
       group.forEach((rawTok) => {
         if (!this.isLootToken(rawTok)) return
-        const m = this.baseTok(rawTok).match(
+        const m = rawTok.match(
           /^loot:(?!key)([^#]+)#?(\d*)$/,
         )
         if (!m) return
@@ -145,15 +133,14 @@ class ItemTracker {
   static groupKeyFor(entry) {
     const hasFlag =
       (entry.requires || []).some((group) =>
-        group.some((tok) => this.baseTok(tok).startsWith("flag:")),
+        group.some((tok) => tok.startsWith("flag:")),
       ) ||
       (entry.receive || []).every((tok) =>
-        this.baseTok(tok).startsWith("flag:"),
+        tok.startsWith("flag:"),
       )
     if (hasFlag) return { key: "flags", label: "Flags" }
 
     const questTok = (entry.receive || [])
-      .map((t) => this.baseTok(t))
       .find((t) => t.startsWith("quest:"))
     if (questTok) {
       const m = questTok.match(/^quest:([^.]+)/)
@@ -200,7 +187,7 @@ class ItemTracker {
   static isInLogic(entry) {
     if (!entry) return true
     return (
-      PathFinding.reqsSatisfied(entry.requires, Logic.haveDerived) &&
+      PathFinding.reqsSatisfied(entry.requires, Logic.haveDerived, entry.room) &&
       PathFinding.findPathTo(entry.room)
     )
   }

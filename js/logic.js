@@ -47,7 +47,7 @@ class Logic {
    * @returns
    */
   static baseTok(tok) {
-    return tok//.split("#")[0]
+    return tok.split("#")[0].split(" - ")[0]
   }
 
   // Evaluate one AND-group given a room context (for resolving entrance.*
@@ -64,9 +64,9 @@ class Logic {
   static evalGroup(group, have, roomKey, roomGraph) {
     if (group.length === 0) return "true"
     for (const rawTok of group) {
-      const tok = Logic.baseTok(rawTok)
-      if (Logic.isEntranceToken(tok)) {
-        const parsed = Logic.parseEntranceToken(tok)
+      if (Logic.isEntranceToken(rawTok)) {
+        return "true"
+        const parsed = Logic.parseEntranceToken(rawTok)
         if (!parsed || !roomGraph) return "unknown"
         if (!roomGraph.reachableExits) return "unknown"
         const known =
@@ -87,17 +87,17 @@ class Logic {
           return "false"
         continue
       }
-      if (tok.startsWith("quest:")) {
-        if (!QuestState.satisfied(tok)) return "false"
+      if (rawTok.startsWith("quest:")) {
+        if (!QuestState.satisfied(rawTok)) return "false"
         continue
       }
-      if (tok === "flag:room with mobs") {
+      if (Logic.baseTok(rawTok) === "flag:room with mobs") {
         const m = rawTok.match(/#(\d+)$/)
         const threshold = m ? Number(m[1]) : 1
         if (Logic.roomsWithMobsCount < threshold) return "false"
         continue
       }
-      if (!have.has(tok)) return "false"
+      if (!have.has(Logic.baseTok(rawTok))) return "false"
     }
     return "true"
   }
@@ -109,7 +109,7 @@ class Logic {
   /**
    *
    * @param {Entry} entry
-   * @param {string} have
+   * @param {Set<string>} have
    * @param {RoomGraphReachability} roomGraph
    * @returns
    */
@@ -185,18 +185,17 @@ class Logic {
     PROG_DATA.forEach((entry, i) => {
       const r = status[i]
       for (const rawTok of entry.receive) {
-        const tok = Logic.baseTok(rawTok)
-        const key = `${entry.room} - ${tok}`
+        const key = `${entry.room} - ${rawTok}`
         const els = Logic.iconsByLocation[key]
         if (!els) continue
-        const isQuest = tok.startsWith("quest:")
-        const questDone = isQuest && QuestState.satisfied(tok)
+        const isQuest = rawTok.startsWith("quest:")
+        const questDone = isQuest && QuestState.satisfied(rawTok)
         const alreadyChecked =
           els.some((el) => el.classList.contains("checked")) ||
           questDone
 
         if (r === "true" && !alreadyChecked) {
-          if (ItemTracker.REAL_ITEM_NAMES.has(tok))
+          if (ItemTracker.REAL_ITEM_NAMES.has(Logic.baseTok(rawTok)))
             Logic.roomsWithAvailableItems.add(entry.room)
           if (isQuest) Logic.roomsWithAvailableQuests.add(entry.room)
         }

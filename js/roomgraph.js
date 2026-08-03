@@ -97,7 +97,7 @@ class RoomGraph {
     if (!reqGroups || reqGroups.length === 0) return true
     return reqGroups.some((group) =>
       group.every((rawTok) => {
-        const tok = rawTok//.split("#")[0]
+        const tok = rawTok //.split("#")[0]
         // TODO !!! use pathfinding
         if (tok.startsWith("entrance.")) return true
         if (tok.startsWith("quest:")) return QuestState.satisfied(tok)
@@ -257,9 +257,11 @@ class RoomGraph {
       ensureCounts(roomKey, room)
       reachableExits.add(node)
       if (side !== "root") {
-        roomExitCounts[roomKey].reachable++
-        if (RoomGraph.areaPowerSatisfied(roomKey, haveReal))
+        // TODO check if correct
+        if (RoomGraph.areaPowerSatisfied(roomKey, haveReal)) {
+          roomExitCounts[roomKey].reachable++
           markExitReachable(roomKey, "root", 0)
+        }
       }
       queue.push({ room: roomKey, side, idx })
     }

@@ -95,12 +95,6 @@ class PathFinding {
     east: [0, 1],
     west: [0, -1],
   }
-  /**
-   * @param {any} tok
-   */
-  static baseTok(tok) {
-    return String(tok)//.split("#")[0]
-  }
 
   // --- Entrance-rando "only walk through checked entrances" support ---
   //
@@ -160,13 +154,20 @@ class PathFinding {
   /**
    * @param {any[]} reqGroups
    * @param {any} have
+   * @param {string} room
    */
-  static reqsSatisfied(reqGroups, have) {
+  static reqsSatisfied(reqGroups, have, room) {
     if (!reqGroups || !reqGroups.length) return true
     return reqGroups.some((/** @type {any[]} */ group) =>
-      group.every((/** @type {any} */ tok) =>
-        this.hasToken(this.baseTok(tok), have),
-      ),
+      group.every((/** @type {any} */ tok) => {
+        if (tok.startsWith("entrance.")) {
+          var s = tok.split(".")[1].match(/\D+|\d+$/g)
+          return Logic.roomGraph.reachableExits.has(
+            `${room}|${s[0]}|${s[1]}`,
+          )
+        }
+        return this.hasToken(Logic.baseTok(tok), have)
+      }),
     )
   }
 
@@ -620,7 +621,7 @@ class PathFinding {
    * @param {string} tok
    */
   static tokenHave(tok) {
-    tok = this.baseTok(tok)
+    tok = Logic.baseTok(tok)
     if (tok.startsWith("quest:")) return QuestState.satisfied(tok)
     return Logic.haveDerived.has(tok)
   }
@@ -637,7 +638,7 @@ class PathFinding {
    * @param {string} token
    */
   static locationChecked(room, token) {
-    token = this.baseTok(token)
+    token = Logic.baseTok(token)
     if (token.startsWith("quest:")) return QuestState.satisfied(token)
     const key = `${room} - ${token}`
     const els = Logic.iconsByLocation[key] || []
@@ -653,8 +654,7 @@ class PathFinding {
   static entryAreaToken(entry) {
     for (const group of entry.requires || []) {
       for (const rawTok of group) {
-        const tok = this.baseTok(rawTok)
-        if (tok.startsWith("area:")) return tok
+        if (rawTok.startsWith("area:")) return rawTok
       }
     }
     return null
@@ -672,8 +672,7 @@ class PathFinding {
       (/** @type {{ room: string; receive: any; }} */ e) =>
         e.room !== "-1_-1" &&
         (e.receive || []).some(
-          (/** @type {any} */ rawTok) =>
-            this.baseTok(rawTok) === areaTok,
+          (/** @type {any} */ rawTok) => rawTok === areaTok,
         ),
     )
     if (!candidates.length) return entry
@@ -731,8 +730,7 @@ class PathFinding {
   static entryEntranceToken(entry) {
     for (const group of entry?.requires || []) {
       for (const rawTok of group) {
-        const tok = this.baseTok(rawTok)
-        const m = tok.match(
+        const m = rawTok.match(
           /^entrance\.(north|south|east|west)(\d+)$/,
         )
         if (m) return { dir: m[1], idx: Number(m[2]) }
@@ -1244,6 +1242,7 @@ class PathFinding {
   // with the lowest N, and returns the room it's granted in.
   /**
    * @param {any} questName
+   * @returns {{ room:any, tok:string, n:number }|null}
    */
   static findNextQuestPoint(questName) {
     const prefix = `quest:${questName}.`
@@ -1256,14 +1255,13 @@ class PathFinding {
       (/** @type {{ receive: any; room: any; }} */ entry) => {
         ;(entry.receive || []).forEach(
           (/** @type {any} */ rawTok) => {
-            const tok = this.baseTok(rawTok)
-            if (!tok.startsWith(prefix)) return
-            const n = Number(tok.slice(prefix.length))
+            if (!rawTok.startsWith(prefix)) return
+            const n = Number(rawTok.slice(prefix.length))
             if (Number.isNaN(n)) return
-            const done = QuestState.satisfied(tok)
+            const done = QuestState.satisfied(rawTok)
             if (done) return
             if (!best || n < best.n)
-              best = { room: entry.room, tok, n }
+              best = { room: entry.room, tok: rawTok, n }
           },
         )
       },
@@ -1294,7 +1292,7 @@ class PathFinding {
           (/** @type {{ room: any; receive: any; }} */ e) =>
             e.room === next.room &&
             (e.receive || []).some(
-              (/** @type {any} */ t) => this.baseTok(t) === next.tok,
+              (/** @type {any} */ t) => t === next.tok,
             ),
         ) || { room: next.room, requires: [], receive: [next.tok] }
       )
@@ -1303,7 +1301,7 @@ class PathFinding {
       (/** @type {{ receive: any; room: string; }} */ entry) => {
         if (
           !(entry.receive || []).some(
-            (/** @type {any} */ t) => this.baseTok(t) === token,
+            (/** @type {any} */ t) => t === token,
           )
         )
           return false

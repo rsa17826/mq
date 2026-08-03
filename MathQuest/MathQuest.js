@@ -35617,7 +35617,7 @@ for (var i = 0; i < 11; i++) {
               this.itemTile[9].set_visible(true)
               manager.tBox[11].set_visible(false)
               manager.tBoxUsed[11] = 1
-              newItem("6_10 - food:chocolate")
+              newItem("6_10 - food:chocolate#3")
               // if (manager.food[Enum.Food.chocolate] > 99) {
               //   manager.food[Enum.Food.chocolate] = 99
               // }
@@ -59393,7 +59393,7 @@ for (var i = 0; i < 11; i++) {
             manager.mess.set_text(
               "Arc: Thanks for saving my son.\nHere, take these gingerbread cookies as\na reward.",
             )
-            newItem("13_26 - food:gingerBread")
+            newItem("13_26 - food:gingerBread#99")
             // manager.food[Enum.Food.gingerBread] = 99
             manager.messFin = true
           }
