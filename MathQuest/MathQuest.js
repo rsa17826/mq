@@ -1568,9 +1568,6 @@ const itemList = {
   "misc:pup#10": () => {
     manager.pup += 10
   },
-  "misc:pup#5": () => {
-    manager.pup += 10
-  },
   "item:gold#50": () => {
     manager.gold += 50
   },
@@ -62314,8 +62311,8 @@ for (var i = 0; i < 11; i++) {
               "You have returned as a hero.\nAs a reward, I give you 1,000 gold\nand 10 Power-Ups!!!.",
             )
             manager.messFin = true
-            newItem("14_18 - misc:pup#5")
-            newItem("14_18 - item:gold")
+            newItem("14_18 - misc:pup#10")
+            newItem("14_18 - item:gold#1000")
             manager.hitMax()
             // newItem(14,18,'Enum.Quest.gTree',null)
             manager.quest[Enum.Quest.gTree] = 25

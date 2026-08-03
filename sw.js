@@ -7,7 +7,7 @@ self.addEventListener("install", (event) => {
     caches.open("cache").then((cache) => {
       return Promise.all(
         ASSETS.map((url) => {
-          return cache.add(url).catch((err) => {
+          return cache.add(url.split("?")[0]).catch((err) => {
             console.error("❌ Failed to cache asset:", url, err)
           })
         }),
@@ -55,7 +55,7 @@ self.addEventListener("fetch", (event) => {
         ) {
           cache ??= await caches.open("cache")
           const cloned = networkResponse.clone()
-          event.waitUntil(cache.put(event.request, cloned))
+          event.waitUntil(cache.put(event.request.url.split("?")[0], cloned))
         }
         // console.timeEnd(event.request.url)
         return networkResponse
