@@ -60136,10 +60136,10 @@ for (var i = 0; i < 11; i++) {
             )
             newQuest("9_22", "seeds", 4, false)
             // manager.quest[Enum.Quest.seeds] = 4
-            newItem("9_22 - food:orange")
+            newItem("9_22 - food:orange#10")
             // manager.food[Enum.Food.orange] =
             //   manager.food[Enum.Food.orange] + 10
-            newItem("9_22 - food:peppers - seeds3")
+            newItem("9_22 - food:peppers - seeds3#3")
             // manager.food[Enum.Food.peppers] =
             //   manager.food[Enum.Food.peppers] + 3
             manager.fame++
