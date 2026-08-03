@@ -57171,7 +57171,7 @@ for (var i = 0; i < 11; i++) {
           manager.messFin = true
           manager.tBoxUsed[55] = 1
           manager.emeralds = manager.emeralds - 1
-          newItem("18_19 - item:gold")
+          newItem("18_19 - item:gold#Enum.Craft.emerald")
           manager.removeMBox = true
           manager.tBoxGreen.set_visible(false)
           manager.tBoxSound.play()
