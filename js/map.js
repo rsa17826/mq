@@ -99,7 +99,7 @@ class PathFinding {
    * @param {any} tok
    */
   static baseTok(tok) {
-    return String(tok).split("#")[0]
+    return String(tok)//.split("#")[0]
   }
 
   // --- Entrance-rando "only walk through checked entrances" support ---
@@ -1228,6 +1228,16 @@ class PathFinding {
   // around trackToken("quest:" + questName).
   // =====================================================================
 
+  // Call with a quest key matching ap.slotData.maxQuests / manager.quest[
+  // Enum.Quest.<name>] (e.g. "gTree") to start tracking it on the map.
+  // Call with no argument (or a falsy value) to stop tracking.
+  /**
+   * @param {string} questName
+   */
+  static trackQuestPath(questName) {
+    WorldMap.trackToken(questName ? `quest:${questName}` : null)
+  }
+
   static trackedToken = localStorage.trackedToken || null
 
   // Scans PROG_DATA for the not-yet-satisfied "quest:<questName>.N" token
@@ -1805,17 +1815,6 @@ var firstLoad = false
 window.onPlayerLoaded.push(() => {
   firstLoad = true
 })
-
-// Call with a quest key matching ap.slotData.maxQuests / manager.quest[
-// Enum.Quest.<name>] (e.g. "gTree") to start tracking it on the map.
-// Call with no argument (or a falsy value) to stop tracking.
-/**
- * @param {any} questName
- */
-function trackQuestPath(questName) {
-  trackToken(questName ? `quest:${questName}` : null)
-}
-window.trackQuestPath = trackQuestPath
 
 // Attaches `handler` to a game hook that might be an array of callbacks,
 // an existing function (wrapped so both still run), or not set up yet.

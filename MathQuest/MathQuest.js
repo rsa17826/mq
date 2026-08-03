@@ -105,7 +105,9 @@ function getChestedItemInfo(detectorKey, elem) {
       Object.entries(ap.scoutedItems).find(
         ([i, eee]) =>
           eee.locationName ==
-          `${manager.north}_${manager.east} - ${e.split("#")[0]}`,
+          `${manager.north}_${manager.east} - ${e
+            //.split("#")[0]
+            }`,
       ),
     )
     ?.filter?.(Boolean)
@@ -202,7 +204,8 @@ function newItem(name) {
     ] ??= []
     window.q[`${manager.north}_${manager.east}`][
       window.selectedThing
-    ].push(name.split("#")[0])
+    ].push(name//.split("#")[0]
+      )
   }
   if (!window.ap?.slotData) {
     apError("newItem: failed to check", name)
@@ -454,7 +457,7 @@ const checker = new Proxy(
     "skill:reveal.2": 0,
     "skill:tough.2": 0,
     "21_17 - item:rubies": 0,
-    "14_17 item:bombs#10": 0,
+    "14_17 item:bombs": 0,
     "10_14 - food:holyWater": 0,
     "11_9 - gold - merchant": 0,
     "13_17 - gold - merchant": 0,
@@ -33934,14 +33937,14 @@ for (var i = 0; i < 11; i++) {
               manager.mess.setTextFormat(manager.messFormat)
             } else {
               if (
-                checker["14_17 item:bombs#10"] == 0 &&
+                checker["14_17 item:bombs"] == 0 &&
                 f.parseInt(manager.sell.get_text()) > 0
               ) {
                 manager.sell.set_text(
                   String(f.parseInt(manager.sell.get_text()) - 1),
                 )
-                newItem("14_17 - item:bombs#10")
-                checker["14_17 item:bombs#10"] = 1
+                newItem("14_17 - item:bombs")
+                checker["14_17 item:bombs"] = 1
                 if (f.parseInt(manager.sell.get_text()) <= 0) {
                   this.stage.removeEventListener(
                     "mouseDown",

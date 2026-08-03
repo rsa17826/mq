@@ -47,7 +47,7 @@ class Logic {
    * @returns
    */
   static baseTok(tok) {
-    return tok.split("#")[0]
+    return tok//.split("#")[0]
   }
 
   // Evaluate one AND-group given a room context (for resolving entrance.*

@@ -3593,7 +3593,7 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "item:bombs#10",
+      "item:bombs",
     ],
   },
   {

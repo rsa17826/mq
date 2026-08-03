@@ -23,7 +23,7 @@ class ItemTracker {
    * @returns {string}
    */
   static baseTok(tok) {
-    return String(tok).split("#")[0]
+    return String(tok)//.split("#")[0]
   }
 
   /**
@@ -75,8 +75,8 @@ class ItemTracker {
       return m ? `quest:${m[1]}` : questTok
     }
     const realTok = (entry.receive || [])
-      .map((t) => this.baseTok(t))
-      .find((t) => this.REAL_ITEM_NAMES.has(t))
+      // TODO - replace with just t when ap world fixed!!!!!
+      .find((t) => this.REAL_ITEM_NAMES.has(this.baseTok(t)))
     if (realTok) return realTok
     return this.baseTok((entry.receive || [])[0] || "")
   }
@@ -165,7 +165,7 @@ class ItemTracker {
   }
 
   static isChecked(entry) {
-    const tok = this.baseTok((entry.receive || [])[0] || "")
+    const tok = entry.receive?.[0] || ""
     if (!tok) return false
     const key = `${entry.room} - ${tok}`
     const els = Logic.iconsByLocation[key] ?? []

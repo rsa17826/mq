@@ -97,7 +97,8 @@ class RoomGraph {
     if (!reqGroups || reqGroups.length === 0) return true
     return reqGroups.some((group) =>
       group.every((rawTok) => {
-        const tok = rawTok.split("#")[0]
+        const tok = rawTok//.split("#")[0]
+        // TODO !!! use pathfinding
         if (tok.startsWith("entrance.")) return true
         if (tok.startsWith("quest:")) return QuestState.satisfied(tok)
         return have.has(tok)
