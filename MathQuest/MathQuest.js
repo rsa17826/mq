@@ -105,9 +105,10 @@ function getChestedItemInfo(detectorKey, elem) {
       Object.entries(ap.scoutedItems).find(
         ([i, eee]) =>
           eee.locationName ==
-          `${manager.north}_${manager.east} - ${e
+          `${manager.north}_${manager.east} - ${
+            e
             //.split("#")[0]
-            }`,
+          }`,
       ),
     )
     ?.filter?.(Boolean)
@@ -204,8 +205,9 @@ function newItem(name) {
     ] ??= []
     window.q[`${manager.north}_${manager.east}`][
       window.selectedThing
-    ].push(name//.split("#")[0]
-      )
+    ].push(
+      name, //.split("#")[0]
+    )
   }
   if (!window.ap?.slotData) {
     apError("newItem: failed to check", name)
@@ -21813,7 +21815,9 @@ for (var i = 0; i < 11; i++) {
           }
 
           target[prop] = value
-
+          if (this.k === "loot") {
+            window.onLootUpdated.forEach((e) => e())
+          }
           if (
             this.k === "quest" &&
             window.playerLoaded &&

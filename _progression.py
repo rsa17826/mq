@@ -2145,7 +2145,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
   },
   {
-    "room": {"north": 20, "east": 18},
+    "room": {"north": 20, "east": 17},
     "requires": [
       [
         "quest:bBomb.7",

@@ -12,6 +12,7 @@ declare global {
     playerLoaded: true | undefined
     onApConnect: Array<() => void>
     onItemSent: Array<() => void>
+    onLootUpdated: Array<() => void>
     onApCreated: Array<(ap: any) => void>
     onQuestChanged: Array<(name: number, val: number) => void>
     onNewScreen: Array<() => void>

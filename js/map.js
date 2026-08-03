@@ -95,7 +95,19 @@ class PathFinding {
     east: [0, 1],
     west: [0, -1],
   }
-
+  // Call with an exact token to track: "quest:<name>" chases that quest's
+  // next not-yet-satisfied step; any other token (e.g. "item:earthAmulet")
+  // chases wherever that exact token is granted. Call with no argument (or a
+  // falsy value) to stop tracking.
+  /**
+   * @param {string | null} token
+   */
+  static trackToken(token) {
+    localStorage.trackedToken = PathFinding.trackedToken =
+      token || null
+    selectedPathId = null // tracking supersedes any manual click-selection
+    PathFinding.updateTrackedPath()
+  }
   // --- Entrance-rando "only walk through checked entrances" support ---
   //
   // window.playerCheckedEntrances is a Set of strings like "20_20_south_0"
@@ -1233,7 +1245,7 @@ class PathFinding {
    * @param {string} questName
    */
   static trackQuestPath(questName) {
-    WorldMap.trackToken(questName ? `quest:${questName}` : null)
+    PathFinding.trackToken(questName ? `quest:${questName}` : null)
   }
 
   static trackedToken = localStorage.trackedToken || null
@@ -1390,19 +1402,6 @@ function selectPathTarget(roomKey, entrance) {
 
 class WorldMap {
   static PATH_ROUTES = []
-  // Call with an exact token to track: "quest:<name>" chases that quest's
-  // next not-yet-satisfied step; any other token (e.g. "item:earthAmulet")
-  // chases wherever that exact token is granted. Call with no argument (or a
-  // falsy value) to stop tracking.
-  /**
-   * @param {string | null} token
-   */
-  static trackToken(token) {
-    localStorage.trackedToken = PathFinding.trackedToken =
-      token || null
-    selectedPathId = null // tracking supersedes any manual click-selection
-    PathFinding.updateTrackedPath()
-  }
 
   static resizeCanvas() {
     canvas.width = viewport.clientWidth
@@ -1609,7 +1608,7 @@ class WorldMap {
             tt[0],
             tt[1] !== "undefined" ? tt[1] : undefined,
           )
-        } else WorldMap.trackToken(localStorage.trackedToken)
+        } else PathFinding.trackToken(localStorage.trackedToken)
       }
       PathFinding.updateTrackedPath()
     })

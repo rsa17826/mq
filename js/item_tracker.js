@@ -56,8 +56,9 @@ class ItemTracker {
    * @returns {string}
    */
   static primaryTrackToken(entry) {
-    const questTok = (entry.receive || [])
-      .find((t) => t.startsWith("quest:"))
+    const questTok = (entry.receive || []).find((t) =>
+      t.startsWith("quest:"),
+    )
     if (questTok) {
       const m = questTok.match(/^quest:(.+)\.\d+$/)
       return m ? `quest:${m[1]}` : questTok
@@ -74,9 +75,7 @@ class ItemTracker {
     ;(entry.requires || []).forEach((group) =>
       group.forEach((rawTok) => {
         if (!this.isLootToken(rawTok)) return
-        const m = rawTok.match(
-          /^loot:(?!key)([^#]+)#?(\d*)$/,
-        )
+        const m = rawTok.match(/^loot:(?!key)([^#]+)#?(\d*)$/)
         if (!m) return
         const name = m[1]
         const count = m[2] ? Number(m[2]) : 1
@@ -135,13 +134,12 @@ class ItemTracker {
       (entry.requires || []).some((group) =>
         group.some((tok) => tok.startsWith("flag:")),
       ) ||
-      (entry.receive || []).every((tok) =>
-        tok.startsWith("flag:"),
-      )
+      (entry.receive || []).every((tok) => tok.startsWith("flag:"))
     if (hasFlag) return { key: "flags", label: "Flags" }
 
-    const questTok = (entry.receive || [])
-      .find((t) => t.startsWith("quest:"))
+    const questTok = (entry.receive || []).find((t) =>
+      t.startsWith("quest:"),
+    )
     if (questTok) {
       const m = questTok.match(/^quest:([^.]+)/)
       const name = m ? m[1] : questTok
@@ -187,8 +185,11 @@ class ItemTracker {
   static isInLogic(entry) {
     if (!entry) return true
     return (
-      PathFinding.reqsSatisfied(entry.requires, Logic.haveDerived, entry.room) &&
-      PathFinding.findPathTo(entry.room)
+      PathFinding.reqsSatisfied(
+        entry.requires,
+        Logic.haveDerived,
+        entry.room,
+      ) && PathFinding.findPathTo(entry.room)
     )
   }
 
@@ -299,6 +300,10 @@ class ItemTracker {
       this.render()
     })
   }
+  /**@type {string} */
+  static lastTrackedToken =
+    localStorage.ItemTrackerlastTrackedToken || null
+  static lastTrackedEntry
 
   static buildEntryRow(entry) {
     const reqStr = this.fmtRequires(entry.requires)
@@ -316,7 +321,14 @@ class ItemTracker {
               "Point the map arrow here (and auto-surface any outstanding loot requirement)",
             onclick: (e) => {
               e.stopPropagation()
-              WorldMap.trackToken(this.primaryTrackToken(entry))
+              PathFinding.trackToken(this.primaryTrackToken(entry))
+              this.lastTrackedToken = PathFinding.trackedToken
+              this.lastTrackedEntry = entry
+              localStorage.ItemTrackerlastTrackedEntry =
+                JSON.stringify(entry)
+              localStorage.ItemTrackerlastTrackedToken =
+                this.lastTrackedToken
+              ItemTracker.tryTrackLoot()
             },
           },
           ["Track"],
@@ -410,6 +422,33 @@ class ItemTracker {
       this.list.appendChild(groupBody)
     })
   }
+
+  static tryTrackLoot() {
+    if (
+      this.lastTrackedToken == PathFinding.trackedToken &&
+      this.lastTrackedToken &&
+      this.lastTrackedEntry
+    ) {
+      var trackToken = ItemTracker.entryLootTokens(
+        this.lastTrackedEntry,
+      ).find((e) => manager.loot[Enum.Loot[e[0]]] < e[1])?.[0]
+      if (trackToken) {
+        PathFinding.trackToken("loot:" + trackToken)
+        this.applyMergedLootTracking(this.lastTrackedEntry)
+        localStorage.ItemTrackerlastTrackedToken =
+          this.lastTrackedToken = PathFinding.trackedToken
+      } else {
+        PathFinding.trackToken(
+          this.primaryTrackToken(this.lastTrackedEntry),
+        )
+        localStorage.ItemTrackerlastTrackedEntry =
+          localStorage.ItemTrackerlastTrackedToken =
+          this.lastTrackedToken =
+          this.lastTrackedEntry =
+            ""
+      }
+    }
+  }
 }
 
 window.onApConnect.push(() => {
@@ -422,5 +461,14 @@ window.onApConnect.push(() => {
   })
   window.onPlayerLoaded.push(() => {
     ItemTracker.render()
+    setTimeout(() => ItemTracker.tryTrackLoot())
+  })
+  window.onLootUpdated.push(() => {
+    ItemTracker.tryTrackLoot()
   })
 })
+
+try {
+  ItemTracker.lastTrackedEntry =
+    JSON.parse(localStorage.ItemTrackerlastTrackedEntry) || null
+} catch (e) {}
