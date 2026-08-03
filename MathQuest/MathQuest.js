@@ -62343,7 +62343,7 @@ for (var i = 0; i < 11; i++) {
             ) {
               if (manager.messPage == 2) {
                 manager.mess.set_text(
-                  "If you are intrested, take your Bane Blade to\nShade Jon. He can be found\nin a hidden room located under a small\npond.",
+                  "If you are interested, take your Bane Blade to\nShade Jon. He can be found\nin a hidden room located under a small\npond.",
                 )
               }
               if (manager.messPage == 3) {
