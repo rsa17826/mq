@@ -36,6 +36,7 @@
 // TODO esc not working on magic upg house
 // TODO if all loot can be farmed in dest room track that one instead
 // TODO if some but not all loot can be farmed in dest room track all other loot before tracking the loot that can be got at dest
+// TODO pathfinding should know 17 10 has access to 17 11
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
@@ -59530,7 +59531,7 @@ for (var i = 0; i < 11; i++) {
             // newItem(6,12,'Enum.Quest.geo',null)
             manager.quest[Enum.Quest.geo] = 3
             manager.messPage = 0
-          } else if (manager.quest[Enum.Quest.oMan] == 16) {
+          }  if (manager.quest[Enum.Quest.oMan] == 16) {
             manager.mess.set_text(
               "Ron: You want me to soak that Opah meat in\nGeoMana? Well, I would if my pump hadn't\njammed.",
             )
