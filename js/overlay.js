@@ -464,16 +464,19 @@ function customDrawLoop() {
   if (
     localStorage.renderExits == "true" ||
     localStorage.renderCheckerboard == "true"
-  )
+  ) {
     drawExits(
       EXITS_DATA[`${window.player.north}_${window.player.east}`] ||
         [],
     )
 
-  drawEntranceBorders(
-    `${window.player.north}_${window.player.east}`,
-    EXITS_DATA[`${window.player.north}_${window.player.east}`] || [],
-  )
+    if (localStorage.renderExits == "true")
+      drawEntranceBorders(
+        `${window.player.north}_${window.player.east}`,
+        EXITS_DATA[`${window.player.north}_${window.player.east}`] ||
+          [],
+      )
+  }
 
   if (
     !(
