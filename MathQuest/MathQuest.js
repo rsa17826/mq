@@ -33,6 +33,7 @@
 // TODO 13 20 add one to each side of exit south0
 // TODO save extra tracked loot
 // TODO save some data to player slots
+// TODO esc not working on magic upg house
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
