@@ -42,7 +42,6 @@
 // Receive: quest:oMan.18
 // is showing path to area6 when area7 is 1 tile closer
 
-
 window.oldArea = null
 window.remainingBattleTriggers = 0
 // window.allBitmapData = []
@@ -59536,61 +59535,6 @@ for (var i = 0; i < 11; i++) {
             // newItem(6,12,'Enum.Quest.geo',null)
             manager.quest[Enum.Quest.geo] = 3
             manager.messPage = 0
-          }  if (manager.quest[Enum.Quest.oMan] == 16) {
-            manager.mess.set_text(
-              "Ron: You want me to soak that Opah meat in\nGeoMana? Well, I would if my pump hadn't\njammed.",
-            )
-            newQuest("6_12", "oMan", 17, false)
-            // manager.quest[Enum.Quest.oMan] = 17
-          } else if (manager.quest[Enum.Quest.oMan] == 17) {
-            manager.mess.set_text(
-              "Ron: Help me fix my jammed pump.\nGet a wrench from a Desert Dwarf.",
-            )
-            manager.messFin = true
-          } else if (manager.quest[Enum.Quest.oMan] == 18) {
-            if (manager.messPage == 1) {
-              manager.mess.set_text(
-                "Ron: Perfect! Let me see if I can fix the\nGeoMana pump.",
-              )
-            }
-            if (manager.messPage == 2) {
-              manager.mess.set_text("(Ron uses the wrench.)")
-            }
-            if (manager.messPage == 3) {
-              manager.mess.set_text("Ron: ...")
-            }
-            if (manager.messPage == 4) {
-              manager.mess.set_text("Ron: hmm.")
-            }
-            if (manager.messPage == 5) {
-              manager.mess.set_text("(Ron rubs his chin.)")
-            }
-            if (manager.messPage == 6) {
-              manager.mess.set_text("Ron: ...")
-            }
-            if (manager.messPage == 7) {
-              manager.mess.set_text(
-                "(Ron bangs on the pump. It begins to work!)",
-              )
-            }
-            if (manager.messPage == 8) {
-              manager.mess.set_text(
-                "Ron: There, now let's soak that Opah meat.",
-              )
-            }
-            if (manager.messPage == 8) {
-              manager.mess.set_text(
-                "(Ron soaks the Opah meat in the GeoMana.)",
-              )
-            }
-            if (manager.messPage == 9) {
-              manager.mess.set_text(
-                "Ron: You should probably take the meat to the\nVariable Volcano and have the GeoMana\ninfused by the heat.",
-              )
-              newQuest("6_12", "oMan", 19, false)
-              // manager.quest[Enum.Quest.oMan] = 19
-              manager.messFin = true
-            }
           } else if (manager.quest[Enum.Quest.geo] == 3) {
             if (manager.messPage == 1) {
               manager.mess.set_text(
@@ -59628,7 +59572,73 @@ for (var i = 0; i < 11; i++) {
               newItem("6_12 - skill:convert")
               // manager.skills[Enum.Skill.convert] = 1
             }
-          } else if (
+          }
+          if (manager.quest[Enum.Quest.oMan] == 16) {
+            manager.mess.set_text(
+              "Ron: You want me to soak that Opah meat in\nGeoMana? Well, I would if my pump hadn't\njammed.",
+            )
+            newQuest("6_12", "oMan", 17, false)
+            // manager.quest[Enum.Quest.oMan] = 17
+          } else if (manager.quest[Enum.Quest.oMan] == 17) {
+            manager.mess.set_text(
+              "Ron: Help me fix my jammed pump.\nGet a wrench from a Desert Dwarf.",
+            )
+            manager.messFin = true
+          } else if (manager.quest[Enum.Quest.oMan] == 18) {
+            if (manager.messPage == 1) {
+              manager.mess.set_text(
+                "Ron: Perfect! Let me see if I can fix the\nGeoMana pump.",
+              )
+              manager.messFin=false
+            }
+            if (manager.messPage == 2) {
+              manager.messFin=false
+              manager.mess.set_text("(Ron uses the wrench.)")
+            }
+            if (manager.messPage == 3) {
+              manager.messFin=false
+              manager.mess.set_text("Ron: ...")
+            }
+            if (manager.messPage == 4) {
+              manager.messFin=false
+              manager.mess.set_text("Ron: hmm.")
+            }
+            if (manager.messPage == 5) {
+              manager.messFin=false
+              manager.mess.set_text("(Ron rubs his chin.)")
+            }
+            if (manager.messPage == 6) {
+              manager.messFin=false
+              manager.mess.set_text("Ron: ...")
+            }
+            if (manager.messPage == 7) {
+              manager.messFin=false
+              manager.mess.set_text(
+                "(Ron bangs on the pump. It begins to work!)",
+              )
+            }
+            if (manager.messPage == 8) {
+              manager.messFin=false
+              manager.mess.set_text(
+                "Ron: There, now let's soak that Opah meat.",
+              )
+            }
+            if (manager.messPage == 8) {
+              manager.messFin=false
+              manager.mess.set_text(
+                "(Ron soaks the Opah meat in the GeoMana.)",
+              )
+            }
+            if (manager.messPage == 9) {
+              manager.mess.set_text(
+                "Ron: You should probably take the meat to the\nVariable Volcano and have the GeoMana\ninfused by the heat.",
+              )
+              newQuest("6_12", "oMan", 19, false)
+              // manager.quest[Enum.Quest.oMan] = 19
+              manager.messFin = true
+            }
+          }
+          if (
             manager.quest[Enum.Quest.rings] == 12 &&
             manager.messPage == 1
           ) {
