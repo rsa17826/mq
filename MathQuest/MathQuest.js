@@ -37,6 +37,11 @@
 // TODO if all loot can be farmed in dest room track that one instead
 // TODO if some but not all loot can be farmed in dest room track all other loot before tracking the loot that can be got at dest
 // TODO pathfinding should know 17 10 has access to 17 11
+// TODO find closest of all possible conds
+// Requires: quest:oMan.17 & area:6 OR quest:oMan.17 & area:7
+// Receive: quest:oMan.18
+// is showing path to area6 when area7 is 1 tile closer
+
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
