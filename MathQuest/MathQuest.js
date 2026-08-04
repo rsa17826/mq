@@ -41,6 +41,10 @@
 // Requires: quest:oMan.17 & area:6 OR quest:oMan.17 & area:7
 // Receive: quest:oMan.18
 // is showing path to area6 when area7 is 1 tile closer
+// TODO it's tracking the dest instead of the area for slamstones
+// 7_18
+// Requires: loot:slamstones & skill:reveal
+// Receive: skill:reveal.2
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
