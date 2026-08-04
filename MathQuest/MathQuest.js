@@ -34,6 +34,8 @@
 // TODO save extra tracked loot
 // TODO save some data to player slots
 // TODO esc not working on magic upg house
+// TODO if all loot can be farmed in dest room track that one instead
+// TODO if some but not all loot can be farmed in dest room track all other loot before tracking the loot that can be got at dest
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
