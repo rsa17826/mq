@@ -123,7 +123,7 @@ class ArchipelagoClient {
    * @param {{hostname:string,port:number,game:string,playerName:string,password: string}} param0
    */
   constructor({ hostname, port, game, playerName, password = "" }) {
-    this.url = `wss://${hostname}:${port}`
+    this.url = `wss://${hostname}${port ? `:${port}` : ""}`
     this.game = game
     this.hostname = hostname
     this.port = port
@@ -149,13 +149,13 @@ class ArchipelagoClient {
     this.isFallbackMode = false
     this.doneConnecting = false
     // Look for a saved preference for this specific host
-    this.storageKey = `apUseWss - ${hostname}:${port}`
+    this.storageKey = `apUseWss - ${hostname}${port ? `:${port}` : ""}`
     this.wss = localStorage[this.storageKey] !== "false"
 
     this.url =
       this.wss ?
-        `wss://${hostname}:${port}`
-      : `ws://${hostname}:${port}`
+        `wss://${hostname}${port ? `:${port}` : ""}`
+      : `ws://${hostname}${port ? `:${port}` : ""}`
     window.onApCreated.forEach((e) => e(this))
   }
   /**
@@ -868,10 +868,10 @@ function apTryConnect() {
       .split("&")
       .map((e) => e.split("="))
     var obj = {
-      hostname: "127.0.0.1",
-      port: "38281",
+      hostname: "ap.localhost",
+      port: "",
       game: "MathQuest",
-      playerName: "test1",
+      playerName: "",
       password: "",
     }
     for (var [k, v] of data) {
@@ -883,9 +883,7 @@ function apTryConnect() {
       else if (k === "connect") {
         let parts = v.split(":")
         obj.hostname = parts[0]
-        if (parts[1]) {
-          obj.port = parts[1]
-        }
+        obj.port = parts[1]
       }
       // Handle everything else normally
       else {
