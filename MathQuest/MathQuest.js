@@ -31,6 +31,8 @@
 // TODO beating boss before high quest gtree will skip some items?
 // TODO 11 22/23 add one thing to bottom, can go below fense
 // TODO 13 20 add one to each side of exit south0
+// TODO save extra tracked loot
+// TODO save some data to player slots
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
