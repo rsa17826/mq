@@ -4244,8 +4244,17 @@ manager.correct - manager.wrong > 800 = halo
       [
         "quest:isles.19",
         "area:17",
+      ],
+      [
+        "quest:isles.19",
         "area:6",
+      ],
+      [
+        "quest:isles.19",
         "area:9",
+      ],
+      [
+        "quest:isles.19",
         "area:2",
       ],
     ],

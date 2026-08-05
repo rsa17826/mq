@@ -48,14 +48,24 @@ self.addEventListener("fetch", (event) => {
         // })
         const networkResponse = await fetch(event.request)
         // console.timeEnd(event.request.url)
-
+        // 🛑 Treat Nginx error status codes as failures
+        if (
+          networkResponse.status === 502 ||
+          networkResponse.status === 504
+        ) {
+          throw new Error(`Gateway error: ${networkResponse.status}`)
+        }
         // console.time(event.request.url)
         if (
-          String(event.request.url).startsWith("http://127.0.0.1")
+          /^https?:\/\/([^\/]+\.)?(127.0.0.1|localhost)/.test(
+            event.request.url,
+          )
         ) {
           cache ??= await caches.open("cache")
           const cloned = networkResponse.clone()
-          event.waitUntil(cache.put(event.request.url.split("?")[0], cloned))
+          event.waitUntil(
+            cache.put(event.request.url.split("?")[0], cloned),
+          )
         }
         // console.timeEnd(event.request.url)
         return networkResponse

@@ -392,6 +392,12 @@ function apSendSayFromInput() {
         localStorage.renderCheckerboard = ["1", "true"].includes(on)
       },
     },
+    dontLikeBridges: {
+      desc: "dontLikeBridges",
+      func(on = "1") {
+        localStorage.dontLikeBridges = ["1", "true"].includes(on)
+      },
+    },
     neverShowLocationScouts: {
       desc: "never show location scouts",
       func(on = "1") {

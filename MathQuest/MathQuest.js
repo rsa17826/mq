@@ -9,8 +9,9 @@
 // @endregex
 // @ts-nocheck
 
+// TODO make path arrows show path at closest to player part of target exit
 // TODO esc not working on aurastone house
-// TODO make start cmd relink the data files if they arnt linked
+// TODO make start cmd relink the _data files if they arnt linked
 // TODO !make ap log not scroll if not at bottom
 // TODO make map not strip # anymore
 // TODO fix arrow turns red when recalcing if targeting an entrance
@@ -45,6 +46,7 @@
 // 7_18
 // Requires: loot:slamstones & skill:reveal
 // Receive: skill:reveal.2
+// TODO 16 9 west0 can't get out of water - no way to show this, same area how fix
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
@@ -56727,7 +56729,7 @@ for (var i = 0; i < 11; i++) {
         ) {
           manager.mess.set_text("You found a diamond!")
           if (checker["diamondDig"] == 0) {
-            newItem("21_23 - item:diamonds - dig")
+            newItem("21_23 - item:diamonds - dig#2")
             checker["diamondDig"] = 1
           } else {
             manager.diamonds = manager.diamonds + 1
@@ -58449,7 +58451,7 @@ for (var i = 0; i < 11; i++) {
               "Pam: You found one!\nHere, you can have this.\n(She gives you 20 gold coins.)",
             )
             manager.fame++
-            newItem("19_20 - item:gold - pam2")
+            newItem("19_20 - item:gold - pam2#20")
             // manager.gold += 20
             manager.hitMax()
             newQuest("19_20", "pam", 3, false)
@@ -58459,7 +58461,7 @@ for (var i = 0; i < 11; i++) {
               "Pam: You found another one!\nI made these just for you.\n(She gives you 10 gingerbread cookies.)",
             )
             manager.fame++
-            newItem("19_20 - food:gingerBread - pam4")
+            newItem("19_20 - food:gingerBread - pam4#10")
             // manager.food[Enum.Food.gingerBread] =
             //   manager.food[Enum.Food.gingerBread] + 10
             manager.hitMax()
@@ -58470,7 +58472,7 @@ for (var i = 0; i < 11; i++) {
               "Pam: You found another one!\nYou'll love this.\n(She gives you 5 chocolate bars.)",
             )
             manager.fame++
-            newItem("19_20 - food:chocolate")
+            newItem("19_20 - food:chocolate#5")
             // manager.food[Enum.Food.chocolate] =
             //   manager.food[Enum.Food.chocolate] + 5
             manager.hitMax()
@@ -58481,7 +58483,7 @@ for (var i = 0; i < 11; i++) {
               "Pam: You found another one!\nI cooked this for you.\n(She gives you 3 juicy steaks.)",
             )
             manager.fame++
-            newItem("19_20 - food:steak")
+            newItem("19_20 - food:steak#3")
             // manager.food[Enum.Food.steak] =
             //   manager.food[Enum.Food.steak] + 3
             manager.hitMax()
@@ -58492,10 +58494,10 @@ for (var i = 0; i < 11; i++) {
               "Pam: You found another one!\nI saved these for you.\n(She gives you 5 peppers and 20 oranges.)",
             )
             manager.fame++
-            newItem("19_20 - food:peppers")
+            newItem("19_20 - food:peppers#5")
             // manager.food[Enum.Food.peppers] =
             //   manager.food[Enum.Food.peppers] + 5
-            newItem("19_20 - food:orange")
+            newItem("19_20 - food:orange#20")
             // manager.food[Enum.Food.orange] =
             //   manager.food[Enum.Food.orange] + 20
             manager.hitMax()
@@ -58506,7 +58508,7 @@ for (var i = 0; i < 11; i++) {
               "Pam: You found a sixth one!\nThat makes a half dozen!\nYou deserve this.\n(She gives you a bottle of holy water.)",
             )
             manager.fame++
-            newItem("19_20 - food:holyWater")
+            newItem("19_20 - food:holyWater - pam12")
             // manager.food[Enum.Food.holyWater] =
             //   manager.food[Enum.Food.holyWater] + 1
             manager.hitMax()
@@ -58543,7 +58545,7 @@ for (var i = 0; i < 11; i++) {
                 )
                 // if (manager.food[Enum.Food.gingerBread] == 0) {
                 if (checker["food:gingerBread - pam16"] == 0) {
-                  newItem("19_20 - food:gingerBread - pam16")
+                  newItem("19_20 - food:gingerBread - pam16#10")
                   checker["food:gingerBread - pam16"] = 1
                 } else {
                   manager.food[Enum.Food.gingerBread] =
@@ -58623,7 +58625,7 @@ for (var i = 0; i < 11; i++) {
               ),
             )
             manager.quest[Enum.Quest.dig] = 3
-            newItem("19_21 - item:gold - dig2")
+            newItem("19_21 - item:gold - dig2#25")
             manager.hitMax()
             manager.fame++
             manager.messFin = true
