@@ -51,6 +51,8 @@
 window.oldArea = null
 window.remainingBattleTriggers = 0
 // window.allBitmapData = []
+// prettier-ignore
+window.setOfThingsToHide = new Set(["healthBar","fireWallIcon","healthGauge","healthDisplay","haloIcon","poiSymbol","magicBar","magicGauge","magicDisplay","regenIcon","refreshIcon","goldDisplay","goldBag","goldBag2","pupBut","sign","bareTree","geomoTree","treeGuard","forestGuard","woodsman","church","churchTop","supplies","blacksmith","darkHouse","isle1","isle2","isle3","rubySign","magicShop","magicSymbol","manor","tuskBuyer","basket","pedestal","drinkInst","venomGirl","bottles","caveEntrance","steppingStones","blueBoy","youngMan","whiteHead","blueCloakGirl","goldMan","goldArmorGuy","shayde","vik","ringGuy","craftGirl","fisherman","baron","albert","mom","blueFlower","arena","geoPump","profRight","volcano","goldBox","strGuy","locketGirl","soldierLeft","soldier","throne","king","clockTree","magicCrystal","lavaCrystal","sirCumference","arenaDir","ruins","wallCrack","bombBro","bombSis","temple","castleDoors","pStatueL","pStatueR","orbStatue","templeSign","furnace","bridge","oasis","bigSkele","desertGuy","desertGuyLeft","hoodedStatue","nHeadstone","stairsUp","stairsUp2","stairsDown","chalaceStatue","flame","gardenMonument","floorEffect","grimsbane","gTeleTile","gTeleTileFlash","dizzyIcon","treeCmas","arrows","soulStone","bombIcon","bombDisplay","explode","explodeSword","keyDisplay","keyIconMain","strawberryDisplay","strawberryIcon","sCdownDisplay","toughIcon","toughDisplay","ninIcon","ninDisplay","tBoxBlue","tBoxRed","tBoxGreen","bomb","bombCountdown","cloudImage","revealIcon","attacked","mBox","problemBox","mobBox","check","ex","sell","codeInput","charName","password","fakePassword","statusShield","boat","mobStats","cursor","aurastoneIcon","rubyIcon","emarldIcon","keyIcon","pendant","ringGoldIcon","ringHealthIcon","ringEvaIcon","ringPoiIcon","ringMagicIcon","ringSkillIcon","ringDeathIcon","pupIcon","bombIconSmall","diamondIcon","medallionIcon","mess","enterButton","itemsScreen","magicScreen","skillsScreen","weapScreen","armorScreen","lootScreen","questScreen","pupBox","downKey","upKey","arrowsPurple","returnToMenuBut","saveBut","exitButton","sellButton","buyButton","tradeButton","backArrow","nextArrow","yes","no","shopMess","statDisplay","equippedBox","blueOrb","greenOrb","redOrb","weakened","newBut","oldBut","topPlayersBut","itemsBut","magicBut","weapBut","armorBut","lootBut","questBut","statsBut","skillsBut","title","outputTxt"])
 
 window.debugEnabled = false
 if (window.debugEnabled)
@@ -74,18 +76,23 @@ if (window.debugEnabled)
 
 function resetGameState() {
   test.removeListeners()
-  for (var v of Object.values(test))
+  for (var [k, v] of [
+    ...Object.entries(test),
+    ...Object.entries(manager),
+  ]) {
     if (v?.__proto__?.__class__?.name == "_timerObject") v.stop()
-  for (var v of Object.values(manager))
-    if (v?.__proto__?.__class__?.name == "_timerObject") v.stop()
+    if (setOfThingsToHide.has(k)) v.set_visible(false)
+  }
   manager.removeButtons()
   manager.clearScreen()
   constructorWithFields.__soundChannels = []
+  window?.ap?.socket?.close?.()
   window.remainingBattleTriggers = 0
   window.playerLoaded = false
   window.useSlowSpeed = 0
   window.escPressed = 0
   window.checksInFlight = []
+  window.ap = null
 }
 
 function returnToMenu() {
@@ -5634,6 +5641,14 @@ for (var i = 0; i < 11; i++) {
           return this.__visible
         },
         set_visible: function (newVisibleVariable, dontShowNewItem) {
+          // var thing =
+          //   Object.entries(test).find((e) => e[1] == this) ||
+          //   Object.entries(manager).find((e) => e[1] == this)
+          // if (thing && !window.setOfThingsToHide.has(thing[0])) {
+          //   window.setOfThingsToHide.add(thing[0])
+          //   log(thing)
+          // }
+
           if (newVisibleVariable && window.ap) {
             if (
               // this == manager.goldBox ||
@@ -19440,6 +19455,9 @@ for (var i = 0; i < 11; i++) {
         manager.saveButPH = new initObj(
           _____a.getBitmapData("img/saveButton.png"),
         )
+        manager.returnToMenuButPH = new initObj(
+          _____a.getBitmapData("img/saveButton.png"),
+        )
         manager.statsButPH = new initObj(
           _____a.getBitmapData("img/statsButton.png"),
         )
@@ -21100,12 +21118,19 @@ for (var i = 0; i < 11; i++) {
         this.arrowsPurple.set_visible(false)
         this.addChild(this.arrowsPurple)
         manager.saveBut.addChild(manager.saveButPH)
+        manager.returnToMenuBut.addChild(manager.returnToMenuButPH)
+        manager.returnToMenuBut.useHandCursor = true
+        manager.returnToMenuBut.set_buttonMode(false)
+        manager.returnToMenuBut.set_x(700)
+        manager.returnToMenuBut.set_y(50)
+        manager.returnToMenuBut.set_visible(false)
         manager.saveBut.useHandCursor = true
         manager.saveBut.set_buttonMode(false)
         manager.saveBut.set_x(700)
         manager.saveBut.set_y(50)
         manager.saveBut.set_visible(false)
         this.addChild(manager.saveBut)
+        this.addChild(manager.returnToMenuBut)
         manager.exitButton.set_x(300)
         manager.exitButton.set_y(530)
         manager.exitButton.set_visible(false)
@@ -41537,6 +41562,9 @@ for (var i = 0; i < 11; i++) {
             manager.saveBut.set_x(250)
             manager.saveBut.set_y(520)
             manager.saveBut.set_visible(true)
+            manager.returnToMenuBut.set_x(150)
+            manager.returnToMenuBut.set_y(520)
+            manager.returnToMenuBut.set_visible(true)
             manager.exitButton.set_x(360)
           } else if (this.fightMode == 1) {
             manager.exitButton.set_x(300)
@@ -41591,6 +41619,15 @@ for (var i = 0; i < 11; i++) {
             this.shopMess.set_visible(true)
             this.shopMess.set_alpha(1)
             this.save()
+          } else if (
+            manager.returnToMenuBut.hitTestPoint(
+              this.get_mouseX(),
+              this.get_mouseY(),
+              true,
+            ) &&
+            manager.returnToMenuBut.get_visible() == 1
+          ) {
+            returnToMenu()
           }
         },
         lootScreenShow: function (game) {
@@ -113431,6 +113468,7 @@ for (var i = 0; i < 11; i++) {
       manager.gTeleTile = new ObjectCopyConstructor()
       manager.gTeleTileFlash = new ObjectCopyConstructor()
       manager.saveBut = new ObjectCopyConstructor()
+      manager.returnToMenuBut = new ObjectCopyConstructor()
       manager.statsBut = new ObjectCopyConstructor()
       manager.itemsBut = new ObjectCopyConstructor()
       manager.magicBut = new ObjectCopyConstructor()
