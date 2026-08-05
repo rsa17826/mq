@@ -72,6 +72,27 @@ if (window.debugEnabled)
     ]
   })
 
+function resetGameState() {
+  test.removeListeners()
+  for (var v of Object.values(test))
+    if (v?.__proto__?.__class__?.name == "_timerObject") v.stop()
+  for (var v of Object.values(manager))
+    if (v?.__proto__?.__class__?.name == "_timerObject") v.stop()
+  manager.removeButtons()
+  manager.clearScreen()
+  constructorWithFields.__soundChannels = []
+  window.remainingBattleTriggers = 0
+  window.playerLoaded = false
+  window.useSlowSpeed = 0
+  window.escPressed = 0
+  window.checksInFlight = []
+}
+
+function returnToMenu() {
+  resetGameState()
+  manager.call(test)
+}
+
 // TODO !make shops show original item when random item bought
 // TODO ?add option to show scouted items on the map/ on the maps hover popup
 // REVIEW ?add option to log all received items when starting instead of only 25 - would there be any use in this
@@ -59595,42 +59616,42 @@ for (var i = 0; i < 11; i++) {
               manager.mess.set_text(
                 "Ron: Perfect! Let me see if I can fix the\nGeoMana pump.",
               )
-              manager.messFin=false
+              manager.messFin = false
             }
             if (manager.messPage == 2) {
-              manager.messFin=false
+              manager.messFin = false
               manager.mess.set_text("(Ron uses the wrench.)")
             }
             if (manager.messPage == 3) {
-              manager.messFin=false
+              manager.messFin = false
               manager.mess.set_text("Ron: ...")
             }
             if (manager.messPage == 4) {
-              manager.messFin=false
+              manager.messFin = false
               manager.mess.set_text("Ron: hmm.")
             }
             if (manager.messPage == 5) {
-              manager.messFin=false
+              manager.messFin = false
               manager.mess.set_text("(Ron rubs his chin.)")
             }
             if (manager.messPage == 6) {
-              manager.messFin=false
+              manager.messFin = false
               manager.mess.set_text("Ron: ...")
             }
             if (manager.messPage == 7) {
-              manager.messFin=false
+              manager.messFin = false
               manager.mess.set_text(
                 "(Ron bangs on the pump. It begins to work!)",
               )
             }
             if (manager.messPage == 8) {
-              manager.messFin=false
+              manager.messFin = false
               manager.mess.set_text(
                 "Ron: There, now let's soak that Opah meat.",
               )
             }
             if (manager.messPage == 8) {
-              manager.messFin=false
+              manager.messFin = false
               manager.mess.set_text(
                 "(Ron soaks the Opah meat in the GeoMana.)",
               )
@@ -64814,6 +64835,7 @@ for (var i = 0; i < 11; i++) {
         }
       }
       function Udf() {}
+      window.Udf = Udf
       constructorInnovation.Vars = Udf
       Udf.__name__ = ["Vars"]
       Udf.SendVariables = function () {
@@ -109536,6 +109558,7 @@ for (var i = 0; i < 11; i++) {
         __class__: _objectCopyMixin,
       }
       function constructorWithFields() {}
+      window.constructorWithFields = constructorWithFields
       constructorInnovation["openfl.media.SoundMixer"] =
         constructorWithFields
       constructorWithFields.__name__ = [

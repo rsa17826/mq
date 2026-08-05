@@ -440,6 +440,7 @@ class ArchipelagoClient {
     // Report to the server that this slot is connected and about to
     // begin play (10 = CLIENT_READY).
     this.sendStatusUpdate(10)
+    this.requestHints()
   }
 
   /**
