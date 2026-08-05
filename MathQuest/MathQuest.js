@@ -114,6 +114,8 @@ function returnToMenu() {
 // TODO make reconnecting not clear already received item data!!
 // TODO ?make m not repeat last cast when opening magic screen
 // TODO add buttons to menu to manage saves - del, connect
+// TODO add way to auto use pups
+// TODO don't auto progress arrow to next quest marker if next quest is ool
 
 function autoYes() {
   if (localStorage.autoYes == "true") {
