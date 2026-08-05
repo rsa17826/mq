@@ -3989,6 +3989,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "quest:access.4",
+        "loot:aAxe",
       ],
     ],
     "receive": [
@@ -4011,6 +4012,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "quest:access.6",
+        "loot:aScepter",
       ],
     ],
     "receive": [
