@@ -162,7 +162,7 @@ function customDrawLoop() {
   // Helper function to check if a specific grid cell (col, row) is an exit tile
   function getExitColor(roomExits, col, row) {
     // Convert our bottom-up canvas row (0 at bottom, 10 at top)
-    // to the top-down row index (0 at top, 10 at bottom) used by the data generator
+    // to the top-down row index (0 at top,10 at bottom) used by the data generator
     var topDownRow = 10 - row
     var color = null
     for (var i = 0; i < roomExits.length; i++) {
@@ -508,9 +508,7 @@ function customDrawLoop() {
     if (hint.found) continue
     // TODO get game, could be an out hint not always in
     var itemName = ap.itemIdToName["MathQuest"][hint.item]
-    var finder = ap.players.find(
-      (e) => e.slot == hint.finding_player,
-    )
+    var finder = ap.players.find((e) => e.slot == hint.finding_player)
     var owner = ap.players.find(
       (e) => e.slot == hint.receiving_player,
     )
@@ -523,8 +521,7 @@ function customDrawLoop() {
       : owner.alias == owner.name ? `${owner.name}'s`
       : `${owner.name} (${owner.alias})'s`
 
-    const finderGame =
-      ap.slotInfo[hint.finding_player].game
+    const finderGame = ap.slotInfo[hint.finding_player].game
     const locationName =
       ap.locationIdToName[finderGame][hint.location]
     coordString += `${ownerName} ${itemName} - found at ${finderName} ${locationName}\n`
