@@ -506,12 +506,13 @@ function customDrawLoop() {
   }
   for (let hint of HintTracker.all) {
     if (hint.found) continue
+    // TODO get game, could be an out hint not always in
     var itemName = ap.itemIdToName["MathQuest"][hint.item]
     var finder = ap.players.find(
-      (e) => e.slot == HintTracker.all[0].finding_player,
+      (e) => e.slot == hint.finding_player,
     )
     var owner = ap.players.find(
-      (e) => e.slot == HintTracker.all[0].receiving_player,
+      (e) => e.slot == hint.receiving_player,
     )
     var finderName =
       hint.finding_player == ap.slot ? "your"
@@ -523,7 +524,7 @@ function customDrawLoop() {
       : `${owner.name} (${owner.alias})'s`
 
     const finderGame =
-      ap.slotInfo[HintTracker.all[0].finding_player].game
+      ap.slotInfo[hint.finding_player].game
     const locationName =
       ap.locationIdToName[finderGame][hint.location]
     coordString += `${ownerName} ${itemName} - found at ${finderName} ${locationName}\n`
