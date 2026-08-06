@@ -50,6 +50,7 @@
 // TODO when returning to menu make sure randinit is reset and works correctly when loading game
 // TODO add image to exit to menu button
 // TODO move exit to menu button a bit left
+// TODO mana not updating, add mana and hp to hook 
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
