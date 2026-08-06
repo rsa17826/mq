@@ -51,6 +51,7 @@
 // TODO add image to exit to menu button
 // TODO move exit to menu button a bit left
 // TODO mana not updating, add mana and hp to hook
+// TODO hide exit to menu bytton when clkosign stats screen
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
@@ -62941,7 +62942,7 @@ for (var i = 0; i < 11; i++) {
             manager.quest[Enum.Quest.aSword] < 57
           ) {
             manager.mess.set_text(
-              "Shayde Jon: Go now and deafeat\n5 Alpha Minotaurs with your\nAlpha Sword equiped!\nI trust you'll be fine.",
+              "Shayde Jon: Go now and deafeat\n5 Alpha Minotaurs with your\nAlpha Sword equipped!\nI trust you'll be fine.",
             )
             manager.messFin = true
           } else if (manager.quest[Enum.Quest.aSword] == 45) {
@@ -62957,7 +62958,7 @@ for (var i = 0; i < 11; i++) {
             manager.quest[Enum.Quest.aSword] < 51
           ) {
             manager.mess.set_text(
-              "Shayde Jon: It's time to really challenge you!\nGo deafeat 5 Alpha Trolls with your\nAlpha Sword equiped!\nDon't forget your diamonds.",
+              "Shayde Jon: It's time to really challenge you!\nGo deafeat 5 Alpha Trolls with your\nAlpha Sword equipped!\nDon't forget your diamonds.",
             )
             manager.messFin = true
           } else if (manager.quest[Enum.Quest.aSword] == 39) {
