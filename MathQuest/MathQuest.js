@@ -48,6 +48,8 @@
 // Receive: skill:reveal.2
 // TODO 16 9 west0 can't get out of water - no way to show this, same area how fix
 // TODO when returning to menu make sure randinit is reset and works correctly when loading game
+// TODO add image to exit to menu button
+// TODO move exit to menu button a bit left
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
