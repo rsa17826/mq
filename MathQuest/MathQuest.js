@@ -52,6 +52,7 @@
 // TODO move exit to menu button a bit left
 // TODO mana not updating, add mana and hp to hook
 // TODO hide exit to menu bytton when clkosign stats screen
+// TODO 16 22 south0 shows can't find exit
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
@@ -21574,7 +21575,9 @@ for (var i = 0; i < 11; i++) {
         manager.saveSelect.set_x(740)
         manager.saveSelect.set_y(200)
         manager.saveSelect.set_visible(false)
-        manager.saveSelect.set_width(manager.saveSelect.set_height(150))
+        manager.saveSelect.set_width(
+          manager.saveSelect.set_height(150),
+        )
         this.addChild(manager.saveSelect)
         this.topPlayersBut.set_x(600)
         this.topPlayersBut.set_y(410)
@@ -21878,6 +21881,36 @@ for (var i = 0; i < 11; i++) {
             )
           }
 
+          if (
+            (prop == "hp" || prop == "mxhp" || prop == "eHealth") &&
+            !this.k &&
+            manager.healthDisplay
+          ) {
+            target[prop] = value
+            manager.healthDisplay.set_text(
+              "Health: " +
+                manager.hp +
+                "/" +
+                (manager.mxhp + manager.eHealth),
+            )
+            manager.healthDisplay.setTextFormat(manager.healthFormat)
+            return
+          }
+          if (
+            (prop == "mp" || prop == "mxmp" || prop == "eMagic") &&
+            !this.k &&
+            manager.magicDisplay
+          ) {
+            target[prop] = value
+            manager.magicDisplay.set_text(
+              "Magic: " +
+                manager.mp +
+                "/" +
+                (manager.mxmp + manager.eMagic),
+            )
+            manager.magicDisplay.setTextFormat(manager.magicFormat)
+            return
+          }
           if (prop == "gold" && !this.k && manager.goldDisplay) {
             manager.goldDisplay.set_text("Gold: " + value)
             manager.goldDisplay.setTextFormat(manager.goldFormat)
