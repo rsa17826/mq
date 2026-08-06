@@ -506,7 +506,6 @@ function customDrawLoop() {
   }
   for (let hint of HintTracker.all) {
     if (hint.found) continue
-    // TODO get game, could be an out hint not always in
     var finder = ap.players.find((e) => e.slot == hint.finding_player)
     var owner = ap.players.find(
       (e) => e.slot == hint.receiving_player,
