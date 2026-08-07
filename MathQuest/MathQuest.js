@@ -16,7 +16,6 @@
 // TODO esc not working on aurastone house
 // TODO make start cmd relink the _data files if they arnt linked
 // TODO !make ap log not scroll if not at bottom
-// TODO make map not strip # anymore
 // TODO fix arrow turns red when recalcing if targeting an entrance
 // TODO sunflower seller sticks
 // TODO tracker tracking area should track closest

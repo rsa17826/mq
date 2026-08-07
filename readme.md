@@ -134,8 +134,8 @@ you can get `gTree` quest to `8` at any time you can get to `14_18` even startin
 
 - can press esc to close most menus
 - pressing one arrow then releasing another arrow now causes player direction to change immeditly instead of only on next key repeat
-  - key press/repeat is also used for the ring of health/magic
-  <!-- `m` opens magic menu -->
+- key press/repeat is also used for the ring of health/magic
+<!-- `m` opens magic menu -->
 - f saves the game
 - option to make the battle loot messages appear insteantly
 <!-- option to auto close dialogue boxes without having to press enter -->
