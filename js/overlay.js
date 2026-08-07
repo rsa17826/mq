@@ -312,7 +312,7 @@ function customDrawLoop() {
       destLabel =
         // @ts-ignore
         {
-          "15_22": "warp south of dyce",
+          "15_22": "warp forest of faith",
           "12_19": "warp east of castle multivadd",
           "14_16": "warp Myuwtipwe Myountains",
           "10_16": "warp temple of tessalation",
