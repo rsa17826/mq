@@ -517,7 +517,7 @@ function customDrawLoop() {
       : `${finder.name} (${finder.alias})'s`
     var ownerName =
       hint.receiving_player == ap.slot ? "your"
-      : owner.alias == owner.name ? `${owner.name}'s`
+    : owner.alias == owner.name ? `${owner.name}'s`
       : `${owner.name} (${owner.alias})'s`
 
     const finderGame = ap.slotInfo[hint.finding_player].game

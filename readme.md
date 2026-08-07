@@ -119,6 +119,8 @@ or down in `7_21` just by walking here
 
 the `20_22` darkHouse can sell negative rubies
 
+the alpha sword doesn't count as a sword for triggering weak to swords
+
 # skips
 
 you can get `gTree` quest to `8` at any time you can get to `14_18` even starting with `gTree` level `0`
