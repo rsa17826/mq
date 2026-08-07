@@ -9,6 +9,8 @@
 // @endregex
 // @ts-nocheck
 
+// TODO make select save show progress bars
+// TODO make select save close on esc
 // TODO make path arrows show path at closest to player part of target exit
 // TODO esc not working on aurastone house
 // TODO make start cmd relink the _data files if they arnt linked
