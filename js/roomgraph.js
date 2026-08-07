@@ -97,11 +97,13 @@ class RoomGraph {
     if (!reqGroups || reqGroups.length === 0) return true
     return reqGroups.some((group) =>
       group.every((rawTok) => {
-        const tok = rawTok //.split("#")[0]
+        const tok = rawTok.split("#")[0]
         // TODO !!! use pathfinding
         if (tok.startsWith("entrance.")) return true
         if (tok.startsWith("quest:")) return QuestState.satisfied(tok)
-        return have.has(tok)
+        return rawTok == "permit:bomb#2" ?
+            have.has("permit:bomb") && have.has("permit:bomb@2")
+          : have.has(tok)
       }),
     )
   }
@@ -223,10 +225,10 @@ class RoomGraph {
      * @returns
      */
     function totalExitsFor(room) {
-      let n = 0
-      for (const side of Object.keys(room.exits || {}))
-        n += room.exits[side].length
-      return n
+      return Object.values(room.exits || {}).reduce(
+        (a, s) => a + s.length,
+        0,
+      )
     }
 
     function ensureCounts(roomKey, room) {
