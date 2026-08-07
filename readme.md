@@ -109,6 +109,12 @@ the exits can be took in any order unlike the sign at `19_11` makes it look like
 at the very bottom of the screen inWater is always false, only the bottom works as you can't get close enough to the top or sides to not be in water without getting a screen transition
 ![](./gh_images/notinwater.png)
 
+the `20_22` darkHouse can sell negative rubies
+
+the alpha sword doesn't count as a sword for triggering weak to swords
+
+the kick skill can't kill anything, just leaves them at 0 hp
+
 # clips
 
 you can clip left in `17_19` just by walking here
@@ -116,10 +122,6 @@ you can clip left in `17_19` just by walking here
 
 or down in `7_21` just by walking here
 ![](./gh_images/clip2.png)
-
-the `20_22` darkHouse can sell negative rubies
-
-the alpha sword doesn't count as a sword for triggering weak to swords
 
 # skips
 
