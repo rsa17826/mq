@@ -1161,7 +1161,7 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      "food:newtonsApple#2",
+      "food:newtonsApple",
     ],
   },
   # NOTE don't need this many, lv4 is enough

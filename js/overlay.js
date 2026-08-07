@@ -309,6 +309,23 @@ function customDrawLoop() {
     // screen -- label the arrival point with the destination room so it
     // reads as "warp to X" instead of just an arrow pointing at a wall.
     if (isWarp && destLabel) {
+      destLabel =
+        // @ts-ignore
+        {
+          "15_22": "warp south of dyce",
+          "12_19": "warp east of castle multivadd",
+          "14_16": "warp Myuwtipwe Myountains",
+          "10_16": "warp temple of tessalation",
+          "12_10": "warp east of the scelene scioety",
+          "18_20": "warp south of dyce",
+          "7_9": "warp toomb of the quarter hawk",
+          "11_24": "warp garden of shadowsoul",
+          "19_12": "warp grimbsbane",
+          "20_20": "home dyce",
+          "13_18": "home multivadd",
+          "12_9": "home desert",
+          "20_15": "home arena",
+        }[destLabel] || destLabel
       var labelX = b.x
       var labelY = b.y - arrowSize - 6
       overlayCtx.font = '22px "Booter - Zero Zero"'
@@ -510,14 +527,17 @@ function customDrawLoop() {
     var owner = ap.players.find(
       (e) => e.slot == hint.receiving_player,
     )
-    var itemName = ap.itemIdToName[ap.slotInfo[hint.receiving_player].game][hint.item]
+    var itemName =
+      ap.itemIdToName[ap.slotInfo[hint.receiving_player].game][
+        hint.item
+      ]
     var finderName =
       hint.finding_player == ap.slot ? "your"
       : finder.alias == finder.name ? `${finder.name}'s`
       : `${finder.name} (${finder.alias})'s`
     var ownerName =
       hint.receiving_player == ap.slot ? "your"
-    : owner.alias == owner.name ? `${owner.name}'s`
+      : owner.alias == owner.name ? `${owner.name}'s`
       : `${owner.name} (${owner.alias})'s`
 
     const finderGame = ap.slotInfo[hint.finding_player].game
