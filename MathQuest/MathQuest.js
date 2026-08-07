@@ -9,6 +9,7 @@
 // @endregex
 // @ts-nocheck
 
+// TODO make loot tracking find closest loot not the first on the list
 // TODO make select save show progress bars
 // TODO make select save close on esc
 // TODO make path arrows show path at closest to player part of target exit

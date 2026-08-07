@@ -123,9 +123,12 @@ you can clip left in `17_19` just by walking here
 or down in `7_21` just by walking here
 ![](./gh_images/clip2.png)
 
+or in `8_12` by talking to the bottom of this npc
+![](./gh_images/clip3.png)
+
 # skips
 
-you can get `gTree` quest to `8` at any time you can get to `14_18` even starting with `gTree` level `0`
+you can get `gTree` quest to `8` at any time you can get to `14_18` even starting with `gTree` level `0` or to level `23`, but only if you can reach `24_9` which requires level `22` unless using er or a clip
 
 ## new features
 
