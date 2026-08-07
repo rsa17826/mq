@@ -17607,12 +17607,17 @@ for (var i = 0; i < 11; i++) {
                     test.fightMode == 0))) ||
               (this == manager.bombTimer &&
                 localStorage.instantBombs == "true" &&
-                test.fightMode == 0)
+                test.fightMode == 0) ||
+              this.__delay === 0
             ) {
-              this.__timerID = window.setInterval(
-                createObjectMixin(this, this.timer_onTimer),
-                0,
-              )
+              const tick = () => {
+                if (this.running) {
+                  this.timer_onTimer();
+                  queueMicrotask(tick);
+                }
+              };
+              queueMicrotask(tick);
+              this.__timerID = -1//window.setInterval(() => {}, 0)
               return
             }
             this.__timerID = window.setInterval(
@@ -17997,7 +18002,7 @@ for (var i = 0; i < 11; i++) {
               _buffer.set_loops(__initialValue - 1)
             }
             _buffer.set_gain(masterVolume)
-            _____inputValue = _buffer.get_position()
+            _____inputValue = _buffer?.get_position?.()
             _____inputValue.x = panValue
             _____inputValue.z =
               Math.sqrt(1 - Math.pow(panValue, 2)) * -1
@@ -23330,16 +23335,16 @@ for (var i = 0; i < 11; i++) {
             newItem("13_21 - craft:bomb")
           }
           if (manager.hp <= 0) {
-            if (this.worldThemeChan.get_position() > 0) {
-              this.worldThemeChan.stop()
+            if (this.worldThemeChan?.get_position?.() > 0) {
+              this.worldThemeChan?.stop?.()
             }
             this.worldPlaying = false
-            if (this.dungeonThemeChan.get_position() > 0) {
-              this.dungeonThemeChan.stop()
+            if (this.dungeonThemeChan?.get_position?.() > 0) {
+              this.dungeonThemeChan?.stop?.()
             }
             this.dungeonPlaying = false
-            if (this.dungeonThemeChan.get_position() > 0) {
-              this.fightThemeChan.stop()
+            if (this.dungeonThemeChan?.get_position?.() > 0) {
+              this.fightThemeChan?.stop?.()
             }
             this.fightThemePlaying = false
           } else if (
@@ -23363,8 +23368,8 @@ for (var i = 0; i < 11; i++) {
               this.dungeonPlaying == 0 &&
               this.fightMode == 0
             ) {
-              if (this.batWinChannel.get_position() > 0) {
-                this.batWinChannel.stop()
+              if (this.batWinChannel?.get_position?.() > 0) {
+                this.batWinChannel?.stop?.()
               }
               this.dungeonThemeChan = this.dungeonThemeSound.play(
                 this.dungeonThemePos,
@@ -23380,8 +23385,8 @@ for (var i = 0; i < 11; i++) {
             this.worldPlaying == 0 &&
             this.fightMode == 0
           ) {
-            if (this.batWinChannel.get_position() > 0) {
-              this.batWinChannel.stop()
+            if (this.batWinChannel?.get_position?.() > 0) {
+              this.batWinChannel?.stop?.()
             }
             this.worldThemeChan = this.worldThemeSound.play(
               this.worldThemePos,
@@ -24308,7 +24313,7 @@ for (var i = 0; i < 11; i++) {
                     (manager.north == 18 && manager.east == 11) ||
                     (manager.north == 19 && manager.east == 22))
                 ) {
-                  if (this.worldThemeChan.get_position() > 0) {
+                  if (this.worldThemeChan?.get_position?.() > 0) {
                     this.worldThemeChan.stop()
                   }
                   this.worldPlaying = false
@@ -24458,7 +24463,7 @@ for (var i = 0; i < 11; i++) {
                     (manager.north == 20 && manager.east == 21))
                 ) {
                   console.log("Here")
-                  if (this.dungeonThemeChan.get_position() > 0) {
+                  if (this.dungeonThemeChan?.get_position?.() > 0) {
                     this.dungeonThemeChan.stop()
                   }
                   this.dungeonPlaying = false
@@ -24499,7 +24504,7 @@ for (var i = 0; i < 11; i++) {
                 this.newScreen()
                 __createObject.loca()
                 if (this.worldPlaying == 1) {
-                  if (this.worldThemeChan.get_position() > 0) {
+                  if (this.worldThemeChan?.get_position?.() > 0) {
                     this.worldThemeChan.stop()
                   }
                   this.worldPlaying = false
@@ -24926,7 +24931,7 @@ for (var i = 0; i < 11; i++) {
                   manager.char[0].set_y(500)
                   manager.char[0].set_x(350)
                   if (this.worldPlaying == 1) {
-                    if (this.worldThemeChan.get_position() > 0) {
+                    if (this.worldThemeChan?.get_position?.() > 0) {
                       this.worldThemeChan.stop()
                     }
                     this.worldPlaying = false
@@ -25601,7 +25606,7 @@ for (var i = 0; i < 11; i++) {
                 manager.clearScreen()
                 __createObject.loca()
                 if (this.worldPlaying == 1) {
-                  if (this.worldThemeChan.get_position() > 0) {
+                  if (this.worldThemeChan?.get_position?.() > 0) {
                     this.worldThemeChan.stop()
                   }
                   this.worldPlaying = false
@@ -26095,7 +26100,7 @@ for (var i = 0; i < 11; i++) {
                 manager.sPillar[this.counter].get_alpha() > 0
               ) {
                 keyIcon = manager.sPillar[this.counter]
-                keyIcon.set_alpha(keyIcon.get_alpha() - 0.05)
+                keyIcon.set_alpha(localStorage.instantBombs?0:keyIcon.get_alpha() - 0.05)
               }
               if (
                 manager.explode.hitTestObject(
@@ -26112,7 +26117,7 @@ for (var i = 0; i < 11; i++) {
                 manager.caveRocks[this.counter].get_alpha() > 0
               ) {
                 keyIcon = manager.caveRocks[this.counter]
-                keyIcon.set_alpha(keyIcon.get_alpha() - 0.05)
+                keyIcon.set_alpha(localStorage.instantBombs?0:keyIcon.get_alpha() - 0.05)
               }
               if (
                 manager.explode.hitTestObject(
@@ -26129,7 +26134,7 @@ for (var i = 0; i < 11; i++) {
                 manager.bRock[this.counter].get_alpha() > 0
               ) {
                 keyIcon = manager.bRock[this.counter]
-                keyIcon.set_alpha(keyIcon.get_alpha() - 0.05)
+                keyIcon.set_alpha(localStorage.instantBombs?0:keyIcon.get_alpha() - 0.05)
               }
               if (
                 manager.explode.hitTestObject(
@@ -26146,7 +26151,7 @@ for (var i = 0; i < 11; i++) {
                 manager.snowRock[this.counter].get_alpha() > 0
               ) {
                 keyIcon = manager.snowRock[this.counter]
-                keyIcon.set_alpha(keyIcon.get_alpha() - 0.05)
+                keyIcon.set_alpha(localStorage.instantBombs?0:keyIcon.get_alpha() - 0.05)
               }
               if (
                 manager.explode.hitTestObject(
@@ -26163,7 +26168,7 @@ for (var i = 0; i < 11; i++) {
                 manager.stump[this.counter].get_alpha() > 0
               ) {
                 keyIcon = manager.stump[this.counter]
-                keyIcon.set_alpha(keyIcon.get_alpha() - 0.05)
+                keyIcon.set_alpha(localStorage.instantBombs?0:keyIcon.get_alpha() - 0.05)
               }
               if (
                 manager.explode.hitTestObject(
@@ -26180,7 +26185,7 @@ for (var i = 0; i < 11; i++) {
                 manager.gRuin[this.counter].get_alpha() > 0
               ) {
                 keyIcon = manager.gRuin[this.counter]
-                keyIcon.set_alpha(keyIcon.get_alpha() - 0.05)
+                keyIcon.set_alpha(localStorage.instantBombs?0:keyIcon.get_alpha() - 0.05)
               }
               if (
                 manager.explode.hitTestObject(
@@ -26197,7 +26202,7 @@ for (var i = 0; i < 11; i++) {
                 manager.pyramid[this.counter].get_alpha() > 0
               ) {
                 keyIcon = manager.pyramid[this.counter]
-                keyIcon.set_alpha(keyIcon.get_alpha() - 0.05)
+                keyIcon.set_alpha(localStorage.instantBombs?0:keyIcon.get_alpha() - 0.05)
               }
               if (this.counter < 5) {
                 if (
@@ -26215,7 +26220,7 @@ for (var i = 0; i < 11; i++) {
                   manager.snowman[this.counter].get_alpha() > 0
                 ) {
                   keyIcon = manager.snowman[this.counter]
-                  keyIcon.set_alpha(keyIcon.get_alpha() - 0.05)
+                  keyIcon.set_alpha(localStorage.instantBombs?0:keyIcon.get_alpha() - 0.05)
                 }
               }
               manager.charBottom[0].set_x(manager.char[0].get_x())
@@ -27114,7 +27119,7 @@ for (var i = 0; i < 11; i++) {
             this.moveChar()
             this.removeWarpScreen()
             if (this.dungeonPlaying == 1) {
-              if (this.dungeonThemeChan.get_position() > 0) {
+              if (this.dungeonThemeChan?.get_position?.() > 0) {
                 this.dungeonThemeChan.stop()
               }
               this.dungeonPlaying = false
@@ -27142,7 +27147,7 @@ for (var i = 0; i < 11; i++) {
             this.moveChar()
             this.removeWarpScreen()
             if (this.dungeonPlaying == 1) {
-              if (this.dungeonThemeChan.get_position() > 0) {
+              if (this.dungeonThemeChan?.get_position?.() > 0) {
                 this.dungeonThemeChan.stop()
               }
               this.dungeonPlaying = false
@@ -27170,7 +27175,7 @@ for (var i = 0; i < 11; i++) {
             this.moveChar()
             this.removeWarpScreen()
             if (this.dungeonPlaying == 1) {
-              if (this.dungeonThemeChan.get_position() > 0) {
+              if (this.dungeonThemeChan?.get_position?.() > 0) {
                 this.dungeonThemeChan.stop()
               }
               this.dungeonPlaying = false
@@ -27198,7 +27203,7 @@ for (var i = 0; i < 11; i++) {
             this.moveChar()
             this.removeWarpScreen()
             if (this.dungeonPlaying == 1) {
-              if (this.dungeonThemeChan.get_position() > 0) {
+              if (this.dungeonThemeChan?.get_position?.() > 0) {
                 this.dungeonThemeChan.stop()
               }
               this.dungeonPlaying = false
@@ -27226,7 +27231,7 @@ for (var i = 0; i < 11; i++) {
             this.moveChar()
             this.removeWarpScreen()
             if (this.dungeonPlaying == 1) {
-              if (this.dungeonThemeChan.get_position() > 0) {
+              if (this.dungeonThemeChan?.get_position?.() > 0) {
                 this.dungeonThemeChan.stop()
               }
               this.dungeonPlaying = false
@@ -27254,7 +27259,7 @@ for (var i = 0; i < 11; i++) {
             this.moveChar()
             this.removeWarpScreen()
             if (this.dungeonPlaying == 1) {
-              if (this.dungeonThemeChan.get_position() > 0) {
+              if (this.dungeonThemeChan?.get_position?.() > 0) {
                 this.dungeonThemeChan.stop()
               }
               this.dungeonPlaying = false
@@ -27282,7 +27287,7 @@ for (var i = 0; i < 11; i++) {
             this.moveChar()
             this.removeWarpScreen()
             if (this.worldPlaying == 1) {
-              if (this.worldThemeChan.get_position() > 0) {
+              if (this.worldThemeChan?.get_position?.() > 0) {
                 this.worldThemeChan.stop()
               }
               this.worldPlaying = false
@@ -27313,7 +27318,7 @@ for (var i = 0; i < 11; i++) {
             this.moveChar()
             this.removeWarpScreen()
             if (this.dungeonPlaying == 1) {
-              if (this.dungeonThemeChan.get_position() > 0) {
+              if (this.dungeonThemeChan?.get_position?.() > 0) {
                 this.dungeonThemeChan.stop()
               }
               this.dungeonPlaying = false
@@ -27341,7 +27346,7 @@ for (var i = 0; i < 11; i++) {
             this.moveChar()
             this.removeWarpScreen()
             if (this.dungeonPlaying == 1) {
-              if (this.dungeonThemeChan.get_position() > 0) {
+              if (this.dungeonThemeChan?.get_position?.() > 0) {
                 this.dungeonThemeChan.stop()
               }
               this.dungeonPlaying = false
@@ -27366,7 +27371,7 @@ for (var i = 0; i < 11; i++) {
           }
           this.addListeners()
           if (this.fightMode == 1) {
-            if (this.fightThemeChan.get_position() > 0) {
+            if (this.fightThemeChan?.get_position?.() > 0) {
               this.fightThemeChan.stop()
             }
             this.fightMode = this.fightThemePlaying = false
@@ -30299,20 +30304,20 @@ for (var i = 0; i < 11; i++) {
           }
         },
         fightThemePlay: function () {
-          this.worldThemePos = this.worldThemeChan.get_position()
+          this.worldThemePos = this.worldThemeChan?.get_position?.()
           this.worldPlaying = false
-          this.dungeonThemePos = this.dungeonThemeChan.get_position()
+          this.dungeonThemePos = this.dungeonThemeChan?.get_position?.()
           this.dungeonPlaying = false
           this.fightMode = true
           if (this.fightThemePlaying == 0) {
             this.fightThemeChan = this.fightThemeSound.play(0, 999)
             this.fightThemePlaying = true
           }
-          if (this.worldThemeChan.get_position() > 0) {
-            this.worldThemeChan.stop()
+          if (this.worldThemeChan?.get_position?.() > 0) {
+            this.worldThemeChan?.stop?.()
           }
-          if (this.dungeonThemeChan.get_position() > 0) {
-            this.dungeonThemeChan.stop()
+          if (this.dungeonThemeChan?.get_position?.() > 0) {
+            this.dungeonThemeChan?.stop?.()
           }
         },
         enterTimerHandler: function (________isVisible) {
@@ -30807,8 +30812,8 @@ for (var i = 0; i < 11; i++) {
         },
         batEndTimerHandler: function (fightThemeState) {
           this.fightVar = 0
-          if (this.fightThemeChan.get_position() > 0) {
-            this.fightThemeChan.stop()
+          if (this.fightThemeChan?.get_position?.() > 0) {
+            this.fightThemeChan?.stop?.()
           }
           this.fightThemePlaying = false
           this.fireTimer.reset()
@@ -33112,17 +33117,17 @@ for (var i = 0; i < 11; i++) {
                 )
                 this.fightThemePlaying = true
               }
-              this.worldThemePos = this.worldThemeChan.get_position()
+              this.worldThemePos = this.worldThemeChan?.get_position?.()
               this.worldPlaying = false
               this.dungeonThemePos =
-                this.dungeonThemeChan.get_position()
+                this.dungeonThemeChan?.get_position?.()
               this.dungeonPlaying = false
               this.fightMode = true
-              if (this.worldThemeChan.get_position() > 0) {
-                this.worldThemeChan.stop()
+              if (this.worldThemeChan?.get_position?.() > 0) {
+                this.worldThemeChan?.stop?.()
               }
-              if (this.dungeonThemeChan.get_position() > 0) {
-                this.dungeonThemeChan.stop()
+              if (this.dungeonThemeChan?.get_position?.() > 0) {
+                this.dungeonThemeChan?.stop?.()
               }
               this.removeListeners()
               this.attackedTimer.start()
@@ -33236,8 +33241,8 @@ for (var i = 0; i < 11; i++) {
               manager.char[0].set_y(200)
               manager.char[0].set_x(300)
               if (this.dungeonPlaying == 1) {
-                if (this.dungeonThemeChan.get_position() > 0) {
-                  this.dungeonThemeChan.stop()
+                if (this.dungeonThemeChan?.get_position?.() > 0) {
+                  this.dungeonThemeChan?.stop?.()
                 }
                 this.dungeonPlaying = false
                 this.worldThemeChan = this.worldThemeSound.play(
@@ -33250,8 +33255,8 @@ for (var i = 0; i < 11; i++) {
             if (manager.north == 10 && manager.east == 26) {
               manager.char[0].set_y(100)
               if (this.dungeonPlaying == 1) {
-                if (this.dungeonThemeChan.get_position() > 0) {
-                  this.dungeonThemeChan.stop()
+                if (this.dungeonThemeChan?.get_position?.() > 0) {
+                  this.dungeonThemeChan?.stop?.()
                 }
                 this.dungeonPlaying = false
                 this.worldThemeChan = this.worldThemeSound.play(
@@ -33294,8 +33299,8 @@ for (var i = 0; i < 11; i++) {
               manager.char[0].set_y(410)
               manager.char[0].set_x(345)
               if (this.dungeonPlaying == 1) {
-                if (this.dungeonThemeChan.get_position() > 0) {
-                  this.dungeonThemeChan.stop()
+                if (this.dungeonThemeChan?.get_position?.() > 0) {
+                  this.dungeonThemeChan?.stop?.()
                 }
                 this.dungeonPlaying = false
                 this.worldThemeChan = this.worldThemeSound.play(
@@ -33815,8 +33820,8 @@ for (var i = 0; i < 11; i++) {
                 this.newScreen()
                 __createObject.loca()
                 if (this.worldPlaying == 1) {
-                  if (this.worldThemeChan.get_position() > 0) {
-                    this.worldThemeChan.stop()
+                  if (this.worldThemeChan?.get_position?.() > 0) {
+                    this.worldThemeChan?.stop?.()
                   }
                   this.worldPlaying = false
                   this.dungeonThemeChan = this.dungeonThemeSound.play(
@@ -36535,8 +36540,8 @@ for (var i = 0; i < 11; i++) {
               this.removeItemScreen()
               this.showButtons()
               if (this.dungeonPlaying == 1) {
-                if (this.dungeonThemeChan.get_position() > 0) {
-                  this.dungeonThemeChan.stop()
+                if (this.dungeonThemeChan?.get_position?.() > 0) {
+                  this.dungeonThemeChan?.stop?.()
                 }
                 this.dungeonPlaying = false
                 this.worldThemeChan = this.worldThemeSound.play(
@@ -37436,8 +37441,8 @@ for (var i = 0; i < 11; i++) {
               window.onBattleEnd()
             }
             if (this.dungeonPlaying == 1) {
-              if (this.dungeonThemeChan.get_position() > 0) {
-                this.dungeonThemeChan.stop()
+              if (this.dungeonThemeChan?.get_position?.() > 0) {
+                this.dungeonThemeChan?.stop?.()
               }
               this.dungeonPlaying = false
               this.worldThemeChan = this.worldThemeSound.play(0, 999)
@@ -37824,16 +37829,16 @@ for (var i = 0; i < 11; i++) {
               manager.north--
               manager.char[0].set_y(130)
               manager.char[0].set_x(565)
-              if (this.worldThemeChan.get_position() > 0) {
-                this.worldThemeChan.stop()
+              if (this.worldThemeChan?.get_position?.() > 0) {
+                this.worldThemeChan?.stop?.()
               }
               this.worldPlaying = false
             } else if (manager.north == 9 && manager.east == 13) {
               manager.east++
               manager.char[0].set_y(250)
               manager.char[0].set_x(410)
-              if (this.worldThemeChan.get_position() > 0) {
-                this.worldThemeChan.stop()
+              if (this.worldThemeChan?.get_position?.() > 0) {
+                this.worldThemeChan?.stop?.()
               }
               this.worldPlaying = false
             } else if (
@@ -37851,8 +37856,8 @@ for (var i = 0; i < 11; i++) {
             ) {
               manager.north++
               manager.char[0].set_y(450)
-              if (this.dungeonThemeChan.get_position() > 0) {
-                this.dungeonThemeChan.stop()
+              if (this.dungeonThemeChan?.get_position?.() > 0) {
+                this.dungeonThemeChan?.stop?.()
               }
               this.dungeonPlaying = false
             }
@@ -45553,8 +45558,8 @@ for (var i = 0; i < 11; i++) {
           this.iceSecs = manager.nukeSecs = 0
           manager.sirCTimer.reset()
           manager.sirCActive = false
-          if (this.fightThemeChan.get_position() > 0) {
-            this.fightThemeChan.stop()
+          if (this.fightThemeChan?.get_position?.() > 0) {
+            this.fightThemeChan?.stop?.()
           }
           this.fightMode = this.fightThemePlaying = false
           if (
@@ -45792,8 +45797,8 @@ for (var i = 0; i < 11; i++) {
               this.worldThemePos =
               manager.area =
                 0
-            if (this.fightThemeChan.get_position() > 0) {
-              this.fightThemeChan.stop()
+            if (this.fightThemeChan?.get_position?.() > 0) {
+              this.fightThemeChan?.stop?.()
             }
             this.defeatedSound.play()
             this.probDisplay.set_x(90)
@@ -68587,7 +68592,7 @@ for (var i = 0; i < 11; i++) {
               this.parent.get_gain()
             this.id = this.parent.buffer.__srcHowl.play()
             this.parent.buffer.__srcHowl._volume = originalGain
-            this.setPosition(this.parent.get_position())
+            this.setPosition(this.parent?.get_position?.())
             this.parent.buffer.__srcHowl.on(
               "end",
               createObjectMixin(this, this.howl_onEnd),
@@ -109616,7 +109621,7 @@ for (var i = 0; i < 11; i++) {
             if (this.__isValid) {
               this.__source.set_gain(__validSoundTransformRatio)
               __validSoundTransformRatio =
-                this.__source.get_position()
+                this.__source?.get_position?.()
               __validSoundTransformRatio.x = panAndVolumeSums
               __validSoundTransformRatio.z =
                 Math.sqrt(1 - Math.pow(panAndVolumeSums, 2)) * -1

@@ -2375,8 +2375,9 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "quest:geo.1",
-        "item:geodes#5",
+        # "item:geodes#5",
         # NOTE required to get more than 2 geodes
+        "area:4",
         "skill:dig",
       ],
     ],
