@@ -26385,7 +26385,8 @@ for (var i = 0; i < 11; i++) {
             manager.mob[newObserveObject.mobVar].get_alpha() > 0
           ) {
             keyIcon = manager.mob[newObserveObject.mobVar]
-            keyIcon.set_alpha(keyIcon.get_alpha() - 0.2)
+            // NOTE spawning new encounter while fading leaves faded enemy on screen, 0 prevents this
+            keyIcon.set_alpha(1 ? 0 : keyIcon.get_alpha() - 0.2)
           }
           if (manager.whiteFlash.get_alpha() > 0) {
             keyIcon = manager.whiteFlash
