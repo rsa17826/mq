@@ -33111,8 +33111,12 @@ for (var i = 0; i < 11; i++) {
               ) ?
                 manager.hp + (500 + manager.fame)
               : manager.hp + (1 + manager.fame)
+            // NOTE no reason to have to hold d so one press is now enough
+            manager.hp = manager.mxhp
             if (manager.north == 19 && manager.east == 10) {
               manager.mp += manager.fame
+              // NOTE no reason to have to hold d so one press is now enough
+              manager.mp = manager.mxmp
             }
             manager.hitMax()
           }
