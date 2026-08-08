@@ -670,6 +670,7 @@ function customDrawLoop() {
       10,
       `progress: ${Math.floor(progressValue * 100)}%`,
     )
+    window.currentGoalProgress = Math.floor(progressValue * 100)
   }
   var progressValue = 0
   var maxProg = 0
@@ -688,6 +689,7 @@ function customDrawLoop() {
       10,
       `checks: ${Math.floor(progressValue * 100)}%`,
     )
+    window.currentCheckProgress = Math.floor(progressValue * 100)
   }
 
   function newBar(

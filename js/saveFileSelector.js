@@ -56,7 +56,7 @@ class SaveFileSelector {
                 marginBottom: "10px",
               },
               [
-                newelem("b", { fontSize: "16px" }, ["Select Save"]),
+                newelem("b", { fontSize: "26px" }, ["Select Save"]),
                 newelem(
                   "button",
                   {
@@ -81,6 +81,45 @@ class SaveFileSelector {
     document.body.appendChild(SaveFileSelector.panel)
   }
 
+  static buildProgressBar(label, pct) {
+    return newelem(
+      "div",
+      { display: "flex", flexDirection: "column", gap: "2px" },
+      [
+        newelem(
+          "div",
+          {
+            fontSize: "14px",
+            color: "#aaa",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          },
+          [
+            newelem(
+              "div",
+              {
+                width: "calc(100% - 50px)",
+                height: "3px",
+                background: "rgba(255,255,255,0.1)",
+                borderRadius: "3px",
+                overflow: "hidden",
+              },
+              [
+                newelem("div", {
+                  width: `${pct}%`,
+                  height: "100%",
+                  background: "#636363",
+                }),
+              ],
+            ),
+            `${label} ${pct}%`,
+          ],
+        ),
+      ],
+    )
+  }
+
   static buildRow(key) {
     const data = window.saveData[key]
     const ap = data && data.ap
@@ -89,8 +128,8 @@ class SaveFileSelector {
       "div",
       {
         display: "flex",
-        alignItems: "center",
         justifyContent: "space-between",
+        flexDirection: "column",
         gap: "10px",
         background: "rgba(255,255,255,0.05)",
         border: "1px solid #333",
@@ -98,54 +137,88 @@ class SaveFileSelector {
         padding: "8px 10px",
       },
       [
-        newelem("div", { display: "flex", flexDirection: "column" }, [
-          newelem("div", { fontWeight: "bold" }, [key]),
-          ap ?
-            newelem("div", { fontSize: "12px", color: "#aaa" }, [
-              `${ap.playerName}@${ap.hostname}${ap.port ? `:${ap.port}` : ""} (${ap.game})`,
-            ])
-          : newelem("div", { fontSize: "12px", color: "#888" }, [
-              "(no AP connection info)",
-            ]),
-        ]),
-        newelem("div", { display: "flex", gap: "6px" }, [
-          ap ?
+        newelem(
+          "div",
+          {
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          },
+          [
             newelem(
-              "button",
-              {
-                title: "Connect to this save's server",
-                onclick: (e) => {
-                  e.stopPropagation()
-                  SaveFileSelector.hide()
-                  location.search = `?connect=${ap.hostname}${ap.port ? `:${ap.port}` : ""}&name=${encodeURIComponent(ap.playerName)}&password=${encodeURIComponent(ap.password || "")}`
-                  if (window.playerLoaded && !window.ap) {
-                    location.reload()
-                  } else {
-                    apTryConnect()
-                  }
+              "div",
+              { display: "flex", flexDirection: "column" },
+              [
+                newelem("div", { fontWeight: "bold" }, [key]),
+                ap ?
+                  newelem(
+                    "div",
+                    { fontSize: "16px", color: "#aaa" },
+                    [
+                      `${ap.playerName}@${ap.hostname}${ap.port ? `:${ap.port}` : ""} (${ap.game})`,
+                    ],
+                  )
+                : newelem(
+                    "div",
+                    { fontSize: "16px", color: "#888" },
+                    ["(no AP connection info)"],
+                  ),
+              ],
+            ),
+            newelem("div", { display: "flex", gap: "6px" }, [
+              ap ?
+                newelem(
+                  "button",
+                  {
+                    title: "Connect to this save's server",
+                    onclick: (e) => {
+                      e.stopPropagation()
+                      SaveFileSelector.hide()
+                      location.search = `?connect=${ap.hostname}${ap.port ? `:${ap.port}` : ""}&name=${encodeURIComponent(ap.playerName)}&password=${encodeURIComponent(ap.password || "")}`
+                      if (window.playerLoaded && !window.ap) {
+                        location.reload()
+                      } else {
+                        apTryConnect()
+                      }
+                    },
+                  },
+                  ["Connect"],
+                )
+              : null,
+              newelem(
+                "button",
+                {
+                  title: "Delete this save",
+                  onclick: (e) => {
+                    e.stopPropagation()
+                    if (
+                      !confirm(
+                        `Delete save "${key}"? This cannot be undone.`,
+                      )
+                    )
+                      return
+                    delete window.saveData[key]
+                    SaveFileSelector.render()
+                  },
                 },
-              },
-              ["Connect"],
+                ["Delete"],
+              ),
+            ]),
+          ],
+        ),
+        newelem("div", { display: "flex", flexDirection: "column" }, [
+          data && data.currentGoalProgress != null ?
+            SaveFileSelector.buildProgressBar(
+              "Goal",
+              data.currentGoalProgress,
             )
           : null,
-          newelem(
-            "button",
-            {
-              title: "Delete this save",
-              onclick: (e) => {
-                e.stopPropagation()
-                if (
-                  !confirm(
-                    `Delete save "${key}"? This cannot be undone.`,
-                  )
-                )
-                  return
-                delete window.saveData[key]
-                SaveFileSelector.render()
-              },
-            },
-            ["Delete"],
-          ),
+          data && data.currentCheckProgress != null ?
+            SaveFileSelector.buildProgressBar(
+              "Checks",
+              data.currentCheckProgress,
+            )
+          : null,
         ]),
       ],
     )

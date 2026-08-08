@@ -65015,6 +65015,8 @@ for (var i = 0; i < 11; i++) {
                 password: ap.password,
               }
             : null,
+          currentGoalProgress: window.currentGoalProgress,
+          currentCheckProgress: window.currentCheckProgress,
           ["playerCheckedEntrances"]: window.playerCheckedEntrances,
           ["q"]: window.q,
           ["currentX"]: manager.char[0].get_x() | 0,
