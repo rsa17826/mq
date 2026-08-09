@@ -318,6 +318,7 @@ function customDrawLoop() {
           "10_16": "warp temple of tessalation",
           "12_10": "warp east of the scelene scioety",
           "18_20": "warp south of dyce",
+          "11_12": "sunflower seeds",
           "7_9": "warp toomb of the quarter hawk",
           "11_24": "warp garden of shadowsoul",
           "19_12": "warp grimbsbane",

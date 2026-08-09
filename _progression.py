@@ -661,6 +661,7 @@ manager.correct - manager.wrong > 800 = halo
         "loot:sTooth#30",
         "item:gold#800",
         "skill:tough",
+        "loot:aAxe",
       ],
     ],
     "receive": [

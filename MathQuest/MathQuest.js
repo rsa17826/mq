@@ -33112,11 +33112,11 @@ for (var i = 0; i < 11; i++) {
                 manager.hp + (500 + manager.fame)
               : manager.hp + (1 + manager.fame)
             // NOTE no reason to have to hold d so one press is now enough
-            manager.hp = manager.mxhp
+            manager.hp = manager.mxhp + manager.eHealth
             if (manager.north == 19 && manager.east == 10) {
               manager.mp += manager.fame
               // NOTE no reason to have to hold d so one press is now enough
-              manager.mp = manager.mxmp
+              manager.mp = manager.mxmp + manager.eMagic
             }
             manager.hitMax()
           }
@@ -65307,6 +65307,7 @@ for (var i = 0; i < 11; i++) {
           checksInFlight: window.checksInFlight,
           rngSeed: rng.state,
           remainingBattleTriggers: window.remainingBattleTriggers,
+          attBon: test.attBon,
         }
       }
       Udf.ReceiveVariables = function (data) {
@@ -65322,6 +65323,8 @@ for (var i = 0; i < 11; i++) {
         manager.mxhp = data["mxhp"]
         manager.mp = data["mp"]
         manager.mxmp = data["mxmp"]
+        // NOTE don't see any reason to not also save this info
+        test.attBon = data.attBon
         manager.food[Enum.Food.apple] = data["food:apple"]
         manager.food[Enum.Food.honey] = data["food:honey"]
         manager.magic[Enum.Magic.tele] = data["magic:tele"]
