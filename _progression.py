@@ -7893,6 +7893,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "area:14",
+      "area:str up npc"
     ],
   },
   {
