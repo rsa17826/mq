@@ -1994,7 +1994,14 @@ manager.correct - manager.wrong > 800 = halo
   {
     "room": {"north": 12, "east": 11},
     "requires": [
-      ["quest:canteen.2", ""],
+      [
+        "quest:canteen.2",
+        "entrance.south0",
+      ],
+      [
+        "quest:canteen.2",
+        "entrance.west0",
+      ],
     ],
     "receive": [
       "quest:canteen.3",
@@ -7891,10 +7898,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [],
     ],
-    "receive": [
-      "area:14",
-      "area:str up npc"
-    ],
+    "receive": ["area:14", "area:str up npc"],
   },
   {
     "room": {"north": 19, "east": 14},
