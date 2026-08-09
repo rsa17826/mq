@@ -194,14 +194,14 @@ class ArchipelagoClient {
       // If secure connection fails and we haven't shifted to ws:// yet
       if (!this.isFallbackMode) {
         apWarn(
-          `${this.url} connection failed. trying w${this.wss ? "" : "s"}s://${this.hostname}:${this.port}`,
+          `${this.url} connection failed. trying w${this.wss ? "" : "s"}s://${this.hostname}${this.port ? `:${this.port}` : ""}`,
         )
 
         // Save the preference so next time it skips straight to ws://
         this.wss = !this.wss
         localStorage[this.storageKey] = this.wss
         this.isFallbackMode = true
-        this.url = `w${this.wss ? "s" : ""}s://${this.hostname}:${this.port}`
+        this.url = `w${this.wss ? "s" : ""}s://${this.hostname}${this.port ? `:${this.port}` : ""}`
 
         // Clean up old socket event listeners before retrying
         this.socket.onopen = null
