@@ -2698,7 +2698,7 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 4, "bottom": 6},
+        {"top": 4, "bottom": 7},
       ],
       "north": [],
     },
@@ -2708,7 +2708,7 @@ GEOM: list[ExitBase] = [
     "east": 23,
     "exits": {
       "west": [
-        {"top": 4, "bottom": 6},
+        {"top": 4, "bottom": 7},
       ],
       "south": [
         {"left": 7, "right": 11},
@@ -3303,7 +3303,7 @@ GEOM: list[ExitBase] = [
         {"top": 5, "bottom": 6},
       ],
       "south": [
-        {"left": 4, "right": 5},
+        {"left": 3, "right": 6},
       ],
       "east": [],
       "north": [
@@ -5680,7 +5680,8 @@ GEOM: list[ExitBase] = [
         {"top": 2, "bottom": 4},
       ],
       "south": [
-        {"left": 6, "right": 6},
+        # NOTE has to be 5 so center is a valid entrance location
+        {"left": 5, "right": 7},
       ],
       "east": [],
       "north": [],
@@ -6424,7 +6425,7 @@ GEOM: list[ExitBase] = [
       "west": [],
       "south": [],
       "east": [
-        {"top": 2, "bottom": 10},
+        {"top": 2, "bottom": 9},
       ],
       "north": [],
     },

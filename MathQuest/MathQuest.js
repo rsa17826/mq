@@ -9,51 +9,45 @@
 // @endregex
 // @ts-nocheck
 
-// TODO make loot tracking find closest loot not the first on the list
-// TODO make select save show progress bars
+// TODO `make loot tracking find closest loot not the first on the list
 // TODO make select save close on esc
-// TODO make path arrows show path at closest to player part of target exit
+// TODO `make path arrows show path at closest to player part of target exit
 // TODO esc not working on aurastone house
-// TODO make start cmd relink the _data files if they arnt linked
+// TODO `make start cmd relink the _data files if they arnt linked
 // TODO !make ap log not scroll if not at bottom
-// TODO fix arrow turns red when recalcing if targeting an entrance
-// TODO sunflower seller sticks
-// TODO tracker tracking area should track closest
+// TODO `fix arrow turns red when recalcing if targeting an entrance
+// TODO `sunflower seller sticks
+// TODO `tracker tracking area should track closest
 // TODO make adding &seed go before #
-// TODO track last entrance and use that for start of bfs instead of any location in the room
-// TODO make overlay show colors for ool checks
+// TODO `track last entrance and use that for start of bfs instead of any location in the room
+// TODO `make overlay show colors for ool checks
 // TODO 7_12 not accessible without quest canteen - warp thinks you can get to south0
-// TODO make itemtracker auto revompute without closing and reopening section when check checked
-// TODO after ap connects a dc shouldn't try ws
-// TODO 11 24 guard sticky from bottom side
-// TODO walking into bridge switch counts as walking while dialogue box up
-// TODO make track button also use only player entered areas thing if enabled
-// TODO 21 17 guard is sticky
-// TODO 24 13 south 0 gets larger when opening the bridge
-// TODO 14 13 east exit to large
+// TODO `make itemtracker auto revompute without closing and reopening section when check checked
+// TODO `after ap connects a dc shouldn't try ws
+// TODO `11 24 guard sticky from bottom side
+// TODO `walking into bridge switch counts as walking while dialogue box up
+// TODO `make track button also use only player entered areas thing if enabled
+// TODO `21 17 guard is sticky
 // TODO beating boss before high quest gtree will skip some items?
-// TODO 11 22/23 add one thing to bottom, can go below fense
-// TODO 13 20 add one to each side of exit south0
-// TODO save extra tracked loot
-// TODO save some data to player slots
+// TODO `save extra tracked loot
+// TODO `save some data to player slots
 // TODO esc not working on magic upg house
-// TODO if all loot can be farmed in dest room track that one instead
-// TODO if some but not all loot can be farmed in dest room track all other loot before tracking the loot that can be got at dest
-// TODO pathfinding should know 17 10 has access to 17 11
-// TODO find closest of all possible conds
+// TODO `if all loot can be farmed in dest room track that one instead
+// TODO `if some but not all loot can be farmed in dest room track all other loot before tracking the loot that can be got at dest
+// TODO `pathfinding should know 17 10 has access to 17 11
+// TODO `find closest of all possible conds
 // Requires: quest:oMan.17 & area:6 OR quest:oMan.17 & area:7
 // Receive: quest:oMan.18
 // is showing path to area6 when area7 is 1 tile closer
-// TODO it's tracking the dest instead of the area for slamstones
+// TODO `it's tracking the dest instead of the area for slamstones
 // 7_18
 // Requires: loot:slamstones & skill:reveal
 // Receive: skill:reveal.2
-// TODO 16 9 west0 can't get out of water - no way to show this, same area how fix
-// TODO when returning to menu make sure randinit is reset and works correctly when loading game
-// TODO add image to exit to menu button
-// TODO move exit to menu button a bit left
-// TODO mana not updating, add mana and hp to hook
-// TODO hide exit to menu bytton when clkosign stats screen
+// TODO `16 9 west0 can't get out of water - no way to show this, same area how fix
+// TODO `when returning to menu make sure randinit is reset and works correctly when loading game
+// TODO `add image to exit to menu button
+// TODO `move exit to menu button a bit left
+// TODO `hide exit to menu bytton when clkosign stats screen
 // TODO 16 22 south0 shows can't find exit
 
 window.oldArea = null
@@ -113146,8 +113140,8 @@ for (var i = 0; i < 11; i++) {
         function erBeginWriteIfNeeded() {
           if (erUpdatingInternal) return
           if (!erInTransition) {
-            erOrigin.north = erNorth
-            erOrigin.east = erEast
+            erOrigin.north = Number(erNorth)
+            erOrigin.east = Number(erEast)
             if (manager.char && manager.char[0]) {
               erOrigin.x = manager.char[0].get_x()
               erOrigin.y = manager.char[0].get_y()
@@ -113275,7 +113269,10 @@ for (var i = 0; i < 11; i++) {
                 conns,
               )
               var conn = conns[0]
-
+              if (window.prevPos) {
+                erOrigin.x = window.prevPos[0]
+                erOrigin.y = window.prevPos[1]
+              }
               if (
                 direction &&
                 erOrigin.x !== null &&
@@ -113351,8 +113348,8 @@ for (var i = 0; i < 11; i++) {
                         String(c.origIdx) === String(matchedExitIndex)
                       )
                     })
-
                     let fullkey = `${erOrigin.north}_${erOrigin.east}_${direction}_${matchedExitIndex}`
+                    log(fullkey, specificTarget, c, matchedExitIndex)
                     let recomp = false
                     if (!window.playerCheckedEntrances.has(fullkey)) {
                       window.playerCheckedEntrances.add(fullkey)
