@@ -101764,7 +101764,7 @@ for (var i = 0; i < 11; i++) {
                     (e) => e != argumentB,
                   )
                   for (let key of window.keysDownList) {
-                    requestAnimFrame(() => {
+                    queueMicrotask(() => {
                       if (window.keysDownList.includes(key))
                         currentScope.onKeyDown.dispatch(
                           key,
