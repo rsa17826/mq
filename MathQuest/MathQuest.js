@@ -48,7 +48,6 @@
 // TODO `add image to exit to menu button
 // TODO `move exit to menu button a bit left
 // TODO `hide exit to menu bytton when clkosign stats screen
-// TODO 16 22 south0 shows can't find exit
 
 window.oldArea = null
 window.remainingBattleTriggers = 0
