@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         lib:indexeddbProxy
-// @version      15
+// @version      16
 // @description  none
 // @license      GPLv3
 // @run-at       document-start
@@ -83,6 +83,109 @@
     const proxyToTarget = new WeakMap()
 
     /* =========================
+       CROSS-TAB SYNC
+    ========================== */
+    // One channel per db+store so different createDB() calls don't cross-talk.
+    const channelName = `idbproxy:${dbObj.db.name}:${dbObj.storeName}`
+    const bc =
+      "BroadcastChannel" in window ?
+        new BroadcastChannel(channelName)
+      : null
+
+    // Stable per-tab identity so ids generated in different tabs never collide.
+    const tabId = Math.random().toString(36).slice(2, 10)
+    let idCounter = 0
+    function genId() {
+      return `${tabId}:${idCounter++}`
+    }
+
+    // rootKey -> array of stable element ids, parallel to localData[rootKey]
+    // when that value is an array. This is what lets push (insert) in one tab
+    // and splice (remove) in another merge correctly instead of one clobbering
+    // the other: ops reference elements by id, not by index, so they commute.
+    const arrayIds = {}
+
+    bc?.addEventListener("message", (e) => {
+      const msg = e.data
+      if (!msg) return
+
+      switch (msg.type) {
+        case "write":
+          // Another tab committed this key to IDB — adopt it locally.
+          // This also drops any proxy cached for the old object identity
+          // so future property access rebuilds against fresh data.
+          localData[msg.key] = msg.val
+          if (Array.isArray(msg.val)) {
+            arrayIds[msg.key] = msg.val.map((_, i) => `init:${i}`)
+          } else {
+            delete arrayIds[msg.key]
+          }
+          break
+
+        case "delete":
+          delete localData[msg.key]
+          delete arrayIds[msg.key]
+          break
+
+        case "clear":
+          for (const key of Object.keys(localData)) {
+            delete localData[key]
+          }
+          for (const key of Object.keys(arrayIds)) {
+            delete arrayIds[key]
+          }
+          break
+
+        case "arrayOp":
+          applyRemoteArrayOp(msg.key, msg.op)
+          break
+      }
+    })
+
+    function broadcastWrite(key, val) {
+      bc?.postMessage(
+        val === undefined ?
+          { type: "delete", key }
+        : { type: "write", key, val },
+      )
+    }
+
+    // Apply an insert/remove op that originated in another tab onto our own
+    // in-memory array + id shadow, then re-persist so this tab's IDB copy
+    // (and any tab that opens fresh later) reflects the merged result too.
+    // Both op kinds are idempotent/no-ops when the referenced id is unknown,
+    // so out-of-order or duplicate delivery can't corrupt state.
+    function applyRemoteArrayOp(key, op) {
+      if (!Array.isArray(localData[key])) return
+
+      const ids = arrayIds[key] || (arrayIds[key] = [])
+      const arr = localData[key]
+
+      if (op.kind === "insert") {
+        if (ids.includes(op.id)) return
+
+        let pos = arr.length
+        if (op.afterId) {
+          const idx = ids.indexOf(op.afterId)
+          pos = idx === -1 ? arr.length : idx + 1
+        } else if (op.atStart) {
+          pos = 0
+        }
+
+        ids.splice(pos, 0, op.id)
+        arr.splice(pos, 0, op.value)
+      } else if (op.kind === "remove") {
+        const idx = ids.indexOf(op.id)
+        if (idx === -1) return // already gone locally — nothing to do
+
+        ids.splice(idx, 1)
+        arr.splice(idx, 1)
+      }
+
+      queueWrite(key, clone(arr))
+    }
+
+    /* =========================
        LOAD INITIAL DATA
     ========================== */
 
@@ -91,102 +194,14 @@
 
     for (const { id, val } of records) {
       localData[id] = val
+      if (Array.isArray(val)) {
+        // Deterministic ids for pre-existing elements: any tab loading the
+        // same persisted state at this point assigns the same ids, so ops
+        // referencing them stay consistent across tabs.
+        arrayIds[id] = val.map((_, i) => `init:${i}`)
+      }
       // shouldProxy(val) ? createDeepProxy(id, val) : val
     }
-
-    /* =========================
-       EVENT SYSTEM
-    ========================== */
-
-    const listeners = new Map()
-
-    function on(event, cb) {
-      if (!listeners.has(event)) listeners.set(event, new Set())
-      listeners.get(event).add(cb)
-      return [event, cb]
-    }
-
-    function off([event, cb]) {
-      listeners.get(event)?.delete(cb)
-    }
-
-    function emit(event, payload) {
-      listeners.get(event)?.forEach((cb) => cb(payload))
-    }
-
-    /* =========================
-       TAB LEADER SYSTEM
-    ========================== */
-
-    const TAB_ID = crypto.randomUUID()
-    const channel = new BroadcastChannel("indexeddb_ls_" + name)
-
-    const tabs = new Map([[TAB_ID, Date.now()]])
-    let leaderId = TAB_ID
-    let isLeader = true
-
-    const HEARTBEAT_INTERVAL = 1000
-    const LEADER_TIMEOUT = 3000
-
-    function electLeader() {
-      const alive = [...tabs.entries()]
-        .filter(([, t]) => Date.now() - t < LEADER_TIMEOUT)
-        .map(([id]) => id)
-        .sort()
-
-      if (!alive.length) return
-
-      const newLeader = alive[0]
-      if (newLeader === leaderId) return
-
-      const wasLeader = isLeader
-      leaderId = newLeader
-      isLeader = leaderId === TAB_ID
-
-      if (!isLeader && wasLeader) {
-        emit("leader-stepped-down", {
-          oldLeaderId: TAB_ID,
-          newLeaderId: leaderId,
-        })
-      }
-
-      if (isLeader) {
-        emit("leader-elected", { leaderId })
-      }
-    }
-
-    function heartbeat() {
-      channel.postMessage({ type: "heartbeat", id: TAB_ID })
-    }
-
-    channel.onmessage = (e) => {
-      const msg = e.data
-      const now = Date.now()
-
-      switch (msg.type) {
-        case "hello":
-        case "heartbeat":
-          tabs.set(msg.id, now)
-          electLeader()
-          break
-
-        case "goodbye":
-          tabs.delete(msg.id)
-          electLeader()
-          break
-
-        case "external-update":
-          applyExternal(msg.items)
-          break
-      }
-    }
-
-    channel.postMessage({ type: "hello", id: TAB_ID })
-    setInterval(heartbeat, HEARTBEAT_INTERVAL)
-
-    window.addEventListener("beforeunload", () => {
-      channel.postMessage({ type: "goodbye", id: TAB_ID })
-    })
 
     /* =========================
        BATCH WRITE ENGINE
@@ -238,6 +253,127 @@
     function shouldProxy(value) {
       return Array.isArray(value) || isPlainObject(value)
     }
+
+    // Builds id-aware replacements for the array mutator methods on a
+    // top-level array value. Instead of persisting/broadcasting the whole
+    // array (which is what a plain proxy `set` trap would do for every
+    // element touched during a native splice), each call emits a small
+    // insert/remove op keyed by stable element id and broadcasts *that*.
+    // Because ops target ids rather than indices, a push in one tab and a
+    // splice-remove in another commute correctly instead of one silently
+    // overwriting the other.
+    function makeArrayOps(rootKey) {
+      const arr = localData[rootKey]
+      const ids =
+        arrayIds[rootKey] ||
+        (arrayIds[rootKey] = arr.map((_, i) => `init:${i}`))
+
+      function persist() {
+        queueWrite(rootKey, clone(arr))
+      }
+      function broadcastOp(op) {
+        bc?.postMessage({ type: "arrayOp", key: rootKey, op })
+      }
+
+      return {
+        push(...items) {
+          for (const item of items) {
+            const id = genId()
+            const value = unwrap(item)
+            ids.push(id)
+            arr.push(value)
+            broadcastOp({
+              kind: "insert",
+              id,
+              value,
+              afterId: ids[ids.length - 2] ?? null,
+            })
+          }
+          persist()
+          return arr.length
+        },
+
+        unshift(...items) {
+          for (let i = items.length - 1; i >= 0; i--) {
+            const id = genId()
+            const value = unwrap(items[i])
+            ids.unshift(id)
+            arr.unshift(value)
+            broadcastOp({ kind: "insert", id, value, atStart: true })
+          }
+          persist()
+          return arr.length
+        },
+
+        pop() {
+          if (!arr.length) return undefined
+          const id = ids.pop()
+          const value = arr.pop()
+          broadcastOp({ kind: "remove", id })
+          persist()
+          return value
+        },
+
+        shift() {
+          if (!arr.length) return undefined
+          const id = ids.shift()
+          const value = arr.shift()
+          broadcastOp({ kind: "remove", id })
+          persist()
+          return value
+        },
+
+        splice(start, deleteCount, ...items) {
+          const len = arr.length
+          const from =
+            start < 0 ?
+              Math.max(len + start, 0)
+            : Math.min(start, len)
+          const count =
+            deleteCount === undefined ?
+              len - from
+            : Math.max(0, Math.min(deleteCount, len - from))
+
+          const removedIds = ids.splice(from, count)
+          const removed = arr.splice(
+            from,
+            count,
+            ...items.map(unwrap),
+          )
+
+          for (const id of removedIds) {
+            broadcastOp({ kind: "remove", id })
+          }
+
+          const newIds = items.map(() => genId())
+          ids.splice(from, 0, ...newIds)
+
+          let prevId = ids[from - 1] ?? null
+          items.forEach((item, i) => {
+            const value = unwrap(item)
+            broadcastOp({
+              kind: "insert",
+              id: newIds[i],
+              value,
+              afterId: prevId,
+            })
+            prevId = newIds[i]
+          })
+
+          persist()
+          return removed
+        },
+      }
+    }
+
+    const ARRAY_OP_METHODS = [
+      "push",
+      "pop",
+      "shift",
+      "unshift",
+      "splice",
+    ]
+
     function createDeepProxy(rootKey, target) {
       if (target === null || typeof target !== "object") return target
 
@@ -246,6 +382,15 @@
       if (shouldProxy(target)) {
         const proxy = new Proxy(target, {
           get(obj, prop) {
+            if (
+              obj === localData[rootKey] &&
+              Array.isArray(obj) &&
+              typeof prop === "string" &&
+              ARRAY_OP_METHODS.includes(prop)
+            ) {
+              return makeArrayOps(rootKey)[prop]
+            }
+
             const value = obj[prop]
 
             return createDeepProxy(rootKey, value)
@@ -256,10 +401,6 @@
 
             // Persist entire root object
             queueWrite(rootKey, clone(localData[rootKey]))
-
-            emit("set", { key: rootKey, deep: true })
-            emit("change", { type: "deep-set", key: rootKey })
-
             return true
           },
 
@@ -267,9 +408,6 @@
             delete obj[prop]
 
             queueWrite(rootKey, clone(localData[rootKey]))
-
-            emit("delete", { key: rootKey, deep: true })
-            emit("change", { type: "deep-delete", key: rootKey })
 
             return true
           },
@@ -319,8 +457,10 @@
           tx.onerror = () => reject(tx.error)
         })
 
-        channel.postMessage({ type: "external-update", items })
-        emit("flush", items)
+        // Only broadcast after the transaction actually committed.
+        for (const item of items) {
+          broadcastWrite(item.id, item.val)
+        }
       } finally {
         flushing = false
         resolvePending()
@@ -345,19 +485,6 @@
       })
     }
 
-    function applyExternal(items) {
-      for (const { id, val } of items) {
-        if (val === undefined) delete localData[id]
-        else {
-          localData[id] = val
-          // shouldProxy(val) ? createDeepProxy(id, val) : val
-        }
-      }
-
-      emit("external-change", items)
-      emit("change", { type: "external", items })
-    }
-
     /* =========================
        CORE OPERATIONS
     ========================== */
@@ -366,21 +493,24 @@
       localData[key] = unwrap(value)
       // shouldProxy(value) ? createDeepProxy(key, value) : value
 
-      queueWrite(key, clone(localData[key]))
+      // A direct assignment is a hard reset, not a merge-tracked op — fresh
+      // ids so any in-flight ops from other tabs referencing the old
+      // elements just become no-ops instead of corrupting new data.
+      if (Array.isArray(localData[key])) {
+        arrayIds[key] = localData[key].map(() => genId())
+      } else {
+        delete arrayIds[key]
+      }
 
-      emit("set", { key, value })
-      emit("change", { type: "set", key, value })
+      queueWrite(key, clone(localData[key]))
     }
 
     function deleteProp(key) {
       if (!(key in localData)) return true
 
       delete localData[key]
+      delete arrayIds[key]
       queueWrite(key, undefined)
-
-      emit("delete", { key })
-      emit("change", { type: "delete", key })
-
       return true
     }
 
@@ -402,10 +532,6 @@
 
       get(target, prop) {
         switch (prop) {
-          case "on":
-            return on
-          case "off":
-            return off
           case "doneSaving":
             return doneSaving()
           case "all":
@@ -419,10 +545,10 @@
               for (const key of Object.keys(localData)) {
                 delete localData[key]
               }
-
-              emit("clear", {})
-              emit("change", { type: "clear" })
-
+              for (const key of Object.keys(arrayIds)) {
+                delete arrayIds[key]
+              }
+              bc?.postMessage({ type: "clear" })
               return localData
             }
           case "saveall":

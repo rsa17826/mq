@@ -327,6 +327,10 @@ PROG: list[ProgressionNode] = [
         "weapon:aSword",
         "quest:aSword.5",
       ],
+      # [
+      #   "skill:kick",
+      #   "???",
+      # ],
     ],
     "receive": [
       "flag:magic only resist bypass",
