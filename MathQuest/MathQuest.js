@@ -31338,7 +31338,7 @@ for (var i = 0; i < 11; i++) {
               )
               this.batEndMesMover()
               manager.mobSecs = this.prize3 < 25 ? 4 : 5
-              newItem("15_16 - item:ring of magic")
+              newItem("-1_-1 - item:ring of magic")
               checker["ring5"] = 1
               // manager.ring5 = 1
               newQuest("15_16", "rings", 9, false)
@@ -60005,9 +60005,9 @@ for (var i = 0; i < 11; i++) {
           if (manager.messPage == 1) {
             manager.mess.set_text(
               "I can upgrade your firewall skill.\nTrade me " +
-                manager.firewallUpgrade * 5 +
+                checker.firewallUpgrade * 5 +
                 " dragon scales and " +
-                manager.firewallUpgrade * 3 +
+                checker.firewallUpgrade * 3 +
                 " medallions.",
             )
             manager.showYesNoOptions()
