@@ -45513,6 +45513,9 @@ for (var i = 0; i < 11; i++) {
             this.cursor.set_visible(false)
             if (manager.mHP > 0) {
               this.newProbTimer.start()
+            }else{
+              // NOTE dont softlock when failing question on enemy with 0 hp
+              this.battleWin()
             }
           }
           this.anDisplay.setTextFormat(this.anFormat)
@@ -113227,6 +113230,19 @@ for (var i = 0; i < 11; i++) {
               key = "9_22"
               erNorth = 9
               erEast = 21
+            }
+            // NOTE dont know why player is sent here after denominator fight in arena
+            if (
+              erOrigin.north +
+                "_" +
+                erOrigin.east +
+                "_" +
+                erNorth +
+                "_" +
+                erEast ==
+              "20_16_19_6"
+            ) {
+              erEast = 16
             }
             // NOTE player gets moved then transition happens so it captures wrong src
             if (

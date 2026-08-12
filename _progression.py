@@ -4104,6 +4104,8 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "quest:oMan.18",
+        # TODO could be more, but is atleast 11
+        "quest:rings.11",
       ],
     ],
     "receive": [
