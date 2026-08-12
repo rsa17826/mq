@@ -31653,7 +31653,7 @@ for (var i = 0; i < 11; i++) {
                 newQuest("5_24", "gTree", 19, false)
                 // manager.quest[Enum.Quest.gTree] = 19
               }
-              if (checker["Food.holyWater"]) {
+              if (checker["Food.holyWater"] == 0) {
                 newItem("5_24 - food:holyWater")
                 checker["Food.holyWater"] = 1
               } else {
