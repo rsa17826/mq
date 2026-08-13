@@ -1105,8 +1105,8 @@ class PathFinding {
   }
   static getCurrentRoomKey() {
     return this.roomKey(
-      window.player.realnorth,
-      window.player.realeast,
+      window.manager.realnorth,
+      window.manager.realeast,
     )
   }
   // Path from the player's current room to targetKey. If targetEntrance
@@ -1635,7 +1635,7 @@ class WorldMap {
         PathFinding.updateTrackedPath()
       }
     })
-    window.addEventListener("resize", WorldMap.resizeCanvas)
+    // window.addEventListener("resize", WorldMap.resizeCanvas)
 
     // Smooth memory resolution toggler
 
@@ -1812,9 +1812,9 @@ class WorldMap {
           ) {
             let [an, ae] =
               e.target.parentElement.dataset.room.split("_")
-            if (window.player) {
-              window.player.realnorth = an
-              window.player.realeast = ae
+            if (window.manager) {
+              window.manager.realnorth = an
+              window.manager.realeast = ae
               test.newScreen()
             }
           }

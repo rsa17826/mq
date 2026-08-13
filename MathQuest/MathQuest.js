@@ -524,6 +524,7 @@ const checkerDefaultDara = {
   "13_18 orange seller": 0,
   "14_17 - item:gold": 0,
   "16_15 - diamondArmor chest": 0,
+  "misc:bombCapacity": 0,
 }
 const checker = new Proxy(
   { ...checkerDefaultDara },
@@ -35138,9 +35139,11 @@ for (var i = 0; i < 11; i++) {
               if (manager.bombCapacity == 99) {
                 manager.fame++
               }
-              newItem("18_13 - misc:bombCapacity#50")
-              // newItem(18,13,'bombCapacity',50,add)
-              manager.bombCapacity += 50
+              if (checker["misc:bombCapacity"] == 0) {
+                newItem("18_13 - misc:bombCapacity#50")
+              } else {
+                manager.bombCapacity += 50
+              }
               this.dialogue()
             } else if (
               manager.north == 19 &&
@@ -45512,7 +45515,7 @@ for (var i = 0; i < 11; i++) {
             this.cursor.set_visible(false)
             if (manager.mHP > 0) {
               this.newProbTimer.start()
-            }else{
+            } else {
               // NOTE dont softlock when failing question on enemy with 0 hp
               this.battleWin()
             }

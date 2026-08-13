@@ -1829,7 +1829,6 @@ manager.correct - manager.wrong > 800 = halo
     "receive": [
       "quest:gTree.16",
       "flag:7_11 boss dead",
-      "loot:gFeather",
     ],
   },
   {
@@ -2932,6 +2931,26 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "area:red chest",
+    ],
+  },
+  {
+    "room": {"north": 8, "east": 10},
+    "requires": [
+      [
+        "skill:reveal",
+        "entrance.east2",
+      ],
+      [
+        "skill:reveal",
+        "entrance.west0",
+      ],
+      [
+        "skill:reveal",
+        "entrance.north0",
+      ],
+    ],
+    "receive": [
+      "loot:gFeather",
     ],
   },
   {

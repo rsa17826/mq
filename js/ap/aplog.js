@@ -355,7 +355,7 @@ function apSendSayFromInput() {
       },
     },
     debug: {
-      desc: "enable debug/chear mode w/a/s/d moves one screen that dir\nrclick on game sets player tyo that position\ndbclick on map tps player to that screen",
+      desc: "enable debug/chear mode w/a/s/d moves one screen that dir\nrclick on game sets player to that position\ndbclick on map tps player to that screen",
       args: [["on", "true/false"]],
       func(on) {
         localStorage.debug = ["1", "true"].includes(on)
