@@ -308,8 +308,8 @@ function startNewBattle() {
 oncontextmenu = (e) => {
   if (localStorage.debug != "true") return
   e.preventDefault()
-  player.x = mouse.get_mouseX() - 15
-  player.y = mouse.get_mouseY() - 30
+  player.x = test.get_mouseX() - 15
+  player.y = test.get_mouseY() - 30
   test.moveChar()
 }
 
@@ -22814,7 +22814,6 @@ for (var i = 0; i < 11; i++) {
           }
         },
         swordMouseHandler: function (______mousePosition) {
-          window.mouse = this
           this.swordMouse.set_x(this.get_mouseX())
           this.swordMouse.set_y(this.get_mouseY())
         },
