@@ -9,6 +9,7 @@
 // @endregex
 // @ts-nocheck
 
+// TODO manager.fakeHeadstone got set to 101 somehow, should've been 44 reloading fixed, what caused this???
 // TODO `make loot tracking find closest loot not the first on the list
 // TODO make select save close on esc
 // TODO `make path arrows show path at closest to player part of target exit
@@ -320,6 +321,7 @@ addEventListener("keydown", ({ key }) => {
   if (!window.playerLoaded) {
     return
   }
+  if (key == "w") test.warpScreenShow()
   if (key == "Shift") window.useSlowSpeed = 1
   if (key == "f" && !test.fightMode) test.save()
   if (key == "Escape") {

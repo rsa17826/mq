@@ -3668,6 +3668,7 @@ manager.correct - manager.wrong > 800 = halo
     "receive": [
       "quest:dream.4",
     ],
+    "info": "magic:doubledown doesn't work",
   },
   {
     "room": {"north": 6, "east": 24},
