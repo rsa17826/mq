@@ -63923,7 +63923,7 @@ for (var i = 0; i < 11; i++) {
             manager.mess.set_text(
               "Here, take this reward of 50 gold.",
             )
-            newItem("21_20 - item:gold - mayor")
+            newItem("21_20 - item:gold - mayor#50")
             manager.fame += 5
           } else if (
             (manager.quest[Enum.Quest.gTree] == 6 &&
