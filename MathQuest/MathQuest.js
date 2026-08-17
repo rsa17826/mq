@@ -61433,7 +61433,7 @@ for (var i = 0; i < 11; i++) {
               newQuest("20_18", "rings", 12, false)
               // manager.quest[Enum.Quest.rings] = 12
             }
-          } else if (manager.quest[Enum.Quest.rings] == 13) {
+          } else if (manager.quest[Enum.Quest.rings] >= 13 && checker["ring6"] == 0) {
             if (
               manager.loot[Enum.Loot.dScale] < 3 ||
               manager.loot[Enum.Loot.sFrag] < 5 ||
