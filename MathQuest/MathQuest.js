@@ -21803,6 +21803,31 @@ for (var i = 0; i < 11; i++) {
                   questLastSetVal[prop] = value
                 }
               }
+              queueMicrotask(()=>{
+                window.onQuestChanged.forEach((e) => e(prop, value))
+              if (localStorage.dontAutoSendCompleteEvent != "true") {
+                window.maxQuestList ??= Object.entries(
+                  ap.slotData.maxQuests,
+                )
+                win = true
+                if (win && window?.ap?.slotData?.final_boss) {
+                  if (manager.quest[Enum.Quest.gTree] < 23) {
+                    win = false
+                  }
+                }
+                if (win && window?.ap?.slotData?.all_quests_maxed) {
+                  for (var [k, m] of window.maxQuestList) {
+                    if (manager.quest[Enum.Quest[k]] < m) {
+                      win = false
+                      break
+                    }
+                  }
+                }
+                if (win) {
+                  ap.sendStatusUpdate(30)
+                }
+              }
+              })
               return true
             }
           }
@@ -21943,35 +21968,6 @@ for (var i = 0; i < 11; i++) {
           target[prop] = value
           if (this.k === "loot") {
             window.onLootUpdated.forEach((e) => e())
-          }
-          if (
-            this.k === "quest" &&
-            window.playerLoaded &&
-            window.ap
-          ) {
-            window.onQuestChanged.forEach((e) => e(prop, value))
-            if (localStorage.dontAutoSendCompleteEvent != "true") {
-              window.maxQuestList ??= Object.entries(
-                ap.slotData.maxQuests,
-              )
-              win = true
-              if (win && window?.ap?.slotData?.final_boss) {
-                if (manager.quest[Enum.Quest.gTree] < 23) {
-                  win = false
-                }
-              }
-              if (win && window?.ap?.slotData?.all_quests_maxed) {
-                for (var [k, m] of window.maxQuestList) {
-                  if (manager.quest[Enum.Quest[k]] < m) {
-                    win = false
-                    break
-                  }
-                }
-              }
-              if (win) {
-                ap.sendStatusUpdate(30)
-              }
-            }
           }
           return true
         },
@@ -61433,7 +61429,10 @@ for (var i = 0; i < 11; i++) {
               newQuest("20_18", "rings", 12, false)
               // manager.quest[Enum.Quest.rings] = 12
             }
-          } else if (manager.quest[Enum.Quest.rings] >= 13 && checker["ring6"] == 0) {
+          } else if (
+            manager.quest[Enum.Quest.rings] >= 13 &&
+            checker["ring6"] == 0
+          ) {
             if (
               manager.loot[Enum.Loot.dScale] < 3 ||
               manager.loot[Enum.Loot.sFrag] < 5 ||

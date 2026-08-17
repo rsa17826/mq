@@ -2663,7 +2663,6 @@ manager.correct - manager.wrong > 800 = halo
       ],
     ],
     "receive": [
-      # "item:gold#100",
       "food:gingerBread#50",
       "item:gold#Enum.Craft.emerald",
     ],
