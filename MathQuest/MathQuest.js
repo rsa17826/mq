@@ -61373,7 +61373,7 @@ for (var i = 0; i < 11; i++) {
             newQuest("14_22", "rings", 15, false)
             // manager.quest[Enum.Quest.rings] = 15
           } else {
-            if (manager.quest[Enum.Quest.rings] < 14) {
+            if (manager.quest[Enum.Quest.rings] <= 14) {
               manager.quest[Enum.Quest.rings] = 15
             }
             manager.mess.set_text(
