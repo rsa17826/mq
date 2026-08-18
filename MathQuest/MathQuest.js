@@ -21803,30 +21803,32 @@ for (var i = 0; i < 11; i++) {
                   questLastSetVal[prop] = value
                 }
               }
-              queueMicrotask(()=>{
+              queueMicrotask(() => {
                 window.onQuestChanged.forEach((e) => e(prop, value))
-              if (localStorage.dontAutoSendCompleteEvent != "true") {
-                window.maxQuestList ??= Object.entries(
-                  ap.slotData.maxQuests,
-                )
-                win = true
-                if (win && window?.ap?.slotData?.final_boss) {
-                  if (manager.quest[Enum.Quest.gTree] < 23) {
-                    win = false
-                  }
-                }
-                if (win && window?.ap?.slotData?.all_quests_maxed) {
-                  for (var [k, m] of window.maxQuestList) {
-                    if (manager.quest[Enum.Quest[k]] < m) {
+                if (
+                  localStorage.dontAutoSendCompleteEvent != "true"
+                ) {
+                  window.maxQuestList ??= Object.entries(
+                    ap.slotData.maxQuests,
+                  )
+                  win = true
+                  if (win && window?.ap?.slotData?.final_boss) {
+                    if (manager.quest[Enum.Quest.gTree] < 23) {
                       win = false
-                      break
                     }
                   }
+                  if (win && window?.ap?.slotData?.all_quests_maxed) {
+                    for (var [k, m] of window.maxQuestList) {
+                      if (manager.quest[Enum.Quest[k]] < m) {
+                        win = false
+                        break
+                      }
+                    }
+                  }
+                  if (win) {
+                    ap.sendStatusUpdate(30)
+                  }
                 }
-                if (win) {
-                  ap.sendStatusUpdate(30)
-                }
-              }
               })
               return true
             }
@@ -61371,8 +61373,8 @@ for (var i = 0; i < 11; i++) {
             newQuest("14_22", "rings", 15, false)
             // manager.quest[Enum.Quest.rings] = 15
           } else {
-            if (manager.quest[Enum.Quest.rings]<14){
-              manager.quest[Enum.Quest.rings]=15
+            if (manager.quest[Enum.Quest.rings] < 14) {
+              manager.quest[Enum.Quest.rings] = 15
             }
             manager.mess.set_text(
               "Gorlus: You are a hero, worthy of the\n7 Rings of Fate.",
