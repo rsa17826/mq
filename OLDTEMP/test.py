@@ -1,100 +1,84 @@
-import json
 import re
-import sys
-
-try:
-    import pyperclip
-
-except ImportError:
-    print("[-] Dependency missing: 'pyperclip' is required to copy directly to your clipboard.")
-    print("[*] Please run: pip install pyperclip")
-    sys.exit(1)
+import json
 
 
-def generate_edge_data(input_string):
-    # Parse input like: 8,24,north,south,east,west
-    parts = [p.strip().lower() for p in input_string.split(",") if p.strip()]
+def parse_mathquest_with_lines(file_path):
+  with open(file_path, "r", encoding="utf-8") as f:
+    lines = f.readlines()
 
-    if len(parts) < 3:
-        print("[-] Invalid format. Expected format: north,east,dir1,dir2...")
-        return None
+  results = {}
 
-    try:
-        origin_east = int(parts[1])
-        origin_north = int(parts[0])
+  # Helper regexes
+  coord_pattern = r"manager\.(north|east)\s*==\s*(-?\d+)\s*&&\s*manager\.(north|east)\s*==\s*(-?\d+)"
+  single_north = r"manager\.north\s*==\s*(-?\d+)"
+  single_east = r"manager\.east\s*==\s*(-?\d+)"
 
-    except ValueError:
-        print("[-] Error: 'east' and 'north' positions must be valid integers.")
-        return None
+  quest_patterns = [(r"manager\.quest\[manager\.(\w+)\]\s*(==|>=|<=|=)\s*(-?\d+)", True), (r"manager\.quest\[manager\.(\w+)\]\s*(\+\+|--)", False)]
 
-    requested_directions = parts[2:]
-    valid_directions = 'wasd'
+  # Persistent state tracking for contexts across lines
+  current_north = None
+  current_east = None
 
-    # Positional changes map for standard grid direction mechanics
-    direction_offsets = {
-        "w": {"north": 1, "east": 0, "dest_y": 510},
-        "s": {"north": -1, "east": 0, "dest_y": 0},
-        "d": {"north": 0, "east": 1, "dest_x": 0},
-        "a": {"north": 0, "east": -1, "dest_x": 624},
-    }
+  for idx, line in enumerate(lines, start=1):
+    # 1. Update coordinate tracking if we find direct matches on this line
+    coord_match = re.search(coord_pattern, line)
+    if coord_match:
+      g = coord_match.groups()
+      if g[0] == "north":
+        current_north, current_east = int(g[1]), int(g[3])
+      else:
+        current_east, current_north = int(g[1]), int(g[3])
 
-    payload_array = []
+    else:
+      # Check individual components
+      n_m = re.search(single_north, line)
+      e_m = re.search(single_east, line)
+      if n_m:
+        current_north = int(n_m.group(1))
 
-    for direction in requested_directions:
-        if direction not in valid_directions:
-            print(f"[-] Warning: '{direction}' is not a valid wall direction. Skipping.")
-            continue
-
-        offset = direction_offsets[direction]
-
-        # Calculate destination coordinates based on direction offset
-        dest_north = origin_north + offset["north"]
-        dest_east = origin_east + offset["east"]
-
-        edge_object = {
-            "id": f"edge:{({'w':'north','a':'west','s':'south','d':'east'}[direction])}:{float(origin_north)}_{float(origin_east)}",
-            "mechanism": "edge",
-            "direction": {'w':'north','a':'west','s':'south','d':'east'}[direction],
-            "origin": {"north": origin_north, "east": origin_east},
-            "dest": {"north": dest_north, "east": dest_east},
-            "dest_x": offset.get("dest_x", None),
-            "dest_y": offset.get("dest_y", None),
-            "gated": False,
-            "gate": None,
-            "one_way": False,
-            "notes": None,
-        }
-
-        payload_array.append(edge_object)
-
-    return payload_array
+      if e_m:
+        current_east = int(e_m.group(1))
 
 
-def main():
-    print("=== Bulk Edge Data Generator ===")
-    print("Enter string (e.g., 8,24,north,south,east,west):")
+    # If we don't have valid context coordinates yet, skip quest matching
+    if current_north is None or current_east is None:
+      continue
 
-    try:
-        user_input = input("> ")
-        if not user_input.strip():
-            return
+    coord_key = (current_north, current_east)
 
-        result_data = generate_edge_data(user_input)
+    # 2. Extract quest comparisons/assignments
+    for pattern, has_val in quest_patterns:
+      for q_match in re.finditer(pattern, line):
+        groups = q_match.groups()
+        quest_name = groups[0]
+        op = groups[1] if has_val else groups[1]
+        val = groups[2] if has_val else op # For ++ or --, keep operator as indicator
 
-        if result_data:
-            # Format cleanly into JSON syntax matching your requirements
-            json_output = json.dumps(result_data, indent=2)[1:-2]
+        if coord_key not in results:
+          results[coord_key] = {"comparisons": [], "assignments": []}
 
-            # Write to the clipboard
-            pyperclip.copy(json_output)
+        entry = {"name": quest_name, "value": val, "line": idx}
 
-            print("\n[+] Success! The following JSON was copied to your clipboard:\n")
-            print(json_output)
+        # Categorize based on assignment vs comparison operator
+        if op in ("==", ">=", "<="):
+          results[coord_key]["comparisons"].append(entry)
+        elif op in ("=", "++", "--"):
+          results[coord_key]["assignments"].append(entry)
 
 
-    except KeyboardInterrupt:
-        print("\n[-] Exiting.")
+
+
+  # Transform output structure into sorted clean JSON lists
+  json_output = []
+  for (north, east), data in sorted(results.items()):
+    if not data["comparisons"] and not data["assignments"]:
+      continue
+
+    json_output.append({"north": north, "east": east, "comparisons": data["comparisons"], "assignments": data["assignments"]})
+
+  return json_output
 
 
 if __name__ == "__main__":
-    main()
+  extracted_data = parse_mathquest_with_lines("MathQuest.js")
+  print(json.dumps(extracted_data, indent=2))

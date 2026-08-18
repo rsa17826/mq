@@ -9,7 +9,7 @@ __pycache__
 *.zip
 map_*
 randomized_index.html
-MathQuest/play.html
+index.html
 .images
 js/prog.js
 apWorldPath

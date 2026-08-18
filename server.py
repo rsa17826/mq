@@ -17,7 +17,7 @@ main.main()
 
 PORT = 1533
 DIRECTORY = "."
-WATCH_FILE = os.path.normpath("MathQuest/play.base.html")
+WATCH_FILE = os.path.normpath("index.base.html")
 
 
 class ProcessManager:

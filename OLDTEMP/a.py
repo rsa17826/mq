@@ -1,5 +1,5 @@
 
-with open("./MathQuest/MathQuest.js", "r") as f:
+with open("./MathQuest.js", "r") as f:
   text=f.read()
 
 Enum = {
@@ -188,5 +188,5 @@ for k in Enum:
       old_str = f".{k.lower()}[.{kk}]"
       new_str = f".{k.lower()}[Enum.{k}.{kk}]"
       text = text.replace(old_str, new_str)
-with open("./MathQuest/MathQuest.js", "w") as f:
+with open("./MathQuest.js", "w") as f:
   f.write(text)

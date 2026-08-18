@@ -10,7 +10,7 @@ Usage:
 Example:
     python3 patch_manifest.py MathQuest.js img test.png
 
-This will look for MathQuest/img/test.png relative to <img-dir>, read its
+This will look for img/test.png relative to <img-dir>, read its
 byte size, build a properly-formatted manifest record, and splice it into
 the big asset library manifest (the one containing img%2F... entries),
 right before the FONT/MUSIC entries begin.
@@ -24,7 +24,7 @@ import re
 
 def build_entry(rel_path_url_encoded, size_bytes):
     """Build a Haxe-serializer 'o' (object) record in fully spelled-out form.
-    Format matches: o "path" <path> "size" <int> "type" "IMAGE" "id" <path> "preload" true g
+    Format matches: o "path" <path> "size" <int> "type" "IMAGE" "id" <path> "preload" True g
     """
     def s(field):
         return f"y{len(field)}:{field}"
@@ -84,7 +84,7 @@ def main():
     # chain feeding into FONT). We insert right after the last 'R6t' that
     # belongs to an image record and before that trailing ref chain.
     search_region = content[idx:font_idx]
-    # Anchor on "R6tg": R6t closes the preceding entry's preload=true field,
+    # Anchor on "R6tg": R6t closes the preceding entry's preload=True field,
     # and the immediately following "g" closes that entry's object. We must
     # insert AFTER that "g" (not before it), otherwise we split the prior
     # entry's own close-token away from it and end up with a duplicate "g"

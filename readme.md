@@ -43,7 +43,7 @@ then run
 
 ```sh
 ./generate_map_scales.sh
-xdg-open "http://127.0.0.1:1533/MathQuest/play.html"
+xdg-open "http://127.0.0.1:1533/index.html"
 
 echo "on the webpage type /installSw and press enter"
 echo "then also click install in the browsers omibar to install it as a pwa"
@@ -85,7 +85,7 @@ when the on the webpage that will open type /installSw and press enter then also
 } else {
 ```
 
-the fastest way to force another encounter is quickly tapping any arrow key - shown by `manager.tap` in [./MathQuest/MathQuest.js](./MathQuest/MathQuest.js)
+the fastest way to force another encounter is quickly tapping any arrow key - shown by `manager.tap` in [./MathQuest.js](./MathQuest.js)
 
 you can always pass sideways through any small breakables without removing them first
 

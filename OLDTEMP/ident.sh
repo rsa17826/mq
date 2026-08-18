@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 while true; do
-  grep -oP "(?<![\w_-])_+(\w[\w]+)(?=[^\w_-])" ./MathQuest/MathQuest.js | sort | uniq >a
+  grep -oP "(?<![\w_-])_+(\w[\w]+)(?=[^\w_-])" ./MathQuest.js | sort | uniq >a
   # Read user input into the variable 'v'
   read -p "Enter identifier: " v
 
@@ -80,7 +80,7 @@ while true; do
   v=${v##_}
   v=${v##_}
   # Loop as long as the exact word 'v' is found in the file
-  while grep -Pq "(?<!\w)$v(?!\w)" ./MathQuest/MathQuest.js; do
+  while grep -Pq "(?<!\w)$v(?!\w)" ./MathQuest.js; do
     # Prepend an underscore if a match is found
     v="_$v"
   done

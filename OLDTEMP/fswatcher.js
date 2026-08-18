@@ -1,7 +1,7 @@
 const fs = require("fs")
 const puppeteer = require("puppeteer")
 const { exec } = require("child_process") // Added to execute system commands
-const TARGET_URL = "http://127.0.0.1:8000/MathQuest/play.html"
+const TARGET_URL = "http://127.0.0.1:8000/index.html"
 const GEOMETRY_FILE = "./json/room_geometry.json"
 
 // Function to update room completion status in JSON file

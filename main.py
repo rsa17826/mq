@@ -11,8 +11,8 @@ import progression_to_json
 def main():
   # gen_exit_data.init()
   # OUT_DIR = os.path.dirname(os.path.abspath(__file__))
-  # SRC_PATH = os.path.join(OUT_DIR, "MathQuest/MathQuest.base.js")
-  # OUT_PATH = os.path.join(OUT_DIR, "MathQuest/MathQuest.js")
+  # SRC_PATH = os.path.join(OUT_DIR, "MathQuest.base.js")
+  # OUT_PATH = os.path.join(OUT_DIR, "MathQuest.js")
   progression_to_json.convert("./_progression.py", "./js/prog.js")
   # with open(SRC_PATH, encoding="utf-8") as f:
   #   src = f.read()

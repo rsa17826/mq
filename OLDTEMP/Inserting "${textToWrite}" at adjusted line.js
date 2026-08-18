@@ -5,11 +5,11 @@ const { execSync, exec } = require("child_process")
 
 // Configuration
 const DEBUG_URL = "http://127.0.0.1:9222" // Your Chrome debugging port
-const TARGET_PAGE_URL = "http://127.0.0.1:1533/MathQuest/play.html"
+const TARGET_PAGE_URL = "http://127.0.0.1:1533/index.html"
 const BASE_FILE_PATH =
   path.expandHome ?
-    path.expandHome("~/projects/mq/MathQuest/MathQuest.base.js")
-  : `${process.env.HOME}/projects/mq/MathQuest/MathQuest.base.js`
+    path.expandHome("~/projects/mq/MathQuest.base.js")
+  : `${process.env.HOME}/projects/mq/MathQuest.base.js`
 const FINAL_FILE_PATH = BASE_FILE_PATH.replace(
   "MathQuest.base.js",
   "MathQuest.js",
@@ -31,7 +31,7 @@ function waitForFileSave(filePath) {
 var min = 1000
 
 // Read the file as a string
-const text = fs.readFileSync("MathQuest/MathQuest.js", "utf-8")
+const text = fs.readFileSync("MathQuest.js", "utf-8")
 
 // Split the text into an array of individual lines
 const lines = text.split(/\r?\n/)

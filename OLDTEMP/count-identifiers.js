@@ -1,6 +1,6 @@
 const acorn = require("acorn")
 const fs = require("fs")
-const code = fs.readFileSync("MathQuest/MathQuest.js", "utf8")
+const code = fs.readFileSync("MathQuest.js", "utf8")
 const ast = acorn.parse(code, { ecmaVersion: "latest" })
 let count = 0
 

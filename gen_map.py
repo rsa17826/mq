@@ -901,8 +901,8 @@ def main():
     f.write(script_payload)
     f.write("\n" + html_end)
 
-  with open("./MathQuest/play.base.html", "r", encoding="utf-8") as ff:
-    with open("./MathQuest/play.html", "w", encoding="utf-8") as f:
+  with open("./index.base.html", "r", encoding="utf-8") as ff:
+    with open("./index.html", "w", encoding="utf-8") as f:
       oldData = ff.read().split('<map id="map"></map>')
       f.write(oldData[0])
       f.write('<map id="map">')

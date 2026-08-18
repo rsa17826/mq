@@ -1,7 +1,7 @@
 import re
 from collections import defaultdict
 
-path = "./MathQuest/MathQuest.js"
+path = "./MathQuest.js"
 with open(path, encoding="utf-8") as f:
     text = f.read()
 

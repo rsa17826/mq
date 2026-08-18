@@ -3,7 +3,7 @@ const path = require("path")
 const puppeteer = require("puppeteer")
 const { Jimp } = require("jimp")
 
-const TARGET_URL = "http://127.0.0.1:1533/MathQuest/play.html"
+const TARGET_URL = "http://127.0.0.1:1533/index.html"
 const DEST_DIR = "./map"
 
 // Target background colors in Hex (Jimp reads them as 0xRRGGBBAA)
