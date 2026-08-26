@@ -46726,7 +46726,9 @@ for (var i = 0; i < 11; i++) {
             manager.mSpeed = 6
           }
         } else if (
-          manager.quest[Enum.Quest.rings] == 8 &&
+          (manager.quest[Enum.Quest.rings] == 8 ||
+            (manager.quest[Enum.Quest.rings] > 8 &&
+              checker["ring5"] == 0)) &&
           manager.iceSageVar == 3
         ) {
           manager.mob[7].set_visible(false)
@@ -63921,12 +63923,15 @@ for (var i = 0; i < 11; i++) {
               ),
             )
           } else if (
-            manager.quest[Enum.Quest.gTree] == 5 &&
+            (manager.quest[Enum.Quest.gTree] == 5 ||
+              (manager.quest[Enum.Quest.gTree] > 5 &&
+                checker["item:gold - mayor"] == 0)) &&
             manager.messPage == 2
           ) {
             manager.mess.set_text(
               "Here, take this reward of 50 gold.",
             )
+            checker["item:gold - mayor"] = 1
             newItem("21_20 - item:gold - mayor#50")
             manager.fame += 5
           } else if (
