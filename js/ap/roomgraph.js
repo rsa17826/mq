@@ -23,7 +23,7 @@ class RoomGraph {
   static warpIndex = null // "room|side|idx" -> [{ reqs, targets: [{room,side,idx}] }]
   static wildcardWarps = null // [{ reqs, targets }] -- fireable from ANY room's root
   static areaMap = null // "north_east" -> area string
-  static areaPowerReqs = null // area string -> requires (same [[...]] OR-group format as PROG_DATA)
+  static areaPowerReqs = null // area string -> requires (same [[...]] OR-group format as PROG)
 
   static buildRoomIndex() {
     RoomGraph.roomIndex = {}

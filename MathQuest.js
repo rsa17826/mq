@@ -147,7 +147,7 @@ function getChestedItemInfo(detectorKey, elem) {
     return
   }
   window.chestedItemInfo[room] ??= {}
-  var data = PROG_DATA.find(
+  var data = PROG.find(
     (e) =>
       e.room == room &&
       e.requires.find((ee) => ee.includes(detectorKey)),
@@ -175,7 +175,7 @@ function getChestedItemInfo(detectorKey, elem) {
     }
   } else {
     apError(
-      PROG_DATA.find(
+      PROG.find(
         (e) =>
           e.room == room &&
           e.requires.find((ee) => ee.includes(detectorKey)),

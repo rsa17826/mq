@@ -1,6 +1,6 @@
 // Item/Quest browser panel.
 //
-// Lists every PROG_DATA entry (location, requires, receive) with a "Track"
+// Lists every PROG entry (location, requires, receive) with a "Track"
 // button that points the map's path arrow at it (via map.js's trackToken,
 // which itself now understands both quests and items, resolves area:*
 // redirects out of the virtual "20_20" room, and falls back to a direct
@@ -9,7 +9,7 @@
 // still-outstanding loot counts on the in-game HUD via window.extraData,
 // without touching the path arrow.
 //
-// Requires PROG_DATA (prog.js), ap.slotData.AP_ITEM_IDS, and map.js's
+// Requires PROG (prog.js), ap.slotData.AP_ITEM_IDS, and map.js's
 // trackToken/applyLootTrackingFor to already be present on the page.
 
 class ItemTracker {
@@ -362,7 +362,7 @@ class ItemTracker {
 
     const groups = new Map() // key -> { label, entries: [] }
 
-    PROG_DATA.forEach((entry) => {
+    PROG.forEach((entry) => {
       const reqStr = this.fmtRequires(entry.requires)
       const recStr = this.fmtReceive(entry.receive)
       if (

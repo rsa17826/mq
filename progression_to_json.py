@@ -32,7 +32,7 @@ def convert(src_path: str, out_path: str) -> None:
     )
 
   with open(out_path, "w") as f:
-    f.write("const PROG_DATA = ")
+    f.write("const PROG = ")
     json.dump(out, f)
     f.write(";\n")
 

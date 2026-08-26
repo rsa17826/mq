@@ -1,5 +1,5 @@
 // Reachability / logic engine.
-// Requires PROG_DATA (prog.js), ap.slotData.AP_ITEM_IDS (game globals), and tracker.js's
+// Requires PROG (prog.js), ap.slotData.AP_ITEM_IDS (game globals), and tracker.js's
 // data-location markers to already be present on the page.
 
 class Logic {
@@ -132,19 +132,19 @@ class Logic {
     QuestState.seedFromGame()
     const have = new Set(Logic.haveReal)
     // Room-internal `areas` gating can depend on virtual tokens (like
-    // "flag:...") that only exist once some PROG_DATA entry grants them
+    // "flag:...") that only exist once some PROG entry grants them
     // below -- so `roomGraph` has to be rebuilt with the growing `have`
     // set as those get derived, not just seeded once from haveReal.
     let roomGraph = RoomGraph.computeReachability(have, "20_20")
 
-    const status = new Array(PROG_DATA.length).fill("false")
+    const status = new Array(PROG.length).fill("false")
     let changed = true
 
     while (changed) {
       changed = false
-      for (let i = 0; i < PROG_DATA.length; i++) {
+      for (let i = 0; i < PROG.length; i++) {
         if (status[i] === "true") continue // already fully resolved
-        const entry = PROG_DATA[i]
+        const entry = PROG[i]
         const r = Logic.evalEntry(entry, have, roomGraph)
         status[i] = r
         if (r === "true") {
@@ -167,7 +167,7 @@ class Logic {
         // A newly derived flag/quest token might satisfy an `areas` reqs
         // group somewhere, opening a new room-internal connection (and
         // thus reachability for some entrance.* token) -- recompute the
-        // physical graph before the next pass over PROG_DATA sees it.
+        // physical graph before the next pass over PROG sees it.
         roomGraph = RoomGraph.computeReachability(have, "20_20")
       }
     }
@@ -184,7 +184,7 @@ class Logic {
     Logic.roomsWithAvailableItems = new Set()
     Logic.roomsWithAvailableQuests = new Set()
 
-    PROG_DATA.forEach((entry, i) => {
+    PROG.forEach((entry, i) => {
       const r = status[i]
       for (const rawTok of entry.receive) {
         const key = `${entry.room} - ${rawTok}`
@@ -338,7 +338,7 @@ window.onApCreated.push((ap) => {
     Logic.recompute()
 
     console.log(
-      `[logic] reachability engine ready: ${PROG_DATA.length} entries`,
+      `[logic] reachability engine ready: ${PROG.length} entries`,
     )
   }
   window.onItemSent.push(Logic.recompute)

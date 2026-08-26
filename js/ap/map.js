@@ -201,7 +201,7 @@ class PathFinding {
   }
 
   // reqGroups: array of AND-groups; satisfied if ANY group's tokens are ALL
-  // held (OR of ANDs) -- same shape as PROG_DATA's "requires".
+  // held (OR of ANDs) -- same shape as PROG's "requires".
   /**
    * @param {any[]} reqGroups
    * @param {any} have
@@ -653,9 +653,9 @@ class PathFinding {
   }
 
   static getProgData() {
-    if (typeof PROG_DATA !== "undefined" && PROG_DATA)
-      return PROG_DATA
-    if (window.PROG_DATA) return window.PROG_DATA
+    if (typeof PROG !== "undefined" && PROG)
+      return PROG
+    if (window.PROG) return window.PROG
     return []
   }
 
@@ -713,7 +713,7 @@ class PathFinding {
     return this.pickClosestCandidate(candidates) || entry
   }
 
-  // Given several candidate PROG_DATA entries that all grant the same thing
+  // Given several candidate PROG entries that all grant the same thing
   // (e.g. several distinct physical locations that each satisfy a tracked
   // token, or several locations that grant a redirected area: flag), picks
   // whichever one is actually closest to the player right now, walking the
@@ -1268,7 +1268,7 @@ class PathFinding {
 
   static trackedToken = localStorage.trackedToken || null
 
-  // Scans PROG_DATA for the not-yet-satisfied "quest:<questName>.N" token
+  // Scans PROG for the not-yet-satisfied "quest:<questName>.N" token
   // with the lowest N, and returns the room it's granted in.
   /**
    * @param {any} questName
@@ -1301,7 +1301,7 @@ class PathFinding {
   }
 
   // Resolves a tracked token ("quest:<name>" or an exact receive token like
-  // "craft:emerald") to the PROG_DATA entry that grants the next
+  // "craft:emerald") to the PROG entry that grants the next
   // not-yet-*checked* instance of it -- checking each (entry.room, token)
   // pairing individually, since several entries (or even one entry with
   // several receive tokens) can share the same token across different
