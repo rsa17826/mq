@@ -21768,8 +21768,8 @@ for (var i = 0; i < 11; i++) {
                     window.questLocations[name] + " - quest:" + name,
                   )
                 }
-                target[prop] = value
               }
+              target[prop] = value
               if (ap.slotData.each_quest_is_an_item) {
                 throw new Error(
                   "ap.slotData.each_quest_is_an_item doesn't work, try again later!",
