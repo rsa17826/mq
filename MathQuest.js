@@ -321,7 +321,7 @@ addEventListener("keydown", ({ key }) => {
   if (!window.playerLoaded) {
     return
   }
-  if (key == "w" && manager.skills[Enum.Skill.warp] > 0) test.warpScreenShow()
+  if (key == "w" && manager.skills[Enum.Skill.warp] > 0 && test.fightMode == 0) test.warpScreenShow()
   if (key == "Shift") window.useSlowSpeed = 1
   if (key == "f" && !test.fightMode) test.save()
   if (key == "Escape") {
