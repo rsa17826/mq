@@ -547,7 +547,6 @@ class ArchipelagoClient {
    */
   onBounced(packet) {
     warn(packet.tags, "packet.tags")
-    if (!this.slotData.death_link) return
     if (!packet.tags || !packet.tags.includes("DeathLink")) return
     if (!this.deathLinkEnabled) return
 
@@ -573,6 +572,7 @@ class ArchipelagoClient {
     )
 
     if (source === this.playerName) return
+    if (!this.slotData.death_link) return
     killPlayer()
   }
   /**
