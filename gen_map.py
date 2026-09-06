@@ -28,12 +28,8 @@ BLOCK_HEIGHT_PCT = 100 / BLOCKS_Y
 ROOM_INTERNAL_WIDTH = 710.0
 ROOM_INTERNAL_HEIGHT = 560.0
 
-html_start = f"""<!DOCTYPE html>
-<html lang="en">
+html_start = f"""
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>High-Performance Interactive Map Viewer</title>
     <style>
         img {{
             pointer-events:none;

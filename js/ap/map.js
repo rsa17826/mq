@@ -1635,7 +1635,7 @@ class WorldMap {
         PathFinding.updateTrackedPath()
       }
     })
-    // window.addEventListener("resize", WorldMap.resizeCanvas)
+    window.addEventListener("resize", WorldMap.resizeCanvas)
 
     // Smooth memory resolution toggler
 

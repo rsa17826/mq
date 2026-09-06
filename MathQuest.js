@@ -321,7 +321,12 @@ addEventListener("keydown", ({ key }) => {
   if (!window.playerLoaded) {
     return
   }
-  if (key == "w" && manager.skills[Enum.Skill.warp] > 0 && test.fightMode == 0) test.warpScreenShow()
+  if (
+    key == "w" &&
+    manager.skills[Enum.Skill.warp] > 0 &&
+    test.fightMode == 0
+  )
+    test.warpScreenShow()
   if (key == "Shift") window.useSlowSpeed = 1
   if (key == "f" && !test.fightMode) test.save()
   if (key == "Escape") {
@@ -352,6 +357,10 @@ addEventListener("keydown", ({ key }) => {
   }
   if (key == "H" && test.fightMode == 0) {
     helpImStuck()
+  }
+  if (key == "M") {
+    manager.hp = 0
+    manager.hitMax()
   }
   if (localStorage.debug != "true") return
   if (key == "[") {
