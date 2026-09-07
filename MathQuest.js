@@ -941,11 +941,13 @@ const itemList = {
     manager.poiTimer.start()
   },
   "trap:spawn_random_enemies": () => {
-    // prettier-ignore
     window.remainingBattleTriggers++
     if (test.fightMode == 0 && window.remainingBattleTriggers == 1) {
       onBattleEnd()
     }
+  },
+  "food:strawberry#5": () => {
+    manager.food[Enum.Food.strawberry] += 5
   },
   "trap:del_del": () => {},
   "trap:nothing": () => {},
