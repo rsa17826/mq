@@ -536,7 +536,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "armor:alphaArmor",
-        "skill:craft",
+        # "skill:craft",
       ],
     ],
     "receive": [
@@ -2375,7 +2375,9 @@ manager.correct - manager.wrong > 800 = halo
   {
     "room": {"north": 6, "east": 12},
     "requires": [
-      [],
+      [
+        "quest:canteen.3",
+      ],
     ],
     "receive": [
       "quest:geo.1",
@@ -2386,6 +2388,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "quest:geo.1",
+        "quest:canteen.3",
         # "item:geodes#5",
         # NOTE required to get more than 2 geodes
         "area:4",
@@ -2401,6 +2404,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "quest:geo.2",
+        "quest:canteen.3",
       ],
     ],
     "receive": [
@@ -2423,6 +2427,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "quest:geo.4",
+        "quest:canteen.3",
       ],
     ],
     "receive": [
@@ -2435,6 +2440,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "quest:rings.12",
+        "quest:canteen.3",
         "quest:geo.5",
         "item:gold#1000",
       ],
@@ -2890,6 +2896,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "loot:key",
+        "quest:canteen.3",
       ],
     ],
     "receive": [
@@ -4112,6 +4119,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "quest:oMan.16",
+        "quest:canteen.3",
       ],
     ],
     "receive": [
@@ -4123,6 +4131,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "quest:oMan.18",
+        "quest:canteen.3",
         # TODO could be more, but is atleast 11
         "quest:rings.11",
       ],
@@ -8559,7 +8568,9 @@ manager.correct - manager.wrong > 800 = halo
   {
     "room": {"north": 6, "east": 12},
     "requires": [
-      [],
+      [
+        "quest:canteen.3",
+      ],
     ],
     "receive": [
       "area:7.1",

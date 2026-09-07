@@ -59580,7 +59580,7 @@ for (var i = 0; i < 11; i++) {
               f.parseInt(manager.codeInput.get_text()) ==
               (manager.an1 | 0)
             ) {
-              if (manager.quest[Enum.Quest.curse] != 10) {
+              if (manager.quest[Enum.Quest.curse] <= 10) {
                 manager.fame++
                 // newItem(13,26,'Enum.Quest.curse',10)
                 manager.quest[Enum.Quest.curse] = 10
