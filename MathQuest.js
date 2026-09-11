@@ -42070,7 +42070,7 @@ for (var i = 0; i < 11; i++) {
                 manager.itemDisplay[60].set_visible(true)
               }
               if (
-                manager.quest[Enum.Quest.bBomb] > 5 &&
+                checker['permitVolcano'] == 1 &&
                 this.innerCounter == 61
               ) {
                 manager.itemDisplay[61].set_text("Volcano Permit")
