@@ -489,6 +489,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "food:orange",
+      "static:food:orange",
     ],
   },
   # {"room": {"north": 18, "east": 20}, "info": "warp skill warp point",},
@@ -564,6 +565,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "food:sunflowerSeeds",
+      "static:food:sunflowerSeeds",
     ],
   },
   {
@@ -622,6 +624,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "food:orange",
+      "static:food:orange",
     ],
   },
   {
@@ -787,6 +790,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "food:chocolate",
+      "static:food:chocolate",
     ],
   },
   {
@@ -810,6 +814,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "food:steak",
+      "static:food:steak",
     ],
   },
   {
@@ -822,6 +827,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "food:peppers",
+      "static:food:peppers",
     ],
   },
   {
@@ -860,6 +866,7 @@ manager.correct - manager.wrong > 800 = halo
     "room": {"north": 100, "east": 100},
     "requires": [
       [
+        "skill:craft",
         "loot:oArm#5",
         "loot:sTooth#5",
         "loot:vHorn#5",
@@ -3156,7 +3163,6 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "loot:key",
-        "permit:bomb",
       ],
     ],
     "receive": [
@@ -3736,6 +3742,7 @@ manager.correct - manager.wrong > 800 = halo
       [
         "quest:hWater.6",
         "skill:reveal",
+        # "skill:craft",
       ],
     ],
     "receive": [
@@ -5555,6 +5562,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "food:apple",
+      "static:food:apple",
     ],
   },
   {
@@ -5566,6 +5574,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "food:honey",
+      "static:food:honey",
     ],
   },
   {
@@ -5577,6 +5586,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "food:grapes",
+      "static:food:grapes",
     ],
   },
   {
@@ -5588,6 +5598,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "food:carrot",
+      "static:food:carrot",
     ],
   },
   {
@@ -5599,6 +5610,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "food:beefJerky",
+      "static:food:beefJerky",
     ],
   },
   {
@@ -5610,6 +5622,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "food:cherries",
+      "static:food:cherries",
     ],
   },
   {
@@ -7326,6 +7339,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "food:gingerBread",
+      "static:food:gingerBread",
     ],
   },
   {
@@ -7337,6 +7351,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "item:gold - merchant#5",
+      "static:item:gold",
     ],
   },
   # NOTE these grapes say 30gp but are only 15gp as they are the same ones as at 20 20
@@ -7350,6 +7365,7 @@ manager.correct - manager.wrong > 800 = halo
     ],
     "receive": [
       "food:banana",
+      "static:food:banana",
     ],
   },
   {
@@ -7685,8 +7701,16 @@ manager.correct - manager.wrong > 800 = halo
       ["entrance.west0"],
     ],
     "receive": [
-      "area:1",
       "area:str up npc",
+    ],
+  },
+  {
+    "room": {"north": 12, "east": 16},
+    "requires": [
+      [],
+    ],
+    "receive": [
+      "area:1",
     ],
   },
   {

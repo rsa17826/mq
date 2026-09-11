@@ -26882,6 +26882,36 @@ for (var i = 0; i < 11; i++) {
             this.dizzyIcon.set_visible(false)
           }
         },
+        syncCharSprites: function () {
+          for (
+            this.charCounter = 0;
+            this.charCounter < manager.char.length;
+          ) {
+            if (this.charState != this.charCounter) {
+              manager.char[this.charCounter].set_visible(false)
+              manager.charBottom[this.charCounter].set_visible(false)
+            }
+            this.charCounter++
+          }
+          for (
+            this.charCounter = 1;
+            this.charCounter < manager.char.length;
+          ) {
+            manager.char[this.charCounter].set_x(
+              manager.char[0].get_x(),
+            )
+            manager.char[this.charCounter].set_y(
+              manager.char[0].get_y(),
+            )
+            manager.charBottom[this.charCounter].set_x(
+              manager.char[0].get_x(),
+            )
+            manager.charBottom[this.charCounter].set_y(
+              manager.char[0].get_y() + 54,
+            )
+            this.charCounter++
+          }
+        },
         charBounceBack: function () {
           this.charStateTimer.reset()
           let tempSpeed =
@@ -26907,6 +26937,7 @@ for (var i = 0; i < 11; i++) {
           manager.charBottom[0].set_y(manager.char[0].get_y() + 54)
           this.colCharBottom.set_x(manager.char[0].get_x())
           this.colCharBottom.set_y(manager.char[0].get_y() + 50)
+          this.syncCharSprites()
         },
         boundaryBounceBack: function () {
           console.log(
@@ -26943,6 +26974,7 @@ for (var i = 0; i < 11; i++) {
           manager.charBottom[0].set_y(manager.char[0].get_y() + 54)
           this.colCharBottom.set_x(manager.char[0].get_x())
           this.colCharBottom.set_y(manager.char[0].get_y() + 50)
+          this.syncCharSprites()
         },
         enterBounceback: function () {
           if (this.charState >= 0 && this.charState <= 3) {

@@ -3128,7 +3128,7 @@ GEOM: list[ExitBase] = [
           [
             # TODO make stomping work on both sides
             "flag:stomp code",
-            "skill:stomp",
+            "skill:kick",
           ],
         ],
         "areas": [
