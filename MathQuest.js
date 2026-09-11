@@ -1115,6 +1115,13 @@ const itemList = {
     this.ninSpeed = 5
     this.ninMin = 30
     this.ninSec = 0
+    this.ninIcon.set_visible(true)
+    this.ninDisplay.set_text(
+      f.string(this.ninMin) + ":0" + f.string(this.ninSec),
+    )
+    this.ninDisplay.setTextFormat(this.fightMesFormat)
+    this.ninDisplay.set_visible(true)
+    this.ninTimer.start()
   },
   "skill:firewall": () => {
     manager.skills[Enum.Skill.firewall] += 1
@@ -42070,7 +42077,7 @@ for (var i = 0; i < 11; i++) {
                 manager.itemDisplay[60].set_visible(true)
               }
               if (
-                checker['permitVolcano'] == 1 &&
+                checker["permitVolcano"] == 1 &&
                 this.innerCounter == 61
               ) {
                 manager.itemDisplay[61].set_text("Volcano Permit")
