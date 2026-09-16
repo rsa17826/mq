@@ -4711,7 +4711,7 @@ manager.correct - manager.wrong > 800 = halo
   {
     "room": {"north": 19, "east": 16},
     "requires": [
-      ["quest:aSword.3", "weapon:baneBlade"],
+      ["quest:aSword.3", "weapon:baneBlade", "flag:allWeaknesses"],
     ],
     "receive": ["quest:aSword.4"],
   },
