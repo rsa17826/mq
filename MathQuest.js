@@ -1327,6 +1327,9 @@ const itemList = {
   "food:newtonsApple#2": () => {
     manager.food[Enum.Food.newtonsApple] += 2
   },
+  "food:newtonsApple": () => {
+    manager.food[Enum.Food.newtonsApple] += 1
+  },
   "item:gold#correct": () => {
     manager.gold += manager.correct
   },
