@@ -47151,7 +47151,9 @@ for (var i = 0; i < 11; i++) {
           manager.mSpeed = Math.ceil(rng.random() * 2) + 5
           if (
             manager.loot[Enum.Loot.cFang] > 4 &&
-            manager.quest[Enum.Quest.rings] == 5
+            (manager.quest[Enum.Quest.rings] == 5 ||
+              (checker["ring4"] == 0 &&
+                manager.quest[Enum.Quest.rings] >= 5))
           ) {
             manager.mName = "EMPEROR COBRA"
             manager.mob[newObserveObject.mobVar].set_y(110)
@@ -61702,7 +61704,11 @@ for (var i = 0; i < 11; i++) {
             newQuest("11_11", "rings", 5, false)
             // manager.quest[Enum.Quest.rings] = 5
             manager.messFin = true
-          } else if (manager.quest[Enum.Quest.rings] == 5) {
+          } else if (
+            manager.quest[Enum.Quest.rings] == 5 ||
+            (checker["ring4"] == 0 &&
+              manager.quest[Enum.Quest.rings] >= 5)
+          ) {
             manager.mess.set_text(
               "Cogul: Emperor Cobras won't attack unless\nangered. If they sense you've killed many other\ncobras, they'll attack.",
             )
