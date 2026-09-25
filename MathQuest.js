@@ -31382,7 +31382,8 @@ for (var i = 0; i < 11; i++) {
               newItem("11_11 - item:ring of poison")
               checker["ring4"] = 1
               // manager.ring4 = 1
-              manager.quest[Enum.Quest.rings] = 6
+              if (manager.quest[Enum.Quest.rings] < 6)
+                manager.quest[Enum.Quest.rings] = 6
             } else if (manager.mName == "ICE SAGE") {
               newObserveObject.fightMes[
                 newObserveObject.fightMesCurrent
@@ -59899,7 +59900,10 @@ for (var i = 0; i < 11; i++) {
           ) {
             manager.mess.set_text("Ron: You don't have enough gold.")
             manager.messFin = true
-          } else if (manager.quest[Enum.Quest.geo] == 5) {
+          } else if (
+            manager.quest[Enum.Quest.geo] == 5 &&
+            manager.quest[Enum.Quest.oMan] != 18
+          ) {
             manager.mess.set_text(
               _aNewIdentifierName.plus(
                 _aNewIdentifierName.plus(
