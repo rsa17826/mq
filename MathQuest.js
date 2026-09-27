@@ -1112,16 +1112,16 @@ const itemList = {
   },
   "misc:ninja": () => {
     manager.ninjaSkills = true
-    this.ninSpeed = 5
-    this.ninMin = 30
-    this.ninSec = 0
-    this.ninIcon.set_visible(true)
-    this.ninDisplay.set_text(
-      f.string(this.ninMin) + ":0" + f.string(this.ninSec),
+    test.ninSpeed = 5
+    test.ninMin = 30
+    test.ninSec = 0
+    test.ninIcon.set_visible(true)
+    test.ninDisplay.set_text(
+      String(test.ninMin) + ":0" + String(test.ninSec),
     )
-    this.ninDisplay.setTextFormat(this.fightMesFormat)
-    this.ninDisplay.set_visible(true)
-    this.ninTimer.start()
+    test.ninDisplay.setTextFormat(test.fightMesFormat)
+    test.ninDisplay.set_visible(true)
+    test.ninTimer.start()
   },
   "skill:firewall": () => {
     manager.skills[Enum.Skill.firewall] += 1
