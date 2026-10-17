@@ -63986,17 +63986,27 @@ for (var i = 0; i < 11; i++) {
               ),
             )
           } else if (
-            (manager.quest[Enum.Quest.gTree] == 5 ||
-              (manager.quest[Enum.Quest.gTree] > 5 &&
-                checker["item:gold - mayor"] == 0)) &&
-            manager.messPage == 2
+            (manager.quest[Enum.Quest.gTree] == 5 &&
+              manager.messPage == 2) ||
+            (manager.quest[Enum.Quest.gTree] > 5 &&
+              checker["item:gold - mayor"] == 0)
           ) {
             manager.mess.set_text(
               "Here, take this reward of 50 gold.",
             )
-            checker["item:gold - mayor"] = 1
-            newItem("21_20 - item:gold - mayor#50")
-            manager.fame += 5
+            if (
+              manager.quest[Enum.Quest.gTree] > 5 &&
+              checker["item:gold - mayor"] == 0
+            ) {
+              checker["item:gold - mayor"] = 1
+              newItem("21_20 - item:gold - mayor#50")
+              manager.fame += 5
+              manager.messFin = true
+            } else {
+              checker["item:gold - mayor"] = 1
+              newItem("21_20 - item:gold - mayor#50")
+              manager.fame += 5
+            }
           } else if (
             (manager.quest[Enum.Quest.gTree] == 6 &&
               manager.messPage == 1) ||
