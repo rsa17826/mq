@@ -93,6 +93,8 @@ using the reveal skill reloads the room which can allow getting from quest `curs
 
 if an encounter is triggered while on the spot of the red chest and the chest was visible before and the player never left the spot with the red chest even if the red chest is not visible anymore the encounter will still be the red chest encounter as the game still believes you are colliding with the chest
 
+gummy bears only restore 20% of base magic ignoring bonuses
+
 ![](./gh_images/small%20breakables.png)
 
 the items in `17_11` are located at
