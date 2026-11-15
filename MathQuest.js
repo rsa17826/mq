@@ -949,6 +949,9 @@ const itemList = {
   "food:strawberry#5": () => {
     manager.food[Enum.Food.strawberry] += 5
   },
+  "item:bombs": () => {
+    manager.bombs += 1
+  },
   "trap:del_del": () => {},
   "trap:nothing": () => {},
   "filler:filler_gold": () => {
