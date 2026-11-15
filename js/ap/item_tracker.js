@@ -189,7 +189,7 @@ class ItemTracker {
         entry.requires,
         Logic.haveDerived,
         entry.room,
-      ) && PathFinding.findPathTo(entry.room)
+      ) && PathFinding.isRoomReachable(entry.room)
     )
   }
 

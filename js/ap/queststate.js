@@ -35,6 +35,13 @@ class QuestState {
    * @param {string} name
    * @param {number} value
    */
+  // Cheap change-detector for caches that depend on quest values.
+  static signature() {
+    let s = ""
+    for (const k in QuestState.values) s += k + QuestState.values[k] + ","
+    return s
+  }
+
   static set(name, value) {
     QuestState.values[name] = value
   }

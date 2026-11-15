@@ -417,7 +417,6 @@ class PathFinding {
   static bfs(graph, roomsByKey, startRoomKey) {
     const dist = {}
     const bestEdge = {}
-    const allIncoming = {}
     const queue = []
 
     // Seed every real exit of the start room AND its root directly: a room
@@ -442,8 +441,6 @@ class PathFinding {
       const cur = queue[qi++]
       const edges = graph[cur] || []
       for (const edge of edges) {
-        if (!allIncoming[edge.toNode]) allIncoming[edge.toNode] = []
-        allIncoming[edge.toNode].push(edge)
         if (dist[edge.toNode] === undefined) {
           dist[edge.toNode] = dist[cur] + 1
           bestEdge[edge.toNode] = edge
@@ -452,7 +449,70 @@ class PathFinding {
       }
     }
 
-    return { dist, bestEdge, allIncoming }
+    // room -> nearest reachable exit node, so "closest node of room X"
+    // is a lookup instead of a prefix scan over every reachable node.
+    const bestNodeByRoom = new Map()
+    for (const node in dist) {
+      const room = node.slice(0, node.indexOf("::"))
+      const cur = bestNodeByRoom.get(room)
+      if (!cur || dist[node] < cur.dist)
+        bestNodeByRoom.set(room, { node, dist: dist[node] })
+    }
+
+    return { dist, bestEdge, bestNodeByRoom }
+  }
+
+  // Graph/BFS results depend only on: slotData, Logic.haveDerived (a fresh
+  // Set every Logic.recompute), which entrances are checked, and the
+  // alwaysShowAllPaths option. Keying on exactly those (by identity/value)
+  // means the cache can never go stale: any change simply misses.
+  static _cache = null
+  static getPathCache(slotData) {
+    const c = this._cache
+    const checked = window.playerCheckedEntrances
+    const checkedSize = checked ? checked.size : 0
+    if (
+      c &&
+      c.slotData === slotData &&
+      c.have === Logic.haveDerived &&
+      c.checked === checked &&
+      c.checkedSize === checkedSize &&
+      c.always === localStorage.alwaysShowAllPaths &&
+      c.questSig === QuestState.signature()
+    )
+      return c
+    const { graph, roomsByKey } = this.buildPathGraph(slotData)
+    return (this._cache = {
+      slotData,
+      have: Logic.haveDerived,
+      checked,
+      checkedSize,
+      always: localStorage.alwaysShowAllPaths,
+      questSig: QuestState.signature(),
+      graph,
+      roomsByKey,
+      bfs: new Map(),
+    })
+  }
+  static getBfs(cache, startKey) {
+    let r = cache.bfs.get(startKey)
+    if (!r) {
+      r = this.bfs(cache.graph, cache.roomsByKey, startKey)
+      cache.bfs.set(startKey, r)
+    }
+    return r
+  }
+  // Is any exit of this room reachable from any candidate start?
+  static isRoomReachable(roomKey) {
+    const slotData = window.ap.slotData
+    const cache = this.getPathCache(slotData)
+    for (const startKey of this.candidateStartKeys()) {
+      if (!cache.roomsByKey[startKey]) continue
+      if (startKey === roomKey) return true
+      if (this.getBfs(cache, startKey).bestNodeByRoom.has(roomKey))
+        return true
+    }
+    return false
   }
 
   /**
@@ -733,18 +793,16 @@ class PathFinding {
     const slotData = window.ap && window.ap.slotData
     const startKey = this.getCurrentRoomKey()
     if (slotData && startKey) {
-      const { graph, roomsByKey } = this.buildPathGraph(slotData)
-      if (roomsByKey[startKey]) {
-        const { dist } = this.bfs(graph, roomsByKey, startKey)
+      const cache = this.getPathCache(slotData)
+      if (cache.roomsByKey[startKey]) {
+        const { bestNodeByRoom } = this.getBfs(cache, startKey)
         let best = null
         let bestDist = Infinity
         candidates.forEach((/** @type {{ room: any; }} */ c) => {
-          const prefix = `${c.room}::`
-          for (const node of Object.keys(dist)) {
-            if (node.startsWith(prefix) && dist[node] < bestDist) {
-              bestDist = dist[node]
-              best = c
-            }
+          const hit = bestNodeByRoom.get(c.room)
+          if (hit && hit.dist < bestDist) {
+            bestDist = hit.dist
+            best = c
           }
         })
         if (best) return best
@@ -1127,7 +1185,8 @@ class PathFinding {
     const slotData = window.ap && window.ap.slotData
     if (!slotData) return null
 
-    const { graph, roomsByKey } = this.buildPathGraph(slotData)
+    const cache = this.getPathCache(slotData)
+    const roomsByKey = cache.roomsByKey
 
     const candidates = this.candidateStartKeys().filter(
       (k) => roomsByKey[k],
@@ -1140,7 +1199,10 @@ class PathFinding {
       if (startKey === targetKey && !targetEntrance)
         return { path: [], startKey } // already there
 
-      const { dist, bestEdge } = this.bfs(graph, roomsByKey, startKey)
+      const { dist, bestEdge, bestNodeByRoom } = this.getBfs(
+        cache,
+        startKey,
+      )
 
       let path = null
       let pathDist = Infinity
@@ -1158,15 +1220,9 @@ class PathFinding {
       } else {
         // No specific entrance requested: take the closest exit-node
         // belonging to that room that's actually reachable.
-        const prefix = `${targetKey}::`
-        let bestNode = null
-        let bestNodeDist = Infinity
-        for (const node of Object.keys(dist)) {
-          if (node.startsWith(prefix) && dist[node] < bestNodeDist) {
-            bestNodeDist = dist[node]
-            bestNode = node
-          }
-        }
+        const hit = bestNodeByRoom.get(targetKey)
+        const bestNode = hit ? hit.node : null
+        const bestNodeDist = hit ? hit.dist : Infinity
         if (bestNode) {
           path = this.reconstructPath(bestEdge, bestNode)
           pathDist = bestNodeDist

@@ -214,6 +214,15 @@ class RoomGraph {
     const roomExitCounts = {}
     const visitedRooms = new Set()
     const queue = []
+    const compsCache = new Map()
+    const componentsFor = (roomKey, room) => {
+      let c = compsCache.get(roomKey)
+      if (!c) {
+        c = RoomGraph.computeRoomComponents(room, haveReal)
+        compsCache.set(roomKey, c)
+      }
+      return c
+    }
 
     /**
      * @typedef {Object} Room
@@ -285,7 +294,7 @@ class RoomGraph {
       // that normally only happens via a real exit's exit->root edge --
       // and there are no exits here to provide one.
       markExitReachable(roomKey, "root", 0)
-      const comps = RoomGraph.computeRoomComponents(room, haveReal)
+      const comps = componentsFor(roomKey, room)
       for (const key of Object.keys(comps)) {
         const side = key.replace(/\d+$/, "")
         const idx = Number(key.match(/\d+$/)[0])
@@ -303,7 +312,7 @@ class RoomGraph {
       if (!room) return
       visitedRooms.add(roomKey)
       markExitReachable(roomKey, side, idx)
-      const comps = RoomGraph.computeRoomComponents(room, haveReal)
+      const comps = componentsFor(roomKey, room)
       const enteredComp = comps[RoomGraph.exitKey(side, idx)]
       if (enteredComp === undefined) return
       for (const key of Object.keys(comps)) {
@@ -348,8 +357,9 @@ class RoomGraph {
 
     if (RoomGraph.roomIndex[startRoom]) seedRoomFully(startRoom)
 
-    while (queue.length > 0) {
-      const cur = queue.shift()
+    let qi = 0
+    while (qi < queue.length) {
+      const cur = queue[qi++]
       const room = RoomGraph.roomIndex[cur.room]
       if (!room) continue
 
