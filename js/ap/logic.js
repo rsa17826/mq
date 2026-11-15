@@ -99,6 +99,9 @@ class Logic {
       if (rawTok == "permit:bomb#2") {
         if (!(have.has("permit:bomb") && have.has("permit:bomb@2")))
           return "false"
+      } else if (rawTok == "permit:bomb") {
+        if (!(have.has("permit:bomb") || have.has("permit:bomb@2")))
+          return "false"
       } else if (!have.has(Logic.baseTok(rawTok))) return "false"
     }
     return "true"
