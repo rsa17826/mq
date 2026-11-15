@@ -531,6 +531,11 @@ function apSendSayFromInput() {
         URL.revokeObjectURL(href)
       },
     },
+    pmax: {
+      desc: "",
+      args: [],
+      func: pmax,
+    },
   }
   log(text)
   if (!text) return
@@ -554,7 +559,7 @@ function apSendSayFromInput() {
       }
     }
   }
-  if (text.startsWith("/")){
+  if (text.startsWith("/")) {
     apWarn(`[WARNING] ${cmd} is not a valid command!`)
     return
   }

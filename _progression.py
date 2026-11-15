@@ -1494,14 +1494,6 @@ manager.correct - manager.wrong > 800 = halo
       ],
       [
         "quest:gTree.6",
-        "weapon:sKnife",
-      ],
-      [
-        "quest:gTree.6",
-        "weapon:sKnife",
-      ],
-      [
-        "quest:gTree.6",
         "weapon:pitchfork",
       ],
       [
