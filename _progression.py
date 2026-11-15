@@ -9283,4 +9283,7 @@ AREA_POWER_REQS = {
   "8": 10,
   "9.1": 16,
   "9": 10,
+  "red chest": 10,
+  # "str up npc": 0,
+  # "magic upgrades": 0,
 }
