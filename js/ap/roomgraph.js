@@ -41,11 +41,15 @@ class RoomGraph {
     if (ap.slotData.no_power_reqs) {
       return true
     }
-    const area = RoomGraph.areaMap[roomKey]
-    if (area === undefined) return true
-    const reqs = RoomGraph.areaPowerReqs[area]
-    if (!reqs) return true
-    return RoomGraph.reqsSatisfied(reqs, have)
+    const allAreas = RoomGraph.areaMap[roomKey]
+    if (!allAreas?.length) return true
+    const allReqs = allAreas
+      .map((area) => RoomGraph.areaPowerReqs[area])
+      .filter((e) => e)
+    if (!allReqs.length) return true
+    if (allReqs.find((e) => !RoomGraph.reqsSatisfied(e, have)))
+      return false
+    return true
   }
 
   // Indexes _room_geometry.WARPS (emitted as WARPS_DATA by gen_map.py) by
