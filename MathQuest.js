@@ -113482,6 +113482,12 @@ for (var i = 0; i < 11; i++) {
                       window.playerCheckedEntrances.add(fullkey)
                       recomp = true
                     }
+                    log(specificTarget)
+                    fullkey = `${specificTarget.newNorth}_${specificTarget.newEast}_${specificTarget.exitSide}_${specificTarget.exitIdx}`
+                    if (!window.playerCheckedEntrances.has(fullkey)) {
+                      window.playerCheckedEntrances.add(fullkey)
+                      recomp = true
+                    }
                     if (specificTarget) {
                       conn = specificTarget
                       fullkey = `${conn.newNorth}_${conn.newEast}_${conn.exitSide}_${conn.exitIdx}`
