@@ -713,8 +713,7 @@ class PathFinding {
   }
 
   static getProgData() {
-    if (typeof PROG !== "undefined" && PROG)
-      return PROG
+    if (typeof PROG !== "undefined" && PROG) return PROG
     if (window.PROG) return window.PROG
     return []
   }
@@ -1652,6 +1651,13 @@ class WorldMap {
       },
     )
   }
+
+  /** @type {HTMLImageElement} */
+  static playerImage = newelem("img", {
+    src: "/player.webp",
+    width: "100%",
+    height: "auto",
+  })
   static init() {
     window.onQuestChanged.push(() => {
       // Recompute logic/reachability FIRST so the tracked-path search below
@@ -1666,6 +1672,16 @@ class WorldMap {
       PathFinding.updateTrackedPath()
     })
     window.onNewScreen.push(() => {
+      if (
+        (WorldMap.playerImage.style.visibility =
+          localStorage.showPlayerOnMap == "true" ?
+            "visible"
+          : "hidden")
+      ) {
+        HTMLStorage.TileByKey[
+          `${manager.north}_${manager.east}`
+        ]?.appendChild?.(WorldMap.playerImage)
+      }
       if (
         WorldMap.PATH_ROUTES.find(
           (/** @type {{ toRoom: string; }} */ e) =>

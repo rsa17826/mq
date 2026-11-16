@@ -23105,6 +23105,7 @@ for (var i = 0; i < 11; i++) {
           setTimeout(() => {
             window.playerLoaded = true
             window.onPlayerLoaded.forEach((e) => e())
+            window.onNewScreen.forEach((e) => e())
           }, 100)
         },
         sendComplete: function () {
@@ -31195,9 +31196,14 @@ for (var i = 0; i < 11; i++) {
           this.fightMesFormat.color = 16777088
           warn("adsjklasdlksdaklasd", manager.mobSecs)
           if (manager.mobSecs == 1) {
-            newObserveObject.fightMes[
-              newObserveObject.fightMesCurrent
-            ].set_text("You defeated the " + manager.mName + "!")
+            if (
+              window.battleLootCounter ==
+              (window.ap?.slotData?.battle_loot_mult ?? 1)
+            ) {
+              newObserveObject.fightMes[
+                newObserveObject.fightMesCurrent
+              ].set_text("You defeated the " + manager.mName + "!")
+            }
             if (manager.mName == "Santa") {
               newObserveObject.fightMes[
                 newObserveObject.fightMesCurrent
@@ -32984,8 +32990,7 @@ for (var i = 0; i < 11; i++) {
             )
           }
           if (manager.mobSecs == 5) {
-            debugger
-            if (window.battleLootCounter > 0) {
+            if (window.battleLootCounter > 1) {
               warn(
                 manager.mobSecs,
                 "manager.mobSecsmanager.mobSecsmanager.mobSecsmanager.mobSecs",
@@ -45629,7 +45634,8 @@ for (var i = 0; i < 11; i++) {
             window.battleLootCounter,
             "window.battleLootCounterwindow.battleLootCounterwindow.battleLootCounter",
           )
-          window.battleLootCounter = 5
+          window.battleLootCounter =
+            window.ap?.slotData?.battle_loot_mult ?? 1
           this.batEndTimer.start()
           if (
             manager.mName == "Creeper" &&

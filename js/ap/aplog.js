@@ -531,6 +531,14 @@ function apSendSayFromInput() {
         URL.revokeObjectURL(href)
       },
     },
+    showPlayerOnMap: {
+      desc: "showPlayerOnMap",
+      args: [],
+      func(on = "1") {
+        localStorage.showPlayerOnMap = ["1", "true"].includes(on)
+        window.onNewScreen.forEach((e) => e())
+      },
+    },
     pmax: {
       desc: "",
       args: [],
@@ -575,7 +583,7 @@ function apSendSayFromInput() {
   ])
   input.value = ""
 }
-
+localStorage.showPlayerOnMap ??= "true"
 document
   .getElementById("apChatSaySend")
   .addEventListener("click", apSendSayFromInput)
