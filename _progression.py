@@ -1305,6 +1305,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "quest:warp.1",
+        "permit:bomb",
       ],
     ],
     "receive": [
