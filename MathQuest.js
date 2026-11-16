@@ -31249,7 +31249,12 @@ for (var i = 0; i < 11; i++) {
                 manager.ornaments += 90
               }
             }
-            this.batEndMesMover()
+            if (
+              window.battleLootCounter ==
+              (window.ap?.slotData?.battle_loot_mult ?? 1)
+            ) {
+              this.batEndMesMover()
+            }
             if (manager.area == 14) {
               if (manager.arenaSection == 1) {
                 newObserveObject.fightMes[
