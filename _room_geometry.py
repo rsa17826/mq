@@ -1093,47 +1093,6 @@ GEOM: list[ExitBase] = [
         "reqs": [
           [
             "permit:shadowsoulEntrance",
-            "weapon:royalSword",
-          ],
-          [
-            "permit:shadowsoulEntrance",
-            "weapon:sunSword",
-          ],
-          [
-            "permit:shadowsoulEntrance",
-            "weapon:shadowStaff",
-          ],
-          [
-            "permit:shadowsoulEntrance",
-            "weapon:refreshStaff",
-          ],
-          [
-            "permit:shadowsoulEntrance",
-            "weapon:orcBlade",
-          ],
-          [
-            "permit:shadowsoulEntrance",
-            "weapon:creeperCrusher",
-          ],
-          [
-            "permit:shadowsoulEntrance",
-            "weapon:twinFury",
-          ],
-          [
-            "permit:shadowsoulEntrance",
-            "weapon:baneBlade",
-          ],
-          [
-            "permit:shadowsoulEntrance",
-            "weapon:axe",
-          ],
-          [
-            "permit:shadowsoulEntrance",
-            "weapon:bombSword",
-          ],
-          [
-            "permit:shadowsoulEntrance",
-            "weapon:soulSword",
           ],
         ],
       },
@@ -1893,7 +1852,7 @@ GEOM: list[ExitBase] = [
         {"left": 0, "right": 12},
       ],
       "east": [
-        {"top": 4, "bottom": 6},
+        {"top": 4, "bottom": 6, "newX": 600},
       ],
       "north": [],
     },
@@ -2734,47 +2693,6 @@ GEOM: list[ExitBase] = [
         "reqs": [
           [
             "permit:shadowsoulEntrance",
-            "weapon:royalSword",
-          ],
-          [
-            "permit:shadowsoulEntrance",
-            "weapon:sunSword",
-          ],
-          [
-            "permit:shadowsoulEntrance",
-            "weapon:shadowStaff",
-          ],
-          [
-            "permit:shadowsoulEntrance",
-            "weapon:refreshStaff",
-          ],
-          [
-            "permit:shadowsoulEntrance",
-            "weapon:orcBlade",
-          ],
-          [
-            "permit:shadowsoulEntrance",
-            "weapon:creeperCrusher",
-          ],
-          [
-            "permit:shadowsoulEntrance",
-            "weapon:twinFury",
-          ],
-          [
-            "permit:shadowsoulEntrance",
-            "weapon:baneBlade",
-          ],
-          [
-            "permit:shadowsoulEntrance",
-            "weapon:axe",
-          ],
-          [
-            "permit:shadowsoulEntrance",
-            "weapon:bombSword",
-          ],
-          [
-            "permit:shadowsoulEntrance",
-            "weapon:soulSword",
           ],
         ],
       },
@@ -2796,7 +2714,7 @@ GEOM: list[ExitBase] = [
     "exits": {
       "west": [],
       "south": [
-        {"left": 3, "right": 4},
+        {"left": 3, "right": 4, "newY": 515},
       ],
       "east": [
         {"top": 6, "bottom": 7},
@@ -3562,74 +3480,11 @@ GEOM: list[ExitBase] = [
     "areas": [
       {
         "reqs": [
-          [
-            "weapon:sword",
-          ],
-          [
-            "weapon:sKnife",
-          ],
-          [
-            "weapon:sKnife",
-          ],
-          [
-            "weapon:sKnife",
-          ],
-          [
-            "weapon:pitchfork",
-          ],
-          [
-            "weapon:royalSword",
-          ],
-          [
-            "weapon:sunSword",
-          ],
-          [
-            "weapon:shadowStaff",
-          ],
-          [
-            "weapon:refreshStaff",
-          ],
-          [
-            "weapon:orcBlade",
-          ],
-          [
-            "weapon:creeperCrusher",
-          ],
-          [
-            "weapon:twinFury",
-          ],
-          [
-            "weapon:baneBlade",
-          ],
-          [
-            "weapon:axe",
-          ],
-          [
-            "weapon:bombSword",
-          ],
-          [
-            "weapon:soulSword",
-          ],
-          [
-            "quest:gTree.7",
-          ],
-        ],
-        "areas": [
-          [
-            {"side": "north", "idx": 0},
-            {"side": "south", "idx": 0},
-          ],
-        ],
-      },
-      {
-        "reqs": [
           [],
         ],
         "areas": [
           [
             {"side": "north", "idx": 0},
-          ],
-          [
             {"side": "south", "idx": 0},
           ],
         ],
