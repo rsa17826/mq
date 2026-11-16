@@ -17635,7 +17635,7 @@ for (var i = 0; i < 11; i++) {
               const tick = () => {
                 if (this.running) {
                   if (this.tickCount > 5) {
-                    window.setInterval(
+                    this.__timerID = window.setInterval(
                       createObjectMixin(this, this.timer_onTimer),
                       this.__delay | 0,
                     )
@@ -17651,6 +17651,7 @@ for (var i = 0; i < 11; i++) {
               this.__timerID = -1 //window.setInterval(() => {}, 0)
               return
             }
+            if (this.__timerID) clearInterval(this.__timerID)
             this.__timerID = window.setInterval(
               createObjectMixin(this, this.timer_onTimer),
               this.__delay | 0,
@@ -32983,14 +32984,25 @@ for (var i = 0; i < 11; i++) {
             )
           }
           if (manager.mobSecs == 5) {
-            manager.enterButton.set_visible(true)
-            this.batEndTimer.reset()
-            manager.removeButtons()
-            this.enterFunc()
+            debugger
+            if (window.battleLootCounter > 0) {
+              warn(
+                manager.mobSecs,
+                "manager.mobSecsmanager.mobSecsmanager.mobSecsmanager.mobSecs",
+              )
+              manager.mobSecs = 0
+              window.battleLootCounter -= 1
+            } else {
+              manager.enterButton.set_visible(true)
+              this.batEndTimer.reset()
+              manager.removeButtons()
+              this.enterFunc()
+            }
             // newItem(20,16,'gold', )
             manager.gold += manager.ring1
           }
           console.log(this.prize3 + " between 20 and 25???")
+          warn("window.battleLootCounter", window.battleLootCounter)
         },
         batEndMesMover: function () {
           if (newObserveObject.fightMesY == 560) {
@@ -45613,6 +45625,11 @@ for (var i = 0; i < 11; i++) {
           )
           window.anInputHandlerActive = false
           manager.mobSecs = 0
+          error(
+            window.battleLootCounter,
+            "window.battleLootCounterwindow.battleLootCounterwindow.battleLootCounter",
+          )
+          window.battleLootCounter = 5
           this.batEndTimer.start()
           if (
             manager.mName == "Creeper" &&
