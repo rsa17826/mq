@@ -9071,10 +9071,10 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "area:magic upgrades",
+        "magic:fire",
       ],
     ],
     "receive": [
-      # NOTE don't think this should be a check
       "flag:magic:fire.2",
     ],
   },
@@ -9283,7 +9283,7 @@ AREA_POWER_REQS = {
   "8": 10,
   "9.1": 16,
   "9": 10,
-  "red chest": 10,
+  # "red chest": 10,
   # "str up npc": 0,
   # "magic upgrades": 0,
 }
