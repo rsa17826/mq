@@ -4318,6 +4318,18 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "quest:isles.18",
+        "entrance.south0",
+        "permit:bomb",
+      ],
+      [
+        "quest:isles.18",
+        "entrance.south1",
+        "permit:bomb",
+      ],
+      [
+        "quest:isles.18",
+        "entrance.south3",
+        "permit:bomb",
       ],
     ],
     "receive": [
@@ -4570,10 +4582,7 @@ manager.correct - manager.wrong > 800 = halo
   {
     "room": {"north": 9, "east": 18},
     "requires": [
-      [
-        "quest:isles.9",
-        "entrance.west0"
-      ],
+      ["quest:isles.9", "entrance.west0"],
     ],
     "receive": [
       "quest:isles.10",
