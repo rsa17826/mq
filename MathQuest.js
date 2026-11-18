@@ -324,7 +324,8 @@ addEventListener("keydown", ({ key }) => {
   if (
     key == "w" &&
     manager.skills[Enum.Skill.warp] > 0 &&
-    test.fightMode == 0
+    test.fightMode == 0 &&
+    manager.skillPoints > 20
   )
     test.warpScreenShow()
   if (key == "Shift") window.useSlowSpeed = 1
@@ -935,9 +936,15 @@ const itemList = {
     manager.hugeBomb = 1
   },
   "trap:confusion": () => {
+    if (
+      checker.bobbisPendant == 1 ||
+      manager.armor[Enum.Armor.diamondArmor] == 2
+    )
+      return
     manager.confused = true
   },
   "trap:poison": () => {
+    if (manager.armor[Enum.Armor.diamondArmor] == 2) return
     manager.poi = (manager.mxhp / 20) | 0
     manager.poiSymbol.set_visible(true)
     manager.poiTimer.start()
@@ -47551,7 +47558,7 @@ for (var i = 0; i < 11; i++) {
           manager.mStr += 8
           if (
             manager.armor[Enum.Armor.diamondArmor] < 2 &&
-            manager.quest[Enum.Quest.oMan] < 22
+            checker.bobbisPendant == 0
           ) {
             manager.confused = true
             manager.poi = 8
@@ -47730,7 +47737,7 @@ for (var i = 0; i < 11; i++) {
           manager.mName == "Mummy" &&
           manager.confused == 0 &&
           manager.armor[Enum.Armor.diamondArmor] != 2 &&
-          manager.quest[Enum.Quest.oMan] < 22
+          checker.bobbisPendant == 0
         ) {
           newObserveObject.fightMes[
             newObserveObject.fightMesCurrent
@@ -47860,7 +47867,7 @@ for (var i = 0; i < 11; i++) {
           manager.mName == "Negative Ninja" &&
           manager.confused == 0 &&
           manager.armor[Enum.Armor.diamondArmor] != 2 &&
-          manager.quest[Enum.Quest.oMan] < 22
+          checker.bobbisPendant == 0
         ) {
           newObserveObject.fightMes[
             newObserveObject.fightMesCurrent
@@ -48001,7 +48008,7 @@ for (var i = 0; i < 11; i++) {
           newObserveObject.specAtt >= 72 &&
           manager.mName == "Kid Genius" &&
           manager.confused == 0 &&
-          manager.quest[Enum.Quest.oMan] < 22
+          checker.bobbisPendant == 0
         ) {
           newObserveObject.fightMes[
             newObserveObject.fightMesCurrent
@@ -48679,7 +48686,7 @@ for (var i = 0; i < 11; i++) {
           manager.confused == 0 &&
           manager.area == 14 &&
           manager.armor[Enum.Armor.diamondArmor] != 2 &&
-          manager.quest[Enum.Quest.oMan] < 22
+          checker.bobbisPendant == 0
         ) {
           newObserveObject.fightMes[
             newObserveObject.fightMesCurrent
@@ -48703,7 +48710,7 @@ for (var i = 0; i < 11; i++) {
           manager.mp >= 33 &&
           manager.confused == 0 &&
           manager.armor[Enum.Armor.diamondArmor] != 2 &&
-          manager.quest[Enum.Quest.oMan] < 22
+          checker.bobbisPendant == 0
         ) {
           newObserveObject.fightMes[
             newObserveObject.fightMesCurrent
@@ -48766,7 +48773,7 @@ for (var i = 0; i < 11; i++) {
           manager.mp >= 33 &&
           manager.confused == 0 &&
           manager.armor[Enum.Armor.diamondArmor] != 2 &&
-          manager.quest[Enum.Quest.oMan] < 22
+          checker.bobbisPendant == 0
         ) {
           newObserveObject.fightMes[
             newObserveObject.fightMesCurrent
