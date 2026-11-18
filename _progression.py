@@ -6042,6 +6042,18 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "quest:isles.22",
+        "entrance.south0",
+        "permit:bomb",
+      ],
+      [
+        "quest:isles.22",
+        "entrance.south1",
+        "permit:bomb",
+      ],
+      [
+        "quest:isles.22",
+        "entrance.south3",
+        "permit:bomb",
       ],
     ],
     "receive": [
