@@ -31421,7 +31421,8 @@ for (var i = 0; i < 11; i++) {
               newItem("-1_-1 - item:ring of magic")
               checker["ring5"] = 1
               // manager.ring5 = 1
-              newQuest("15_16", "rings", 9, false)
+              if (manager.quest[Enum.Quest.rings] < 9)
+                newQuest("15_16", "rings", 9, false)
               // manager.quest[Enum.Quest.rings] = 9
               manager.fame += 2
             } else if (manager.mName == "DEATH REAPER") {

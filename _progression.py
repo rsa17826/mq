@@ -3192,7 +3192,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "loot:key",
-        "entrance.north0",
+        "entrance.north1",
       ],
     ],
     "receive": [
