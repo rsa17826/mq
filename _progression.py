@@ -2353,6 +2353,15 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "quest:rings.10",
+        "entrance.north0",
+      ],
+      [
+        "quest:rings.10",
+        "entrance.west0",
+      ],
+      [
+        "quest:rings.10",
+        "entrance.south1",
       ],
     ],
     "receive": [
