@@ -438,6 +438,8 @@ const checkerDefaultDara = {
   "Food.honey": 0,
   "Food.grapes.2": 0,
   "Food.elixir": 0,
+  "15_18 - food:beefJerky#3": 0,
+  "15_18 - permit:shadowsoulEntrance": 0,
   "Food.strawberry": 0,
   "Food.blueberries": 0,
   "Food.orange.100_100": 0,
@@ -24912,7 +24914,8 @@ for (var i = 0; i < 11; i++) {
                     manager.quest[Enum.Quest.gTree] == 16) ||
                   (manager.area == 9.1 &&
                     (manager.quest[Enum.Quest.gTree] == 18 ||
-                      manager.quest[Enum.Quest.gTree] == 19)))
+                      manager.quest[Enum.Quest.gTree] == 19 ||
+                      checker["Food.holyWater"] == 0)))
               ) {
                 this.exitLoop = this.contact = true
                 this.charBounceBack()
@@ -31133,7 +31136,8 @@ for (var i = 0; i < 11; i++) {
           }
           if (
             manager.area == 9.1 &&
-            manager.quest[Enum.Quest.gTree] < 19
+            (manager.quest[Enum.Quest.gTree] < 19 ||
+              checker["Food.holyWater"] == 0)
           ) {
             manager.greenOrb.set_visible(true)
           }
@@ -34091,7 +34095,8 @@ for (var i = 0; i < 11; i++) {
             }
             if (
               manager.area == 9.1 &&
-              manager.quest[Enum.Quest.gTree] == 18
+              (manager.quest[Enum.Quest.gTree] == 18 ||
+                checker["Food.holyWater"] == 0)
             ) {
               this.fightSetUp()
               this.fightThemePlay()
@@ -45697,7 +45702,8 @@ for (var i = 0; i < 11; i++) {
           this.fightMode = this.fightThemePlaying = false
           if (
             manager.area == 9.1 &&
-            manager.quest[Enum.Quest.gTree] < 19
+            (manager.quest[Enum.Quest.gTree] < 19 ||
+              checker["Food.holyWater"] == 0)
           ) {
             manager.greenOrb.set_visible(true)
           }
@@ -51530,7 +51536,10 @@ for (var i = 0; i < 11; i++) {
           manager.orbStatue.set_x(302)
           manager.orbStatue.set_y(235)
           manager.orbStatue.set_visible(true)
-          if (manager.quest[Enum.Quest.gTree] < 20) {
+          if (
+            manager.quest[Enum.Quest.gTree] < 20 ||
+            checker["Food.holyWater"] == 0
+          ) {
             manager.greenOrb.set_x(manager.orbStatue.get_x() + 37)
             manager.greenOrb.set_y(manager.orbStatue.get_y() + 23)
             manager.greenOrb.set_visible(true)
@@ -60278,7 +60287,8 @@ for (var i = 0; i < 11; i++) {
         }
         if (
           manager.area == 9.1 &&
-          manager.quest[Enum.Quest.gTree] == 18
+          (manager.quest[Enum.Quest.gTree] == 18 ||
+            checker["Food.holyWater"] == 0)
         ) {
           manager.mess.set_text("You cannot have the Orb of Life!!!")
           manager.messFin = true
@@ -60551,13 +60561,15 @@ for (var i = 0; i < 11; i++) {
         }
         if (
           manager.area == 9.1 &&
-          manager.quest[Enum.Quest.gTree] == 19
+          (manager.quest[Enum.Quest.gTree] == 19 ||
+            checker["Food.holyWater"] == 0)
         ) {
           manager.mess.set_text("You obtain the Orb of Life!")
           manager.messFin = true
           manager.greenOrb.set_visible(false)
           // newItem(5,24,'Enum.Quest.gTree',null)
-          manager.quest[Enum.Quest.gTree] = 20
+          if (manager.quest[Enum.Quest.gTree] < 20)
+            manager.quest[Enum.Quest.gTree] = 20
         }
         if (manager.north == 4 && manager.east == 24) {
           manager.mess.set_text("The doors appear to be sealed shut.")
@@ -61807,7 +61819,10 @@ for (var i = 0; i < 11; i++) {
             if (manager.quest[Enum.Quest.gTree] == 17) {
               manager.fame += 2
               // newItem(15,18,'Enum.Quest.gTree',null)
-              newItem("15_18 - permit:shadowsoulEntrance")
+              if (checker["15_18 - permit:shadowsoulEntrance"] == 0) {
+                checker["15_18 - permit:shadowsoulEntrance"] = 1
+                newItem("15_18 - permit:shadowsoulEntrance")
+              }
               newQuest("15_18", "gTree", 18, false)
               // manager.quest[Enum.Quest.gTree] = 18
             }
@@ -61911,7 +61926,10 @@ for (var i = 0; i < 11; i++) {
               manager.quest[Enum.Quest.gTree] == 11
             ) {
               if (manager.quest[Enum.Quest.gTree] == 10) {
-                newItem("15_18 - food:beefJerky#3")
+                if (checker["15_18 - food:beefJerky#3"] == 0) {
+                  checker["15_18 - food:beefJerky#3"] = 1
+                  newItem("15_18 - food:beefJerky#3")
+                }
                 // newItem(15,18,'Enum.Quest.gTree',null)
                 manager.quest[Enum.Quest.gTree] = 11
               }
@@ -61920,6 +61938,20 @@ for (var i = 0; i < 11; i++) {
               )
             } else {
               manager.mess.set_text("You are a noble warrior!")
+            }
+            if (
+              checker["15_18 - food:beefJerky#3"] == 0 &&
+              manager.quest[Enum.Quest.gTree] > 10
+            ) {
+              checker["15_18 - food:beefJerky#3"] = 1
+              newItem("15_18 - food:beefJerky#3")
+            }
+            if (
+              checker["15_18 - permit:shadowsoulEntrance"] == 0 &&
+              manager.quest[Enum.Quest.gTree] > 17
+            ) {
+              checker["15_18 - permit:shadowsoulEntrance"] = 1
+              newItem("15_18 - permit:shadowsoulEntrance")
             }
             manager.messFin = true
           }
