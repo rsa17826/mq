@@ -32467,7 +32467,8 @@ for (var i = 0; i < 11; i++) {
                 newObserveObject.fightMes[
                   newObserveObject.fightMesCurrent
                 ].set_text("You found 300 gold on Poly the Pirate.")
-                newQuest("9.11_20", "isles", 13, false)
+                if (manager.quest[Enum.Quest.isles] < 13)
+                  newQuest("9.11_20", "isles", 13, false)
                 // manager.quest[Enum.Quest.isles] = 13
                 manager.nm = 0
               } else {
@@ -32476,7 +32477,8 @@ for (var i = 0; i < 11; i++) {
                 ].set_text(
                   "You found 300 gold and obtain the Soul Stone!.",
                 )
-                newQuest("9.11_20", "isles", 7, false)
+                if (manager.quest[Enum.Quest.isles] < 7)
+                  newQuest("9.11_20", "isles", 7, false)
                 // manager.quest[Enum.Quest.isles] = 7
                 manager.soulStone.set_visible(false)
               }
@@ -56999,7 +57001,8 @@ for (var i = 0; i < 11; i++) {
           V.digVar >= 75
         ) {
           manager.mess.set_text("You found a Terra geodes!")
-          newQuest("4_19", "isles", 4, false)
+          if (manager.quest[Enum.Quest.isles] < 4)
+            newQuest("4_19", "isles", 4, false)
           // manager.quest[Enum.Quest.isles] = 4
         } else if (
           manager.north == 21 &&
@@ -57208,7 +57211,8 @@ for (var i = 0; i < 11; i++) {
           manager.mess.set_text(
             "The Soul Stone illuminates brightly!",
           )
-          newQuest("5_20", "isles", 14, false)
+          if (manager.quest[Enum.Quest.isles] < 14)
+            newQuest("5_20", "isles", 14, false)
           // manager.quest[Enum.Quest.isles] = 14
         }
         if (manager.north == 8 && manager.east == 20) {
@@ -60827,7 +60831,8 @@ for (var i = 0; i < 11; i++) {
             manager.mess.set_text(
               "Baron: What?! The Soul Stone is gone???\nI knew we shouldn't have let Jax try and\nprotect it..",
             )
-            newQuest("201_200", "isles", 3, false)
+            if (manager.quest[Enum.Quest.isles] < 3)
+              newQuest("201_200", "isles", 3, false)
             // manager.quest[Enum.Quest.isles] = 3
             manager.fame++
           } else if (manager.quest[Enum.Quest.isles] == 3) {
@@ -60864,8 +60869,9 @@ for (var i = 0; i < 11; i++) {
               ),
             )
             manager.fame += 2
-            newQuest("201_200", "isles", 8, false)
-            manager.quest[Enum.Quest.isles] = 8
+            // newQuest("201_200", "isles", 8, false)
+            if (manager.quest[Enum.Quest.isles] < 8)
+              manager.quest[Enum.Quest.isles] = 8
             manager.messPage = 0
           } else if (manager.quest[Enum.Quest.isles] == 8) {
             if (manager.messPage == 1) {

@@ -4572,6 +4572,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "quest:isles.9",
+        "entrance.west0"
       ],
     ],
     "receive": [
