@@ -62812,9 +62812,22 @@ for (var i = 0; i < 11; i++) {
             // manager.quest[Enum.Quest.dream] = 15
           } else {
             if (manager.quest[Enum.Quest.dream] == 15) {
-              manager.mess.set_text(
-                "Jorian has been deployed elsewhere.",
-              )
+              if (checker["Armor.nobleArmor"] == 0) {
+                if (manager.armor[Enum.Armor.royalArmor] > 0) {
+                  manager.mess.set_text(
+                    "As a reward for your service, I'd like\nto upgrade your Royal Armor.",
+                  )
+                  checker["Armor.nobleArmor"] = 1
+                  newItem("13_17 - armor:nobleArmor")
+                } else {
+                  manager.mess.set_text(
+                    "come back with royalArmor to get nobleArmor.",
+                  )
+                }
+              } else
+                manager.mess.set_text(
+                  "Jorian has been deployed elsewhere.",
+                )
             } else if (
               (manager.quest[Enum.Quest.dream] == 11 ||
                 manager.quest[Enum.Quest.dream] == 12) &&

@@ -1956,6 +1956,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "quest:oMan.1",
+        "entrance.north1",
       ],
     ],
     "receive": [
@@ -4218,6 +4219,11 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "quest:dream.8",
+        "entrance.north0",
+      ],
+      [
+        "quest:dream.8",
+        "entrance.west0",
       ],
     ],
     "receive": [
@@ -4225,10 +4231,15 @@ manager.correct - manager.wrong > 800 = halo
     ],
   },
   {
-    "room": {"north": 10, "east": 10},
+    "room": {"north": -1, "east": -1},
     "requires": [
       [
         "quest:dream.9",
+        "area:6",
+      ],
+      [
+        "quest:dream.9",
+        "area:7",
       ],
     ],
     "receive": [
@@ -4719,6 +4730,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "quest:dream.14",
+        "armor:royalArmor",
       ],
     ],
     "receive": [
