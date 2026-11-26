@@ -24934,7 +24934,8 @@ for (var i = 0; i < 11; i++) {
                   (manager.area == 9.1 &&
                     (manager.quest[Enum.Quest.gTree] == 18 ||
                       manager.quest[Enum.Quest.gTree] == 19 ||
-                      checker["Food.holyWater"] == 0)))
+                      (checker["Food.holyWater"] == 0 &&
+                        test.fightMode == 1))))
               ) {
                 this.exitLoop = this.contact = true
                 this.charBounceBack()
@@ -31156,7 +31157,7 @@ for (var i = 0; i < 11; i++) {
           if (
             manager.area == 9.1 &&
             (manager.quest[Enum.Quest.gTree] < 19 ||
-              checker["Food.holyWater"] == 0)
+              (checker["Food.holyWater"] == 0 && test.fightMode == 1))
           ) {
             manager.greenOrb.set_visible(true)
           }
@@ -34118,7 +34119,8 @@ for (var i = 0; i < 11; i++) {
             if (
               manager.area == 9.1 &&
               (manager.quest[Enum.Quest.gTree] == 18 ||
-                checker["Food.holyWater"] == 0)
+                (checker["Food.holyWater"] == 0 &&
+                  test.fightMode == 1))
             ) {
               this.fightSetUp()
               this.fightThemePlay()
@@ -39025,13 +39027,16 @@ for (var i = 0; i < 11; i++) {
                 const charY = manager.charBottom[0].get_y() + 11
 
                 // Check if character hits the temple floor tile
-                  if (
+                if (
                   templeFloor.hitTestPoint(charX, charY, true) &&
                   manager.tFloor[this.innerCounter].get_visible() == 0
                 ) {
-
-                  manager.tFloor[this.innerCounter].set_x(templeFloor.get_x())
-                  manager.tFloor[this.innerCounter].set_y(templeFloor.get_y())
+                  manager.tFloor[this.innerCounter].set_x(
+                    templeFloor.get_x(),
+                  )
+                  manager.tFloor[this.innerCounter].set_y(
+                    templeFloor.get_y(),
+                  )
                   manager.tFloor[this.innerCounter].set_visible(true)
                   templeFloor.set_visible(false)
 
@@ -45760,7 +45765,7 @@ for (var i = 0; i < 11; i++) {
           if (
             manager.area == 9.1 &&
             (manager.quest[Enum.Quest.gTree] < 19 ||
-              checker["Food.holyWater"] == 0)
+              (checker["Food.holyWater"] == 0 && test.fightMode == 1))
           ) {
             manager.greenOrb.set_visible(true)
           }
@@ -51595,7 +51600,7 @@ for (var i = 0; i < 11; i++) {
           manager.orbStatue.set_visible(true)
           if (
             manager.quest[Enum.Quest.gTree] < 20 ||
-            checker["Food.holyWater"] == 0
+            (checker["Food.holyWater"] == 0 && test.fightMode == 1)
           ) {
             manager.greenOrb.set_x(manager.orbStatue.get_x() + 37)
             manager.greenOrb.set_y(manager.orbStatue.get_y() + 23)
@@ -60354,7 +60359,7 @@ for (var i = 0; i < 11; i++) {
         if (
           manager.area == 9.1 &&
           (manager.quest[Enum.Quest.gTree] == 18 ||
-            checker["Food.holyWater"] == 0)
+            (checker["Food.holyWater"] == 0 && test.fightMode == 1))
         ) {
           manager.mess.set_text("You cannot have the Orb of Life!!!")
           manager.messFin = true
@@ -60628,7 +60633,7 @@ for (var i = 0; i < 11; i++) {
         if (
           manager.area == 9.1 &&
           (manager.quest[Enum.Quest.gTree] == 19 ||
-            checker["Food.holyWater"] == 0)
+            (checker["Food.holyWater"] == 0 && test.fightMode == 1))
         ) {
           manager.mess.set_text("You obtain the Orb of Life!")
           manager.messFin = true
