@@ -106,6 +106,7 @@ the items in `17_11` are located at
 |0|7|0|blue chest|
 |2|1|1|south exit - requires ending with 1 south|
 |1|1|0|magic refill crystal|
+|2|0|10|shade john|
 
 the exits can be took in any order unlike the sign at `19_11` makes it look like
 

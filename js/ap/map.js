@@ -194,6 +194,11 @@ class PathFinding {
         Logic.haveDerived.has("permit:bomb") &&
         Logic.haveDerived.has("permit:bomb@2")
       )
+    if (tok == "permit:bomb")
+      return (
+        Logic.haveDerived.has("permit:bomb") ||
+        Logic.haveDerived.has("permit:bomb@2")
+      )
     if (tok.startsWith("quest:")) {
       return QuestState.satisfied(tok)
     }

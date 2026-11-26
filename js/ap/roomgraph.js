@@ -105,9 +105,13 @@ class RoomGraph {
         // TODO !!! use pathfinding
         if (tok.startsWith("entrance.")) return true
         if (tok.startsWith("quest:")) return QuestState.satisfied(tok)
-        return rawTok == "permit:bomb#2" ?
+        return (
+          rawTok == "permit:bomb#2" ?
             have.has("permit:bomb") && have.has("permit:bomb@2")
+          : rawTok == "permit:bomb" ?
+            have.has("permit:bomb") || have.has("permit:bomb@2")
           : have.has(tok)
+        )
       }),
     )
   }
