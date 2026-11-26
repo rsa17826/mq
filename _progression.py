@@ -1575,12 +1575,12 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "quest:pam.3",
+        "skill:dig",
       ],
     ],
     "receive": [
       "quest:pam.4",
     ],
-    # TODO make sure to show all req pam also req skill dig
   },
   {
     "room": {"north": 19, "east": 20},
@@ -1701,6 +1701,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "quest:pam.5",
+        "skill:dig",
       ],
     ],
     "receive": [
@@ -1760,6 +1761,7 @@ manager.correct - manager.wrong > 800 = halo
       [
         "quest:pam.7",
         "entrance.south1",
+        "skill:dig",
       ],
     ],
     "receive": [
@@ -2884,6 +2886,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "quest:pam.12",
+        "skill:dig",
       ],
     ],
     "receive": [
@@ -9215,6 +9218,7 @@ manager.correct - manager.wrong > 800 = halo
     "requires": [
       [
         "quest:curse.7",
+        "entrance.south0",
         "skill:kick",
         "flag:stomp code",
       ],

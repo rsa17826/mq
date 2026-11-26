@@ -5747,11 +5747,22 @@ for (var i = 0; i < 11; i++) {
           //   log(Object.entries(manager).find(([k,v])=>v==this)?.[0])
 
           // }
+          function shouldShowMBoxAlways() {
+            if (manager.north == 11 && manager.east == 26) return true
+            if (manager.north == 14 && manager.east == 25) return true
+            if (manager.north == 14 && manager.east == 24) return true
+            if (manager.north == 13 && manager.east == 24) return true
+            // gate
+            if (manager.north == 11 && manager.east == 19) return true
+            if (manager.north == 8 && manager.east == 17) return true
+            if (manager.north == 20 && manager.east == 17) return true
+          }
           if (
             (localStorage.autoCloseBattleMessages == "true" &&
               test.fightMode == 1) ||
             (localStorage.autoCloseDialogueBoxes == "true" &&
-              test.fightMode == 0)
+              test.fightMode == 0 &&
+              !shouldShowMBoxAlways())
           ) {
             if (test.fightMode == 0) {
               if (manager.yes == this) {
@@ -21705,6 +21716,7 @@ for (var i = 0; i < 11; i++) {
         "mCount",
         "tileRow",
         "tilesLit",
+        "tilesLitLside",
         "axeVar",
         "an1",
         "a1",
@@ -39004,41 +39016,76 @@ for (var i = 0; i < 11; i++) {
               this.innerCounter = 0
               this.exitLoop = false
               while (
-                (manager.bTempleFloor[this.innerCounter].hitTestPoint(
-                  manager.charBottom[0].get_x() + 17,
-                  manager.charBottom[0].get_y() + 11,
-                  true,
-                ) &&
-                  (manager.tFloor[this.innerCounter].get_visible() ==
-                    0 &&
-                    (this.innerCounter >
-                      manager.tileRow * 14 + 6 - 1 &&
-                      this.innerCounter < manager.tileRow * 14 + 14 &&
-                      manager.tilesLit++,
-                    manager.tilesLit == 7 &&
-                      (manager.cavernWall[
-                        manager.tileRow * 14 + 5
-                      ].set_visible(false),
-                      manager.quest[Enum.Quest.curse] == 7 &&
-                        (manager.quest[Enum.Quest.curse] = 8))),
-                  manager.tFloor[this.innerCounter].set_x(
-                    manager.bTempleFloor[this.innerCounter].get_x(),
-                  ),
-                  manager.tFloor[this.innerCounter].set_y(
-                    manager.bTempleFloor[this.innerCounter].get_y(),
-                  ),
-                  manager.tFloor[this.innerCounter].set_visible(true),
-                  manager.bTempleFloor[this.innerCounter].set_visible(
-                    false,
-                  ),
-                  (this.exitLoop = true),
-                  (manager.skillPoints -= 15),
-                  manager.ring6 > 0 && (manager.skillPoints += 13),
-                  this.removeSkillsScreen()),
-                this.innerCounter++,
                 this.innerCounter < manager.tFloor.length &&
-                  this.exitLoop == 0)
-              );
+                this.exitLoop == 0
+              ) {
+                const templeFloor =
+                  manager.bTempleFloor[this.innerCounter]
+                const charX = manager.charBottom[0].get_x() + 17
+                const charY = manager.charBottom[0].get_y() + 11
+
+                // Check if character hits the temple floor tile
+                  if (
+                  templeFloor.hitTestPoint(charX, charY, true) &&
+                  manager.tFloor[this.innerCounter].get_visible() == 0
+                ) {
+
+                  manager.tFloor[this.innerCounter].set_x(templeFloor.get_x())
+                  manager.tFloor[this.innerCounter].set_y(templeFloor.get_y())
+                  manager.tFloor[this.innerCounter].set_visible(true)
+                  templeFloor.set_visible(false)
+
+                  const minRowIndexLSide =
+                    manager.tileRow * 14 + 1 - 1
+                  const minRowIndexRSide =
+                    manager.tileRow * 14 + 6 - 1
+                  const maxRowIndex = manager.tileRow * 14 + 14
+
+                  if (
+                    this.innerCounter > minRowIndexRSide &&
+                    this.innerCounter < maxRowIndex
+                  ) {
+                    manager.tilesLit++
+
+                    if (manager.tilesLit == 7) {
+                      manager.cavernWall[
+                        manager.tileRow * 14 + 5
+                      ].set_visible(false)
+
+                      if (manager.quest[Enum.Quest.curse] == 7) {
+                        manager.quest[Enum.Quest.curse] = 8
+                      }
+                    }
+                  } else if (
+                    this.innerCounter > minRowIndexLSide &&
+                    this.innerCounter < maxRowIndex
+                  ) {
+                    manager.tilesLitLside++
+
+                    if (manager.tilesLitLside == 4) {
+                      manager.cavernWall[
+                        manager.tileRow * 14 + 5
+                      ].set_visible(false)
+
+                      // if (manager.quest[Enum.Quest.curse] === 7) {
+                      //   manager.quest[Enum.Quest.curse] = 8
+                      // }
+                    }
+                  }
+
+                  this.exitLoop = true
+                  manager.skillPoints -= 15
+
+                  if (manager.ring6 > 0) {
+                    manager.skillPoints += 13
+                  }
+
+                  this.removeSkillsScreen()
+                  break // Exit the loop since this.exitLoop is now true
+                }
+
+                this.innerCounter++
+              }
             }
           } else if (
             manager.skillTile[Enum.Skill.flee].hitTestPoint(
@@ -51981,6 +52028,7 @@ for (var i = 0; i < 11; i++) {
           manager.ground = "castle"
           manager.area = 13
           manager.tilesLit = 0
+          manager.tilesLitLside = 0
           __createObject.scene =
             "xxxxxxxxxWWWWxxxxxxxxxxG  GxxxxxxxxxxG  GxxxxxxxxxxWQQWxggg          xggg          xggg          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx".split(
               "",
@@ -51998,6 +52046,7 @@ for (var i = 0; i < 11; i++) {
           manager.ground = "snow"
           manager.area = 13
           manager.tilesLit = 0
+          manager.tilesLitLside = 0
           __createObject.scene =
             "cccccccccccccc   e        fceeeee     f  c           j ce e   Mm   f c           f ce            c  e       j fceeee         c  ee         ceeeeG    Geeec".split(
               "",
@@ -52015,6 +52064,7 @@ for (var i = 0; i < 11; i++) {
           manager.ground = "sand"
           manager.area = 13
           manager.tilesLit = 0
+          manager.tilesLitLside = 0
           __createObject.scene =
             "ccccccccccccccD  (   )      D  ( d )   * DD  ( d )      D( ( d   *   DD(   d )      D( ( d )     DD( (   ) *    D ( *d)    * DD      )   *  D         DDDD".split(
               "",
@@ -52033,6 +52083,7 @@ for (var i = 0; i < 11; i++) {
           manager.ground = "grass"
           manager.area = 13
           manager.tilesLit = 0
+          manager.tilesLitLside = 0
           __createObject.scene =
             "G   ,   . GGGGGggggggggg   GGg7888889g B GGg4wwwww6g   GGg4wo2pw6gggggGg4w6 4w6gggggGg4wk8lw6gggggGg4wwwww6g  ,GGg1222223gF  GGggggggggg   GGGGGGGGGGGGGGG".split(
               "",
@@ -52048,6 +52099,7 @@ for (var i = 0; i < 11; i++) {
           manager.ground = "temple"
           manager.area = 13
           manager.tilesLit = 0
+          manager.tilesLitLside = 0
           __createObject.scene =
             "GGGGGggggGGGGGGggggggggggggGGgi  GGGG  igGGg          gGggG        GggggG        GggggG        GggGg          gGGg          gGGg          gGGGGGG    GGGGG".split(
               "",
@@ -52063,6 +52115,7 @@ for (var i = 0; i < 11; i++) {
           manager.ground = "temple"
           manager.area = 13
           manager.tilesLit = 0
+          manager.tilesLitLside = 0
           __createObject.scene =
             "GGGGG    GccccG        G   cG        G    G  GGGG=GG    G        G   cG        G   cG        G   cG  =GGGGGG   cG        =   cG        =   cGGGGGGGGGGcccc".split(
               "",
@@ -52080,6 +52133,7 @@ for (var i = 0; i < 11; i++) {
           manager.ground = "blue temple"
           manager.area = 13
           manager.tilesLit = 0
+          manager.tilesLitLside = 0
           __createObject.scene =
             "ccccccccccccccc    c       c     c       c     c       cc    c       cc    c       cc    c       cc    c       cc    c       cc    c       ccccccc  cccccc".split(
               "",
@@ -113289,6 +113343,7 @@ for (var i = 0; i < 11; i++) {
         manager.tileRow = Math.ceil(rng.random() * 7) + 2
       })
       manager.tilesLit = 0
+      manager.tilesLitLside = 0
       manager.firewallUpgrade = 1
       manager.axeVar = 150
       manager.alphaArmourHP = 1
