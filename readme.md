@@ -19,13 +19,14 @@ mathquest is an rpg game about solving simple math equations.
   - entrance rando works mostly
   - options for progressive weapons, progressive armor, and progressive magic
   - deathlink works
+  - per area weapon requirements working
 
 - ## traps
   - poison - applies a strong poison
   - confusion - prevents magic usage
   - gold - gives 2k gold
   - nothing - does nothing
-  - spawn_random_enemies - spawns an enemy when triggered - TODO make delay until not in encounter to activate
+  - spawn_random_enemies - spawns an enemy when triggered
 
 this game should be playable but is still being developed
 
@@ -142,7 +143,7 @@ you can get `gTree` quest to `8` at any time you can get to `14_18` even startin
 <!-- `m` opens magic menu -->
 - f saves the game
 - option to make the battle loot messages appear insteantly
-<!-- option to auto close dialogue boxes without having to press enter -->
+- option to auto close dialogue boxes without having to press enter
 - option to auto close battle messages when battle ends without need to press enter
 - press `shift+h` to recall back to `20_20` if stuck
 - `i` casts ice during battle
